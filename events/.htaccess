@@ -1,0 +1,8 @@
+RewriteEngine on
+RewriteBase /events
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^images(.*)$ http://www.google.com/calendar/images$1 [L,R=301]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^.*feeds(.*)$ http://www.google.com/calendar/feeds$1 [L,P,NE]

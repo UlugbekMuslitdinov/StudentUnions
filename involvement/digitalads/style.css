@@ -1,0 +1,36 @@
+img[id*="icon"] {
+    height: 25px;
+    width: auto;
+    margin-right: 10px;
+}
+
+.operation_hours, .event_hours {
+    margin-bottom: 10px;
+    text-align: center;
+}
+.table_header {
+    font-weight: 1000;
+    font-size: 25px;
+    color: #496636;
+}
+
+.operation_hours p , .event_hours p {
+    margin-top: 0px !important;
+    margin-bottom: 7px !important;
+    font-size: 17px !important;
+}
+
+.todays_hours {
+    margin-top: 20px;
+    margin-bottom: 45px;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 20px;
+    color: white;
+}
+
+.todays_hours span {
+    background-color: #84993a;
+    padding: 10px;
+    border-radius: 5px;
+}

@@ -1,0 +1,28 @@
+td.title
+{
+	padding: 8px;
+}
+
+h1.title
+{
+	color: #765;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 28px;
+	display: inline;
+}
+
+a.selectable
+{
+	color: black;
+	text-decoration: underline;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12px;
+}
+
+a.current
+{
+	color: #B24;
+	text-decoration: none;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 12px;
+}

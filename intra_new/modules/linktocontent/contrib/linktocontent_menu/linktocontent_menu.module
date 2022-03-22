@@ -1,0 +1,163 @@
+<?php
+// $Id: linktocontent_menu.module,v 1.3 2007/10/08 15:18:09 stborchert Exp $
+
+include(drupal_get_path('module', 'linktocontent_menu') .'/linktocontent_menu.theme');
+
+/**
+ * Implementation of hook_menu()
+ *
+ * @ingroup linktocontent_menu_core
+ */
+function linktocontent_menu_menu($may_cache) {
+  $access = user_access('administer linktocontent');
+  $items[] = array('path' => 'admin/settings/linktocontent/linktocontent_menu',
+    'title' => linktocontent_menu_get_title(),
+    'description' => t('Configure settings for '. linktocontent_menu_get_title() .'.'),
+    'callback' => 'drupal_get_form',
+    'callback arguments' => array('linktocontent_menu_settings_page'),
+    'access' => $access,
+    'type' => MENU_CALLBACK);
+  return $items;
+}
+
+/**
+ * Menu callback; Prints the settings page under admin/settings/linktocontent
+ *
+ * @ingroup linktocontent_menu_callback
+ */
+function linktocontent_menu_settings_page() {
+  $options = array();
+  $status = variable_get('linktocontent_menu_menus', array());
+  $root_menus = menu_get_root_menus();
+  foreach ($root_menus as $key => $menu) {
+    $options[$key] = '';
+    $form['name'][$key] = array('#value' => $menu);
+  }
+
+  $form['status'] = array(
+    '#type' => 'checkboxes',
+    '#default_value' => $status,
+    '#options' => $options);
+  $form['buttons']['submit'] = array(
+    '#type' => 'submit',
+    '#value' => t('Save configuration'),
+  );
+  return $form;
+}
+
+/**
+ * Submit callback; handles form submission.
+ */
+function linktocontent_menu_settings_page_submit($form_id, $form_values) {
+  $status = variable_get('linktocontent_menu_menus', array());
+  foreach ($form_values['status'] as $key => $choice) {
+    $status[$key] = $choice;
+  }
+  variable_set('linktocontent_menu_menus', $status);
+  drupal_set_message(t('The configuration has been saved.'));
+}
+
+/**
+ * Collect some info about the plugin.
+ *
+ * @ingroup linktocontent_menu_core
+ * @return Object with plugin infos (title, description, ...)
+ **/
+function linktocontent_menu_get_info() {
+  $obj = new StdClass;
+  $obj->info = array('title' => linktocontent_menu_get_title(),
+    'description' => linktocontent_menu_get_description(),
+    'plugin' => 'linktomenu');
+  return $obj;
+}
+
+/**
+ * Get the human readable plugin title.
+ *
+ * @ingroup linktocontent_menu_core
+ * @return Plugin title
+ **/
+function linktocontent_menu_get_title() {
+  return t('Link to menu');
+}
+
+/**
+ * Get the plugin description.
+ *
+ * @ingroup linktocontent_menu_core
+ * @return Plugin description
+ **/
+function linktocontent_menu_get_description() {
+  return t('Adds a plugin to your FCKeditor and TinyMCE profiles that allows you to browse through your menu structure and insert links to menu items.');
+}
+
+/**
+ * Validate the given arguments.
+ *
+ * @ingroup linktocontent_menu_core
+ * @return boolean Whether the arguments are valid or not.
+ **/
+function linktocontent_menu_validate_args($args) {
+  if (!isset($args['ltc-menu-id']) || !is_numeric(check_plain($args['ltc-menu-id']))) {
+    return t('No valid menu id given.');
+  }
+  return true;
+}
+
+/**
+ * Looks for popup.php in the tinymce plugin directory to check
+ * for a correct installation of the plugin.
+ *
+ * @ingroup linktoconent_menu_core
+ * @return FALSE if the file isn't there; otherwise TRUE
+ **/
+function linktocontent_menu_check_files() {
+  $file = 'popup.php';
+  $plugin_path = '/tinymce/jscripts/tiny_mce/plugins/linktomenu/';
+  $dir = drupal_get_path('module', 'tinymce');
+  return file_exists($dir . $plugin_path . $file);
+}
+
+/**
+ * Get the data depending on the given arguments.
+ *
+ * @ingroup linktocontent_menu_core
+ * @return Javascript array with all the data the tinymce plugin needs.
+ **/
+function linktocontent_menu_get_data($args, $data = array()) {
+  $mid = check_plain($args['ltc-menu-id']);
+
+  $data = array();
+  $data['menus'] = _linktocontent_menu_get_menus($mid);
+  return $data;
+}
+
+function _linktocontent_menu_get_menus($mid = 0) {
+  $menu = menu_get_menu();
+  $result = array();
+  if (!isset($menu['items'][$mid])) {
+    return $result;
+  }
+  $items = $menu['items'][$mid]['children'];
+  $enabled_root_menus = variable_get('linktocontent_menu_menus', array());
+  // if there are no menus selected return empty array
+  if (count($enabled_root_menus) == 0) {
+    return $result;
+  }
+  foreach ($items as $item) {
+    if (!(MENU_VISIBLE_IN_TREE & $menu['items'][$item]['type'])) {
+      continue;
+    }
+    if (($mid == 0) && !in_array($item, $enabled_root_menus)) {
+      continue;
+    }
+    $obj = new StdClass;
+    $obj->root = ($mid == 0);
+    $obj->mid = $item;
+    $obj->path = $menu['items'][$item]['path'];
+    $obj->title = $menu['items'][$item]['title'];
+    $obj->hasChildren = (isset($menu['items'][$item]['children']));
+    $result[$item] = $obj;
+  }
+  return $result;
+}

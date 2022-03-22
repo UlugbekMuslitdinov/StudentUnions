@@ -1,0 +1,11 @@
+{
+    "name": "mealplans",
+    "version": "18.1.0",
+    "description": "mealplans",
+    "license": "SEE LICENSE IN LICENSE.md",
+    "private": true,
+    "dependencies": {},
+    "engines": {
+        "node": ">=16"
+    }
+}

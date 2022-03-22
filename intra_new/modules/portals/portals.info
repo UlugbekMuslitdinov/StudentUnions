@@ -1,0 +1,4 @@
+; $Id$
+name = "Portals"
+description = "Makes neccesary changes to setup portals for each location."
+package = "Unions intra"

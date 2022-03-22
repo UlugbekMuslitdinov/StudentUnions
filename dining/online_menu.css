@@ -1,0 +1,292 @@
+.background {
+    background: url(images/cactusgrill.jpg);
+    height: 170%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.title {
+    color: #de4921;
+    font-size: 100px;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 80px;
+}
+
+.current_date {
+    text-align: center;
+    font-size: 27px;
+    font-weight: 450;
+    margin-top: -20px;
+}
+
+.desc {
+    width: 70%;
+    margin: 0 auto;
+    /* text-align: center; */
+    margin-top: 40px;
+    font-size: 25px !important;
+    font-style: italic;
+    font-weight: 750;
+    /* font-family: Arial, Helvetica, sans-serif; */
+}
+
+.sub_title {
+    color: #dc4821;
+    margin-top: 50px;
+    margin-left: 153px;
+    font-size: 40px;
+    font-weight: 800;
+}
+
+.line-item {
+    margin-left: 145px;
+    font-weight: bold;
+    font-size: 25px;
+}
+
+.three-egg {
+    margin-top: 40px;
+}
+
+.special_omelet {
+    margin-left: 155px;
+    font-weight: 500;
+    font-size: 25px;
+}
+
+.r1 {
+    margin-top: 10px;
+}
+
+.r2 {
+    margin-top: 5px;
+}
+
+.customize_omelet {
+    margin-top: 20px;
+    column-count: 3;
+    margin-left: 150px;
+    font-size: 25px;
+    font-weight: 500;
+}
+
+p.list {
+    font-size: 20px;
+}
+
+.wraps_list {
+    margin-top: 60px;
+    margin-left: 145px;
+}
+
+.all_wraps {
+    font-weight: normal; 
+    margin-bottom: .4em;
+}
+#btn-back {
+    cursor: pointer;
+    color:#fd6245; 
+    background-color:#fff; 
+    position: absolute;
+    top: 24px;
+    right: 81px;
+    z-index: 9999999;
+    width: 320px;
+    height:30px;
+    border-radius: 5px;
+    font-weight: 900;
+    font-size: 22px;
+    text-align: center;
+    -webkit-box-shadow: 4px 4px 4px 0px rgba(112,112,112,1);
+    -moz-box-shadow: 4px 4px 4px 0px rgba(112,112,112,1);
+    box-shadow: 4px 4px 4px 0px rgba(112,112,112,1);
+}
+#btn-back:hover {
+    text-decoration: none;
+}
+span[name*='nav'] {
+    border: 2px solid transparent;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    background-color: #caa22b;
+    color: #fff;
+    border-radius: 5px;
+    -webkit-box-shadow: 4px 4px 4px 0px rgba(112,112,112,1);
+    -moz-box-shadow: 4px 4px 4px 0px rgba(112,112,112,1);
+    box-shadow: 4px 4px 4px 0px rgba(112,112,112,1);
+}
+span[name*='nav']:active {
+    -webkit-box-shadow: 0px 0px 5px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px -5px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px -5px rgba(0,0,0,0.75);
+}
+
+.the-grill {
+    align-content: flex-start;
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.grill_list {
+    margin-left: 150px;
+    margin-top: 20px;
+}
+
+#subs {
+    float: left;
+    font-size: 18px;
+    margin-bottom: 12px;
+    /* margin-top: 12px; */
+    margin-left: -300px;
+    width: 300px;
+}
+
+.previous {
+    margin-right: 15px;
+}
+
+.next {
+    margin-left: 15px;
+}
+.arrow {
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+    font-weight: bold;
+    display: inline-block;
+    border-radius: 10px;
+    background-color: #de4921;
+    color: white;
+    border: none;
+    line-height: 16px;
+}
+
+.move {
+    margin-left: 495px;
+    margin-top: -10px;
+}
+
+#second {
+    margin-top: -625px;
+    visibility: hidden;
+}
+
+.bowl {
+    margin-left: 50px;
+}
+
+.bowl_list {
+    font-size: 25px;
+    font-weight: 500;
+    margin-left: 155px;
+}
+
+.bbq_list {
+    margin-left: 95px;
+    margin-top: 50px;
+    width: 900px;
+}
+
+.bbq_topping {
+    font-size: 25px;
+    font-weight: 550;
+}
+
+.bbq_items {
+    margin-left: 200px;
+}
+
+code {
+    color: #de4921;
+    font-size: 100%;
+}
+
+.half-line-item {
+    line-height: 14px;
+}
+
+#hotline-plate {
+    margin-left: 10px;
+    color:#F29332; 
+    font-style:italic; 
+    font-size: 20px;
+    text-transform: lowercase !important;
+}
+
+.date-picker {
+    font-weight: 800;
+    font-size: 20px;
+    padding: 5px;
+    background-color: #de4921;
+    border-radius: 5px;
+    color: white;
+    margin-left: -125px;
+    margin-top: -5px;
+    padding-left: 25px;
+}
+
+#view-other {
+    font-size: 20px;
+    background-color: #de4921;
+    border-color: transparent;
+    border-radius: 5px;
+    font-weight: 800;
+    color: white;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+#ld-time {
+    text-align: center;
+    font-size: 20px;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: black;
+}
+
+#carte {
+    font-size: 25px;
+    font-weight: 800;
+    margin-bottom: -100px; 
+    margin-top: 20px; 
+    margin-left: 760px; 
+    color: #de4921;
+    text-transform: lowercase;
+}
+
+#today-formatted {
+    float: left;
+    font-size: 20px;
+    font-weight: 800;
+    margin-left: 135px;
+    text-transform: uppercase;
+    color: black;
+}
+
+option:disabled {
+    color: black;
+}
+
+#entree {
+    margin-bottom: 2px; 
+    margin-top: 0; 
+    margin-left: 150px;
+}
+
+#chef-note {
+    font-size: 20px;
+    text-transform: uppercase;
+    /* margin-left: 150px; */
+    color: #dc4821;
+}
+
+#chef-title {
+    border: 2px solid #dc4821;
+    width: 150px;
+    text-align: center;
+    margin-left: 150px;
+    margin-bottom: -15px;
+}

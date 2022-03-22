@@ -1,0 +1,68 @@
+<?php
+/**
+ * PHPMaker 2021 user level settings
+ */
+namespace PHPMaker2021\project1;
+
+// User level info
+$USER_LEVELS = [["-2","Anonymous"]];
+// User level priv info
+$USER_LEVEL_PRIVS = [["{A9C95B5B-8E51-470B-A211-B902E0103CAE}accounts","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}accounts_events","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}admin_access","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}admin_group","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}admin_routes","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}admin_screens","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}admin_users","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}box_choice","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}box_menu","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}box_order","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}catering","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}catering_event_requests","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}catering_highland","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}catering_highland_burrito","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}catering_highland_menu","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}event_orders","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}event_timeline","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}express_timeline","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}feedback","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}mealpackage","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}restaurants","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}restaurants_slides","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}room_reservation","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}room_reservation_media","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}room_reservation_media_options","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}room_reservation_room","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}room_reservation_room_options","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}rotation","-2","0"],
+    ["{A9C95B5B-8E51-470B-A211-B902E0103CAE}session_handler","-2","0"]];
+// User level table info
+$USER_LEVEL_TABLES = [["accounts","accounts","accounts",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["accounts_events","accounts_events","accounts events",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["admin_access","admin_access","admin access",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["admin_group","admin_group","admin group",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["admin_routes","admin_routes","admin routes",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["admin_screens","admin_screens","admin screens",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["admin_users","admin_users","admin users",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["box_choice","box_choice","box choice",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["box_menu","box_menu","box menu",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["box_order","box_order","box order",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["catering","catering","catering",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["catering_event_requests","catering_event_requests","catering event requests",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["catering_highland","catering_highland","catering highland",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["catering_highland_burrito","catering_highland_burrito","catering highland burrito",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["catering_highland_menu","catering_highland_menu","catering highland menu",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["event_orders","event_orders","event orders",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["event_timeline","event_timeline","event timeline",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["express_timeline","express_timeline","express timeline",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["feedback","feedback","feedback",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["mealpackage","mealpackage","mealpackage",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["restaurants","restaurants","restaurants",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["restaurants_slides","restaurants_slides","restaurants slides",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["room_reservation","room_reservation","room reservation",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["room_reservation_media","room_reservation_media","room reservation media",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["room_reservation_media_options","room_reservation_media_options","room reservation media options",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["room_reservation_room","room_reservation_room","room reservation room",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["room_reservation_room_options","room_reservation_room_options","room reservation room options",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["rotation","rotation","rotation",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"],
+    ["session_handler","session_handler","session handler",true,"{A9C95B5B-8E51-470B-A211-B902E0103CAE}"]];

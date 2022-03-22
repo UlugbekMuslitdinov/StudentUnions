@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/catering/online/catalyst/static/css/main.4d4f0bd3.chunk.css",
+    "main.js": "/catering/online/catalyst/static/js/main.7bb7d93b.chunk.js",
+    "main.js.map": "/catering/online/catalyst/static/js/main.7bb7d93b.chunk.js.map",
+    "runtime-main.js": "/catering/online/catalyst/static/js/runtime-main.65a956a8.js",
+    "runtime-main.js.map": "/catering/online/catalyst/static/js/runtime-main.65a956a8.js.map",
+    "static/css/2.67123b20.chunk.css": "/catering/online/catalyst/static/css/2.67123b20.chunk.css",
+    "static/js/2.0b06da7c.chunk.js": "/catering/online/catalyst/static/js/2.0b06da7c.chunk.js",
+    "static/js/2.0b06da7c.chunk.js.map": "/catering/online/catalyst/static/js/2.0b06da7c.chunk.js.map",
+    "index.html": "/catering/online/catalyst/index.html",
+    "precache-manifest.5cedcbc1114729d8ecb16af4b6338a87.js": "/catering/online/catalyst/precache-manifest.5cedcbc1114729d8ecb16af4b6338a87.js",
+    "service-worker.js": "/catering/online/catalyst/service-worker.js",
+    "static/css/2.67123b20.chunk.css.map": "/catering/online/catalyst/static/css/2.67123b20.chunk.css.map",
+    "static/css/main.4d4f0bd3.chunk.css.map": "/catering/online/catalyst/static/css/main.4d4f0bd3.chunk.css.map",
+    "static/js/2.0b06da7c.chunk.js.LICENSE": "/catering/online/catalyst/static/js/2.0b06da7c.chunk.js.LICENSE",
+    "static/media/Catalyst_Banner.jpg": "/catering/online/catalyst/static/media/Catalyst_Banner.a353e906.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.65a956a8.js",
+    "static/css/2.67123b20.chunk.css",
+    "static/js/2.0b06da7c.chunk.js",
+    "static/css/main.4d4f0bd3.chunk.css",
+    "static/js/main.7bb7d93b.chunk.js"
+  ]
+}

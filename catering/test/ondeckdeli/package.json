@@ -1,0 +1,30 @@
+{
+  "name": "on-deck-catering",
+  "version": "0.1.0",
+  "homepage": "./",
+  "private": true,
+  "dependencies": {
+    "cross-fetch": "^2.2.2",
+    "react": "^16.4.2",
+    "react-dom": "^16.4.2",
+    "react-loader-spinner": "^2.0.6",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "^2.1.1",
+    "redux": "^4.0.0",
+    "redux-thunk": "^2.3.0",
+    "roundto": "0.0.2"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}

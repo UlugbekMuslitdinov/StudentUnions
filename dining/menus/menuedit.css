@@ -1,0 +1,51 @@
+.content {
+	width:650;
+	margin-left:20px;
+	padding:5px;
+}
+.pagetitle {
+	float:left;
+	width:650px;
+}
+.subcontent {
+	float:left;
+	width:640px;
+	margin-left:10px;
+	margin-bottom:25px;
+}
+#contentlist {
+	float:left;
+	width:630px;
+	margin-left:10px;
+}
+#panelpagetitle {
+	font-size:11px;
+	margin-bottom:5px;
+}
+.category {
+	float:left;
+	width:630px;
+}
+.item {
+	float:left;
+	width:100%;
+	background-color:#E0F0FF;
+	border-top: 1px #003366 dashed;
+}
+.item_group {
+	float:left;
+	width:600px;
+	margin-left:30px;
+}
+.panel_head {
+	width:650px;
+	margin:1px;
+	padding-left:8px;
+	border:solid 1px;
+	border-color:#CCCCCC;
+	height:20px;
+}
+.expander {
+	text-align:right;
+	padding-right:5px;
+}

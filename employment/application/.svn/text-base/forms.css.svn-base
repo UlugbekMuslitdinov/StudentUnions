@@ -1,0 +1,62 @@
+#application h1 {
+	font-size:36px;
+	font-weight:bold;
+}
+
+#application h2 {
+	font-size:16px;
+	color:#000000;
+	font-weight:bold;
+}
+
+#application h3 {
+	font-size:14px;
+	color:#000000;
+	font-weight:bold;
+	padding-bottom:0;
+	margin-bottom:5px;
+}
+
+.style1 {
+	font-size:16px;
+	padding-top:0;
+	margin-top:0;
+	padding-bottom:25px;
+}
+
+.mainstyle {
+	font-size: 12px;
+}
+
+#col1 {
+	float:left;
+	width:300px;
+}
+
+#col2 {
+	float:left;
+	width:300px;
+}
+
+#col3 {
+	float:left;
+	width:300px;
+}
+
+p {
+	font-size:10px;
+	font-weight:100;
+}
+
+#submit {
+	position:absolute;
+	top:690px;
+	left:580px;
+}
+.error_message{
+	font-size:14px;
+	color:red;
+}
+.alternate {
+	background-color: #DEE3C4 !important;
+}

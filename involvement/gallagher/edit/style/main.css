@@ -1,0 +1,13 @@
+.wrap-nav {
+	/*padding-right: 0px;
+	padding-left: 0px;*/
+	background-color: #fff;
+	border-bottom: 1px solid #cac9c9;
+}
+.wrap-nav a {
+	color: #333 !important;
+}
+.navbar.container {
+	margin-top: 0px !important;
+	margin-bottom: 0px;
+}

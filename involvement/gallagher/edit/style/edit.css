@@ -1,0 +1,45 @@
+body {
+	background-color: #ececec;
+}
+
+.container {
+	margin-top: 20px;
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+td {
+	vertical-align: middle !important;
+}
+
+#ui-datepicker-div {
+	z-index: 99999 !important;
+}
+
+label {
+	/*padding-top: 5px;
+	padding-bottom: 5px;
+	width: 100%;*/
+	text-align: center;
+}
+input {
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+	height: 20px;
+}
+.input-group {
+	margin-bottom: 10px;
+}
+
+.more-names-btn, .more-time-btn {
+	margin-top: -8px;
+	margin-bottom: 10px;
+	/*margin-left: 470px;*/
+	padding: 1px 5px;
+	/*background-color: #e8e8e8;*/
+	border: 0px;
+}
+.more-names-btn:active:focus, .more-names-btn:hover {
+	/*background-color: #fff !important;*/
+    border-color: #fff !important; 
+} 

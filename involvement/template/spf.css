@@ -1,0 +1,180 @@
+@CHARSET "UTF-8";
+
+#right-col{
+	width:205px;
+	float:right;
+	margin-left:15px;
+}
+#right-col img{
+	margin-bottom:5px;	
+}
+#left-col{
+	width:135px;
+	float:left;
+	margin-right:15px;
+	padding-right:15px;
+	border-right:1px dotted #444444;
+}
+#left-col span{
+	font-size:16px;
+	line-height:20px;
+	color:#776655;
+	font-weight:bold;	
+}
+#left-col ul{
+	margin:0px;
+	padding:0px;
+	list-style-type:none;	
+}
+
+#left-col a:active, #left-col a:link, #left-col a:visited, #left-col a:hover{
+	text-decoration:none;
+	font-size:10px;
+	line-height:20px;
+	color:#444444;	
+}
+
+
+#center-col{
+	float:left;
+	width:540px;	
+}
+#center-col h1{
+	font-size:30px;
+	line-height:32px;
+	color:#776655;
+	margin-top:0px;	
+}
+#center-col h2{
+	font-size:18px;
+	color:#444444;
+	margin-top:0px;
+	margin-bottom:8px;	
+}
+#center-col p{
+	font-size:12px;
+	line-height:14px;
+	color:#444444;	
+}
+#center-col p a:link, #center-col p a:visted, #center-col p a:active, #center-col p a:hover{
+	font-size:12px;
+	font-decoration:none;
+	color:#bb2244;	
+}
+
+#divider{
+	border-top:1px dotted #444444;
+}
+
+#small
+{
+	font-size:10px;
+	font-color:#000;
+}
+
+.post-share-buttons
+{
+	display:-moz-inline-stack;
+	display:inline-block;
+	zoom:1;
+	*display:inline;
+	margin:0 .5em 0 .5em !important;
+	width:106px;
+	vertical-align:middle
+}
+
+.share-button
+{
+	display:block;
+	width:21px;
+	height:22px;
+	float:left;
+	background:url("images/share_buttons.png") no-repeat left !important;
+	overflow:hidden
+}
+
+a:hover.share-button
+{
+	text-decoration:none
+}
+
+.share-button-link-text
+{
+	position:absolute;
+	left:-999px
+}
+
+.sb-email
+{
+	background-position:0 0 !important
+}
+
+a:hover.sb-email
+{
+	background-position:0 -22px !important
+}
+
+a:active.sb-email
+{
+	background-position:0 -44px !important
+}
+
+.sb-blog
+{
+	background-position:-21px 0 !important
+}
+
+a:hover.sb-blog
+{
+	background-position:-21px -22px !important
+}
+
+a:active.sb-blog
+{
+	background-position:-21px -44px !important
+}
+
+.sb-twitter
+{
+	background-position:-42px 0 !important
+}
+
+a:hover.sb-twitter
+{
+	background-position:-42px -22px !important
+}
+
+a:active.sb-twitter
+{
+	background-position:-42px -44px !important
+}
+
+.sb-facebook
+{
+	background-position:-63px 0 !important
+}
+
+a:hover.sb-facebook
+{
+	background-position:-63px -22px !important
+}
+
+a:active.sb-facebook
+{
+	background-position:-63px -44px !important
+}
+
+.sb-buzz
+{
+	background-position:-84px 0 !important;width:22px
+}
+
+a:hover.sb-buzz
+{
+	background-position:-84px -22px !important
+}
+
+a:active.sb-buzz
+{
+	background-position:-84px -44px !important
+}

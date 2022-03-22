@@ -1,0 +1,138 @@
+.wrap-su-footer {
+    padding-top: 40px;
+    padding-bottom: 60px;
+    color: #fff !important ;
+    background-color: #ac051f;
+}
+.wrap-su-footer > .row > div {
+    padding-left: 20px;
+}
+.su-footer-header {
+    color: #fff;
+    font-size: 1.6em;
+    font-weight: 100;
+    text-transform: uppercase; 
+}
+.su-footer-header span {
+    margin-top: 0.3rem;
+    margin-bottom: 1rem;
+    display: block;
+    width: 80%;
+    border-bottom: 2px solid #b6b6b6;
+}
+.su-footer-subheader {
+    margin-top: 1.6rem;
+    color: #fff;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+.wrap-su-footer > .row > div > .su-footer-subheader:not(:first-child) {
+}
+
+/*  */
+.wrap-f-contactus p {
+    margin-bottom: 0px;
+    color: #fff;
+    font-weight: 400;
+}
+
+/*  */
+.wrap-su-footer .wrap-f-quicklink {
+    /* padding-left: 20px; */
+}
+.wrap-su-footer .f-quicklink {
+    display: block;
+    padding-left: 0px;
+    padding-right: 10px;
+    height: inherit;
+    /* line-height: 64px; */
+    color: #fff;
+    font-size: 1.1rem;
+    font-weight: 400;
+}
+
+/*  */
+.wrap-su-footer .wrap-f-social {
+}
+
+.wrap-su-footer .wrap-f-social .f-social {
+    display: block;
+    padding: 0px;
+    margin-right: 5px;
+    margin-right: 10px;
+    margin-bottom: 0rem;
+    /* width: 64px;
+    height: 64px; */
+    color: #fff;
+    font-size: 1.2rem;
+    font-weight: 400;
+    height: 28px;
+    /* line-height: 55px; */
+    /* text-align: center; */
+    border-radius: 50%;
+    background-color: inherit;
+    -webkit-appearance: none;
+}
+.f-social .fab {
+    font-size: 1.1rem;
+}
+.f-social .fab:before {
+    display: inline-block;
+    width: 30px;
+}
+.f-social .fab > span {
+    /* margin-left: 10px; */
+    font-family: MiloWeb, Verdana, Geneva, sans-serif;
+}
+
+/* .btn-tw {
+    background-color: #55acee;
+}
+.btn-instagram {
+    background: #d6249f;
+    background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%,#d6249f 60%,#285AEB 90%);
+}
+.btn-facebook {
+    background-color: #3B5998;
+}
+.btn-snap {
+    background-color: #FFFC00; 
+}
+.btn-youtube {
+    background-color: #c4302b;
+} */
+
+/*  */
+.su-footer-bottom {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    color: #fff;
+    font-size: 1.3rem;
+    background-color: #002459;
+}
+
+@media (max-width:767px){
+    .wrap-su-footer {
+        padding-left: 30px;
+    }
+    .wrap-su-footer > div > div > div {
+        flex-basis: unset;
+        max-width: 100%;
+    }
+    .wrap-f-contactus {
+        margin-bottom: 3rem;
+    }
+    .wrap-f-quicklink {
+        width: 50%;
+    }
+    .wrap-f-social {
+        width: 50%;
+    }
+
+    .upcomingEvent-title {
+        font-size: 1.5em;
+    }
+    .su-home-event-cal {
+        padding: 5px 0px;
+    }
+}

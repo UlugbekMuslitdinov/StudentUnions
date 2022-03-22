@@ -1,0 +1,956 @@
+<?php
+
+function node_modification_form_alter($form_id, &$form) {
+	global $user;
+	
+	
+	
+
+	if($form_id=='page_node_form'){
+		$form['unit'] = array(
+			'#type' => 'hidden',
+			'#value' => $form['#node']->unit
+		);
+		
+		$form['op'] = array(
+			'#type' => 'hidden',
+			'#value' => '', 
+		);
+		
+
+
+		$form['menu_treel'] = array(
+			'#type' => "item",
+			'#title' => "Menu"
+		);
+
+		$form['menu_tree'] = array(
+			'#value' => build_menu($form)
+		);
+		
+		$form['#attributes'] = array('onsubmit' => 'if(!submitted){ submit_handler(); return false;}');
+		
+		unset($form['preview']);
+		
+		$form['submit']['#value'] = 'Publish';
+		$form['cancel']['#value'] = '<input class="form_cancel" type="button" onclick="window.location = \''.base_path().'training/\'" value="Cancel">';
+		
+		
+		
+		
+		
+		$_SESSION['node_unit'] = $form['#node']->unit;
+		//drupal_set_message($_SESSION['node_unit']);
+		
+		drupal_add_js( javascript_menu(), 'inline');
+		if(!isset($user->roles[ADMIN_USER_RID]))
+			unset($form['body_filter']['format']);
+	}
+
+}
+
+function javascript_menu(){
+	$javascript ='
+		$(document).ready(function() {
+		$("#edit-title").change(function(){
+		document.getElementById("current_item").innerHTML = this.value;
+		
+		});
+		$("#edit-title").keyup(function(){
+		document.getElementById("current_item").innerHTML = document.getElementById("edit-title").value;
+		
+		});
+		$("#edit-title").unfocus(function(){
+		document.getElementById("current_item").innerHTML = this.value;
+		
+		});
+		$("#edit-submit").mousedown(function(){document.getElementById("edit-op").value = "Publish";});
+		  $("#edit-delete").mousedown(function(){document.getElementById("edit-op").value = "Delete";});
+		
+		/*
+		
+		 
+		$("#edit-submit").mouseover(function(){
+		var len1 = $("#menu_tree1 > div").length;
+		var len2 = $("#menu_tree1 > div > div").length;
+		var len3 = $("#menu_tree1 > div > div > div").length;
+		var a=0;
+		
+		var x=[];
+		alert(1);
+		for(i=0; i< len1; i++){
+			 var title1 = $("#menu_tree1").children("div")[i].id;
+			if(title1=="current_item"){
+				title1 = document.getElementById("current_item").innerHTML;
+			}
+				 //alert($("#menu_tree1 > div").parent()[0].id);
+			
+			x[a++] = title1;
+			x[a++]= 0; 
+		
+		}
+		
+		
+		alert(2);
+		
+		
+		for(i=0; i< len2; i++){
+			 var title2 = $("#menu_tree1 > div > div")[i].id;
+		
+			if(title2=="current_item"){
+				title2 = document.getElementById("current_item").innerHTML;
+			}
+			var pid2 = $("#menu_tree1 > div > div")[i].parentNode.id;
+			//var ids = "#" + $("#menu_tree1 > div > div")[i].id;
+		
+		
+			 //pid2 =$(ids).parent()[0].id;
+			//alert(pid2 + ids1);
+			x[a++]=title2;
+			x[a++]=pid2;
+			//alert(title2+pid2+a);
+		}
+		//alert("done with 2");
+		alert(3);
+		
+		for(i=0; i< len3; i++){
+			var  title3 = $("#menu_tree1 > div > div > div")[i].id;
+			if(title3=="current_item"){
+				title3 = document.getElementById("current_item").innerHTML;
+			}
+			var pid3 = $("#menu_tree1 > div > div > div")[i].parentNode.id;
+			//var ids = "#" + $("#menu_tree1 > div > div > div")[i].id
+				// pid3 = $(ids).parent()[0].id;
+			
+			x[a++]=title3;
+			x[a++]=pid3;
+		}
+		alert(4);
+		//alert(x);
+		
+		$.post("'.base_path().'/edit_menu", {"items[]": x });
+		
+		
+		   });*/
+		 });
+		 
+		 
+		var submitted = 0;
+		var isIE = document.all?true:false;
+		if (!isIE) document.captureEvents(Event.MOUSEDOWN);
+		//if (!isIE) document.captureEvents(Event.KEYPRESS);
+		document.onmousedown = select_item;
+		document.onmousemove = mouseMove;
+		document.onmouseup = unselect_item;
+		//document.onclick = select;
+		var menu_item = null;
+		var tree = [];
+		function submit_handler(){
+		//alert("called function");
+		submitted =1;
+		//alert(1);
+		//alert(1.5);
+		if(document.getElementById("current_item"))	
+			document.getElementById("current_item").innerHTML = document.getElementById("edit-title").value;
+		
+			var len1 = $("#menu_tree1 > div").length;
+			var len2 = $("#menu_tree1 > div > div").length;
+			var len3 = $("#menu_tree1 > div > div > div").length;
+			var a=0;
+			var x=[];
+		//alert(2);	
+			for(i=0; i< len1; i++){
+				 var title1 = $("#menu_tree1").children("div")[i].id;
+				if(title1=="current_item"){
+					title1 = document.getElementById("current_item").innerHTML;
+				}
+					 //alert($("#menu_tree1 > div").parent()[0].id);
+				
+				x[a++] = title1;
+				x[a++]= 0; 
+			
+			}
+			
+			
+			
+			//alert(3);
+			
+			for(i=0; i< len2; i++){
+				 var title2 = $("#menu_tree1 > div > div")[i].id;
+			
+				if(title2=="current_item"){
+					title2 = document.getElementById("current_item").innerHTML;
+				}
+				var pid2 = $("#menu_tree1 > div > div")[i].parentNode.id;
+				//var ids = "#" + $("#menu_tree1 > div > div")[i].id;
+			
+			
+				 //pid2 =$(ids).parent()[0].id;
+				//alert(pid2 + ids1);
+				x[a++]=title2;
+				x[a++]=pid2;
+				//alert(title2+pid2+a);
+			}
+			//alert("done with 2");
+			//alert(4);
+			for(i=0; i< len3; i++){
+				var  title3 = $("#menu_tree1 > div > div > div")[i].id;
+				if(title3=="current_item"){
+					title3 = document.getElementById("current_item").innerHTML;
+				}
+				var pid3 = $("#menu_tree1 > div > div > div")[i].parentNode.id;
+				//var ids = "#" + $("#menu_tree1 > div > div > div")[i].id
+					// pid3 = $(ids).parent()[0].id;
+				
+				x[a++]=title3;
+				x[a++]=pid3;
+			}
+			//alert(5);
+			//alert(x);
+			
+			
+			$.post("'.base_path().'/edit_menu", {"items[]": x }, function(){document.getElementById("node-form").submit();});
+			
+			//alert("done");
+			return false;
+		}
+		
+		function select_item(e){
+		var items = document.getElementById("menu_tree1").getElementsByTagName("div");
+		e= e || window.event;
+		 var mousePos = mouseCoords(e);
+		var topoff = getPosition(e);
+		var height = document.getElementById("menu_tree1").getElementsByTagName("div").length*15;
+		if(mousePos.y < (topoff.y + height) && mousePos.y > topoff.y && mousePos.x < (topoff.x + parseInt(document.getElementById("menu_tree1").style.width)) && mousePos.x > topoff.x){
+		
+		var order = parseInt((mousePos.y-topoff.y)/15);
+		
+		
+		
+		menu_item = items[order];
+		
+		menu_item.className = "menu_select";
+		
+		
+		 //menu_item = document.getElementById(item_clicked);
+		
+		
+		 
+		 
+		
+		//document.getElementById("menu").removeChild(menu_item);
+		
+		
+		 //menu_item.parentNode.removeChild(menu_item);
+		
+		
+		
+		 
+		tree = document.getElementById("menu_tree1").getElementsByTagName("div");
+		
+		
+		
+		
+		//menu_item.style.backgroundColor = "teal";
+		
+		
+		
+		
+		mouseMove();
+		
+		
+		//alert("yes : "+menu_item);
+		}
+		
+		}
+		
+		function unselect_item(){
+		
+		//alert("no")
+		
+		
+		
+		menu_item.className = "";
+		
+		//menu_item.style.backgroundColor = "white";
+		
+		
+		menu_item = null;
+		
+		
+		
+		
+		}
+		
+		function getPosition(e){
+		
+		
+		e = window.document.getElementById("menu_tree1");
+		
+		
+		
+			var left = 0;
+		
+			var top  = 0;
+		
+		
+			while (e.offsetParent){
+		
+				left += e.offsetLeft;
+		
+				top  += e.offsetTop;
+		
+				e     = e.offsetParent;
+		
+			}
+		
+		
+			left += e.offsetLeft;
+		
+			top  += e.offsetTop;
+		
+		
+			return {x:left, y:top};
+		
+		}
+		
+		function mouseMove(ev){
+		
+		
+		
+			ev    = ev || window.event;
+		
+			 var mousePos = mouseCoords(ev);
+		
+			var topoff = getPosition(menu_item);
+		
+		//alert(document.getElementById("menu_tree1").offsetHeight);
+		var height = document.getElementById("menu_tree1").getElementsByTagName("div").length*15;
+		if(mousePos.y < (topoff.y + height) && mousePos.y > topoff.y && mousePos.x < (topoff.x + parseInt(document.getElementById("menu_tree1").style.width)) && mousePos.x > topoff.x){
+		
+			//var inv = document.getElementById("invisible");
+			//inv.style.top = String(mousePos.y-10)+"px";
+			//inv.style.left = String(mousePos.x-10)+"px";
+		
+		if(menu_item != null){
+		
+			
+			var menu_div = document.getElementById("menu_tree1");
+		
+			
+		var 	order = parseInt((mousePos.y-topoff.y)/15);
+		
+		var is_child = parseInt((mousePos.x-topoff.x)/20)*20;
+		
+		//var inv = document.getElementById("invisible");
+		
+		
+		
+		//inv.style.top = String(mousePos.y-10)+"px";
+		
+		//inv.style.left = String(mousePos.x-10)+"px";
+		
+		//inv.offsetTop = mousePos.y-10;
+		//inv.offsetLeft = mousePos.x-10;
+		
+		//alert(order);
+		
+		mousePos.x-=topoff.x		
+			
+			
+			 //items.style.height = mousePos.y - topoff.y;
+		
+		
+		
+		if(order>tree.length-1){
+		order=tree.length;
+		}
+		
+		
+		
+		
+		//menu_div.insertBefore(menu_item, tree[order]);
+		
+		
+		if(tree.length==document.getElementById("menu_tree1").getElementsByTagName("div").length){
+		menu_item.parentNode.removeChild(menu_item);
+		}
+		
+		//if(tree[order]){
+		
+		if(mousePos.x > 80 && order>1 && tree[order-1].parentNode.parentNode == menu_div ){
+			if(tree[order-1].childNodes.length>1){
+				tree[order-1].insertBefore(menu_item, tree[order-1].childNodes[1]);
+			}
+			else{
+				tree[order-1].appendChild(menu_item);
+			}
+		}
+		else if(mousePos.x > 80 && order>2 && tree[order-1].parentNode.parentNode.parentNode == menu_div && !(tree[order-1].nextSibling)){
+		
+			tree[order-1].parentNode.appendChild(menu_item);
+		}
+		else if(mousePos.x > 60 && order > 2 && tree[order-1].parentNode.parentNode.parentNode == menu_div && !(tree[order-1].nextSibling)){
+			tree[order-1].parentNode.parentNode.appendChild(menu_item);
+		}
+		
+		
+		else if(mousePos.x > 60 && order!=0 && tree[order-1].parentNode == menu_div ){
+		
+			if(tree[order-1].childNodes.length>1){
+				tree[order-1].insertBefore(menu_item, tree[order-1].childNodes[1]);
+			}
+			else{
+				tree[order-1].appendChild(menu_item);
+			}
+		}
+		else if(mousePos.x > 60 && order>1 && tree[order-1].parentNode.parentNode == menu_div && !(tree[order-1].nextSibling)){
+		
+			tree[order-1].parentNode.appendChild(menu_item);
+		}
+		else if(tree[order]){
+		
+		tree[order].parentNode.insertBefore(menu_item, tree[order]);
+		}
+		else{
+		
+		//tree[tree.length-1].parentNode.appendChild(menu_item);
+		menu_div.appendChild(menu_item);
+		}
+		/*}
+		else{
+		alert("probably this");
+		menu_div.appendChild(menu_item);
+		}*/
+		
+		
+		
+			//menu_item.style.marginLeft = is_child;
+		
+		
+		
+		
+		}
+		
+		}
+		
+		
+		}
+		
+		function mouseCoords(ev){
+			if(ev.pageX || ev.pageY){
+				return {x:ev.pageX, y:ev.pageY};
+			}
+			return {
+				x:ev.clientX + document.documentElement.scrollLeft - document.documentElement.clientLeft,
+				y:ev.clientY + document.documentElement.scrollTop  - document.documentElement.clientTop
+			};
+		}';
+		
+	return $javascript;		
+}
+
+
+function build_menu($form){
+	global $user;
+
+	$html = '<!-- <div id="invisible" style="width:20px; height:20px; position:absolute; top:0; left:0; margin: 0 0 0 0; "> --> </div><div id="menu_tree1" onselectstart="return false;" onmousedown="if (typeof event.preventDefault != \'undefined\') {event.preventDefault();}" style="width:300px; margin-bottom:30px;">';
+	
+	$query= "SELECT * FROM menu_access WHERE pid='0' && unit='".$form['#node']->unit."' && node IS NOT NULL  ORDER BY weight";
+	$result=db_query($query);
+	while($item = db_fetch_object($result)){
+		if($item->node == (int)$form["nid"]["#value"]){
+				$idn = "current_item";
+			}
+			else{
+				$idn = $item->title;
+			}
+	
+		$html .= '<div id="'.$item->ID.'" style="margin-left:20px; line-height:15px;">'.$item->title;
+		$query1="SELECT * FROM menu_access WHERE pid='".$item->ID."' && unit='".$form['#node']->unit."' && node IS NOT NULL ORDER BY weight";
+		$result1=db_query($query1);
+		while($item1 = db_fetch_object($result1)){
+			if($item1->node == $form["nid"]["#value"]){
+				$idn1 = "current_item";
+			}
+			else{
+				$idn1 = $item1->title;
+			}
+			$html .='<div id="'.$item1->ID.'" style="margin-left:20px; line-height:15px;">'.$item1->title;
+			$query2="SELECT * FROM menu_access WHERE pid='".$item1->ID."' && unit='".$form['#node']->unit."' && node IS NOT NULL ORDER BY weight";
+			$result2=db_query($query2);
+			while($item2 = db_fetch_object($result2)){
+				if($item2->node == $form["nid"]["#value"]){
+					$idn2 = "current_item";
+				}
+				else{
+					$idn2 = $item2->title;
+				}
+				$html .='<div id="'.$item2->ID.'" style="margin-left:20px; line-height:15px;">'.$item2->title."</div>";
+			}
+			$html .= "</div>";
+		}
+		$html .='</div>';
+	}
+	
+	if($form["nid"]["#value"]==null){
+		$html .= '<div id="current_item" style="margin-left:20px; line-height:15px;">current item</div>'; 
+	}
+	
+	$html .= '</div>';
+
+	return $html;
+}
+
+
+function node_modification_nodeapi(&$node, $op, $arg = 0) {
+	switch ($op) {
+    	
+		case 'load':
+      		$result = db_fetch_object(db_query('SELECT * FROM {node_unit} WHERE nid = %d', $node->nid));
+      		$node->unit = $result->unit;
+      	break;
+    
+		case 'delete':
+      		db_query('DELETE FROM {node_unit} WHERE nid = %d', $node->nid);
+      		db_query('DELETE FROM menu_access WHERE node = %d', $node->nid);
+			menu_rebuild();
+			drupal_goto('training');
+      	break;
+    
+		case 'insert':
+			//drupal_set_message('test');
+      		db_query('INSERT INTO {node_unit} (nid, unit) VALUES (%d, "%s")', $node->nid, $node->unit);
+      		db_query('UPDATE menu_access SET node = %d, unit = "%s" where title= "%s" and node=0', $node->nid, $node->unit, htmlentities($node->title, ENT_QUOTES));
+      		menu_rebuild();
+      	break;
+		
+    	case 'update':
+		//drupal_set_message('test');
+      		db_query('UPDATE {node_unit} SET unit = "%s" WHERE nid = %d', $node->unit, $node->nid);
+      		db_query('UPDATE menu_access SET title = "%s" WHERE node = %d', htmlentities($node->title, ENT_QUOTES), $node->nid);
+			
+			menu_rebuild();
+      	break;
+		
+		case 'view':
+			$result=db_query('select path, unit from menu_access where node='.$node->nid);
+			$info = db_fetch_array($result);
+			if($info['unit'] != 0 && $info['unit'] != -2)
+			menu_set_active_item('training/'.$info['unit'].'/'.$info['path']);
+			
+			
+	}
+	
+	return true;
+}
+
+
+function menu_edit($items){
+
+	foreach($items as $key => $item){
+		$items[$key] = htmlentities($item, ENT_QUOTES);
+		
+	}
+	var_dump($items);
+	for($i=0; $i < count($items)/2; $i++){
+	
+		if($items[$i*2+1]=="0"){
+			$path = $items[$i*2];
+		}
+		else{
+			$result=db_query("select path from menu_access where ID='".$items[$i*2+1]."'");
+			$p = db_result($result);
+			$path=$p."/".$items[$i*2];
+		}
+		
+		
+		
+		$query="UPDATE menu_access SET pid='".$items[$i*2+1]."', weight='".$i."', path='".$path."' where ID='".$items[$i*2]."'";
+		db_query($query);
+		
+		if(mysql_affected_rows()==0){
+			
+			$query = "INSERT INTO menu_access SET title='".$items[$i*2]."', pid='".$items[$i*2+1]."', weight='".$i."', path='needs one', node=0";
+			db_query($query);
+			$query = "select ID from menu_access where title='".$items[$i*2]."' and path='needs one'";
+			$result = db_query($query);
+			$id = db_fetch_array($result);
+			$path = str_replace($items[$i*2], $id['ID'], $path);
+			
+			db_query('update menu_access set path="'.$path.'" where ID='.$id['ID']);
+		}
+
+	}
+	
+
+	return $query;
+}
+
+function training_main($unit){
+$output = '<h1>Welcome to Training!</h1>'.
+
+
+
+'<p>In this section you can write, edit, and manage training manuals for your employees.  As soon as you write and publish a page, your employees will be able to log on and see it.  Each of the accounts (or units) you have access to will have a section in the navigation - click the unit\'s name to see its training material.  The \'Union Training\' section contains general training information for all Union employees.</p>'.
+
+
+
+'<p>To create a page, go into the account or unit that you want to write for, and click the "create page" button.  In the new page that appears, type a title and begin writing training material in the body section.  This section looks like Microsoft Word, and you can copy and paste pages text from anywhere into this area.  Click and drag the page\'s name around the menu system to place it in the navigation.  Then, hit Publish, and your page will appear.  You may make changes to a page by clicking on that page and then going to the Edit tab.</p>'.
+
+
+
+'<p>For more information about the training section, and how to use the editing page, visit the Help section.</p>';
+
+$menu = menu_get_menu();
+if($unit){
+	foreach($menu['visible'] as $menu_item){
+	//print 'found';
+		if($menu_item['path'] == 'training/'.$unit){
+			$output .= '<h2>'.$menu_item['title'].'</h2>';
+			foreach($menu_item['children'] as $mi){
+				//var_dump($menu_item);
+				$output .= get_menu_items($menu['visible'][$mi], $menu);
+			}
+			//$output = get_menu_items($menu_item, $menu);
+		}
+	}
+}
+else{
+	foreach($menu['visible'] as $menu_item){
+	//print 'found';
+		if($menu_item['title'] == 'Training'){
+			foreach($menu_item['children'] as $mi){
+				//print $mi;
+				$output .= get_menu_items($menu['visible'][$mi], $menu);
+			}
+			//$output = get_menu_items($menu_item, $menu);
+		}
+	}
+}
+	return $output;
+	//return var_dump($menu['visible']).$output;
+}
+/*
+function training_main_admin(){
+	$output = '<form action="'.base_path().'set_unit_hiring" method="get"><input type="hidden" value="'.$redirect.'" name="redirect"><select name="unit" id="unit_select">';
+	$query = 'select name, portal_id from portals';
+	$result = db_query($query);
+	while($row = db_fetch_array($result)){
+				$output .='<option value="'.$row['portal_id'].'">'.$row['name'].'</option>';
+	}
+	$output .= '</select><input type="button" value="go" onclick="window.location=\''.base_path().'training/\'+document.getElementById(\'unit_select\').value+\'/createpage\'"></form>';
+			return $output;
+}
+*/
+function get_menu_items($menu_item, $menu){
+	if(isset($menu_item['children'])){
+		$output = '<dl><dt><a href="'.base_path().$menu_item['path'].'">'.$menu_item['title'].'</a></dt><dd>';
+		foreach($menu_item['children'] as $mi){
+			$output .= get_menu_items($menu['visible'][$mi], $menu);
+		}
+		return $output .= '</dd></dl>';
+	
+	}
+	else{
+		return '<dl><dt><a href="'.base_path().$menu_item['path'].'">'.$menu_item['title'].'</a></dt><dd></dd></dl>';
+	}
+
+}
+
+function create_page($type, $unit){
+
+ $types = node_get_types();
+  $type = isset($type) ? str_replace('-', '_', $type) : NULL;
+  
+    $node = array('uid' => $user->uid, 'name' => $user->name, 'type' => $type, 'unit' => $unit);
+
+    drupal_set_title(t('Submit @name', array('@name' => $types[$type]->name)));
+    $output = drupal_get_form($type .'_node_form', $node);
+	
+return $output;
+}
+
+
+function node_modification_menu($may_cache){
+global $user;
+	$units = get_units();
+	//var_dump($units);
+	
+	//node_access_rebuild();
+
+	if(!$may_cache){
+		$items[] = array(
+			'path' => 'edit_menu',
+			'callback' => 'menu_edit',
+			'callback arguments' => array($_POST['items'], $_POST['items']),
+			'access' => TRUE,
+			'type' => MENU_CALLBACK
+		);
+		
+		$items[] = array(
+					'path' => 'training', 
+					'title' => 'Training',
+					'callback' => 'training_main',
+					'access' => user_access('access content'),
+					'weight' => 0,
+					'type' => MENU_NORMAL_ITEM
+		);
+		
+		$items[] = array(
+							'path' => 'training/-1', 
+							'title' => 'Union Training',
+							'callback' => 'training_main',
+							'access' => user_access('access content'),
+							'weight' => 20,
+							'type' => MENU_NORMAL_ITEM
+						);
+		$query = 'select * from menu_access where unit=-1';
+				$result = db_query($query);
+				while($node2 = db_fetch_object($result)){
+			
+					if($node2->node!=null){
+				
+						$node = node_load($node2->node);
+						
+						$items[] = array(
+							'path' => 'training/-1/'.$node2->path, 
+							'title' => $node2->title,
+							'callback' => 'node_page_view',
+							'callback arguments' => array($node),
+							'access' => TRUE,
+							'weight' => $node2->weight - 10,
+							'type' => MENU_NORMAL_ITEM
+						);
+				
+						$items[] = array(
+							'path' => 'training/-1/'.$node2->path.'/view', 
+							'title' => t('View'),
+							'weight' => -10,
+							'type' => MENU_DEFAULT_LOCAL_TASK
+						);
+				
+						$items[] = array(
+							'path' => 'training/-1/'.$node2->path.'/edit', 
+							'title' => t('Edit'),
+							'callback' => 'node_page_edit',
+							'callback arguments' => array($node),
+							'access' => user_access('edit general content'),
+							'weight' => 1,
+							'type' => MENU_LOCAL_TASK
+						);
+					}
+				}
+		
+		$items[] = array(
+							'path' => 'resourcebook/-2', 
+							'title' => 'Resource book',
+							'callback' => 'training_main',
+							'access' => user_access('admin users'),
+							'weight' => 8,
+							'type' => MENU_NORMAL_ITEM
+						);
+		$items[] = array(
+							'path' => 'resourcebook/-2/createpage', 
+							'title' => 'create page',
+							'callback' => 'create_page',
+							'callback arguments' => array('page', -2),
+							'access' => user_access('edit resource book'),
+							'weight' => 20,
+							'type' => MENU_NORMAL_ITEM
+				);
+		
+		$query = 'select * from menu_access where unit=-2 order by weight';
+				$result = db_query($query);
+				while($node2 = db_fetch_object($result)){
+			
+					if($node2->node!=null){
+				
+						$node = node_load($node2->node);
+						
+						$items[] = array(
+							'path' => 'resourcebook/-2/'.$node2->path, 
+							'title' => $node2->title,
+							'callback' => 'node_page_view',
+							'callback arguments' => array($node),
+							'access' =>node_access('view', $node),
+							'weight' => $node2->weight - 10,
+							'type' => MENU_NORMAL_ITEM
+						);
+				
+						$items[] = array(
+							'path' => 'resourcebook/-2/'.$node2->path.'/view', 
+							'title' => t('View'),
+							'weight' => -10,
+							'access' => TRUE,
+							'type' => MENU_DEFAULT_LOCAL_TASK
+						);
+				
+						$items[] = array(
+							'path' => 'resourcebook/-2/'.$node2->path.'/edit', 
+							'title' => t('Edit'),
+							'callback' => 'node_page_edit',
+							'callback arguments' => array($node),
+							'access' => user_access('edit resource book'),
+							'weight' => 1,
+							'type' => MENU_LOCAL_TASK
+						);
+					}
+				}
+		
+		if(isset($user->roles[DRUPAL_AUTHENTICATED_RID])){
+			foreach($user->roles[DRUPAL_AUTHENTICATED_RID] as $unit){
+			//var_dump($unit);
+				$items[] = array(
+						'path' => 'training/'.$unit, 
+						'title' => $units[$unit],
+						'callback' => 'training_main',
+						'callback arguments' => array($unit),
+						'access' => TRUE,
+						'weight' => 0,
+						'type' => MENU_NORMAL_ITEM
+				);
+				
+				
+				
+				
+				
+			
+				$query='select * from menu_access where unit='.$unit.' order by weight';
+				$result=  db_query($query);
+				
+				while($node2 = db_fetch_object($result)){
+			
+					if($node2->node!=null){
+				
+						$node = node_load($node2->node);
+						
+						$items[] = array(
+							'path' => 'training/'.$unit.'/'.$node2->path, 
+							'title' => $node2->title,
+							'callback' => 'node_page_view',
+							'callback arguments' => array($node),
+							'access' => node_access('view', $node),
+							'weight' => $node2->weight - 10,
+							'type' => MENU_NORMAL_ITEM
+						);
+				
+						$items[] = array(
+							'path' => 'training/'.$unit.'/'.$node2->path.'/view', 
+							'title' => t('View'),
+							'weight' => -10,
+							'type' => MENU_DEFAULT_LOCAL_TASK
+						);
+				
+						$items[] = array(
+							'path' => 'training/'.$unit.'/'.$node2->path.'/edit', 
+							'title' => t('Edit'),
+							'callback' => 'node_page_edit',
+							'callback arguments' => array($node),
+							'access' => node_access('update', $node),
+							'weight' => 1,
+							'type' => MENU_LOCAL_TASK
+						);
+					}
+				}
+	
+			}
+		}
+		
+		
+		
+		if(user_access('admin all content') || isset($user->roles[ADMIN_USER_RID]) ){
+			$query = 'select portal_id as pid from portals where portal_id >= 0';
+			$result = db_query($query);
+			
+			while($unit = db_fetch_array($result)){
+			//print mysql_num_rows($result);
+				$items[] = array(
+						'path' => 'training/'.$unit['pid'], 
+						'title' => $units[$unit['pid']],
+						'callback' => 'training_main',
+						'callback arguments' => array($unit['pid']),
+						'access' => TRUE,
+						'weight' => 0,
+						'type' => MENU_NORMAL_ITEM
+				);
+				
+				$items[] = array(
+							'path' => 'training/'.$unit['pid'].'/createpage', 
+							'title' => 'create page',
+							'callback' => 'create_page',
+							'callback arguments' => array('page', $unit['pid']),
+							'access' => TRUE,
+							'weight' => 20,
+							'type' => MENU_NORMAL_ITEM
+				);
+			
+			
+				$query='select * from menu_access where unit='.$unit['pid'].' order by weight';
+				$result2=  db_query($query);
+				
+				while($node2 = db_fetch_object($result2)){
+					
+					if($node2->node!=null){
+				
+						$node = node_load($node2->node);
+						
+						$items[] = array(
+							'path' => 'training/'.$unit['pid'].'/'.$node2->path, 
+							'title' => $node2->title,
+							'callback' => 'node_page_view',
+							'callback arguments' => array($node),
+							'access' => node_access('view', $node),
+							'weight' => $node2->weight - 10,
+							'type' => MENU_NORMAL_ITEM
+						);
+				
+						$items[] = array(
+							'path' => 'training/'.$unit['pid'].'/'.$node2->path.'/view', 
+							'title' => t('View'),
+							'weight' => -10,
+							'type' => MENU_DEFAULT_LOCAL_TASK
+						);
+				
+						$items[] = array(
+							'path' => 'training/'.$unit['pid'].'/'.$node2->path.'/edit', 
+							'title' => t('Edit'),
+							'callback' => 'node_page_edit',
+							'callback arguments' => array($node),
+							'access' => node_access('update', $node),
+							'weight' => 1,
+							'type' => MENU_LOCAL_TASK
+						);
+						
+						
+						
+					}
+				}
+				//$unit = db_fetch_array($result);
+				//print $unit['pid'];
+			}
+		}
+		
+//		var_dump(user_access('admin all content'));
+			
+		if(isset($user->roles[CONTENT_ADMIN_RID])){
+			foreach($user->roles[CONTENT_ADMIN_RID] as $unit){
+				$items[] = array(
+							'path' => 'training/'.$unit.'/createpage', 
+							'title' => 'create page',
+							'callback' => 'create_page',
+							'callback arguments' => array('page', $unit),
+							'access' => TRUE,
+							'weight' => 0,
+							'type' => MENU_NORMAL_ITEM
+				);
+			}
+		}
+	
+		
+	}
+	
+	return $items;
+}
+
+?>

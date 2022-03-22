@@ -1,0 +1,22 @@
+/* $Id: webform.css,v 1.1.2.1.2.4 2009/01/10 01:55:06 quicksketch Exp $ */
+
+.webform-submission-navigation {
+  text-align: right;
+}
+.webform-submission-next {
+  margin-left: 20px;
+}
+.webform-indentation {
+  width: 20px;
+  float: left;
+}
+.webform-checkbox {
+  text-align: center;
+  width: 40px;
+}
+.webform-default-value {
+  color: #999;
+}
+.webform-results-per-page a.selected {
+  font-weight: bold;
+}

@@ -1,0 +1,77 @@
+/* --------
+  The CSS rules offered here are just an example, you may use them as a base. 
+  Shape your 'expand/collapse' content so that it meets the style of your site. 
+ --------- */
+ 
+/* --- Headings  --- */
+#content h1 {
+  margin-bottom:.75em; 
+  font-family:georgia,'times new roman',times,serif; 
+  font-size:2.5em; 
+  font-weight:normal; 
+  color:#c30
+}
+#content h2{
+	font-size:1em;
+	font-style: normal !important;
+	/* width: 600px; */
+	text-transform: none !important;
+}
+#content hr {
+	border-color: #C3273F;
+	/* width: 580px; */
+	/* float: left; */
+}
+
+#content p{
+	margin-bottom: 15px;
+	/* width: 580px; */
+}
+
+.expand{padding-bottom:.1em}
+
+/* --- Links  --- */
+#content a:link, a:visited {
+  /* border:1px dotted #ccc; */
+  /* border-width:0 0 1px; */
+  text-decoration:none;
+  /* color:blue */
+}
+#content a:hover, a:focus {
+  /* border-style:solid; */
+  /* background-color:#f0f0f0; */
+  outline:0 none
+}
+#content a:active, a:focus {
+  /* color:red; */
+}
+#content .expand a {
+  font-family: Verdana, sans-serif;
+  display:block;
+  padding:3px 10px;
+}
+#content .expand a:link, .expand a:visited {
+  /* border-width:1px; */
+  background-image:url(/template/images/arrow-down.gif);
+  background-repeat:no-repeat;
+  background-position: 98% 50%;
+}
+#content .expand a:hover  {
+  text-decoration:underline
+}
+#content .expand a.open:link, .expand a.open:visited {
+  /* border-style:solid; */
+  background:#eee url(/template/images/arrow-up.gif) no-repeat 98% 50%
+}
+#content .collapse {
+	margin-left: 10px; 
+}
+#content .switch a {
+	float: right;
+	font-family: Arial, Helvetica, sans-serif;
+	color: #C00;
+	font-size: 12px;
+}
+#content .switch a:hover{
+	text-decoration: underline;
+}

@@ -1,0 +1,146 @@
+body {
+  margin-bottom: 100px;
+  background-color: #f3f3f3;
+  font-family: Optima,Segoe,"Segoe UI",Candara,Calibri,Arial,sans-serif;
+}
+
+h1 {
+  border-bottom: 1px solid #d6d6d6 !important;
+}
+
+.no-highlight {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+
+.required-input::after {
+  content: "*";
+  color: #d40000;
+  vertical-align: middle;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.input-err {
+  margin-bottom: 0px;
+  height: 34px;
+  line-height: 34px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.inputBox-err {
+  background-color: #fbeaea;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.remove-padding {
+	padding-right: 0px !important;
+	padding-left: 0px !important;
+}
+.font-weight-500 {
+	font-weight: 500;
+}
+
+.parsley-errors-list.filled {
+	padding-left: 10px;
+	list-style: none;
+}
+
+label {
+  margin-bottom: 2px;
+  line-height: 25px;
+}
+
+input, textarea {
+	border-radius: 0px !important;
+}
+
+.panel {
+	border-radius: 0px !important;
+}
+.panel-heading {
+  border-radius: 0px;
+}
+.panel-title {
+	-webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}
+.btn {
+	color: #525252;
+	border-radius: 0px;
+}
+.submit-btn {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.cancel-order-btn {
+  float: right;
+  text-decoration: underline;
+}
+
+/* Highland */
+.highland_burrito .panel-primary {
+    border-color: #a8bb63;
+}
+
+.highland_burrito .panel-heading {
+	background-color: #a8bb63;
+    border-color: #a8bb63;
+    border-radius: 0px;
+    color: #525252;
+    font-weight: 700 !important;
+}
+.highland_burrito .panel-title {
+	font-weight: 700 !important;
+}
+
+.highland_burrito .panel-body {
+	border-top-color: #a8bb63 !important;
+}
+
+.highland_burrito .btn.catering {
+	background-color: #a8bb63;
+  border-color: #a8bb63;
+  font-weight: 700;	
+}
+.highland_burrito .btn.catering:hover {
+	color: #fff !important;
+  background-color: #689c69 !important;
+  border-color: #689c69 !important;
+}
+
+/* On Deck Deli */
+.ondeck .panel-primary > .panel-heading {
+	background-color: #f59525;
+	border-color: #f59525;
+	border-radius: 0px;
+}
+.ondeck .panel {
+	border-color: #f59525;
+}
+
+
+label {
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
+}

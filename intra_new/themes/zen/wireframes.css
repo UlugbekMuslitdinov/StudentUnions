@@ -1,0 +1,22 @@
+/* $Id: wireframes.css,v 1.1.2.1 2007/12/10 01:58:50 johnalbin Exp $ */
+
+/*
+ * WIREFRAMES STYLE
+ *
+ * Add wireframes to the basic layout elements.
+ */
+
+
+  #header-inner,
+  #content-inner,
+  #content-inner>*,
+  #navbar-inner,
+  #sidebar-left-inner,
+  #sidebar-right-inner,
+  #footer-inner,
+  #closure-blocks
+  {
+    margin: 1px;
+    padding: 2px;
+    border: 1px solid #ccc;
+  }

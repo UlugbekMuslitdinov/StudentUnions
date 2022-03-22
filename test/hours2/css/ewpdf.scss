@@ -1,0 +1,164 @@
+// Use Bootstrap 4 variables
+@import "bootstrap/functions"; //***
+@import "variables"; //***
+
+// Font
+$PdfFont: DejaVuSerif;
+
+// Table
+$ThemeTableBodyBackgroundColor: $table-bg;
+$ThemeTableBodyColor: $table-color;
+$ThemeTableBodyStripedBackgroundColor: $table-striped-bg;
+$ThemeTableBodyStripedColor: $table-striped-color;
+$ThemeTableHeaderBackgroundColor: #CC3140;
+$ThemeTableHeaderColor: null;
+$ThemeTableFooterBackgroundColor: #FAE1E3;
+$ThemeTableFooterColor: null;
+$ThemeGridLineColor: $table-border-color;
+
+// Report
+$ThemeReportGroupBackgroundColor1: #FAE1E3;
+$ThemeReportGroupColor1: null;
+$ThemeReportGroupSummaryBackgroundColor1: #FAE1E3;
+$ThemeReportGroupSummaryColor1: null;
+$ThemeReportGroupBackgroundColor2: null;
+$ThemeReportGroupColor2: null;
+$ThemeReportGroupSummaryBackgroundColor2: null;
+$ThemeReportGroupSummaryColor2: null;
+$ThemeReportGroupBackgroundColor3: #FAE1E3;
+$ThemeReportGroupColor3: null;
+$ThemeReportGroupSummaryBackgroundColor3: #FAE1E3;
+$ThemeReportGroupSummaryColor3: null;
+$ThemeReportGroupBackgroundColor4: null;
+$ThemeReportGroupColor4: null;
+$ThemeReportGroupSummaryBackgroundColor4: null;
+$ThemeReportGroupSummaryColor4: null;
+$ThemeReportGroupBackgroundColor5: #FAE1E3;
+$ThemeReportGroupColor5: null;
+$ThemeReportGroupSummaryBackgroundColor5: #FAE1E3;
+$ThemeReportGroupSummaryColor5: null;
+$ThemeReportGroupBackgroundColor6: null;
+$ThemeReportGroupColor6: null;
+$ThemeReportGroupSummaryBackgroundColor6: null;
+$ThemeReportGroupSummaryColor6: null;
+$ThemeReportPageSummaryBackgroundColor: #F9DCDE;
+$ThemeReportPageSummaryColor: null;
+$ThemeReportGrandSummaryBackgroundColor: #F8D7DA;
+$ThemeReportGrandSummaryColor: null;
+$ThemeTableStriped: true;
+body {
+    background-color: inherit; // Background color
+    font-family: $PdfFont; // Font name
+    font-size: xx-small; // Font size - DO NOT CHANGE!
+}
+
+// Table for PDF export
+.ew-table {
+    border: 0;
+    border-collapse: collapse;
+    font-size: xx-small; // Font size - DO NOT CHANGE!
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+}
+.ew-table td, .ew-table th {
+    padding: 3px; // Cell padding
+    border: 0.5px solid;
+    border-color: $ThemeGridLineColor; // Border color
+}
+.no-border td, .no-border th {
+    border: 0;
+}
+
+// Header
+.ew-table .ew-table-header td, .ew-table .ew-table-header th {
+    background-image: none; // Remove header bg image
+    background-color: $ThemeTableHeaderBackgroundColor;
+    color: $ThemeTableHeaderColor;
+    vertical-align: top;
+}
+
+// Row color
+.ew-table td {
+    background-color: $ThemeTableBodyBackgroundColor;
+    color: $ThemeTableBodyColor;
+}
+
+// Striped row color
+@if ($ThemeTableStriped) {
+    .ew-table .ew-table-alt-row td, // Horizontal
+    .ew-table td.ew-table-alt-row  // Vertical
+    {
+        background-color: $ThemeTableBodyStripedBackgroundColor;
+        color: $ThemeTableBodyStripedColor;
+    }
+}
+
+// Main table footer
+.ew-table .ew-table-footer td {
+    background-color: $ThemeTableFooterBackgroundColor; // Footer color
+    color: $ThemeTableFooterColor;
+}
+
+// Crosstab column row
+.ew-table .ew-table-column-row {
+    background-color: $ThemeTableBodyStripedBackgroundColor; // Striped row color
+    color: $ThemeTableBodyStripedColor;
+}
+
+// Groups
+@mixin ew-rpt-grp($i, $color, $bgcolor, $summary-color, $summary-bgcolor) {
+    // Group #{$i}
+    .ew-rpt-grp-header-#{$i} {
+        color: $color;
+        background-color: $bgcolor;
+        font-weight: bold;
+    }
+    .ew-rpt-grp-header-#{$i} {
+        a:link, a:active, a:visited {
+            color: inherit;
+            text-decoration: none;
+        }
+    }
+    .ew-rpt-grp-field-#{$i} {
+        background-color: $bgcolor;
+    }
+    .ew-rpt-grp-summary-#{$i} {
+        color: $summary-color;
+        background-color: $summary-bgcolor;
+    }
+}
+@include ew-rpt-grp(1, $ThemeReportGroupColor1, $ThemeReportGroupBackgroundColor1, $ThemeReportGroupSummaryColor1, $ThemeReportGroupSummaryBackgroundColor1);
+@include ew-rpt-grp(2, $ThemeReportGroupColor2, $ThemeReportGroupBackgroundColor2, $ThemeReportGroupSummaryColor2, $ThemeReportGroupSummaryBackgroundColor2);
+@include ew-rpt-grp(3, $ThemeReportGroupColor3, $ThemeReportGroupBackgroundColor3, $ThemeReportGroupSummaryColor3, $ThemeReportGroupSummaryBackgroundColor3);
+@include ew-rpt-grp(4, $ThemeReportGroupColor4, $ThemeReportGroupBackgroundColor4, $ThemeReportGroupSummaryColor4, $ThemeReportGroupSummaryBackgroundColor4);
+@include ew-rpt-grp(5, $ThemeReportGroupColor5, $ThemeReportGroupBackgroundColor5, $ThemeReportGroupSummaryColor5, $ThemeReportGroupSummaryBackgroundColor5);
+@include ew-rpt-grp(6, $ThemeReportGroupColor6, $ThemeReportGroupBackgroundColor6, $ThemeReportGroupSummaryColor6, $ThemeReportGroupSummaryBackgroundColor6);
+.ew-rpt-grp-aggregate {
+    font-weight: bold;
+}
+.ew-rpt-page-summary {
+    color: $ThemeReportPageSummaryColor; // Page summary text color
+    background-color: $ThemeReportPageSummaryBackgroundColor; // Page total background color
+}
+.ew-rpt-grand-summary {
+    color: $ThemeReportGrandSummaryColor; // Grand summary text color
+    background-color: $ThemeReportGrandSummaryBackgroundColor; // Grand summary background color
+}
+
+// For crosstab report only
+.ew-rpt-col-summary {
+    background-color: $ThemeTableHeaderBackgroundColor; // Column summary
+    color: $ThemeTableHeaderColor;
+    border: 0;
+}
+.ew-rpt-col-header {
+    background-color: $ThemeTableHeaderBackgroundColor; // Column heading background color
+    color: $ThemeTableHeaderColor; // Column heading text color
+    border: 0;
+}
+
+// Export page break
+.ew-page-break {
+    page-break-before: always;
+}

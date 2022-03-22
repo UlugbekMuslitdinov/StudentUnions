@@ -1,0 +1,239 @@
+body {background-color:#DCDDDE; font-family:"Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;}
+img {border: none;}
+
+/********************************************/
+/*	MAIN LAYOUT ELEMENTS					*/
+/********************************************/
+
+#header {
+background-color:#FFFFFF;
+width:auto;
+height:42px;
+margin:0px;
+padding:0px;
+}
+
+#container {
+padding:0px;
+width:875px;
+margin: 50px auto;
+background:#FFFFFF;
+border: 1px solid #999;
+border-top: 0;
+}
+
+#footer {
+background-color:#be0f34;
+left:0px;
+background-color:#002D62;
+height:50px;
+color:#FFF;
+font-family:Helvetica;
+font-size:11px;
+width:875px;
+position:relative;
+padding-left:0px;
+border-bottom:#999999 solid 1px;
+}
+
+.error {color: red;}
+.error_field {border: 1px solid red;}
+
+.main {background-color: #EDEDED;}
+
+/********************************************/
+/*	MENU ELEMENTS							*/
+/********************************************/
+#menu {
+float:inherit;
+background-color:#FDB913;
+padding:0px;
+position:relative;
+height:175px;
+width:875px;
+padding:0px;
+border-top:#999999 solid 1px;
+}
+
+#menu a{
+height:20px;
+font-size:18px;
+color:#333333;
+text-decoration:none;
+padding-left:10px;
+padding-right:30px;
+}
+
+/********************************************/
+/*	LEFT NAVIGATION ELEMENTS				*/
+/********************************************/
+#navigation {
+float:left;
+width:25%;
+padding-top:35px;
+padding-left:15px;
+background:#FFFFFF;	
+}
+
+#navigation h1{
+padding-left: 15px;
+font-size:12px;
+color:#002D62;
+}
+
+#navigation a{
+display:block;
+padding-left: 15px;
+height:18px;
+font-size:11px;
+color:#333333;
+text-decoration:none;
+}
+
+#navigation a:hover {
+background-image:url(link_star.gif);
+background-repeat:no-repeat;
+}
+
+/********************************************/
+/*	MAIN CONTENT ELEMENTS					*/
+/********************************************/
+
+/* for understanding browsers */
+#content {
+margin-left: 27%;
+width:63%;
+min-height: 400px;
+padding-top:20px;
+padding-bottom:20px;
+font-size:12px;
+background:#FFFFFF;
+}
+
+#content h1{
+font-size:20px;
+font-weight:bold;
+color:#002D62;
+}
+
+#content h2{
+font-size:16px;
+font-weight:bold;
+color:#002D62;
+}
+
+#content h2.greyback{
+font-size:16px;
+color:#002D62;
+background-color:#CCCCCC;
+padding-left:5px;
+padding-top:5px;
+padding-bottom:5px;
+}
+
+#content h3{
+font-size:14px;
+color:#002D62;
+}
+
+#content h3.greyback{
+font-size:14px;
+color:#002D62;
+background-color:#CCCCCC;
+padding-left:5px;
+padding-top:5px;
+padding-bottom:5px;
+}
+
+#content h4{
+font-size:12px;
+color:#002D62;
+padding:0px 0px 0px 0px;
+margin:0px 0px 0px 0px;
+}
+
+#content p {
+font-size:12px;
+color:#333333;
+}
+
+#content ul {
+font-size:12px;
+color:#333333;
+}
+
+#content a:link, a:visited {
+color:#2F4F7F;
+}
+
+#content a:hover {
+color:#2F4F7F;
+text-decoration:none;
+}
+
+/********************************************/
+/*	TOP IMAGE LINK ELEMENTS					*/
+/********************************************/
+
+a.divlink, a.divlink:link {
+color:#002D62;
+display:block;
+width:100%; /*width needs to be specified to work in IE*/
+height:60%; /*height needs to be specified to work in IE*/
+/*Other browsers expand the link to full width and height.*/
+}
+
+a.divlink:hover {
+text-decoration:none;
+}
+
+a.divlink_full, a.divlink_full:link {
+display:block;
+width:100%; /*width needs to be specified to work in IE*/
+height:100%; /*height needs to be specified to work in IE*/
+/*Other browsers expand the link to full width and height.*/
+}
+
+#logo_link {
+position:absolute;
+top:100px;
+left:15px;	
+width:200px;
+height:110px;
+text-align:center;
+}
+
+#star_attend_link {
+position:absolute;
+top:50px;
+left:336px;	
+width:94px;
+height:90px;
+padding-top:40px;
+text-align:center;
+font-size:14px;
+}
+
+#star_present_link {
+position:absolute;
+top:58px;
+left:433px;	
+width:94px;
+height:103px;
+padding-top:40px;
+text-align:center;
+font-size:14px;
+}
+
+#star_plan_link {
+position:absolute;
+top:50px;
+left:533px;	
+width:94px;
+height:90px;
+padding-top:40px;
+text-align:center;
+font-size:14px;
+}
+
+/*#################################################*/

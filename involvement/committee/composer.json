@@ -1,0 +1,7 @@
+{
+    "require": {
+        "phpmailer/phpmailer": "^6.5",
+        "swiftmailer/swiftmailer": "^6.0",
+        "pear/numbers_words": "^0.18.2"
+    }
+}

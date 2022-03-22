@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Untitled Document</title>
+<script type="text/javascript" src="crossfade.js"></script>
+<style type="text/css">
+body { padding:0; margin:0;}
+#gallery { position: relative; width:1280px; height:1023px; margin: auto; padding:0; }
+#gallery li { display: block; }
+#gallery img { display: block; }
+</style>
+
+<script type="text/javascript">
+function check_connection_and_reload(){
+		var xmlHttp;
+
+try
+  {
+  // Firefox, Opera 8.0+, Safari
+  xmlHttp=new XMLHttpRequest();
+  }
+catch (e)
+  {
+  // Internet Explorer
+  try
+    {
+    xmlHttp=new ActiveXObject("Msxml2.XMLHTTP");
+    }
+  catch (e)
+    {
+    try
+      {
+      xmlHttp=new ActiveXObject("Microsoft.XMLHTTP");
+      }
+    catch (e)
+      {
+      alert("Your browser does not support AJAX!");
+      return false;
+      }
+    }
+  }
+
+xmlHttp.onreadystatechange = function() {
+	if(xmlHttp.readyState==4) {
+		if(xmlHttp.responseText=='success') {
+			window.location='./index.html';
+		}
+	}
+};
+xmlHttp.open("POST", './checkserver.php', true);
+xmlHttp.send('');
+
+}
+</script>
+
+</head>
+
+<body>
+
+<ul id="gallery">
+	<!-- Last updated on 6/26/2/17. --> 
+	<li><img src="Slide1.JPG" alt="" width="1280" height="1023" /></li>
+	<li><img src="Slide2.JPG" alt="" width="1280" height="1023" /></li>
+	<li><img src="Slide3.JPG" alt="" width="1280" height="1023" /></li>
+	<li><img src="Slide4.JPG" alt="" width="1280" height="1023" /></li>
+	<li><img src="Slide5.JPG" alt="" width="1280" height="1023" /></li>
+	<li><img src="Slide6.JPG" alt="" width="1280" height="1023" /></li>
+	<li><img src="Slide7.JPG" alt="" width="1280" height="1023" /></li>
+	<li><img src="Slide8.JPG" alt="" width="1280" height="1023" /></li>
+	<li><img src="Slide9.JPG" alt="" width="1280" height="1023" /></li>
+	<li><img src="Slide10.JPG" alt="" width="1280" height="1023" /></li>
+	<li><img src="Slide11.JPG" alt="" width="1280" height="1023" /></li>
+	<li><img src="Slide12.JPG" alt="" width="1280" height="1023" /></li>    
+	<li><img src="Slide13.JPG" alt="" width="1280" height="1023" /></li>
+    <li><img src="Slide14.JPG" alt="" width="1280" height="1023" /></li>
+    <li><img src="Slide15.JPG" alt="" width="1280" height="1023" /></li>
+	<li><img src="Slide16.JPG" alt="" width="1280" height="1023" /></li>
+	<li><img src="Slide17.JPG" alt="" width="1280" height="1023" /></li>	
+	<li><img src="Slide18.JPG" alt="" width="1280" height="1023" /></li>	
+	<li><img src="Slide19.JPG" alt="" width="1280" height="1023" /></li>	
+	<!--
+	<li><img src="Slide20.JPG" alt="" width="1280" height="1023" /></li>	
+	<li><img src="Slide21.JPG" alt="" width="1280" height="1023" /></li>	
+	<li><img src="Slide22.JPG" alt="" width="1280" height="1023" /></li>
+	<li><img src="Slide23.JPG" alt="" width="1280" height="1023" /></li>	
+	
+	<li><img src="Slide24.JPG" alt="" width="1280" height="1023" /></li>	
+	<li><img src="Slide25.JPG" alt="" width="1280" height="1023" /></li>	
+	<li><img src="Slide26.JPG" alt="" width="1280" height="1023" /></li>
+	
+	<li><img src="Slide27.JPG" alt="" width="1280" height="1023" /></li>
+	<li><img src="Slide28.JPG" alt="" width="1280" height="1023" /></li>
+	<li><img src="Slide29.JPG" alt="" width="1280" height="1023" /></li>
+	<li><img src="Slide30.JPG" alt="" width="1280" height="1023" /></li>
+	<li><img src="Slide31.JPG" alt="" width="1280" height="1023" /></li>
+	<li><img src="Slide32.JPG" alt="" width="1280" height="1023" /></li>
+	-->
+</ul>
+</body>
+
+</html>
+
+
+<script type="text/javascript">
+
+// check every 10 mins
+setInterval(check_connection_and_reload, 300000);
+
+// testing interval for every 30 seconds
+// setInterval(check_connection_and_reload, 10000);
+
+</script>

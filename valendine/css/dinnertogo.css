@@ -1,0 +1,464 @@
+@import url("https://brand.arizona.edu/sites/default/files/v2/ua-brand-fonts/milo.css");
+body.togo_order {
+    background: #525659 !important;
+}
+#item-label {
+	font-size: 17px;
+}
+label {
+	font-family: MiloWeb, Verdana, Geneva, sans-serif;
+	font-style: normal;
+	font-weight:bold;
+}
+.font-serif-italic {
+    font-family: MiloSerifWeb-Black, TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+    font-style: normal;
+    font-weight:normal;
+    font-style: italic;
+}
+#left-col {
+	margin-left: 0px;
+	padding-right: 5px;
+	width: 260px;
+	border: none;
+}
+
+#center-col {
+	width: 655px;
+}
+
+.turkey-header {
+	color: #bb263c !important;
+}
+
+p.turkey-description {
+	font-size: 14px !important;
+	line-height: 20px;
+}
+
+.wrap-orderNow-btn {
+	width: 100%;
+	text-align: center;
+}
+
+.orderNow-btn {
+	width: 100px;
+}
+
+.orderNow-btn > img {
+	width: inherit;
+}
+
+.no-padding {
+	padding-right: 0px !important;
+	padding-left: 0px !important;
+}
+.container {
+	width: 950px !important;
+	background-color: #ffffff;
+	box-shadow: 0px 0px 8px 2px #333;
+}
+.container p {
+	color: #000 !important;
+}
+
+.tgo-header img {
+	display: block;
+	width: 100%;
+}
+
+.header-text {
+	text-align: left;
+    padding-left: 30px;
+    margin-top: -15px;
+    margin-bottom: 10px;
+	line-height: 33px;
+	color: #c02133;
+    font: italic bold 36px 'Calibri';
+}
+
+.header-desc {
+	color: #836d51 !important;
+	text-align: left;
+    padding-left: 30px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    margin-right: 50px;
+    font: italic bold 24px 'Calibri';
+}
+
+.price-logo {
+	height: 110px;
+    width: 110px;
+    background: linear-gradient(#c13c3f, #fbb45ab0);
+    border-radius: 50%;
+    display: inline-block;
+    margin-left: 50px;
+	margin-top: -20px;
+	box-shadow: 5px 5px 10px grey;
+}
+
+.price {
+	text-align: center;
+    font-size: 36px;
+    font-weight: 800;
+    color: #000;
+    margin-top: 20px;
+}
+
+#line {
+	margin-top: 0px;
+	margin-bottom: 5px;
+	color: #000;
+}
+
+.tax {
+	text-align: center;
+	font: bold 20px 'Calibri';
+	color: #000;
+}
+
+.bar {
+	background-color: #c02133;
+    color: white;
+    font-weight: 780;
+    display: inline-block;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-left: -15px;
+}
+
+.time-required {
+	margin-left: -10px;
+    margin-bottom: 5px;
+    font-weight: 600;
+    color: #000;
+    font-style: italic;
+}
+
+.order-form {
+	padding-left: 50px !important;
+}
+
+.form-left {
+	margin-top: 5px;
+}
+
+.form-right {
+	border-left: dotted 3px #000;
+}
+
+.form-right .form-group {
+	margin-bottom: 7px;
+	width: 100%;
+} 
+
+.form-right label {
+	margin-left: 5px;
+	vertical-align: bottom;
+	line-height: 10px !important;
+}
+
+.form-header {
+	text-align: left;
+    margin-top: 0px;
+    margin-bottom: 0;
+    font: bold 27px 'Times New Roman';
+    line-height: 31px;
+    color: #111;
+}
+
+.form-subheader{
+	font: bold 13px 'Times New Roman';
+}
+
+.form-right-header {
+	text-align: left;
+    margin-top: 3px;
+    margin-bottom: 23px;
+    height: 30px;
+    font: 13px 'Arial';
+    font-weight: 800;
+    line-height: 16px;
+}
+
+.order-form label {
+	text-align: left;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    white-space: normal;
+    overflow: hidden;
+	/* font: 18px 'Calibri'; */
+	font-size: 18px;
+    font-weight: 600;
+    line-height: 19px;
+    color: #000 !important;
+}
+
+/* Radio Button Style */
+input[type=radio] {
+	border: 1px solid #000;
+	border-radius: 50%;
+	padding: 0.25em;
+	-webkit-appearance: none;
+}
+  
+  input[type=radio]:checked {
+	background-color: #000;
+}
+  
+  input[type=radio]:focus {
+	outline-color: transparent;
+}
+
+span.dots {
+	z-index: 1;
+}
+
+span.quantity-span {
+	position: absolute;
+	right: 25px;
+	padding-left: 10px;
+	background-color: #ffffff;
+	z-index: 2;
+}
+
+.food-qtn-input {
+	width: 45px;
+	height: 21px;
+	text-align: center;
+	font-weight: 800;
+	background-color: #e8e8e8;
+	border: 0px;
+	border-bottom: 2px solid #000;
+}
+
+.your-choice-of {
+	margin-top: 5px;
+	font: 18px 'Arial';
+	font-weight: 900;
+	letter-spacing: -1px;
+	color: #000 !important;
+}
+.wrap-menu-list.pie {
+	margin-top: 0px;
+	margin-left: 20px;
+	letter-spacing: -1px;
+}
+.form-group.add-pie {
+	margin-top: 24px;
+}
+
+.grand-total label {
+	margin-top: 15px;
+	margin-bottom: 10px;
+	margin-left: 65px;
+	font-size: 24px;
+	font-weight: 800;
+}
+.grand-total label > span {	
+	margin-left: 22px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+#grand-text {
+	font-size: 24px;
+    color: #000 !important;
+    width: 200px;
+}
+
+#tax-apply {
+	margin-left: 35px;
+    font-size: 16px;
+    font-weight: 550;
+}
+
+.grand-total div {
+	display: inline-block;
+	padding-bottom: 10px;
+	width: 70px;
+	font-size: 22px;
+	background-color: inherit;
+	border: none;
+	color: #c54644 !important;
+	text-align: center;
+}
+
+#detail-text {
+	font-weight: 500;
+    color: #000;
+	font: 16px 'Calibri';
+}
+
+.order-details {
+	margin-right: 30px;
+}
+
+.contact {
+	font: bold italic 18px 'Calibri';
+    color: #000;
+	margin-top: 20px;
+	margin-left: -15px;
+}
+
+.wrap-max-amount {
+	padding-top: 10px;
+	padding-left: 60px;
+	color: #000 !important;
+}
+
+.max-amt-top {
+	margin-top: 10px;
+	margin-left: 50px;
+}
+
+.wrap-max-amount > .max-amt-top > p {
+	display: inline-block;
+	font: italic 25px 'Arial' !important;
+	font-weight: 600 !important;
+    line-height: 25px !important;
+}
+
+.wrap-max-amount > .max-amt-top > p.wma-dollar {
+	margin-left: 25px;
+	font-style: normal !important;
+	font-size: 28px !important;
+	font-weight: 700 !important;
+}
+
+.wrap-max-amount > .max-amt-top > p.wma-75 {
+	position: absolute;
+	margin-top: 2px;
+	font-style: normal !important;
+	font-size: 35px !important;
+	font-weight: 800 !important;
+	line-height: 30px;
+	letter-spacing: -2px !important;
+}
+
+.wrap-max-amount > .max-amt-top > p.wma-75 > .tax {
+	font-size: 15px;
+	font-weight: normal;
+	letter-spacing: normal;
+}
+
+.wrap-max-amount > .max-amt-bottom {
+	margin-top: -3px;
+}
+
+.wrap-max-amount > .max-amt-bottom > p {
+	display: inline-block;
+	font-size: 13px;
+	font-weight: 600;
+    color: #c3002f !important;
+    line-height: 15px !important;
+}
+
+.wrap-max-amount > .max-amt-bottom > p:nth-child(2) {
+	margin-left: 20px;
+}
+
+.wrap-max-amount > .max-amt-bottom > p:nth-child(3) {
+	margin-left: 15px;
+	font-size: 13px;
+	color: #000 !important;
+	letter-spacing: -1px;
+}
+
+.order-detail {
+	margin-top: 5px;
+	font-family: 'Arial';
+	font-size: 1.12em !important;
+	font-weight: 500;
+	color: #111 !important;
+}
+
+.order-detail span {
+	font-weight: 800;
+	color: #c3002f !important;
+}
+
+.order-detail b {
+	font-weight: 900;
+}
+
+.order-detail b.order-detail-question {
+	font-weight: 800;
+	font-style: italic;
+}
+
+.client-contact-info {
+	margin-top: 20px;
+	/* margin-left: 15px; */
+}
+
+.client-contact-info label {
+	color: #000;
+    /* font: bold italic 20px 'Calibri'; */
+}
+
+.label-required-input {
+	position: absolute;
+	/* top: 15px; */
+	left: 1px;
+	font-size: 12px;
+	font-weight: 600;
+	margin-top: 10px;
+	color: #5f407c;
+}
+
+input.client-contact-input {
+	background-color: #e8e8e8;
+	border: 0px;
+	margin-top: -19px;
+    margin-left: 67px;
+	border-bottom: 1px solid #000;
+}
+
+.client-name {
+	width: 230px;
+}
+
+.client-phone {
+	width: 150px;
+}
+.client-email {
+	width: 250px;
+}
+
+.order-submit-btn {
+	float: right;
+	margin-top: 10px;
+	margin-right: 20px;
+	width: 170px;
+	height: 68px;
+	background-color: inherit;
+	border: 0px;
+}
+
+.form-bottom {
+	margin-top: 10px;
+}
+
+.thead-dark {
+	background-color: #844ce7;
+	border: 1px solid #000;
+}
+
+.table {
+	margin-top: 20px;
+}
+
+.thead-text {
+	color: #fff;
+}
+
+.table>thead>tr>th {
+	border: 1px solid #000;
+}
+
+.table>tbody>tr>th {
+	border: 1px solid #000;
+}
+

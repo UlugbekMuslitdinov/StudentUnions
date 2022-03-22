@@ -1,0 +1,4 @@
+@CHARSET "UTF-8";
+h1, .horz-nav, h2, #qr-container, #search-container, #sandt, #show-totals, #print{
+	display:none;
+}

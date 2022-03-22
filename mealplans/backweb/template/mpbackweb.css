@@ -1,0 +1,256 @@
+@CHARSET "UTF-8";
+html, body, div, h1, h2, h3, h4, h5, h6, ul, ol, dl, li, dt, dd, p, blockquote, pre, form, fieldset, table, th, td {
+	margin:0;
+	padding:0;
+	font-family:Arial, Helvetica, sans-serif;
+}
+body{
+	margin:15px;	
+}
+.horz-nav{
+	list-style:none;
+	margin-right:1px;	
+}
+.horz-nav li{
+	display:block;
+	float:left;
+	border:1px solid;
+	padding:2px 10px;
+	margin-right:-1px;
+	cursor:pointer;
+	text-align:center;
+	padding-bottom:5px;
+}
+.horz-nav li.active{
+	background-color:#003366;	
+}
+.nav-button{
+	display:block;
+	width:100%;
+	height:16px;
+	color:#000000;
+	text-decoration:none;	
+}
+.active .nav-button{
+	color:#ffffff;	
+}
+
+#content{
+	margin-top:40px;	
+}
+
+#content{
+	clear:both;
+}
+
+/* home page*/
+.tabs li{
+	position:relative;
+	bottom:-1px;
+	z-index:1;
+	border-bottom:none;
+}
+.tabs li.active{
+	z-index:3;
+	background-color:#ffffff;	
+}
+.view{
+	clear:both;
+	border:1px solid;
+	position:relative;
+	z-index:2;
+}
+ #recently-completed, #lost-cards{
+	display:none;
+}
+.time-choices{
+	margin-top:15px;
+	margin-left:15px;	
+}
+.time-choices li{
+	border:0px;	
+}
+.view table{
+	clear:both;
+	width:90%;
+	margin:10px;
+}
+table{
+	border:1px solid;
+	border-right:0px;	
+}
+th
+{
+	background-color:#90dbfb;
+	border-right:1px solid;
+}
+.row1{
+	background-color:#c8eefe;
+}
+.row0 td, .row1 td{
+	border-right:1px solid;
+	padding:3px;
+}
+/* end home page */
+/* search page */
+
+#qr-container{
+	width:212px;
+	float:left;
+	height:155px;
+}
+
+#qr-container input{
+	width:79px;
+	margin:10px;
+	padding:0px;
+}
+#search-container{
+	float:left;
+	margin-left:30px;
+	width:auto;	
+	height:155px;	
+}
+#search-col1{
+	float:left;
+	text-align:right;
+	margin-left:15px;	
+}
+#search-col2{
+	float:left;
+	text-align:right;
+	margin-left:15px;	
+}
+#search-col3{
+	float:left;
+	margin-left:15px;
+	margin-right:5px;	
+}
+#search-btn{
+	float:right;
+	margin-right:30px;
+	margin-top:12px;	
+}
+#sr-header{
+	float:left;
+	clear:both;
+	margin-top:20px;
+}
+#sandt{
+	float:left;
+	margin-left:70px;
+	margin-top:25px;
+}
+#show-totals{
+	float:left;
+	margin-left:50px;
+	margin-top:25px;
+}
+#print{
+	float:left;
+	margin-left:345px;
+	margin-top:25px;	
+}
+#search-results-div{
+	clear:both;
+}
+#search-results-div table{
+	width:967px;
+}
+
+#overall-totals{
+	width:250px;
+	margin-top:15px;
+	padding:5px;	
+}	
+/* end search page */ 
+/* details page */
+#deposit_lookup{
+	float:right;
+}
+#detailed-view-wrapper{
+	background-color:#c8eefe;
+	width:1012px;	
+}
+#deposit-information{
+	float:left;
+	width:auto;
+	border-right:1px solid;
+	height:200px;
+	margin:15px;
+	margin-right:0px;
+}
+#deposit-information .deposit-keys{
+	float:left;
+	width:150px;	
+}
+#deposit-information .deposit-values{
+	float:left;
+	width:150px;
+}
+#deposit-contact{
+	float:left;
+	width:auto;
+	border-right:1px solid;
+	height:200px;
+	margin:15px;
+	margin-right:0px;	
+}
+#deposit-contact .deposit-keys{
+	float:left;
+	width:100px;	
+}
+#deposit-contact .deposit-values{
+	float:left;
+	width:200px;
+}
+#payment-info{
+	float:left;
+	width:auto;	
+	height:200px;
+	margin:15px;
+}
+#payment-info .deposit-keys{
+	float:left;
+	width:150px;	
+}
+#payment-info .deposit-values{
+	float:left;
+	width:185px;
+}
+
+/* end details page*/
+/* config page*/
+#config-wrapper{
+	float:left;
+}
+#config-wrapper table{
+	border:0px;	
+}
+
+#plus-config-wrapper{
+	float:left;
+	margin-left:30px;	
+}
+#plus-config-wrapper table{
+	border:0px;	
+}
+/* end config page*/
+/* admin page*/
+#user-access{
+	float:left;
+	padding:10px;
+	width:auto;	
+}
+#cashier-access{
+	float:left;
+	padding:10px;
+	width:auto;	
+	margin:0px 10px;
+}
+#ip-access{
+	float:left;
+	padding:10px;
+	width:auto;	
+}
+/* end admin page*/

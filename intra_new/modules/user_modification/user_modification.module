@@ -1,0 +1,919 @@
+<?php
+define('USER_ADMIN_RID', 9);
+
+define('USER_SYSTEM_ADMIN_RID', 10);
+
+define('ADMIN_USER_RID', 3);
+
+define('CONTENT_ADMIN_RID', 7);
+
+define('CONTENT_SYSTEM_ADMIN_RID', 11);
+
+
+function user_modification_init(){
+	global $user;	
+	
+	if(request_uri() != '/intra_new/cron.php'){
+		
+		if(!$user->uid && !isset($_GET['ticket'])){
+			//$_SESSION['urltogoto'] = request_uri();
+			header('Location:https://webauth.arizona.edu/webauth/login?service=http://www.union.arizona.edu'.request_uri());
+			exit();
+		}
+		else if(isset($_GET['ticket'])){
+		
+		$tix = $_GET['ticket'];
+			$url = 'https://webauth.arizona.edu/webauth/serviceValidate?ticket='.$tix.'&service=http://www.union.arizona.edu'.base_path().'';
+			
+			//$url = 'https://webauth.arizona.edu/webauth/serviceValidate?ticket='.$_GET['ticket'].'&service=https://'.$_SERVER['SERVER_NAME'].'/commontools/webauth/redirect.php';
+		//echo $url;
+		//print "<br><br>";
+		
+		//send validation request to webauth
+		//exec("/opt/local/bin/curl --noproxy <*> -m 120 $url ", $return_message_array, $return_number);
+		//exec("echo hello ", $return_message_array, $return_number);
+/*
+		print_r($return_message_array);
+		print "<br><br>";
+		print $return_number;
+		print "<br><br>";
+*/
+		$curlHandle = curl_init();
+		$options = array(
+			CURLOPT_HEADER => false,
+			CURLOPT_URL => $url,
+			CURLOPT_RETURNTRANSFER => true,
+			CURLOPT_FORBID_REUSE => true,
+			CURLOPT_SSL_VERIFYPEER => false,
+			CURLOPT_TIMEOUT => 10
+		);
+		curl_setopt_array($curlHandle, $options);
+		
+		$temp = curl_exec($curlHandle);
+		//var_dump(curl_error($curlHandle));
+
+		//var_dump($return_message_array);
+		//print "<br><br>";
+
+		//turn the retured array into a string so that it can be parsed as xml
+		//$temp = implode('', $return_message_array);
+
+		//print $temp;
+		//print "<br><br>";
+		
+		//create xml parser
+		$xml_parser = xml_parser_create();
+		
+		//parse xml into an array of values and an array of indexes
+		//struct, index
+		xml_parse_into_struct($xml_parser, $temp, $struct, $index);
+		
+		//var_dump($index);
+		
+		//check if ticket was authenticated successfully
+		if(isset($index['CAS:AUTHENTICATIONSUCCESS'])){
+			
+			//save response to session
+			$_SESSION['webauth']['netID'] = $struct[$index['CAS:USER'][0]]['value'];
+			$_SESSION['webauth']['studentID'] = $struct[$index['CAS:STUDENTID'][0]]['value'];
+			$_SESSION['webauth']['activeemployee'] = $struct[$index['CAS:ACTIVEEMPLOYEE'][0]]['value'];
+			$_SESSION['webauth']['activestudent'] = $struct[$index['CAS:ACTIVESTUDENT'][0]]['value'];
+			$_SESSION['webauth']['employeeID'] = $struct[$index['CAS:EMPLOYEEID'][0]]['value'];
+			$_SESSION['webauth']['emplid'] = $struct[$index['CAS:EMPLID'][0]]['value'];
+			$_SESSION['webauth']['ua_id'] = $struct[$index['CAS:DBKEY'][0]]['value'];
+			
+			$netID = $_SESSION['webauth']['netID'];
+		
+				$_SESSION['netID'] = $netID;
+				if($netID == 'jmasson'){
+					//$netID = 'testmanager';
+					//$netID = 'schneej';
+				}
+				$user = user_load(array("name" => $netID));
+				header('Location:http://www.union.arizona.edu'.base_path());
+				exit();
+			
+			}
+			else{
+				header('Location:https://webauth.arizona.edu/webauth/login?service=http://www.union.arizona.edu'.base_path());
+				exit();
+			}
+		
+		}
+		else if(!$user->uid){
+			$user = user_load(array("uid" => $user->uid));
+			
+		}
+		
+		
+		
+		if($user->uid){
+		$result = db_query("select first_name, last_name from user_profile where uid=".$user->uid);
+			$name = db_fetch_array($result);
+			$user->fname = $name['first_name'];
+			$user->lname = $name['last_name'];	
+		}
+	}
+		
+}
+
+function user_modification_block($op='list', $delta=0) {
+
+  // listing of blocks, such as on the admin/block page
+  if ($op == "list") {
+    $block[0]["info"] = "Webauth login";
+    return $block;
+  } 
+  else if ($op == 'view') {
+
+   return login_block();
+  }
+}
+
+function login_block(){
+	global $user;
+	
+	$block = "";
+	
+	if(!$user->uid && !isset($_GET['ticket'])){
+		$block['subject'] = 'Login';
+		$item[] = l( 'Login', 'https://webauth.arizona.edu/webauth/login?service=http://www.union.arizona.edu/intra_new'); 
+  		$block['content'] = theme('item_list', $item);
+	}
+	else if(isset($_GET['ticket'])){
+	
+		$tix = $_GET['ticket'];
+		
+		$url = '"https://webauth.arizona.edu/webauth/serviceValidate?ticket='.$tix.'&service=http://www.union.arizona.edu/intra_new"';
+		
+		exec("curl -m 120 $url " ,$return_message_array, $return_number);
+		
+	
+		$netID = $return_message_array[2];
+		
+		$netID = trim(str_replace("<cas:user>","",str_replace("</cas:user>","", $netID)));
+		
+		$user = user_load(array("name" => $netID));
+		//var_dump($user);
+		//user_module_invoke('load', $array, $user);
+		
+		if($user->uid){
+			header("Location:/intra_new");
+			//drupal_goto('/user');
+		}
+		else{
+			drupal_goto('./loginerror');
+		}	
+	
+	
+	}
+
+	return $block;
+}
+
+//edit, user
+function user_modification_user($type, $edit, $user, $category = NULL){
+
+	
+	if($type == "load"){
+		
+		$result = db_query("select first_name, last_name from user_profile where uid=".$user->uid);
+		$name = db_fetch_array($result);
+		$user->fname = $name['first_name'];
+		$user->lname = $name['last_name'];	
+		
+		return true;
+	}
+	
+	if($type == "view"){
+		//var_dump($user);
+		$result = db_query("select *, (hours_worked - last_raise) as current_hours from user_profile where uid=".$user->uid);
+		$profile = db_fetch_array($result);
+		
+		$items['first'] = array('title' => 'First name', 'value' => $profile['first_name'], 'class' => 'name');
+		$items['last'] = array('title' => 'Last name', 'value' => $profile['last_name'], 'class' => 'name');
+		
+		$items['h_phone'] = array('title' => 'Work phone', 'value' => $profile['home_phone'], 'class' => 'contact');
+		$items['email'] = array('title' => 'Work phone', 'value' => $profile['email'], 'class' => 'contact');
+		
+		
+		$items['w_phone'] = array('title' => 'Work phone', 'value' => $profile['work_phone'], 'class' => 'contact');
+		//if($profile['current_hours']/1 != 0)
+		$items['hours'] = array('title' => 'Hours since last raise', 'value' => $profile['current_hours']/1, 'class' => 'hours');
+		
+		$items['cst'] = array('title' => 'Customer Service Training', 'value' => $profile['cst']?'yes':'no', 'class' => 'hours');
+		$items['neo'] = array('title' => 'New Employee Orientation', 'value' => $profile['neo']?'yes':'no', 'class' => 'hours');
+		$items['sht'] = array('title' => 'Sexual Harassment Training', 'value' => $profile['sht']?'yes':'no', 'class' => 'hours');
+		//$items['h_phone'] = array('title' => 'Home phone', 'value' => $profile['home_phone'], 'class' => 'contact');
+		
+		//$items['email'] = array('title' => 'Email', 'value' => $profile['email'], 'class' => 'contact');
+		
+		//$items['address'] = array('title' => 'Address', 'value' => $profile['street_add'], 'class' => 'contact');
+		//$items['city'] = array('title' => 'City', 'value' => $profile['city'], 'class' => 'contact');
+		//$items['state'] = array('title' => 'State', 'value' => $profile['state'], 'class' => 'contact');
+		//$items['zip'] = array('title' => 'Zip code', 'value' => $profile['zip'], 'class' => 'contact');
+		
+	//	$items['pay_rate'] = array('title' => 'Hourly pay rate', 'value' => $profile['hourly_rate'], 'class' => 'pay');
+		
+		return array(''=>$items);
+	
+	}
+	
+	if($type == 'logout'){
+		var_dump('test');
+		drupal_goto('logout1.php');
+		session_destroy();
+  	//module_invoke_all('user', 'logout', NULL, $user);
+
+	  // Load the anonymous user
+	  $user = drupal_anonymous_user();
+		header("Location:logout1.php");
+		//exit;
+		
+	}
+	
+	
+	
+	
+	
+	
+}
+//account, fields
+function user_modification_profile_alter($account, $fields){
+	unset($fields['History']);
+
+}
+//form
+function user_modification_form_alter($form_id, $form) {
+	
+
+	if($form_id=='user_edit'){
+		unset($form['account']['mail']);
+		unset($form['account']['pass']);
+		unset($form['theme_select']);
+		//var_dump($form);
+		
+	}
+
+}
+/*
+function update_users(){
+
+	$import_file ='/Library/WebServer/union/intra_new/modules/user_modification/DailyKronosImport.csv';
+
+	$fp = fopen($import_file, 'r');
+	
+	$query = 'update users set status=0';
+	db_query($query);
+
+		
+		while($data = fgetcsv($fp, 10000)){
+			if($data[6] == 8001 || $data[6]== 8901){
+				$query = "insert into users set uid=".$data[0].", name='".trim($data[26])."', pass='a1fd919a784c975a43c1d946a62b2b09', mail='".$data[16]."', status=1 ON DUPLICATE KEY UPDATE name='".trim($data[26])."', mail='".$data[16]."', status=1";
+				db_query($query);
+				
+				$query = "insert into user_profile set uid=".$data[0].', first_name="'.trim($data[2]).'", last_name="'.trim($data[3]).'", account='.$data[8].', position='.$data[9].',  hourly_rate='.$data[11].', street_add="'.trim($data[12]).'", city="'.trim($data[13]).'", state="'.trim($data[14]).'", zip="'.trim($data[15]).'", email="'.trim($data[16]).'", home_phone="'.trim($data[19]).'", work_phone="'.trim($data[20]).'" ON DUPLICATE KEY UPDATE first_name="'.trim($data[2]).'", last_name="'.trim($data[3]).'", change_account = (account <> '.$data[8].') || change_account, account='.$data[8].', position='.$data[9].', hourly_rate='.$data[11].', street_add="'.trim($data[12]).'", city="'.trim($data[13]).'", state="'.trim($data[14]).'", zip="'.trim($data[15]).'", email="'.trim($data[16]).'", home_phone="'.trim($data[19]).'", work_phone="'.trim($data[20]).'"';
+				//print $query;
+				db_query($query);
+				//print '1';
+		
+			}
+		
+		
+		}
+		
+		drupal_set_message('Users have been updated');
+		
+		drupal_goto($_SERVER['HTTP_REFERER']);
+		
+			
+}
+*/
+
+function user_modification_cron(){
+	update_users();
+	update_user_hours();
+}
+
+
+function update_users(){
+
+        $import_file ='/Library/WebServer/union/intra_new/modules/user_modification/KronosEmplData.csv';
+
+        $fp = fopen($import_file, 'r');
+
+        $query = 'update users set status=0';
+        db_query($query);
+				
+				$i = 0;
+                while($data = fgetcsv($fp, 10000)){
+                				$name = trim(substr($data[5], 0, strpos($data[5], "@")));
+                				if($name == '')
+                					$name = trim($data[8]);
+                                $query = "insert into users set uid=".trim($data[0]).", name='".$name."', pass='a1fd919a784c975a43c1d946a62b2b09', mail='".trim($data[5])."', status=1 ON DUPLICATE KEY UPDATE name='".$name."', mail='".trim($data[5])."', status=1";
+                                db_query($query);
+								//print $query.'<br>';
+								//var_dump(db_error());
+                                $query = "insert into user_profile set uid=".$data[0].', first_name="'.trim($data[1]).'", last_name="'.trim($data[2]).'", account='.$data[3].', position='.$data[4].', email="'.trim($data[5]).'", home_phone="'.trim($data[6]).'", work_phone="'.trim($data[7]).'" ON DUPLICATE KEY UPDATE first_name="'.trim($data[1]).'", last_name="'.trim($data[2]).'", change_account = (account <> '.$data[3].') || change_account, account='.$data[3].', position='.$data[4].', email="'.trim($data[5]).'", home_phone="'.trim($data[6]).'", work_phone="'.trim($data[7]).'"';
+                                //print $query.'<br>';
+                                 db_query($query);
+                                //print '1';
+
+//var_dump(db_error());
+					$i++;
+                }
+		db_query('update users set name="harrisoj" where name="suadmin"');
+                drupal_set_message($i.' Users have been updated');
+				
+
+                drupal_goto($_SERVER['HTTP_REFERER']);
+
+
+}
+
+function update_user_hours(){
+
+	$import_file ='/Library/WebServer/union/intra_new/modules/user_modification/StudentHours.txt';
+
+	$fp = fopen($import_file, 'r');
+	
+		db_query("update user_profile set hours_worked=0");
+
+
+		while($data = fgetcsv($fp, 10000)){
+				
+				$query = "update user_profile set hours_worked=(".$data[3]." + hours_worked) where uid=".$data[0];
+				db_query($query);
+				
+					
+		
+		}
+		/*
+		$query = 'select up.first_name, up.last_name, ep.email from user_profile as up join user_portal as uportal on up.uid=uportal.uid join users_roles as ur on uportal.portal_id=ur.portal_id join user_profile as ep on ur.uid=ep.uid join portals on ur.portal_id = portals.portal_id where up.hours_worked - up.last_raise >= 250 and ur.rid=4 and elvaluations=1';
+		$result = db_query($query);
+		//var_dump($query);
+		while($employee = db_fetch_array($result)){
+		
+		$email_body = 'Arizona Student Unions Supervisor,'.chr(10).chr(13).chr(10).chr(13).$employee['first_name'].' '.$employee['last_name'].' has recently worked 250 hours and is up for evaluation. You may see all student employee hours for you unit by logging onto Intra, clicking the "My Unit" section, and then clicking "Evaluations". You will see student employees who have reached 250 hours at the top of your page.'.chr(10).chr(13).chr(10).chr(13).'You should complete the evaluation form, receive all necessary signatures, hold a one-on-one meeting with the student employee, and turn the forms into payroll. You should receive an evaluation form within the week, and you can also download the student evaluation form and policies from the H:/ drive.'.chr(10).chr(13).chr(10).chr(13).'If you do not receive an evaluation form within 1 week of this email, please notify Student Human Resources.'.chr(10).chr(13).chr(10).chr(13).'After all paper work has been completed and turned in, log back into Intra and click the "Evaluated" button next to the student\'s name and hours worked. This will reset their hour tracking for the next 250 hours.'.chr(10).chr(13).chr(10).chr(13).'If a PIP, Lead, or other designated evaluator is completing the evaluation, please give them a copy of the eval form, the student\'s job description, and a copy of the evaluation policies.  You may also want to participate in or oversee the one-on-one meeting with the student. Note: any non-supervisory employee (PIP, Lead, Student Lead, DSA) who is assigned to evaluate students must receive training before doing so. '.chr(10).chr(13).chr(10).chr(13).'As the main supervisor for your unit, you will need to sign all completed student evaluations for approval, and get the Associate Director\'s approval if needed, before meeting with the student.'.chr(10).chr(13).chr(10).chr(13).'If you have questions please contact Student Human Resources at unionshr@email.arizona.edu or by phone at 626-9205.'.chr(10).chr(13).chr(10).chr(13).'Student Human Resources Department'.chr(10).chr(13).'Student Union Administration Office 403k'.chr(10).chr(13).'unionshr@email.arizona.edu'.chr(10).chr(13).'520-626-9205';
+
+
+		//var_dump($query);
+		drupal_mail('hours', 'sacunnin@gmail.com', 'Student Employee Evaluation Due', $email_body, 'Student Unions Intra<no-reply@email.arizona.edu>');
+		drupal_mail('hours', $employee['email'], 'Student Employee Evaluation Due', $email_body, 'Student Unions Intra<no-reply@email.arizona.edu>');
+		
+		}
+		*/
+		
+		
+		drupal_set_message('Users hours have been updated');
+		
+		drupal_goto($_SERVER['HTTP_REFERER']);
+		
+			
+}
+function myunit(){
+	return '<dl><dt><a href="/intra_new/myunit/employees/" title="view employees">Employees</a></dt><dd>Click here to view employee related information.</dd><dt><a href="/intra_new/myunit/evaluations" title="view employees">Evaluations</a></dt><dd>Click here to view employee evaluation statuses.</dd><dt><a href="/intra_new/myunit/addemployee/" title="add employees">Add Employees</a></dt><dd>Click here to add new employees to your unit.</dd></dl>';
+}
+function evaluations_ajax(){
+	global $user;
+	if($_POST['action'] == 0){
+		$result = db_query('insert into evaluation_log set uid='.$_POST['uid'].', eval_date="'.date("Y-m-d").'", eval_by='.$user->uid);
+		print mysql_error();
+		$result = db_query('update user_profile set last_raise = (last_raise + 250) where uid='.$_POST['uid']);
+		print mysql_error();
+	}
+	else{
+		$result = db_query('delete from evaluation_log where uid='.$_POST['uid'].' and  eval_date="'.date("Y-m-d").'"');
+		print mysql_error();
+		$result = db_query('update user_profile set last_raise = (last_raise - 250) where uid='.$_POST['uid']);
+		print mysql_error();
+	}
+}
+
+
+function evaluations($unit = NULL){
+	//var_dump($unit);
+	global $user;
+	$show=1;
+	$units = get_units();
+	if(isset($user->roles[ADMIN_USER_RID]) || isset($user->roles[ADMIN_USER_RID])){
+		
+		$result = db_query('select * from portals order by name');
+		$options[''] = '';
+		while($unitt = db_fetch_object($result)){
+			$options[$unitt->portal_id] = $unitt->name;
+		}
+		
+		$output .= '<select onchange="window.location = \''.base_path()."myunit/evaluations/'+this.value\">";
+		foreach($options as $key => $option){
+			//var_dump($option);
+			//$output .= '<option value="'.$key.'" '.($unit == $key)?'':'selected'.'>'.$option.'</option>';
+			$output .= '<option value="'.$key.'" '.(($unit==$key)?'selected':'').'>'.$option.'</option>';
+		}
+		$output .= '</select>';
+
+		
+		$final_units = array($unit);
+		if($unit == NULL)
+			$show = 0;
+	}
+	
+	
+	$header = array(array('data'=>'First Name', 'field' => 'p.first_name'), array('data' =>'Last Name', 'field'=>'p.last_name'), array('data' =>'Hours Since Last Eval', 'field'=>'eval_hours'), '');
+	if(!isset($final_units))
+		$final_units = $user->roles[USER_ADMIN_RID];
+	
+	if($show){	
+	
+		foreach($final_units as $unit){
+			$query='select p.uid, p.first_name, p.last_name, (p.hours_worked - p.last_raise) as eval_hours from user_profile as p join user_portal on p.uid=user_portal.uid join users on users.uid=p.uid where portal_id='.$unit.' and status=1 and ( p.hours_worked - p.last_raise ) >= 250 ';
+			$query.=tablesort_sql($header);
+			$result = db_query($query);
+			//print $query;
+			//print $query;
+			while($employee = db_fetch_object($result)){
+				if($employee->eval_hours != 0)
+				$employees[] = array('<a href="'.base_path().'/user/'.$employee->uid.'">'.$employee->first_name.'</a>', '<a href="'.base_path().'/user/'.$employee->uid.'">'.$employee->last_name.'</a>', '<div style="border:1px solid; height:20px; width:300px;"><div style="height:100%; width:'.($employee->eval_hours/1).'px; background-color:blue;">'.($employee->eval_hours/1).'</div></div>', '<input type="button" value="evaluated" onclick="mark_evaluated('.$employee->uid.', this)">');
+			}
+			
+			$query='select p.uid, p.first_name, p.last_name, (p.hours_worked - p.last_raise) as eval_hours from user_profile as p join user_portal on p.uid=user_portal.uid join users on users.uid=p.uid where portal_id='.$unit.' and status=1 and ( p.hours_worked - p.last_raise ) < 250 ';
+			$query.=tablesort_sql($header);
+			$result = db_query($query);
+			//print $query;
+			//print $query;
+			while($employee = db_fetch_object($result)){
+				if($employee->eval_hours != 0)
+				$employees2[] = array('<a href="'.base_path().'/user/'.$employee->uid.'">'.$employee->first_name.'</a>', '<a href="'.base_path().'/user/'.$employee->uid.'">'.$employee->last_name.'</a>', '<div style="border:1px solid; height:20px; width:300px;"><div style="height:100%; width:'.($employee->eval_hours/1).'px; background-color:blue;">'.($employee->eval_hours/1).'</div></div>', '');
+			}
+			$output .=  '<h2>Evaluation Statuses for '.$units[$unit].'</h2>'.'<h3>Up For Evaluation</h3>'.(sizeof($employees)>0?theme('table', $header, $employees):'No students are up for evaluation.').'<hr>'.theme('table', $header, $employees2);
+		}
+	}
+
+
+	drupal_add_js('function mark_evaluated(uid, el){ $.post("evaluations_ajax", {"uid": uid, "action": 0}, function(data){}); el.value ="undo"; el.onclick= new Function("mark_unevaluated("+uid+", this)");}','inline');
+	
+	drupal_add_js('function mark_unevaluated(uid, el){ $.post("evaluations_ajax", {"uid": uid, "action": 1}, function(data){}); el.value ="evaluated"; el.onclick=new Function("mark_evaluated("+uid+", this)");}','inline');
+
+	return $output;
+}
+function users_ajax(){
+	//print $_POST['uid'].' - '.$_POST['unit'];
+	db_query('delete from user_portal where uid='.$_POST['uid'].' and portal_id='.$_POST['unit']);
+	db_query('delete from users_roles where uid='.$_POST['uid'].' and portal_id='.$_POST['unit']);
+}
+function users($unit = NULL){
+	global $user;
+	$show=1;
+	$units = get_units();
+	
+	drupal_add_js('function remove(uid, unit, elem){if(confirm("Are you sure you want to remove this person?")){$.post("/intra_new/myunit/employees/users_ajax", {"uid":uid, "unit":unit}); elem.parentNode.parentNode.parentNode.removeChild(elem.parentNode.parentNode);}}','inline');
+	
+	
+	if(isset($user->roles[ADMIN_USER_RID]) || isset($user->roles[ADMIN_USER_RID])){
+		$output .= drupal_get_form('users_filter_form', $unit);
+		
+		$final_units = array($unit);
+		if($unit == NULL)
+			$show = 0;
+	}
+	//var_dump($final_units);
+	$header = array(array('data' => 'Employee ID', 'field' => 'p.uid'), array('data'=>'First Name', 'field' => 'p.first_name'), array('data' =>'Last Name', 'field'=>'p.last_name'), array('data'=> 'Phone #', 'field'=>'p.home_phone'), array('data'=>'Email', 'field' => 'p.email'), 'Roles');
+	if(!isset($final_units))
+		$final_units = $user->roles[USER_ADMIN_RID];
+	
+	if($show){	
+	
+		foreach($final_units as $unit){
+			$query='select p.uid, p.first_name, p.last_name, p.home_phone, p.email from user_profile as p join user_portal on p.uid=user_portal.uid join users on users.uid=p.uid where portal_id='.$unit.' and status=1';
+			$query.=tablesort_sql($header);
+			$result = db_query($query);
+			//print $query;
+			$employees = array();
+			while($employee = db_fetch_object($result)){
+				$query = 'select distinct name from role join users_roles on role.rid=users_roles.rid and users_roles.portal_id='.$unit.' where uid='.$employee->uid;
+				//print $query;
+				$subresult = db_query($query);
+				$roles = array();
+				while($role = db_fetch_object($subresult)){
+					$roles[] = $role->name;
+				}
+				$employees[] = array($employee->uid, '<a href="'.base_path().'/user/'.$employee->uid.'">'.$employee->first_name.'</a>', '<a href="'.base_path().'/user/'.$employee->uid.'">'.$employee->last_name.'</a>', $employee->home_phone, $employee->email, '<input style="float:right;" type="button" value="remove" onclick="remove('.$employee->uid.', '.$unit.', this)" /><a href="/intra_new/myunit/editrole/'.$unit.'/'.$employee->uid.'" style="float:right;">edit</a>'.implode(', ', $roles));
+			}
+			$output .=  '<h2>Employees for '.$units[$unit].'</h2>'.theme('table', $header, $employees);
+		}
+	}
+
+
+	return $output;
+}
+function users_filter_form($selected = ''){
+	$result = db_query('select * from portals order by name');
+	$options[''] = '';
+	while($unit = db_fetch_object($result)){
+		$options[$unit->portal_id] = $unit->name;
+	}
+
+$form['unit'] = array(
+  '#type' => 'select', 
+  '#title' => 'Show employees of', 
+  '#default_value' => $selected,
+  '#options' => $options,
+  '#attributes' => array('onchange' => "window.location = '".base_path()."myunit/employees/'+this.value")
+  //'#attributes' => array('onchange' => "window.location = './'+this.value")
+);
+/*
+$form['filter'] = array(
+  '#type' => 'fieldset', 
+  '#title' => t('Search'),
+  '#collapsible' => TRUE, 
+  '#collapsed' => FALSE,
+);
+
+$form['filter']['first_name'] = array(
+  '#type' => 'textfield', 
+  '#title' => 'First Name', 
+  '#default_value' => '', 
+  '#size' => 30, 
+  '#maxlength' => 128, 
+  '#required' => FALSE,
+);
+
+$form['filter']['last_name'] = array(
+  '#type' => 'textfield', 
+  '#title' => 'Last Name', 
+  '#default_value' => '', 
+  '#size' => 30, 
+  '#maxlength' => 128, 
+  '#required' => FALSE,
+);
+
+$form['filter']['uid'] = array(
+  '#type' => 'textfield', 
+  '#title' => 'Employee ID', 
+  '#default_value' => '', 
+  '#size' => 30, 
+  '#maxlength' => 128, 
+  '#required' => FALSE,
+);
+
+
+$form['filter']['unit_from'] = array(
+  '#type' => 'select', 
+  '#title' => 'Unit', 
+  '#default_value' => $selected,
+  '#options' => $options
+);
+*/
+	return $form;
+}
+
+function edit_roles($unit, $uid){
+	return drupal_get_form('edit_roles_form', $unit, $uid);	
+}
+function edit_roles_form($unit, $uid){
+	global $user;
+	$descriptions[USER_ADMIN_RID] = '<div style="font-size:11px; margin-left:22px;">This gives an employee the ability to access information on unit employees and assign roles, rights, and access (such as Hiring and Training).</div>' ;
+	$descriptions[HIRING_ADMIN_RID] = '<div style="font-size:11px; margin-left:22px;">This gives the employee the ability to search applicants, check out applications, set up interviews, contact applicants, and hire new student employees</div>';
+	$descriptions[CONTENT_ADMIN_RID] = '<div style="font-size:11px; margin-left:22px;">This gives an employee the ability to write, edit, and manage training material for your unit</div>';
+	$query = 'select * from role';
+	$result = db_query($query);
+	while($role_all = db_fetch_object($result)){
+		$roles[$role_all->rid] = $role_all->name;
+	}
+	foreach($user->roles as $rid => $role){
+	
+		if($rid > 4 && in_array($unit, $role)){
+			$values[$rid] = $roles[$rid].$descriptions[$rid];
+		}
+	}
+	$result = db_query('select rid from users_roles where portal_id='.$unit.' and uid='.$uid.' and rid<>4');
+	//print 'jaime';
+	while($role = db_fetch_object($result)){
+		//print 'jaime2';
+		$current_roles[] = $role->rid;
+	}
+	if(isset($user->roles[ADMIN_USER_RID])){
+		$values = array(USER_ADMIN_RID => $roles[USER_ADMIN_RID].$descriptions[USER_ADMIN_RID], HIRING_ADMIN_RID => $roles[HIRING_ADMIN_RID].$descriptions[HIRING_ADMIN_RID], CONTENT_ADMIN_RID => $roles[CONTENT_ADMIN_RID].$descriptions[CONTENT_ADMIN_RID], 4 => 'Portal Admin');
+	}
+		$form['roles']['roles'] = array(
+    			'#type' => 'checkboxes', 
+    			'#title' => Roles, 
+    			'#default_value' => $current_roles,
+				'#options' => $values
+				
+  			);
+	$form['unit'] = array('#type' => 'value', '#value' => $unit);
+	$form['uid'] = array('#type' => 'value', '#value' => $uid);
+	$form['submit'] = array('#type' => 'submit', '#value' => t('Update'));
+	$form['cancel'] = array('#type' => 'submit', '#value' => t('Cancel'));
+	return $form;
+}
+function edit_roles_form_submit($form_id, $form_values){
+//var_dump($form_values);
+	if($form_values['op'] == 'Cancel'){
+		return 'myunit/employees';
+	}
+	foreach($form_values['roles'] as $rid => $role){
+		if($role == 0 || $rid==''){
+			db_query('delete from users_roles where uid='.$form_values['uid'].' and rid='.$rid.' and portal_id='.$form_values['unit']);
+		} 
+		else{
+			db_query('insert into users_roles set uid='.$form_values['uid'].', rid='.$rid.', portal_id='.$form_values['unit']);
+		}
+		
+	
+	}
+ drupal_set_message('Roles have been saved');
+ return '/myunit/employees';
+}
+function user_modification_perm(){
+	return array('admin users', 'add news');
+}
+
+function update_cst(){
+	drupal_add_js('
+		function completed(id, elem){
+		alert(elem);
+			$.post("'.base_path().'placeusers/updateflags", {"uid":id, "type":"cst"}, function(data){ elem.parentNode.removeChild(elem);}); 
+		}
+	', 'inline');
+	
+	$header = array('EID', 'Last', 'First', '');
+	$result = db_query('select uid, last_name, first_name from user_profile where cst=0 order by last_name, first_name');
+	while($employee = db_fetch_array($result)){
+		$employees[] = array($employee['uid'], $employee['last_name'], $employee['first_name'], '<input type="button" value="completed" onclick="completed('.$employee['uid'].', this.parentNode.parentNode)">');
+	}
+	
+	return theme('table', $header, $employees);
+}
+
+function update_sht(){
+	drupal_add_js('
+		function completed(id, elem){
+		
+			$.post("'.base_path().'placeusers/updateflags", {"uid":id, "type":"sht"}, function(data){ elem.parentNode.removeChild(elem);}); 
+		}
+	', 'inline');
+	
+	$header = array('EID', 'Last', 'First', '');
+	$result = db_query('select uid, last_name, first_name from user_profile where sht=0 order by last_name, first_name');
+	while($employee = db_fetch_array($result)){
+		$employees[] = array($employee['uid'], $employee['last_name'], $employee['first_name'], '<input type="button" value="completed" onclick="completed('.$employee['uid'].', this.parentNode.parentNode)">');
+	}
+	
+	return theme('table', $header, $employees);	
+}
+
+function update_neo(){
+	drupal_add_js('
+		function completed(id, elem){
+		
+			$.post("'.base_path().'placeusers/updateflags", {"uid":id, "type":"neo"}, function(data){ elem.parentNode.removeChild(elem);}); 
+		}
+	', 'inline');
+	
+	$header = array('EID', 'Last', 'First', '');
+	$result = db_query('select uid, last_name, first_name from user_profile where neo=1 order by last_name, first_name');
+	while($employee = db_fetch_array($result)){
+		$employees[] = array($employee['uid'], $employee['last_name'], $employee['first_name'], '<input type="button" value="not completed" onclick="completed('.$employee['uid'].', this.parentNode.parentNode)">');
+	}
+	
+	return theme('table', $header, $employees);	
+}
+
+function cst_sht_ajax(){
+	if($_POST['type'] == 'cst'){
+		db_query('update user_profile set cst=1 where uid='.$_POST['uid']);
+	}
+	else if($_POST['type'] == 'sht'){
+		db_query('update user_profile set sht=1 where uid='.$_POST['uid']);
+	}
+	else{
+		db_query('update user_profile set neo=0 where uid='.$_POST['uid']);
+	}
+}
+
+function convert_user(){
+$result = db_query('select * from temp');
+	while($empl = db_fetch_array($result)){
+		db_query('update users set uid = '.$empl['emplID'].' where uid='.$empl['eid']);
+		db_query('update user_profile set uid = '.$empl['emplID'].' where uid='.$empl['eid']);
+		db_query('update dining_hours set uid = '.$empl['emplID'].' where uid='.$empl['eid']);
+		db_query('update history set uid = '.$empl['emplID'].' where uid='.$empl['eid']);
+		db_query('update node set uid = '.$empl['emplID'].' where uid='.$empl['eid']);
+		db_query('update node_revisions set uid = '.$empl['emplID'].' where uid='.$empl['eid']);
+		db_query('update sessions set uid = '.$empl['emplID'].' where uid='.$empl['eid']);
+		db_query('update users_roles set uid = '.$empl['emplID'].' where uid='.$empl['eid']);
+		db_query('update user_portal set uid = '.$empl['emplID'].' where uid='.$empl['eid']);
+		db_query('update watchdog set uid = '.$empl['emplID'].' where uid='.$empl['eid']);
+	}
+}
+
+function addemployee($unit = NULL){
+	global $user;
+	
+	$units = get_units();
+	if(isset($user->roles[ADMIN_USER_RID]) || isset($user->roles[ADMIN_USER_RID])){
+		$unit = '<select name="unit">';
+		foreach($units as $key => $value){
+			$unit .= '<option value="'.$key.'">'.$value.'</option>';
+		}
+		$unit .='</select>';
+	} 
+	
+	else if(sizeof($user->roles[9])>1){
+		$unit = '<select name="unit">';
+		foreach($user->roles[9]  as $value){
+			$unit .= '<option value="'.$value.'">'.$units[$value].'</option>';
+		}
+		$unit .='</select>';
+	}
+	else{
+		$unit = $units[$user->roles[9][0]].'<select name="unit" style="display:none;"><option value="'.$user->roles[9][0].'" selected></option></select>';
+	}
+	
+	drupal_add_js('function get_employees(){ var form=document.addemployee; $.post("'.base_path().'myunit/addemployee_ajax", {"eid":form.eid.value, "first":form.first.value, "last":form.last.value}, function(data){document.getElementById("employee-results").innerHTML = data;}, "html"); }','inline');
+	
+	drupal_add_js('function add(id){$.post("'.base_path().'myunit/addemployee_ajax2", {"id":id, "unit":document.addemployee.unit.options[document.addemployee.unit.selectedIndex].value});}' ,'inline');
+	
+	$output = '<form name="addemployee" id="addemployee" onsubmit="return get_employees()"><p>Add Employees to '.$unit.'</p>Employee ID: <input type="text" name="eid" onkeyup="get_employees()"/> First: <input type="text" name="first"  onkeyup="get_employees()"/> Last: <input type="text" name="last"  onkeyup="get_employees()"/></form><div id="employee-results"></div>';
+	
+	
+	return $output;
+}
+function addemployee_ajax(){
+	$query = 'select * from user_profile join users on users.uid=user_profile.uid where status=1';
+	if($_POST['eid'] != '')
+		$where .= ' and users.uid='.$_POST['eid'];
+	if($_POST['first'] != '')
+		$where .= ' and first_name like "'.$_POST['first'].'%"';
+	if($_POST['last'] != '')
+		$where .= ' and last_name like "'.$_POST['last'].'%"';
+	$result = db_query($query.$where.' order by first_name, last_name');
+	//print $query.$where.' order by first_name, last_name';
+	print '<table style="margin-top:15px;"><tbody><tr><td>EID</td><td>First</td><td>Last</td><td></td></tr>';
+	while($employee = db_fetch_array($result)){
+		print '<tr><td>'.$employee['uid'].'</td><td>'.$employee['first_name'].'</td><td>'.$employee['last_name'].'</td><td><input type="button" value="add" onclick="add('.$employee['uid'].'); this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode)"></td></tr>';
+	}
+	print '</tbody></table>';	
+	
+}
+function addemployee_ajax2(){
+	//print $_POST['id'].' - '.$_POST['unit'];
+	db_query('insert into user_portal set uid='.$_POST['id'].', portal_id='.$_POST['unit']);
+	print db_error();
+}
+
+function user_modification_menu($may_cache){
+
+	$items = array();
+	
+	if(!$may_cache){
+	  $items[] = array(
+		'path' => 'addnews', 
+		'title' => 'Add news',
+		'callback' => 'create_page',
+		'callback arguments' => array('news', 0),
+		'access' => user_access('add news'),
+		'weight' => 0,
+		'type' => MENU_NORMAL_ITEM
+	  );
+		 
+
+	  $items[] = array(
+		'path' => 'admin/user/update_users',
+		'title' => t('Update users'),
+		'description' => t('Update users based on UTIS dump'),
+		'callback' => 'update_users',
+		'access' => user_access('access administration pages'),
+		'type' => MENU_NORMAL_ITEM,
+	   );
+	  
+	  $items[] = array(
+		'path' => 'admin/user/update_user_hours',
+		'title' => t('Update users hours'),
+		'description' => t('Update users based on UTIS dump'),
+		'callback' => 'update_user_hours',
+		'access' => user_access('access administration pages'),
+		'type' => MENU_NORMAL_ITEM,
+	   );
+	  
+	  $items[] = array(
+		'path' => 'admin/user/convert',
+		'title' => t('Convert users'),
+		'description' => t('Update users based on UTIS dump'),
+		'callback' => 'convert_user',
+		'access' => user_access('access administration pages'),
+		'type' => MENU_NORMAL_ITEM,
+	   );
+	   
+	    $items[] = array(
+		'path' => 'myunit',
+		'title' => t('My Unit'),
+		'description' => t('unit specific information'),
+		'callback' => 'myunit',
+		'access' => user_access('admin users'),
+		'type' => MENU_NORMAL_ITEM,
+	   );
+	   
+	   
+	   $items[] = array(
+		'path' => 'myunit/employees',
+		'title' => t('Employees'),
+		'description' => t('list of employees and their info'),
+		'callback' => 'users',
+		'access' => user_access('admin users'),
+		'type' => MENU_NORMAL_ITEM,
+	   );
+	   
+	   $items[] = array(
+		'path' => 'myunit/editrole',
+		'callback' => 'edit_roles',
+		'access' => user_access('admin users'),
+		'type' => MENU_CALLBACK
+	   );
+	   
+	   $items[] = array(
+		'path' => 'myunit/evaluations',
+		'title' => t('Evaluations'),
+		'description' => t('list of employees and their evaluation status'),
+		'callback' => 'evaluations',
+		'access' => user_access('admin users'),
+		'type' => MENU_NORMAL_ITEM,
+	   );
+	   $items[] = array(
+		'path' => 'myunit/evaluations/evaluations_ajax',
+		'callback' => 'evaluations_ajax',
+		'access' => user_access('admin users'),
+		'type' => MENU_CALLBACK,
+	   );
+	   $items[] = array(
+		'path' => 'myunit/addemployee',
+		'callback' => 'addemployee',
+		'title' =>t('Add employee'),
+		'access' => user_access('admin users'),
+		'type' => MENU_NORMAL_ITEM,
+		'weight' => 10
+	   );
+	   $items[] = array(
+		'path' => 'myunit/addemployee_ajax',
+		'callback' => 'addemployee_ajax',
+		'access' => user_access('admin users'),
+		'type' => MENU_CALLBACK,
+	   );
+	    $items[] = array(
+		'path' => 'myunit/addemployee_ajax2',
+		'callback' => 'addemployee_ajax2',
+		'access' => user_access('admin users'),
+		'type' => MENU_CALLBACK,
+	   );
+	   $items[] = array(
+		'path' => 'myunit/employees/users_ajax',
+		'callback' => 'users_ajax',
+		'access' => user_access('admin users'),
+		'type' => MENU_CALLBACK,
+	   );
+	   
+	   $items[] = array(
+		'path' => 'placeusers/cst',
+		'title' => t('CST'),
+		'description' => t('Employees not having completed CST'),
+		'callback' => 'update_cst',
+		'access' => user_access('place users'),
+		'type' => MENU_LOCAL_TASK,
+		'weight' => 10
+	   );
+	   
+	   $items[] = array(
+		'path' => 'placeusers/SHT',
+		'title' => t('SHT'),
+		'description' => t('Employees not having completed SHT'),
+		'callback' => 'update_sht',
+		'access' => user_access('place users'),
+		'type' => MENU_LOCAL_TASK,
+		'weight' => 10
+	   );
+	   
+	    $items[] = array(
+		'path' => 'placeusers/NEO',
+		'title' => t('NEO'),
+		'description' => t('Employees not having completed NEO'),
+		'callback' => 'update_neo',
+		'access' => user_access('place users'),
+		'type' => MENU_LOCAL_TASK,
+		'weight' => 10
+	   );
+	  
+	  $items[] = array(
+		'path' => 'placeusers/updateflags',
+		'callback' => 'cst_sht_ajax',
+		'access' => user_access('place users'),
+		'type' => MENU_CALLBACK
+	   );
+
+ 	  return $items;
+	
+	}
+
+
+}

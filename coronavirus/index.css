@@ -1,0 +1,188 @@
+body {
+    font-size: 16px;
+}
+.h1, .h2, h1, h2 {
+    font-family: MiloSerifWeb,TimesNewRoman,"Times New Roman",Times,Baskerville,Georgia,serif;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #49595e;
+}
+.h1, .h2, .h3, h1, h2, h3 {
+    margin-top: 1.042em;
+    margin-bottom: .667em;
+}
+.h2, h2 {
+    font-size: 27px;
+}
+
+.h3, h3 {
+    font-size: 18.792px;
+    letter-spacing: -.26px;
+}
+
+.h3, .h4, .h5, .h6, h3, h4, h5, h6 {
+    font-family: MiloWeb,Verdana,Geneva,sans-serif;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #49595e;
+}
+
+p {
+    margin: 0 0 12px;
+    font-size: 17px;
+}
+
+a {
+    color: #8b0015;
+    text-decoration: none;
+    font-weight: 700;
+    -webkit-transition: color .1s ease-in-out;
+    transition: color .1s ease-in-out;
+}
+a:focus, a:hover {
+    color: #8b0015;
+    text-decoration: underline;
+}
+a:active, a:hover {
+    outline: 0;
+}
+
+.sans {
+    font-family: MiloWeb,Verdana,Geneva,sans-serif;
+    font-weight: 700;
+}
+
+.bg-trilines {
+    background-image: url(img/trilines.svg);
+    background-size: auto 305px;
+    background-position: top right;
+    background-position: top 0 right -1em;
+    background-repeat: no-repeat;
+}
+.border-top-accent-azurite {
+    border-top: 4px solid #1e5288;
+}
+.bg-trilines hr, .bg-trilines li, .bg-trilines p {
+    background-color: rgba(255,255,255,.7);
+}
+.text-blue {
+    color: #0c234b;
+}
+
+.bg-trilines hr, .bg-trilines li, .bg-trilines p {
+    background-color: rgba(255,255,255,.7);
+}
+
+html.ua-brand-icons.external-links .btn[target="_blank"] {
+    padding-right: 12px;
+}
+.btn-hollow, .btn-hollow-default {
+    color: #8b0015 !important;
+    background-color: transparent;
+    border-color: #8b0015 !important;
+    border-width: 2px !important;
+    background-clip: border-box;
+    -webkit-transition: all .1s ease-in-out;
+    transition: all .1s ease-in-out;
+}
+.btn {
+    background-clip: border-box;
+    font-weight: 700;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    white-space: normal;
+}
+.btn-block {
+    display: block;
+    width: 100%;
+}
+.btn {
+    display: inline-block;
+    margin-bottom: 0;
+    font-weight: 700;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+    cursor: pointer;
+    background-image: none;
+    border: 1px solid transparent;
+    padding: 6px 12px;
+    font-size: 16px;
+    line-height: 1.5;
+    border-radius: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    box-shadow: inherit !important;
+}
+.btn.focus, .btn:focus, .btn:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.btn-hollow-default:hover, .btn-hollow:hover {
+    color: #fff !important;
+    background-color: #ab0520;
+    border-color: #ab0520;
+}
+
+
+html.external-links .btn.pseudo-link:after, html.external-links .btn[target=_blank]:after {
+    width: 1.1em;
+}
+html.external-links .pseudo-link:after, html.external-links [target=_blank]:after {
+    border-bottom: .3125em solid transparent;
+    border-left: .3125em solid transparent;
+    border-right: .3125em solid #8f1124;
+    border-top: .3125em solid #8f1124;
+    content: '';
+    display: inline-block;
+    height: 0;
+    position: relative;
+    top: 0;
+    width: 0;
+    right: 0;
+}
+
+.right-column {
+    display: none;
+}
+.mobile-right-column {
+    display: block;
+}
+
+@media (max-width:767px){
+    .container > .row {
+        display: -webkit-box;
+        display: -moz-box;
+        display: box;
+        
+        -webkit-box-orient: vertical;
+        -moz-box-orient: vertical;
+        box-orient: vertical;
+    }
+
+    .mobile-right-column {
+        margin-top: 20px;
+        margin-bottom: 40px;
+        display: block;
+        -webkit-box-ordinal-group: 2;
+        -moz-box-ordinal-group: 2;
+        box-ordinal-group: 2;
+    }
+
+    .left-column {
+        -webkit-box-ordinal-group: 3;
+        -moz-box-ordinal-group: 3;
+        box-ordinal-group: 3;
+    }
+
+    .right-column {
+        display: none;
+    }
+}

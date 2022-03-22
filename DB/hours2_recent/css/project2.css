@@ -1,0 +1,18 @@
+/* Error: Undefined operation "null * 1.5".
+ *     ,
+ * 990 | $main-footer-height-inner: ((($font-size-root * $line-height-base) + ($main-footer-padding * 2))) !default;
+ *     |                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ *     '
+ *   ..\..\Local\Temp\_variables.scss 990:31  @import
+ *   ..\..\Local\Temp\proB301.scss 15:9       root stylesheet */
+
+body::before {
+  font-family: "Source Code Pro", "SF Mono", Monaco, Inconsolata, "Fira Mono",
+      "Droid Sans Mono", monospace, monospace;
+  white-space: pre;
+  display: block;
+  padding: 1em;
+  margin-bottom: 1em;
+  border-bottom: 2px solid black;
+  content: 'Error: Undefined operation "null * 1.5".\a     \2577 \a 990 \2502  $main-footer-height-inner: ((($font-size-root * $line-height-base) + ($main-footer-padding * 2))) !default;\d\a     \2502                                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\a     \2575 \a   ..\\..\\Local\\Temp\\_variables.scss 990:31  @import\a   ..\\..\\Local\\Temp\\proB301.scss 15:9       root stylesheet';
+}

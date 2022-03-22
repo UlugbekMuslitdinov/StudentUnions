@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/catering/online/einsteins/static/css/main.991aed0f.chunk.css",
+    "main.js": "/catering/online/einsteins/static/js/main.59700f8f.chunk.js",
+    "main.js.map": "/catering/online/einsteins/static/js/main.59700f8f.chunk.js.map",
+    "runtime-main.js": "/catering/online/einsteins/static/js/runtime-main.55656120.js",
+    "runtime-main.js.map": "/catering/online/einsteins/static/js/runtime-main.55656120.js.map",
+    "static/css/2.67123b20.chunk.css": "/catering/online/einsteins/static/css/2.67123b20.chunk.css",
+    "static/js/2.dc371ccb.chunk.js": "/catering/online/einsteins/static/js/2.dc371ccb.chunk.js",
+    "static/js/2.dc371ccb.chunk.js.map": "/catering/online/einsteins/static/js/2.dc371ccb.chunk.js.map",
+    "index.html": "/catering/online/einsteins/index.html",
+    "precache-manifest.8680f43c187d2b58624f0924848735a0.js": "/catering/online/einsteins/precache-manifest.8680f43c187d2b58624f0924848735a0.js",
+    "service-worker.js": "/catering/online/einsteins/service-worker.js",
+    "static/css/2.67123b20.chunk.css.map": "/catering/online/einsteins/static/css/2.67123b20.chunk.css.map",
+    "static/css/main.991aed0f.chunk.css.map": "/catering/online/einsteins/static/css/main.991aed0f.chunk.css.map",
+    "static/js/2.dc371ccb.chunk.js.LICENSE": "/catering/online/einsteins/static/js/2.dc371ccb.chunk.js.LICENSE",
+    "static/media/Catalyst_Cafe_Catering_Banner.jpg": "/catering/online/einsteins/static/media/Catalyst_Cafe_Catering_Banner.5c79c466.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.55656120.js",
+    "static/css/2.67123b20.chunk.css",
+    "static/js/2.dc371ccb.chunk.js",
+    "static/css/main.991aed0f.chunk.css",
+    "static/js/main.59700f8f.chunk.js"
+  ]
+}

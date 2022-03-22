@@ -1,0 +1,116 @@
+.banner {
+    display: table;
+    width: 100%;
+}
+
+.hero {
+    display: table-cell;
+    vertical-align: middle;
+    height: 100%;
+    margin: 0 auto;
+}
+
+.container-banner {
+    width: 1170px;
+    margin: 0 auto;
+}
+
+.img-fluid {
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+
+}
+
+.floater-box {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 5;
+    height: 100%;
+}
+
+.floater-row {
+    position: relative;
+    height: 100%;
+    padding-left: 16px;
+    padding-right: 40px;
+}
+
+.header-text-block {
+    background-color: transparent;
+    height: 100%;
+    vertical-align: middle;
+    padding-right: 0;
+    /*    background-image: url('white-back-1.png'); */
+    background-color: #FFFFFF;
+    /* IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=80)";
+
+    /* IE 5-7 */
+    filter: alpha(opacity=80);
+
+    /* Netscape */
+    -moz-opacity: 0.8;
+
+    /* Safari 1.x */
+    -khtml-opacity: 0.8;
+
+    /* Good browsers */
+    opacity: 0.8;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+}
+
+.centering-box {
+    vertical-align: middle;
+}
+
+.vertical-center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+
+.headText {
+    color: #00275B;
+    opacity: 1;
+    font-size: 45px;
+    letter-spacing: -1.53px;
+    font-family: MiloWeb, Verdana, Geneva, sans-serif;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .004);
+    font-weight: 700;
+    line-height: 1;
+    padding-left: 15px;
+}
+
+.box-body-text {
+    font-size: 24px;
+    color: #00275B;
+    padding-top: 15px;
+    line-height: 29px;
+    padding-left: 15px;
+    padding-right: 60px;
+    text-shadow: 1px 1px 1px rgba(0, 0, 0, .004);
+    font-family: MiloWeb, Verdana, Geneva, sans-serif;
+}
+
+.bottom-header-bar {
+    background-color: #AB0520;
+    height: 0;
+    width: 100%;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0;
+    padding-right: 0;
+    vertical-align: bottom;
+    position: absolute;
+}
+

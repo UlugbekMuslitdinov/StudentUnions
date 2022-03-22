@@ -1,0 +1,78 @@
+<html>
+
+	<head>
+		<meta http-equiv="content-type" content="text/html;charset=iso-8859-1">
+		<title>Live Webcam</title>
+	<script language="JavaScript" type="text/javascript">
+<!-- 
+var camImage = '/union.jpg';
+var refreshIntervalSeconds = 5;
+
+var secondsLeft = refreshIntervalSeconds;
+
+function startClock() {
+	if (secondsLeft > 0) {
+	if (secondsLeft < 10) {
+		document.webCam.timer.value = '0' + secondsLeft;
+	} else {
+		document.webCam.timer.value = secondsLeft;
+	}
+	secondsLeft = secondsLeft - 1
+	timerID = setTimeout('startClock()', 1000);
+	} else {
+		date = new Date();
+		imageNumber = date.getTime();
+		document.webCamImage.src = camImage + '?' + imageNumber;
+		secondsLeft = refreshIntervalSeconds;
+		startClock();
+	}
+}
+// -->
+</script>
+<style type="text/css">
+  a {
+    color:#BB2244;
+    text-decoration:none;
+  }
+  #content {
+    color: #444444;
+    font-size: 12px;
+    line-height: 14px;
+  }
+</style>
+	</head>
+
+	<body bgcolor="#CF9911" topmargin="0" leftmargin="0" marginwidth="0" marginheight="0" onLoad="startClock()">
+		<center>
+			<form name="webCam" action="#">
+				<table width="100%" border="0" cellspacing="0" cellpadding="0" height="100%">
+					<tr>
+						<td>
+							<div align="center">
+								<table border="0" cellspacing="0" cellpadding="2" bgcolor="#999999">
+									<tr>
+										<td><img height="288" width="352" src="/union.jpg?" alt="live image" name="webCamImage"></td>
+									</tr>
+									<tr>
+										<td>
+											<table width="100%" border="0" cellspacing="0" cellpadding="6" bgcolor="white">
+												<tr>
+													<td>
+														<div align="center">
+															<font face="Verdana,Arial,Helvetica,sans-serif" size="1">the image will refresh in <input type="text" name="timer" size="2"> seconds</font></div>
+													</td>
+												</tr>
+											</table>
+										</td>
+									</tr>
+								</table>
+							</div>
+						</td>
+					</tr>
+				</table>
+				<p></p>
+			</form>
+		</center>
+	</body>
+
+</html>

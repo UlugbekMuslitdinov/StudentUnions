@@ -1,0 +1,119 @@
+<?php
+
+function node_access_node_grants($account, $op) {
+global $user;
+$units = get_units();
+//var_dump(user_access('admin users'));
+	if ($op == 'view') {
+		foreach($user->roles[DRUPAL_AUTHENTICATED_RID] as $unit){
+			$grants["view_".$unit] = array(TRUE);
+		}
+	  }
+	 if($op == 'view'  && user_access('admin all content')){
+		//$grants['edit_'.$account->unit] = array(1);
+		foreach($units as $key => $unit){
+			//print 1;
+			$grants['view_'.$key] = array(TRUE);
+		}
+		
+	}
+	
+	if ($op == 'view' && user_access('admin users')) {
+			//var_dump('test');
+			$grants["view_prodev"] = array(TRUE);
+	 }
+	 
+	if($op == 'update'  && user_access('admin all content', $account)){
+		//$grants['edit_'.$account->unit] = array(1);
+		foreach($units as $key => $unit){
+			$grants['edit_'.$unit] = array(TRUE);
+		}
+	}
+	
+	if($op == 'update'  && user_access('edit unit content', $account)){
+		//$grants['edit_'.$account->unit] = array(1);
+		foreach($user->roles[CONTENT_ADMIN_RID] as $unit){
+			$grants['edit_'.$user->unit] = array(TRUE);
+		}
+	}
+	
+	if($op == 'update'  && user_access('edit general content', $account)){
+		//$grants['edit_0'] = array(1);
+		$grants['edit_0'] = array(TRUE);
+	}
+	if($op == 'update'  && user_access('edit resource book', $account)){
+		//$grants['edit_0'] = array(1);
+		$grants['edit_prodev'] = array(TRUE);
+	}
+	
+
+  	return $grants;
+}
+
+function node_access_node_access_records($node) {
+
+	if (node_access_disabling()) {
+		return;
+	}
+	
+	  //var_dump($node);
+	if ($node->unit && $node->unit > -1) {
+		$grants[] = array(
+			  'realm' =>"view_".$node->unit, 
+			  'gid' => TRUE, 
+			  'grant_view' => TRUE, 
+			  'grant_update' => FALSE, 
+			  'grant_delete' => FALSE,
+			  'priority' => 10,
+			);
+			
+		
+		$grants[] = array(
+			  'realm' => 'edit_'.$node->unit, 
+			  'gid' => TRUE, 
+			  'grant_view' => TRUE, 
+			  'grant_update' => TRUE, 
+			  'grant_delete' => FALSE,
+			  'priority' => 10,
+			);
+		
+		return $grants;
+	}
+	if($node->unit == -2){
+		$grants[] = array(
+			  'realm' =>"view_prodev", 
+			  'gid' => TRUE, 
+			  'grant_view' => TRUE, 
+			  'grant_update' => FALSE, 
+			  'grant_delete' => FALSE,
+			  'priority' => 11,
+			);
+			
+		
+		$grants[] = array(
+			  'realm' => 'edit_prodev', 
+			  'gid' => TRUE, 
+			  'grant_view' => TRUE, 
+			  'grant_update' => TRUE, 
+			  'grant_delete' => FALSE,
+			  'priority' => 11,
+			);
+		return $grants;
+	}
+
+}
+
+function node_access_perm(){
+	return array('edit unit content', 'edit general content', 'admin all content', 'edit resource book');
+}
+
+
+function node_access_disabling($set = NULL) {
+  static $disabling = false;
+  if ($set !== NULL) {
+    $disabling = $set;
+  }
+  return $disabling;
+}
+
+?>

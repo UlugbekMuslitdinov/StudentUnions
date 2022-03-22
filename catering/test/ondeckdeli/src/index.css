@@ -1,0 +1,43 @@
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 100px;
+  padding: 0;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 60px; /* Set the fixed height of the footer here */
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #f59525;
+  color: white;
+}
+
+@font-face {
+  font-family: 'SummaryFont';
+  src: url('/catering/online/ondeckdeli/public/fonts/MiloOT-Black.otf');
+}
+
+.summary-cards .card-title {
+  font-weight: 400;
+}
+.summary-cards table {
+  border-left: 1px solid #dee2e6;
+  border-right: 1px solid #dee2e6;
+  border-bottom: 1px solid #dee2e6;
+}
+.summary-cards thead {
+  background-color: #f3f3f3;
+}
+.summary-cards table th:nth-child(1), .summary-cards table td:nth-child(1) {
+  text-align: left;
+}
+.summary-cards table th {
+  /* font-family: 'SummaryFont'; */
+  color: #5f5f5f;
+}

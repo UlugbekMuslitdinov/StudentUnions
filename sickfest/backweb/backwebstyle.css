@@ -1,0 +1,14 @@
+@charset "UTF-8";
+body, html {
+	font-family:Helvetica,Verdana,Arial;
+}
+a, img, a:hover, a:active, a:focus, a:visited {
+	text-decoration:none;
+	border:0;
+	outline: none;
+	cursor:pointer;
+}
+td {
+	padding-top:3px;
+	padding-bottom:3px;
+}

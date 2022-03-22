@@ -1,0 +1,125 @@
+@CHARSET "UTF-8";
+body #catering_page  {
+	line-height: 1.5em !important;
+}
+#catering_page h2 {
+	margin-top: .25em !important;
+	font-size: 2.25em !important;
+	color: #C62034 !important;
+} 
+#catering_page h3 {
+	font-size: 1.5em !important;
+}
+#catering_page p, #catering_page a, #catering_page td {
+	font-size: 1.25em !important;
+	line-height: 1.25em !important;
+}
+#catering_page a {
+	font-size: 1em !important;
+	line-height: 1em !important;
+}
+#catering_page p {
+	margin-top: 1.25em;
+}
+#catering_page input[type="text"], textarea {
+	-moz-border-radius: 5px !important;
+	border-radius: 5px !important;
+	-khtml-border-radius: 5px !important;
+	border: solid 1px #CCCCCC !important;
+	padding: 3px !important;
+	color: #000000;
+}
+#catering_page input[type="text"]:focus, textarea:focus {
+	border-color: #5CADD6 !important;
+	-webkit-box-shadow:  1px 1px 1px #5CADD6;
+	-moz-box-shadow:  1px 1px 1px #5CADD6;
+	-khtml-box-shadow:  1px 1px 1px #5CADD6;
+	box-shadow:  1px 1px 1px #5CADD6;
+}
+#catering_page select {
+	height: 22px;  
+	line-height: 20px;
+	padding: 2px;
+}
+#catering_page select option {
+	 
+	line-height: 20px;
+	padding: 2px;
+}
+#catering_page .collapse li  {
+	font-size: 1.25em !important; 
+	line-height: 1.25em !important; 
+}
+#catering_page .expand li a {
+	font-size: 1.25em !important; 
+	line-height: 1.25em !important; 
+}
+#catering_page li a, #catering_page .collapse p  a {
+	font-size: 1em !important; 
+}
+.bold {
+	font-weight: bold !important; 
+}
+.bottom1em {
+	margin-bottom: 1em !important;
+}
+#prevEventInfo {
+	margin-left: 1.25em;
+	margin-bottom: 1em;
+}
+ 
+.gallery-col {
+	max-width: 170px;
+	padding: 3px;
+	margin-left: 0;
+	float: left;
+	margin-bottom: 2em;
+}
+.gallery-col ul {
+	list-style: none;
+}
+.gallery-col img {
+	max-width: 150px;
+	margin-top: 1em;
+}
+.logo-img {
+	position:relative;
+	top:-21em; 
+	left: 2em;
+	z-index: 9;
+	margin-bottom: 0 !important;
+}
+ul li.expand {
+	margin-top: .25em;
+	list-style-type: none !important;
+	line-height: 1.5em !important;
+	font-size: 1.15em !important;
+	color: #C62034 !important;
+}
+div.collapse p, div.collapse ul, div.collapse hr {
+	max-width: 510px;
+}
+#catering_page dl {
+	font-size: .75em;
+	margin-bottom: 20px !important;
+}
+#catering_page .expand h3 {
+	font-size: 1.25em !important;
+	font-weight: bold;
+	color: #C62034;
+	margin-bottom: 1em !important; 
+    cursor: pointer;
+}
+
+#catering_page dl dd {
+	font-size: 1.25em;
+	color: #555;
+	margin-bottom: 1em !important;
+	
+}
+.left30 {
+	margin-left: 2em !important;
+}
+.VerColMenu {
+	margin-left: -.2em !important;
+}

@@ -1,0 +1,2048 @@
+<?php
+//Configuration of the form admin application
+//Don't use special characters (", ', `, etc) in here - it should be fine but better safe than sql injection
+$form_cfg = Array( //List of all the forms currently implemented
+	"room_reservation" => Array( //Form name
+		"title" => "Room Reservations", //The title of the form
+		"description" => "SUMC Room Reservation Order Form", //A longer descriptive statement about the form
+		"database" => "su", //The database this form resides in
+		"primary_table" => "room_reservation", //The main table which as used as the basis of the form
+		"tables" => Array(
+			"room_reservation" => Array(
+				"type" => "simple", //Type of table - "simple" is just a normal table, which can contain relations to more unique tables
+				"title" => "Room Reservations", //Title of table - can be empty, more applicable to secondary tables
+				"table" => "room_reservation", //The name of the actual table in SQL
+				"pk" => "id", //The primary key - this is also used by some secondary tables to reference this one
+				"fields" => Array(
+					"room" => Array(
+						"title" => "Selected Rooms", //Short, descriptive text that will appear on column headers
+						"type" => "secondary", //Type of column - "secondary" is a special case that says to bring in data from another table
+						"table" => "room", //The name of the secondary table (as defined below, not the actual SQL name)
+						"relation_key" => "room_reservation_id", //The column in the secondary table that contains the primary key of the record in THIS table that that record applies to
+						"required" => true //Whether a field is required to have a value - in the case of a secondary table, it must have some data linked to it
+					),
+					"contact_org" => Array(
+						"title" => "Organization",
+						"type" => "text" //"text" is anything other than nothing with a string representation
+					),
+					"contact_name" => Array(
+						"title" => "Name",
+						"type" => "text",
+						"required" => true //For a simple field, it just can't be empty
+					),
+					"contact_email" => Array(
+						"title" => "Email",
+						"type" => "email", //"email" is a valid email address
+						"required" => true
+					),
+					"contact_phone" => Array(
+						"title" => "Phone",
+						"type" => "text",
+						"required" => true
+					),
+					"contact_fax" => Array(
+						"title" => "Fax",
+						"type" => "text"
+					),
+					"contact_address" => Array(
+						"title" => "Address",
+						"type" => "text"
+					),
+					"contact_city" => Array(
+						"title" => "City",
+						"type" => "text"
+					),
+					"contact_state" => Array(
+						"title" => "State",
+						"type" => "text"
+					),
+					"contact_zip" => Array(
+						"title" => "Zipcode",
+						"type" => "text"
+					),
+					"contact_advisor" => Array(
+						"title" => "Advisor Name",
+						"type" => "text"
+					),
+					"contact_advisor_phone" => Array(
+						"title" => "Advisor Phone",
+						"type" => "text"
+					),
+					"contact_advisor_email" => Array(
+						"title" => "Advisor Email",
+						"type" => "email"
+					),
+					"billing_org" => Array(
+						"title" => "Billing Organization",
+						"type" => "text"
+					),
+					"billing_name" => Array(
+						"title" => "Billing Name",
+						"type" => "text",
+						"required" => true
+					),
+					"billing_email" => Array(
+						"title" => "Billing Email",
+						"type" => "email",
+						"required" => true
+					),
+					"billing_phone" => Array(
+						"title" => "Billing Phone",
+						"type" => "text",
+						"required" => true
+					),
+					"billing_fax" => Array(
+						"title" => "Billing Fax",
+						"type" => "text"
+					),
+					"billing_address" => Array(
+						"title" => "Billing Address",
+						"type" => "text"
+					),
+					"billing_city" => Array(
+						"title" => "Billing City",
+						"type" => "text"
+					),
+					"billing_state" => Array(
+						"title" => "Billing State",
+						"type" => "text"
+					),
+					"billing_zip" => Array(
+						"title" => "Billing Zipcode",
+						"type" => "text"
+					),
+					"billing_method" => Array(
+						"title" => "Payment Method",
+						"type" => "textopts", //"textopts" is plain text, but selected from a drop-down or similar by the user
+						"options" => Array( //"options" is the possible values for "textopts" fields, although admin user can enter anything
+							"Check",
+							"FRS Account"
+						),
+						"required" => true
+					),
+					"billing_frs" => Array(
+						"title" => "FRS Account #",
+						"type" => "text"
+					),
+					"event_title" => Array(
+						"title" => "Event Title",
+						"type" => "text"
+					),
+					"event_type" => Array(
+						"title" => "Event Type",
+						"type" => "textopts",
+						"options" => Array(
+							"Meeting (no food/beverage)",
+							"Meeting with Catering",
+							"Banquet",
+							"Expo",
+							"Reception"
+						)
+					),
+					"event_date" => Array(
+						"title" => "Event Date",
+						"type" => "date", //"date" is an SQL DATE serverside, and anything that PHP can consider a date/time clientside
+						"required" => true
+					),
+					"event_time_start" => Array(
+						"title" => "Event Start Time",
+						"type" => "time",
+						"required" => true
+					),
+					"event_time_end" => Array(
+						"title" => "Event End Time",
+						"type" => "time",
+						"required" => true
+					),
+					"event_num_people" => Array(
+						"title" => "# of People",
+						"type" => "integer", //"integer" is a SQL INT serverside, and a integet or its string representation clientside
+						"required" => true
+					),
+					"event_room_preference" => Array(
+						"title" => "Room Preference",
+						"type" => "text"
+					),
+					"recurring_jan" => Array(
+						"title" => "Recurring: January",
+						"type" => "text"
+					),
+					"recurring_feb" => Array(
+						"title" => "Recurring: February",
+						"type" => "text"
+					),
+					"recurring_mar" => Array(
+						"title" => "Recurring: March",
+						"type" => "text"
+					),
+					"recurring_apr" => Array(
+						"title" => "Recurring: April",
+						"type" => "text"
+					),
+					"recurring_may" => Array(
+						"title" => "Recurring: May",
+						"type" => "text"
+					),
+					"recurring_jun" => Array(
+						"title" => "Recurring: June",
+						"type" => "text"
+					),
+					"recurring_jul" => Array(
+						"title" => "Recurring: July",
+						"type" => "text"
+					),
+					"recurring_aug" => Array(
+						"title" => "Recurring: August",
+						"type" => "text"
+					),
+					"recurring_sep" => Array(
+						"title" => "Recurring: September",
+						"type" => "text"
+					),
+					"recurring_oct" => Array(
+						"title" => "Recurring: October",
+						"type" => "text"
+					),
+					"recurring_nov" => Array(
+						"title" => "Recurring: November",
+						"type" => "text"
+					),
+					"recurring_dec" => Array(
+						"title" => "Recurring: December",
+						"type" => "text"
+					),
+					"setup_shape" => Array(
+						"title" => "Setup Shape",
+						"type" => "text"
+					),
+					"media" => Array(
+						"title" => "Media Options",
+						"type" => "secondary",
+						"table" => "media",
+						"relation_key" => "room_reservation_id"
+					),
+					"certification_name" => Array(
+						"title" => "Lessee Name",
+						"type" => "text",
+						"required" => true
+					),
+					"certification_date" => Array(
+						"title" => "Certification Date",
+						"type" => "date",
+						"required" => true
+					),
+					"timestamp" => Array(
+						"title" => "Time Submitted",
+						"type" => "datetime", //"datetime" is an SQL DATETIME or TIMESTAMP serverside, and anything that PHP can consider a date/time clientside
+						"locked" => true //Locked indicates that the field cannot be changed by the user
+					)
+				),
+				"key_fields" => Array( //"Important" fields, displayed in multi-record view. If undefined, the first 5 fields are shown.
+					"contact_name",
+					"contact_email",
+					"contact_phone",
+					"event_title",
+					"event_date",
+					"event_time_start"
+				)
+			),
+			"room" => Array(
+				"type" => "option_array", //"option_array" is basically a representation of checkboxes - you have predefined options that can be selected or unselected.
+				"title" => "",
+				"table" => "room_reservation_room",
+				"pk" => "id",
+				"option_table" => "room_options", //The name of the table (as defined in this file, not the SQL name) holding those predefined options
+				"option_key" => "room_id" // The column in this table that references the primary key of the desired option in the option table
+			),
+			"room_options" => Array(
+				"type" => "options",	//"options" is a list of predefined values/options as used by "option_array"
+										//the difference from "simple" is these options are presented to the user as immutable in the main table.
+										//additionally, the entire table is loaded instead of just a few records.
+				"title" => "Rooms",
+				"table" => "room_reservation_room_options",
+				"pk" => "id",
+				"separator" => ", ", //String placed between field values if there is more than one field in some situations. Defaults to ", "
+				"fields" => Array(
+					"room" => Array(
+						"title" => "Room",
+						"type" => "text"
+					)/*,
+					"floor" => Array(
+						"title" => "Floor",
+						"type" => "integer"
+					)
+					*/
+				)
+			),
+			"media" => Array(
+				"type" => "option_array",
+				"title" => "",
+				"table" => "room_reservation_media",
+				"pk" => "id",
+				"option_table" => "media_options",
+				"option_key" => "media_id"
+			),
+			"media_options" => Array(
+				"type" => "options",
+				"title" => "Media Options",
+				"table" => "room_reservation_media_options",
+				"pk" => "id",
+				"fields" => Array(
+					"media" => Array(
+						"title" => "Item",
+						"type" => "text"
+					)
+				)
+			)
+		),
+		"veda_groups" => Array( //List of security groups and what permissions each one has
+			1 => Array( //Key is group ID as in admin_screens, ID 0 means public
+				"view" => true, //Permission to view records, including the main record list
+				"edit" => true, //'' edit records
+				"delete" => true, //'' delete records
+				"add" => true //'' add new records
+			)
+		)
+	),
+	"deliverance_current" => Array(
+		"title" => "Current",
+		"description" => "Current mapping of resources to displays",
+		"category" => "Deliverance", //The title of a category in the form list, generated automatically
+		"database" => "deliverance",
+		"primary_table" => "current",
+		"tables" => Array(
+			"current" => Array(
+				"type" => "simple",
+				"title" => "Deliverance: Current",
+				"table" => "current",
+				"pk" => "id",
+				"fields" => Array(
+					"resourceID" => Array(
+						"title" => "Resource",
+						"type" => "secondary",
+						"table" => "resource"
+					),
+					"displayBlockID" => Array(
+						"title" => "Display Block",
+						"type" => "secondary",
+						"table" => "displayblock"
+					)
+				),
+				"key_fields" => Array(
+					"displayBlockID",
+					"resourceID"
+				),
+				"sort" => Array( //Tells how to sort the table by default
+					"field" => "displayBlockID", //What field to sort by (SQL name)
+					"direction" => "ascending" //What direction to sort by (ascending or descending)
+				)
+			),
+			"resource" => ($include_resource = Array( //NB: this oneliner lets us reuse this in another form
+				"type" => "reference", //References a record in another form, incl. link to that record
+				"title" => "Resources",
+				"form" => "deliverance_resource",
+				"pk" => "id",
+				"label_field" => "resourceName"
+			)),
+			"displayblock" => ($include_displayblock = Array(
+				"type" => "reference",
+				"title" => "Display Blocks",
+				"form" => "deliverance_displayblock",
+				"pk" => "id",
+				"label_field" => "displayBlockName"
+			))
+		),
+		"veda_groups" => Array(
+			2 => Array(
+				"view" => true,
+				"edit" => true,
+				"delete" => true,
+				"add" => true
+			)
+		)
+	),
+	"deliverance_resource" => Array(
+		"title" => "Resources",
+		"description" => "Deliverance resources and metadata",
+		"category" => "Deliverance",
+		"database" => "deliverance",
+		"primary_table" => "resource",
+		"tables" => Array(
+			"resource" => Array(
+				"type" => "simple",
+				"title" => "Deliverance: Resources",
+				"table" => "resource",
+				"pk" => "id",
+				"fields" => Array(
+					"filePath" => Array(
+						"title" => "File Path",
+						"type" => "url",
+						"required" => true,
+						"locked" => true
+					),
+					"fileSize" => Array(
+						"title" => "File Size",
+						"type" => "integer",
+						"locked" => true
+					),
+					"dimensionsID" => Array(
+						"title" => "Dimensions",
+						"type" => "secondary",
+						"table" => "dimensions",
+						"required" => true
+					),
+					"type" => Array(
+						"title" => "File Type",
+						"type" => "text",
+						"locked" => true
+					),
+					"resourceName" => Array(
+						"title" => "Name",
+						"type" => "text",
+						"required" => true
+					),
+					"resourceLink" => Array(
+						"title" => "Target Link",
+						"type" => "url"
+					),
+					"headline" => Array(
+						"title" => "Headline",
+						"type" => "text"
+					),
+					"subtext" => Array(
+						"title" => "Subtext",
+						"type" => "text"
+					),
+					"site" => Array(
+						"title" => "Site",
+						"type" => "text",
+						"required" => true
+					),
+					"altTxt" => Array(
+						"title" => "Alt Text",
+						"type" => "text"
+					),
+					"description" => Array(
+						"title" => "Description",
+						"type" => "text"
+					),
+					"uploadDate" => Array(
+						"title" => "Upload Date",
+						"type" => "date",
+						"locked" => true,
+						"searchable" => true //This will make a field sortable and searchable even if it is locked.
+					)
+				),
+				"key_fields" => Array(
+					"filePath",
+					"resourceName",
+					"resourceLink",
+					"uploadDate"
+				)
+			),
+			"dimensions" => ($dimensions_config = Array(
+				"type" => "options",
+				"title" => "Dimensions",
+				"table" => "dimensions",
+				"pk" => "id",
+				"separator" => " x ",
+				"fields" => Array(
+					"width" => Array(
+						"title" => "Width (px)",
+						"type" => "integer"
+					),
+					"height" => Array(
+						"title" => "Height (px)",
+						"type" => "integer"
+					)
+				)
+			))
+		),
+		"veda_groups" => Array(
+			2 => Array(
+				"view" => true,
+				"edit" => true,
+				"delete" => true,
+				"add" => true
+			)
+		)
+	),
+	"deliverance_displayblock" => Array(
+		"title" => "Display Blocks",
+		"description" => "Deliverance display blocks (screens, web slots, etc.)",
+		"category" => "Deliverance",
+		"database" => "deliverance",
+		"primary_table" => "displayblock",
+		"tables" => Array(
+			"displayblock" => Array(
+				"type" => "simple",
+				"title" => "Deliverance: Display Blocks",
+				"table" => "displayblock",
+				"pk" => "id",
+				"fields" => Array(
+					"displayBlockName" => Array(
+						"title" => "Block Name",
+						"type" => "text",
+						"required" => true
+					),
+					"displayType" => Array(
+						"title" => "Display Type",
+						"type" => "textopts",
+						"options" => Array(
+							"image"
+						),
+						"required" => true
+					),
+					"dimensionsID" => Array(
+						"title" => "Dimensions",
+						"type" => "secondary",
+						"table" => "dimensions",
+						"required" => true
+					),
+					"feedType" => Array(
+						"title" => "Feed Type",
+						"type" => "textopts",
+						"options" => Array(
+							"sequential",
+							"random",
+							"static"
+						),
+						"required" => true
+					),
+					"site" => Array(
+						"title" => "Site",
+						"type" => "text",
+						"required" => true
+					)
+				)
+			),
+			"dimensions" => $dimensions_config
+		),
+		"veda_groups" => Array(
+			2 => Array(
+				"view" => true,
+				"edit" => true,
+				"delete" => true,
+				"add" => true
+			)
+		)
+	),
+	"deliverance_randomfeed" => Array(
+		"title" => "Random Feed",
+		"description" => "Mapping of display blocks to multiple resources displayed randomly",
+		"category" => "Deliverance",
+		"database" => "deliverance",
+		"primary_table" => "randomfeed",
+		"tables" => Array(
+			"randomfeed" => Array(
+				"type" => "simple",
+				"title" => "Deliverance: Random Feed",
+				"table" => "randomfeed",
+				"pk" => "id",
+				"fields" => ($deliverance_feed_fields = Array(
+					"resourceID" => Array(
+						"title" => "Resource",
+						"type" => "secondary",
+						"table" => "resource",
+						"required" => true
+					),
+					"displayBlockID" => Array(
+						"title" => "Display Block",
+						"type" => "secondary",
+						"table" => "displayblock"
+					),
+					"startDate" => Array(
+						"title" => "Start Date",
+						"type" => "date",
+						"required" => true
+					),
+					"endDate" => Array(
+						"title" => "End Date",
+						"type" => "date",
+						"required" => true
+					)
+				))
+			),
+			"resource" => $include_resource,
+			"displayblock" => $include_displayblock
+		),
+		"veda_groups" => Array(
+			2 => Array(
+				"view" => true,
+				"edit" => true,
+				"delete" => true,
+				"add" => true
+			)
+		)
+	),
+	"deliverance_sequentialfeed" => Array(
+		"title" => "Sequential Feed",
+		"description" => "Mapping of display blocks to multiple resources displayed in order",
+		"category" => "Deliverance",
+		"database" => "deliverance",
+		"primary_table" => "randomfeed",
+		"tables" => Array(
+			"randomfeed" => Array(
+				"type" => "simple",
+				"title" => "Deliverance: Sequential Feed",
+				"table" => "sequentialfeed",
+				"pk" => "id",
+				"fields" => $deliverance_feed_fields
+			),
+			"resource" => $include_resource,
+			"displayblock" => $include_displayblock
+		),
+		"veda_groups" => Array(
+			2 => Array(
+				"view" => true,
+				"edit" => true,
+				"delete" => true,
+				"add" => true
+			)
+		)
+	),
+	"deliverance_defaults" => Array(
+		"title" => "Defaults",
+		"description" => "Fallback mapping of resources to display blocks",
+		"category" => "Deliverance",
+		"database" => "deliverance",
+		"primary_table" => "defaults",
+		"tables" => Array(
+			"defaults" => Array(
+				"type" => "simple",
+				"title" => "Deliverance: Random Feed",
+				"table" => "defaults",
+				"pk" => "id",
+				"fields" => ($deliverance_feed_fields = Array(
+					"resourceID" => Array(
+						"title" => "Resource",
+						"type" => "secondary",
+						"table" => "resource",
+						"required" => true
+					),
+					"displayBlockID" => Array(
+						"title" => "Display Block",
+						"type" => "secondary",
+						"table" => "displayblock"
+					)
+				))
+			),
+			"resource" => $include_resource,
+			"displayblock" => $include_displayblock
+		),
+		"veda_groups" => Array(
+			2 => Array(
+				"view" => true,
+				"edit" => true,
+				"delete" => true,
+				"add" => true
+			)
+		)
+	),
+	"hours_location" => Array(
+		"title" => "Locations",
+		"description" => "Union stores and restaurants",
+		"category" => "Hours",
+		"database" => "hours2",
+		"primary_table" => "location",
+		"tables" => Array(
+			"location" => Array(
+				"type" => "simple",
+				"title" => "Locations",
+				"table" => "location",
+				"pk" => "location_id",
+				"fields" => Array(
+					"location_name" => Array(
+						"title" => "Location Name",
+						"type" => "text",
+						"required" => true
+					),
+					"location_url" => Array(
+						"title" => "Location URL",
+						"type" => "url"
+					),
+					"group_id" => Array(
+						"title" => "Group",
+						"type" => "secondary",
+						"table" => "groups",
+						"required" => true
+					),
+					"active" => Array(
+						"title" => "Active",
+						"type" => "integer"
+					),
+					"group_hours" => Array(
+						"title" => "Group Hours",
+						"type" => "text"
+					),
+					"phone" => Array(
+						"title" => "Phone #",
+						"type" => "text"
+					),
+					"subgroup" => Array(
+						"title" => "Subgroup",
+						"type" => "textopts",
+						"options" => Array(
+							"Dining",
+							"Services"
+						)
+					),
+					"old_id" => Array(
+						"title" => "Old ID",
+						"type" => "integer"
+					),
+					"short_name" => Array(
+						"title" => "Shortname",
+						"type" => "text"
+					),
+					"accept_plus_discount" => Array(
+						"title" => "Accept Plus Discount",
+						"type" => "integer",
+						"int_min" => 0, //Lower bound of integer
+						"int_max" => 1, //Upper bound of integer
+						"required" => true
+					),
+					"lat" => Array(
+						"title" => "Latitude",
+						"type" => "text"
+					),
+					"long" => Array(
+						"title" => "Longitude",
+						"type" => "text"
+					),
+					"ua_mobile_categories" => Array(
+						"title" => "UA Mobile Category",
+						"type" => "text",
+						"required" => true
+					),
+					"breakfast" => Array(
+						"title" => "Has Breakfast",
+						"type" => "yesno", //A special case where yes and no are the only options
+						"required" => true
+					),
+					"lunch" => Array(
+						"title" => "Has Lunch",
+						"type" => "yesno",
+						"required" => true
+					),
+					"dinner" => Array(
+						"title" => "Has Dinner",
+						"type" => "yesno",
+						"required" => true
+					),
+					"continuous" => Array(
+						"title" => "Is Continuous",
+						"type" => "yesno",
+						"required" => true
+					),
+					"description" => Array(
+						"title" => "Description",
+						"type" => "secondary",
+						"table" => "descriptions",
+						"data_source" => "location_id", //The actual SQL column to select.
+						"locked" => true //If using data_source, the field MUST be locked.
+					)
+				),
+				"key_fields" => Array(
+					"short_name",
+					"group_id",
+					"breakfast",
+					"lunch",
+					"dinner",
+					"continuous"
+				),
+				"sort" => Array(
+					"field" => "location_id",
+					"direction" => "ascending"
+				)
+			),
+			"groups" => Array(
+				"type" => "options",
+				"title" => "Location Groups",
+				"table" => "groups",
+				"pk" => "group_id",
+				"fields" => Array(
+					"group_name" => Array(
+						"title" => "Group Name",
+						"type" => "text"
+					)
+				)
+			),
+			"descriptions" => Array(
+				"type" => "reference",
+				"title" => "Location Descriptions",
+				"form" => "hours_location_descriptions",
+				"pk" => "location_id",
+				"label_field" => "short"
+			)
+		),
+		"veda_groups" => Array(
+			3 => Array(
+				"view" => true,
+				"edit" => true,
+				"delete" => true,
+				"add" => true
+			)
+		)
+	),
+	"hours_location_descriptions" => Array(
+		"title" => "Location Descriptions",
+		"description" => "Descriptions of Union stores and restaurants",
+		"category" => "Hours",
+		"database" => "hours2",
+		"primary_table" => "location_descriptions",
+		"tables" => Array(
+			"location_descriptions" => Array(
+				"type" => "simple",
+				"title" => "Location Descriptions",
+				"table" => "location_descriptions",
+				"pk" => "location_id",
+				"fields" => Array(
+					"description" => Array(
+						"title" => "Location",
+						"type" => "secondary",
+						"table" => "locations",
+						"data_source" => "location_id",
+						"locked" => true
+					),
+					"short" => Array(
+						"title" => "Short Desc.",
+						"type" => "text",
+						"required" => true
+					),
+					"long" => Array(
+						"title" => "HTML Desc.",
+						"type" => "html",
+						"required" => true
+					)
+				),
+				"key_fields" => Array(
+					"description",
+					"short"
+				),
+				"sort" => Array(
+					"field" => "location_id",
+					"direction" => "ascending"
+				)
+			),
+			"locations" => Array(
+				"type" => "reference",
+				"title" => "Locations",
+				"form" => "hours_location",
+				"pk" => "location_id",
+				"label_field" => "short_name"
+			)
+		),
+		"veda_groups" => Array(
+			3 => Array(
+				"view" => true,
+				"edit" => true,
+				"delete" => true,
+				"add" => true
+			)
+		)
+	),
+	"hours_periods" => Array(
+		"title" => "Periods",
+		"description" => "Periods of time",
+		"category" => "Hours",
+		"database" => "hours2",
+		"primary_table" => "periods",
+		"tables" => Array(
+			"periods" => Array(
+				"type" => "simple",
+				"title" => "Periods",
+				"table" => "periods",
+				"pk" => "ID",
+				"fields" => Array(
+					"start_date" => Array(
+						"title" => "Start Date",
+						"type" => "date",
+						"required" => true
+					),
+					"end_date" => Array(
+						"title" => "End Date",
+						"type" => "date",
+						"required" => true
+					),
+					"type" => Array(
+						"title" => "Type",
+						"type" => "integer",
+						"int_min" => 0,
+						"int_max" => 1,
+						"required" => true
+					)
+				)
+			)
+		),
+		"veda_groups" => Array(
+			3 => Array(
+				"view" => true,
+				"edit" => true,
+				"delete" => true,
+				"add" => true
+			)
+		)
+	),
+	"admin_users" => Array(
+		"title" => "Admin Access: Users",
+		"description" => "Correlation between person, netID, and access to this system.",
+		"database" => "su",
+		"primary_table" => "admin_users",
+		"tables" => Array(
+			"admin_users" => Array(
+				"type" => "simple",
+				"title" => "Admin Users",
+				"table" => "admin_users",
+				"pk" => "id",
+				"fields" => Array(
+					"unionstaff_id" => Array(
+						"title" => "Staff ID",
+						"type" => "secondary",
+						"table" => "unionstaff"
+					),
+					"netid" => Array(
+						"title" => "netID",
+						"type" => "text",
+						"required" => true
+					),
+					"access_level" => Array(
+						"title" => "Access Level",
+						"type" => "integer",
+						"int_min" => 1,
+						"int_max" => 3,
+						"required" => true
+					),
+					"access" => Array(
+						"title" => "Access Groups",
+						"type" => "secondary",
+						"table" => "admin_access",
+						"relation_key" => "admin_user_id"
+					),
+					"active" => Array(
+						"title" => "Active User",
+						"type" => "integer",
+						"int_min" => 0,
+						"int_max" => 1,
+						"required" => true
+					)
+				),
+				"key_fields" => Array(
+					"netid",
+					"unionstaff_id",
+					"access_level"
+				)
+			),
+			"unionstaff" => Array(
+				"type" => "reference",
+				"title" => "Union Staff",
+				"form" => "unionstaff",
+				"pk" => "id",
+				"label_field" => "directoryFN"
+			),
+			"admin_access" => Array(
+				"type" => "option_array",
+				"title" => "Access Groups",
+				"table" => "admin_access",
+				"pk" => "id",
+				"option_table" => "admin_screens",
+				"option_key" => "admin_screen_id"
+			),
+			"admin_screens" => Array(
+				"type" => "options",
+				"title" => "Admin Screens",
+				"table" => "admin_screens",
+				"pk" => "id",
+				"fields" => Array(
+					"admin_screen" => Array(
+						"title" => "Admin Screen",
+						"type" => "text"
+					)
+				)
+			)
+		),
+		"disallow_matched_user" => "netid", //This prevents a user from modifying a record where "netid" is their netid
+		"disallowed_fields" => Array( //Specifies what fields to disallow a disallowed case, defaults to all
+			"netid",
+			"access_level",
+			"access",
+			"active"
+		),
+		"veda_groups" => Array() //By leaving this empty, the form is admin (level 3) only.
+	),
+	"unionstaff" => Array(
+		"title" => "Student Union Staff",
+		"description" => "Directory of staff members of the Arizona Student Unions",
+		"database" => "unionstaffdirectory",
+		"primary_table" => "employee",
+		"tables" => Array(
+			"employee" => Array(
+				"type" => "simple",
+				"title" => "Union Staff",
+				"table" => "employee",
+				"pk" => "id",
+				"fields" => Array(
+					"directoryFN" => Array(
+						"title" => "First Name",
+						"type" => "text",
+						"required" => true
+					),
+					"directoryLN" => Array(
+						"title" => "Last Name",
+						"type" => "text"
+					),
+					"departmentId" => Array(
+						"title" => "Department",
+						"type" => "secondary",
+						"table" => "departments"
+					),
+					"jobTitle" => Array(
+						"title" => "Job Title",
+						"type" => "text"
+					),
+					"email" => Array(
+						"title" => "Email",
+						"type" => "email"
+					),
+					"phone" => Array(
+						"title" => "Phone #",
+						"type" => "text"
+					)
+				),
+				"key_fields" => Array(
+					"directoryFN",
+					"directoryLN",
+					"jobTitle",
+					"email"
+				),
+				"sort" => Array(
+					"field" => "directoryLN",
+					"direction" => "ascending"
+				)
+			),
+			"departments" => Array(
+				"type" => "options",
+				"title" => "Union Departments",
+				"table" => "departments",
+				"pk" => "id",
+				"fields" => Array(
+					"departmentName" => Array(
+						"title" => "Department",
+						"type" => "text"
+					)
+				)
+			)
+		),
+		"veda_groups" => Array(
+			0 => Array(
+				"view" => true,
+				"edit" => false,
+				"delete" => false,
+				"add" => false
+			)
+		)
+	),
+	"sutech_computer_access" => Array(
+		"title" => "Computer Access Requests",
+		"description" => "Requests for employee access to computer systems",
+		"category" => "SU Tech Forms",
+		"database" => "sucs",
+		"primary_table" => "computer_access_requests",
+		"tables" => Array(
+			"computer_access_requests" => Array(
+				"type" => "simple",
+				"table" => "computer_access_requests",
+				"pk" => "id",
+				"fields" => Array(
+					"supervisor_name" => Array(
+						"title" => "Supervisor Name",
+						"type" => "text",
+						"required" => true
+					),
+					"supervisor_phone" => Array(
+						"title" => "Supervisor Phone",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_type" => Array(
+						"title" => "Employee Type",
+						"type" => "textopts",
+						"options" => Array(
+							"New Employee",
+							"Updated Employee"
+						),
+						"required" => true
+					),
+					"employee_position" => Array(
+						"title" => "Employee Position",
+						"type" => "textopts",
+						"options" => Array(
+							"Staff",
+							"Student"
+						),
+						"required" => true
+					),
+					"employee_first_name" => Array(
+						"title" => "Employee First Name",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_last_name" => Array(
+						"title" => "Employee Last Name",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_title" => Array(
+						"title" => "Employee Title",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_email" => Array(
+						"title" => "Employee Email",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_phone" => Array(
+						"title" => "Employee Phone",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_unit" => Array(
+						"title" => "Employee Department",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_netid" => Array(
+						"title" => "Employee NetID",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_id" => Array(
+						"title" => "Employee ID",
+						"type" => "text",
+						"required" => true
+					),
+					"location" => Array(
+						"title" => "Workstation Location",
+						"type" => "text",
+						"required" => true
+					),
+					"access" => Array(
+						"title" => "Access Needed",
+						"type" => "bitfield", //A binary value representing multiple boolean fields
+						"bitfields" => Array( //Mapping of bits to useful meanings (LSB 0)
+							0 => "Workstation Logon",
+							1 => "FoodPro",
+							2 => "Sequoia Web Reporting",
+							3 => "Cashier Access",
+							4 => "Lead Cashier Access",
+							5 => "Other",
+							6 => "Kronos",
+							7 => "Dept Email"
+						),
+						"required" => true
+					),
+					"foodpro_location" => Array(
+						"title" => "FoodPro Location ID",
+						"type" => "text"
+					),
+					"catcard" => Array(
+						"title" => "CatCard Number",
+						"type" => "text"
+					),
+					"register_pin" => Array(
+						"title" => "Register PIN",
+						"type" => "text"
+					),
+					"other" => Array(
+						"title" => "Other Comments",
+						"type" => "html"
+					),
+					"timestamp" => Array(
+						"title" => "Submitted",
+						"type" => "date-sometimes",
+						"locked" => true
+					)
+				),
+				"key_fields" => Array(
+					"supervisor_name",
+					"employee_type",
+					"employee_first_name",
+					"employee_last_name",
+					"employee_unit",
+					"timestamp"
+				),
+				"sort" => Array(
+					"field" => "id",
+					"direction" => "descending"
+				)
+			)
+		),
+		"veda_groups" => Array(
+			8 => Array(
+				"view" => true,
+				"edit" => true,
+				"delete" => true,
+				"add" => true
+			)
+		),
+		"alternate_db" => ($sucs_db = false ? //Alternate DB connection info (default is union main site db)
+			Array( //PROD
+				"host" => "150.135.72.203",  //SU Tech (pearl.sunion.arizona.edu) database
+				"user" => "sucsweb",
+				"pass" => "W3bZ!pp3d"
+			)
+			:
+			Array( //DEV
+				"host" => "localhost",
+				"user" => "sutech",
+				"pass" => "SUCSweb17"
+			)
+		)
+	),
+	"sutech_workstation_access" => Array(
+		"title" => "Workstation Access Requests",
+		"description" => "Requests for employee access to computer workstations",
+		"category" => "SU Tech Forms",
+		"database" => "sucs",
+		"primary_table" => "workstation_access_requests",
+		"tables" => Array(
+			"workstation_access_requests" => Array(
+				"type" => "simple",
+				"table" => "workstation_access_requests",
+				"pk" => "id",
+				"fields" => Array(
+					"supervisor_name" => Array(
+						"title" => "Supervisor Name",
+						"type" => "text",
+						"required" => true
+					),
+					"supervisor_phone" => Array(
+						"title" => "Supervisor Phone",
+						"type" => "text",
+						"required" => true
+					),
+					"request_type" => Array(
+						"title" => "Request Type",
+						"type" => "textopts",
+						"options" => Array(
+							"New Employee",
+							"Updated Employee"
+						),
+						"required" => true
+					),
+					"employee_position" => Array(
+						"title" => "Employee Position",
+						"type" => "textopts",
+						"options" => Array(
+							"Staff",
+							"Student"
+						),
+						"required" => true
+					),
+					"employee_first_name" => Array(
+						"title" => "Employee First Name",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_last_name" => Array(
+						"title" => "Employee Last Name",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_title" => Array(
+						"title" => "Employee Title",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_email" => Array(
+						"title" => "Employee Email",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_phone" => Array(
+						"title" => "Employee Phone",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_unit" => Array(
+						"title" => "Employee Department",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_netid" => Array(
+						"title" => "Employee NetID",
+						"type" => "text",
+						"required" => true
+					),
+					"workstation_tag" => Array(
+						"title" => "Workstation Name/Tag",
+						"type" => "text",
+						"required" => true
+					),
+					"access" => Array(
+						"title" => "Access Needed",
+						"type" => "bitfield", //A binary value representing multiple boolean fields
+						"bitfields" => Array( //Mapping of bits to useful meanings (LSB 0)
+							0 => "Workstation",
+							1 => "FoodPro",
+						),
+						"required" => true
+					),
+					"foodpro_location" => Array(
+						"title" => "FoodPro Location ID",
+						"type" => "text"
+					),
+					"updates" => Array(
+						"title" => "Employee Updates",
+						"type" => "bitfield",
+						"bitfields" => Array(
+							0 => "Department",
+							1 => "Workstation Name/Tag",
+						),
+						"required" => true
+					),
+					"comments" => Array(
+						"title" => "Comments",
+						"type" => "html"
+					),
+					"timestamp" => Array(
+						"title" => "Submitted",
+						"type" => "date-sometimes",
+						"locked" => true
+					)
+				),
+				"key_fields" => Array(
+					"supervisor_name",
+					"request_type",
+					"employee_first_name",
+					"employee_last_name",
+					"employee_unit",
+					"timestamp"
+				),
+				"sort" => Array(
+					"field" => "id",
+					"direction" => "descending"
+				)
+			)
+		),
+		"veda_groups" => Array(
+			8 => Array(
+				"view" => true,
+				"edit" => true,
+				"delete" => true,
+				"add" => true
+			)
+		),
+		"alternate_db" => $sucs_db
+	),
+	"sutech_pos_access" => Array(
+		"title" => "Point of Sale Access Requests",
+		"description" => "Requests for employee access to POS or Sequoia",
+		"category" => "SU Tech Forms",
+		"database" => "sucs",
+		"primary_table" => "pos_access_requests",
+		"tables" => Array(
+			"pos_access_requests" => Array(
+				"type" => "simple",
+				"table" => "pos_access_requests",
+				"pk" => "id",
+				"fields" => Array(
+					"supervisor_name" => Array(
+						"title" => "Supervisor Name",
+						"type" => "text",
+						"required" => true
+					),
+					"supervisor_phone" => Array(
+						"title" => "Supervisor Phone",
+						"type" => "text",
+						"required" => true
+					),
+					"request_type" => Array(
+						"title" => "Request Type",
+						"type" => "textopts",
+						"options" => Array(
+							"New Employee",
+							"Updated Employee"
+						),
+						"required" => true
+					),
+					"employee_position" => Array(
+						"title" => "Employee Position",
+						"type" => "textopts",
+						"options" => Array(
+							"Staff",
+							"Student"
+						),
+						"required" => true
+					),
+					"employee_first_name" => Array(
+						"title" => "Employee First Name",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_last_name" => Array(
+						"title" => "Employee Last Name",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_title" => Array(
+						"title" => "Employee Title",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_email" => Array(
+						"title" => "Employee Email",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_phone" => Array(
+						"title" => "Employee Phone",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_unit" => Array(
+						"title" => "Employee Department",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_netid" => Array(
+						"title" => "Employee NetID",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_id" => Array(
+						"title" => "Employee ID",
+						"type" => "text",
+						"required" => true
+					),
+					"access" => Array(
+						"title" => "Access Needed",
+						"type" => "bitfield",
+						"bitfields" => Array(
+							0 => "Cashier Access",
+							1 => "Lead Cashier Access",
+							2 => "Sequoia Web Reporting",
+						),
+						"required" => true
+					),
+					"catcard" => Array(
+						"title" => "CatCard Number",
+						"type" => "text"
+					),
+					"register_pin" => Array(
+						"title" => "Register PIN",
+						"type" => "text"
+					),
+					"updates" => Array(
+						"title" => "Employee Updates",
+						"type" => "bitfield",
+						"bitfields" => Array(
+							0 => "Profit Center Location Change",
+							1 => "Remove Profit Center Location",
+							2 => "Cashier Access Level",
+							3 => "Catcard # Update",
+							4 => "Pin # Change",
+						),
+						"required" => true
+					),
+					"comments" => Array(
+						"title" => "Comments",
+						"type" => "html"
+					),
+					"timestamp" => Array(
+						"title" => "Submitted",
+						"type" => "date-sometimes",
+						"locked" => true
+					)
+				),
+				"key_fields" => Array(
+					"supervisor_name",
+					"request_type",
+					"employee_first_name",
+					"employee_last_name",
+					"employee_unit",
+					"timestamp"
+				),
+				"sort" => Array(
+					"field" => "id",
+					"direction" => "descending"
+				)
+			)
+		),
+		"veda_groups" => Array(
+			8 => Array(
+				"view" => true,
+				"edit" => true,
+				"delete" => true,
+				"add" => true
+			)
+		),
+		"alternate_db" => $sucs_db
+	),
+	"sutech_dept_email_account" => Array(
+		"title" => "Departmental Account Requests",
+		"description" => "Requests for new departmental email addresses",
+		"category" => "SU Tech Forms",
+		"database" => "sucs",
+		"primary_table" => "departmental_account_requests",
+		"tables" => Array(
+			"departmental_account_requests" => Array(
+				"type" => "simple",
+				"table" => "departmental_account_requests",
+				"pk" => "id",
+				"fields" => Array(
+					"supervisor_name" => Array(
+						"title" => "Supervisor Name",
+						"type" => "text",
+						"required" => true
+					),
+					"supervisor_phone" => Array(
+						"title" => "Supervisor Phone",
+						"type" => "text",
+						"required" => true
+					),
+					"supervisor_email" => Array(
+						"title" => "Supervisor Email",
+						"type" => "email",
+						"required" => true
+					),
+					"department" => Array(
+						"title" => "Department",
+						"type" => "text",
+						"required" => true
+					),
+					"name_1" => Array(
+						"title" => "Preferred Name",
+						"type" => "text",
+						"required" => true
+					),
+					"name_2" => Array(
+						"title" => "Alternative Name #1",
+						"type" => "text"
+					),
+					"name_3" => Array(
+						"title" => "Alternative Name #2",
+						"type" => "text"
+					),
+					"description" => Array(
+						"title" => "Useage Description",
+						"type" => "html"
+					),
+					"timestamp" => Array(
+						"title" => "Submitted",
+						"type" => "date-sometimes",
+						"locked" => true
+					)
+				),
+				"key_fields" => Array(
+					"supervisor_name",
+					"department",
+					"name_1",
+					"timestamp"
+				),
+				"sort" => Array(
+					"field" => "id",
+					"direction" => "descending"
+				)
+			)
+		),
+		"veda_groups" => Array(
+			7 => Array(
+				"view" => true,
+				"edit" => true,
+				"delete" => true,
+				"add" => true
+			)
+		),
+		"alternate_db" => $sucs_db
+	),
+	"sutech_dept_email_access" => Array(
+		"title" => "Departmental Access Requests",
+		"description" => "Requests for employee access to departmental emails",
+		"category" => "SU Tech Forms",
+		"database" => "sucs",
+		"primary_table" => "departmental_access_requests",
+		"tables" => Array(
+			"departmental_access_requests" => Array(
+				"type" => "simple",
+				"table" => "departmental_access_requests",
+				"pk" => "id",
+				"fields" => Array(
+					"supervisor_name" => Array(
+						"title" => "Supervisor Name",
+						"type" => "text",
+						"required" => true
+					),
+					"supervisor_phone" => Array(
+						"title" => "Supervisor Phone",
+						"type" => "text",
+						"required" => true
+					),
+					"supervisor_email" => Array(
+						"title" => "Supervisor Email",
+						"type" => "email",
+						"required" => true
+					),
+					"employee_first_name" => Array(
+						"title" => "Employee First Name",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_last_name" => Array(
+						"title" => "Employee Last Name",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_netid" => Array(
+						"title" => "Employee NetID",
+						"type" => "text",
+						"required" => true
+					),
+					"new_catwork" => Array(
+						"title" => "Create Catworks Acct.",
+						"type" => "integer",
+						"int_min" => 0,
+						"int_max" => 1
+					),
+					"delete" => Array(
+						"title" => "Remove this Access",
+						"type" => "integer",
+						"int_min" => 0,
+						"int_max" => 1
+					),
+					"account_name" => Array(
+						"title" => "Departmental Accounts",
+						"type" => "secondary",
+						"table" => "request_accounts",
+						"relation_key" => "request_id"
+					),
+					"timestamp" => Array(
+						"title" => "Submitted",
+						"type" => "date-sometimes",
+						"locked" => true
+					)
+				),
+				"key_fields" => Array(
+					"supervisor_name",
+					"employee_first_name",
+					"employee_last_name",
+					"delete",
+					"timestamp"
+				),
+				"sort" => Array(
+					"field" => "id",
+					"direction" => "descending"
+				)
+			),
+			"request_accounts" => Array(
+				"type" => "option_array",
+				"title" => "Request-Account Mapping",
+				"table" => "departmental_access_request_account",
+				"pk" => "id",
+				"option_table" => "exch_departments",
+				"option_key" => "exch_department_id"
+			),
+			"exch_departments" => Array(
+				"type" => "options",
+				"title" => "Departmental Addresses",
+				"table" => "exch_departments",
+				"pk" => "department_id",
+				"fields" => Array(
+					"name" => Array(
+						"title" => "Address Local-part",
+						"type" => "text"
+					)
+				)
+			)
+		),
+		"veda_groups" => Array(
+			7 => Array(
+				"view" => true,
+				"edit" => true,
+				"delete" => true,
+				"add" => true
+			)
+		),
+		"alternate_db" => $sucs_db
+	),
+	"sutech_building_access" => Array(
+		"title" => "Building Access Requests",
+		"description" => "Change requests for employee building access",
+		"category" => "SU Tech Forms",
+		"database" => "sucs",
+		"primary_table" => "building_access_requests",
+		"tables" => Array(
+			"building_access_requests" => Array(
+				"type" => "simple",
+				"table" => "building_access_requests",
+				"pk" => "id",
+				"fields" => Array(
+					"form_type" => Array(
+						"title" => "Request Type",
+						"type" => "textopts",
+						"options" => Array(
+							"New Access",
+							"Update Access",
+							"Remove Access"
+						),
+						"required" => true
+					),
+					"supervisor_name" => Array(
+						"title" => "Supervisor Name",
+						"type" => "text",
+						"required" => true
+					),
+					"supervisor_phone" => Array(
+						"title" => "Supervisor Phone",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_first_name" => Array(
+						"title" => "Employee First Name",
+						"type" => "text",
+						"required" => true
+					),
+					"employee_last_name" => Array(
+						"title" => "Employee Last Name",
+						"type" => "text",
+						"required" => true
+					),
+					"catcard" => Array(
+						"title" => "CatCard #",
+						"type" => "number"
+					),
+					"pin" => Array(
+						"title" => "4-digit PIN",
+						"type" => "integer"
+					),
+					"employee_unit" => Array(
+						"title" => "Employee Department",
+						"type" => "text",
+						"required" => true
+					),
+					"access" => Array(
+						"title" => "Areas to Access",
+						"type" => "secondary",
+						"table" => "request_access",
+						"relation_key" => "request_id"
+					),
+					"other_areas" => Array(
+						"title" => "Other Access Areas",
+						"type" => "text"
+					),
+					"alarm_access" => Array(
+						"title" => "Need Alarm Access",
+						"type" => "integer",
+						"int_min" => 0,
+						"int_max" => 1
+					),
+					"alarm_area" => Array(
+						"title" => "Alarm Area",
+						"type" => "text"
+					),
+					"alarm_password" => Array(
+						"title" => "Alarm Password",
+						"type" => "text"
+					),
+					"replacement_catcard" => Array(
+						"title" => "Replacement: CatCard",
+						"type" => "integer"
+					),
+					"replacement_other" => Array(
+						"title" => "Replacement: Other",
+						"type" => "text"
+					),
+					"replacement_problem" => Array(
+						"title" => "Replacement: Problem",
+						"type" => "text"
+					),
+					"delete" => Array(
+						"title" => "Remove Access",
+						"type" => "integer",
+						"int_min" => 0,
+						"int_max" => 1
+					),
+					"timestamp" => Array(
+						"title" => "Submitted",
+						"type" => "date-sometimes",
+						"locked" => true
+					)
+				),
+				"key_fields" => Array(
+					"supervisor_name",
+					"form_type",
+					"employee_first_name",
+					"employee_last_name",
+					"employee_unit",
+					"timestamp"
+				),
+				"sort" => Array(
+					"field" => "id",
+					"direction" => "descending"
+				)
+			),
+			"request_access" => Array(
+				"type" => "option_array",
+				"title" => "Request-Location Mapping",
+				"table" => "building_access_request_access",
+				"pk" => "id",
+				"option_table" => "access_locations",
+				"option_key" => "location_id"
+			),
+			"access_locations" => Array(
+				"type" => "options",
+				"title" => "Access Locations",
+				"table" => "building_access_request_locations",
+				"pk" => "id",
+				"fields" => Array(
+					"location" => Array(
+						"title" => "Location",
+						"type" => "text"
+					)
+				)
+			)
+		),
+		"veda_groups" => Array(
+			6 => Array(
+				"view" => true,
+				"edit" => true,
+				"delete" => true,
+				"add" => true
+			)
+		),
+		"alternate_db" => $sucs_db
+	),
+	"event_orders" => Array(
+		"title" => "Event Orders",
+		"description" => "Banquet event orders for Catering Hub",
+		"category" => "Catering Hub",
+		"database" => "su",
+		"primary_table" => "event_orders",
+		"tables" => Array(
+			"event_orders" => Array(
+				"type" => "simple",
+				"table" => "event_orders",
+				"pk" => "id",
+				"fields" => Array(
+					"event_id" => Array(
+						"title" => "Event ID #",
+						"type" => "integer",
+						"required" => true
+					),
+					"event_time" => Array(
+						"title" => "Event Date/Time",
+						"type" => "datetime",
+						"required" => true
+					),
+					"event_type" => Array(
+						"title" => "Event Order Type",
+						"type" => "textopts",
+						"options" => Array(
+							"Regular",
+							"Kitchen",
+							"Revised Kitchen"
+						)
+					),
+					"pdf_link" => Array(
+						"title" => "PDF Link",
+						"type" => "file",
+						"match_type" => "application/pdf",
+						"target_dir" => $_SERVER["DOCUMENT_ROOT"]."/catering/hub/orders/",
+						"target_file" => "%ID%",
+						"webpath" => "/catering/hub/orders/%ID%/%FN%",
+						"required" => true
+					),
+					"uploader" => Array(
+						"title" => "Uploading User",
+						"type" => "text",
+						"locked" => true
+					),
+					"data" => Array(
+						"title" => "JSON Event Order",
+						"type" => "html"
+					),
+					"timestamp" => Array(
+						"title" => "Submitted",
+						"type" => "datetime",
+						"locked" => true
+					)
+				),
+				"key_fields" => Array(
+					"event_id",
+					"event_time",
+					"pdf_link"
+				)
+			)
+		),
+		"veda_groups" => Array(
+			9 => Array(
+				"view" => true,
+				"edit" => false,
+				"delete" => false,
+				"add" => false
+			),
+			10 => Array(
+				"view" => true,
+				"edit" => true,
+				"delete" => true,
+				"add" => true
+			)
+		)
+	),
+	"event_orders_pdf" => Array(
+		"title" => "Event Orders Detail",
+		"description" => "Banquet event orders for Catering Hub, data extracted from BEO PDFs.",
+		"category" => "Catering Hub",
+		"database" => "su",
+		"primary_table" => "event_orders",
+		"tables" => Array(
+			"event_orders" => Array(
+				"type" => "simple",
+				"table" => "event_orders",
+				"pk" => "id",
+				"fields" => Array(
+					"data" => Array(
+						"title" => "JSON Event Order",
+						"type" => "json_unpack", //This will decode this field as JSON into a temporary array that can be used as a data source for other columns.
+						"hidden" => true //This will hide the field in the view page.
+					),
+					"event_id" => Array(
+						"title" => "Event ID",
+						"type" => "text",
+						"required" => true
+					),
+					"event_time" => Array(
+						"title" => "Event Date/Time",
+						"type" => "datetime",
+						"required" => true
+					),
+					"event_type" => Array(
+						"title" => "Event Order Type",
+						"type" => "text",
+						"required" => true
+					),
+					"event_status" => Array(
+						"title" => "Status",
+						"type" => "text",
+						"data_source" => "json_unpack.data.status", //json_unpack columns can be accessed in this way. As with other data_source columns, it must be locked.
+						"locked" => true
+					),
+					"client_organization" => Array(
+						"title" => "Client/Organization",
+						"type" => "text",
+						"data_source" => "json_unpack.data.meta.ClientOrganization", //json_unpack columns are accessed with dot notation, like in JavaScript.
+						"locked" => true
+					),
+					"event_name" => Array(
+						"title" => "Event Name",
+						"type" => "text",
+						"data_source" => "json_unpack.data.meta.EventName", //"base object" is json_unpack (this is keyword to trigger json filling), first key is source column name, next keys are to the actual unpacked json.
+						"locked" => true
+					),
+					"as_of" => Array(
+						"title" => "As Of",
+						"type" => "date",
+						"data_source" => "json_unpack.data.meta.AsOf",
+						"locked" => true
+					),
+					"booking_contact" => Array(
+						"title" => "Booking Contact",
+						"type" => "text",
+						"data_source" => "json_unpack.data.meta.BookingContact",
+						"locked" => true
+					),
+					"booking_tel" => Array(
+						"title" => "Booking Tel",
+						"type" => "text",
+						"data_source" => "json_unpack.data.meta.BookingTel",
+						"locked" => true
+					),
+					"booking_cell" => Array(
+						"title" => "Booking Cell",
+						"type" => "text",
+						"data_source" => "json_unpack.data.meta.BookingCell",
+						"locked" => true
+					),
+					"booking_email" => Array(
+						"title" => "Booking Email",
+						"type" => "email",
+						"data_source" => "json_unpack.data.meta.BookingEmail",
+						"locked" => true
+					),
+					"billing_client" => Array(
+						"title" => "Billing Client",
+						"type" => "text",
+						"data_source" => "json_unpack.data.meta.BillingClient",
+						"locked" => true
+					),
+					"billing_address" => Array(
+						"title" => "Billing Address",
+						"type" => "text",
+						"data_source" => "json_unpack.data.meta.BillingAddress",
+						"locked" => true
+					),
+					"billing_csz" => Array(
+						"title" => "Billing City/State/Zip",
+						"type" => "text",
+						"data_source" => "json_unpack.data.meta.BillingCityStateZip",
+						"locked" => true
+					),
+					"event_planner" => Array(
+						"title" => "Event Planner",
+						"type" => "text",
+						"data_source" => "json_unpack.data.meta.EventPlanner",
+						"locked" => true
+					),
+					"site_contact" => Array(
+						"title" => "Site Contact",
+						"type" => "text",
+						"data_source" => "json_unpack.data.meta.SiteContact",
+						"locked" => true
+					),
+					"site_cell" => Array(
+						"title" => "Site Cell",
+						"type" => "text",
+						"data_source" => "json_unpack.data.meta.SiteCell",
+						"locked" => true
+					),
+					"pdf_link" => Array(
+						"title" => "PDF Link",
+						"type" => "file", //This stores an actual file. No mechanism is provided for retrieving the file so the target directory must be public or some accessor must be implemented.
+						"match_type" => "application/pdf", //The files can be restricted to a specific MIME type.
+						"target_dir" => $_SERVER["DOCUMENT_ROOT"]."/catering/hub/orders/", //This is the disk location where the files will be stored.
+						"target_file" => "%ID%", //The name of the file that will be created on the server. VALID EXPANSIONS: %ID% (primary key in database), %FN% (filename from uploader)
+						"webpath" => "/catering/hub/orders/%ID%/%FN%", //The web address where the file can be accessed, this is used to provide a link for testing and retrieval. Same expansions as above.
+						"locked" => true
+					)
+				),
+				"key_fields" => Array(
+					"event_id",
+					"event_time",
+					"event_type",
+					"pdf_link"
+				),
+				"default_count" => 25, //An alternative default number of records per page in the record list view.
+				"sort" => Array(
+					"field" => "event_time",
+					"direction" => "descending"
+				)
+			)
+		),
+		"veda_groups" => Array(
+			9 => Array(
+				"view" => true,
+				"edit" => false,
+				"delete" => false,
+				"add" => false
+			),
+			10 => Array(
+				"view" => true,
+				"edit" => false,
+				"delete" => true,
+				"add" => false
+			)
+		)
+	)
+);
+?>

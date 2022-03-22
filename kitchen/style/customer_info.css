@@ -1,0 +1,160 @@
+/* LEFT BAR */
+.wrap-left-bar {
+	padding-top: 20px;
+	padding-bottom: 40px;
+	background-color: #a8bb63;
+}
+.restaurant-logo img {
+	width: 100%;
+}
+.saying {
+	padding-top: 20px;
+	padding-bottom: 5px;
+	text-align: center;
+	font-size: 18px;
+	font-weight: 600;
+}
+.left-bar-header {
+	color: #613393;
+	font-weight: 600;
+	text-align: center;
+}
+.instruction h4 {
+	margin-bottom: 5px;
+	font-size: 15px;
+	font-weight: 900;
+	text-align: center;
+}
+.wrap-left-bar p {
+	font-weight: 600;
+	text-align: center;
+}
+.wrap-left-bar p::before { 
+    content: '-   ';
+    font-size: 15px;
+    font-weight: 900;
+}
+
+
+/*
+	Form
+*/
+.wrap-info {
+	padding-right: 0px;
+	padding-bottom: 50px;
+}
+.panel-title {
+	font-weight: 900;
+}
+
+/* Pick up or Delivery */
+.wrap-delivery-option .btn {
+	color: #424242;
+	font-weight: 700;
+}
+.delivery_label {
+	background-color: #e4e3e3 !important;
+}
+.wrap-delivery-option .btn:hover {
+	color: #fff !important;
+    background-color: #689c69 !important;
+    border-color: #689c69 !important;
+}
+.wrap-delivery-option input {
+	display: none;
+}
+.delivery-option-pickup {
+	margin-right: 10px;
+}
+#delivery_option_err {
+	margin-bottom: 0px;
+	height: 34px;
+	line-height: 34px;
+	font-size: 15px;
+	font-weight: 700;
+}
+
+/* Delivery Information */
+.btn-success {
+	color: #fff !important;
+    background-color: #689c69 !important;
+    border-color: #689c69 !important;
+}
+.datepicker {
+	width: 120px;
+}
+
+.timepicker {
+	width: 100px;
+}
+#delivery_building {
+	width: 180px;
+}
+#delivery_room {
+	width: 140px;
+}
+#delivery_phone {
+	width: 180px;
+}
+#delivery_notes {
+	/*width: */
+}
+#onsite_phone {
+	width: 170px;
+}
+
+
+/* Customer Information */
+.sameasOnsite {
+	margin-left: 10px;
+	font-weight: 500;
+	cursor: pointer;
+}
+
+/* PAYMENT OPTION */
+.payment_info .input-group {
+	margin-bottom: 10px;
+}
+.payment_info label {
+	cursor: pointer !important;
+}
+.uaidb-radio {
+	height: 34px;
+	line-height: 34px;
+}
+#uaidb_input {
+	display: none;
+}
+#uaidb_input::after {
+	position: absolute;
+	right: 0px;
+	content: "*";
+	color: #d40000;
+	font-size: 20px;
+}
+#uaidb_code_wrap {
+	display: none;
+}
+.uaidb_code_label {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left: 10px;
+}
+
+/* Error */
+.bt-flabels__error-desc {
+
+}
+
+@media (max-width: 700px) {
+	label {
+		display: block;
+	}
+	.wrap-left-bar {
+		display: none;
+	}
+	.wrap-info {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+}

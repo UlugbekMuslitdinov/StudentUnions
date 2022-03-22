@@ -1,0 +1,44 @@
+/* Implentation of the "One True Layout" by positioneverything.net */
+#container{
+min-width:1000px;
+_width:1000px;
+}
+
+#main-wrapper {
+float:left;
+width:100%;
+}
+
+#main {
+margin:0;
+}
+
+.withleft #main {
+margin-left:190px;
+}
+
+.withright #main {
+margin-right:190px;
+}
+
+#left {
+float:left;
+margin-left:-100%;
+padding:5px 8px 20px;
+width:174px;
+}
+
+#right {
+float:right;
+margin-left:-190px;
+padding:5px 8px 20px;
+width:174px;
+}
+
+* html #right {
+margin-left:-190px;
+}
+
+#footer {
+clear:both;
+}

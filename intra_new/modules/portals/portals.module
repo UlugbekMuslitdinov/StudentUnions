@@ -1,0 +1,394 @@
+<?php
+
+function portals_init(){
+global $user;
+if($user->uid){
+	$user->roles = array();
+		$result = db_query("select portal_id from user_portal where uid=".$user->uid);
+		 $user->roles[DRUPAL_AUTHENTICATED_RID] = array();
+		while($portal = db_fetch_array($result)){
+			$user->roles[DRUPAL_AUTHENTICATED_RID][] = $portal['portal_id'];
+		}
+		$result = db_query("select rid from users_roles where uid=".$user->uid);
+		
+		while($roles = db_fetch_array($result)){
+			$user->roles[$roles['rid']] = array();
+			$result2 = db_query("select portal_id from users_roles where uid=".$user->uid.' and rid='.$roles['rid']);
+			while($portal = db_fetch_array($result2)){	
+				$user->roles[$roles['rid']][] = $portal['portal_id'];
+			}
+		}
+}
+		
+}
+function get_units(){
+	$result = db_query('select * from portals where portal_id>-1 order by name');
+	while($unit = db_fetch_array($result)){
+	$units[$unit['portal_id']] = $unit['name'];
+	}
+	
+	return $units;
+
+}
+function portals_user($op, &$edit, &$user, $category = NULL){
+	
+	if($op == "load"){
+		
+		
+	}
+	
+	if($op == "view"){
+	
+		//var_dump($account);
+	
+		$result = db_query("select name from user_portal join portals on user_portal.portal_id=portals.portal_id where uid=".$user->uid);
+		$portals='';
+		while($portal = db_fetch_array($result)){
+		$portals .= $portal['name'];
+		}
+		$items['portals'] = array('title' => 'Portals', 'value' => $portals, 'class' => 'portals');
+		
+		
+		return array(''=>$items);
+	
+	}
+		
+}
+function update_portals(){
+
+$a = 0;
+
+$query = 'delete from user_portal';
+
+db_query($query);
+
+$tempname ='/Library/WebServer/union/intra_new/modules/portals/reportsto_new.txt';		
+		
+	$fp2 = fopen($tempname, 'r');
+
+
+		while($data = fgetcsv($fp2, 10000)){
+		
+		
+		
+		$query = "update user_profile set reports_to=".$data[4]." where uid=".$data[1];
+		
+		
+		db_query($query);
+		
+
+		
+		}	
+		
+		$query = 'select DISTINCT(reports_to) as rt from user_profile where reports_to is not null or reports_to<>1';
+		$result1 = db_query($query);
+		while($groups = db_fetch_array($result1)){
+		
+					
+			$query1 = 'select uid from user_profile where uid='.$groups['rt'].' or reports_to='.$groups['rt'];
+			$result2 = db_query($query1);
+			while($updates = db_fetch_array($result2)){
+				$query2 = 'insert into user_portal set uid='.$updates['uid'].', portal_id='.$a;
+				db_query($query2);
+			}
+			
+			$a++;
+				
+		
+		}
+		
+		drupal_set_message('Portals have been updated');
+		
+		drupal_goto($_SERVER['HTTP_REFERER']);
+
+}
+
+function update_portal_rules(){
+
+$a = 0;
+
+$query = 'delete from user_portal';
+
+db_query($query);
+
+$tempname ='/Library/WebServer/union/intra_new/modules/portals/reportsto_new.txt';		
+		
+	$fp2 = fopen($tempname, 'r');
+
+
+		while($data = fgetcsv($fp2, 10000)){
+		
+		
+		
+		$query = "update user_profile set reports_to=".$data[4]." where uid=".$data[1];
+		
+		
+		db_query($query);
+		
+
+		
+		}
+		
+		$query = 'select DISTINCT(reports_to) as rt from user_profile where reports_to is not null or reports_to<>1';
+		$result1 = db_query($query);
+		while($groups = db_fetch_array($result1)){
+		
+					
+			$query1 = 'select account, position from user_profile where uid='.$groups['rt'].' or reports_to='.$groups['rt'];
+			$result2 = db_query($query1);
+			while($updates = db_fetch_array($result2)){
+				$query3 = 'select * from portal_rules where account='.$updates['account'].' and position='.$updates['position'].' and portal_id='.$a;
+				$result3 = db_query($query3);
+				$already_entered = mysql_num_rows($result3);
+				if($already_entered == 0){
+					$query2 = 'insert into portal_rules set account='.$updates['account'].', position='.$updates['position'].', portal_id='.$a;
+					db_query($query2);
+				}
+			}
+			
+			$a++;
+				
+		
+		}
+		
+		$query4 = 'select * from portal_rules';
+		$result4 = db_query($query4);
+		while($rule = db_fetch_array($result4)){
+			$query5 = 'select uid from user_profile where account='.$rule['account'].' and position='.$rule['position'];
+			$result5 = db_query($query5);
+			while($user = db_fetch_array($result5)){
+				$query6 = 'insert into user_portal set uid='.$user['uid'].', portal_id='.$rule['portal_id'];
+				db_query($query6);
+			}
+		}
+		
+		$query7 = 'select DISTINCT(reports_to) as rt from user_profile where reports_to is not null or reports_to<>1';
+		 $result7 = db_query($query7);
+		 while($manager = db_fetch_array($result7)){
+		 	$query8 = 'update user_profile set manager=1 where uid='.$manager['rt'];
+			db_query($query8);
+		 }
+		
+		drupal_set_message('Portals have been updated');
+		
+		drupal_goto($_SERVER['HTTP_REFERER']);	
+
+
+}
+
+function update_pending_payroll(){
+	$units = get_units();
+	
+	$header = array('Last Name', 'First Name', 'unit', 'actions');
+	
+	$DBlink = mysql_connect("150.135.72.217","web","viv3nij");
+	
+			  mysql_select_db("unions_app", $DBlink);
+	$query = 'select checked_out.ID, last, first, checked_out.unit, manager_checked_out from checked_out join student on checked_out.studentID=student.ID where phase=4 and done<>1';
+	$result = mysql_query($query, $DBlink);
+	while($student = mysql_fetch_assoc($result)){
+		$students[] = array($student['last'], $student['first'], $units[$student['unit']], '<input type="button" value="Ok" onclick="update_user('.$student['ID'].', 1, this.parentNode.parentNode)"><input type="button" value="Failed" onclick="update_user('.$student['ID'].', 0, this.parentNode.parentNode)">');
+		
+	}
+	drupal_add_js('function update_user(id, status, node){$.post("'.base_path().'update_pending_payroll_ajax", {"id":id, "status":status}, function(data){}); elem = document.getElementById("unit"+id); node.parentNode.removeChild(node); }', 'inline');
+	
+	return '<h2>Apps Pending Payroll Aprroval</h2>'.theme('table', $header, $students);
+}
+function update_pending_payroll_ajax(){
+	$id = $_POST['id'];
+	$status = $_POST['status'];
+	
+	$DBlink = mysql_connect("150.135.72.217","web","viv3nij");
+	
+			  mysql_select_db("unions_app", $DBlink);
+	
+	if($status == 1){
+		$query = 'update checked_out set done=1 where ID='.$id;
+		mysql_query($query, $DBlink);
+		return true;		
+	}
+	else{
+		$query = 'update checked_out set phase=5, done=1 where ID='.$id;
+		mysql_query($query, $DBlink);
+		return true;
+	}
+}
+function update_user_portals(){
+	$header = array('EID', 'Last Name', 'First Name', 'unit', 'save', 'last', 'first', 'account', 'unit', 'stage', 'save');
+	
+	$units = get_units();
+	foreach($units as $unit_id => $unit_name){
+		$options .= '<option value="'.$unit_id.'">'.$unit_name.'</option>';
+	}
+	
+	
+	$query = 'select users.uid, last_name, first_name, account, position, name from users join user_profile on users.uid=user_profile.uid where new=1';
+	$result = db_query($query);
+	while($user = db_fetch_array($result)){
+		$DBlink = mysql_connect("150.135.72.217","web","viv3nij");
+	
+			  mysql_select_db("unions_app", $DBlink);
+			  
+		//$subquery = 'select checked_out.ID as id, last, first, checked_out.unit as unit from checked_out join student on checked_out.studentID=student.ID where phase=4 and done<>1 and last="'.$user['last_name'].'"';
+		
+		/*
+		$subquery = 'select checked_out.ID as id, last, first, checked_out.unit as unit from checked_out join student on checked_out.studentID=student.ID where done<>1 and last="'.$user['last_name'].'"';
+		
+		$subresult = mysql_query($subquery, $DBlink);
+		$similarity = 0;
+		$id = 0;
+		while($possible = mysql_fetch_assoc($subresult)){
+			//print similar_text($user['first_name'], $possible['first']);
+			if(similar_text($user['first_name'], $possible['first']) >= $similarity){
+				$similarity = similar_text($user['first_name'], $possible['first']);
+				$id = $possible['id'];
+				//print $id;
+			}
+			
+		}
+		//print $id.' ';
+		$subquery = 'select checked_out.ID as id, last, first, checked_out.unit as unit from checked_out join student on checked_out.studentID=student.ID where checked_out.ID='.$id;
+		
+		$subresult = mysql_query($subquery, $DBlink);
+		$possible = mysql_fetch_assoc($subresult);
+		//var_dump($possible);
+		mysql_close($DBlink);
+		*/
+		$subquery = 'select checked_out.ID as id, last, first, checked_out.unit as unit, phase from checked_out join student on checked_out.studentID=student.ID where netID="'.$user['name'].'" order by phase desc';
+		
+		$subresult = mysql_query($subquery, $DBlink);
+		
+		$possible = mysql_fetch_assoc($subresult);
+			mysql_close($DBlink);
+			
+			$subresult = db_query('select count(portal_id) as numb, portal_id as pid from user_portal join user_profile on user_profile.uid=user_portal.uid where account ='.$user['account'].' and position='.$user['position'].' order by numb desc');
+			$account = db_fetch_array($subresult);
+			
+			$units = get_units();
+		
+		$rows_new[] = array( $user['uid'], $user['last_name'], $user['first_name'], '<select id="unit'.$user['uid'].'">'.$options.'</select>', '<input type="button" value="save" onclick="update_user('.$user['uid'].', 0, 0)">', $possible['last'], $possible['first'], $units[$account['pid']].'('.$account['numb'].')',$units[$possible['unit']], $possible['phase'], '<input type="button" value="save" onclick="update_user('.$user['uid'].', '.$possible['unit'].', '.$possible['id'].')">');
+	}
+	
+	$query = 'select users.uid, last_name, first_name, account, name from users join user_profile on users.uid=user_profile.uid where change_account=1';
+	$result = db_query($query);
+	while($user = db_fetch_array($result)){
+		$rows_change[] = array( $user['uid'], $user['last_name'], $user['first_name'], '<select id="unit'.$user['uid'].'">'.$options.'</select>', '<input type="button" value="save" onclick="update_user2('.$user['uid'].')">', '', '', '');
+	}
+	
+	//drupal_add_js('function update_user(id){$.post("'.base_path().'update_user_unit", {"unit":document.getElementById("unit"+id).value, "uid":id}, function(data){alert(data);});}', 'inline');
+	drupal_add_js('function update_user(id, unit, cid){ if(unit==0){$.post("'.base_path().'update_new_user_unit", {"unit":document.getElementById("unit"+id).value, "uid":id}, function(data){}); elem = document.getElementById("unit"+id); elem.parentNode.parentNode.parentNode.removeChild(elem.parentNode.parentNode); }else{$.post("'.base_path().'update_new_user_unit", {"unit":unit, "uid":id, "cid":cid}, function(data){}); elem = document.getElementById("unit"+id); elem.parentNode.parentNode.parentNode.removeChild(elem.parentNode.parentNode); }}', 'inline');
+	
+	drupal_add_js('function update_user2(id){$.post("'.base_path().'update_change_user_unit", {"unit":document.getElementById("unit"+id).value, "uid":id}, function(data){}); elem = document.getElementById("unit"+id); elem.parentNode.parentNode.parentNode.removeChild(elem.parentNode.parentNode); }', 'inline');
+	
+	return '<h2>New Employees</h2>'.theme('table', $header, $rows_new).'<br><br><h2>Account Changes</h2>'.theme('table', $header, $rows_change);
+}
+
+function update_user_unit(){
+	$query = 'insert into user_portal set uid='.$_POST['uid'].', portal_id='.$_POST['unit'];
+	print db_query($query);
+	
+	$query = 'update user_profile set new=0 where uid='.$_POST['uid'];
+	print db_query($query);
+	
+	if(isset($_POST['cid'])){
+	$DBlink = mysql_connect("150.135.72.217","web","viv3nij");
+	
+			  mysql_select_db("unions_app", $DBlink);
+	
+	
+		$query = 'update checked_out set done=1, phase=4 where ID='.$_POST['cid'];
+		mysql_query($query, $DBlink);	
+		mysql_close($DBlink);
+	}
+	
+}
+
+function update_user_unit2(){
+	$query = 'update user_portal set uid='.$_POST['uid'].', portal_id='.$_POST['unit'].' where uid='.$_POST['uid'];
+	print db_query($query);
+	
+	$query = 'update users_roles ser portal_id='.$_POST['unit'].' where uid='.$_POST['uid'];
+	print db_query($query);
+	
+	$query = 'update user_profile set change_account=0 where uid='.$_POST['uid'];
+	print db_query($query);
+}
+
+function portals_perm(){
+	return array('place users');
+}
+
+function portals_menu($may_cache){
+
+	$items = array();
+	
+	if($may_cache){
+		 
+
+	  $items[] = array(
+		'path' => 'admin/user/update_portals',
+		'title' => t('Update portals'),
+		'description' => t('Update portals based on reports to'),
+		'callback' => 'update_portals',
+		'access' => user_access('access administration pages'),
+		'type' => MENU_NORMAL_ITEM,
+	   );
+	   
+	    $items[] = array(
+		'path' => 'admin/user/update_portal_rules',
+		'title' => t('Update portal rules'),
+		'description' => t('Update portals based on reports to'),
+		'callback' => 'update_portal_rules',
+		'access' => user_access('access administration pages'),
+		'type' => MENU_NORMAL_ITEM,
+	   );
+	   
+	   $items[] = array(
+		'path' => 'placeusers',
+		'title' => t('Payroll'),
+		'description' => t('Put new users in correct portals'),
+		'callback' => 'update_user_portals',
+		'access' => user_access('place users'),
+		'type' => MENU_NORMAL_ITEM,
+	   );
+	   $items[] = array(
+		'path' => 'placeusers/new',
+		'title' => t('Kronos changes'),
+		'description' => t('Put new users in correct portals'),
+		'callback' => 'update_user_portals',
+		'access' => user_access('place users'),
+		'type' => MENU_DEFAULT_LOCAL_TASK,
+	   );
+	   $items[] = array(
+		'path' => 'placeusers/pending',
+		'title' => t('Pending Payroll'),
+		'description' => t('Put new users in correct portals'),
+		'callback' => 'update_pending_payroll',
+		'access' => user_access('place users'),
+		'type' => MENU_LOCAL_TASK,
+	   );
+	   $items[] = array(
+		'path' => 'update_new_user_unit',
+		'callback' => 'update_user_unit',
+		'access' => true,
+		'type' => MENU_CALLBACK,
+	   );
+	    $items[] = array(
+		'path' => 'update_change_user_unit',
+		'callback' => 'update_user_unit2',
+		'access' => true,
+		'type' => MENU_CALLBACK,
+	   );
+		$items[] = array(
+		'path' => 'update_pending_payroll_ajax',
+		'callback' => 'update_pending_payroll_ajax',
+		'access' => true,
+		'type' => MENU_CALLBACK,
+	   );
+
+ 	  return $items;
+	
+	}
+
+
+}

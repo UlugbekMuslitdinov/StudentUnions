@@ -1,0 +1,78 @@
+.wrap-menu {
+    margin-left: auto;
+    margin-right: auto;
+    width: 1140px;
+}
+#menu-content-wrapper {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+#nav{float:none; margin-top:105px; font-size:20px; font-weight:bold; }
+#nav span{ cursor:pointer;}
+/* #nav .active{color:red} */
+#logo{ float:left; }
+#desc{ padding-top: 20px; clear: both; width: 700px; }
+#desc p{font-size:15px !important; line-height:19px;}
+h1{font-size:32px; color:#f29332;}
+h2{font-size:24px; color:#393939; margin-top:15px; margin-bottom:0px;}
+#menu-content p {width: 700px; font-size:20px !important; font-weight:bold;}
+#menu-content p .important{font-size:16px;}
+#menu-content p.list{margin-top:10px; padding-left:20px; font-size:20px; font-weight:normal; line-height:20px;}
+#menu-content p.list span{font-size:15px;}
+
+.line-item{margin-top:20px; margin-bottom:20px !important; font-size:17px; font-weight:500;}
+.line-item div{float:left; width:650px; overflow:hidden;}
+.line-item div:before {
+    padding-left: 10px;
+    content: ' ';
+    width: 50px;
+}
+.line-item span{font-weight:regular;}
+
+.line-item-cactus{margin-bottom:2px; font-size:25px; font-weight:bold;}
+.line-item-cactus div{margin-left: 155px; float:left; width:600px; overflow:hidden; color:black;}
+.line-item-cactus span{font-weight:regular;}
+
+.line-item-omelet{margin-bottom:2px; font-weight:bold;}
+.line-item-omelet div{float:left; width:620px; overflow:hidden;}
+.line-item-omelet span{font-weight:regular;}
+
+.item-only-cactus{margin-bottom:2px; font-size:25px; font-weight:bold;}
+.item-only-cactus div{float:left; width:600px; overflow:hidden; margin-left:155px;}
+.item-only-cactus span{font-weight:regular;}
+
+.line-item-pangea{margin-bottom:2px; font-size:15px; font-weight:bold;}
+.line-item-pangea div{float:left; width:500px; overflow:hidden;}
+.line-item-pangea span{font-weight:regular;}
+
+.item-only-pangea{margin-bottom:2px; font-size:15px; font-weight:bold;}
+.item-only-pangea div{float:left; width:500px; overflow:hidden;}
+.item-only-pangea span{font-weight:regular;}
+
+.line-item-pangea-sushi{margin-bottom:15px; font-size:15px; font-weight:bold;}
+.line-item-pangea-sushi div{float:left; width:210px; overflow:hidden;}
+.line-item-pangea-sushi span{font-weight:regular;}
+
+.line-item-bdk{margin-bottom:2px; font-size:15px; font-weight:bold;}
+.line-item-bdk div{float:left; width:500px; overflow:hidden;}
+.line-item-bdk span{font-weight:regular;}
+
+.item-only-bdk{margin-bottom:2px; font-size:20px; font-weight:400; margin-bottom:-10px; text-transform:uppercase; color:#fff;}
+.item-only-bdk div{color: #fff; font-weight: 450; text-transform: uppercase; font-size: 20; margin-bottom: -10px;}
+.item-only-bdk span{font-weight:regular;}
+
+.half-line-item, .half-line-item-2col{ clear: both; font-size:25px; font-weight:600; line-height:18px;}
+.half-line-item div{float:left; padding-top:5px; padding-bottom: 20px; width:300px; overflow:hidden; position:relative}
+.half-line-item div div {position:absolute; right:0px; float:right; width:auto;}
+.half-line-item-2col div{float:left; width:128px; overflow:hidden;}
+.left-col{float:left; width:305px;}
+.right-col{float:left; width:305px; margin-left:35px; margin-top:-20px;}
+ul{list-style-type:none; margin:0px; padding:0px;}
+li{font-size:18px; font-weight:bold; line-height:18px;}
+.new-section{margin-top:25px;}
+p.list {font-size:15px;}
+
+.content-bottom {
+    clear: both;
+    margin-top: 50px;
+}

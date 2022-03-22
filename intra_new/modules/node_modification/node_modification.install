@@ -1,0 +1,10 @@
+<?php
+function node_modification_install(){
+
+	$query = 'CREATE TABLE menu_access (ID int key auto_increment, title varchar(25), pid varchar(25), path varchar(150), weight int, node int, unit varchar(50))';
+
+	db_query($query);
+
+}
+
+?>

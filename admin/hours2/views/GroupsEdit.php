@@ -1,0 +1,185 @@
+<?php
+
+namespace PHPMaker2021\project2;
+
+// Page object
+$GroupsEdit = &$Page;
+?>
+<script>
+if (!ew.vars.tables.groups) ew.vars.tables.groups = <?= JsonEncode(GetClientVar("tables", "groups")) ?>;
+var currentForm, currentPageID;
+var fgroupsedit;
+loadjs.ready("head", function () {
+    var $ = jQuery;
+    // Form object
+    currentPageID = ew.PAGE_ID = "edit";
+    fgroupsedit = currentForm = new ew.Form("fgroupsedit", "edit");
+
+    // Add fields
+    var fields = ew.vars.tables.groups.fields;
+    fgroupsedit.addFields([
+        ["group_id", [fields.group_id.required ? ew.Validators.required(fields.group_id.caption) : null], fields.group_id.isInvalid],
+        ["group_name", [fields.group_name.required ? ew.Validators.required(fields.group_name.caption) : null], fields.group_name.isInvalid],
+        ["active", [fields.active.required ? ew.Validators.required(fields.active.caption) : null], fields.active.isInvalid],
+        ["group_key", [fields.group_key.required ? ew.Validators.required(fields.group_key.caption) : null], fields.group_key.isInvalid]
+    ]);
+
+    // Set invalid fields
+    $(function() {
+        var f = fgroupsedit,
+            fobj = f.getForm(),
+            $fobj = $(fobj),
+            $k = $fobj.find("#" + f.formKeyCountName), // Get key_count
+            rowcnt = ($k[0]) ? parseInt($k.val(), 10) : 1,
+            startcnt = (rowcnt == 0) ? 0 : 1; // Check rowcnt == 0 => Inline-Add
+        for (var i = startcnt; i <= rowcnt; i++) {
+            var rowIndex = ($k[0]) ? String(i) : "";
+            f.setInvalid(rowIndex);
+        }
+    });
+
+    // Validate form
+    fgroupsedit.validate = function () {
+        if (!this.validateRequired)
+            return true; // Ignore validation
+        var fobj = this.getForm(),
+            $fobj = $(fobj);
+        if ($fobj.find("#confirm").val() == "confirm")
+            return true;
+        var addcnt = 0,
+            $k = $fobj.find("#" + this.formKeyCountName), // Get key_count
+            rowcnt = ($k[0]) ? parseInt($k.val(), 10) : 1,
+            startcnt = (rowcnt == 0) ? 0 : 1, // Check rowcnt == 0 => Inline-Add
+            gridinsert = ["insert", "gridinsert"].includes($fobj.find("#action").val()) && $k[0];
+        for (var i = startcnt; i <= rowcnt; i++) {
+            var rowIndex = ($k[0]) ? String(i) : "";
+            $fobj.data("rowindex", rowIndex);
+
+            // Validate fields
+            if (!this.validateFields(rowIndex))
+                return false;
+
+            // Call Form_CustomValidate event
+            if (!this.customValidate(fobj)) {
+                this.focus();
+                return false;
+            }
+        }
+
+        // Process detail forms
+        var dfs = $fobj.find("input[name='detailpage']").get();
+        for (var i = 0; i < dfs.length; i++) {
+            var df = dfs[i],
+                val = df.value,
+                frm = ew.forms.get(val);
+            if (val && frm && !frm.validate())
+                return false;
+        }
+        return true;
+    }
+
+    // Form_CustomValidate
+    fgroupsedit.customValidate = function(fobj) { // DO NOT CHANGE THIS LINE!
+        // Your custom validation code here, return false if invalid.
+        return true;
+    }
+
+    // Use JavaScript validation or not
+    fgroupsedit.validateRequired = <?= Config("CLIENT_VALIDATE") ? "true" : "false" ?>;
+
+    // Dynamic selection lists
+    loadjs.done("fgroupsedit");
+});
+</script>
+<script>
+loadjs.ready("head", function () {
+    // Write your table-specific client script here, no need to add script tags.
+});
+</script>
+<?php $Page->showPageHeader(); ?>
+<?php
+$Page->showMessage();
+?>
+<form name="fgroupsedit" id="fgroupsedit" class="<?= $Page->FormClassName ?>" action="<?= CurrentPageUrl() ?>" method="post">
+<?php if (Config("CHECK_TOKEN")) { ?>
+<input type="hidden" name="<?= $TokenNameKey ?>" value="<?= $TokenName ?>"><!-- CSRF token name -->
+<input type="hidden" name="<?= $TokenValueKey ?>" value="<?= $TokenValue ?>"><!-- CSRF token value -->
+<?php } ?>
+<input type="hidden" name="t" value="groups">
+<input type="hidden" name="action" id="action" value="update">
+<input type="hidden" name="modal" value="<?= (int)$Page->IsModal ?>">
+<input type="hidden" name="<?= $Page->OldKeyName ?>" value="<?= $Page->OldKey ?>">
+<div class="ew-edit-div"><!-- page* -->
+<?php if ($Page->group_id->Visible) { // group_id ?>
+    <div id="r_group_id" class="form-group row">
+        <label id="elh_groups_group_id" class="<?= $Page->LeftColumnClass ?>"><?= $Page->group_id->caption() ?><?= $Page->group_id->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
+        <div class="<?= $Page->RightColumnClass ?>"><div <?= $Page->group_id->cellAttributes() ?>>
+<span id="el_groups_group_id">
+<span<?= $Page->group_id->viewAttributes() ?>>
+<input type="text" readonly class="form-control-plaintext" value="<?= HtmlEncode(RemoveHtml($Page->group_id->getDisplayValue($Page->group_id->EditValue))) ?>"></span>
+</span>
+<input type="hidden" data-table="groups" data-field="x_group_id" data-hidden="1" name="x_group_id" id="x_group_id" value="<?= HtmlEncode($Page->group_id->CurrentValue) ?>">
+</div></div>
+    </div>
+<?php } ?>
+<?php if ($Page->group_name->Visible) { // group_name ?>
+    <div id="r_group_name" class="form-group row">
+        <label id="elh_groups_group_name" for="x_group_name" class="<?= $Page->LeftColumnClass ?>"><?= $Page->group_name->caption() ?><?= $Page->group_name->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
+        <div class="<?= $Page->RightColumnClass ?>"><div <?= $Page->group_name->cellAttributes() ?>>
+<span id="el_groups_group_name">
+<input type="<?= $Page->group_name->getInputTextType() ?>" data-table="groups" data-field="x_group_name" name="x_group_name" id="x_group_name" size="30" maxlength="255" placeholder="<?= HtmlEncode($Page->group_name->getPlaceHolder()) ?>" value="<?= $Page->group_name->EditValue ?>"<?= $Page->group_name->editAttributes() ?> aria-describedby="x_group_name_help">
+<?= $Page->group_name->getCustomMessage() ?>
+<div class="invalid-feedback"><?= $Page->group_name->getErrorMessage() ?></div>
+</span>
+</div></div>
+    </div>
+<?php } ?>
+<?php if ($Page->active->Visible) { // active ?>
+    <div id="r_active" class="form-group row">
+        <label id="elh_groups_active" for="x_active" class="<?= $Page->LeftColumnClass ?>"><?= $Page->active->caption() ?><?= $Page->active->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
+        <div class="<?= $Page->RightColumnClass ?>"><div <?= $Page->active->cellAttributes() ?>>
+<span id="el_groups_active">
+<input type="<?= $Page->active->getInputTextType() ?>" data-table="groups" data-field="x_active" name="x_active" id="x_active" size="30" maxlength="8" placeholder="<?= HtmlEncode($Page->active->getPlaceHolder()) ?>" value="<?= $Page->active->EditValue ?>"<?= $Page->active->editAttributes() ?> aria-describedby="x_active_help">
+<?= $Page->active->getCustomMessage() ?>
+<div class="invalid-feedback"><?= $Page->active->getErrorMessage() ?></div>
+</span>
+</div></div>
+    </div>
+<?php } ?>
+<?php if ($Page->group_key->Visible) { // group_key ?>
+    <div id="r_group_key" class="form-group row">
+        <label id="elh_groups_group_key" for="x_group_key" class="<?= $Page->LeftColumnClass ?>"><?= $Page->group_key->caption() ?><?= $Page->group_key->Required ? $Language->phrase("FieldRequiredIndicator") : "" ?></label>
+        <div class="<?= $Page->RightColumnClass ?>"><div <?= $Page->group_key->cellAttributes() ?>>
+<span id="el_groups_group_key">
+<input type="<?= $Page->group_key->getInputTextType() ?>" data-table="groups" data-field="x_group_key" name="x_group_key" id="x_group_key" size="30" maxlength="64" placeholder="<?= HtmlEncode($Page->group_key->getPlaceHolder()) ?>" value="<?= $Page->group_key->EditValue ?>"<?= $Page->group_key->editAttributes() ?> aria-describedby="x_group_key_help">
+<?= $Page->group_key->getCustomMessage() ?>
+<div class="invalid-feedback"><?= $Page->group_key->getErrorMessage() ?></div>
+</span>
+</div></div>
+    </div>
+<?php } ?>
+</div><!-- /page* -->
+<?php if (!$Page->IsModal) { ?>
+<div class="form-group row"><!-- buttons .form-group -->
+    <div class="<?= $Page->OffsetColumnClass ?>"><!-- buttons offset -->
+<button class="btn btn-primary ew-btn" name="btn-action" id="btn-action" type="submit"><?= $Language->phrase("SaveBtn") ?></button>
+<button class="btn btn-default ew-btn" name="btn-cancel" id="btn-cancel" type="button" data-href="<?= HtmlEncode(GetUrl($Page->getReturnUrl())) ?>"><?= $Language->phrase("CancelBtn") ?></button>
+    </div><!-- /buttons offset -->
+</div><!-- /buttons .form-group -->
+<?php } ?>
+</form>
+<?php
+$Page->showPageFooter();
+echo GetDebugMessage();
+?>
+<script>
+// Field event handlers
+loadjs.ready("head", function() {
+    ew.addEventHandlers("groups");
+});
+</script>
+<script>
+loadjs.ready("load", function () {
+    // Write your table-specific startup script here, no need to add script tags.
+});
+</script>

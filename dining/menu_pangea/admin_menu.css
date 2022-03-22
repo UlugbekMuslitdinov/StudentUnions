@@ -1,0 +1,113 @@
+@charset "UTF-8";
+/* CSS Document */
+
+* {
+	margin:0;
+	padding:0;
+}
+
+body {
+	color:#000000;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+}
+
+img, fieldset {
+	border:none;
+}
+
+.block {
+	display:block;
+}
+
+.clear {
+	clear:both;
+}
+
+.hdr {
+	font-weight:bold;
+	text-align:center;
+}
+
+.wk {
+	background-color:#CCCCCC;
+	font-weight:bold;
+	text-align:right;
+}
+
+table {
+	border:1px solid #999;
+	font-size:11px;
+	font-family:Arial, Helvetica, sans-serif;
+	margin:10px auto 20px auto;
+	width:740px;
+}
+
+td {
+	padding:10px;
+	text-align:center;
+}
+
+table.history {
+	border:1px solid #999;
+	font-size:11px;
+	font-family:Arial, Helvetica, sans-serif;
+	margin:10px auto 20px auto;
+	width:940px;
+}
+
+td.history {
+	padding:4px;
+	text-align:left;
+}
+
+select {
+	width:115px;
+}
+
+#calGrid {
+	margin:auto;
+	width:980px;
+}
+
+h2 {
+	margin:10px 0 5px 10px;
+}
+
+h3 {
+	margin:0 0 5px 0;
+}
+
+input {
+	margin:0 0 3px 0;
+}
+
+ul.genBulls {
+	list-style-type:disc;
+	list-style-position: outside;
+	margin:5px 20px 0 0;
+	padding:0 0 15px 26px;
+
+}
+
+ul.genBulls li {
+	color:#666666;
+	line-height:15px;
+	margin:0;
+	padding:0 0 4px 0;
+}
+
+ol.historyNums {
+	list-style-type: decimal;
+	list-style-position: outside;
+	margin:0;
+	padding:0 0 0 15px;
+
+}
+
+ol.historyNums li {
+	color:#000000;
+	line-height:15px;
+	margin:0;
+	padding:0 0 2px 0;
+}

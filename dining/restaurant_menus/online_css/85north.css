@@ -1,0 +1,98 @@
+.background {
+    background-image: url(../../images/85north.jpg);
+    height: 1400px;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.banner {
+    margin-top: -5%;
+    width: 100%;
+}
+
+.title {
+    text-align: center;
+    color: #4c70b4;
+    font-weight: 800;
+    font-size: 48px;
+}
+
+#menu-content {
+    clear: both;
+    padding-top: 300px;
+}
+
+#current-date {
+    text-transform: uppercase;
+    color: #4c70b4;
+    font-size: 24px;
+    font-weight: 550;
+}
+
+#date-select {
+    background-color: #4c70b4;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+#disabled {
+    color: black;
+}
+
+#sub-title {
+    margin-top: 15px;
+    text-align: center;
+    color: black;
+    text-transform: uppercase;
+}
+
+#note {
+    font-weight: 500;
+    font-size: 20px;
+    text-transform: capitalize;
+}
+
+#comment {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+#btn-back {
+    cursor: pointer;
+    color:#4c70b4; 
+    background-color:#fff; 
+    position: absolute;
+    top: 75px;
+    right: 430px;
+    z-index: 9999999;
+    width: 320px;
+    height:30px;
+    border-radius: 5px;
+    font-weight: 900;
+    font-size: 22px;
+    text-align: center;
+    -webkit-box-shadow: 4px 4px 4px 0px rgba(112,112,112,1);
+    -moz-box-shadow: 4px 4px 4px 0px rgba(112,112,112,1);
+    box-shadow: 4px 4px 4px 0px rgba(112,112,112,1);
+}
+
+#menu-content p {
+    width: 1080px;
+    font-size: 30px !important;
+    font-weight: bold;
+}
+
+.item-only-pangea div {
+    margin-top: -15px;
+    width: 1080px;
+    overflow: hidden;
+    text-align: center;
+}
+
+.item-only-pangea {
+    margin-bottom: -5px;
+    font-size: 20px;
+    font-weight: 500;
+}

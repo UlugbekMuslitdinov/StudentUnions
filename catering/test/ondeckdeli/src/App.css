@@ -1,0 +1,60 @@
+.nav-buttons {
+  padding: 10px;
+}
+
+.thead-orange {
+  background-color: #f59525;
+  color: white; 
+}
+
+.btn-orange {
+  background-color: white;
+  color: #f59525;
+}
+
+a.nav-items:link, a.nav-items:visited, a.nav-link:link, a.nav-link:visited, .card-title {
+  color: #f59525;
+}
+
+a.nav-link:hover {
+  text-decoration-line: underline;
+}
+
+.title-banner {
+  color: white;
+}
+
+.white-table {
+  background-color: white;
+}
+
+.bottom-panel {
+  background-color: #f59525;
+  color: white;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.breadcrumb {
+  background-color: white;
+}
+
+.center-container {
+  background-color: #99C24D;
+  width: 1165px;
+  padding-bottom: 5px;
+}
+
+body {
+  background-color: lightgray;
+}
+
+.summary-cards {
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.alert-success {
+  margin-right: 10px;
+  margin-left: 10px;
+}

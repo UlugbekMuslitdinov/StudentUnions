@@ -1,0 +1,50 @@
+.web2point0-button{
+	display: inline-block;
+	box-sizing: border-box;
+	height: 46px;
+	width: 154px;
+	margin: 9px;
+	border: 2px solid #D7D7D7;
+	border-top-left-radius: 10px 9px;
+	border-top-right-radius: 10px 9px;
+	border-bottom-left-radius: 10px 9px;
+	border-bottom-right-radius: 10px 9px;
+	box-shadow: inset 0px 0px 8px 1px rgba(20, 20, 80, 0.5);
+	
+	font-family: Calibri, sans-serif;
+	font-size: 24px;
+	font-weight: 500;
+	color: #2B2B2B;
+	text-decoration: none;
+	text-align: center;
+	line-height: 42px;
+	cursor: pointer;
+	
+	/* http://colorzilla.com/gradient-editor/#c5e9f7+0,ade2f7+26,a0d1e5+47,34b3d3+100 */
+	background: #c5e9f7;
+	background: -moz-linear-gradient(top,  #c5e9f7 0%, #ade2f7 26%, #a0d1e5 47%, #34b3d3 100%);
+	background: -webkit-linear-gradient(top,  #c5e9f7 0%,#ade2f7 26%,#a0d1e5 47%,#34b3d3 100%);
+	background: linear-gradient(to bottom,  #c5e9f7 0%,#ade2f7 26%,#a0d1e5 47%,#34b3d3 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#c5e9f7', endColorstr='#34b3d3',GradientType=0 );
+	transition: box-shadow 0.05s;
+	
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+.web2point0-button:hover{
+	box-shadow: inset 0px 0px 10px 1px rgba(20, 20, 80, 0.5);
+}
+
+.web2point0-button:active{
+	/* http://colorzilla.com/gradient-editor/#d8f4ff+0,ccf0ff+26,b5e1f2+47,53cae8+100 */
+	background: #d8f4ff;
+	background: -moz-linear-gradient(top,  #d8f4ff 0%, #ccf0ff 26%, #b5e1f2 47%, #53cae8 100%);
+	background: -webkit-linear-gradient(top,  #d8f4ff 0%,#ccf0ff 26%,#b5e1f2 47%,#53cae8 100%);
+	background: linear-gradient(to bottom,  #d8f4ff 0%,#ccf0ff 26%,#b5e1f2 47%,#53cae8 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#d8f4ff', endColorstr='#53cae8',GradientType=0 );
+}

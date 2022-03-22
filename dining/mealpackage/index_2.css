@@ -1,0 +1,58 @@
+.required-input::after {
+    content: " *";
+    color: #d40000;
+    vertical-align: middle;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+#meal_package_form, .code_form {
+    margin: auto;
+    padding: 20px;
+    width: 800px;
+    border: 2px solid #00275b;
+}
+
+#meal_package_form h4, .code_form h4 {
+    font-weight: 600 !important;
+    font-size: 17px;
+}
+
+.instruction {
+    margin: auto;
+    padding: 30px;
+    width: 90%;
+	font-size: 20px;
+	font-weight: 500;
+}
+
+#table {
+	margin-top: 0px;
+	margin-left: 0px;
+	padding: 5px;
+	width: 1200px;
+}
+.menu_title {
+    font-size: 20px;
+	font-weight: bold;
+    color: blue;
+}
+.submit {
+    width: 100%;
+    background-color: #00275b;
+    border: 1px solid #00275b;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    display: block;
+    font-weight: 600;
+    font-size: 18px;
+    margin: 0 auto;
+    cursor: pointer;
+    border-radius: 0px;
+}
+.submit:hover {
+    background-color: #fff;
+    border: 1px solid #00275b;
+    color: #00275b;
+}

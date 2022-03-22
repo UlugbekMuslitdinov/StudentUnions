@@ -1,0 +1,6 @@
+@import url("forms.css");
+
+textarea {
+	width: 390px;
+	height: 80px;
+}

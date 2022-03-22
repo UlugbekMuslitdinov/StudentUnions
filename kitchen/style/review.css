@@ -1,0 +1,40 @@
+
+.page-header {
+	text-align: center;
+}
+
+.highland_burrito .panel-heading {
+	text-align: center;
+	font-size: 17px;
+}
+
+/* Order Detail */
+.order_detail > .panel-body {
+	/*padding: 2%;*/
+}
+
+.burr_icon {
+	width: 25px;
+}
+.display_subprice {
+	float: right;
+	color: #a21b1b;
+	font-weight: 700;
+}
+.display_subtotal {
+	text-align: right;
+	/*color: #a21b1b;*/
+	font-weight: 700;
+}
+.burr_subtotal {
+	color: #a21b1b;
+}
+.display_total {
+	text-align: right;
+	font-weight: 800;
+	font-size: 25px;
+}
+
+.meat_extra {
+	margin-top: 5px;
+}

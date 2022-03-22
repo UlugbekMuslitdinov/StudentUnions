@@ -1,0 +1,118 @@
+body {
+	background-color: #e2e2e2;
+}
+
+.container {
+	margin-top: 20px;
+}
+
+.back-btn {
+	padding: 8px 12px;
+	color: #fff;
+	font-size: 20px;
+	background-color: #4f81d9;
+	border: 1px solid #c5c6ca;
+}
+
+.wrap-add {
+	/*background-color: #fff;*/
+}
+
+.add-box {
+	position: relative;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	padding-bottom: 10px;
+	border: 1px solid #c5c5c5;
+	border-radius: 5px;
+	overflow: hidden;
+	background-color: #fff;
+}
+.add-box-control {
+	margin-bottom: 10px;
+	padding: 10px 15px 10px 15px;
+	width: 100%;
+	height: 45px;
+	/*background-color: #c5c6ca;*/
+	text-align: right;
+	color: #fff;
+	font-weight: 900;
+	border-bottom: 1px solid #c5c6ca;
+}
+.add-box-control .close {
+	color: #333;
+	opacity: 1 !important;
+}
+.wrap-add-inputs {
+	padding: 2px 5px;
+}
+
+label {
+	/*padding-top: 5px;
+	padding-bottom: 5px;
+	width: 100%;*/
+	text-align: center;
+}
+input {
+	padding-top: 10px !important;
+	padding-bottom: 10px !important;
+	height: 20px;
+}
+.input-group {
+	margin-bottom: 10px;
+}
+
+.input-group-addon {
+	/*background-color: #fff;*/
+}
+
+.more-names-btn, .more-time-btn {
+	margin-top: -8px;
+	margin-bottom: 10px;
+	/*margin-left: 4px;*/
+	padding: 1px 5px;
+	/*background-color: #e8e8e8;*/
+	border: 0px;
+}
+.more-names-btn:active:focus, .more-names-btn:hover {
+	/*background-color: #fff !important;*/
+    border-color: #fff !important; 
+} 
+
+/*.double-feature-btn {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	width: 100%;
+	border-radius: 5px;
+	border: 1px solid #333;
+	background-color: #eaeaea;
+	text-align: center;
+	font-weight: bold;
+}
+.double-feature {
+	display: none;
+}*/
+
+
+/* Controller */
+.wrap-add-control button {
+	padding-top: 10px;
+	padding-bottom: 10px;
+	color: #fff;
+	font-weight: 600;
+}
+.wrap-add-control button:nth-child(1) {
+	border-bottom-right-radius: 0px;
+	border-top-right-radius: 0px;
+}
+.wrap-add-control button:nth-child(2) {
+	border-bottom-left-radius: 0px;
+	border-top-left-radius: 0px;
+}
+
+.btn-moremovie {
+	background-color: #6894e0;
+}
+.btn-submit {
+	background-color: #3b79e6;
+}

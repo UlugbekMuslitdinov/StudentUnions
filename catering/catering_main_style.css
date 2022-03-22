@@ -1,0 +1,184 @@
+@font-face {
+	font-family: 'CateringFamily';
+	src: url('fonts/MiloOT-Black.otf'); /* IE9 Compat Modes */
+	src: url('fonts/MiloOT-Black.otf') format('embedded-opentype'), /* IE6-IE8 */
+		 url('fonts/MiloOT-Black.otf') format('woff'), /* Modern Browsers */
+		 url('fonts/MiloOT-Black.otf')  format('truetype'), /* Safari, Android, iOS */
+		 url('fonts/MiloOT-Black.otf') format('svg'); /* Legacy iOS */
+}
+
+.wrap_catering {
+	margin-left: auto;
+	margin-right: auto;
+	width: 950px;
+}
+.wrap_catering > .cc_right {
+	font-family: CateringFamily;
+}
+
+.c_header > img {
+	width: 100%;
+}
+
+
+/* c_content */
+.c_content {
+	background-image: url('images/background.jpg');
+}
+
+.c_content {
+	margin: 0;
+	margin-top: 20px;
+	padding: 0;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+	flex-flow: row wrap;
+	height: 600px;
+}
+
+.c_content > .cc_top, .c_content > .cc_bottom {
+	width: 100%;
+}
+
+.c_content > .cc_left, .c_content > .cc_right {}
+.c_content > .cc_left {
+	width: 75%;
+}
+.c_content > .cc_left > img {
+	display: block;
+	margin-top: 45px;
+	margin-left: auto;
+	margin-right: 10px;
+	width: 90%;
+}
+
+.c_content > .cc_right {
+	width: 25%;
+}
+.ccr_nav {
+	margin-top: 0;
+	margin-bottom: 0;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 25px 0px 0px 0px;
+	width: 170px;
+	height: 555px;
+	list-style: none;
+	background-color: #fff;
+	/*overflow: hidden;*/
+	overflow-y: scroll;
+}
+.ccr_nav > li {
+	padding-top: 20px;
+	cursor: pointer;
+}
+.ccr_nav > li:after {
+	display: block;
+	margin-top: 20px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 110px;
+	height: 2px;
+	background: #e2e2e2;
+	border-right: 1px white;
+	content: '';
+}
+.ccr_nav > li:last-child:after {
+	background: inherit;
+}
+.ccr_nav > li > a {
+	display: block;
+}
+.ccr_nav > li > a:hover .ccr_nav .ccr_subnav {
+	display: block;
+}
+.ccr_nav > li > a > img {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+}
+.ccr_nav .ccr_subnav {
+	display: none;
+}
+
+.ccr_nav .ccr_subnav ul {
+	margin-top: 15px;
+	padding: 0px;
+	list-style: none;
+}
+
+.ccr_nav .ccr_subnav ul a {
+	display: block;
+	padding-top: 10px;
+	width: 100%;
+	text-align: center;
+	text-decoration: none;
+	text-transform: uppercase;
+	/*font-family: "Arial", Helvetica, sans-serif;*/
+	font-family: CateringFamily;
+	color: #333;
+	font-weight: 400;
+	font-size: 8pt;
+}
+
+.ccr_nav .ccr_subnav ul a:after {
+	display: block;
+	margin-top: 10px;
+	margin-left: auto;
+	margin-right: auto;
+	width: 115px;
+	height: 2px;
+	background: #f5f5f5;
+	border-right: 1px white;
+	content: '';
+}
+
+.ccr_nav .ccr_subnav ul li:last-child a:after {
+	background: inherit;
+}
+
+/* For Guidelines */
+#nav_li_1 .subnav_ul a {
+	color: #1e5288 !important;
+}
+
+/* For Catering Forms */
+#nav_li_2 .subnav_ul a {
+	color: #bd2036 !important;
+}
+
+/* Catering Menu */
+#nav_li_3 .subnav_ul a {
+	color: #007d84 !important;
+}
+
+#nav_li_1 .subnav_ul a:hover, #nav_li_2 .subnav_ul a:hover, #nav_li_3 .subnav_ul a:hover {
+	color: #ae7c58 !important;
+}
+
+
+::-webkit-scrollbar {
+    width: 1px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555; 
+}
+
+.c_footer {
+	margin-top: 20px;
+}

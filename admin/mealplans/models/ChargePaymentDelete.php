@@ -1,0 +1,1059 @@
+<?php
+
+namespace PHPMaker2022\mealplans;
+
+use Doctrine\DBAL\ParameterType;
+use Doctrine\DBAL\FetchMode;
+use Doctrine\DBAL\Connection;
+use Doctrine\DBAL\Query\QueryBuilder;
+
+/**
+ * Page class
+ */
+class ChargePaymentDelete extends ChargePayment
+{
+    use MessagesTrait;
+
+    // Page ID
+    public $PageID = "delete";
+
+    // Project ID
+    public $ProjectID = PROJECT_ID;
+
+    // Table name
+    public $TableName = 'charge_payment';
+
+    // Page object name
+    public $PageObjName = "ChargePaymentDelete";
+
+    // View file path
+    public $View = null;
+
+    // Title
+    public $Title = null; // Title for <title> tag
+
+    // Rendering View
+    public $RenderingView = false;
+
+    // Page headings
+    public $Heading = "";
+    public $Subheading = "";
+    public $PageHeader;
+    public $PageFooter;
+
+    // Page layout
+    public $UseLayout = true;
+
+    // Page terminated
+    private $terminated = false;
+
+    // Page heading
+    public function pageHeading()
+    {
+        global $Language;
+        if ($this->Heading != "") {
+            return $this->Heading;
+        }
+        if (method_exists($this, "tableCaption")) {
+            return $this->tableCaption();
+        }
+        return "";
+    }
+
+    // Page subheading
+    public function pageSubheading()
+    {
+        global $Language;
+        if ($this->Subheading != "") {
+            return $this->Subheading;
+        }
+        if ($this->TableName) {
+            return $Language->phrase($this->PageID);
+        }
+        return "";
+    }
+
+    // Page name
+    public function pageName()
+    {
+        return CurrentPageName();
+    }
+
+    // Page URL
+    public function pageUrl($withArgs = true)
+    {
+        $route = GetRoute();
+        $args = $route->getArguments();
+        if (!$withArgs) {
+            foreach ($args as $key => &$val) {
+                $val = "";
+            }
+            unset($val);
+        }
+        $url = rtrim(UrlFor($route->getName(), $args), "/") . "?";
+        if ($this->UseTokenInUrl) {
+            $url .= "t=" . $this->TableVar . "&"; // Add page token
+        }
+        return $url;
+    }
+
+    // Show Page Header
+    public function showPageHeader()
+    {
+        $header = $this->PageHeader;
+        $this->pageDataRendering($header);
+        if ($header != "") { // Header exists, display
+            echo '<p id="ew-page-header">' . $header . '</p>';
+        }
+    }
+
+    // Show Page Footer
+    public function showPageFooter()
+    {
+        $footer = $this->PageFooter;
+        $this->pageDataRendered($footer);
+        if ($footer != "") { // Footer exists, display
+            echo '<p id="ew-page-footer">' . $footer . '</p>';
+        }
+    }
+
+    // Validate page request
+    protected function isPageRequest()
+    {
+        global $CurrentForm;
+        if ($this->UseTokenInUrl) {
+            if ($CurrentForm) {
+                return $this->TableVar == $CurrentForm->getValue("t");
+            }
+            if (Get("t") !== null) {
+                return $this->TableVar == Get("t");
+            }
+        }
+        return true;
+    }
+
+    // Constructor
+    public function __construct()
+    {
+        global $Language, $DashboardReport, $DebugTimer;
+
+        // Initialize
+        $GLOBALS["Page"] = &$this;
+
+        // Language object
+        $Language = Container("language");
+
+        // Parent constuctor
+        parent::__construct();
+
+        // Table object (charge_payment)
+        if (!isset($GLOBALS["charge_payment"]) || get_class($GLOBALS["charge_payment"]) == PROJECT_NAMESPACE . "charge_payment") {
+            $GLOBALS["charge_payment"] = &$this;
+        }
+
+        // Table name (for backward compatibility only)
+        if (!defined(PROJECT_NAMESPACE . "TABLE_NAME")) {
+            define(PROJECT_NAMESPACE . "TABLE_NAME", 'charge_payment');
+        }
+
+        // Start timer
+        $DebugTimer = Container("timer");
+
+        // Debug message
+        LoadDebugMessage();
+
+        // Open connection
+        $GLOBALS["Conn"] = $GLOBALS["Conn"] ?? $this->getConnection();
+    }
+
+    // Get content from stream
+    public function getContents($stream = null): string
+    {
+        global $Response;
+        return is_object($Response) ? $Response->getBody() : ob_get_clean();
+    }
+
+    // Is lookup
+    public function isLookup()
+    {
+        return SameText(Route(0), Config("API_LOOKUP_ACTION"));
+    }
+
+    // Is AutoFill
+    public function isAutoFill()
+    {
+        return $this->isLookup() && SameText(Post("ajax"), "autofill");
+    }
+
+    // Is AutoSuggest
+    public function isAutoSuggest()
+    {
+        return $this->isLookup() && SameText(Post("ajax"), "autosuggest");
+    }
+
+    // Is modal lookup
+    public function isModalLookup()
+    {
+        return $this->isLookup() && SameText(Post("ajax"), "modal");
+    }
+
+    // Is terminated
+    public function isTerminated()
+    {
+        return $this->terminated;
+    }
+
+    /**
+     * Terminate page
+     *
+     * @param string $url URL for direction
+     * @return void
+     */
+    public function terminate($url = "")
+    {
+        if ($this->terminated) {
+            return;
+        }
+        global $ExportFileName, $TempImages, $DashboardReport, $Response;
+
+        // Page is terminated
+        $this->terminated = true;
+
+         // Page Unload event
+        if (method_exists($this, "pageUnload")) {
+            $this->pageUnload();
+        }
+
+        // Global Page Unloaded event (in userfn*.php)
+        Page_Unloaded();
+
+        // Export
+        if ($this->CustomExport && $this->CustomExport == $this->Export && array_key_exists($this->CustomExport, Config("EXPORT_CLASSES"))) {
+            $content = $this->getContents();
+            if ($ExportFileName == "") {
+                $ExportFileName = $this->TableVar;
+            }
+            $class = PROJECT_NAMESPACE . Config("EXPORT_CLASSES." . $this->CustomExport);
+            if (class_exists($class)) {
+                $tbl = Container("charge_payment");
+                $doc = new $class($tbl);
+                $doc->Text = @$content;
+                if ($this->isExport("email")) {
+                    echo $this->exportEmail($doc->Text);
+                } else {
+                    $doc->export();
+                }
+                DeleteTempImages(); // Delete temp images
+                return;
+            }
+        }
+        if (!IsApi() && method_exists($this, "pageRedirecting")) {
+            $this->pageRedirecting($url);
+        }
+
+        // Close connection
+        CloseConnections();
+
+        // Return for API
+        if (IsApi()) {
+            $res = $url === true;
+            if (!$res) { // Show error
+                WriteJson(array_merge(["success" => false], $this->getMessages()));
+            }
+            return;
+        } else { // Check if response is JSON
+            if (StartsString("application/json", $Response->getHeaderLine("Content-type")) && $Response->getBody()->getSize()) { // With JSON response
+                $this->clearMessages();
+                return;
+            }
+        }
+
+        // Go to URL if specified
+        if ($url != "") {
+            if (!Config("DEBUG") && ob_get_length()) {
+                ob_end_clean();
+            }
+            SaveDebugMessage();
+            Redirect(GetUrl($url));
+        }
+        return; // Return to controller
+    }
+
+    // Get records from recordset
+    protected function getRecordsFromRecordset($rs, $current = false)
+    {
+        $rows = [];
+        if (is_object($rs)) { // Recordset
+            while ($rs && !$rs->EOF) {
+                $this->loadRowValues($rs); // Set up DbValue/CurrentValue
+                $row = $this->getRecordFromArray($rs->fields);
+                if ($current) {
+                    return $row;
+                } else {
+                    $rows[] = $row;
+                }
+                $rs->moveNext();
+            }
+        } elseif (is_array($rs)) {
+            foreach ($rs as $ar) {
+                $row = $this->getRecordFromArray($ar);
+                if ($current) {
+                    return $row;
+                } else {
+                    $rows[] = $row;
+                }
+            }
+        }
+        return $rows;
+    }
+
+    // Get record from array
+    protected function getRecordFromArray($ar)
+    {
+        $row = [];
+        if (is_array($ar)) {
+            foreach ($ar as $fldname => $val) {
+                if (array_key_exists($fldname, $this->Fields) && ($this->Fields[$fldname]->Visible || $this->Fields[$fldname]->IsPrimaryKey)) { // Primary key or Visible
+                    $fld = &$this->Fields[$fldname];
+                    if ($fld->HtmlTag == "FILE") { // Upload field
+                        if (EmptyValue($val)) {
+                            $row[$fldname] = null;
+                        } else {
+                            if ($fld->DataType == DATATYPE_BLOB) {
+                                $url = FullUrl(GetApiUrl(Config("API_FILE_ACTION") .
+                                    "/" . $fld->TableVar . "/" . $fld->Param . "/" . rawurlencode($this->getRecordKeyValue($ar))));
+                                $row[$fldname] = ["type" => ContentType($val), "url" => $url, "name" => $fld->Param . ContentExtension($val)];
+                            } elseif (!$fld->UploadMultiple || !ContainsString($val, Config("MULTIPLE_UPLOAD_SEPARATOR"))) { // Single file
+                                $url = FullUrl(GetApiUrl(Config("API_FILE_ACTION") .
+                                    "/" . $fld->TableVar . "/" . Encrypt($fld->physicalUploadPath() . $val)));
+                                $row[$fldname] = ["type" => MimeContentType($val), "url" => $url, "name" => $val];
+                            } else { // Multiple files
+                                $files = explode(Config("MULTIPLE_UPLOAD_SEPARATOR"), $val);
+                                $ar = [];
+                                foreach ($files as $file) {
+                                    $url = FullUrl(GetApiUrl(Config("API_FILE_ACTION") .
+                                        "/" . $fld->TableVar . "/" . Encrypt($fld->physicalUploadPath() . $file)));
+                                    if (!EmptyValue($file)) {
+                                        $ar[] = ["type" => MimeContentType($file), "url" => $url, "name" => $file];
+                                    }
+                                }
+                                $row[$fldname] = $ar;
+                            }
+                        }
+                    } else {
+                        $row[$fldname] = $val;
+                    }
+                }
+            }
+        }
+        return $row;
+    }
+
+    // Get record key value from array
+    protected function getRecordKeyValue($ar)
+    {
+        $key = "";
+        if (is_array($ar)) {
+            $key .= @$ar['charge_id'];
+        }
+        return $key;
+    }
+
+    /**
+     * Hide fields for add/edit
+     *
+     * @return void
+     */
+    protected function hideFieldsForAddEdit()
+    {
+        if ($this->isAdd() || $this->isCopy() || $this->isGridAdd()) {
+            $this->charge_id->Visible = false;
+        }
+    }
+    public $DbMasterFilter = "";
+    public $DbDetailFilter = "";
+    public $StartRecord;
+    public $TotalRecords = 0;
+    public $RecordCount;
+    public $RecKeys = [];
+    public $StartRowCount = 1;
+    public $RowCount = 0;
+
+    /**
+     * Page run
+     *
+     * @return void
+     */
+    public function run()
+    {
+        global $ExportType, $CustomExportType, $ExportFileName, $UserProfile, $Language, $Security, $CurrentForm;
+
+        // Use layout
+        $this->UseLayout = $this->UseLayout && ConvertToBool(Param("layout", true));
+        $this->CurrentAction = Param("action"); // Set up current action
+        $this->charge_id->setVisibility();
+        $this->ch_first_name->setVisibility();
+        $this->ch_last_name->setVisibility();
+        $this->address->setVisibility();
+        $this->city->setVisibility();
+        $this->state->setVisibility();
+        $this->zipcode->setVisibility();
+        $this->card_type->setVisibility();
+        $this->expiration_month->setVisibility();
+        $this->expiration_year->setVisibility();
+        $this->cv_reply->setVisibility();
+        $this->charge_amount->setVisibility();
+        $this->order_number->setVisibility();
+        $this->account_number->setVisibility();
+        $this->decision->setVisibility();
+        $this->reason_code->setVisibility();
+        $this->transaction_time->setVisibility();
+        $this->ch_email->setVisibility();
+        $this->ch_phone->setVisibility();
+        $this->hideFieldsForAddEdit();
+
+        // Do not use lookup cache
+        $this->setUseLookupCache(false);
+
+        // Global Page Loading event (in userfn*.php)
+        Page_Loading();
+
+        // Page Load event
+        if (method_exists($this, "pageLoad")) {
+            $this->pageLoad();
+        }
+
+        // Set up lookup cache
+
+        // Set up Breadcrumb
+        $this->setupBreadcrumb();
+
+        // Load key parameters
+        $this->RecKeys = $this->getRecordKeys(); // Load record keys
+        $filter = $this->getFilterFromRecordKeys();
+        if ($filter == "") {
+            $this->terminate("ChargePaymentList"); // Prevent SQL injection, return to list
+            return;
+        }
+
+        // Set up filter (WHERE Clause)
+        $this->CurrentFilter = $filter;
+
+        // Get action
+        if (IsApi()) {
+            $this->CurrentAction = "delete"; // Delete record directly
+        } elseif (Post("action") !== null) {
+            $this->CurrentAction = Post("action");
+        } elseif (Get("action") == "1") {
+            $this->CurrentAction = "delete"; // Delete record directly
+        } else {
+            $this->CurrentAction = "show"; // Display record
+        }
+        if ($this->isDelete()) {
+            $this->SendEmail = true; // Send email on delete success
+            if ($this->deleteRows()) { // Delete rows
+                if ($this->getSuccessMessage() == "") {
+                    $this->setSuccessMessage($Language->phrase("DeleteSuccess")); // Set up success message
+                }
+                if (IsApi()) {
+                    $this->terminate(true);
+                    return;
+                } else {
+                    $this->terminate($this->getReturnUrl()); // Return to caller
+                    return;
+                }
+            } else { // Delete failed
+                if (IsApi()) {
+                    $this->terminate();
+                    return;
+                }
+                $this->CurrentAction = "show"; // Display record
+            }
+        }
+        if ($this->isShow()) { // Load records for display
+            if ($this->Recordset = $this->loadRecordset()) {
+                $this->TotalRecords = $this->Recordset->recordCount(); // Get record count
+            }
+            if ($this->TotalRecords <= 0) { // No record found, exit
+                if ($this->Recordset) {
+                    $this->Recordset->close();
+                }
+                $this->terminate("ChargePaymentList"); // Return to list
+                return;
+            }
+        }
+
+        // Set LoginStatus / Page_Rendering / Page_Render
+        if (!IsApi() && !$this->isTerminated()) {
+            // Pass login status to client side
+            SetClientVar("login", LoginStatus());
+
+            // Global Page Rendering event (in userfn*.php)
+            Page_Rendering();
+
+            // Page Render event
+            if (method_exists($this, "pageRender")) {
+                $this->pageRender();
+            }
+
+            // Render search option
+            if (method_exists($this, "renderSearchOptions")) {
+                $this->renderSearchOptions();
+            }
+        }
+    }
+
+    // Load recordset
+    public function loadRecordset($offset = -1, $rowcnt = -1)
+    {
+        // Load List page SQL (QueryBuilder)
+        $sql = $this->getListSql();
+
+        // Load recordset
+        if ($offset > -1) {
+            $sql->setFirstResult($offset);
+        }
+        if ($rowcnt > 0) {
+            $sql->setMaxResults($rowcnt);
+        }
+        $result = $sql->execute();
+        $rs = new Recordset($result, $sql);
+
+        // Call Recordset Selected event
+        $this->recordsetSelected($rs);
+        return $rs;
+    }
+
+    // Load records as associative array
+    public function loadRows($offset = -1, $rowcnt = -1)
+    {
+        // Load List page SQL (QueryBuilder)
+        $sql = $this->getListSql();
+
+        // Load recordset
+        if ($offset > -1) {
+            $sql->setFirstResult($offset);
+        }
+        if ($rowcnt > 0) {
+            $sql->setMaxResults($rowcnt);
+        }
+        $result = $sql->execute();
+        return $result->fetchAll(FetchMode::ASSOCIATIVE);
+    }
+
+    /**
+     * Load row based on key values
+     *
+     * @return void
+     */
+    public function loadRow()
+    {
+        global $Security, $Language;
+        $filter = $this->getRecordFilter();
+
+        // Call Row Selecting event
+        $this->rowSelecting($filter);
+
+        // Load SQL based on filter
+        $this->CurrentFilter = $filter;
+        $sql = $this->getCurrentSql();
+        $conn = $this->getConnection();
+        $res = false;
+        $row = $conn->fetchAssociative($sql);
+        if ($row) {
+            $res = true;
+            $this->loadRowValues($row); // Load row values
+        }
+        return $res;
+    }
+
+    /**
+     * Load row values from recordset or record
+     *
+     * @param Recordset|array $rs Record
+     * @return void
+     */
+    public function loadRowValues($rs = null)
+    {
+        if (is_array($rs)) {
+            $row = $rs;
+        } elseif ($rs && property_exists($rs, "fields")) { // Recordset
+            $row = $rs->fields;
+        } else {
+            $row = $this->newRow();
+        }
+        if (!$row) {
+            return;
+        }
+
+        // Call Row Selected event
+        $this->rowSelected($row);
+        $this->charge_id->setDbValue($row['charge_id']);
+        $this->ch_first_name->setDbValue($row['ch_first_name']);
+        $this->ch_last_name->setDbValue($row['ch_last_name']);
+        $this->address->setDbValue($row['address']);
+        $this->city->setDbValue($row['city']);
+        $this->state->setDbValue($row['state']);
+        $this->zipcode->setDbValue($row['zipcode']);
+        $this->card_type->setDbValue($row['card_type']);
+        $this->expiration_month->setDbValue($row['expiration_month']);
+        $this->expiration_year->setDbValue($row['expiration_year']);
+        $this->cv_reply->setDbValue($row['cv_reply']);
+        $this->charge_amount->setDbValue($row['charge_amount']);
+        $this->order_number->setDbValue($row['order_number']);
+        $this->account_number->setDbValue($row['account_number']);
+        $this->decision->setDbValue($row['decision']);
+        $this->reason_code->setDbValue($row['reason_code']);
+        $this->transaction_time->setDbValue($row['transaction_time']);
+        $this->ch_email->setDbValue($row['ch_email']);
+        $this->ch_phone->setDbValue($row['ch_phone']);
+    }
+
+    // Return a row with default values
+    protected function newRow()
+    {
+        $row = [];
+        $row['charge_id'] = null;
+        $row['ch_first_name'] = null;
+        $row['ch_last_name'] = null;
+        $row['address'] = null;
+        $row['city'] = null;
+        $row['state'] = null;
+        $row['zipcode'] = null;
+        $row['card_type'] = null;
+        $row['expiration_month'] = null;
+        $row['expiration_year'] = null;
+        $row['cv_reply'] = null;
+        $row['charge_amount'] = null;
+        $row['order_number'] = null;
+        $row['account_number'] = null;
+        $row['decision'] = null;
+        $row['reason_code'] = null;
+        $row['transaction_time'] = null;
+        $row['ch_email'] = null;
+        $row['ch_phone'] = null;
+        return $row;
+    }
+
+    // Render row values based on field settings
+    public function renderRow()
+    {
+        global $Security, $Language, $CurrentLanguage;
+
+        // Initialize URLs
+
+        // Call Row_Rendering event
+        $this->rowRendering();
+
+        // Common render codes for all row types
+
+        // charge_id
+
+        // ch_first_name
+
+        // ch_last_name
+
+        // address
+
+        // city
+
+        // state
+
+        // zipcode
+
+        // card_type
+
+        // expiration_month
+
+        // expiration_year
+
+        // cv_reply
+
+        // charge_amount
+
+        // order_number
+
+        // account_number
+
+        // decision
+
+        // reason_code
+
+        // transaction_time
+
+        // ch_email
+
+        // ch_phone
+
+        // View row
+        if ($this->RowType == ROWTYPE_VIEW) {
+            // charge_id
+            $this->charge_id->ViewValue = $this->charge_id->CurrentValue;
+            $this->charge_id->ViewCustomAttributes = "";
+
+            // ch_first_name
+            $this->ch_first_name->ViewValue = $this->ch_first_name->CurrentValue;
+            $this->ch_first_name->ViewCustomAttributes = "";
+
+            // ch_last_name
+            $this->ch_last_name->ViewValue = $this->ch_last_name->CurrentValue;
+            $this->ch_last_name->ViewCustomAttributes = "";
+
+            // address
+            $this->address->ViewValue = $this->address->CurrentValue;
+            $this->address->ViewCustomAttributes = "";
+
+            // city
+            $this->city->ViewValue = $this->city->CurrentValue;
+            $this->city->ViewCustomAttributes = "";
+
+            // state
+            $this->state->ViewValue = $this->state->CurrentValue;
+            $this->state->ViewCustomAttributes = "";
+
+            // zipcode
+            $this->zipcode->ViewValue = $this->zipcode->CurrentValue;
+            $this->zipcode->ViewCustomAttributes = "";
+
+            // card_type
+            $this->card_type->ViewValue = $this->card_type->CurrentValue;
+            $this->card_type->ViewCustomAttributes = "";
+
+            // expiration_month
+            $this->expiration_month->ViewValue = $this->expiration_month->CurrentValue;
+            $this->expiration_month->ViewValue = FormatNumber($this->expiration_month->ViewValue, "");
+            $this->expiration_month->ViewCustomAttributes = "";
+
+            // expiration_year
+            $this->expiration_year->ViewValue = $this->expiration_year->CurrentValue;
+            $this->expiration_year->ViewValue = FormatNumber($this->expiration_year->ViewValue, "");
+            $this->expiration_year->ViewCustomAttributes = "";
+
+            // cv_reply
+            $this->cv_reply->ViewValue = $this->cv_reply->CurrentValue;
+            $this->cv_reply->ViewCustomAttributes = "";
+
+            // charge_amount
+            $this->charge_amount->ViewValue = $this->charge_amount->CurrentValue;
+            $this->charge_amount->ViewValue = FormatNumber($this->charge_amount->ViewValue, "");
+            $this->charge_amount->ViewCustomAttributes = "";
+
+            // order_number
+            $this->order_number->ViewValue = $this->order_number->CurrentValue;
+            $this->order_number->ViewCustomAttributes = "";
+
+            // account_number
+            $this->account_number->ViewValue = $this->account_number->CurrentValue;
+            $this->account_number->ViewCustomAttributes = "";
+
+            // decision
+            $this->decision->ViewValue = $this->decision->CurrentValue;
+            $this->decision->ViewCustomAttributes = "";
+
+            // reason_code
+            $this->reason_code->ViewValue = $this->reason_code->CurrentValue;
+            $this->reason_code->ViewValue = FormatNumber($this->reason_code->ViewValue, "");
+            $this->reason_code->ViewCustomAttributes = "";
+
+            // transaction_time
+            $this->transaction_time->ViewValue = $this->transaction_time->CurrentValue;
+            $this->transaction_time->ViewValue = FormatDateTime($this->transaction_time->ViewValue, 0);
+            $this->transaction_time->ViewCustomAttributes = "";
+
+            // ch_email
+            $this->ch_email->ViewValue = $this->ch_email->CurrentValue;
+            $this->ch_email->ViewCustomAttributes = "";
+
+            // ch_phone
+            $this->ch_phone->ViewValue = $this->ch_phone->CurrentValue;
+            $this->ch_phone->ViewCustomAttributes = "";
+
+            // charge_id
+            $this->charge_id->LinkCustomAttributes = "";
+            $this->charge_id->HrefValue = "";
+            $this->charge_id->TooltipValue = "";
+
+            // ch_first_name
+            $this->ch_first_name->LinkCustomAttributes = "";
+            $this->ch_first_name->HrefValue = "";
+            $this->ch_first_name->TooltipValue = "";
+
+            // ch_last_name
+            $this->ch_last_name->LinkCustomAttributes = "";
+            $this->ch_last_name->HrefValue = "";
+            $this->ch_last_name->TooltipValue = "";
+
+            // address
+            $this->address->LinkCustomAttributes = "";
+            $this->address->HrefValue = "";
+            $this->address->TooltipValue = "";
+
+            // city
+            $this->city->LinkCustomAttributes = "";
+            $this->city->HrefValue = "";
+            $this->city->TooltipValue = "";
+
+            // state
+            $this->state->LinkCustomAttributes = "";
+            $this->state->HrefValue = "";
+            $this->state->TooltipValue = "";
+
+            // zipcode
+            $this->zipcode->LinkCustomAttributes = "";
+            $this->zipcode->HrefValue = "";
+            $this->zipcode->TooltipValue = "";
+
+            // card_type
+            $this->card_type->LinkCustomAttributes = "";
+            $this->card_type->HrefValue = "";
+            $this->card_type->TooltipValue = "";
+
+            // expiration_month
+            $this->expiration_month->LinkCustomAttributes = "";
+            $this->expiration_month->HrefValue = "";
+            $this->expiration_month->TooltipValue = "";
+
+            // expiration_year
+            $this->expiration_year->LinkCustomAttributes = "";
+            $this->expiration_year->HrefValue = "";
+            $this->expiration_year->TooltipValue = "";
+
+            // cv_reply
+            $this->cv_reply->LinkCustomAttributes = "";
+            $this->cv_reply->HrefValue = "";
+            $this->cv_reply->TooltipValue = "";
+
+            // charge_amount
+            $this->charge_amount->LinkCustomAttributes = "";
+            $this->charge_amount->HrefValue = "";
+            $this->charge_amount->TooltipValue = "";
+
+            // order_number
+            $this->order_number->LinkCustomAttributes = "";
+            $this->order_number->HrefValue = "";
+            $this->order_number->TooltipValue = "";
+
+            // account_number
+            $this->account_number->LinkCustomAttributes = "";
+            $this->account_number->HrefValue = "";
+            $this->account_number->TooltipValue = "";
+
+            // decision
+            $this->decision->LinkCustomAttributes = "";
+            $this->decision->HrefValue = "";
+            $this->decision->TooltipValue = "";
+
+            // reason_code
+            $this->reason_code->LinkCustomAttributes = "";
+            $this->reason_code->HrefValue = "";
+            $this->reason_code->TooltipValue = "";
+
+            // transaction_time
+            $this->transaction_time->LinkCustomAttributes = "";
+            $this->transaction_time->HrefValue = "";
+            $this->transaction_time->TooltipValue = "";
+
+            // ch_email
+            $this->ch_email->LinkCustomAttributes = "";
+            $this->ch_email->HrefValue = "";
+            $this->ch_email->TooltipValue = "";
+
+            // ch_phone
+            $this->ch_phone->LinkCustomAttributes = "";
+            $this->ch_phone->HrefValue = "";
+            $this->ch_phone->TooltipValue = "";
+        }
+
+        // Call Row Rendered event
+        if ($this->RowType != ROWTYPE_AGGREGATEINIT) {
+            $this->rowRendered();
+        }
+    }
+
+    // Delete records based on current filter
+    protected function deleteRows()
+    {
+        global $Language, $Security;
+        $sql = $this->getCurrentSql();
+        $conn = $this->getConnection();
+        $rows = $conn->fetchAllAssociative($sql);
+        if (count($rows) == 0) {
+            $this->setFailureMessage($Language->phrase("NoRecord")); // No record found
+            return false;
+        }
+        if ($this->UseTransaction) {
+            $conn->beginTransaction();
+        }
+
+        // Clone old rows
+        $rsold = $rows;
+        $successKeys = [];
+        $failKeys = [];
+        foreach ($rsold as $row) {
+            $thisKey = "";
+            if ($thisKey != "") {
+                $thisKey .= Config("COMPOSITE_KEY_SEPARATOR");
+            }
+            $thisKey .= $row['charge_id'];
+
+            // Call row deleting event
+            $deleteRow = $this->rowDeleting($row);
+            if ($deleteRow) { // Delete
+                $deleteRow = $this->delete($row);
+            }
+            if ($deleteRow === false) {
+                if ($this->UseTransaction) {
+                    $successKeys = []; // Reset success keys
+                    break;
+                }
+                $failKeys[] = $thisKey;
+            } else {
+                if (Config("DELETE_UPLOADED_FILES")) { // Delete old files
+                    $this->deleteUploadedFiles($row);
+                }
+
+                // Call Row Deleted event
+                $this->rowDeleted($row);
+                $successKeys[] = $thisKey;
+            }
+        }
+
+        // Any records deleted
+        $deleteRows = count($successKeys) > 0;
+        if (!$deleteRows) {
+            // Set up error message
+            if ($this->getSuccessMessage() != "" || $this->getFailureMessage() != "") {
+                // Use the message, do nothing
+            } elseif ($this->CancelMessage != "") {
+                $this->setFailureMessage($this->CancelMessage);
+                $this->CancelMessage = "";
+            } else {
+                $this->setFailureMessage($Language->phrase("DeleteCancelled"));
+            }
+        }
+        if ($deleteRows) {
+            if ($this->UseTransaction) { // Commit transaction
+                $conn->commit();
+            }
+
+            // Set warning message if delete some records failed
+            if (count($failKeys) > 0) {
+                $this->setWarningMessage(str_replace("%k", explode(", ", $failKeys), $Language->phrase("DeleteSomeRecordsFailed")));
+            }
+        } else {
+            if ($this->UseTransaction) { // Rollback transaction
+                $conn->rollback();
+            }
+        }
+
+        // Write JSON for API request
+        if (IsApi() && $deleteRows) {
+            $row = $this->getRecordsFromRecordset($rsold);
+            WriteJson(["success" => true, $this->TableVar => $row]);
+        }
+        return $deleteRows;
+    }
+
+    // Set up Breadcrumb
+    protected function setupBreadcrumb()
+    {
+        global $Breadcrumb, $Language;
+        $Breadcrumb = new Breadcrumb("index");
+        $url = CurrentUrl();
+        $Breadcrumb->add("list", $this->TableVar, $this->addMasterUrl("ChargePaymentList"), "", $this->TableVar, true);
+        $pageId = "delete";
+        $Breadcrumb->add("delete", $pageId, $url);
+    }
+
+    // Setup lookup options
+    public function setupLookupOptions($fld)
+    {
+        if ($fld->Lookup !== null && $fld->Lookup->Options === null) {
+            // Get default connection and filter
+            $conn = $this->getConnection();
+            $lookupFilter = "";
+
+            // No need to check any more
+            $fld->Lookup->Options = [];
+
+            // Set up lookup SQL and connection
+            switch ($fld->FieldVar) {
+                default:
+                    $lookupFilter = "";
+                    break;
+            }
+
+            // Always call to Lookup->getSql so that user can setup Lookup->Options in Lookup_Selecting server event
+            $sql = $fld->Lookup->getSql(false, "", $lookupFilter, $this);
+
+            // Set up lookup cache
+            if (!$fld->hasLookupOptions() && $fld->UseLookupCache && $sql != "" && count($fld->Lookup->Options) == 0) {
+                $totalCnt = $this->getRecordCount($sql, $conn);
+                if ($totalCnt > $fld->LookupCacheCount) { // Total count > cache count, do not cache
+                    return;
+                }
+                $rows = $conn->executeQuery($sql)->fetchAll();
+                $ar = [];
+                foreach ($rows as $row) {
+                    $row = $fld->Lookup->renderViewRow($row, Container($fld->Lookup->LinkTable));
+                    $ar[strval($row["lf"])] = $row;
+                }
+                $fld->Lookup->Options = $ar;
+            }
+        }
+    }
+
+    // Page Load event
+    public function pageLoad()
+    {
+        //Log("Page Load");
+    }
+
+    // Page Unload event
+    public function pageUnload()
+    {
+        //Log("Page Unload");
+    }
+
+    // Page Redirecting event
+    public function pageRedirecting(&$url)
+    {
+        // Example:
+        //$url = "your URL";
+    }
+
+    // Message Showing event
+    // $type = ''|'success'|'failure'|'warning'
+    public function messageShowing(&$msg, $type)
+    {
+        if ($type == 'success') {
+            //$msg = "your success message";
+        } elseif ($type == 'failure') {
+            //$msg = "your failure message";
+        } elseif ($type == 'warning') {
+            //$msg = "your warning message";
+        } else {
+            //$msg = "your message";
+        }
+    }
+
+    // Page Render event
+    public function pageRender()
+    {
+        //Log("Page Render");
+    }
+
+    // Page Data Rendering event
+    public function pageDataRendering(&$header)
+    {
+        // Example:
+        //$header = "your header";
+    }
+
+    // Page Data Rendered event
+    public function pageDataRendered(&$footer)
+    {
+        // Example:
+        //$footer = "your footer";
+    }
+}

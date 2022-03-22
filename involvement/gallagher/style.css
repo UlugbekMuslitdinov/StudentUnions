@@ -1,0 +1,146 @@
+img[id*="icon"] {
+    height: 27px;
+    width: auto;
+    margin-right: 10px;
+}
+
+.row1{
+    background-color:#666666;
+}
+
+.row0{
+    background-color:#444444;
+}
+
+.event{
+    border-top:1px dotted #444444;
+    padding-top:15px;
+    padding-bottom:15px;
+}
+
+.row td{
+    color:#444444;
+}
+
+div.submitted{
+    width: 548px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 15px;
+    color: #B00;
+    border-style: dotted;
+    border-width: 0px 0px 1px 0px;
+    border-color: black;
+}
+
+div.poll{
+    padding: 51px 0px 0px 0px;
+    margin: 0px;
+    width: 548px;
+    color: rgb(89, 89, 91);
+    font-family: Arial, sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    background: white;
+    /* background-image: url('images/ViewersChoiceTitle.jpg'); */
+    background-repeat: no-repeat;
+    border-style: dotted;
+    border-width: 0px 0px 1px 0px;
+}
+
+div.poll_question{
+    background: rgb(231, 232, 219);
+    margin: 5px 4px;
+    padding: 5px 18px;
+}
+
+div.answers_holder{
+    text-align: center;
+    padding: 14px 20px 1px 20px;
+}
+
+span.radio_holder{
+    padding: 6px;
+    display: inline-block;
+}
+
+
+
+#right-col {
+    display: none !important;
+}
+
+#center-col {
+    width: 750px !important;
+}
+
+#center-col p {
+    font-size: 13px;
+    line-height: 17px;
+}
+
+.row1{
+    background-color:#666666;
+}
+
+.row0{
+    background-color:#444444;
+}
+
+.event{
+    border-top:1px dotted #444444;
+    padding-top:15px;
+    padding-bottom:15px;
+}
+
+.row td{
+    color:#444444;
+}
+
+.operation_hours, .event_hours {
+    margin-bottom: 35px;
+    text-align: center;
+}
+
+.operation_hours_header {
+    margin-bottom: 10px;
+    font-weight: 900;
+    font-size: 20px;
+}
+
+.operation_hours p , .event_hours p {
+    margin-top: 0px !important;
+    margin-bottom: 7px !important;
+    font-size: 14px !important;
+}
+
+/* Only Event Space Pricing Table */
+table {
+    width: 100%;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+table th, table td {
+    padding: 5px;
+    width: 50%;
+    border: 1px solid #939596;
+    font-size: 17px;
+}
+
+table th {
+    font-weight: 800;
+}
+
+.odd-rows {
+    background-color: #00275b;
+    color: #fff;
+}
+
+.even-rows {
+    background-color: #e6e6e6;
+    color: #333;
+}

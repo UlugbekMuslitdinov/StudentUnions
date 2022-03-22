@@ -1,0 +1,10 @@
+Hello,
+
+A CSIL Club Funding Request Form has been submitted by {NAME} for {ORGANIZATION}.
+
+To view this submission, please visit:
+
+	http://www.union.arizona.edu/csil/clubs/CorpSpons/admin
+
+Sincerely,
+Student Union

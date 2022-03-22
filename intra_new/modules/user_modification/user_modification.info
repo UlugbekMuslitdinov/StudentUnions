@@ -1,0 +1,4 @@
+; $Id$
+name = "User modification"
+description = "Adds webauth login capabilities and makes neccesary user related modifications."
+package = "Unions intra"

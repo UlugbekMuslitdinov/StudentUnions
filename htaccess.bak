@@ -1,0 +1,365 @@
+
+########### 
+## Redirects to make easy URLs and correct for old file locations.
+
+#### CSIL
+
+Redirect permanent /activities				/involvement/activities
+Redirect permanent /csil/index.php			/involvement
+Redirect permanent /sprograms         			/csil
+Redirect permanent /programs				/csil
+
+Redirect permanent /csa               			/csil/och
+Redirect permanent /csil/csa              		/csil/och
+Redirect permanent /csil/csa/offcampus             	/csil/och/index.php
+Redirect permanent /csa/offcampus               	/csil/och
+Redirect permanent /offcampus/online           		/csil/och/offcampus/online
+Redirect permanent /offcampus               		/csil/och
+Redirect permanent /off-campus               		/csil/och
+Redirect permanent /csil/ochadvertiser			http://offcampus.arizona.edu
+
+Redirect permanent /csilweekly               		/csil/newsletter/current.php
+
+Redirect permanent /aptrush				/csil/och/AptRush.php
+Redirect permanent /AptRush				/csil/och/AptRush.php
+Redirect permanent /ApartmentRush			/csil/och/AptRush.php
+Redirect permanent /apartmentrush			/csil/och/AptRush.php
+
+Redirect permanent /read				/csil/bluechip/project_read
+Redirect permanent /projectread				/csil/bluechip/project_read
+
+Redirect permanent /greener				/sustainability
+
+Redirect permanent /csil/csa/offcampus.php		/csil/och/index.php
+Redirect permanent /csil/csa/offcampus.html		/csil/och/index.php
+Redirect permanent /housingfair				/fairs/index.php
+
+Redirect permanent /sugarland				/csil/uab/concerts/sugarland
+Redirect permanent /uaboard				/csil/uab
+Redirect permanent /uab					/csil/uab
+Redirect permanent /uplate				/csil/uab/uplate
+Redirect permanent /familyweekend			http://familyweekend.arizona.edu
+Redirect permanent /csil/uab/familyweekend/index.php	http://familyweekend.arizona.edu
+Redirect permanent /csil/uab/familyweekend/index.html	http://familyweekend.arizona.edu
+Redirect permanent /csil/uab/familyweekend2007		http://familyweekend.arizona.edu
+Redirect permanent /csil/uab/familyweekend2008          http://familyweekend.arizona.edu
+Redirect permanent /csil/uab/familyweekend2009          http://familyweekend.arizona.edu
+Redirect permanent /csil/uab/familyweekend2010			http://familyweekend.arizona.edu
+Redirect permanent /arts				/csil/uab/arts
+Redirect permanent /comedycorner			/csil/uab/comedycorner
+Redirect permanent /concerts				/csil/uab/concerts
+Redirect permanent /diversity				/csil/uab/diversity
+Redirect permanent /films				/csil/uab/films
+Redirect permanent /volunteer				/csil/uab/volunteer
+Redirect permanent /specialevents			/csil/uab/specialevents
+# james 5/10/06 - add redirect because Transfer Orientation package has typo
+
+Redirect permanent /csil/socialjustice			/csil/sjlc
+Redirect permanent /socialjustice			/csil/sjlc
+
+Redirect permanent /about/marketing/SUMCTableTopApprov.pdf	/about/marketing/TableTopperOrderForm.pdf
+
+# Take care of the recent combination of Rising Star & Eat to the Beat
+Redirect permanent /csil/uab/risingstar			/csil/uab/concerts
+Redirect permanent /csil/uab/eattothebeat		/csil/uab/concerts
+
+Redirect permanent /greek             			http://arizonagreek.orgsync.com
+Redirect permanent /csil/greek             		http://arizonagreek.orgsync.com
+Redirect permanent /CSIL/greek				http://arizonagreek.orgsync.com
+#Redirect permanent /catwalk				/csil/greek/catwalk
+
+Redirect permanent /accolades				/csil/Accolades
+
+Redirect permanent /campusact				/csil/campusact
+Redirect permanent /lifeisgood				/csil/campusact
+
+Redirect permanent /bluechip          			http://arizonaleadership.orgsync.com/org/bluechip
+Redirect permanent /csil/acil/bluechip			http://arizonaleadership.orgsync.com/org/bluechip
+
+Redirect permanent /acil				http://arizonaleadership.orgsync.com/org/ualeadership
+Redirect permanent /csil/acil				http://arizonaleadership.orgsync.com/org/ualeadership
+Redirect permanent /leadership				http://arizonaleadership.orgsync.com/org/ualeadership
+Redirect permanent /csil/leadership/courses.php     	http://arizonaleadership.orgsync.com/org/uacourses
+Redirect permanent /lead				http://arizonaleadership.orgsync.com/org/ualeadership
+Redirect permanent /equiss				http://arizonaleadership.orgsync.com/org/equiss
+Redirect permanent /equissregistration			/csil/equissregistration/pre_application.php
+Redirect permanent /EquissRegistration			/csil/equissregistration/pre_application.php
+Redirect permanent /linx				http://arizonaleadership.orgsync.com/org/linx
+
+
+Redirect permanent /csil/clubs/list			http://asua.arizona.edu/colist.htm
+Redirect permanent /clubs				http://clubs.asua.arizona.edu/clubs/home.html
+
+Redirect permanent /sam's                         	/underground/index.php?
+Redirect permanent /sams                          	/underground/index.php?
+Redirect permanent /csil/sams                          	/underground/index.php?
+
+Redirect permanent /csil/welcome			/welcome
+Redirect permanent /welcome							http://welcome.arizona.edu
+
+Redirect permanent /haze				/csil/haze
+
+Redirect permanent /csil/leadership/atlas/index.php     http://arizonaleadership.orgsync.com/org/atlas
+Redirect permanent /csil/leadership/atlas       	http://arizonaleadership.orgsync.com/org/atlas
+Redirect permanent /CSIL/leadership/atlas/index.php     http://arizonaleadership.orgsync.com/org/atlas
+Redirect permanent /CSIL/leadership/atlas               http://arizonaleadership.orgsync.com/org/atlas
+Redirect permanent /aclc				http://arizonaleadership.orgsync.com/org/nclc
+Redirect permanent /csil/aclc				http://arizonaleadership.orgsync.com/org/nclc
+Redirect permanent /csil/nclc				http://arizonaleadership.orgsync.com/org/nclc
+Redirect permanent /CSIL/nclc/index.php			http://arizonaleadership.orgsync.com/org/nclc
+Redirect permanent /nclc/index.php			http://arizonaleadership.orgsync.com/org/nclc
+Redirect permanent /nclc            			http://arizonaleadership.orgsync.com/org/nclc
+Redirect permanent /csil/leadership			http://arizonaleadership.orgsync.com/org/ualeadership
+Redirect permanent /csil/leadership/index.php		http://arizonaleadership.orgsync.com/org/ualeadership
+
+Redirect permanent /csil/lead	           		http://arizonaleadership.orgsync.com/org/ualeadership
+Redirect permanent /csil/leadership/courses.php    	http://arizonaleadership.orgsync.com/org/uacourses
+Redirect permanent /uacourses				http://arizonaleadership.orgsync.com/org/uacourses
+Redirect permanent /csil/bluechip		     	http://arizonaleadership.orgsync.com/org/bluechip
+Redirect permanent /csil/bluechip/index.php     	http://arizonaleadership.orgsync.com/org/bluechip
+
+Redirect permanent /csil/leadership/equiss	   	http://arizonaleadership.orgsync.com/org/equiss
+Redirect permanent /csil/leadership/equiss/index.php   	http://arizonaleadership.orgsync.com/org/equiss
+Redirect permanent /csil/leadership/ibm.php     	http://arizonaleadership.orgsync.com/org/ibm
+Redirect permanent /ibm                          	http://arizonaleadership.orgsync.com/org/ibm
+Redirect permanent /csil/leadership/linx/       	http://arizonaleadership.orgsync.com/org/linx
+Redirect permanent /csil/leadership/transcript/       	http://arizonaleadership.orgsync.com/org/transcript
+
+Redirect permanent /csil/leadership/transcript/       	http://arizonaleadership.orgsync.com/org/transcript
+
+Redirect permanent  /transcript                  	http://arizonaleadership.orgsync.com/org/transcript
+
+
+
+Redirect permanent /ab					/csil/ab
+Redirect permanent /AB					/csil/ab
+
+Redirect permanent /gallery				/involvement/galleries
+Redirect permanent /galleries				/involvement/galleries
+Redirect permanent /csil/galleries			/involvement/galleries
+Redirect permanent /csil/gallery                      /involvement/galleries
+
+Redirect permanent /leadershape				/csil/leadershape
+
+Redirect permanent /csil/mlc				/csil/sjlc
+Redirect permanent /sjlc				/csil/sjlc
+
+Redirect permanent /atlas				http://arizonaleadership.orgsync.com/org/atlas
+
+Redirect permanent /vendorfair				/involvement/vendorfairs.php
+Redirect permanent /vendorfairs				/involvement/vendorfairs.php
+Redirect permanent /fairs					/involvement/vendorfairs.php
+
+#### Retail & Operations
+
+Redirect permanent /event				/rooms
+Redirect permanent /services/rooms			/rooms
+
+Redirect permanent /usps				/shopping/usps
+
+Redirect permanent /studenthr				/about/student_hr/
+Redirect permanent /shr					/about/student_hr/
+
+Redirect permanent /mallreq1.html			/mall/index.php
+
+Redirect permanent /services/fastcopy/ 			/fastcopy/index.php
+Redirect permanent /services/fastcopy  			/fastcopy/index.php
+
+Redirect permanent /gamesroom				/involvement/gamesroom
+Redirect permanent /cellar/gamesroom		/involvement/gamesroom
+Redirect permanent /gamesroom/cellarconcerts		/involvement/gamesroom/gamesroom/cellarconcerts
+Redirect permanent /underground				/cellar
+Redirect permanent /marketing                           /about/marketing
+
+Redirect permanent /vendingrefunds			/about/vendingrefunds
+
+Redirect permanent /vote          /surveys/awnings/index.php
+
+#### Dining
+Redirect  /healthyoption					/dining/healthy/index.php
+Redirect  /arizonaroom  					/dining/sumc/arizonaroom
+Redirect  /beardownkitchen  				/dining/other/beardownkitchen 
+Redirect  /bdk 								/dining/other/beardownkitchen 
+Redirect permanent /mealplan				/mealplans
+
+Redirect permanent /services/catering			/catering
+
+Redirect permanent /parksu				/psu/index.php?
+Redirect permanent /parksu1.html			/psu/index.php?
+
+Redirect permanent /psugaming				/psu/code.php
+
+Redirect permanent /dining.html       			/dining/index.php
+
+Redirect permanent /foodstops 		      		/dining
+Redirect permanent /foodstop 		      		/dining
+
+
+Redirect permanent /healthy				/dining/healthy/index.php
+
+Redirect permanent /core				/dining/sumc/core
+Redirect permanent /pangea      /dining/sumc/pangea
+Redirect permanent /bk					/dining/sumc/bk
+Redirect permanent /boost				/dining/sumc/boost
+Redirect permanent /cactusgrill				/dining/sumc/cactus
+Redirect permanent /canyon				/dining/sumc/canyon
+Redirect permanent /cellarbistro			/dining/sumc/cellar
+Redirect permanent /chickfila				/dining/sumc/chickfila
+Redirect permanent /iqfresh				/dining/sumc/iq
+Redirect permanent /iq					/dining/sumc/iq
+Redirect permanent /IQ					/dining/sumc/iq
+Redirect permanent /ondeck				/dining/sumc/ondeck
+Redirect permanent /panda				/dining/sumc/panda
+Redirect permanent /papajohns				/dining/sumc/papajohns
+Redirect permanent /redington				/dining/sumc/redington
+Redirect permanent /umart				/dining/sumc/umart
+Redirect permanent /froyo				/dining/sumc/froyo
+Redirect permanent /bageltalk				/dining/psu/bageltalk
+Redirect permanent /fuel				/dining/other/fuel
+Redirect permanent /froyo                               /dining/sumc/froyo
+Redirect permanent /mesaroom                            /dining/sumc/mesaroom
+Redirect permanent /sabor				/dining/sumc/sabor
+
+Redirect permanent /parkmarket				/dining/psu/parkmarket
+Redirect permanent /parkdining				/dining/psu/parkdining
+Redirect permanent /lapetite                            /dining/psu/lapetite
+Redirect permanent /brueggers				/dining/psu/brueggers
+Redirect permanent /highland				/dining/other/highland
+Redirect permanent /eller				/dining/other/eller
+Redirect permanent /bookend				/dining/other/bookend
+Redirect  		   /redandblue			/dining/redandblue
+Redirect  		   /CorePSU				/dining/psu/core_psu
+
+#### Other
+Redirect  /live							/involvement/live/ 
+Redirect /operations/policies/computerlab.php		http://www.uits.arizona.edu/departments/oscr/locations/sumc
+
+Redirect permanent /giftconnection			/catering
+Redirect permanent /catering/giftconnection/index.php	/catering
+
+Redirect permanent /jobs				/employment/index.php
+Redirect permanent /job					/employment/index.php
+Redirect permanent /about/employment.php		/employment/index.php
+Redirect permanent /about/employment			/employment/index.php
+
+
+Redirect permanent /newz				/about/newz/index.php
+Redirect permanent /news				/about/newz/index.php
+
+Redirect permanent /hours/msuhours.php           	/infodesk/hours/index.php
+Redirect permanent /hours		            	/infodesk/hours
+
+Redirect permanent /photo				/about/gallery/index.php
+Redirect permanent /maps				/infodesk/maps/index.php?
+Redirect permanent /construction/webcam.html		/construction/webcam/index.php
+Redirect permanent /today				/index.php
+Redirect permanent /traditions/history			/traditions/scrapbook
+Redirect permanent /services				/shopping
+Redirect permanent /outstanding				/about/bell
+Redirect permanent /suac				/about/suac.php
+Redirect permanent /policies				/operations/policies
+Redirect permanent /calendar				/events/	
+
+# james 3/7/06
+Redirect permanent /fee 				/about/fee
+
+Redirect permanent /newintra				https://union.arizona.edu/intra_new
+#Redirect permanent /intra				https://union.arizona.edu/intra_new
+Redirect permanent /tellus				/about/tellus	
+Redirect permanent /bagelbattle				/surveys/bagelvote.php
+Redirect permanent /marketingrequest			/intra/marketingform
+Redirect permanent /about/student_hr/pip.php		/about/pip
+Redirect permanent /intra/quiz.pdf			https://www.union.arizona.edu/intra_files/Quiz.pdf
+Redirect permanent /intra/handbook.pdf			https://www.union.arizona.edu/intra_files/EmployeeHandbook.pdf
+Redirect permanent /intra_files/quiz.pdf      https://www.union.arizona.edu/intra_files/Quiz.pdf
+
+Redirect permanent /gallagher				/involvement/gallagher
+Redirect permanent /spf						/involvement/spf
+Redirect permanent /social					/involvement/spf
+Redirect permanent /activities				/involvement
+
+Redirect permanent /mesatellus			http://studentvoice.com/az/mesaroomfeedback
+
+###############################
+
+RewriteEngine on
+RewriteBase     /
+
+RewriteRule ^nutrition$ /dining/foodpro/test.php [PT,L]
+RewriteRule ^smartmoves$ /dining/foodpro/test.php [PT,L]
+
+
+RewriteRule ^MealplanApp/?(.*) cgi-bin/WebObjects/Mealplans.woa/$1 [PT]
+RewriteRule ^apps/catering/?(.*) cgi-bin/WebObjects/Catering.woa/$1 [PT]
+RewriteRule ^ClubsApp/?(.*) cgi-bin/WebObjects/Clubs.woa/$1 [PT]
+RewriteRule ^thecut$	/involvement/directors_cut.php
+#   backward compatibility ruleset for
+#   rewriting document.html to document.php  
+#   when and only when document.php exists
+#   but no longer document.html
+
+#   parse out basename, but remember the fact
+RewriteRule     ^(.*)\.html$    $1              [C,E=WasHTML:yes]
+#   rewrite to document.php if exists  
+RewriteCond     %{REQUEST_FILENAME}.php -f
+RewriteRule     ^(.*)$          $1.php          [S=1]
+#   else reverse the previous basename cutout
+RewriteCond     %{ENV:WasHTML}                  ^yes$
+RewriteRule     ^(.*)$          $1.html
+
+RewriteCond %{REQUEST_URI}	!(/csil/och/offcampus/online/admin.*)
+RewriteRule ^csil/och/(.*)$ 	http://offcampus.arizona.edu [R=301]
+RewriteRule ^csil/och$     http://offcampus.arizona.edu [R=301]
+
+RewriteCond	%{REQUEST_URI}	!(/intra/marketingform.*|/intra_files.*|/intra/quiz.pdf|/intra/handbook.pdf|/intra_public.*|/intra/mealplan.php)
+RewriteRule ^intra(.*)$		https://www.union.arizona.edu/intra_new
+
+#RewriteCond	%{REQUEST_URI} !(/csil/equissregistration/backweb.*)
+#RewriteRule ^csil/equissregistration.*$	http://arizonaleadership.orgsync.com/org/equiss/apply
+
+#RewriteCond %{REMOTE_ADDR} !^(150\.135\.75\.181|150\.135\.73\.55)
+#RewriteRule ^mealplans.* http://www.union.arizona.edu/noapp.php?mealplans 
+
+
+Redirect permanent /UA_GUEST/ https://union.arizona.edu/mealplans/guest.php
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_URI}  ^/dining/sumc(.*)$ [OR]
+RewriteCond %{REQUEST_URI}  ^/dining/psu(.*)$ [OR]
+RewriteCond %{REQUEST_URI}  ^/dining/other(.*)$ 
+RewriteRule ^dining/([^/]*)/?([^/]*)?.*$ /dining/index.php?q=$1&p=$2 [L,QSA]
+
+
+ RewriteCond %{REQUEST_FILENAME} !-f
+ RewriteRule ^events/images(.*)$ http://www.google.com/calendar/images$1 [L,R=301]
+
+ RewriteCond %{REQUEST_FILENAME} !-f
+ RewriteRule ^calendar/event(.*)$ http://www.google.com/calendar/event$1 [L,R=301,NE]
+ 
+ RewriteCond %{REQUEST_FILENAME} !-f
+ RewriteRule ^calendar/feeds(.*)$ http://www.google.com/calendar/feeds$1 [L,P,NE]
+ 
+ RewriteCond %{REQUEST_FILENAME} !-f
+ RewriteRule ^events//feeds(.*)$ http://www.google.com/calendar/feeds$1 [L,P,NE]
+ 
+ RewriteCond %{REQUEST_FILENAME} !-f
+ RewriteRule ^union.jpg$ http://elvis.sunion.arizona.edu:8080/union.jpg [L,P,NE]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+ RewriteRule ^interview_presentation(.*)$ http://128.196.125.237/tom1/$1 [L,P,NE]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+ RewriteRule ^tom1(.*)$ http://128.196.125.237/tom1/$1 [L,P,NE]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+ RewriteRule ^sites/all/images(.*)$ http://128.196.125.237/sites/all/images$1 [L,P,NE]
+ 
+ RewriteCond %{REQUEST_FILENAME} !-f
+ RewriteRule ^involvement/spf(.*)$ /involvement/spf.php [L]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+ RewriteRule ^social$ /involvement/spf.php [L,P,NE]
+
+RewriteCond %{REQUEST_FILENAME} !-f
+ RewriteRule ^core_psu$ /dining/psu/core_psu [NC,R]
+ 

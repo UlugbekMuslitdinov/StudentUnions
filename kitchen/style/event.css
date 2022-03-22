@@ -1,0 +1,31 @@
+
+
+.left_block {
+  float: left;
+}
+
+.right_block {
+  float: right;
+  margin-left: 10px;
+}
+
+.info {
+	margin: 0;
+	padding: 5px;
+	font-size: 14px;
+}
+
+.table {
+	margin-top: 10px;
+	border-top: solid gray 2px;
+	border-bottom: solid gray 1px;
+}
+
+.foodservicetable {
+	margin-left: 10px;
+}
+
+.comments {
+	border-bottom: solid 1px gray;
+	margin-top: 5px;
+}

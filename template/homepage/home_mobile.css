@@ -1,0 +1,92 @@
+@media (max-width:767px){ 
+
+    #su_homepage > div:nth-child(2) {
+        padding: 0px !important;
+    }
+    #su_homepage > div:nth-child(2) > .row {
+        margin-left: 0px;
+        margin-right: 0px;
+    }
+    .su-quicklink-col {
+        margin-bottom: 10px;
+        padding: 0px 10px !important;
+        flex-basis: unset;
+        width: 100%;
+    }
+    .su-quicklink-card.card .card-body .card-text {
+        height: inherit;
+        text-align: center;
+    }
+
+    .wrap-su-middletext h4 {
+        font-size: 2em;
+    }
+    .wrap-su-middletext p {
+        font-size: 1.2em;
+    }
+
+    .wrap-deliverance-img {
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .wrap-deliverance-img img {
+        width: 330px;
+    }
+    .wrap-adandsocial > .col {
+        margin-bottom: 10px;
+    }
+    .wrap-su-instagram {
+        margin-left: auto;
+        margin-right: auto;
+        /* width: 358px; */
+        height: inherit;
+    }
+    .wrap-su-insta-header, .su-insta-bottom {
+        position: relative;
+    }
+    .wrap-insta-profile-btn>a {
+        font-size: 12px;
+    }
+    .su-insta-feed-img {
+        height: 358px;
+    }
+    .su-insta-bottom {
+        height: 42px;
+    }
+
+    /*  */
+    .wrap-upcomingEvent {
+        margin-top: 4em;
+        margin-left: 0px;
+        margin-right: 0px;
+        border-left-width: 0px;
+        border-right-width: 0px;
+    }
+    .wrap-upcomingEvent-event {
+        padding: 5px;
+        margin: 0px;
+    }
+    .su-home-event-cal {
+        height: 70px;
+    }
+    .su-home-event-cal-month {
+        font-size: 1.5em;
+    }
+    .su-home-event-cal-day {
+        height: 30px;
+        line-height: 30px;
+        font-size: 2em;
+    }
+    .su-home-event-description-title {
+        margin-top: 0px;
+        height: initial;
+        font-size: 1.1em;
+    }
+    .su-home-event-description-date {
+        font-size: 1.1em;
+        font-weight: 500;
+    }
+    .su-home-event-detail {
+        padding: 0px;
+    }
+}

@@ -1,0 +1,19 @@
+
+
+@media (max-width:767px){
+	.page-img-banner, .wrap-banner-img {
+		margin-bottom: 0px;
+		height: 95px;
+	}
+	.su-main-content {
+		margin-bottom: 5rem;
+	}
+	.wrap-left-col {
+		display: none !important;
+	}
+
+	/* Footer */
+	.wrap-su-footer > .main-container {
+		padding: 0px;
+	}
+}

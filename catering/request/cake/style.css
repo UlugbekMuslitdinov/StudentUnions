@@ -1,0 +1,104 @@
+.c_content {
+    height: auto;
+    background-image: none;
+}
+.cc_top {
+    display: none;
+}
+.cc_left {
+    margin-top: 20px;
+    padding: 20px;
+    padding-top: 10px;
+    width: 100% !important;
+    border: 3px solid #00275b;
+    border-radius: 10px;
+}
+.cc_right {
+    display: none;
+}
+.cc_bottom {
+    display: none;
+}
+
+.form-control {
+    margin-bottom: 1em;
+}
+
+table.table td, table.table th {
+    padding-top: 0.1em;
+    padding-bottom: 0em;
+    font-size: 16px;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 0.5em;
+    color: white;
+    background-color: #00275b;
+    border-radius: 10px;
+    margin-left: 8em;
+    margin-right: 8em;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+    font-weight: bold;
+}
+
+h4, .su-form-label {
+    padding-left: 0.5em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    color: white;
+    background-color: #00275b;
+    border-radius: 5px;
+    font-size: 20px;
+    padding-top: 0.2em;
+    padding-bottom: 0.2em;
+}
+
+hr {
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 2.5em;
+    margin-left: 12em;
+    margin-right: 12em;
+    border-width: 3px;
+    background-color: #00275b;
+}
+
+.submit {
+    background-color: #00275b; 
+    border: none;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    display: block;
+    font-size: 18px;
+    margin: 0 auto;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+form[name="cakeForm"] span {
+    font-size:80%;
+    color:red;
+}
+
+div.div1 {
+    margin-top: -5em;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+div[id*="thanks-msg"] {
+    text-align: center;
+    margin-top: -10px;
+}

@@ -1,0 +1,32 @@
+/* The grid: Three equal columns that floats next to each other */
+.column {
+    float: left;
+    width: 33.33%;
+    padding: 20px;
+    text-align: center;
+    font-size: 20px;
+}
+
+.card {
+    padding: 20px;
+    width: 17rem;
+}
+.card-img-top {
+    height: 14rem;
+}
+.card-body {
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+.btn {
+    margin-top: 10px;
+    background-color: #ac051f;
+    color: white;
+    font-size: 1rem;
+    font-weight: 600;
+}
+.btn:hover {
+    color: #ffcf01;
+}
+  

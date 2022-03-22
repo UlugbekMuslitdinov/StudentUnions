@@ -1,0 +1,305 @@
+@CHARSET "UTF-8";
+body{
+margin:0;
+border:none;
+padding:0;
+}
+
+p {
+font-size:14px;
+font-family:"Georgia","Times New Roman", Times, serif;
+padding-left:40px;
+padding-right:20px;
+}
+
+
+/*************************************
+*
+*  Top U of A Grey bar
+*
+**************************************/
+#UA_banner {
+background-color:#999;
+height:42px;
+border:none;
+}
+
+
+/*************************************
+*
+*  The Content section
+*
+**************************************/
+
+#main {
+background-color:#fff;
+}
+
+#centered_content {
+width:980px;
+}
+
+/*************************************
+*
+*  Family Weekend top bar (FW - date - Eng/Esp)
+*
+**************************************/
+#FW_top_bar {
+position:relative;
+width:100%;
+height:30px;
+}
+
+#FW_title_date {
+position:absolute; 
+bottom:0;
+left:0;
+padding-left:5px;
+}
+
+#FW_lang_select {
+position:absolute; 
+bottom:0;
+right:0;
+color:#003c7c;
+font-size:13px;
+font-family:"Georgia","Times New Roman", Times, serif;
+padding-right:15px;
+padding-bottom:6px;
+}
+
+#FW_lang_select a:link{
+color:#003c7c;
+text-decoration:none;
+}
+
+#FW_lang_select a:visited{
+color:#003c7c;
+text-decoration:none;
+}
+
+/*************************************
+*
+*  Main image and it's overlays
+*
+**************************************/
+
+#image_div {
+position:relative;
+height:402px;
+}
+
+#image_div .xfade_imgs {
+display:none;
+position:absolute;
+top:0;  
+left:0;					
+}
+
+#image_div #text_overlay {
+position:absolute;
+top:0px;			
+right:35px;				
+color:#003c7c;
+font-family:"Georgia","Times New Roman", Times, serif;
+font-size:11px;
+}
+
+#image_div #text_landscape {
+position:absolute;
+bottom:38px;	
+filter:alpha(opacity=50);		
+left:26px;				
+z-index: 15px;
+}
+
+#image_div #tagline_overlay {
+}
+
+#image_div #bird
+{
+position:absolute;
+bottom:235px;			/* The bottom and left properties are modified by the JavaScript */
+left:592px;				/* These are just starting position values                       */
+border: none;
+z-index:15;
+}
+
+#image_div #bird a:hover
+{
+play-during:url(images/bird007.wav) mix;
+}
+
+/*************************************
+*
+*  Nav Bar and Text section
+*
+**************************************/
+
+#nav_bar {
+padding-left:10px;
+padding-right:0;	
+}
+
+.nav_item {
+float:left;
+width:115px;
+height:25px;
+line-height:25px;
+padding:2px;
+font-family:Georgia,Times New Roman, Times, serif;
+font-size:12px;
+color:#BE0F34;
+border-right:2px #BE0F34 solid;
+}
+
+.nav_item a.divlink, a.divlink:link {
+color:#BE0F34;
+text-decoration:none;
+display:block;
+width:100%; /*width needs to be specified to work in IE*/
+height:100%; /*height needs to be specified to work in IE*/
+/*Other browsers expand the link to full width and height.*/
+}
+
+.nav_item a.divlink:hover {
+color:#FFFFFF;
+background-color:#ACBAD6;
+}
+
+#selected_nav_item {
+float:left;
+width:115px;
+height:25px;
+line-height:25px;
+padding:2px;
+font-family:"Georgia","Times New Roman", Times, serif;
+font-size:12px;
+color:#BE0F34;
+background-color:#ACBAD6;
+border-right:2px #BE0F34 solid;
+}
+
+.nav_complete_progress_item {
+float:left;
+width:115px;
+height:25px;
+line-height:25px;
+padding:2px;
+font-family:"Georgia","Times New Roman", Times, serif;
+font-size:12px;
+color:#FFFFFF;
+border-right:2px #BE0F34 solid;
+background-color:#ACBAD6;
+}
+
+.nav_complete_progress_item a.divlink, a.divlink:link {
+color:#BE0F34;
+text-decoration:none;
+display:block;
+width:100%; /*width needs to be specified to work in IE*/
+height:100%; /*height needs to be specified to work in IE*/
+/*Other browsers expand the link to full width and height.*/
+}
+
+.nav_incomplete_progress_item {
+float:left;
+width:115px;
+height:25px;
+line-height:25px;
+padding:2px;
+font-family:"Georgia","Times New Roman", Times, serif;
+font-size:12px;
+color:#999999;
+border-right:2px #BE0F34 solid;
+}
+
+#text_section {
+color:#003c7c;
+font-family:"Georgia","Times New Roman", Times, serif;
+font-size:14px;
+padding-top:15px;
+padding-bottom:55px;
+/*All three of the following height lines are needed to work in IE, FireFox, and Safari*/
+/*min-height:525px; */
+/*height:auto !important; */
+/*height:250px; */
+
+text-align:left;
+}
+
+#text_section form{
+	margin-top:40px;	
+}
+
+
+#text_section h3 {
+/** font-size:14px; **/
+font-size:16px;
+font-family:"Georgia","Times New Roman", Times, serif;
+margin-top:1px;
+margin-bottom:5px;
+}
+
+/** Added for day headers **/
+#text_section h4 {
+color:#be0f34;
+font-size:18px;
+font-family:"Georgia","Times New Roman", Times, serif;
+margin-top:1px;
+margin-bottom:5px;
+}
+
+#text_section label {
+font-size:11px;
+}
+
+/* This "clearer is used to force "nav_and_text" to contain all the ".nav_item"'s and the "text_section */
+#clearer {
+clear:left; line-height: 0; height: 5px;
+}
+
+.text_input{
+	margin:2px;
+	/*
+	border:2px inset;
+	padding:1px;*/
+	height:13px;	
+}
+
+/*************************************
+*
+*  Bottom Grey Bar
+*
+**************************************/
+
+#bottom_bar {
+/*position:fixed;
+top:50;
+bottom:75%;
+left:0;
+right:100%;*/
+position:fixed; 
+bottom:0px; 
+left:0px; 
+right:0px;
+z-index:100;
+
+background-color:#999999;
+height:50px;
+border:none;
+}
+
+#bottom_bar .bar_item {
+	float:left;
+	font-family:"Georgia","Times New Roman", Times, serif;
+	font-size:10px;
+	color:#FFFFFF;
+	padding-top:2px;
+	padding-right:20px;
+}
+
+#bottom_bar .bar_item a {
+	font-size:12px;
+	color:#FFFFFF;
+}

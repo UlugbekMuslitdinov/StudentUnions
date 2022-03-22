@@ -1,0 +1,31 @@
+#meal_package_form, .code_form {
+    margin: auto;
+    padding: 10px;
+    width: 700px;
+    border: 2px solid #00275b;
+}
+
+#meal_package_form h4, .code_form h4 {
+    font-weight: 600 !important;
+    font-size: 17px;
+}
+
+.submit {
+    width: 100%;
+    background-color: #00275b;
+    border: 1px solid #00275b;
+    color: white;
+    padding: 10px 30px;
+    text-align: center;
+    display: block;
+    font-weight: 600;
+    font-size: 18px;
+    margin: 0 auto;
+    cursor: pointer;
+    border-radius: 0px;
+}
+.submit:hover {
+    background-color: #fff;
+    border: 1px solid #00275b;
+    color: #00275b;
+}

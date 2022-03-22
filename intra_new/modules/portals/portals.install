@@ -1,0 +1,39 @@
+<?php
+// $Id: portals.install,v 1 2008/11/28 14:37:44 dries Exp $
+
+/**
+ * Implementation of hook_install().
+ */
+function portals_install() {
+
+
+      db_query("CREATE TABLE {user_portal} (
+        uid int unsigned default '0',
+        portal_id int unsigned default '0',
+        KEY uid (uid)        
+      ) /*!40100 DEFAULT CHARACTER SET UTF8 */ ");
+	  
+	   db_query("CREATE TABLE {portals} (
+        portal_id int unsigned default '0',
+        name varchar(50) default NULL,
+		    primary_account int default NULL,
+        PRIMARY KEY (portal_id)        
+      ) /*!40100 DEFAULT CHARACTER SET UTF8 */ ");
+	  
+	   db_query("ALTER TABLE {users_roles} add(portal_id int)        
+      ");
+	  
+	   db_query("insert into role set rid=3, name='admin user'");
+	   db_query("insert into role set rid=4, name='portal admin'");
+     
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function portals_uninstall() {
+  
+  db_query('DROP TABLE {user_portal}');
+  db_query('DROP TABLE {portals}');
+  db_query('ALTER TABLE {users_roles} drop column portal_id');
+}

@@ -1,0 +1,37 @@
+<?php
+// $Id: user_modification.install,v 1 2008/11/28 14:37:44 dries Exp $
+
+/**
+ * Implementation of hook_install().
+ */
+function user_modification_install() {
+  
+   
+      db_query("CREATE TABLE {user_profile} (
+        uid int NOT NULL,
+        first_name varchar(50) default NULL,
+        last_name varchar(50) default NULL,
+        home_phone char(10) default NULL,
+        work_phone char(10) default NULL,
+        street_add varchar(100) default NULL,
+        city varchar(50) default NULL,
+        state char(2) default NULL,
+        zip char(10) default NULL,
+        email varchar(100) default NULL,
+        hourly_rate float default NULL,
+        account int default NULL,
+        reports_to int default NULL,
+		position int default NULL,
+        PRIMARY KEY (uid)
+      ) /*!40100 DEFAULT CHARACTER SET UTF8 */ ");
+
+     
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function user_modification_uninstall() {
+  db_query('DROP TABLE {user_profile}');
+ 
+}

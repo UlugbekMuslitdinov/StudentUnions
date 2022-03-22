@@ -1,0 +1,1838 @@
+<?php
+
+define("ADMIN_USER_RID", 3);
+define("HIRING_ADMIN_RID", 6);
+define("HIRING_SYSTEM_ADMIN_RID", 8);
+
+function hiring_init(){
+  global $user;
+  //var_dump($user);
+  
+  //unset($_SESSION['hiring_portal']);
+  
+  if(!isset($_SESSION['hiring_portal']) || intval($_SESSION['hiring_portal']) == 0){
+    $user->unit = -1;
+  }
+  else{
+    $user->unit = $_SESSION['hiring_portal'];
+  }
+  //print $user->unit;
+  
+
+}
+
+function get_hiring_unit($redirect){
+global $user;
+
+        
+
+  if(isset($user->roles[ADMIN_USER_RID]) || isset($user->roles[HIRING_SYSTEM_ADMIN_RID])){
+    return admin_user_login($redirect);
+  }
+  else{
+    if(!isset($user->roles[HIRING_ADMIN_RID][1])){
+      $_SESSION['hiring_portal'] = $user->roles[HIRING_ADMIN_RID][0];
+      $user->unit = $_SESSION['hiring_portal'];
+      if($redirect == 'applicantsearch')
+        return applicantsearch();
+      else
+        return your_applications();
+    }
+    else{   
+    
+      $output = '<form action="'.base_path().'set_unit_hiring" method="get"><input type="hidden" value="'.$redirect.'" name="redirect">';
+      foreach($user->roles[HIRING_ADMIN_RID] as $unit){
+      $query = 'select name from portals where portal_id='.$unit;
+      $result = db_query($query);
+      $row = db_fetch_array($result);
+        $output .='<input type="submit" name="unit" value="'.$row['name'].'">';
+      }
+      return $output;
+    }
+  }
+
+}
+
+function admin_user_login($redirect){
+  $output = '<form action="'.base_path().'set_unit_hiring" method="get"><input type="hidden" value="'.$redirect.'" name="redirect"><select name="unit">';
+  $query = 'select name from portals order by name';
+  $result = db_query($query);
+  while($row = db_fetch_array($result)){
+        $output .='<option value="'.$row['name'].'">'.$row['name'].'</option>';
+  }
+  $output .= '</select><input type="submit" value="go"></form>';
+      return $output;
+}
+
+function set_unit($unit, $redirect){
+global $user;
+
+  
+  $query = 'select portal_id from portals where name="'.$unit.'"';
+  $result = db_query($query, $DBlink);
+  $row = db_fetch_array($result);
+
+  $_SESSION['hiring_portal'] = $row['portal_id'];
+  $user->unit = $_SESSION['hiring_portal'];
+  
+  //return $user->unit;
+  
+  //if($redirect == 'applicantsearch')
+    //return drupal_goto('hiring/applicantsearch'); //applicantsearch();
+  //else
+    return drupal_goto('hiring/hiring'); //your_applications();
+}
+
+function decide_sp_form($id){
+  $form['#submit'] = array('decide_sp_form_submit1' => array($id));
+  
+  $form['yes'] = array(
+        '#type' => 'submit',
+        '#tree' => TRUE,
+        '#attributes' => array('style' => 'width:120px;'),
+        '#value' => 'checkout' 
+  );
+      
+      
+  $form['no'] = array(
+    '#type' => 'submit',
+    '#tree' => TRUE,
+    '#attributes' => array('style' => 'width:120px;'),
+    '#value' => 'not interested'
+  );
+  
+  return $form;
+}
+
+function applicant_form($phase, $id){
+  global $user;
+  
+  $form['#submit'] = array('applicant_form_submit1' => array($id));
+  
+  switch($phase){
+  
+    case 1: 
+      $form['ar'] = array(
+        '#type' => 'submit',
+        '#tree' => TRUE,
+        '#attributes' => array('style' => 'width:120px;'),
+        '#value' => 'Awaiting Response' 
+      );
+      
+      
+      $form['isu'] = array(
+        '#type' => 'submit',
+        '#tree' => TRUE,
+        '#attributes' => array('style' => 'width:120px;'),
+        '#value' => 'Interview Set Up'
+      );
+      
+      $form['ra'] = array(
+        '#type' => 'submit',
+        '#tree' => TRUE,
+        '#attributes' => array('style' => 'width:120px;'),
+        '#value' => 'Return Application'
+      );
+      
+    break;
+    
+    case 2:
+    
+      $form['isu'] = array(
+        '#type' => 'submit',
+        '#tree' => TRUE,
+        '#attributes' => array('style' => 'width:120px;'),
+        '#value' => 'Interview Set Up'
+      );
+    
+      $form['ra'] = array(
+        '#type' => 'submit',
+        '#tree' => TRUE,
+        '#attributes' => array('style' => 'width:120px;'),
+        '#value' => 'Return Application'
+      );
+      
+      
+    break;
+    
+    case 3:
+      
+      $form['h'] = array(
+        '#type' => 'submit',
+        '#tree' => TRUE,
+        '#value' => 'Hired(pending payroll)'
+      );
+      
+      $form['nh'] = array(
+        '#type' => 'submit',
+        '#tree' => TRUE,
+        '#value' => 'Not Hired'
+      );
+    break;  
+    
+    case 4:
+      
+            
+      $form['nh'] = array(
+        '#type' => 'submit',
+        '#tree' => TRUE,
+        '#value' => 'Cancel'
+      );
+    break;
+    
+    case 5:
+    
+      $form['re'] = array(
+        '#type' => 'submit',
+        '#tree' => TRUE,
+        '#value' => 'Reactivate'
+      );
+      
+      $form['ig'] = array(
+        '#type' => 'submit',
+        '#tree' => TRUE,
+        '#value' => 'Ignore'
+      );
+    break;
+    
+    case 6:
+    
+      $form['de'] = array(
+        '#type' => 'submit',
+        '#tree' => TRUE,
+        '#value' => 'Deactivate'
+      );
+      
+      $form['ig'] = array(
+        '#type' => 'submit',
+        '#tree' => TRUE,
+        '#value' => 'Ignore'
+      );
+    break;
+    
+
+  }
+
+  
+  return $form;
+
+}
+
+function your_applications(){
+  
+  global $user;
+  //var_dump($user);
+  
+  if($user->unit == -1){
+    return get_hiring_unit('my_app');
+  }
+  $header_sp = array( '<div style="min-width:250px; _width:250px;">Information</div>', 'Schedule', 'Work History', 'Status' );
+  
+  $header = array( 'applicant', '<div style="min-width:375px; _width:375px;">Operations</div>' );
+  
+  drupal_add_js('modules/hiring/cal.js');
+
+  //db_set_active('unions_app');
+  
+  
+  
+  
+  
+  
+  
+  
+  $DBlink = mysql_connect("mysql_host","web","viv3nij");
+  
+        mysql_select_db("unions_app", $DBlink);
+        
+  $result = mysql_query('select title from semester order by end_hiring desc limit 1');
+  $semester = mysql_fetch_assoc($result);   
+        
+  $query = "select student.*, student.ID as sid, schedule.*,application. resume_size,  application.comments, manager_checked_out, concat( lpad( bin( mon ) , 24, '0' ) , lpad( bin( mon2 ) , 24, '0' ) ) AS monday, concat( lpad( bin( tue ) , 24, '0' ) , lpad( bin( tue2 ) , 24, '0' ) ) AS tuesday, concat( lpad( bin( wed ) , 24, '0' ) , lpad( bin( wed2 ) , 24, '0' ) ) AS wednesday, concat( lpad( bin( thu ) , 24, '0' ) , lpad( bin( thu2 ) , 24, '0' ) ) AS thursday, concat( lpad( bin( fri ) , 24, '0' ) , lpad( bin( fri2 ) , 24, '0' ) ) AS friday, concat( lpad( bin( sat ) , 24, '0' ) , lpad( bin( sat2 ) , 24, '0' ) ) AS saturday, concat( lpad( bin( sun ) , 24, '0' ) , lpad( bin( sun2 ) , 24, '0' ) ) AS sunday from student left join application on student.ID=application.studentID left join schedule on student.ID=schedule.studentID left join checked_out on student.ID=checked_out.studentID where checked_out.phase=0 and unit=".$user->unit.' and semester="'.$semester['title'].'" and student.active=1';
+  //print $query;
+  
+  $result = mysql_query($query, $DBlink);
+
+  while($student = mysql_fetch_assoc($result)){
+    $DBlink = mysql_connect("mysql_host","web","viv3nij");
+  
+        mysql_select_db("unions_app", $DBlink);
+  
+    $subresult = mysql_query('select company, job_duties, reason_leave from work_history where studentID='.$student['sid'], $DBlink);
+      //var_dump(mysql_error($DBlink));
+      //var_dump($DBlink);
+      $work_h = '';
+      while($wh=mysql_fetch_assoc($subresult)){
+        $work_h .= $wh['company']."<br><ul><li>".$wh['job_duties']."</li><li>".$wh['reason_leave'].'</li></ul><br><br>';
+      }
+      
+      $work_h .= $student['comments'].'<br><br>';
+      
+      if($student['resume_size'] > 0){    $resume_link = l('view resume', 'download/resume/'.$student['sid']);   }
+      else {$resume_link='';} 
+      if($student['work_study']==1){    $work_s = 'work study';     }
+      else{               $work_s ='';      }
+      
+      if($student['worked_for_union']==1){$work_u = 'worked for union before';    }
+      else{               $work_u ='';      }
+      
+    
+      $student_matches[] =  array(
+        '<b>'.$student['first']." ".$student['last']."</b><br>".$student['manager_checked_out']."<br>".$student['class_standing']."<br>".$work_s."<br>".$work_u."<br>".l('view application', 'download/pdf/'.$student['sid']).'<br>'.$resume_link,
+        build_mini_schedule($student['monday'], $student['tuesday'], $student['wednesday'], $student['thursday'], $student['friday'], $student['saturday'], $student['sunday']), 
+        $work_h ,
+        '<br>'.drupal_get_form('decide_sp_form'.$student['sid'], $student['sid'])
+      );
+                
+  }
+  
+  
+  
+  
+  
+  
+  $DBlink = mysql_connect("mysql_host","web","viv3nij");
+  
+        mysql_select_db("unions_app", $DBlink);
+  
+  
+  
+        
+  $query = "select *, student.ID as sid from checked_out join student on student.ID=checked_out.studentID where done=0 and phase < 4 and phase <> 0 and unit='".$user->unit."'";
+  $result = mysql_query($query, $DBlink);
+  
+  
+
+  while($applicant=mysql_fetch_object($result)){
+      $result2 = mysql_query('select phase_date from app_history where unit="'.$user->unit.'" and studentID='.$applicant->sid.' and phase=1 order by ID', $DBlink);
+      //var_dump(mysql_error());
+      $checked = mysql_fetch_array($result2);
+      $interview_date = new DateTime($applicant->interview_date);
+      $phase_date = new DateTime($applicant->phase_date);
+      $date = new DateTime($checked['phase_date']);
+      $due = new DateTime($applicant->date_checked_out);
+      $due->modify("+21 day");
+      
+    switch($applicant->phase){
+      case 1:
+        $phase_data = "checked out on:".$phase_date->format("F j, Y");
+      break;
+    
+      case 2:
+        $phase_data = "awaiting response since ".$phase_date->format("F j, Y");
+      break;
+      
+      case 3:
+  
+ 
+        //$phase_data = 'interview set for <input type="text" size="20" value="'.$interview_date->format("F j, Y").'" onChange="$.post(\'http://wayne.sunion.arizona.edu/intra/hiring/interview\', {\'id\': \''.$applicant->sid.'\', \'date\': this.value}, function(data){alert(data);});">';
+        
+        $phase_data = '<div>interview set for <span id="display_date'.$applicant->studentID.'">'.$interview_date->format("F j, Y").'</span>&nbsp;<img src="'.base_path().'themes/zen/images/cal.png" onclick="make_month_array(\''.$applicant->studentID.'\');" style="cursor:pointer;"></div>';
+      break;
+      
+      case 4:
+        $phase_data = 'waiting to go through payroll process since '.$phase_date->format("F j, Y");
+    }
+    $result2 = mysql_query('select * from checked_out where phase > 0 and phase < 5 and unit!="'.$user->unit.'" and studentID='.$applicant->studentID);
+    if(mysql_num_rows($result2))
+      $others = '<span>checked out by another manager</span>';
+    else
+      $others = '';
+    
+    //db_set_active('default');
+    $download = l("view application", "download/pdf/".$applicant->studentID.'/1', array('target' => '_blank'));
+    $resume_link = l('view resume', 'download/resume/'.$applicant->studentID, array('target' => '_blank'));
+    
+    
+    $DBlink = mysql_connect("mysql_host","web","viv3nij");
+  
+        mysql_select_db("unions_app", $DBlink);
+    $query = 'select * from schedule where studentID='.$applicant->studentID.' and semester="'.$semester['title'].'"';
+    //var_dump($query);
+    $result5 = mysql_query($query, $DBlink);
+    //var_dump($result5);
+    $old_app = '';
+    $numoa = mysql_num_rows($result5);
+    //var_dump(mysql_num_rows($result5));
+    if($numoa==0)
+      $old_app = 'Applicant from FALL 09';
+      
+    $students[] =  array('<div style="min-width:150px; _width:150px; padding-left:15px; padding-right:15px;">'.$applicant->first." ".$applicant->last."<br>".$applicant->phone.'<br><a href="mailto:'.$applicant->email.'">'.$applicant->email."</a><br>".$applicant->address."<br><br>".$old_app.'<br>'.$download.'<br>'.$resume_link.'<br>'.$others.'</div>', "checked out on:".$date->format("F j, Y")."<br>checked out by: ".$applicant->manager_checked_out."<br>".$phase_data."<br><br>".drupal_get_form('applicant_form'.$applicant->studentID, $applicant->phase, $applicant->studentID));
+        
+  
+  }
+//db_set_active('default');
+if($students == NULL){
+  $students[]= array('You currently have no applications checked out', '');
+}
+  
+  $unit_name = db_fetch_array(db_query("select name from portals where portal_id=".$user->unit));
+  if(sizeof($student_matches) != 0){
+    $output .= '<h2>Applicants specifically for '.$unit_name['name'].'</h2><br>'.theme('table', $header_sp, $student_matches);
+  }
+  $output .= '<h2>Checked out Applications for '.$unit_name['name'].'</h2><br>';
+  $output .= theme('table', $header, $students);
+  $output .= '<DIV id="caldiv" style=" position:absolute; top:15px; left:15px; DISPLAY: none; BACKGROUND-IMAGE: url('.base_path().'/modules/hiring/cal_sm2.png); WIDTH: 210px; BACKGROUND-REPEAT: no-repeat; HEIGHT: 221px" 
+align=center></DIV>';
+
+
+
+$query = "select *, student.ID as sid from checked_out join student on student.ID=checked_out.studentID where done=0 and phase=4 and phase <> 0 and unit='".$user->unit."'";
+//var_dump($query);
+$DBlink = mysql_connect("mysql_host","web","viv3nij");
+  
+        mysql_select_db("unions_app", $DBlink);
+  $result = mysql_query($query, $DBlink);
+  
+  
+
+  while($applicant=mysql_fetch_object($result)){
+      
+      $phase_date = new DateTime($applicant->phase_date);
+      
+    
+      $phase_data = 'waiting to go through payroll process since '.$phase_date->format("F j, Y");
+    
+    
+    //db_set_active('default');
+    $download = l("view application", "download/pdf/".$applicant->studentID.'/1', array('target' => '_blank'));
+    $resume_link = l('view resume', 'download/resume/'.$applicant->studentID, array('target' => '_blank'));
+    
+    
+    $DBlink = mysql_connect("mysql_host","web","viv3nij");
+  
+        mysql_select_db("unions_app", $DBlink);
+    $query = 'select * from schedule where studentID='.$applicant->studentID.' and semester="'.$semester['title'].'"';
+    //var_dump($query);
+    $result5 = mysql_query($query, $DBlink);
+    //var_dump($result5);
+    $old_app = '';
+    $numoa = mysql_num_rows($result5);
+    //var_dump(mysql_num_rows($result5));
+    if($numoa==0)
+      $old_app = 'Applicant from FALL 09';
+      
+    $students1[] =  array('<div style="min-width:150px; _width:150px; padding-left:15px; padding-right:15px;">'.$applicant->first." ".$applicant->last."<br>".$applicant->phone."<br>".$applicant->email."<br>".$applicant->address."<br><br>".$old_app.'<br>'.$download.'<br>'.$resume_link.'</div>', "<br>checked out by: ".$applicant->manager_checked_out."<br>".$phase_data."<br><br>".drupal_get_form('applicant_form'.$applicant->studentID, $applicant->phase, $applicant->studentID));
+        
+  
+  }
+
+  
+  $unit_name = db_fetch_array(db_query("select name from portals where portal_id=".$user->unit));
+  //var_dump(sizeof($students1));
+  if(sizeof($students1) != 0){
+    $output .= '<h2>Pending Payroll Applications for '.$unit_name['name'].'</h2><br>'.theme('table', $header, $students1);
+  }
+  
+  
+  
+  
+  return $output;
+}
+
+function build_mini_schedule($mon, $tue, $wed, $thu, $fri, $sat, $sun){
+
+
+for($i=0; $i<48; $i++){
+  if($mon[$i] == "1"){
+    $start = $i;
+    $length = 1;
+    while($mon[++$i] == "1"){
+      $length++;
+    }
+    $sched .= '<div class="col" style=" z-index:50; position:absolute; width:6px; _width:6px; top:'.($start*6).'px; left:0px; height:'.($length*6-6).'px; _height:'.($length*6-6).'px; border:3px solid #FF6600;">
+    <div style="width:100%; height:100%; background-color:#FF6600; opacity: .75; filter:alpha(opacity=75);"></div></div>';
+  }
+}
+
+for($i=0; $i<48; $i++){
+  if($tue[$i] == "1"){
+    $start = $i;
+    $length = 1;
+    while($tue[++$i] == "1"){
+      $length++;
+    }
+    $sched .= '<div class="col" style=" z-index:50; position:absolute; width:6px; _width:6px; top:'.($start*6).'px; left:12px; height:'.($length*6-6).'px; _height:'.($length*6-6).'px; border:3px solid #FF6600;">
+    <div style="width:100%; height:100%; background-color:#FF6600; opacity: .75; filter:alpha(opacity=75);"></div></div>';
+  }
+}
+
+for($i=0; $i<48; $i++){
+  if($wed[$i] == "1"){
+    $start = $i;
+    $length = 1;
+    while($wed[++$i] == "1"){
+      $length++;
+    }
+    $sched .= '<div class="col" style=" z-index:50; position:absolute; width:6px; _width:6px; top:'.($start*6).'px; left:24px; height:'.($length*6-6).'px; _height:'.($length*6-6).'px; border:3px solid #FF6600;">
+    <div style="width:100%; height:100%; background-color:#FF6600; opacity: .75; filter:alpha(opacity=75);"></div></div>';
+  }
+}
+
+for($i=0; $i<48; $i++){
+  if($thu[$i] == "1"){
+    $start = $i;
+    $length = 1;
+    while($thu[++$i] == "1"){
+      $length++;
+    }
+    $sched .= '<div class="col" style=" z-index:50; position:absolute; width:6px; _width:6px; top:'.($start*6).'px; left:36px; height:'.($length*6-6).'px; _height:'.($length*6-6).'px; border:3px solid #FF6600;">
+    <div style="width:100%; height:100%; background-color:#FF6600; opacity: .75; filter:alpha(opacity=75);"></div></div>';
+  }
+}
+
+for($i=0; $i<48; $i++){
+  if($fri[$i] == "1"){
+    $start = $i;
+    $length = 1;
+    while($fri[++$i] == "1"){
+      $length++;
+    }
+    $sched .= '<div class="col" style=" z-index:50; position:absolute; width:6px; _width:6px; top:'.($start*6).'px; left:48px; height:'.($length*6-6).'px; _height:'.($length*6-6).'px; border:3px solid #FF6600;">
+    <div style="width:100%; height:100%; background-color:#FF6600; opacity: .75; filter:alpha(opacity=75);"></div></div>';
+  }
+}
+
+for($i=0; $i<48; $i++){
+  if($sat[$i] == "1"){
+    $start = $i;
+    $length = 1;
+    while($sat[++$i] == "1"){
+      $length++;
+    }
+    $sched .= '<div class="col" style=" z-index:50; position:absolute; width:6px; _width:6px; top:'.($start*6).'px; left:60px; height:'.($length*6-6).'px; _height:'.($lengtht*6-6).'px; border:3px solid #FF6600;">
+    <div style="width:100%; height:100%; background-color:#FF6600; opacity: .75; filter:alpha(opacity=75);"></div></div>';
+  }
+}
+
+for($i=0; $i<48; $i++){
+  if($sun[$i] == "1"){
+    $start = $i;
+    $length = 1;
+    while($sun[++$i] == "1"){
+      $length++;
+    }
+    $sched .= '<div class="col" style=" z-index:50; position:absolute; width:6px; _width:6px; top:'.($start*6).'px; left:72px; height:'.($length*6-6).'px; _height:'.($length*6-6).'px; border:3px solid #FF6600;">
+    <div style="width:100%; height:100%; background-color:#FF6600; opacity: .75; filter:alpha(opacity=75);"></div></div>';
+  }
+}
+
+/*
+<div class="col" id="col1" style=" z-index:50; position:absolute; width:6px; _width:6px; top:30px; left:0px; height:24px; _height:24px; border:3px solid #FF6600;">
+    <div id="coli1" style="width:100%; height:100%; background-color:#FF6600; opacity: .75; filter:alpha(opacity=75);"></div>
+  </div>
+  <div class="col" id="col2" style=" z-index:50; position:absolute; width:6px; _width:6px; top:108px; left:0px; height:78px; _height:78px; border:3px solid #FF6600;">
+    <div id="coli2" style="width:100%; height:100%; background-color:#FF6600; opacity: .75; filter:alpha(opacity=75);"></div>
+  </div>
+  <div class="col" id="col3" style=" z-index:50; position:absolute; width:6px; _width:6px; top:12px; left:12px; height:186px; _height:186px; border:3px solid #FF6600;" onmousedown="if(items==null){items=true;}" ondblclick="erase('col3'); test('col3')">
+    <div id="coli3" style="width:100%; height:100%; background-color:#FF6600; opacity: .75; filter:alpha(opacity=75);"></div>
+  </div>
+  <div class="col" id="col4" style=" z-index:50; position:absolute; width:6px; _width:6px; top:42px; left:24px; height:120px; _height:120px; border:3px solid #FF6600;" onmousedown="if(items==null){items=true;}" ondblclick="erase('col4'); test('col4')"><div id="coli4" style="width:100%; height:100%; background-color:#FF6600; opacity: .75; filter:alpha(opacity=75);"></div>
+  </div>              
+  <div class="col" id="col5" style=" z-index:50; position:absolute; width:6px; _width:6px; top:132px; left:36px; height:108px; _height:108px; border:3px solid #FF6600;" onmousedown="if(items==null){items=true;}" ondblclick="erase('col5'); test('col5')"><div id="coli5" style="width:100%; height:100%; background-color:#FF6600; opacity: .75; filter:alpha(opacity=75);"></div>
+  </div>
+  <div class="col" id="col6" style=" z-index:50; position:absolute; width:6px; _width:6px; top:12px; left:48px; height:78px; _height:78px; border:3px solid #FF6600;" onmousedown="if(items==null){items=true;}" ondblclick="erase('col6'); test('col6')"><div id="coli6" style="width:100%; height:100%; background-color:#FF6600; opacity: .75; filter:alpha(opacity=75);"></div>
+  </div>
+  <div class="col" id="col7" style=" z-index:50; position:absolute; width:6px; _width:6px; top:36px; left:60px; height:138px; _height:138px; border:3px solid #FF6600;" onmousedown="if(items==null){items=true;}" ondblclick="erase('col7'); test('col7')"><div id="coli7" style="width:100%; height:100%; background-color:#FF6600; opacity: .75; filter:alpha(opacity=75);"></div>
+  </div>
+*/
+return '<div style="width:100px; height:300px; margin-top:40px; margin-left:75px; position:relative; ">'.$sched.'<div style=" position:absolute; vertical-align:center; height:25px; width:75px; text-align:center; z-index:1000; left:-75px; top:-25px; padding-top:7px;"><strong>Time</strong></div><div style=" position:absolute; height:25px; width:12px; text-align:center; z-index:1000; left:0px; top:-25px; padding-top:7px;"><strong>M</strong></div><div style=" position:absolute; height:25px; width:12px; text-align:center; z-index:1000; left:12px; top:-25px; padding-top:7px;"><strong>T</strong></div><div style=" position:absolute; height:25px; width:12px; text-align:center; z-index:1000; left:24px; top:-25px; padding-top:7px;"><strong>W</strong></div><div style=" position:absolute; height:25px; width:12px; text-align:center; z-index:1000; left:36px; top:-25px; padding-top:7px;"><strong>R</strong></div><div style=" position:absolute; height:25px; width:12px; text-align:center; z-index:1000; left:48px; top:-25px; padding-top:7px;"><strong>F</strong></div><div style=" position:absolute; height:25px; width:12px; text-align:center; z-index:1000; left:60px; top:-25px; padding-top:7px;"><strong>S</strong></div><div style=" position:absolute; height:25px; width:12px; text-align:center; z-index:1000; left:72px; top:-25px; padding-top:7px;"><strong>S</strong></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:159px; left:-75px; top:-25px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:159px; left:-75px; top:-1px; font-size:0px; overflow:hidden;"></div><div style="width:1px;  background-color:#000000; position:absolute; z-index:1000; height:313px; left:-75px; top:-25px;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:162px; left:-76px; top:-26px; font-size:0px; overflow:hidden;"></div><div style="width:1px;  background-color:#000000; position:absolute; z-index:1000; height:316px; left:-76px; top:-26px;"></div><div style="height:313px;  background-color:#99ccFF; position:absolute; z-index:10; width:12px; left:0px; top:-25px; font-size:0px; overflow:hidden;"></div><div style="height:313px;  background-color:#99ccFF; position:absolute; z-index:10; width:12px; left:24px; top:-25px; font-size:0px; overflow:hidden;"></div><div style="height:313px;  background-color:#99ccFF; position:absolute; z-index:10; width:12px; left:48px; top:-25px; font-size:0px; overflow:hidden;"></div><div style="height:313px;  background-color:#99ccFF; position:absolute; z-index:10; width:12px; left:72px; top:-25px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:161px; left:-75px; top:289px; font-size:0px; overflow:hidden;"></div><div style="width:1px;  background-color:#000000; position:absolute; z-index:1000; height:315px; left:85px; top:-25px;"></div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:0px;">12am</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:12px;">1am</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:24px;">2am</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:36px;">3am</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:48px;">4am</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:60px;">5am</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:72px;">6am</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:84px;">7am</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:96px;">8am</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:108px;">9am</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:120px;">10am</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:132px;">11am</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:144px;">12pm</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:156px;">1pm</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:168px;">2pm</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:180px;">3pm</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:192px;">4pm</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:204px;">5pm</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:216px;">6pm</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:228px;">7pm</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:240px;">8pm</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:252px;">9pm</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:264px;">10pm</div><div valign="center" style=" position:absolute; z-index:1000; left:-75px; width:75px; text-align:center; font-size:12px; top:276px;">11pm</div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:0px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:12px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:24px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:36px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:48px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:60px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:72px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:84px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:96px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:108px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:120px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:132px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:144px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:156px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:168px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:180px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:192px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:204px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:216px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:228px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:240px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:252px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:264px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:276px; font-size:0px; overflow:hidden;"></div><div style="height:1px;  background-color:#000000; position:absolute; z-index:1000; width:160px; left:-75px; top:288px; font-size:0px; overflow:hidden;"></div><div style="width:1px;  background-color:#000000; position:absolute; z-index:1000; height:313px; left:0px; top:-25px;"></div><div style="width:1px;  background-color:#000000; position:absolute; z-index:1000; height:313px; left:12px; top:-25px;"></div><div style="width:1px;  background-color:#000000; position:absolute; z-index:1000; height:313px; left:24px; top:-25px;"></div><div style="width:1px;  background-color:#000000; position:absolute; z-index:1000; height:313px; left:36px; top:-25px;"></div><div style="width:1px;  background-color:#000000; position:absolute; z-index:1000; height:313px; left:48px; top:-25px;"></div><div style="width:1px;  background-color:#000000; position:absolute; z-index:1000; height:313px; left:60px; top:-25px;"></div><div style="width:1px;  background-color:#000000; position:absolute; z-index:1000; height:313px; left:72px; top:-25px;"></div><div style="width:1px;  background-color:#000000; position:absolute; z-index:1000; height:313px; left:84px; top:-25px;"></div><div style="height:300px; width:150px; position:absolute; top:0px; left:-25; z-index:10000;"></div></div>';
+ 
+}
+
+function applicantsearch(){
+global $user;
+
+//var_dump($user);
+if($user->unit == -1){
+    return get_hiring_unit('applicantsearch');
+  }
+
+
+
+$DBlink = mysql_connect("mysql_host","web","viv3nij");
+  
+        mysql_select_db("unions_app", $DBlink);
+
+$result = mysql_query("select title from semester where start_hiring <= '".date("Y-m-d")."' order by start_hiring desc", $DBlink); 
+
+$option = '';
+
+while($semester = mysql_fetch_assoc($result)){
+  $option .= '<option value="'.$semester['title'].'">'.$semester['title'].'</option>';
+}
+mysql_close($DBlink);
+
+
+// db_set_active('default');
+ 
+  $onclick = "filter1()";
+  
+  $unit_name = db_fetch_array(db_query("select name from portals where portal_id=".$user->unit));
+ 
+  $output  = '<h2>Searching for '.$unit_name['name'].'</h2><br><div id="results1"></div>';
+  
+  $output .= '<div style="width:900px;"><div style="float:left; width:300px;"><form name="filter" action="/intra/applicantsearch"  method="post" onsubmit="filter1(); return false;">
+<div class="form-item">
+ <label for="edit-first-name">First Name: </label>
+ <input type="text" maxlength="128" name="first_name" id="edit-first-name"  size="20" value="" class="form-text" />
+</div>
+<div class="form-item">
+ <label for="edit-last-name">Last Name: </label>
+ <input type="text" maxlength="128" name="last_name" id="edit-last-name"  size="20" value="" class="form-text" />
+</div>
+<div class="form-item">
+ <label for="edit-last-name">Semester: </label>
+ <select name="semester">'.$option.
+ 
+' </select>
+</div>
+<div class="form-item">
+<label >Include only those with:</label>
+<div style="margin-left:30px;">
+  <input type="checkbox" name="resume" id="edit-resume" value="1"   class="form-checkbox" /> A Resume<br>
+  <input type="checkbox" name="work_experience" id="edit-work-experience" value="1"   class="form-checkbox" /> Work Experience<br>
+  <input type="checkbox" name="work_study" id="edit-work-study" value="1"   class="form-checkbox" /> Work Study<br>
+  <input type="checkbox" name="checked_out" id="edit-checked-out" value="1"   class="form-checkbox" /> Not Checked Out<br>
+</div>
+</div>
+<div class="form-item">
+ <label>Exclude the following:</label>
+ <div style="margin-left:30px;">
+  <input type="checkbox" name="high_school" id="edit-work-experience" value="high_school_student"   class="form-checkbox" />high school students<br>
+  <input type="checkbox" name="pima" id="edit-work-experience" value="Pima_student"   class="form-checkbox" />Pima students<br>
+  <input type="checkbox" name="freshman" id="edit-work-experience" value="freshman"   class="form-checkbox" />freshman<br>
+  <input type="checkbox" name="sophmore" id="edit-work-experience" value="sophmore"   class="form-checkbox" />sophmores<br>
+  <input type="checkbox" name="junior" id="edit-work-experience" value="junior"   class="form-checkbox" />juniors<br>
+  <input type="checkbox" name="senior" id="edit-work-experience" value="senior"   class="form-checkbox" />seniors<br>
+  <input type="checkbox" name="grad" id="edit-work-experience" value="grad"   class="form-checkbox" />grad students<br>
+</div>
+</div>
+
+
+
+<input type="button"  value="Search"  onclick="'.$onclick.';" /><input type="reset" name="op" id="reset" value="Clear"  class="form-submit" onclick="clear_s();"/></form></div>';
+  
+  $output .='<div style="float:left; width:300px;"><div class="form-item"><label for="edit-schedule">Schedule: </label></div><div id="wrap" style="width:400px; height:600px; position:relative;margin-top:27px; margin-left:75px; "></div> </div>  <div style="float:left; width:90px; "><div class="form-item"><label for="edit-last-name">Key:</label><div style="border:1px solid; height:16px; background-color:white; overflow:visible;"><div style="float:left; width:150px;"><div style="float:left; height:12px; width:12px; background-color:orange; margin-top:2px; margin-left:5px;"></div>&nbsp;=&nbsp;available</div></div></div></div> </div><hr style="clear:both;"><a name="resultsa"><div> </div></a>';
+  
+  
+  
+  
+  drupal_add_js('modules/hiring/schedule1.js');
+  //init(div, vertical, num_sched, sizex, sizey, nrow, ncol, divis, start, rowh, colh, new_schedule)
+  //init( \''.$semester['title'].'table\', \'vertical\', 1, 26, 26, 16, 7, 2, 16, \'\', \'\', 0);
+
+  drupal_add_js(' $(document).ready(function(){init("wrap", "vertical", 1, 24, 24, 24, 7, 2, 0, "t", "t", 1, 1)});', 'inline');
+  
+  drupal_add_js('
+  var manager=0;
+  function checkout($id){
+  $.post("'.base_path().'checkout/"+$id+"/"+manager, function(data){});
+  return true;
+  
+  } 
+  
+  function clear_s(){
+  //alert("test");
+  schedule[0][0]=[0, 1, 2, 3, 4, 5, 6];
+schedule[0][0][0] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+schedule[0][0][1] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+schedule[0][0][2] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+schedule[0][0][3] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+schedule[0][0][4] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+schedule[0][0][5] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+schedule[0][0][6] = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  
+  init("wrap", "vertical", 1, 24, 24, 24, 7, 2, 0, "t", "t", 0, 0);
+  return true;
+  }
+  
+  function filter1(page){
+    if(!page) page=0;
+    //alert(page);
+  //alert(document.filter.semester.value);
+  $.post("'.base_path().'applicantsearch/filter", {"page":page, "semester":document.filter.semester.value, "high_school":document.filter.high_school.checked, "pima":document.filter.pima.checked, "freshman":document.filter.freshman.checked, "sophmore":document.filter.sophmore.checked, "junior":document.filter.junior.checked, "senior":document.filter.senior.checked, "grad":document.filter.grad.checked, "resume":document.filter.resume.checked, "work_study":document.filter.work_study.checked,   "work_experience":document.filter.work_experience.checked, "checked_out":document.filter.checked_out.checked, "first_name":document.filter.first_name.value, "last_name":document.filter.last_name.value, "schedule[0][]":schedule[0][0], "schedule[1][]":schedule[0][1], "schedule[2][]":schedule[0][2], "schedule[3][]":schedule[0][3], "schedule[4][]":schedule[0][4], "schedule[5][]":schedule[0][5], "schedule[6][]":schedule[0][6]}, function(data){
+  //alert("done");
+  //var start = data.indexOf("<script type=\"text/javascript\">");
+  
+  //var end = data.indexOf("<\/script>");
+  
+  //var jscript = data.substr(start+31, end-start-31);
+  
+  //alert(data.substr(end+9));
+  //document.getElementById("results1").innerHTML = data.substr(end+9);
+  document.getElementById("results1").innerHTML = data;
+  //alert(jscript);
+  //eval(jscript); 
+  //init("wrap", "vertical", 1, 24, 24, 24, 7, 2, 0, "t", "t", 0, 0);
+   
+  // alert(instances.length);
+   
+  // for(i=1; i<instances.length; i++){
+   
+    //delete instances[i];
+  // }
+   //lert(instances);
+   
+    
+  });
+  document.getElementById("results1").innerHTML = "Loading ...";
+  //alert("done");
+  window.scrollTo(0,0);
+   return true;}', 'inline');
+  
+  return $output;
+}
+
+function decide_sp_form_submit1($form, $form_values, $id){
+  global $user;
+  
+  //print 'test';
+  
+  $DBlink = mysql_connect("mysql_host","web","viv3nij");
+  
+        mysql_select_db("unions_app", $DBlink);
+        
+        
+        
+  if($form_values['op'] == 'checkout'){
+    mysql_query("update checked_out set phase=1,manager_checked_out='".$user->fname.' '.$user->lname."', phase_date='".date("Y-m-d")."' where studentID='".$id."' and unit='".$user->unit."' and phase=0");
+    mysql_query("insert into app_history set phase=1, phase_date='".date("Y-m-d")."', studentID='".$id."', unit='".$user->unit."'");
+  
+  }
+  else{
+    mysql_query("update checked_out set phase=7, phase_date='".date("Y-m-d")."' where studentID='".$id."' and unit='".$user->unit."'");
+    mysql_query("insert into app_history set phase='7', phase_date='".date("Y-m-d")."', studentID='".$id."', unit='".$user->unit."'");
+    
+    include("phplib/mimemail/htmlMimeMail5.php");
+    $mail1 = new htmlMimeMail5();
+     
+    
+    //Set the From and Reply-To headers
+    $mail1->setFrom('Arizona Student Union<no-reply@email.arizona.edu>');
+    $mail1->setReturnPath('no-reply@email.arizona.edu');
+    
+    //Set the subject
+    $mail1->setSubject('Thank you for applying for a student job at the Arizona Student Unions!');
+    
+    
+    $units = get_units();
+    $body = '<p>Recent Applicant to the Arizona Student Unions,</p>
+
+<p>Thank you for applying to work for '.$units[$user->unit].' at the Arizona Student Unions.  At this time this unit is not interested in offering employment. </p>
+<p>
+We encourage you to resubmit your application to the various other open positions at the Student Unions. The full list of openings can be found at <a href="http://www.union.arizona.edu/jobs">www.union.arizona.edu/jobs</a> listed under Available Positions. At any time you may log back into your application with your NetID and password. This will take you to your status page where you can edit your application, deactivate it, or reactivate it in our system.  When editing your application you may change your personal information, schedule, or job position preferences. This may increase your chances of being hired.
+</p>
+<p>
+Again we thank you for applying and hope your job search goes well. If you have any questions about your application please email <a href="mailto:unionshr@email.arizona.edu">unionshr@email.arizona.edu</a> or call (520) 626-9205.</p> ';
+      
+    $mail1->setHTML($body);
+    
+    $query = 'select email from student where ID='.$id;
+    $result = mysql_query($query);
+    $email = mysql_fetch_array($result);
+      
+    $result=$mail1->send(array($email['email']));
+    //print $email['email'];
+  }
+  
+  mysql_close($DBlink);
+
+  
+  //return $_REQUEST['destination'];
+
+}
+
+function applicant_form_submit1($form, $form_values, $id){
+//print 'test';
+  global $user;
+  global $db_url;
+  
+  //$user->unit = $_SESSION['current_portal'];
+  //$db_url = array('default' => 'mysql://root@localhost/intra', 'unions_app' => 'mysql://web:viv3nij@mysql_host/unions_app');
+  //db_set_active('unions_app');
+  $DBlink = mysql_connect("mysql_host","web","viv3nij");
+  
+        mysql_select_db("unions_app", $DBlink);
+  
+  switch($form_values['op']){
+    
+    case "Awaiting Response":
+      mysql_query("update checked_out set phase=2, phase_date='".date("Y-m-d")."' where done=0 and studentID='".$id."' and unit='".$user->unit."'");
+      mysql_query("insert into app_history set phase=2, phase_date='".date("Y-m-d")."', studentID='".$id."', unit='".$user->unit."'");
+    break;
+    
+    case "Interview Set Up":
+      mysql_query("update checked_out set phase=3, phase_date='".date("Y-m-d")."' where done=0 and studentID='".$id."' and unit='".$user->unit."'");
+      mysql_query("insert into app_history set phase=3, phase_date='".date("Y-m-d")."', studentID='".$id."', unit='".$user->unit."'");
+    break;
+    
+    case "Return Application":
+      mysql_query("update checked_out set done='1' where studentID='".$id."' and unit='".$user->unit."'");
+    break;
+    
+    case "Hired(pending payroll)":
+      mysql_query("update checked_out set phase=4, phase_date='".date("Y-m-d")."' where done=0 and studentID='".$id."' and unit='".$user->unit."'");
+      mysql_query("insert into app_history set phase=4, phase_date='".date("Y-m-d")."', studentID='".$id."', unit='".$user->unit."'");      
+    break;
+    
+    case "Not Hired":
+      mysql_query("update checked_out set done='1' where studentID='".$id."' and unit='".$user->unit."'");      
+    break;
+    
+    case "Failed Payroll":
+      mysql_query("update checked_out set phase=5, phase_date='".date("Y-m-d")."' where studentID='".$id."' and unit='".$user->unit."'");
+      mysql_query("insert into app_history set phase=5, phase_date='".date("Y-m-d")."', studentID='".$id."', unit='".$user->unit."'");
+      mysql_query("update application set active=0 where studentID='".$id."'");     
+    break;
+    
+    case "Cancel":
+      mysql_query("update checked_out set phase=6, done=1, phase_date='".date("Y-m-d")."' where studentID='".$id."' and unit='".$user->unit."'");
+      mysql_query("insert into app_history set phase=6, phase_date='".date("Y-m-d")."', studentID='".$id."', unit='".$user->unit."'");
+    break;
+    
+    case "Reactivate":
+      mysql_query("update checked_out set done=1 where studentID='".$id."' and phase=5");
+      mysql_query("update application set active=1 where studentID='".$id."'");
+    break;
+    
+    case "Deactivate":
+      mysql_query("update checked_out set done=1 where studentID='".$id."' and phase=6");
+      mysql_query("update application set active=0 where studentID='".$id."'");
+    break;
+    
+    case "Ignore":
+      mysql_query("update checked_out set done=1 where studentID='".$id."' and (phase=6 or phase=5)");
+    break;
+  
+  }
+  mysql_close($DBlink);
+  //db_set_active('default');
+  
+  return $_REQUEST['destination'];
+
+
+}
+
+function hiring_forms(){
+  global $user;
+  //global $db_url;
+  //$db_url = array('default' => 'mysql://root@localhost/intra', 'unions_app' => 'mysql://web:viv3nij@mysql_host/unions_app');
+  //db_set_active('unions_app');
+  //$user->unit = $_SESSION['current_portal'];
+  
+  $DBlink = mysql_connect("mysql_host","web","viv3nij");
+
+        mysql_select_db("unions_app", $DBlink);
+         
+  $query = "select studentID from checked_out where phase=0 and unit=".$user->unit;
+  
+  $result = mysql_query($query, $DBlink);
+  
+  while($applicant=mysql_fetch_object($result)){
+    //print 'decide_sp_form'.$applicant->studentID;
+    $forms['decide_sp_form'.$applicant->studentID] = array(
+        'callback' => 'decide_sp_form'
+    );
+  }
+  
+  
+  $query = "select student.ID as sid from checked_out join student on student.ID=checked_out.studentID where done=0 and phase < 5 and unit='".$user->unit."'";
+  $result = mysql_query($query, $DBlink);
+
+  while($applicant=mysql_fetch_object($result)){
+    
+    $forms['applicant_form'.$applicant->sid] = array(
+        'callback' => 'applicant_form'
+      );
+    
+  
+  
+  }
+  
+  $query1 = "select studentID as sid from checked_out where (phase=5 or phase=6) and done=0";
+  
+  $result1 = mysql_query($query1, $DBlink);
+
+  while($applicant=mysql_fetch_object($result1)){
+    
+    $forms['applicant_form'.$applicant->sid.'admin'] = array(
+        'callback' => 'applicant_form'
+      );
+    
+  
+  
+  }
+  mysql_close($DBlink);
+//db_set_active('default');
+  return $forms;
+}
+
+function interview_date($id, $date){
+global $user;
+//$user->unit = $_SESSION['current_portal'];
+//global $db_url;
+  //$db_url = array('default' => 'mysql://root@localhost/intra', 'unions_app' => 'mysql://web:viv3nij@mysql_host/unions_app');
+  //db_set_active('unions_app');
+  
+  $DBlink = mysql_connect("mysql_host","web","viv3nij");
+  
+        mysql_select_db("unions_app", $DBlink);
+
+  mysql_query('update checked_out set interview_date="'.$date.'" where studentID='.$id.' and unit="'.$user->unit.'"', $DBlink);
+  mysql_close($DBlink);
+//  db_set_active('default');
+  
+  print "your interview date has been saved";
+}
+
+function download($type, $id, $contact){
+
+if(strpos($id, '.pdf')===FALSE){}
+else{
+  //print $id;
+  $id=substr($id, 0, strpos($id,'.pdf'));
+  //print $id;
+}
+//global $db_url;
+//$db_url = array('default' => 'mysql://root@localhost/intra', 'unions_app' => 'mysql://web:viv3nij@mysql_host/unions_app');
+//db_set_active('unions_app');
+
+$DBlink = mysql_connect("mysql_host","web","viv3nij");
+  
+        mysql_select_db("unions_app", $DBlink);
+  
+  if($type=='pdf'){
+  
+  $query="select *, student.ID as sid from student join application on student.ID=application.studentID where student.ID=".$id;
+$result = mysql_query($query, $DBlink);
+$app = mysql_fetch_assoc($result);
+  
+  //////////////////////////////////////
+  //          make PDF                //
+  //////////////////////////////////////
+  
+  require('/srv/www/htdocs/union/intra_new/modules/hiring/PDF/fpdf.php');
+  
+  $pdf=new FPDF();
+  $pdf->AddPage();
+  
+  
+  
+  
+  $pdf->SetFont('Arial');
+  $pdf->SetFontSize(16);
+  $pdf->SetTextColor(0,0,0);
+  $pdf->SetFillColor(200);
+  
+  
+  $pdf->Cell(0, 0 , $app['last'].", ".$app['first'], 0 , 1 , 'C');
+  
+  $query = 'select phone, email from student where ID='.$id;
+  $result = mysql_query($query);
+  $info = mysql_fetch_assoc($result);
+  
+  //$pdf->SetXY(10, 10);
+  if($contact == 1){
+    $pdf->ln(10);
+    $pdf->SetFontSize(9);
+    $pdf->Write(5,"Phone: ".$info['phone']);
+    $pdf->Write(5,"");
+    $pdf->Write(5,"     Email: ".$info['email']);
+  }
+  $pdf->SetFontSize(12);
+  $pdf->ln(5);
+  
+  $pdf->Write(7, "Availability:                           Note: shaded means available");
+  $pdf->ln(7);
+  $pdf->SetFontSize(9);
+  
+  $query="select * from schedule where studentID=".$id.' order by ID desc';
+$result = mysql_query($query, $DBlink);
+//while($sched = mysql_fetch_assoc($result)){
+$sched = mysql_fetch_assoc($result);
+$sch[]= $sched;
+//}
+  
+  
+  $time = array( '12 am', '1 am', '2 am', '3 am', '4 am', '5 am', '6 am', '7 am', '8 am', '9 am', '10 am', '11 am', 'noon', '1 pm', '2 pm', '3 pm', '4 pm', '5 pm', '6 pm', '7 pm', '8 pm', '9 pm', '10 pm', '11 pm');
+  
+  foreach($sch as $sche){
+    $pdf->Cell(55, 5, $sche['semester'], 0, 0, 'C', 0);
+    $pdf->Cell(10, 5, " ", 0, 0, 'C', 0);
+  }
+  $pdf->Cell(1, 5, " ", 0, 1, 'C', 0);
+  foreach($sch as $sche){
+    
+    //$pdf->Write(3, $semester);
+    //$pdf->ln(3);  
+    $mon[$sche['semester']]= str_pad(decbin($sche['mon']), 24, '0', STR_PAD_LEFT ).str_pad(decbin($sche['mon2']), 24, '0', STR_PAD_LEFT);
+    $tue[$sche['semester']]= str_pad(decbin($sche['tue']), 24, '0', STR_PAD_LEFT ).str_pad(decbin($sche['tue2']), 24, '0', STR_PAD_LEFT);
+    $wed[$sche['semester']]= str_pad(decbin($sche['wed']), 24, '0', STR_PAD_LEFT ).str_pad(decbin($sche['wed2']), 24, '0', STR_PAD_LEFT);
+    $thu[$sche['semester']]= str_pad(decbin($sche['thu']), 24, '0', STR_PAD_LEFT ).str_pad(decbin($sche['thu2']), 24, '0', STR_PAD_LEFT);
+    $fri[$sche['semester']]= str_pad(decbin($sche['fri']), 24, '0', STR_PAD_LEFT ).str_pad(decbin($sche['fri2']), 24, '0', STR_PAD_LEFT);
+    $sat[$sche['semester']]= str_pad(decbin($sche['sat']), 24, '0', STR_PAD_LEFT ).str_pad(decbin($sche['sat2']), 24, '0', STR_PAD_LEFT);
+    $sun[$sche['semester']]= str_pad(decbin($sche['sun']), 24, '0', STR_PAD_LEFT ).str_pad(decbin($sche['sun2']), 24, '0', STR_PAD_LEFT);
+    $pdf->Cell(20, 5, "Time", 1, 0, 'C', 0);
+    $pdf->Cell(5, 5, "M", 1, 0, 'C', 0);
+    $pdf->Cell(5, 5, "T", 1, 0, 'C', 0);
+    $pdf->Cell(5, 5, "W", 1, 0, 'C', 0);
+    $pdf->Cell(5, 5, "R", 1, 0, 'C', 0);
+    $pdf->Cell(5, 5, "F", 1, 0, 'C', 0);
+    $pdf->Cell(5, 5, "S", 1, 0, 'C', 0);
+    $pdf->Cell(5, 5, "S", 1, 0, 'C', 0);
+    $pdf->Cell(10, 5, " ", 0, 0, 'C', 0);
+    
+  }
+    $pdf->Cell(1, 5, " ", 0, 1, 'C', 0);
+    
+  
+  
+    for($i=0; $i < 48; $i++){
+    
+      foreach($sch as $sche){
+        if($i > 12 && $i < 46)
+          $pdf->SetFont('Arial', 'b', 11);
+        $pdf->Cell(20, 5, $time[(int)$i/2] , 1, 0, 'C', 0);
+        $pdf->SetFont('Arial', '');
+        $pdf->Cell(5, 2.5,  '', "L T R", 0, 'C', $mon[$sche['semester']][$i]);
+        $pdf->Cell(5, 2.5,  '', "L T R", 0, 'C', $tue[$sche['semester']][$i]);
+        $pdf->Cell(5, 2.5,  '', "L T R", 0, 'C', $wed[$sche['semester']][$i]);
+        $pdf->Cell(5, 2.5,  '', "L T R", 0, 'C', $thu[$sche['semester']][$i]);
+        $pdf->Cell(5, 2.5,  '', "L T R", 0, 'C', $fri[$sche['semester']][$i]);
+        $pdf->Cell(5, 2.5,  '', "L T R", 0, 'C', $sat[$sche['semester']][$i]);
+        $pdf->Cell(5, 2.5,  '', "L T R", 0, 'C', $sun[$sche['semester']][$i]);
+        $pdf->Cell(10, 2.5, " ", 0, 0, 'C', 0);
+      }
+      
+      $i++;
+      
+      $pdf->Cell(1, 2.5, " ", 0, 1, 'C', 0);
+      
+      foreach($sch as $sche){
+      
+        $pdf->Cell(20, 2.5, "", 0, 0, 'C', 0);
+        $pdf->Cell(5, 2.5,  '', "L B R", 0, 'C', $mon[$sche['semester']][$i]);
+        $pdf->Cell(5, 2.5,  '', "L B R", 0, 'C', $tue[$sche['semester']][$i]);
+        $pdf->Cell(5, 2.5,  '', "L B R", 0, 'C', $wed[$sche['semester']][$i]);
+        $pdf->Cell(5, 2.5,  '', "L B R", 0, 'C', $thu[$sche['semester']][$i]);
+        $pdf->Cell(5, 2.5,  '', "L B R", 0, 'C', $fri[$sche['semester']][$i]);
+        $pdf->Cell(5, 2.5,  '', "L B R", 0, 'C', $sat[$sche['semester']][$i]);
+        $pdf->Cell(5, 2.5,  '', "L B R", 0, 'C', $sun[$sche['semester']][$i]);
+        $pdf->Cell(10, 2.5, " ", 0, 0, 'C', 0);     
+        
+    
+      }
+      
+      $pdf->Cell(1, 2.5, " ", 0, 1, 'C', 0);
+      
+      
+  
+    }
+    $pdf->ln(3);
+    foreach($sch as $sche){
+      $pdf->Write(3, "     Hours/week: ".$sche['hours_week']);
+  
+      $pdf->ln(2);
+    }
+    
+  
+  
+  $pdf->ln(3);
+  $pdf->SetFontSize(12);
+  $pdf->Write(7, "Interested In:");
+  $pdf->ln(7);
+  $pdf->SetFontSize(9);
+  if($app['redistribute']=='any'){
+  $pdf->Write(5,"     Willing to work anywhere.");
+  }
+  elseif($app['redistribute']=='area'){
+    $pdf->Write(5,"     The Following Area(s): ");
+    if($app['area1']!=''){
+      $pdf->Write(5, $app['area1'].", ");
+    }
+    if($app['area2']!=''){
+      $pdf->Write(5, $app['area2'].", ");
+    } 
+    if($app['area3']!=''){
+      $pdf->Write(5, $app['area3'].", ");
+    } 
+    if($app['area4']!=''){
+      $pdf->Write(5, $app['area4']);
+    } 
+    
+    
+  }
+  else{
+  $pdf->Write(3, "     ".$app['specific_location']);
+  
+  }
+  
+  
+  
+  $pdf->ln(5);
+  
+  
+  
+  $pdf->SetFontSize(12);
+  $pdf->Write(7, "Personal Information:");
+  $pdf->ln(7);
+  $pdf->SetFontSize(9);
+  
+  $pdf->Write(3, "     First Name: " .$app['first']."    Last Name: " .$app['last']);
+  $pdf->ln(5);
+  
+  //$pdf->Write(3, "Email:". $_SESSION['email']);
+  //$pdf->ln(3);
+  //$pdf->Write(3, "Phone number:". $_SESSION['phone']);
+  //$pdf->ln(3);
+  //$pdf->Write(3, "Present address: ". $_SESSION['add']);
+  //$pdf->ln(7);
+  
+  if($app['student_type'] == 'UA_student'){
+    $pdf->Write(3,  "     U of A Student      Class: ".$app['class_standing']);
+  }
+  else{
+    $pdf->Write(3,  "     ".$app['student_type']."      Class: ".$app['class_standing']);
+  }
+  
+  $pdf->ln(5);
+  if($app['work_study']==1){
+    $pdf->Write(3, "     Work-study: Yes");
+  }
+  else{
+    $pdf->Write(3, "     Work-study: No");
+  }
+  $pdf->ln(5);
+  if($app['work_for_union']==1){
+    $pdf->Write(3, "     Worked for the Student Unions Before: Yes");
+  }
+  else{
+    $pdf->Write(3, "     Worked for the Student Unions Before: No");
+  }
+  $pdf->ln(5);
+  
+  if($app['crime']==1){
+  
+    $pdf->Write(3, "     Convicted of a crime: Yes");
+    $pdf->ln();
+    $pdf->Write(3, "     Explanation: ".$app['crime_info']);
+  }
+  else{
+    $pdf->Write(3, "     Convicted of a crime: No");
+  }
+  $pdf->ln(5);
+  
+  $pdf->SetFontSize(12);
+  $pdf->Write(7, "Work History:");
+  $pdf->ln(7);
+  $pdf->SetFontSize(10);
+  
+  $query="select * from work_history where studentID=".$id;
+  $result = mysql_query($query, $DBlink);
+while($wh = mysql_fetch_assoc($result)){
+  
+  $pdf->SetFont("Arial", "", 10);
+  $pdf->Write(5, "     ".$wh['company']);
+  $pdf->SetFont("Arial", "", 9);
+  $pdf->Write(5, " - ".$wh['supervisor_name']."   |   ".$wh['phone_number']."   |   ".$wh['period']."   |   ".$wh['pay_rate']);
+  $pdf->ln(5);
+  $pdf->Write(3, "          Duties:  ");
+  $pdf->MultiCell(0, 3, $wh['job_duties']);
+  $pdf->ln(1);
+  $pdf->Write(3, "          Reason for Leaving:  ");
+  $pdf->MultiCell(0, 3, $wh['reason_leave']);
+  $pdf->ln(5);
+  }
+  
+  if($app['resume_size'] > 0){
+  $pdf->SetFont("Arial", "", 10);
+  $pdf->Write(5, "     See Resume");
+  
+  }
+  
+  $pdf->ln(5);
+  
+  if($app['comments'] != ''){
+    $pdf->SetFontSize(12);
+    $pdf->Write(7, "Comments:");
+    $pdf->ln(7);
+    $pdf->SetFontSize(9);
+    $pdf->Write(5, "     ".$app['comments']);
+  }
+  
+  $pdf->Output('/srv/www/htdocs/union/intra_new/modules/hiring/PDF/newpdf.pdf', 'F');
+  
+  
+  
+  //////////////////////////////////////
+  //          open pdf                //
+  //////////////////////////////////////
+  
+      $fp = fopen('/srv/www/htdocs/union/intra_new/modules/hiring/PDF/newpdf.pdf', 'r');
+      $PDF_size = filesize('/srv/www/htdocs/union/intra_new/modules/hiring/PDF/newpdf.pdf');
+      $PDF_content = fread($fp, $PDF_size);
+      fclose($fp);
+      
+      $PDF_content = addslashes($PDF_content);
+  
+  
+  
+  
+  //////////////////////////////////////
+  //          save to database        //
+  //////////////////////////////////////
+  
+  
+    
+     
+      
+  
+    $query = "update application SET".
+          " PDF           ='"         .$PDF_content.
+          "', PDF_size            ="         .$PDF_size.
+          " where studentID = ".$app['sid'].
+          ";";
+    mysql_query($query, $DBlink);
+     print mysql_error($DBlink);
+  
+  
+  
+  
+  $query = "SELECT PDF, PDF_size, first, last FROM student join application on student.ID=application.studentID WHERE student.ID =".$id;
+  
+  $result = mysql_query($query, $DBlink);
+  $student=mysql_fetch_assoc($result);
+  
+  header("Content-type: application/pdf");
+  header("Content-length: ".$student['PDF_size']);
+  header("Content-Disposition: attachment; filename=".$student['first']." ".$student['last'].'.pdf');
+   header("Cache-Control: maxage=1"); // Age is in seconds.
+   header("Pragma: public");
+  echo $student['PDF'];
+  }
+  else{
+    $query = "SELECT resume, resume_size, resume_type, first, last FROM student join application on student.ID=application.studentID WHERE student.ID =".$id;
+  
+  $result = mysql_query($query, $DBlink);
+  $student=mysql_fetch_assoc($result);
+  
+  header("Content-type: ".$student['resume_type']);
+  header("Content-length: ".$student['resume_size']);
+  header("Content-Disposition: attachment; filename=".$student['first']." ".$student['last']."-resume");
+   header("Cache-Control: maxage=1"); // Age is in seconds.
+   header("Pragma: public");
+  echo $student['resume'];
+  }
+  mysql_close($DBlink);
+  //db_set_active('default');
+}
+
+
+function filter1($page, $resume, $work_study, $work_experience, $checked_out, $first, $last, $schedule, $semester, $high, $pima, $fresh, $soph, $junior, $senior, $grad, $spec){
+global $user;
+$results_per_page = 25;
+
+$header = array( '<div style="min-width:150px; _width:150px;">Information</div>', 'Schedule', 'Work History');
+
+$i=0;
+$test ='';
+
+if($page==0){
+
+  foreach($schedule[0] as $day){
+    
+    $days[$i][0] = bindec(substr(str_replace(',', '', $day), 0, 24));
+    $days[$i++][1] = bindec(substr(str_replace(',', '', $day), 24, 24));
+  }
+  
+  $DBlink = mysql_connect("mysql_host","web","viv3nij");
+  
+        mysql_select_db("unions_app", $DBlink);
+  $query = 'select area from portals where portal_id='.$user->unit;
+  //print $query;
+  $result = db_query($query, $DBlink);
+  $area = db_fetch_array($result);
+  //var_dump(mysql_error($DBlink));
+  //print $area['area'];
+  switch($area['area']){
+  case 0:
+    $area_which = 'area1="Dining"';
+  break;
+  case 1:
+    $area_which = 'area2="CSIL"';
+  break;
+  case 2:
+    $area_which = 'area4="Operations"';
+  break;
+  case 3:
+    $area_which = 'area3="Retail"';
+  break;
+  
+  }
+  
+  
+  
+  $query = "select student.*, student.ID as sid, schedule.*, min(checked_out.done) as checkouts, max(work_history.ID) as works, application.comments,  application.resume_size, concat( lpad( bin( mon ) , 24, '0' ) , lpad( bin( mon2 ) , 24, '0' ) ) AS monday, concat( lpad( bin( tue ) , 24, '0' ) , lpad( bin( tue2 ) , 24, '0' ) ) AS tuesday, concat( lpad( bin( wed ) , 24, '0' ) , lpad( bin( wed2 ) , 24, '0' ) ) AS wednesday, concat( lpad( bin( thu ) , 24, '0' ) , lpad( bin( thu2 ) , 24, '0' ) ) AS thursday, concat( lpad( bin( fri ) , 24, '0' ) , lpad( bin( fri2 ) , 24, '0' ) ) AS friday, concat( lpad( bin( sat ) , 24, '0' ) , lpad( bin( sat2 ) , 24, '0' ) ) AS saturday, concat( lpad( bin( sun ) , 24, '0' ) , lpad( bin( sun2 ) , 24, '0' ) ) AS sunday, ( (BIT_COUNT(((mon &".$days[0][0].") ^".$days[0][0]." ))) + (BIT_COUNT(((mon2 &".$days[0][1].") ^".$days[0][1]." ))) + (BIT_COUNT(((tue &".$days[1][0].") ^".$days[1][0]." ))) + (BIT_COUNT(((tue2 &".$days[1][1].") ^".$days[1][1]." ))) + (BIT_COUNT(((wed &".$days[2][0].") ^".$days[2][0]." ))) + (BIT_COUNT(((wed2 &".$days[2][1].") ^".$days[2][1]." ))) + (BIT_COUNT(((thu &".$days[3][0].") ^".$days[3][0]." ))) + (BIT_COUNT(((thu2 &".$days[3][1].") ^".$days[3][1]." ))) + (BIT_COUNT(((fri &".$days[4][0].") ^".$days[4][0]." ))) + (BIT_COUNT(((fri2 &".$days[4][1].") ^".$days[4][1]." ))) + (BIT_COUNT(((sat &".$days[5][0].") ^".$days[5][0]." ))) + (BIT_COUNT(((sat2 &".$days[5][1].") ^".$days[5][1]." ))) + (BIT_COUNT(((sun &".$days[6][0].") ^".$days[6][0]." ))) + (BIT_COUNT(((sun2 &".$days[6][1].") ^".$days[6][1]." ))) ) as matchdegree from student left join application on student.ID=application.studentID left join schedule on student.ID=schedule.studentID left join checked_out on student.ID=checked_out.studentID and checked_out.unit='".$user->unit."' left join work_history on student.ID = work_history.studentID where hired <> 1 and student.active=1 and (done=1 or done is null)  and semester='".$semester."' and (redistribute='any' or ".$area_which." )";
+  
+  
+  if(user_access('access hiring admin')){
+    $query = "select student.*, student.ID as sid, schedule.*, min(checked_out.done) as checkouts, max(work_history.ID) as works, application.comments,  application.resume_size, concat( lpad( bin( mon ) , 24, '0' ) , lpad( bin( mon2 ) , 24, '0' ) ) AS monday, concat( lpad( bin( tue ) , 24, '0' ) , lpad( bin( tue2 ) , 24, '0' ) ) AS tuesday, concat( lpad( bin( wed ) , 24, '0' ) , lpad( bin( wed2 ) , 24, '0' ) ) AS wednesday, concat( lpad( bin( thu ) , 24, '0' ) , lpad( bin( thu2 ) , 24, '0' ) ) AS thursday, concat( lpad( bin( fri ) , 24, '0' ) , lpad( bin( fri2 ) , 24, '0' ) ) AS friday, concat( lpad( bin( sat ) , 24, '0' ) , lpad( bin( sat2 ) , 24, '0' ) ) AS saturday, concat( lpad( bin( sun ) , 24, '0' ) , lpad( bin( sun2 ) , 24, '0' ) ) AS sunday, ( (BIT_COUNT(((mon &".$days[0][0].") ^".$days[0][0]." ))) + (BIT_COUNT(((mon2 &".$days[0][1].") ^".$days[0][1]." ))) + (BIT_COUNT(((tue &".$days[1][0].") ^".$days[1][0]." ))) + (BIT_COUNT(((tue2 &".$days[1][1].") ^".$days[1][1]." ))) + (BIT_COUNT(((wed &".$days[2][0].") ^".$days[2][0]." ))) + (BIT_COUNT(((wed2 &".$days[2][1].") ^".$days[2][1]." ))) + (BIT_COUNT(((thu &".$days[3][0].") ^".$days[3][0]." ))) + (BIT_COUNT(((thu2 &".$days[3][1].") ^".$days[3][1]." ))) + (BIT_COUNT(((fri &".$days[4][0].") ^".$days[4][0]." ))) + (BIT_COUNT(((fri2 &".$days[4][1].") ^".$days[4][1]." ))) + (BIT_COUNT(((sat &".$days[5][0].") ^".$days[5][0]." ))) + (BIT_COUNT(((sat2 &".$days[5][1].") ^".$days[5][1]." ))) + (BIT_COUNT(((sun &".$days[6][0].") ^".$days[6][0]." ))) + (BIT_COUNT(((sun2 &".$days[6][1].") ^".$days[6][1]." ))) ) as matchdegree from student left join application on student.ID=application.studentID left join schedule on student.ID=schedule.studentID left join checked_out on student.ID=checked_out.studentID left join work_history on student.ID = work_history.studentID where hired <> 1 and student.active=1 and semester='".$semester."'";
+  }
+  
+  
+  if($resume == 'true'){
+    $query .= ' and resume_size > 0';
+  }
+  
+  if($work_study == 'true'){
+    $query .=' and work_study=1';
+  }
+  
+  if($high == 'true'){
+    $query .=' and student_type <> "high_school_student"';
+  }
+  
+  if($pima == 'true'){
+    $query .=' and student_type <> "pima_student"';
+  }
+  
+  if($fresh == 'true'){
+    $query .=' and class_standing <> "freshman"';
+  }
+  
+  if($soph == 'true'){
+    $query .=' and class_standing <> "sophmore"';
+  }
+  
+  if($junior == 'true'){
+    $query .=' and class_standing <> "junior"';
+  }
+  
+  if($senior == 'true'){
+    $query .=' and class_standing <> "senior"';
+  }
+  
+  if($grad == 'true'){
+    $query .=' and class_standing <> "grad"';
+  }
+  
+  
+  
+  if($first != ''){
+    $query .= ' and first like "%'.$first.'%"';
+  }
+  
+  if($last != ''){
+    $query .= ' and last like "%'.$last.'%"';
+  }
+  
+  if($work_experience == 'true'){
+    $query .= ' and (work_history.ID is not null or resume_size > 0)';
+  }
+  
+  if($checked_out == 'true'){
+    $query .= ' and checked_out.ID is null and (done <> 1 or done is null)';
+  }
+  if($spec != ''){
+    $query .= ' and application.specific_location like "%'.$spec.'%"';
+  }
+  
+  
+  $query .= ' Group by student.ID order by matchdegree';
+  
+  $_SESSION['search_query'] = $query;
+  
+  $query .=' limit 0, '.$results_per_page;
+}
+else{
+  $query = $_SESSION['search_query'].' limit '.($results_per_page*($page-1)).', '.($results_per_page);
+}
+$DBlink = mysql_connect("mysql_host","web","viv3nij");
+  
+        mysql_select_db("unions_app", $DBlink);
+print '<!--'.$query.'-->';
+
+
+
+$num_result = mysql_query($_SESSION['search_query'], $DBlink);
+$pages = mysql_num_rows($num_result);
+$pages = ceil($pages/$results_per_page);
+
+
+$result = mysql_query($query, $DBlink);
+
+//$result = pager_query($query, 50, 0);
+
+  
+  while($student = mysql_fetch_assoc($result)){
+    $DBlink = mysql_connect("mysql_host","web","viv3nij");
+  
+        mysql_select_db("unions_app", $DBlink);
+
+    //$test_re = "select( (BIT_COUNT(((mon &".$days[0][0].") ^".$days[0][0]." ))) + (BIT_COUNT(((mon2 &".$days[0][1].") ^".$days[0][1]." ))) + (BIT_COUNT(((tue &".$days[1][0].") ^".$days[1][0]." ))) + (BIT_COUNT(((tue2 &".$days[1][1].") ^".$days[1][1]." ))) + (BIT_COUNT(((wed &".$days[2][0].") ^".$days[2][0]." ))) + (BIT_COUNT(((wed2 &".$days[2][1].") ^".$days[2][1]." ))) + (BIT_COUNT(((thu &".$days[3][0].") ^".$days[3][0]." ))) + (BIT_COUNT(((thu2 &".$days[3][1].") ^".$days[3][1]." ))) + (BIT_COUNT(((fri &".$days[4][0].") ^".$days[4][0]." ))) + (BIT_COUNT(((fri2 &".$days[4][1].") ^".$days[4][1]." ))) + (BIT_COUNT(((sat &".$days[5][0].") ^".$days[5][0]." ))) + (BIT_COUNT(((sat2 &".$days[5][1].") ^".$days[5][1]." ))) + (BIT_COUNT(((sun &".$days[6][0].") ^".$days[6][0]." ))) + (BIT_COUNT(((sun2 &".$days[6][1].") ^".$days[6][1]." ))) ) as matchdegree from schedule where studentID=".$student['sid'];
+    //$test_result = mysql_query($test_re);
+    //$test_reu = mysql_fetch_assoc($test_result);
+    
+    
+      $sub_query_test = 'select company, job_duties, reason_leave from work_history where studentID='.$student['sid'];
+      $subresult = mysql_query($sub_query_test, $DBlink);
+      
+      $work_h ='';
+      //var_dump($subresult);
+      //var_dump(mysql_error($DBlink));
+      while($wh=mysql_fetch_assoc($subresult)){
+        $work_h .= $wh['company']."<br><ul><li>".$wh['job_duties']."</li><li>".$wh['reason_leave'].'</li></ul><br><br>';
+      }
+      if($student['comments']!='')
+        $work_h .= 'Comments:<br><br><div style="padding-left:15px;">'.$student['comments'].'</div>';
+      
+      $resume_link='';
+      if($student['resume_size']>0){
+        
+        mysql_close($DBlink);
+        
+        
+        $resume_link = l('view resume', 'download/resume/'.$student['sid'], array('target' => '_blank'));
+        $DBlink = mysql_connect("mysql_host","web","viv3nij");
+        mysql_select_db("unions_app", $DBlink);
+      
+        
+      }
+  
+    
+    
+      
+      
+      if($student['work_study']==1){
+        $work_s = 'work study';
+      }
+      else{
+        $work_s ='';
+      }
+      if($student['worked_for_union']==1){
+        $work_u = 'worked for union before';
+      }
+      else{
+        $work_u ='';
+      }
+    
+    
+    $student_matches[] =  array(
+        '<p style="margin-left:15px; margin-right:15px;"><b>'.$student['first']."&nbsp;".$student['last']."</b><br>".$student['class_standing']."<br>".$work_s."<br>".$work_u."<br>".l('view application', 'download/pdf/'.$student['sid'], array('target' => '_blank')).'<br>'.$resume_link.'<br>'.'<br>'.'<input type="button" value="Check Out" onclick="this.value = \'now in your applications \'; this.onclick = \'\'; checkout(\''.$student['sid'].'\')"></p>',
+        build_mini_schedule($student['monday'], $student['tuesday'], $student['wednesday'], $student['thursday'], $student['friday'], $student['saturday'], $student['sunday']), 
+        $work_h       
+      );
+      
+    
+            
+      mysql_close($DBlink);     
+  }
+  
+  
+
+
+
+    
+    
+    
+/*  
+  while($student = mysql_fetch_assoc($result)){
+    
+  
+  
+    $test_re = "select( (BIT_COUNT(((mon &".$days[0][0].") ^".$days[0][0]." ))) + (BIT_COUNT(((mon2 &".$days[0][1].") ^".$days[0][1]." ))) + (BIT_COUNT(((tue &".$days[1][0].") ^".$days[1][0]." ))) + (BIT_COUNT(((tue2 &".$days[1][1].") ^".$days[1][1]." ))) + (BIT_COUNT(((wed &".$days[2][0].") ^".$days[2][0]." ))) + (BIT_COUNT(((wed2 &".$days[2][1].") ^".$days[2][1]." ))) + (BIT_COUNT(((thu &".$days[3][0].") ^".$days[3][0]." ))) + (BIT_COUNT(((thu2 &".$days[3][1].") ^".$days[3][1]." ))) + (BIT_COUNT(((fri &".$days[4][0].") ^".$days[4][0]." ))) + (BIT_COUNT(((fri2 &".$days[4][1].") ^".$days[4][1]." ))) + (BIT_COUNT(((sat &".$days[5][0].") ^".$days[5][0]." ))) + (BIT_COUNT(((sat2 &".$days[5][1].") ^".$days[5][1]." ))) + (BIT_COUNT(((sun &".$days[6][0].") ^".$days[6][0]." ))) + (BIT_COUNT(((sun2 &".$days[6][1].") ^".$days[6][1]." ))) ) as matchdegree from schedule where studentID=".$student['sid'];
+    $test_result = mysql_query($test_re);
+    $test_reu = mysql_fetch_assoc($test_result);
+    $temp_va[] = $test_reu['matchdegree'];
+  
+    $unmatchedm = substr_count(decbin((($student['mon']&$days[0][0])^$days[0][0])), "1");
+    $unmatchedm1 = substr_count(decbin((($student['mon2']&$days[0][1])^$days[0][1])), "1");
+    $unmatchedt = substr_count(decbin((($student['tue']&$days[1][0])^$days[1][0])), "1");
+    $unmatchedt1 = substr_count(decbin((($student['tue2']&$days[1][1])^$days[1][1])), "1");
+    $unmatchedw = substr_count(decbin((($student['wed']&$days[2][0])^$days[2][0])), "1");
+    $unmatchedw1 = substr_count(decbin((($student['wed2']&$days[2][1])^$days[2][1])), "1");
+    $unmatchedr = substr_count(decbin((($student['thu']&$days[3][0])^$days[3][0])), "1");
+    $unmatchedr1 = substr_count(decbin((($student['thu2']&$days[3][1])^$days[3][1])), "1");
+    $unmatchedf = substr_count(decbin((($student['fri']&$days[4][0])^$days[4][0])), "1");
+    $unmatchedf1 = substr_count(decbin((($student['fri2']&$days[4][1])^$days[4][1])), "1");
+    $unmatcheds = substr_count(decbin((($student['sat']&$days[5][0])^$days[5][0])), "1");
+    $unmatcheds1 = substr_count(decbin((($student['sat2']&$days[5][1])^$days[5][1])), "1");
+    $unmatchedu = substr_count(decbin((($student['sun']&$days[6][0])^$days[6][0])), "1");
+    $unmatchedu1 = substr_count(decbin((($student['sun2']&$days[6][1])^$days[6][1])), "1");
+    
+    $total_unmatched = $unmatchedm + $unmatchedt + $unmatchedw + $unmatchedr + $unmatchedf + $unmatcheds + $unmatchedu+ $unmatchedm1 + $unmatchedt1 + $unmatchedw1 + $unmatchedr1 + $unmatchedf1 + $unmatcheds1 + $unmatchedu1;
+    
+    
+    
+    //$due->format("F j, Y")
+    
+    
+    //
+    
+    if($total_unmatched == $num_unmatched){
+    
+      $day_s[0] = str_pad(decbin($student['mon']),24,"0",STR_PAD_LEFT);
+      $day_s[1] = str_pad(decbin($student['tue']),24,"0",STR_PAD_LEFT);
+      $day_s[2] = str_pad(decbin($student['wed']),24,"0",STR_PAD_LEFT);
+      $day_s[3] = str_pad(decbin($student['thu']),24,"0",STR_PAD_LEFT);
+      $day_s[4] = str_pad(decbin($student['fri']),24,"0",STR_PAD_LEFT);
+      $day_s[5] = str_pad(decbin($student['sat']),24,"0",STR_PAD_LEFT);
+      $day_s[6] = str_pad(decbin($student['sun']),24,"0",STR_PAD_LEFT);
+      
+      $day_s[0] .= str_pad(decbin($student['mon2']),24,"0",STR_PAD_LEFT);
+      $day_s[1] .= str_pad(decbin($student['tue2']),24,"0",STR_PAD_LEFT);
+      $day_s[2] .= str_pad(decbin($student['wed2']),24,"0",STR_PAD_LEFT);
+      $day_s[3] .= str_pad(decbin($student['thu2']),24,"0",STR_PAD_LEFT);
+      $day_s[4] .= str_pad(decbin($student['fri2']),24,"0",STR_PAD_LEFT);
+      $day_s[5] .= str_pad(decbin($student['sat2']),24,"0",STR_PAD_LEFT);
+      $day_s[6] .= str_pad(decbin($student['sun2']),24,"0",STR_PAD_LEFT); 
+      
+      
+      
+      
+      
+      //for($i2=0; $i2<sizeof($days); $i2++){
+        //for($i=0; $i<48; $i++){ 
+          //$jscript .= 'schedule[0]['.$i2.']['.$i.'] ='.$day_s[$i2][$i].";"; 
+        //}
+      //}
+      
+      
+      //init(div, vertical, num_sched, sizex, sizey, nrow, ncol, divis, start, rowh, colh, new_schedule)
+  //init( \''.$semester['title'].'table\', \'vertical\', 1, 26, 26, 16, 7, 2, 16, \'\', \'\', 0);
+      
+  
+      //$jscript .= 'init("resultss'.$student['sid'].'", "vertical", 1, 12, 12, 24, 7, 2, 0, "t", "t", 1, 0);';
+      
+      $subresult = mysql_query('select company, job_duties, reason_leave from work_history where studentID='.$student['sid'], $DBlink);
+      
+      $work_h ='';
+      
+      while($wh=mysql_fetch_assoc($subresult)){
+        $work_h .= $wh['company']."<br><ul><li>".$wh['job_duties']."</li><li>".$wh['reason_leave'].'</li></ul><br><br>';
+      }
+      
+      $work_h .= $student['comments'].'<br><br>';
+      
+      if($student['resume_size']>0){
+        //db_set_active('default');
+        mysql_close($DBlink);
+        
+        
+        $work_h .= l('view resume', 'download/resume/'.$student['sid']);
+        $DBlink = mysql_connect("mysql_host","web","viv3nij");
+  
+        mysql_select_db("unions_app", $DBlink);
+        //db_set_active('unions_app');
+        
+      }
+  
+    
+      //db_set_active('unions_app');
+      
+      
+      if($student['work_study']==1){
+        $work_s = 'work study';
+      }
+      else{
+        $work_s ='';
+      }
+      if($student['worked_for_union']==1){
+        $work_u = 'worked for union before';
+      }
+      else{
+        $work_u ='';
+      }
+    mysql_close($DBlink);
+    //db_set_active('default');
+    
+        
+    
+    
+    $student_matches[] =  array(
+        '<b>'.$student['first']." ".$student['last']."</b><br>".$student['phone']."<br>".$student['email']."<br><br>".$student['class_standing']."<br>".$work_s."<br>".$work_u."<br>".l('view application', 'download/pdf/'.$student['sid']),
+        build_mini_schedule($student['monday'], $student['tuesday'], $student['wednesday'], $student['thursday'], $student['friday'], $student['saturday'], $student['sunday']), 
+        $work_h ,
+        '<br>'.'<input type="button" value="Check Out" onclick="this.value = \'already checked out \'; this.onclick = \'\'; checkout(\''.$student['sid'].'\')">'
+      );
+      $DBlink = mysql_connect("mysql_host","web","viv3nij");
+  
+        mysql_select_db("unions_app", $DBlink);
+    }
+            
+            
+  }
+  
+  $num_unmatched++;
+}
+mysql_close($DBlink);
+*/
+
+/*
+    $day_s[0] = str_pad(decbin($days[0][0]),24,"0",STR_PAD_LEFT);
+    $day_s[1] = str_pad(decbin($days[1][0]),24,"0",STR_PAD_LEFT);
+    $day_s[2] = str_pad(decbin($days[2][0]),24,"0",STR_PAD_LEFT);
+    $day_s[3] = str_pad(decbin($days[3][0]),24,"0",STR_PAD_LEFT);
+    $day_s[4] = str_pad(decbin($days[4][0]),24,"0",STR_PAD_LEFT);
+    $day_s[5] = str_pad(decbin($days[5][0]),24,"0",STR_PAD_LEFT);
+    $day_s[6] = str_pad(decbin($days[6][0]),24,"0",STR_PAD_LEFT);
+    
+    $day_s[0] .= str_pad(decbin($days[0][1]),24,"0",STR_PAD_LEFT);
+    $day_s[1] .= str_pad(decbin($days[1][1]),24,"0",STR_PAD_LEFT);
+    $day_s[2] .= str_pad(decbin($days[2][1]),24,"0",STR_PAD_LEFT);
+    $day_s[3] .= str_pad(decbin($days[3][1]),24,"0",STR_PAD_LEFT);
+    $day_s[4] .= str_pad(decbin($days[4][1]),24,"0",STR_PAD_LEFT);
+    $day_s[5] .= str_pad(decbin($days[5][1]),24,"0",STR_PAD_LEFT);
+    $day_s[6] .= str_pad(decbin($days[6][1]),24,"0",STR_PAD_LEFT);    
+*/
+      
+      
+  /*print '<script type="text/javascript">alert("'.$query.'");</script>';*/
+  
+  
+  $pager = '<div>Pages: ';
+  
+  for($x=1; $x <= $pages; $x++){
+  
+    if($page == $x){
+      $pager .= '<span style="font-weight:bold; color:#003366; font-size:14px;">'.$x.'</span>&nbsp;&nbsp;';
+    }
+    else{
+      $pager .= '<span style="text-decoration:underline; cursor:pointer;" onclick="filter1('.$x.')">'.$x.'</span>&nbsp;&nbsp;';
+    }
+  
+  }
+  
+  $pager .= '</div>';
+  
+  print $pager.theme('table', $header, $student_matches).$pager;
+  
+  
+  
+  
+}
+
+function checkout($id){
+  global $user;
+  //$db_url = array('default' => 'mysql://root@localhost/intra', 'unions_app' => 'mysql://web:viv3nij@mysql_host/unions_app');
+  $date = date("Y-m-d");
+  $query = 'insert into checked_out set studentID='.$id.', unit="'.$user->unit.'", manager_checked_out="'.$user->fname.' '.$user->lname.'", done=0, phase=1, phase_date="'.$date.'"';
+  $query1= 'insert into app_history set studentID='.$id.', unit="'.$user->unit.'", phase=1, phase_date="'.$date.'"';
+  $DBlink = mysql_connect("mysql_host","web","viv3nij");
+  
+        mysql_select_db("unions_app", $DBlink);
+  mysql_query($query, $DBlink);
+  mysql_query($query1, $DBlink);
+  //db_set_active('default');
+  mysql_close($DBlink);
+  //print $query;
+  //var_dump($user);
+  return true;
+}
+
+function hiring_main(){
+  return '<div><h1>Welcome to Hiring!</h1></div><dl><dt><a href="/intra_new/hiring/applicantsearch" title="Search Applicants">Search Applicants</a></dt><dd>In this section you can "Search Applications" in our database. If you go to the search page there is a search tool you can use. You can search based on schedule, work history, name, class standing, and more. Once your search results appear you may view the applicant\'s application via a PDF file, view a submitted resume, and check out a students application from the system. Be aware that only 3 managers may check out a student\'s application.</dd><dt><a href="/intra_new/hiring/hiring" title="Your Applications">Your Applications</a></dt><dd>In the "Your Applications" section you can view applications checked out by your unit, and view student applicants who have specifically applied to your unit or position(s) you posted on Joblink. Only your unit (those who have been given permission to hire students) can see these applications. In this section you will also find the checked out applicant\'s contact information and can set up interview days and times, and hire a student pending payroll approval.</dd><dt><a href="'.base_path().'hiring/settings">Settings</a></dt><dd>This page contains settings pertaining to hiring such as whether or not to allow applications to be submitted specifically to your unit.</dd></dl><div>For more information about the Hiring Section, visit the help section</div>';
+}
+function hiring_settings(){
+  global $user;
+  $units = get_units();
+  $DBlink = mysql_connect("mysql_host","web","viv3nij");
+  
+        mysql_select_db("unions_app", $DBlink);
+        
+        
+  drupal_add_js('function change_recieving_apps(value, unit){
+          $.post("'.base_path().'hiring/settings_change", {"value":value, "unit":unit});
+                        }', 'inline');
+  
+  foreach($user->roles[6] as $unit){
+    $result = mysql_query('select active from joblink_convert where portal_id='.$unit);
+    $active = mysql_result($result, 0);
+    //var_dump($active);
+    $output .= '<h2>Hiring Setting for '.$units[$unit].'</h2>'; 
+    
+    $output .= '<input type="checkbox" onclick="change_recieving_apps(this.checked, '.$unit.')" '.(($active) ? 'checked' : '').'> Allow students to submit applications specifically to your unit.';
+  }
+  return $output;
+}
+function hiring_settings_change(){
+  //print $_POST['unit'].$_POST['value'];
+  $DBlink = mysql_connect("mysql_host","web","viv3nij");
+  
+        mysql_select_db("unions_app", $DBlink);
+        
+        if($_POST['value']=='true')
+        mysql_query('update joblink_convert set active=1 where portal_id='.$_POST['unit']);
+        else
+        mysql_query('update joblink_convert set active=0 where portal_id='.$_POST['unit']);
+        print mysql_error();
+}
+
+function hiring_perm() {
+  return array('access hiring', 'access hiring admin');
+}
+
+function hiring_cron(){
+  $DBlink = mysql_connect("mysql_host","web","viv3nij");
+  
+        mysql_select_db("unions_app", $DBlink);
+  
+  
+  mysql_query('update checkout set done=1 where phase=1 and done=0 and phase_date < DATE_SUB(CURDATE(), INTERVAL 14 DAY)');
+  
+  mysql_close($DBlink); 
+
+}
+
+
+
+function hiring_menu($may_cache){
+  global $user;
+  if(!$may_cache){
+  $items = array();
+  /*
+  $items[] = array(
+      'path' => 'hiringadmin',
+      'title' => t('Hiring Admin'),
+      'callback' => 'hiring_admin',
+      'access' => TRUE,
+      'type' => MENU_NORMAL_ITEM
+  );
+  */
+  $items[] = array(
+      'path' => 'hiring',
+      'title' => t('Hiring'),
+      'callback' => 'hiring_main',
+      'access' => user_access('access hiring'),
+      'type' => MENU_NORMAL_ITEM
+  );
+
+  $items[] = array(
+      'path' => 'hiring/hiring',
+      'title' => t('Your Applications'),
+      'callback' => your_applications,
+      'access' => user_access('access hiring'),
+      'type' => MENU_NORMAL_ITEM
+  );
+  
+  $items[] = array(
+    'path' => 'hiring/interview',
+    'callback' => 'interview_date',
+    'callback arguments' => array($_POST['id'], $_POST['date']),
+    'access' => TRUE,
+    'type' => MENU_CALLBACK
+  );
+  
+  $items[] = array(
+    'path' => 'set_unit_hiring',
+    'callback' => 'set_unit',
+    'callback arguments' => array($_GET['unit'], $_GET['redirect']),
+    'access' => user_access('access hiring'),
+    'type' => MENU_CALLBACK
+  );
+  
+  $items[] = array(
+      'path' => 'hiring/applicantsearch/change_unit',
+      'title' => t('change unit'),
+      'callback' => 'get_hiring_unit',
+      'access' => (user_access('access hiring') && sizeof($user->roles[6]) != 1),
+    'callback arguments' => array('applicantsearch'),
+    'weight' =>10,
+      'type' => MENU_LOCAL_TASK
+  );
+  
+  
+  $items[] = array(
+      'path' => 'hiring/hiring/change_unit',
+      'title' => t('change unit'),
+      'callback' => 'get_hiring_unit',
+      'access' => user_access('access hiring'),
+    'callback arguments' => array('my_app'),
+    'weight' => 10,
+      'type' => MENU_LOCAL_TASK
+  );
+  
+  
+  $items[] = array(
+    'path' => 'download',
+    'callback' => 'download',
+    'access' => TRUE,
+    'type' => MENU_CALLBACK
+  );
+  
+  
+  $items[] = array(
+    'path' => 'checkout',
+    'callback' => 'checkout',
+    'access' => TRUE,
+    'type' => MENU_CALLBACK
+  );
+  
+  $items[] = array(
+      'path' => 'hiring/applicantsearch',
+      'title' => t('Search Applicants'),
+      'callback' => applicantsearch,
+      'access' => user_access('access hiring'),
+      'type' => MENU_NORMAL_ITEM
+  );
+  
+  $items[] = array(
+      'path' => 'hiring/settings',
+      'title' => t('Settings'),
+      'callback' => hiring_settings,
+      'access' => user_access('access hiring'),
+      'type' => MENU_NORMAL_ITEM,
+    'weight' => 10
+  );
+  $items[] = array(
+      'path' => 'hiring/settings_change',
+      'callback' => hiring_settings_change,
+      'access' => user_access('access hiring'),
+      'type' => MENU_CALLBACK
+  );
+  
+  $items[] = array(
+      'path' => 'hiring/applicantsearch/view',
+      'title' => t('Search Applicants'),
+      'callback' => applicantsearch,
+      'access' => user_access('access hiring'),
+      'type' => MENU_DEFAULT_LOCAL_TASK
+  );
+  
+  $items[] = array(
+      'path' => 'hiring/applicantsearch/ya',
+      'title' => t('Your Applications'),
+      'callback' => your_applications,
+      'access' => user_access('access hiring'),
+      'type' => MENU_LOCAL_TASK
+  );
+  
+  $items[] = array(
+      'path' => 'hiring/hiring/sa',
+      'title' => t('Search Applicants'),
+      'callback' => applicantsearch,
+      'access' => user_access('access hiring'),
+      'type' => MENU_LOCAL_TASK
+  );
+  
+  $items[] = array(
+      'path' => 'hiring/hiring/view',
+      'title' => t('Your Applications'),
+      'callback' => your_applications,
+      'access' => user_access('access hiring'),
+      'type' => MENU_DEFAULT_LOCAL_TASK
+  );
+  
+  $items[] = array(
+    'path' => 'applicantsearch/filter',
+    'access' => TRUE,
+    'callback' => 'filter1',
+    'callback arguments' => array($_POST['page'], $_POST['resume'], $_POST['work_study'], $_POST['work_experience'], $_POST['checked_out'], $_POST['first_name'], $_POST['last_name'], $_POST['schedule'], $_POST['semester'], $_POST['high_school'], $_POST['Pima'], $_POST['freshman'], $_POST['sophmore'], $_POST['junior'], $_POST['senior'], $_POST['grad'], $_POST['specific']),
+    'type' => MENU_CALLBACK
+  );
+  
+  }
+
+  return $items;
+}

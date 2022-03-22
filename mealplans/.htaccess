@@ -1,0 +1,14 @@
+# Various rewrite rules.
+<IfModule mod_rewrite.c>  
+  # To redirect all users to access the site WITHOUT the 'www.' prefix,
+  # (http://www.example.com/... will be redirected to http://example.com/...)
+  # uncomment and adapt the following:
+  RewriteEngine on
+  RewriteBase /mealplans
+  RewriteCond %{HTTP_HOST} ^www\.union\.arizona\.edu$ [NC]
+  RewriteRule ^(.*)$ https://union\.arizona\.edu/mealplans/$1 [L,R=301]
+  
+  RewriteCond %{REMOTE_ADDR} ^(150\.135\.75\.181)
+  #RewriteRule ^(.*)$ /mealplans2/$1 [L]
+
+</IfModule>

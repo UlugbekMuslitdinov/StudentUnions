@@ -1,0 +1,83 @@
+.background {
+    background-image: url(../../images/arizonaroom.jpg);
+    height: 170%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding-top: 1px;
+}
+
+#menu-content {
+    text-align: center;
+    margin-top: 320px;
+    color: white;
+}
+
+#menu-content p {
+    width: 1090px;
+    font-weight: normal;
+}
+
+.date-select {
+    margin-left: 50px;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+#menu-content p[id*="menu-name"] {
+    text-transform: uppercase;
+    font-size: 36px !important;
+    font-weight: 600;
+    padding: 20px;
+}
+
+#selected-date {
+    text-transform: uppercase;
+    font-size: 27px;
+    width: 1130px;
+    color: #bdc6cb;
+    padding-bottom: 14px;
+}
+
+#menu-content p {
+    margin-top: 10px !important;
+}
+
+#note {
+    text-transform: uppercase;
+}
+
+#content {
+    margin-top: 30px;
+    margin-bottom: 50px;
+}
+
+#btn-back {
+    cursor: pointer;
+    color:#54676d; 
+    background-color:#e9eaec; 
+    position: absolute;
+    top: 24px;
+    right: 81px;
+    z-index: 9999999;
+    width: 320px;
+    height:30px;
+    border-radius: 5px;
+    font-weight: 900;
+    font-size: 22px;
+    text-align: center;
+    -webkit-box-shadow: 4px 4px 4px 0px rgba(112,112,112,1);
+    -moz-box-shadow: 4px 4px 4px 0px rgba(112,112,112,1);
+    box-shadow: 4px 4px 4px 0px rgba(112,112,112,1);
+    padding-top: 10px;
+}
+
+#btn-back:hover {
+    text-decoration: none;
+}
+
+#wrapper {
+    position: relative;
+    margin-right: -60px;
+}

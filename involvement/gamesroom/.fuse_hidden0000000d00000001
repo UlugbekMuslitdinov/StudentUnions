@@ -1,0 +1,273 @@
+<?php
+//ini_set('display_errors', 1);
+require_once('involv.inc');
+$page_options = array();
+$page_options['page'] = 'gamesroom';
+$page_options['header_image'] = '/template/images/banners/gamesroom.jpg';
+involv_start($page_options);
+
+
+include('../../events/gcal.inc');
+	
+function trim_text($input, $length = 94, $ellipses = true) {
+	 
+	//no need to trim, already shorter than trim length
+	if (strlen($input) <= $length) {
+		return $input;
+	}
+ 
+	//find last space within length
+	$last_space = strrpos(substr($input, 0, $length), ' ');
+	$trimmed_text = substr($input, 0, $last_space);
+ 
+	//add ellipses (...)
+	if ($ellipses) {
+		$trimmed_text .= '...';
+	}
+ 
+	return htmlspecialchars($trimmed_text);
+}
+
+$query = $service->newEventQuery();
+		// Set options on the query
+		$query->setVisibility('private');
+		$query->setProjection('full');
+		$query->setOrderby('starttime');
+		//$query->setFutureevents('true');
+		$query->setSortorder('ascending');
+		$query->setSingleEvents('true');
+		$query->setUser($user);
+		$start_query = date("Y-m-24");
+		$end_query = date("Y-m-31");
+		//var_dump($start_query);
+		//var_dump($end_query);
+$query->setStartMin($start_query);
+$query->setStartMax($end_query);
+
+
+
+	$cal_id = '6p4vfk5bfd3tgd1np34skev3gs@group.calendar.google.com';
+	try{
+	    $eventFeed = $service->getCalendarEventFeed('https://www.google.com/calendar/feeds/'.$cal_id.'/private/full?start-min='.date("Y-m-d").'T07:00:00&start-max='.date("Y-12-29").'T06:59:59&sortorder=ascending&orderby=starttime&singleevents=false');
+	} catch (Zend_Gdata_App_Exception $e) {
+	    echo "Error: " . $e->getMessage();
+	}
+	
+	$days = array(); // Initialize days in case feed is empty.
+	
+	//var_dump($eventFeed);
+	foreach ($eventFeed as $event) {
+		
+		if ($event->eventStatus->value!="http://schemas.google.com/g/2005#event.canceled") {
+			
+				$where =$event->getWhere();
+				$where = $where[0]->getValueString();
+				$when = $event->getWhen();
+				
+				
+					
+				$start = strtotime($when[0]->getStartTime());
+				$end = strtotime($when[0]->getEndTime());
+			
+				if(strpos($event->title.'', "Movie:", 0) === false){
+					$title = $event->title.'';
+				}
+				else{
+					$title = substr($event->title.'', 7);
+					$days[$title]['movie'] = 1;
+				}
+				$days[$title]['desc'] = $event->getContent().'';
+				//var_dump();
+				if($event->recurrence.'' != ''){
+					
+					$convert_days = array("SU" => "Sundays", "MO" => "Mondays", "TU" => "Tuesdays", "WE" => "Wednesdays", "TH" => "Thursdays", "FR" => "Fridays", "SA" => "Saturdays");
+					
+					$recurrence = explode("\n",$event->recurrence.'');
+					$recurrence = explode(";",substr($recurrence[2], 6));
+					foreach($recurrence as $item){
+						$temp = explode("=", $item);
+						$rec[$temp[0]] = $temp[1];
+					}
+					//var_dump($rec);
+					
+					$dow = explode(',',$rec['BYDAY']);
+					$when_str = '';
+					foreach($dow as $day){
+						$when_str .= $convert_days[$day].', ';
+					}
+					$when_str = substr($when_str, 0, -2);
+					//var_dump($when_str);
+					$days[$title]['when'][$when_str][] = date("gA", $start).'&nbsp;-&nbsp;'.date("gA", $end);
+				}
+				else{
+					$days[$title]['when'][date("l, F d:", $start)][] = date("gA", $start);
+				}
+				
+		}
+	}	
+	//var_dump($days);
+	
+
+
+
+?>
+<style>
+	tr{
+	
+	}
+	.row1{
+		background-color:#666666;
+	}
+	.row0{
+		background-color:#444444;
+	}
+	td{
+		color:#ffffff;
+		font-size:12px;
+		height:17px;
+	}
+	.event{
+		border-top:1px dotted #444444;
+		padding-top:15px;
+		padding-bottom:15px;
+	}
+	.row td{
+		color:#444444;
+	}
+</style>
+<h1>Game on...</h1>
+<p>
+	<span style="font-size:18px;">The Cellar Games Room</span> is not just the perfect place
+	for students to pass the time between classes- it’s a great destination for everyone
+	looking for a good time. Play a few games on our 6 full-size billiard tables, snooker
+	table, ping pong tables, Wii, X-Box 360, PS3 or dozens of video arcade games. Hone
+	your skills and win prizes in our regular tournaments, including Texas Hold ‘Em, and
+	billiards. Don’t spend another late night bored in your room-check out what
+	The Games Room has to offer!<br/>
+	<br/>
+	Contact the Games Room <a href="atSU-GamesRoom@email.arizona.edu"atSU-GamesRoom@email.arizona.edu</a>
+	or 520.621.1450
+</p>
+<p>
+	Hours:<br />
+	Mon-Fri : 10am-12am<br />
+	Sat & Sun : 12pm-12am
+</p>
+
+<p style="font-size:9px;">
+	<span style="color:#f26522;">PLEASE NOTE</span> that all events listed (including
+	hours and special events) are subject to change.
+</p>
+<div id="frame" style="height: 600px; overflow:hidden;">
+
+<div style="border-bottom:2px solid #beb6ae; margin-bottom:5px;">
+<?php 
+$x = 0;
+foreach($days as $title => $event){
+		if($event['movie']){
+			array_splice($days, $x, 1);
+
+?> 
+	<div id="event-0" class="event">
+		<img src="/involvement/template/images/movie_poster.jpg" style="float:left;" />
+		<div style="float:left; width:340px; margin-left:15px;">
+			<h2><?=$title?></h2>
+			<p>
+				<?=$event['desc']?>
+			</p>
+			<?php 
+			print '<table cellspacing="0" cellpadding="0" width="340">
+						<tr class="row1">
+							<td colspan="2">&nbsp;&nbsp;&nbsp;Movie Times:</td>
+						</tr>';
+		
+			foreach($event['when'] as $day => $times){
+				print '<tr class="row'.($i++%2).'">
+						<td align="left">&nbsp;&nbsp;&nbsp;'.$day.'</td>
+						<td align="right">'.implode(' : ', $times).'&nbsp;&nbsp;&nbsp;</td>
+					   </tr>';
+			} 
+			print '</table>';
+			?>
+			<!-- 
+			<table cellspacing="0" cellpadding="0" width="340">
+				<tr class="row1">
+					<td colspan="2">&nbsp;&nbsp;&nbsp;Movie Times:</td>
+				</tr>
+				<tr class="row0">
+					<td align="left">&nbsp;&nbsp;&nbsp;Thursday, September 23:</td>
+					<td align="right">10PM&nbsp;&nbsp;&nbsp;</td>
+				</tr>
+				<tr class="row1">
+					<td align="left">&nbsp;&nbsp;&nbsp;Thursday, September 23:</td>
+					<td align="right">7PM : 10PM&nbsp;&nbsp;&nbsp;</td>
+				</tr>
+				<tr class="row0">
+					<td align="left">&nbsp;&nbsp;&nbsp;Thursday, September 23:</td>
+					<td align="right">7PM : 10PM&nbsp;&nbsp;&nbsp;</td>
+				</tr>
+			</table>
+			-->
+		</div>
+		<div style="clear:both;"></div>
+	</div>
+	
+<?php
+		break;
+		}
+		$x++;
+}
+
+
+
+	$i=1; 
+	foreach($days as $title => $event){
+		print '<div id="event-'.$i++.'" class="event">';
+		print '<h2>'.$title.'</h2>';
+		print '<p>'.$event['desc'].'</p>';
+		print '<table cellspacing="0" cellpadding="0" width="210"><tr class="row"><td colspan="2">Times:</td></tr>';
+		
+		foreach($event['when'] as $day => $times){
+			print '<tr class="row"><td align="left">'.$day.'</td><td align="right">'.implode(' : ', $times).'&nbsp;&nbsp;&nbsp;</td></tr>';
+		} 
+		print '</table>';
+		print '</div>';
+		
+	}
+
+
+
+?>	
+	
+	
+	
+
+</div>
+<script>var numOfDivs = <?=$i?>; </script>
+</div>
+<div align="right"><a href="javascript:down();"><img src="../template/images/down_arrow.gif"></a> <a href="javascript:up();"><img src="../template/images/up_arrow.gif"></a></div>
+<script src="/commontools/jslib/jquery-1.3.2.min.js"></script>
+<script src="/commontools/jslib/jquery.scrollTo.js"></script>
+<script>
+	var i = 0;
+	
+	function up()
+	{
+		if(i > 0)
+		{
+			i--;
+			$('#frame').scrollTo('#event-'+i, 800)
+		}
+	}
+	
+	function down()
+	{	
+		if(i < numOfDivs)
+		{
+			i++;
+			$('#frame').scrollTo('#event-'+i, 800)
+		}
+	}
+	</script>
+<?php 
+involv_finish();

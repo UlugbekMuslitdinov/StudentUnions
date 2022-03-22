@@ -1,0 +1,3 @@
+; $Id$
+name = "Node access"
+description = "Control access to nodes"

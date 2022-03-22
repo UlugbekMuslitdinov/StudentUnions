@@ -1,0 +1,98 @@
+.c_content > .cc_left {
+    width: 100%;
+}
+
+#catering-information, #audiovisualDiv {
+    display: none;
+}
+
+#checkbox-validation {
+    opacity: 0;
+    width: 0;
+    height: 5px;
+}
+
+.btn {
+    margin: auto;
+    display: block;
+    background-color: #0c234b;
+    color: white;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.btn:hover {
+    color: white;
+}
+
+.checkbox, .radio {
+    margin-bottom: 20px;
+    margin-left: 10px;
+}
+
+textarea, select {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin: auto;
+    width: 100%;
+    padding: 15px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    /* border: 1px solid lightgrey; */
+}
+
+#payment {
+    margin-bottom: 5px;
+}
+
+h6 {
+    font-weight: 400;
+    background-color: #0c234b;
+    margin: -15px -15px 20px -15px;
+    padding: 15px;
+    color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+input {
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: 400;
+    color: #0c234b;
+}
+
+.terms-conditions {
+    height: 100px;
+    overflow-y: auto;
+}
+
+#account-number-div {
+    display: none;
+    width: 50%;
+}
+
+#account-number, #account-number-div, #sub-account-number {
+    margin-bottom: 0px;
+}
+
+#account-number-div-2 {
+    margin-bottom: -10px;
+}
+
+#sub-account-number-div, #account-number-div-2 {
+    border: none;
+}
+
+.required-input::after {
+    margin-left: 3px;
+    content: "\2605";
+    color: #d40000;
+    vertical-align: middle;
+    font-size: 15px;
+    font-weight: bold;
+}

@@ -1,0 +1,123 @@
+
+BODY {
+padding:0px;
+margin:0px;
+}
+
+#UA_Header {
+background-color:#FFFFFF;
+width:auto;
+margin-right:auto;
+height:42px;
+padding:0px;
+}
+
+#main_div {
+width:877px;
+vertical-align:top;
+position:relative;
+margin-left:auto;
+margin-right:auto;
+margin-top:60px;
+}
+
+#nav_bar {
+background-color:#cfe7ef;
+position:absolute;
+border-left:#999999 solid 1px;
+left:0px;
+height:inherit;
+top:175px;
+float:left;
+width:150px;
+padding-top:32px;
+font-family:Georgia, Verdana, Times New Roman, Times, serif;
+font-size:14px;
+color:#002147;
+text-indent:20px;
+z-index:15;
+}
+
+
+#bottom_bar {
+background-color:#537d8d;
+left:0px;
+height:50px;
+color:#FFF;
+font-family:Georgia, Verdana, Times New Roman, Times, serif;
+font-size:11px;
+width:875px;
+position:absolute;
+bottom:0px;
+padding-left:0px;
+border-bottom:#999999 solid 1px;
+}
+
+
+.link {
+padding-bottom:5px;
+}
+
+.link a {
+color:#6f1300;
+text-decoration:none;
+font-size:14px;
+}
+
+#top_graphic {
+background-color:cfe7ef;
+position:absolute;
+left:0px;
+top:0px;
+height:175px;
+width:875px;
+padding:0px;
+border-right:#999999 solid 1px;
+border-left:#999999 solid 1px;
+border-top:#999999 solid 1px;
+}
+
+#content_div {
+background-color:#cfe7ef;
+position:absolute;
+border-right:#999999 solid 1px;
+border-left:#999999 solid 1px;
+
+top:175px;
+right:0px;
+min-height:450px;
+padding-top:30px;
+/*padding-bottom:100px;*/
+color:#404965;
+font-family:Georgia, Verdana, Times New Roman, Times, serif;
+font-size:14px;
+z-index:10px;
+position:absolute;
+}
+
+#content_div h1 {
+font-family:Georgia, Verdana, Times New Roman, Times, serif;
+color:#6f1300;
+font-size:18px;
+font-weight:bold;
+padding-top:0px;
+}
+
+#content_div h2 {
+font-family:Georgia, Verdana, Times New Roman, Times, serif;
+color:#404965;
+font-size:16px;
+font-weight:bold;
+}
+
+#content_div p {
+color:#404965;
+font-family:Georgia, Verdana, Times New Roman, Times, serif;;
+font-size:14px;
+}
+
+#content_div li {
+color:#404965;
+font-family:Georgia, Verdana, Times New Roman, Times, serif;;
+font-size:14px;
+}

@@ -1,0 +1,105 @@
+.noselect {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	cursor: default;
+}
+#center-col{
+	width: 100%;
+	float: none;
+}
+.fake-link{
+	color: #00E;
+	text-decoration: underline;
+	cursor: pointer;
+}
+.fake-link:active{
+	color: #F00;
+}
+tr#formsearch-row td{
+	display: none;
+}
+.formtable{
+	width: 100%;
+	border-spacing: 0;
+	border: 3px solid #eef;
+	border-radius: 6px;
+}
+.formtable.recordtable{
+	width: auto;
+	margin: 0 auto;
+}
+.formtable.recordtable td{
+	position: relative;
+	padding-right: 10px;
+	padding-left: 3px;
+	text-align: left;
+}
+.recordtable td.tbl-key{
+	border-right: 2px solid #ddf;
+	padding-right: 3px;
+	padding-left: 10px;
+	text-align: right;
+	font-weight: bold;
+}
+.recordtable td.tbl-array-key{
+	vertical-align: center;
+}
+.formtable th.tbl-actions{
+	padding-top: 4px;
+	text-align: center;
+}
+.formtable td{
+	height: 15px;
+	padding: 4px 5px 1px 1px;
+	color: #333;
+	font-size: 14px;
+}
+.formtable td.ved-icon{
+	height: 12px;
+	width: 17px;
+	padding: 4px 0px 4px 0px;
+	text-align: center;
+}
+.formtable tr:nth-child(odd){
+	background: #f8f8f8;
+}
+.formtable th{
+	height: 16px;
+	padding: 1px 8px 1px 1px;
+	font-size: 16px;
+	background: #eef;
+	color: #333;
+	text-align: left;
+	white-space: nowrap;
+}
+.formtable th button{
+	color: #aa3333;
+	background: none;
+	border: none;
+	padding: 0;
+	margin: 0;
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: bold;
+	cursor: pointer;
+}
+#center-col .formtable th a{
+	font-size: inherit;
+	font-family: inherit;
+	text-decoration: inherit;
+}
+.formtable.recordtable th{
+	text-align: center;
+}
+.formtable th.ved-icon{
+	padding: 1px;
+	width: 15px;
+	text-align: center;
+}
+.fake-disabled{
+	background: #EBEBE4 !important;
+}

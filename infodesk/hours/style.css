@@ -1,0 +1,210 @@
+.card {
+  border: 1px solid #e1e1e1 !important;
+  box-shadow: none;
+  -webkit-box-shadow: none;
+}
+.bar {
+  background-color: #00275b;
+  color: white;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+#bar3 {
+  color: white;
+}
+
+#bar3:hover {
+  background-color: #ac051f;
+  color: white;
+}
+
+.hours-nav > a {
+  padding-top: .5rem;
+  padding-bottom: .5rem;
+}
+
+#bar3[name*='today'] {
+  cursor: pointer;
+}
+.hours-nav-list {
+  cursor: pointer;
+}
+.dropdown:hover {
+  background-color: #ac051f;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+p[id*='today'] {
+  margin-top: 6px;
+  margin-bottom: 3px;
+}
+  
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+  margin-left: -14.7px;
+  margin-top: 7px;
+}
+  
+.dropdown-content a {
+  color: black;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
+  width: 283.2px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+.dropdown-content a:not(:last-child) {
+  border-bottom: 1px solid #828282;
+}
+
+.dropdown-content a:hover {background-color: #ddd;}
+
+.dropdown:hover .dropdown-content {display: block;}
+
+.card {
+  height: 100px;
+  padding: 20px;
+  border-radius: 0px;
+}
+
+.card-name {
+  color: black;
+  font-weight: 600;
+  font-size: 16px;
+  margin-left: 35px;
+  margin-top: -25px;
+}
+
+.card-hour {
+  font-weight: 400;
+}
+
+img[id*='icon'] {
+  height: 25px;
+  width: 25px;
+}
+
+.locations {
+  padding-left: 10px;
+  padding-right: 10px;
+  align-content: flex-start;
+  display: flex;
+  flex-flow: row wrap;
+  /* margin: 35px auto; */
+  float: none;
+  /* width: 97.5%; */
+}
+
+table td, table td .location {
+  color: #444444;
+}
+
+#caldiv tr {
+  color: #444444;
+  background-color: #b7b6b1;
+  cursor: pointer;
+}
+
+#caldiv td {
+  width: 50px;
+  height: 50px;
+  border: 1px solid gray;
+  font-size: 16px;
+  font-weight: 600;
+  text-align: center;
+}
+
+#caldiv td.off {
+
+  background-color: #e5e4de;
+}
+
+#caldiv .highlight {
+  background-color: #00275b66;
+}
+
+#caldiv {
+  margin-top: 50px;
+  font-size: 30px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.calendar {
+  clear:both; 
+  margin-top:0px;
+}
+
+.card[name*='calendar'] {
+  text-align: center;
+  width: 351px;
+  height: 50px;
+  margin: 0 auto;
+  float: none;
+  background-color: #00275b;
+}
+
+.card-text[name*='month'] {
+  margin-top: -16px;
+  color: #ffffff;
+}
+
+@media (max-width:767px){
+  #right-col { display: none; }
+
+  .names { padding-left: 5px; }
+
+  .card {height: 120px;}
+
+  img[id*='icon'] {
+    margin-left: -10px; 
+    margin-top: 5px; 
+    height: 20px; 
+    width: 20px;
+  }
+
+  .card-name {
+    margin-left: 15px;
+    margin-top: -25px;
+  }
+
+  .bar {
+    margin-top: 25px; 
+    margin-bottom: -5px;
+  }
+  
+  #bar3[name*='today'] {
+    pointer-events: none !important;
+    cursor: default;
+    display: block;
+  }
+
+  .dropdown-content {
+    margin-top: 0px;
+    /* margin: 0px 32px;
+    float: none; */
+    width: 100%;
+  }
+  .hours-nav-list {
+    padding-top: 4px;
+    padding-bottom: 4px;
+    border-bottom: 1px solid #e1e1e1;
+  }
+  .dropdown-content a {
+    width: 100%;
+  }
+
+}
+

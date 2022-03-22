@@ -1,0 +1,130 @@
+td {
+	vertical-align: middle !important;
+}
+
+.wrap-info {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.wrap-info-box input {
+	margin-top: 4px;
+}
+
+.flavor_selection_title {
+	text-align: center;
+}
+.burrito_wrap {
+	padding-top: 2px;
+	padding-bottom: 2px;
+	/*min-height: 50px;*/
+}
+.burrito_wrap:hover {
+	background-color: #ececec;
+}
+.burrito_num {
+	margin-top: 0px;
+	margin-bottom: 0px;
+	font-weight: 700;
+}
+.burr_icon {
+	width: 25px;
+}
+.food_choice_label {
+	margin-right: 5px;
+	font-weight: 700;
+}
+.food_choice_label input {
+	display: none;
+}
+.btn-selected {
+	color: #fff;
+}
+.btn-selected.meat {
+	background-color: #d9534f;
+}
+
+.btn-selected.vegi {
+	background-color: #5cb85c;
+}
+.duplicate {
+	font-weight: 700;
+}
+
+
+/* extra */
+.wrap_extra:nth-child(1) td {
+	white-space: nowrap;
+}
+.wrap_extra input {
+	padding-right: 0px;
+}
+
+
+/* input validation */
+.input-err {
+	text-align: center;
+}
+.burr_err {
+	font-weight: 700;
+	text-align: center;
+}
+
+/* total price */
+#before_total_price {
+	/*display: none;*/
+}
+.total-price {
+	padding: 10px 5px;
+	width: 100%;
+	text-align: right;
+	font-size: 25px;
+}
+.total-price input {
+	width: 100px;
+	background-color: inherit;
+	/*background-color: #fff;*/
+	border: 0px;
+}
+.fix_total {
+	position: fixed;
+	margin: 0;
+	/*padding: 25px;*/
+	left: 0px;
+	bottom: 0px;
+	/*width: 500px;*/
+	text-align: center;
+	/*background-color: #a8bb63;*/
+	background-color: inherit;
+	border: 0px;
+}
+.fix_total > div {
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px;
+	padding-left: 58px;
+	background-color: #a8bb63;
+}
+
+@media (max-width: 700px) {
+	input {
+		display: inline;
+		width: 50px;
+	}
+	.wrap-plusminus-btn {
+		display: inline;
+	}
+	#party_pack_upgrade {
+		padding-left: 0px;
+		width: 100%;
+		text-align: center;
+	}
+	.wrap_extra {
+		padding-left: 0px;
+		padding-right: 0px;
+	}
+	.input-err {
+		height: inherit;
+	}
+}

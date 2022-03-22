@@ -1,0 +1,150 @@
+/**
+ * Using Fontspring's 'The New Bulletproof @Font-Face Syntax'
+ * http://www.fontspring.com/blog/the-new-bulletproof-font-face-syntax
+ *
+ * example:
+ *
+ * @font-face {
+ *  font-family: 'MyFontFamily';
+ *  src: url('myfont-webfont.eot?#iefix') format('embedded-opentype'),
+ *       url('myfont-webfont.woff') format('woff'),
+ *       url('myfont-webfont.ttf')  format('truetype'),
+ *       url('myfont-webfont.svg#svgFontName') format('svg');
+ *  }
+ *
+ * We also include multiple font styles and weights in a single font family declarations,
+ * AKA 'style linking'.
+ * see: http://www.fontspring.com/support/troubleshooting/style-linking
+ *
+ * This can cause problems with IE8, iPad 1, and Blackberry.
+ * Do you care? If so, see:
+ * http://www.smashingmagazine.com/2013/02/14/setting-weights-and-styles-at-font-face-declaration/
+ *
+ */
+/**
+ * Milo Sans, regular
+ *
+ * font-family: 'MiloWeb', sans-serif;
+ * font-weight: normal *or* 400;
+ *
+ */
+@font-face {
+  font-family: 'MiloWeb';
+  src: url("../ua-brand-fonts/MiloWeb.eot?#iefix") format("embedded-opentype"), url("../ua-brand-fonts/MiloWeb.woff") format("woff"), url("../ua-brand-fonts/MiloComp.ttf") format("truetype");
+  font-weight: 400;
+}
+/**
+ * Milo Sans, italic
+ *
+ * font-family: 'MiloWeb', sans-serif;
+ * font-weight: normal *or* 400;
+ * font-style: italic;
+ *
+ */
+@font-face {
+  font-family: 'MiloWeb';
+  src: url("../ua-brand-fonts/MiloWeb-Ita.eot?#iefix") format("embedded-opentype"), url("../ua-brand-fonts/MiloWeb-Ita.woff") format("woff"), url("../ua-brand-fonts/MiloComp-Ita.ttf") format("truetype");
+  font-weight: 400;
+  font-style: italic;
+}
+/**
+ * Milo Sans, medium
+ *
+ * font-family: 'MiloWeb', sans-serif;
+ * font-weight: 500;
+ *
+ * We have to use `font weight: 500;` to render this font weight,
+ * because `font-weight: medium;` doesn't exist;
+ */
+@font-face {
+  font-family: 'MiloWeb';
+  src: url("../ua-brand-fonts/MiloWeb-Medium.eot?#iefix") format("embedded-opentype"), url("../ua-brand-fonts/MiloWeb-Medium.woff") format("woff"), url("../ua-brand-fonts/MiloComp-Medium.ttf") format("truetype");
+  font-weight: 500;
+}
+/**
+ * Milo Sans, bold
+ *
+ * font-family: 'MiloWeb', sans-serif;
+ * font-weight: bold *or* 700;
+ *
+ */
+@font-face {
+  font-family: 'MiloWeb';
+  src: url("../ua-brand-fonts/MiloWeb-Bold.eot?#iefix") format("embedded-opentype"), url("../ua-brand-fonts/MiloWeb-Bold.woff") format("woff"), url("../ua-brand-fonts/MiloComp-Bold.ttf") format("truetype");
+  font-weight: 700;
+}
+/**
+ * Milo Sans, text
+ * Slightly bolder than normal Milo Sans, but less bold than medium.
+ *
+ * font-family: 'MiloWeb-Text', sans-serif;
+ * font-weight: normal *or* 400;
+ *
+ */
+@font-face {
+  font-family: 'MiloWeb-Text';
+  src: url("../ua-brand-fonts/MiloWeb-Text.eot?#iefix") format("embedded-opentype"), url("../ua-brand-fonts/MiloWeb-Text.woff") format("woff"), url("../ua-brand-fonts/MiloComp-Text.ttf") format("truetype");
+  font-weight: 400;
+}
+/**
+ * Milo Serif, regular
+ *
+ * font-family: 'MiloSerifWeb', serif;
+ * font-weight: normal *or* 400;
+ *
+ */
+@font-face {
+  font-family: 'MiloSerifWeb';
+  src: url("../ua-brand-fonts/MiloSerifWeb.eot?#iefix") format("embedded-opentype"), url("../ua-brand-fonts/MiloSerifWeb.woff") format("woff"), url("../ua-brand-fonts/MiloSerifComp.ttf") format("truetype");
+  font-weight: 400;
+}
+/**
+ * Milo Serif, medium.
+ *
+ * We're using this as bold and including black as a separate font
+ * because black is very heavy and maybe not what you want for bold
+ *
+ * font-family: 'MiloSerifWeb', serif;
+ * font-weight: bold *or* 700;
+ *
+ */
+@font-face {
+  font-family: 'MiloSerifWeb';
+  src: url("../ua-brand-fonts/MiloSerifWeb-Medium.eot?#iefix") format("embedded-opentype"), url("../ua-brand-fonts/MiloSerifWeb-Medium.woff") format("woff"), url("../ua-brand-fonts/MiloSerifComp-Medium.ttf") format("truetype");
+  font-weight: 700;
+}
+/**
+ * Milo Serif, black
+ *
+ * font-family: 'MiloSerifWeb-Black', serif;
+ * font-weight: 900 *or* bolder;
+ * (font-weight is optional since there's only one style declared for this font)
+ *
+ * We're decalring this as a separate font family because we don't
+ * have italic styles for normal or medium font weights, but we do have it for
+ * this black weight. So, if we include this font weight in the MiloSerifWeb font-family
+ * and declare something like:
+ *
+ * font-family: 'MiloSerifWeb', serif;
+ * font-style: italic;
+ *
+ * it will render italic, but in the black weight, which is probably unexpected and undesriable.
+ *
+ */
+@font-face {
+  font-family: 'MiloSerifWeb-Black';
+  src: url("../ua-brand-fonts/MiloSerifWeb-Black.eot?#iefix") format("embedded-opentype"), url("../ua-brand-fonts/MiloSerifWeb-Black.woff") format("woff"), url("../ua-brand-fonts/MiloSerifComp-Black.ttf") format("truetype");
+  font-weight: 900;
+}
+/**
+ * Milo Serif, black italic
+ *
+ * font-family: 'MiloSerifWeb-Black', serif;
+ * font-weight: 900 or bolder (optional since there's only one style declared for this font)
+ * font-style: italic;
+ */
+@font-face {
+  font-family: 'MiloSerifWeb-Black';
+  src: url("../ua-brand-fonts/MiloSerifWeb-BlackIta.eot?#iefix") format("embedded-opentype"), url("../ua-brand-fonts/MiloSerifWeb-BlackIta.woff") format("woff"), url("../ua-brand-fonts/MiloSerifComp-BlackIta.ttf") format("truetype");
+  font-style: italic;
+  font-weight: 900;

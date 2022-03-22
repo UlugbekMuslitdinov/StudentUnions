@@ -1,0 +1,9 @@
+/commontools/*
+/kitchen/spotlight/*
+/kitchen/spotlight/video.json
+#/mealplans/login.php
+#/mealplans/loginbox.inc
+#/mealplans/swipe/
+#/mealplans/includes/bb.inc
+#/mealplans/includes/mp_functions.inc
+

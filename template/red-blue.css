@@ -1,0 +1,101 @@
+div.expand a
+{
+	font-size: 14px !important;
+	color: white !important;
+	padding: 5px;
+}
+
+div.collapse
+{
+	padding: 10px 20px 15px 0px;
+}
+
+#sushi a
+{
+	background-color: #CC1F35;
+}
+
+#redblue a
+{
+	background-color: rgba(0,57,168, .7);
+}
+
+#glutenfree a
+{
+	background-color: rgba(247,206,115, .85);
+}
+
+#vegan a
+{
+	background-color: rgba(144, 153, 61, .7);
+}
+
+#sushi a.open, #sushi a:hover
+{
+	background-color: #9F1E32;
+}
+
+#redblue a.open, #redblue a:hover
+{
+	background-color: #001f5b;
+}
+
+#glutenfree a.open, #glutenfree a:hover
+{
+	background-color: #f6c55b;
+}
+
+#vegan a.open, #vegan a:hover
+{
+	background-color: #90993d;
+}
+
+div.category
+{
+	color: #003366;
+	font-weight: bold;
+	font-size: 14px;
+	padding: 3px 0px 6px 0px;
+}
+
+ul.menu
+{
+    list-style-type: none;
+    list-style: none;
+    margin: 0px !important;
+	padding: 0px;
+}
+
+ul.menu li
+{
+	padding: 2px 0px 8px 0px;
+}
+
+td.menu-item
+{
+	padding-left: .75em;
+	font-weight: bold;	 
+	width: 19em;
+	line-height: 1.75em;
+}
+
+ul.menu li span.menu-item-description
+{
+	font-size: 10px;
+}
+
+#center-col p
+{
+	font-size: 12px;
+	line-height: 20px;
+	width: auto;
+}
+.menu {
+	
+	border-collapse: collapse;
+	font-size: 12px;
+	border: none;
+}
+.grayrow {
+	background-color: #EAEAEA;
+}

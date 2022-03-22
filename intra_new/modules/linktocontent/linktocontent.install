@@ -1,0 +1,9 @@
+<?php
+// $Id: linktocontent.install,v 1.2 2007/10/08 15:18:09 stborchert Exp $
+
+function linktocontent_uninstall() {
+  variable_del('linktocontent_enabled_plugins');
+  variable_del('linktocontent_plugin_weight');
+  variable_del('linktocontent_registered_plugins');
+  drupal_set_message(t('Linktocontent module successfully uninstalled'));
+}

@@ -1,0 +1,4 @@
+; $Id$
+name = Hiring
+description = "Creates the hiring system."
+package = "Unions intra"

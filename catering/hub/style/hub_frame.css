@@ -1,0 +1,99 @@
+@import url("https://brand.arizona.edu/sites/default/files/v2/ua-brand-fonts/milo.css");
+html{
+	height: 100%;
+	width: 100%;
+}
+body{
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	background: white;
+	font-family: 'MiloWeb', serif, Calibri, sans-serif;
+}
+h1{
+	margin-bottom: 0px;
+	color: #0089c9;
+}
+h2{
+	margin: 2px;
+}
+h3{
+	font-weight: 500;
+	color: #616161;
+}
+
+#admin-subheader-user{
+	height: 14px;
+	padding: 12px 0px 0px 0px;
+}
+#admin-subheader-user::before{
+	display: inline-block;
+	background: url("./user.png");
+	height: 12px;
+	width: 12px;
+	margin: 0px 3px 2px 3px;
+	content: "";
+	vertical-align: text-bottom;
+}
+
+.hr-text{
+	width: 100%;
+	background: url("./gray_pixel.png");
+	background-position: center;
+	background-repeat: repeat-x;
+	text-align: center;
+	margin-top: 14px;
+	margin-bottom: 14px;
+}
+.hr-text span{
+	display: inline-block;
+	padding: 1px 6px;
+	background: white;
+	font-weight: 500;
+	font-size: 0.8em;
+}
+
+a.web2point0-button{
+	font-family: inherit;
+	line-height: 44px;
+}
+
+#eo_upload{
+	margin: 0 auto;
+	font-size: 20px;
+	font-weight: bold;
+}
+#eo_upload input{
+	vertical-align: top;
+}
+#eo_upload td:nth-child(1){
+	width: 50%;
+	text-align: right;
+}
+#eo_upload td:nth-child(2){
+	width: 50%;
+	padding-left: 6px;
+}
+#eo_upload td.label{
+	padding: 0px;
+	text-align: center;
+	width: 100%;
+}
+
+input.inline{
+	display: inline;
+	height: auto;
+	border: 1px solid #BBB;
+	font: inherit;
+	width: 90px;
+	min-width: 15px;
+	max-width: 300px;
+	text-align: left;
+	padding-left: 2px;
+}
+input.inline[type="number"]{
+    -moz-appearance:textfield;
+}
+input.inline::-webkit-outer-spin-button, input.inline::-webkit-inner-spin-button{
+	display: none;
+}

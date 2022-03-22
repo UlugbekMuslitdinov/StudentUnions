@@ -1,0 +1,12 @@
+@charset "UTF-8";
+/* CSS Document */
+div.gallerylink a
+{
+	text-decoration: none;
+	color: #666;
+	font-size: 11px;
+}
+div.gallerylink a:hover
+{
+	font-weight: bold;
+}

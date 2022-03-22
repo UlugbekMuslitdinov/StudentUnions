@@ -1,0 +1,305 @@
+@import url("https://brand.arizona.edu/sites/default/files/v2/ua-brand-fonts/milo.css");
+.font-serif-italic {
+    font-family: MiloSerifWeb-Black, TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+    font-style: normal;
+    font-weight:normal;
+    font-style: italic;
+}
+.font-sans-italic {
+    font-family: MiloWeb, Verdana, Geneva, sans-serif;
+    font-style: italic;
+    font-weight: normal;
+}
+.serif-normal-black {
+    font-family: MiloSerifWeb-Black, TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+    font-style: normal;
+    font-weight: 900;
+}
+em {
+    font-family: MiloWeb, Verdana, Geneva, sans-serif;
+    font-style: italic;
+    font-weight: normal;
+}
+.serif-medium {
+    font-family: MiloSerifWeb, TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+    font-style: normal;
+    font-weight: 700;
+    /*font-size: 17px;*/
+  }
+strong {
+    font-family: MiloWeb, Verdana, Geneva, sans-serif;
+    font-style: normal;
+    font-weight:bold;
+}
+span {
+    font-family: MiloWeb, Verdana, Geneva, sans-serif;
+    font-style: normal;
+    font-weight: normal;
+  }
+input {
+    text-align: center;
+    background-color: #e8e8e8;
+    border-width: 0px 0px 1px;
+    border-bottom: 1px solid #333;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button {  
+    opacity: 1;
+}
+.pink-color {
+    color: #912a3b;
+}
+.letter-spacing {
+    letter-spacing: 1;
+}
+body{
+    background: #525659;
+}
+#page-container{
+    /* background: #F4E7D7; */
+    background: #fff;
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    right: 0px;
+    margin: 0 auto;
+    width: 950px;
+    min-height: 100%;
+    font-size: 13px;
+    color: #231F20;
+    font-family: sans-serif;
+    font-weight: bold;
+    box-shadow: 0px 0px 8px 2px #333;
+}
+#header-image{
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    height: 270px;
+    width: 421px;
+    background-image: url("");
+}
+#header-text{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    height: 270px;
+    overflow: hidden;
+    text-align: right;
+    margin: 12px 16px;
+    font-size: 15px;
+}
+#header-text h1{
+    margin: 4px 0;
+    font-family: serif;
+    font-style: italic;
+    color: #BE1E35;
+}
+#header-text p{
+    margin: 6px 0;
+}
+#header-text h3{
+    margin: 6px 0;
+}
+#bakesale-form{
+    position: absolute;
+    /* position: relative; */
+    /* top: 300px; */
+    padding-left: 30px;
+    padding-right: 30px;
+    /* width: 100%; */
+    width: 890px;
+    /* background: #F4E7D7; */
+    background: #fff;
+    margin-bottom: 0px;
+    padding-bottom: 16px;
+}
+.subheader{
+    margin-top: 20px;
+    display: block;
+    float: right;
+    width: 100%;
+    /* height: 26px; */
+    line-height: 20px;
+    /* background: #CC9D66; */
+    background: rgb(190,67,70);
+    background: linear-gradient(90deg, rgba(190,67,70,1) 0%, rgba(217,78,71,1) 35%, rgba(228,104,70,1) 100%);
+    /* overflow: hidden; */
+}
+.sh-left{
+    float: left;
+    padding: 4px 0px 4px 24px;
+}
+.sh-right{
+    /* background: #F4E7D7; */
+    background: #fff;
+    float: right;
+    text-align: right;
+    padding: 4px 12px 4px 0px;
+    width: 100px;
+    height: 100%;
+}
+.row {
+    /* padding-left: 30px;
+    padding-right: 30px; */
+    width: 100%;
+}
+.food-item{
+    position: relative;
+    display: table-row;
+    padding-top: 5px;
+    padding-bottom: 5px;
+}
+#foods, #order-info{
+    /* margin-left: 24px; */
+}
+#foods { 
+    display: table; 
+    border-collapse: collapse;
+    border-spacing: 0px;
+    /* width: 100%; */
+}
+#order-info .food-left{
+    font-weight: normal;
+}
+.food-left{
+    /* display: table-column; */
+    /* display: inline-block; */
+    display: table-cell;
+    width: 750px;
+    padding-bottom: 4px;
+    /* border-bottom: 1px solid #231F20; */
+    border: 1px solid #333;
+    vertical-align: middle;
+}
+.food-left h3{
+    font-family: serif;
+    font-size: 16px;
+    margin: 8px 0px 0px 0px;
+}
+.food-options{
+    margin-top: 5px;
+    width: 710px;
+}
+.food-option{
+    display: inline-block;
+    margin-right: 12px;
+    margin-bottom: 1px;
+    font-weight: normal;
+    font-size: 15px;
+}
+.food-price {
+    border-bottom: 1px solid black;
+}
+.food-price::before{
+    content: "$";
+    font-weight: bold;
+}
+.wrap-food-price{
+    /* position: absolute;
+    bottom: 0;
+    right: 0;
+    display: inline-block; */
+    /* display: table-column; */
+    /* display: inline-block; */
+    display: table-cell;
+    width: 80px;
+    /* float: right; */
+    vertical-align: bottom;
+    /* border-bottom: 1px solid black; */
+    /* margin-top: 10px;
+    margin-right: 25px; */
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    border: 1px solid #333;
+}
+.grand-total{
+    display: inline-block;
+    width: 94px;
+    float: right;
+    vertical-align: middle;
+    text-align: center;
+    margin-top: 4px;
+    /* margin-right: 6px; */
+    font-size: 12px;
+    
+}
+.food-qty{
+    width: 45px;
+}
+.food-chk{
+    vertical-align: top;
+    margin: none;
+}
+.super-block{
+    display: inline-block;
+    vertical-align: middle;
+    height: 26px;
+}
+.super-block p{
+    display: block;
+    margin: 0;
+    font-size: 18px;
+    height: 16px;
+    line-height: 16px;
+}
+.super-block sup, .super-block sub{
+    display: block;
+    font-size: 10px;
+    height: 10px;
+    line-height: 10px;
+}
+.super-block sup{
+    font-weight: bold;
+}
+.super-block sub{
+    color: #BE1E35;
+}
+#order-info .food-left label, #order-info .food-left b, #order-info .food-left label input{
+    display: inline-block;
+    vertical-align: middle;
+}
+#order-info .food-left{
+    font-family: serif;
+    font-size: 16px;
+}
+#order-info input[type=text]{
+    margin-right: 8px;
+}
+#button-submit{
+    /* background: url("/template/images/Submit.png"); */
+    border: none;
+    width: 200px;
+    height: 36px;
+    margin-top: 15px;
+    /* margin-right: 16px; */
+    padding: 0;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: 900;
+    background-color: #fcaf17;
+    border-radius: 5px;
+}
+.error{
+    outline: 1px solid red;
+}
+#error-msg{
+    position: absolute;
+    display: none;
+    border: 1px solid red;
+    border-bottom: none;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+    background: #f33;
+    color: #000;
+    font-family: sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    padding: 0px 4px;
+}
+.asterisk {
+	font-size: 20px;
+	font-weight: bold;
+	color: red;
+}

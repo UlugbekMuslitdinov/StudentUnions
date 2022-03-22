@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/catering/online/slotcanyon/static/css/main.1982d021.chunk.css",
+    "main.js": "/catering/online/slotcanyon/static/js/main.9a61fbf3.chunk.js",
+    "main.js.map": "/catering/online/slotcanyon/static/js/main.9a61fbf3.chunk.js.map",
+    "runtime-main.js": "/catering/online/slotcanyon/static/js/runtime-main.f81d7c72.js",
+    "runtime-main.js.map": "/catering/online/slotcanyon/static/js/runtime-main.f81d7c72.js.map",
+    "static/css/2.ccc971f7.chunk.css": "/catering/online/slotcanyon/static/css/2.ccc971f7.chunk.css",
+    "static/js/2.46242d21.chunk.js": "/catering/online/slotcanyon/static/js/2.46242d21.chunk.js",
+    "static/js/2.46242d21.chunk.js.map": "/catering/online/slotcanyon/static/js/2.46242d21.chunk.js.map",
+    "index.html": "/catering/online/slotcanyon/index.html",
+    "precache-manifest.20375123a586363767153d09b7dd161d.js": "/catering/online/slotcanyon/precache-manifest.20375123a586363767153d09b7dd161d.js",
+    "service-worker.js": "/catering/online/slotcanyon/service-worker.js",
+    "static/css/2.ccc971f7.chunk.css.map": "/catering/online/slotcanyon/static/css/2.ccc971f7.chunk.css.map",
+    "static/css/main.1982d021.chunk.css.map": "/catering/online/slotcanyon/static/css/main.1982d021.chunk.css.map",
+    "static/js/2.46242d21.chunk.js.LICENSE.txt": "/catering/online/slotcanyon/static/js/2.46242d21.chunk.js.LICENSE.txt",
+    "static/media/Catalyst_Cafe_Catering_Banner.jpg": "/catering/online/slotcanyon/static/media/Catalyst_Cafe_Catering_Banner.1616f9de.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.f81d7c72.js",
+    "static/css/2.ccc971f7.chunk.css",
+    "static/js/2.46242d21.chunk.js",
+    "static/css/main.1982d021.chunk.css",
+    "static/js/main.9a61fbf3.chunk.js"
+  ]
+}

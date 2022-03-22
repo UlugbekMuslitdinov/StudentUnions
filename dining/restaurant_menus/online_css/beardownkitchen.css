@@ -1,0 +1,116 @@
+.background {
+    background-image: url(../../images/beardown.jpg);
+    height: 170%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    padding-top: 1px;
+}
+
+span[name*='nav'] {
+    border: 2px solid transparent;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: #ffffff;
+    color: black;
+    border-radius: 5px;
+    -webkit-box-shadow: 4px 4px 4px 0px rgb(32, 31, 31);
+    -moz-box-shadow: 4px 4px 4px 0px rgba(32, 31, 31);
+    box-shadow: 4px 4px 4px 0px rgba(32, 31, 31);
+}
+span[name*='nav']:active {
+    -webkit-box-shadow: 0px 0px 5px -5px rgba(0,0,0,0.75);
+    -moz-box-shadow: 0px 0px 5px -5px rgba(0,0,0,0.75);
+    box-shadow: 0px 0px 5px -5px rgba(0,0,0,0.75);
+}
+
+#title {
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: bold;
+    font-size: 30px !important;
+}
+
+#date-selected {
+    color: #fff;
+    text-transform: uppercase;
+    font-size: 24;
+    margin-top: 25px;
+    font-weight: 500;
+}
+
+.menu-content {
+    clear: both; 
+    padding-top: 5px; 
+    margin-top: 280px;
+    text-align: center;
+    margin-left: 8%;
+    width: 900px;
+}
+
+#desc {
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #fff;
+    font-weight: bold;
+    font-style: italic; 
+    padding-top: 0px;
+    width: 600px;
+    text-align: center;
+    margin-left: 23%;
+}
+
+select[name*="addDays"] {
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+#menu-name {
+    font-size: 16px;
+    color: #fff;
+    background-color: #c73542;
+    padding: 7px;
+    border-radius: 5px;
+    margin-top: 10px;
+}
+
+#menu-content p {
+    text-align: center;
+    width: 900px;
+    font-size: 20px !important;
+}
+
+#note {
+    color: #fff;
+}
+
+#btn-back {
+    left: 63.5%;
+    float: right;
+    top: 1%;
+    cursor: pointer;
+    color:#fff; 
+    background-color:#c73542; 
+    position: absolute;
+    padding-top: 10px;
+    text-decoration: none;
+    z-index: 9999999;
+    width: 320px;
+    height:30px;
+    border-radius: 5px;
+    font-weight: 900;
+    font-size: 22px;
+    text-align: center;
+    -webkit-box-shadow: 4px 4px 4px 0px rgba(33, 33, 32);
+    -moz-box-shadow: 4px 4px 4px 0px rgba(33, 33, 32);
+    box-shadow: 4px 4px 4px 0px rgba(33, 33, 32);
+}
+
+
+
+

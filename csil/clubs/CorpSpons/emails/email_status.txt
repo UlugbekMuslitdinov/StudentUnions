@@ -1,0 +1,35 @@
+Dear {NAME},
+
+This email is to inform you that your CSIL Club Funding Request Form has been {STATUS}.
+
+	REQUEST SUBMISSION DETAILS
+	------------------------------
+	Submitted {DATE}
+	Organization: {ORGANIZATION}
+	Name: {NAME}
+	Phone: {PHONE}
+	Email: {EMAIL}
+	Event Name: {EVENT_NAME}
+	Start Date: {EVENT_DATE_START}
+	End Date: {EVENT_DATE_END}
+	Event Location: {EVENT_LOCATION}
+
+	Requested Amount: ${REQUEST_AMOUNT}
+	Approved Amount: ${APPROVED_AMOUNT}
+	Requested Pizzas: {REQUEST_PIZZAS}
+	Approved Pizzas: {APPROVED_PIZZAS}
+	Requested Eegees Tubs: {REQUEST_EEGEES}
+	Approved Eegees Tubs: {APPROVED_EEGEES}
+	Requested Beverages: {REQUEST_BEVERAGES}
+	Approved Beverages: {APPROVED_BEVERAGES}
+	
+	BUDGET
+	{BUDGET}
+	COMMENTS
+	{COMMENTS}
+
+If you have any questions regarding your application, please contact Judy Harrison at 621-1417.
+
+Sincerely,
+CSIL, Center for Student Involvement and Leadership
+Student Union Room 403

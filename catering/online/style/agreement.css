@@ -1,0 +1,29 @@
+.jumbotron {
+	margin-top: 2.5%;
+	border: 2px solid #e6e6e6;
+	border-radius: 0px !important;
+}
+
+ul{ list-style: none; padding: 0;  margin: 0;  }
+li { 
+	margin-bottom: 5px;
+	padding-left: 1em; 
+	text-indent: -1em;  
+	font-size: 20px;  
+}
+li:before { content: "\2212"; padding-right: 7px; }
+p {
+	margin-bottom: 0px !important;
+}
+
+form {
+	margin-top: 15px;
+}
+
+.btn {
+	color: #fff;
+}
+
+.wrap_ul_policy {
+	margin-bottom: 3%;
+}

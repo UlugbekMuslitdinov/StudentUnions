@@ -1,0 +1,235 @@
+@import url("https://cdn.uadigital.arizona.edu/lib/ua-brand-fonts/v1.0.1/milo.min.css");
+
+body {
+    font-family: MiloWeb, Verdana, Geneva, sans-serif;
+}
+
+.ua-redbar-v1, .redbar {
+    background-color: #ab0520 !important;
+    height: 59px !IMPORTANT;
+    min-height: 59px !IMPORTANT;
+    max-height: 59px !IMPORTANT;
+}
+
+.ua-redbar-v1 a {
+    font-weight: 700;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.text, .ua-redbar-v1 a {
+    color: #fff !important;
+    text-decoration: none;
+    font-family: MiloWeb, Verdana, Geneva, sans-serif;
+}
+
+.mt-50 {
+    margin-top: 100px
+}
+
+.gal-l {
+    text-align: left
+}
+
+.gal-r {
+    text-align: right
+}
+
+.gfl-r {
+    float: right
+}
+
+.gfl-l {
+    float: left
+}
+
+.gpt-5 {
+    padding-top: 5px;
+}
+
+.ml-30 {
+    margin-left: 30px;
+}
+
+.cp-15 {
+    padding: 15px;
+}
+
+..right-button-arrow { font-weight:700;}
+
+.arizona-red-bg {
+    background-color: #AB0520
+}
+
+.arizona-red-color {
+    color: #AB0520
+}
+
+.btn-azred {
+    background-color: #AB0520;
+    color: #FFF;
+    font-weight: 700;
+    width: 215px;
+    height: 45px;
+    font-size: 24px;
+    line-height: 29px;
+}
+
+body, html {
+    font-family: MiloWeb, Verdana, Geneva, sans-serif;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+.stretch-container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+.marking-frame {
+    flex-grow: 1;
+    border: none;
+    width: 100%;
+    overflow-y: visible;
+    height: 2800px;
+    margin: 0;
+    padding: 0;
+}
+
+.brn-azred:hover {
+    background-color: #8B0015 !important
+}
+
+.posr {
+    position: relative
+}
+
+.btn-arrow-right {
+    position: relative;
+display:inline-block;
+    top:3px;
+	padding-left:5px;
+}
+
+.footer-section {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    width: 100%;
+}
+
+.footer-top {
+    background-color: #001C48;
+    color: #fff;
+}
+
+.footer-bottom {
+    background-color: #DBDBDB;
+    color: #0C234B;
+}
+
+.baas-logo {
+    max-width: 386px !important
+}
+
+.cfs-24, .can-do {
+    font-size: 1.5em;
+    color: #0C234B
+}
+
+.can-do {
+    font-size: 22px;
+    color:#EEEEEE;
+}
+
+.our-services {
+    font-size: 45px
+}
+
+.have-questions {
+    font-size: 1em;
+    color: #0C234B
+}
+
+@media only screen and (max-width: 500px) {
+    .cpl-sm-15 {
+        padding-left: 15px;
+    }
+
+    .cpr-sm-15 {
+        padding-right: 15px
+    }
+
+    .cpl-sm-30 {
+        padding-left: 30px;
+    }
+
+    .cpr-sm-30 {
+        padding-right: 30px
+    }
+}
+
+.marketing-form-frame {
+    overflow: visible;
+    scroll: auto;
+}
+
+body {
+    animation: fadeInAnimation ease 1.5s;
+    animation-iteration-count: 1;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeInAnimation {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+
+
+
+
+
+
+.arizona-logo {
+    display: inline-block;
+    height: 20px;
+   
+    max-width: 80%;
+    float: left;
+    width: 276px;
+    padding: 0 0 0 .6rem;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
