@@ -52,20 +52,20 @@ echo <<<_END
         fail += validateAge(form.age.value)
         fail += validateEmail(form.email.value)
         
-        if (fail == "") return true
+        if (fail === "") return true
         else alert(fail); return false
     }
     
     function validateForename(field){
-            return (field == "") ? "No forename was entered.\n" : ""
+            return (field === "") ? "No forename was entered.\n" : ""
         }
 
         function validateSurname(field){
-            return (field == "") ? "No surname was enetered.\n" : ""
+            return (field === "") ? "No surname was enetered.\n" : ""
         }
 
         function validateUsername(field) {
-            if (field == "") return "No surname was entered.\n"
+            if (field === "") return "No surname was entered.\n"
             else if (field.length < 5)
                 return "Usernames must be at least 5 characters length.\n"
             else if (/[^a-zA-Z0-9_-]/.test(field))
