@@ -62,9 +62,9 @@ function page_start($page_options=NULL){
 
 		<!-- Vue -->
 		<script type="text/javascript" src="/node_modules/vue/dist/vue.min.js"></script>
-<!--		--><?php //include_once $_SERVER['DOCUMENT_ROOT'].'/template/layout/header/header.php'; ?>
-        <?php include_once 'layout/header/header.php'; ?>
-		<div class="container su-main-content">0
+		<?php include_once $_SERVER['DOCUMENT_ROOT'].'/template/layout/header/header.php'; ?>
+
+		<div class="container su-main-content">
 			<div class="row">
 <?php } ?>
 
