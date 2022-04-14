@@ -1,0 +1,11 @@
+name = UAQS Event importer
+description = Import events from the master calendar (https://uanews.arizona.edu/calendar)
+core = 7.x
+package = The University of Arizona
+dependencies[] = ctools
+dependencies[] = date_ical
+dependencies[] = feeds
+dependencies[] = uaqs_event
+features[ctools][] = feeds:feeds_importer_default:1
+features[features_api][] = api:2
+features[feeds_importer][] = uaqs_event_importer

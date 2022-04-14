@@ -1,0 +1,105 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS News feature.
+ */
+
+include_once 'uaqs_news.features.inc';
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function uaqs_news_theme_registry_alter(&$theme_registry) {
+  // Find all .tpl.php files in this module's folder recursively.
+  $module_path = drupal_get_path('module', 'uaqs_news');
+  $template_file_objects = drupal_find_theme_templates($theme_registry, '.tpl.php', $module_path);
+
+  // Iterate through all found template file objects.
+  foreach ($template_file_objects as $key => $template_file_object) {
+    // If the template has not already been overridden by a theme.
+    if (!isset($theme_registry[$key]['theme path']) || !preg_match('#/themes/#', $theme_registry[$key]['theme path'])) {
+      // Alter the theme path and template elements.
+      $theme_registry[$key]['theme path'] = $module_path;
+      $theme_registry[$key] = array_merge($theme_registry[$key], $template_file_object);
+      $theme_registry[$key]['type'] = 'module';
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function uaqs_news_preprocess_node(&$vars) {
+  if ($vars['node']->type == 'uaqs_news' && $vars['view_mode'] == 'uaqs_card') {
+    $vars['theme_hook_suggestions'][] = 'node__uaqs_news__uaqs_card';
+  }
+}
+
+/**
+ * Implements hook_views_default_views_alter().
+ *
+ * Enables content caching for the uaqs_news view when the views_content_cache
+ * module is available.
+ */
+function uaqs_news_views_default_views_alter(&$views) {
+  if (module_exists('views_content_cache')) {
+    if (isset($views['uaqs_news'])) {
+      $node_type_keys = array();
+      foreach (node_type_get_names() as $type => $name) {
+        if ($type == 'uaqs_news') {
+          $node_type_keys[$type] = $type;
+        }
+        else {
+          $node_type_keys[$type] = 0;
+        }
+      }
+
+      $views['uaqs_news']->display['default']->display_options['cache']['type'] = 'views_content_cache';
+      $views['uaqs_news']->display['default']->display_options['cache']['results_min_lifespan'] = '-1';
+      $views['uaqs_news']->display['default']->display_options['cache']['results_max_lifespan'] = '21600';
+      $views['uaqs_news']->display['default']->display_options['cache']['output_min_lifespan'] = '-1';
+      $views['uaqs_news']->display['default']->display_options['cache']['output_max_lifespan'] = '21600';
+      $views['uaqs_news']->display['default']->display_options['cache']['keys'] = array(
+        'node' => $node_type_keys,
+        'node_only' => array(
+          'node_changed' => 'node_changed',
+        ),
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function uaqs_news_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'uaqs_news_node_form') {
+    $form['#validate'][] = 'uaqs_news_summary_link_form_validate';
+  }
+}
+
+function uaqs_news_summary_link_form_validate($form, &$form_state) {
+  // Check that link URL is filled if required
+  if ($form['field_uaqs_link'][LANGUAGE_NONE][0]['url']['#required'] && empty($form_state['values']['field_uaqs_link'][LANGUAGE_NONE][0]['url'])) {
+    // Reset errors, excluding custom field error
+    // Reference: https://api.drupal.org/comment/28464#comment-28464
+    $errors = form_get_errors();
+    if ($errors) {
+      form_clear_error();
+
+      $error_messages = drupal_get_messages('error');
+      foreach (array_diff($error_messages['error'], $errors) as $message) {
+        drupal_set_message($message, 'error');
+      }
+
+      foreach (array_reverse($errors) as $name => $error) {
+        if ($name != 'field_uaqs_link][' . LANGUAGE_NONE . '][0][url') {
+          form_set_error($name, $error);
+        }
+      }
+    }
+
+    // Set custom field error
+    form_set_error('field_uaqs_link][' . LANGUAGE_NONE . '][0][url', $form['field_uaqs_link'][LANGUAGE_NONE][0]['#title'] . ' URL field is required for content to be displayed correctly in lists. Use the token [node:url] to automatically link to this content.');
+  }
+}

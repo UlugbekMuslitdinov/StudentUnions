@@ -1,0 +1,17 @@
+name = UAQS Fields - Field Collection
+description = This module provides various field collections that several UAQS features use.
+core = 7.x
+package = The University of Arizona
+dependencies[] = email
+dependencies[] = features
+dependencies[] = field_collection
+dependencies[] = telephone
+dependencies[] = text
+dependencies[] = uaqs_fields
+dependencies[] = uaqs_fields_email
+dependencies[] = uaqs_fields_telephone
+features[features_api][] = api:2
+features[field_base][] = field_uaqs_contacts
+features[field_instance][] = field_collection_item-field_uaqs_contacts-field_uaqs_contact_email
+features[field_instance][] = field_collection_item-field_uaqs_contacts-field_uaqs_contact_name
+features[field_instance][] = field_collection_item-field_uaqs_contacts-field_uaqs_contact_phone

@@ -1,0 +1,34 @@
+<?php
+/**
+ * @file
+ * uaqs_alphabetical_list_demo.install
+ */
+
+/**
+ * Implements hook_enable().
+ */
+function uaqs_alphabetical_list_demo_enable() {
+  migrate_static_registration();
+  $info = uaqs_alphabetical_list_demo_migrate_api();
+  foreach ($info['migrations'] as $machine_name => $arguments) {
+    $migration = Migration::getInstance($machine_name);
+    $migration->processImport();
+  }
+}
+
+/**
+ * Implements hook_disable().
+ */
+function uaqs_alphabetical_list_demo_disable() {
+  // Prevent missing migration errors by forcing migrate module to re-register
+  // statically defined migrations.
+  migrate_static_registration();
+
+  $info = uaqs_alphabetical_list_demo_migrate_api();
+  $hitlist = array_reverse($info['migrations']);
+  foreach ($hitlist as $machine_name => $arguments) {
+    $migration = Migration::getInstance($machine_name);
+    $migration->processRollback();
+  }
+  MigrateGroup::deregister('uaqs_alphabetical_list');
+}

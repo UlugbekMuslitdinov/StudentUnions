@@ -1,0 +1,12 @@
+[
+  {"id":370,
+   "view_mode" : "default",
+   "label": "majors",
+   "title": "",
+   "region": "content_2_col_2",
+   "visibility": 1,
+   "pages": "pages/uaqs-block-types",
+   "weight": 1
+  }
+]
+

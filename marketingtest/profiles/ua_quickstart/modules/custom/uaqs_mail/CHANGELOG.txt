@@ -1,0 +1,114 @@
+7.x-1.0-alpha75, 2022-03-16
+-----------------------------
+
+7.x-1.0-alpha74, 2022-02-16
+-----------------------------
+
+7.x-1.0-alpha73, 2022-01-26
+-----------------------------
+
+7.x-1.0-alpha72, 2022-01-20
+-----------------------------
+
+7.x-1.0-alpha71, 2022-01-19
+-----------------------------
+
+7.x-1.0-alpha70, 2021-07-21
+-----------------------------
+
+7.x-1.0-alpha69, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha68, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha67, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha66, 2021-04-21
+-----------------------------
+
+7.x-1.0-alpha65, 2021-01-21
+-----------------------------
+
+7.x-1.0-alpha64, 2020-11-25
+-----------------------------
+
+7.x-1.0-alpha63, 2020-11-18
+-----------------------------
+
+7.x-1.0-alpha62, 2020-11-18
+-----------------------------
+
+7.x-1.0-alpha61, 2020-09-16
+-----------------------------
+
+7.x-1.0-alpha60, 2020-09-11
+-----------------------------
+
+7.x-1.0-alpha59, 2020-08-19
+-----------------------------
+
+7.x-1.0-alpha58, 2020-06-17
+-----------------------------
+
+7.x-1.0-alpha57, 2020-06-05
+-----------------------------
+
+7.x-1.0-alpha56, 2020-05-20
+-----------------------------
+
+7.x-1.0-alpha55, 2020-04-20
+-----------------------------
+
+7.x-1.0-alpha54, 2020-03-20
+-----------------------------
+- UADIGITAL-2223 Add useful email headers to uaqs_mail.
+
+7.x-1.0-alpha53, 2020-03-06
+-----------------------------
+
+7.x-1.0-alpha52, 2020-02-07
+-----------------------------
+- Add a changelog for automated updates.
+- fix comments
+- coding standards
+- add drush command to do migration
+- fix comment
+- change conditions for migrating config
+- dont check for password when migrating
+- update readme
+- update readme
+- update error message
+- update drush command
+- update drush command
+- only migrate amazon_ses_region to smtp_host if amazon_ses_region is set
+- remove old error message
+- remove import
+- chage order of uninstall
+- remove uaqs_mail.features.inc
+- match an actual feature export
+- use strings for non-zero values to match defaults set by smtp admin page
+- remove factory
+- add more defaults
+- add uaqs_mail_bootstrap and enable/disable hooks
+- updates
+- use us-west-2 as default
+- updates for strongarm/features
+- update readme
+- add strongarm config
+- fix casing
+- fix brackets
+- update comments
+- add force option
+- add error message
+- this message shouldnt be an error
+- fix function names
+- updates
+- update comment
+- update error message
+- clean up install file
+- update drush command
+- add drush command
+- initial commit
+

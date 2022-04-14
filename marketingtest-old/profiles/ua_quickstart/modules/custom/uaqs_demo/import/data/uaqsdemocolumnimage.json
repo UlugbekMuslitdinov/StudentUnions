@@ -1,0 +1,32 @@
+[
+  {"id":110,
+    "uaqs_caption_text" : "The seven deadly sins and four last things",
+    "uaqs_image_credit" : "Hieronymus Bosch (ca. 1450–1516) or follower [Public domain], via Wikimedia Commons",
+    "uaqs_photo" : "hieronymus_bosch_the_seven_deadly_sins_and_four_last_things.jpg",
+    "view_mode" : "default"
+  },
+  {"id":130,
+    "uaqs_caption_text" : "Superbia (detail)",
+    "uaqs_image_credit" : "Hieronymus Bosch (ca. 1450–1516) or follower",
+    "uaqs_photo" : "hieronymus_bosch_superbia.jpg",
+    "view_mode" : "uaqs_align_right"
+  },
+  {"id":200,
+    "uaqs_caption_text" : "This image has nothing to do with the text.",
+    "uaqs_image_credit" : "illustration of the Sun above the Earth",
+    "uaqs_photo" : "sun_december_21.jpg",
+    "view_mode" : "uaqs_align_right"
+  },
+  {"id":220,
+    "uaqs_caption_text" : "Also not relevant.",
+    "uaqs_image_credit" : "illustration of the Sun above the Earth",
+    "uaqs_photo" : "sun_june_21.jpg",
+    "view_mode" : "default"
+  },
+  {"id":300,
+    "uaqs_caption_text" : "Drones do not have heels to walk on.",
+    "uaqs_image_credit" : "drone in flight",
+    "uaqs_photo" : "delivery_platform.jpg",
+    "view_mode" : "uaqs_align_right"
+  }
+]

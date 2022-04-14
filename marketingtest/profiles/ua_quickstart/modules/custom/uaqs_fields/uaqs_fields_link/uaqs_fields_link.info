@@ -1,0 +1,11 @@
+name = UAQS Fields - Link
+description = This module provides various link fields that several UAQS features use.
+core = 7.x
+package = The University of Arizona
+dependencies[] = features
+dependencies[] = link
+features[features_api][] = api:2
+features[field_base][] = field_uaqs_link
+features[field_base][] = field_uaqs_links
+features[field_base][] = field_uaqs_location
+project path = profiles/ua_quickstart/modules/custom/uaqs_fields

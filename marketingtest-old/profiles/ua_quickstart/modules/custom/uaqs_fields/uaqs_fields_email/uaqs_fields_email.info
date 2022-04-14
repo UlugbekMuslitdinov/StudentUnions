@@ -1,0 +1,10 @@
+name = UAQS Fields - Email
+description = This module provides various email fields that several UAQS features use.
+core = 7.x
+package = The University of Arizona
+dependencies[] = email
+dependencies[] = features
+dependencies[] = uaqs_fields
+features[features_api][] = api:2
+features[field_base][] = field_uaqs_contact_email
+features[field_base][] = field_uaqs_email

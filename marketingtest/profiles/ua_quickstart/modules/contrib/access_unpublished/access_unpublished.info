@@ -1,0 +1,11 @@
+name = Access Unpublished
+description = Grants access to view unpublished content to anyone who has a unique URL and appropriate permissions.
+core = 7.x
+configure = admin/config/content/access_unpublished
+
+; Information added by Drupal.org packaging script on 2017-06-28
+version = "7.x-1.03"
+core = "7.x"
+project = "access_unpublished"
+datestamp = "1498633745"
+

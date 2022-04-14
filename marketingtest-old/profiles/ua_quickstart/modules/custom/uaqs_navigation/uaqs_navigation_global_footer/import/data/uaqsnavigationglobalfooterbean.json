@@ -1,0 +1,51 @@
+[
+  {
+    "id": 1,
+    "label": "UAQS Footer Links Bean - Information For",
+    "title": "Information for",
+    "data" : {
+        "menu_name": "uaqs-footer-information-for"
+        },
+    "region": "footer_sub",
+    "visibility": "1",
+    "pages": "*",
+    "weight": "1"
+  },
+  {
+    "id": 2,
+    "label": "UAQS Footer Links Bean - Topics",
+    "title": "Topics",
+    "data" : {
+        "menu_name": "uaqs-footer-topics"
+        },
+    "region": "footer_sub",
+    "visibility": "1",
+    "pages": "*",
+    "weight": "2"
+  },
+  {
+    "id": 3,
+    "label": "UAQS Footer Links Bean - Resources",
+    "title": "Resources",
+    "data" : {
+        "menu_name": "uaqs-footer-resources"
+        },
+    "region": "footer_sub",
+    "visibility": "1",
+    "pages": "*",
+    "weight": "3"
+  },
+  {
+    "id": 4,
+    "label": "UAQS Footer Links Bean - Main",
+    "title": "<none>",
+    "data" : {
+        "menu_name": "uaqs-footer-main"
+        },
+    "region": "footer",
+    "visibility": "1",
+    "pages": "*",
+    "weight": "-1"
+  }
+]
+

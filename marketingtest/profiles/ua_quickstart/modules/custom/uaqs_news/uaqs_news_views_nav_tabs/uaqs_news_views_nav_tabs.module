@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS News - Views - Nav Tabs feature.
+ */
+
+include_once 'uaqs_news_views_nav_tabs.features.inc';

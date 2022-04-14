@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * Tests that each of the Metatag schema_how_to tags work correctly.
+ */
+class SchemaMetatagHowToTest extends SchemaMetatagTagsTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Schema Metatag: HowTo',
+      'description' => 'Test the schema_how_to meta tags.',
+      'group' => 'Schema Metatag',
+      'dependencies' => [
+        'ctools',
+        'token',
+        'metatag',
+        'schema_metatag',
+        'schema_how_to',
+      ],
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp(array $modules = array()) {
+    $modules[] = 'schema_how_to';
+    parent::setUp($modules);
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public $moduleName = 'schema_how_to';
+
+  /**
+   * {@inheritdoc}
+   */
+  public $schemaTags = [
+    'schema_how_to.@type' => 'SchemaHowToType',
+    'schema_how_to.name' => 'SchemaNameBase',
+    'schema_how_to.step' => 'SchemaHowToStepBase',
+    'schema_how_to.description' => 'SchemaNameBase',
+    'schema_how_to.image' => 'SchemaImageBase',
+    'schema_how_to.estimatedCost' => 'SchemaMonetaryAmountBase',
+    'schema_how_to.supply' => 'SchemaNameBase',
+    'schema_how_to.tool' => 'SchemaNameBase',
+  ];
+
+}

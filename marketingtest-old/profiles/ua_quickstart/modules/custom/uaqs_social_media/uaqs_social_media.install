@@ -1,0 +1,58 @@
+<?php
+
+function uaqs_social_media_install(){
+  variable_set('uaqs_social_media_fb_url', 'facebook.com/uarizona');
+  variable_set('uaqs_social_media_fb_title', 'Click here to visit our Facebook page');
+  variable_set('uaqs_social_media_twit_url', 'twitter.com/uarizona');
+  variable_set('uaqs_social_media_twit_title', 'Click here to visit our Twitter page');
+  variable_set('uaqs_social_media_inst_url', 'instagram.com/uarizona');
+  variable_set('uaqs_social_media_inst_title', 'Click here to visit our Instagram page');
+  variable_set('uaqs_social_media_li_url', 'linkedin.com/edu/university-of-arizona-17783');
+  variable_set('uaqs_social_media_li_title', 'Click here to visit our LinkedIn page');
+  variable_set('uaqs_social_media_yt_url', 'youtube.com/universityofarizona');
+  variable_set('uaqs_social_media_yt_title', 'Click here to visit our YouTube page');
+  variable_set('uaqs_social_media_mobi_url', '');
+  variable_set('uaqs_social_media_mobi_link_text', 'UA Mobile');
+  variable_set('uaqs_social_media_mobi_title', '');
+}
+
+function uaqs_social_media_uninstall(){
+  variable_del('uaqs_social_media_fb_url');
+  variable_del('uaqs_social_media_fb_title');
+  variable_del('uaqs_social_media_twit_url');
+  variable_del('uaqs_social_media_twit_title');
+  variable_del('uaqs_social_media_inst_url');
+  variable_del('uaqs_social_media_inst_title');
+  variable_del('uaqs_social_media_li_url');
+  variable_del('uaqs_social_media_li_title');
+  variable_del('uaqs_social_media_yt_url');
+  variable_del('uaqs_social_media_yt_title');
+  variable_del('uaqs_social_media_mobi_url');
+  variable_del('uaqs_social_media_mobi_link_text');
+  variable_del('uaqs_social_media_mobi_title');
+}
+
+/**
+ * UADIGITAL-1745: Database update for twitter handle changing from @uofa to @uarizona and removing google.
+ */
+function uaqs_social_media_update_7100() {
+  $twit_url_variable = variable_get('uaqs_social_media_twit_url');
+
+  if ($twit_url_variable == 'twitter.com/uofa') {
+    variable_set('uaqs_social_media_twit_url', 'twitter.com/uarizona');
+  }
+  
+  variable_del('uaqs_social_media_gplus_url');
+  variable_del('uaqs_social_media_gplus_title');
+}
+
+/**
+ * UADIGITAL-2239: Update footer & resources links with new news & youtube links
+ */
+function uaqs_social_media_update_7101() {
+  $yt_url_variable = variable_get('uaqs_social_media_yt_url');
+
+  if ($yt_url_variable == 'youtube.com/arizona') {
+    variable_set('uaqs_social_media_yt_url', 'youtube.com/universityofarizona');
+  }
+}

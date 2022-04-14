@@ -6,14 +6,12 @@
 <noscript>You need to enable JavaScript to run this app.</noscript>
 
 <?php
-include_once "C:/xampp/htdocs/template/layout/header/routes/about.php";
-include_once "C:/xampp/htdocs/template/layout/header/routes/mealplans.php";
-include_once "C:/xampp/htdocs/template/layout/header/routes/cateringevent.php";
-include_once "C:/xampp/htdocs/template/layout/header/routes/involvement.php";
-include_once "C:/xampp/htdocs/template/layout/header/routes/about.php";
+include_once $_SERVER['DOCUMENT_ROOT'] . "/template/layout/header/routes/restaurant.php";
+include_once $_SERVER['DOCUMENT_ROOT'] . "/template/layout/header/routes/mealplans.php";
+include_once $_SERVER['DOCUMENT_ROOT'] . "/template/layout/header/routes/cateringevent.php";
+include_once $_SERVER['DOCUMENT_ROOT'] . "/template/layout/header/routes/involvement.php";
+include_once $_SERVER['DOCUMENT_ROOT'] . "/template/layout/header/routes/about.php";
 ?>
-
-
 <script>
 const restaurants = <?php echo json_encode($restaurant_route); ?>;
 const mealplan = <?php echo json_encode($mealplans_route); ?>;

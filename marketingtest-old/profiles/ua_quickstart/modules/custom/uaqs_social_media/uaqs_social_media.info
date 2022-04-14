@@ -1,0 +1,7 @@
+; $Id$
+name = UAQS Social Media Links
+description = "Adds block for social media links"
+package = The University of Arizona
+core = 7.x
+configure = admin/config/search/uaqs_social_media
+stylesheets[all][] = css/uaqs_social_media.css

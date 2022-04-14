@@ -1,0 +1,75 @@
+<?php
+
+/**
+ * @file
+ * uaqs_content_chunks_extra_info.install
+ */
+
+/**
+ * WARNING: This update will not execute unless you revert the
+ * uaqs_extra_info feature.
+ * UADIGITAL-1503: Add configurable title, body field, and alignment options to Extra Info
+ * New title field requires a value on sites that already use Extra Info content chunk
+ */
+function uaqs_content_chunks_extra_info_update_7100() {
+  module_load_include('inc', 'features', 'features.export');
+  $module = features_get_modules($name = 'uaqs_content_chunks_extra_info', $reset = FALSE);
+  $overrides = features_detect_overrides($module);
+  if (!in_array('field_instance', $overrides)) {
+    drupal_flush_all_caches();
+
+    $extra_info_query = new EntityFieldQuery();
+    $extra_info_query->entityCondition('entity_type', 'paragraphs_item')
+      ->entityCondition('bundle', array('uaqs_extra_info'));
+    $extra_info_result = $extra_info_query->execute();
+
+    if (isset($extra_info_result['paragraphs_item'])) {
+      foreach (array_filter($extra_info_result['paragraphs_item']) as $extra_info) {
+        $extra_info_entity = entity_load_single('paragraphs_item', $extra_info->item_id);
+        $extra_info_wrapper = entity_metadata_wrapper('paragraphs_item', $extra_info_entity);
+        $extra_info_wrapper->field_uaqs_short_title = 'More information';
+
+        // If field has any content do the following.
+        $value = $extra_info_wrapper->field_uaqs_link;
+        if (isset($value)) {
+          $url = $extra_info_wrapper->field_uaqs_link->url->value();
+          $title = $extra_info_wrapper->field_uaqs_link->title->value();
+          // Use the url as the title if it is not filled out.
+          if (!$title) {
+            $title = $url;
+          }
+          $get_classes = $extra_info_wrapper->field_uaqs_link->attributes->value();
+          $classes = $get_classes['class'];
+          $get_body = $extra_info_wrapper->field_uaqs_body->value();
+          $body = $get_body['value'];
+          $link_string = '<a href="' . $url . '" class="' . $classes . '">' . $title . '</a>'; // Creating the html for the link.
+          $extra_info_wrapper->field_uaqs_body->value->set($body . "\r\n" . $link_string); // Appending the html link to the body field.
+          $extra_info_wrapper->field_uaqs_body->format = 'uaqs_unconstrained';
+        }
+        $transaction = db_transaction();
+        try {
+          field_attach_update('paragraphs_item', $extra_info_wrapper->value());
+          entity_get_controller('paragraphs_item')
+            ->resetCache(array($extra_info_wrapper->getIdentifier()));
+        }
+        catch (Exception $e) {
+          $transaction->rollback();
+          watchdog_exception('uaqs_content_chunks_extra_info', $e);
+        }
+      }
+
+      // Deletes field_uaqs_link.
+      if ($instance = field_info_instance('paragraphs_item', 'field_uaqs_link', 'uaqs_extra_info'))  {
+        field_delete_instance($instance, TRUE);
+        field_purge_batch(1);
+      }
+    }
+
+    // To display a message to the user when the update is completed.
+    return t('Updated the uaqs_extra_info content chunk');
+  }
+  else {
+    $message = 'You must revert the uaqs_content_chunks_extra_info feature in order to run this update.';
+    throw new DrupalUpdateException($message);
+  }
+}

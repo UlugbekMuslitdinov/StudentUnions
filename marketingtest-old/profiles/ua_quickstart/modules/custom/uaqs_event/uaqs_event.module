@@ -1,0 +1,181 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Event feature.
+ */
+
+include_once 'uaqs_event.features.inc';
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function uaqs_event_theme_registry_alter(&$theme_registry) {
+  // Find all .tpl.php files in this module's folder recursively.
+  $module_path = drupal_get_path('module', 'uaqs_event');
+  $template_file_objects = drupal_find_theme_templates($theme_registry, '.tpl.php', $module_path);
+
+  // Iterate through all found template file objects.
+  foreach ($template_file_objects as $key => $template_file_object) {
+    // If the template has not already been overridden by a theme.
+    if (!isset($theme_registry[$key]['theme path']) || !preg_match('#/themes/#', $theme_registry[$key]['theme path'])) {
+      // Alter the theme path and template elements.
+      $theme_registry[$key]['theme path'] = $module_path;
+      $theme_registry[$key] = array_merge($theme_registry[$key], $template_file_object);
+      $theme_registry[$key]['type'] = 'module';
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function uaqs_event_preprocess_node(&$vars) {
+  if ($vars['node']->type == 'uaqs_event' && $vars['view_mode'] == 'uaqs_card') {
+    $vars['theme_hook_suggestions'][] = 'node__uaqs_event__uaqs_card';
+  }
+}
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function uaqs_event_preprocess_field(&$vars) {
+  if ($vars['element']['#field_name'] == 'field_uaqs_event_category') {
+    array_walk($vars['items'], function(&$el) { $el['#options']['attributes']['class'][] = 'label label-muted'; } );
+  }
+}
+
+/**
+ * Implements hook_field_attach_view_alter().
+ *
+ * If events are in in a view using the node display row plugin, we need to help nodes
+ * using the field_uaqs_event field to find the next date to display.
+ *
+ * What we are doing here is limiting the display of the date field to one, and
+ * making sure the date displayed. Each node is set to display only one date,
+ * but need a little help to display the correct one.  We use the field delta
+ * output by the view to determine which repeating date is the correct one to
+ * display.
+ *
+ * The field_multiple_limit module is used to limit the date field output to 1.
+ *
+ */
+function uaqs_event_field_attach_view_alter(&$output, $context) {
+  foreach (element_children($output) as $field_name) {
+    if ($field_name == 'field_uaqs_date' && isset($context['entity']->view) && $context['entity']->view->style_plugin->row_plugin->plugin_name == 'node') {
+      $row_index = $context['entity']->view->row_index;
+      if ($field_name == 'field_uaqs_date' && $output[$field_name]['#formatter'] == 'date_ap_style') {
+        if (isset($context['entity']->view->result[$row_index]->field_data_field_uaqs_date_delta)) {
+          // Get the field delta, the heavy lifting is handled by the views.
+          $delta = (int)$context['entity']->view->result[$row_index]->field_data_field_uaqs_date_delta;
+          // Remove all values except for the one that matched the view field delta.
+          $output[$field_name]['#items'] = array_intersect_key($output[$field_name]['#items'], array_flip(array($delta)));
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_field_extra_fields().
+ *
+ * Adds two extra date fields to view modes of "uaqs_event" content type.
+ */
+function uaqs_event_field_extra_fields() {
+  $data['node']['uaqs_event']['display']['uaqs_event_month_short'] = array(
+    'label' => t('Month short (This is set in the uaqs_event.module) '),
+    'weight' => 50, // default weight, can be changed on display form by site-builder.
+  );
+  $data['node']['uaqs_event']['display']['uaqs_event_day_short'] = array(
+    'label' => t('Day short (This is set in the uaqs_event.module) '),
+    'weight' => 50, // default weight, can be changed on display form by site-builder.
+
+  );
+  return $data;
+}
+
+/**
+ * Implements hook_node_view().
+ *
+ * Provides content for "uaqs_event_day_short" and "uaqs_event_month_short" pseudo/extra fields.
+ * We are going to be reusing the field_uaqs_date in certain displays.
+ */
+function uaqs_event_node_view($node, $view_mode, $langcode) {
+  if ($node->type == 'uaqs_event') {
+    if (isset($node->view) && isset($node->view->row_index) && $node->view->style_plugin->row_plugin->plugin_name == 'node') {
+      $row_index = $node->view->row_index;
+      if (isset($node->view->result[$row_index]->field_data_field_uaqs_date_field_uaqs_date_value)) {
+        $date = $node->view->result[$row_index]->field_data_field_uaqs_date_field_uaqs_date_value;
+
+        if (module_exists('date')) {
+          $timezone = new DateTimeZone(date_default_timezone());
+        }
+        else {
+          $timezone = variable_get('date_default_timezone', 'America/Phoenix');
+        }
+
+        $date = new DateTime($date, new DateTimeZone('UTC'));
+        $date->setTimezone($timezone);
+        $date = $date->getTimestamp();
+        $month_short = format_date($date , 'uaqs_event_abbr_month_only');
+        $day_short = format_date($date , 'uaqs_event_day_only');
+
+        $node->content['uaqs_event_month_short'] = array(
+          '#pseudo_field' => TRUE,
+          '#title' => '',
+          '#markup' => $month_short,
+        );
+        $node->content['uaqs_event_day_short'] = array(
+          '#pseudo_field' => TRUE,
+          '#title' => '',
+          '#markup' => $day_short,
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter()
+ */
+function uaqs_event_form_uaqs_event_node_form_alter(&$form, &$form_state, $form_id){
+  $subtitle_weight = $form['field_uaqs_short_title']['#weight'];
+  $form['subtitle_moved'] = array(
+    '#markup' => '<fieldset><strong>' . t('The "Show on Front Page" checkbox has been moved into the "Scheduled for deprecation" vertical tab at the bottom of this form.') . '</strong></fieldset>',
+  );
+  $form['subtitle_moved']['#weight'] = $subtitle_weight;
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function uaqs_event_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'uaqs_event_node_form') {
+    $form['#validate'][] = 'uaqs_event_summary_link_form_validate';
+  }
+}
+
+function uaqs_event_summary_link_form_validate($form, &$form_state) {
+  // Check that link URL is filled if required
+  if ($form['field_uaqs_link'][LANGUAGE_NONE][0]['url']['#required'] && empty($form_state['values']['field_uaqs_link'][LANGUAGE_NONE][0]['url'])) {
+    // Reset errors, excluding custom field error
+    // Reference: https://api.drupal.org/comment/28464#comment-28464
+    $errors = form_get_errors();
+    if ($errors) {
+      form_clear_error();
+
+      $error_messages = drupal_get_messages('error');
+      foreach (array_diff($error_messages['error'], $errors) as $message) {
+        drupal_set_message($message, 'error');
+      }
+
+      foreach (array_reverse($errors) as $name => $error) {
+        if ($name != 'field_uaqs_link][' . LANGUAGE_NONE . '][0][url') {
+          form_set_error($name, $error);
+        }
+      }
+    }
+
+    // Set custom field error
+    form_set_error('field_uaqs_link][' . LANGUAGE_NONE . '][0][url', $form['field_uaqs_link'][LANGUAGE_NONE][0]['#title'] . ' URL field is required for content to be displayed correctly in lists. Use the token [node:url] to automatically link to this content.');
+  }
+}

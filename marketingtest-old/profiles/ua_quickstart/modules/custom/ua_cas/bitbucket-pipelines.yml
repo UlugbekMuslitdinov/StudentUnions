@@ -1,0 +1,26 @@
+# bitbucket-pipelines.yml
+#
+# This file provides an example configuration for BitBucket Pipelines that can
+# be added to UA QuickStart component repositories to enable the automatic
+# updating of a component within UA QuickStart each time the component's source
+# repository is updated.
+
+image: drush/drush:8
+
+pipelines:
+  branches:
+    7.x-1.x:
+      - step:
+          script:
+            - mkdir -p ~/.ssh
+            - ssh-keyscan -t rsa bitbucket.org >> ~/.ssh/known_hosts
+            - (umask 077; echo $UA_DRUPAL_PRIV_KEY_ENC | base64 --decode > ~/.ssh/id_rsa)
+            - git config --global user.name "BitBucket Pipelines"
+            - git config --global user.email "noreply@bitbucket.org"
+            - export PROJECT_NAME=$BITBUCKET_REPO_SLUG
+            - export REVISION=$BITBUCKET_COMMIT
+            - export COMMIT_MSG=`git log -1 --no-merges --format=format:"Updating ${PROJECT_NAME} for %B"`
+            - git clone git@bitbucket.org:ua_drupal/ua_quickstart.git --branch 7.x-1.x
+            - cd ua_quickstart
+            - ./update-component.sh
+            - git push origin 7.x-1.x

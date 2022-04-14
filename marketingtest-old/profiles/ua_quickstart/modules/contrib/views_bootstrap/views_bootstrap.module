@@ -1,0 +1,202 @@
+<?php
+
+/**
+ * @file
+ * Bootstrap integration.
+ */
+
+/**
+ * Implements hook_views_api().
+ */
+function views_bootstrap_views_api() {
+  return array("api" => "3.0");
+}
+
+/**
+ * Distribute items in rows/columns as required for horizontal alignment.
+ *
+ * @param array $rows
+ *   The rendered views result rows.
+ * @param int $nb_columns
+ *   The desired number of columns per row.
+ *
+ * @return array
+ *   A multi-dimensional array with the calculated rows and columns.
+ */
+function _views_bootstrap_split_rows_horizontal(array $rows, $nb_columns) {
+  $col = 0;
+  $row = 0;
+  $items = array();
+
+  // Iterate over each rendered views result row.
+  foreach ($rows as $item) {
+    // Add the item.
+    $items[$row]['content'][$col]['content'] = $item;
+
+    // If we've reached the maximum number of columns per row, reset the column
+    // index and proceed to the next row.
+    if ($col == ($nb_columns - 1)) {
+      $col = 0;
+      $row++;
+    }
+    // Otherwise, proceed to the next column.
+    else {
+      $col++;
+    }
+  }
+
+  return $items;
+}
+
+/**
+ * Distribute items in columns as required for vertical alignment.
+ *
+ * @param array $rows
+ *   The rendered views result rows.
+ * @param int $nb_columns
+ *   The desired number of columns per row.
+ *
+ * @return array
+ *   A multi-dimensional array with the calculated columns.
+ */
+function _views_bootstrap_split_rows_vertical(array $rows, $nb_columns) {
+  $col = 0;
+  $row = 0;
+  $items = array();
+  $remainders = count($rows) % $nb_columns;
+  $num_rows = floor(count($rows) / $nb_columns);
+
+  // Iterate over each rendered views result row.
+  foreach ($rows as $item) {
+    // Add the item.
+    $items[$col]['content'][$row]['content'] = $item;
+
+    // Increase, decrease or reset appropriate integers.
+    $row++;
+    if (!$remainders && $row == $num_rows) {
+      $row = 0;
+      $col++;
+    }
+    elseif ($remainders && $row == $num_rows + 1) {
+      $row = 0;
+      $col++;
+      $remainders--;
+    }
+  }
+
+  return $items;
+}
+
+/**
+ * View preprocessing that prepares the results as a Bootstrap grid.
+ *
+ * Depending on the options selected on the style plugin handler, this function
+ * distributes the results into rows and columns, calculates where clearfix divs
+ * should be added (if applicable), and prepares the bootstrap classes that
+ * should be added to each column.
+ *
+ * Used by the Bootstrap Grid and Bootstrap Thumbnail plugins.
+ *
+ * @see template_preprocess_views_bootstrap_grid_plugin_style()
+ * @see template_preprocess_views_bootstrap_thumbnail_plugin_style()
+ */
+function _views_bootstrap_preprocess_views_style_plugin_prepare_grid(&$vars) {
+  $options = $vars['view']->style_plugin->options;
+
+  // Prepare column css classes. Add the class for each device size if set and if
+  // different than 0 ("Do not define" option).
+  $col_classes = explode(' ', $options['column_class']);
+  foreach (array('xs', 'sm', 'md', 'lg') as $size) {
+    if (!empty($options["columns_$size"])) {
+      $col_classes[] = 'col-' . $size . '-' . $options["columns_$size"];
+    }
+  }
+  $vars['col_classes'] = implode(' ', $col_classes);
+
+  if ($options['alignment'] === 'horizontal') {
+    _views_bootstrap_preprocess_views_style_plugin_prepare_grid_horizontal($vars);
+    return;
+  }
+
+  _views_bootstrap_preprocess_views_style_plugin_prepare_grid_vertical($vars);
+}
+
+/**
+ * Further preprocessing for horizontal alignment.
+ *
+ * @see _views_bootstrap_preprocess_views_style_plugin_prepare_grid()
+ */
+function _views_bootstrap_preprocess_views_style_plugin_prepare_grid_horizontal(&$vars) {
+  $options = $vars['view']->style_plugin->options;
+
+  // If columns are set to 0 (Auto), apply the maximum from the number of columns
+  // defined per device size.
+  if (!$options['columns_horizontal']) {
+    $options['columns_horizontal'] = 1;
+    foreach (array('xs', 'sm', 'md', 'lg') as $size) {
+      if (isset($options["columns_$size"]) && $options["columns_$size"] > 0) {
+        $tmpColumns = 12 / $options["columns_$size"];
+        if ($tmpColumns > $options['columns_horizontal']) {
+          $options['columns_horizontal'] = $tmpColumns;
+        }
+      }
+    }
+  }
+
+  // Distribute items in rows and columns.
+  $vars['items'] = _views_bootstrap_split_rows_horizontal($vars['rows'], $options['columns_horizontal']);
+
+  // If the number of columns is set to -1 ("Single row" option), calculate the
+  // number of columns after which the clearfix divs should be placed for each
+  // screen size. No clearfix is necessary for large screens (lg) and when the
+  // size of the column is 12 (full row).
+  if ($options['columns_horizontal'] == -1) {
+    $vars['clearfix'] = array();
+    foreach (array('xs', 'sm', 'md', 'lg') as $size) {
+      if (!empty($options["columns_$size"]) && $options["columns_$size"] != 12) {
+        $vars['clearfix'][$size] = 12 / $options["columns_$size"];
+      }
+    }
+  }
+}
+
+/**
+ * Further preprocessing for vertical alignment.
+ *
+ * @see _views_bootstrap_preprocess_views_style_plugin_prepare_grid()
+ */
+function _views_bootstrap_preprocess_views_style_plugin_prepare_grid_vertical(&$vars) {
+  $options = $vars['view']->style_plugin->options;
+
+  // Distribute items in rows and columns.
+  $vars['items'] = _views_bootstrap_split_rows_vertical($vars['rows'], $options['columns_vertical']);
+}
+
+/**
+ * Implements hook_help().
+ */
+function views_bootstrap_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#views_bootstrap':
+      $output = '<h2>' . t('Views Bootstrap') . '</h2>';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('The <a href="!bootstrap">Views Bootstrap module</a> adds styles to Views to output the results of a view as several common <a href="!components">Twitter Bootstrap</a> components.', [
+        '!bootstrap' => 'https://www.drupal.org/project/views_bootstrap',
+        '!components' => 'https://getbootstrap.com/docs/3.4/components/',
+      ]) . '</p>';
+      $output .= '<h3>' . t('Uses') . '</h3>';
+      $output .= '<p>' . t('<a href="!views">Create a view</a> using one of the following styles:', ['!views' => '/admin/structure/views/add']) . '</p>';
+      $output .= '<ul>';
+      $output .= '<li>' . t('<a href="!docs">Accordion</a>', ['!docs' => 'https://www.drupal.org/docs/7/modules/views-bootstrap/accordion']) . '</li>';
+      $output .= '<li>' . t('<a href="!docs">Carousel</a>', ['!docs' => 'https://www.drupal.org/docs/7/modules/views-bootstrap/carousel']) . '</li>';
+      $output .= '<li>' . t('<a href="!docs">Dropdown</a>', ['!docs' => 'https://www.drupal.org/docs/7/modules/views-bootstrap/dropdown']) . '</li>';
+      $output .= '<li>' . t('<a href="!docs">Grid</a>', ['!docs' => 'https://www.drupal.org/docs/7/modules/views-bootstrap/grid']) . '</li>';
+      $output .= '<li>' . t('<a href="!docs">Thumbnails</a>', ['!docs' => 'https://www.drupal.org/docs/7/modules/views-bootstrap/thumbnail']) . '</li>';
+      $output .= '<li>' . t('<a href="!docs">Tables</a>', ['!docs' => 'https://www.drupal.org/docs/7/modules/views-bootstrap/table']) . '</li>';
+      $output .= '<li>' . t('<a href="!docs">Tabs</a>', ['!docs' => 'https://www.drupal.org/docs/7/modules/views-bootstrap/tabs']) . '</li>';
+      $output .= '<li>' . t('<a href="!docs">Media object</a>', ['!docs' => 'https://www.drupal.org/docs/7/modules/views-bootstrap/media-object']) . '</li>';
+      $output .= '<li>' . t('<a href="!docs">List group</a>', ['!docs' => 'https://www.drupal.org/docs/7/modules/views-bootstrap/list-group']) . '</li>';
+      $output .= '<ul>';
+      return $output;
+  }
+}

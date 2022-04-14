@@ -1,0 +1,14 @@
+<?php
+/**
+ * @file
+ * uaqs_block_types_call_to_action.install
+ */
+
+/**
+ * Implements hook_post_features_enable_feature().
+ */
+function uaqs_block_types_call_to_action_post_features_enable_feature() {
+  drupal_flush_all_caches();
+  user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('view any uaqs_call_to_action bean')); // Anonymous users
+  user_role_grant_permissions(DRUPAL_AUTHENTICATED_RID, array('view any uaqs_call_to_action bean')); // Authentificated users
+}

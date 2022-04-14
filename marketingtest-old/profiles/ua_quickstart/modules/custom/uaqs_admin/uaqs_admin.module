@@ -1,0 +1,36 @@
+<?php
+
+/**
+ * @file
+ * Code for the UAQS Admin feature.
+ */
+
+include_once 'uaqs_admin.features.inc';
+
+//Disable seven theme
+// theme_disable(array('seven'));
+
+function uaqs_admin_init() {
+    $themes = list_themes(); //Get all the available themes
+    if($themes['adminimal']->status == 0) {
+      theme_enable(array('adminimal')); //Enable Adminimal theme
+      variable_set('admin_theme','adminimal');
+    }
+
+//Disable and uninstall the toolbar module.
+
+ if( module_exists('toolbar')) {
+    module_disable(array('toolbar'));
+    drupal_uninstall_modules(array('toolbar'));
+ }
+}
+
+/**
+ * Implements hook_shortcut_default_set()
+ */
+function uaqs_admin_shortcut_default_set($account) {
+  $rid = array_search('administrator', user_roles());
+  if ($rid !== FALSE && array_key_exists($rid, $account->roles)) {
+    return 'administrator'; 
+  }
+}

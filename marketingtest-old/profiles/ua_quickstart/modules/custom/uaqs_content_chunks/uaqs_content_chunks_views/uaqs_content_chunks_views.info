@@ -1,0 +1,16 @@
+name = UAQS Content Chunks - Views
+description = Adds the ability to embed views into flexible pages as paragraphs items (Content Chunks).
+core = 7.x
+package = The University of Arizona
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = paragraphs
+dependencies[] = strongarm
+dependencies[] = uaqs_content_chunks
+dependencies[] = viewfield
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[field_base][] = field_uaqs_view
+features[field_instance][] = paragraphs_item-uaqs_content_chunks_view-field_uaqs_view
+features[paragraphs][] = uaqs_content_chunks_view
+features[variable][] = field_bundle_settings_paragraphs_item__uaqs_content_chunks_view

@@ -1,0 +1,62 @@
+[
+  {
+    "id": 6,
+    "label": "CTA - Visit",
+    "title": "",
+    "data" : {
+      "view_mode":"default",
+      "uaqs_call_to_action": {
+        "call_to_action_block_wrapper_class":"col-xs-6 col-md-3 col-md-offset-1 col-lg-2 col-lg-offset-5 right-buffer-xs-5 right-buffer-sm-5 right-buffer-md-5 right-buffer-lg-5 bottom-buffer-5 top-buffer-sm-25 top-buffer-md-50 top-buffer-lg-50"
+      }
+    },
+    "uaqs_link": "https://admissions.arizona.edu/visit",
+    "uaqs_link_title": "Visit",
+    "uaqs_link_attributes": {
+       "class": "gta-cta-header-buttons btn btn-hollow-default btn-block"
+    },
+    "region": "header_2",
+    "visibility": 1,
+    "pages": "*",
+    "weight": 1
+  },
+  {
+    "id": 7,
+    "label": "CTA - Request Info",
+    "title": "",
+    "data" : {
+      "view_mode":"default",
+      "uaqs_call_to_action": {
+        "call_to_action_block_wrapper_class":"col-xs-6 col-md-5 col-lg-3 left-buffer-xs-0 left-buffer-sm-0 right-buffer-md-0 left-buffer-md-0 right-buffer-lg-0 left-buffer-lg-0 bottom-buffer-5 top-buffer-sm-25 top-buffer-md-50 top-buffer-lg-50"
+      }
+    },
+    "uaqs_link": "https://slate.admissions.arizona.edu/register/requestinfo",
+    "uaqs_link_title": "Request Info",
+    "uaqs_link_attributes": {
+       "class": "gta-cta-header-buttons btn btn-hollow-default btn-block"
+    },
+    "region": "header_2",
+    "visibility": 1,
+    "pages": "*",
+    "weight": 2
+  },
+  {
+    "id": 8,
+    "label": "CTA - Apply",
+    "title": "",
+    "data" : {
+      "view_mode":"default",
+      "uaqs_call_to_action": {
+        "call_to_action_block_wrapper_class":"col-xs-12 col-md-3 col-lg-2 left-buffer-md-5 left-buffer-lg-5 bottom-buffer-30 top-buffer-md-50 top-buffer-lg-50"
+      }
+    },
+    "uaqs_link": "https://www.arizona.edu/how-apply-uarizona",
+    "uaqs_link_title": "Apply",
+    "uaqs_link_attributes": {
+       "class": "gta-cta-header-buttons btn btn-default btn-block"
+    },
+    "region": "header_2",
+    "visibility": 1,
+    "pages": "*",
+    "weight": 3
+  }
+]

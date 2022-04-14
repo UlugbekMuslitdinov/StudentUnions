@@ -1,0 +1,30 @@
+[
+  {"id":1,
+    "title" : "Here is the first headline.",
+    "uaqs_summary_short" : "Iamque super triginta milia armatorum aspiciebantur",
+    "uaqs_link" : "https://www.arizona.edu/",
+    "uaqs_link_title" : "Call to action",
+    "uaqs_photo" : "demo-carousel-item-1.jpg"
+  },
+  {"id":2,
+    "title" : "Here is the second headline.",
+    "uaqs_summary_short" : "et adhuc adfluebat omnis iuventus et quibus cruda ac viridis senectus, clari bello et sua quisque decora gestantes",
+    "uaqs_link" : "[node:url]",
+    "uaqs_link_title" : "Read more",
+    "uaqs_photo" : "demo-carousel-item-2.jpg"
+  },
+  {"id":3,
+    "title" : "Here is the third headline.",
+    "uaqs_summary_short" : "cum inter pluris duces virtute et genere praestans nomine Calgacus",
+    "uaqs_link" : "[node:url]",
+    "uaqs_link_title" : "Read more",
+    "uaqs_photo" : "demo-carousel-item-3.jpg"
+  },
+  {"id":4,
+    "title" : "Here is the fourth headline.",
+    "uaqs_summary_short" : "apud contractam multitudinem proelium poscentem in hunc modum locutus fertur",
+    "uaqs_link" : "https://brand.arizona.edu/guide/ua-quickstart",
+    "uaqs_link_title" : "Learn more",
+    "uaqs_photo" : "demo-carousel-item-4.jpg"
+  }
+]

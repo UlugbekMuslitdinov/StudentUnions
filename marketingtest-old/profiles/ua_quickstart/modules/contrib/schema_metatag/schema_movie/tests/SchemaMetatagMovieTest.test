@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * Tests that each of the Metatag schema_movie tags work correctly.
+ */
+class SchemaMetatagMovieTest extends SchemaMetatagTagsTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Schema Metatag: Movie',
+      'description' => 'Test the schema_movie meta tags.',
+      'group' => 'Schema Metatag',
+      'dependencies' => [
+        'ctools',
+        'token',
+        'metatag',
+        'schema_metatag',
+        'schema_movie',
+      ],
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp(array $modules = array()) {
+    $modules[] = 'schema_movie';
+    parent::setUp($modules);
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public $moduleName = 'schema_movie';
+
+  /**
+   * {@inheritdoc}
+   */
+  public $schemaTags = [
+    'schema_movie.@type' => 'SchemaMovieType',
+    'schema_movie.name' => 'SchemaNameBase',
+    'schema_movie.@id' => 'SchemaNameBase',
+    'schema_movie.description' => 'SchemaNameBase',
+    'schema_movie.image' => 'SchemaImageBase',
+    'schema_movie.potentialAction' => 'SchemaMoviePotentialAction',
+    'schema_movie.aggregateRating' => 'SchemaRatingBase',
+    'schema_movie.hasPart' => 'SchemaMovieHasPart',
+    'schema_movie.url' => 'SchemaUrlBase',
+    'schema_movie.sameAs' => 'SchemaUrlBase',
+    'schema_movie.duration' => 'SchemaDurationBase',
+    'schema_movie.dateCreated' => 'SchemaDateBase',
+    'schema_movie.seasonNumber' => 'SchemaNameBase',
+    'schema_movie.episodeNumber' => 'SchemaNameBase',
+    'schema_movie.partOfSeries' => 'SchemaCreativeWorkBase',
+    'schema_movie.partOfSeason' => 'SchemaCreativeWorkBase',
+    'schema_movie.releasedEvent' => 'SchemaEventBase',
+    'schema_movie.actor' => 'SchemaPersonOrgBase',
+    'schema_movie.director' => 'SchemaPersonOrgBase',
+    'schema_movie.musicBy' => 'SchemaPersonOrgBase',
+    'schema_movie.producer' => 'SchemaPersonOrgBase',
+    'schema_movie.productionCompany' => 'SchemaPersonOrgBase',
+  ];
+
+}

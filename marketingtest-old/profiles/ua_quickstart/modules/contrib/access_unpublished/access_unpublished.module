@@ -1,0 +1,292 @@
+<?php
+/**
+ * @file
+ * Drupal module: Access unpublished.
+ *
+ * Access unpublished module allows view unpublished content to anyone who has
+ * a unique URL and appropriate permissions.
+ *
+ * URL hash parameter can be configured.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function access_unpublished_menu() {
+  // This provides hash URL parameter setting.
+  $items['admin/config/content/access_unpublished'] = array(
+    'title' => 'Access unpublished',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('access_unpublished_url_param_form'),
+    'access arguments' => array('access unpublished configuration'),
+    'file' => 'access_unpublished.admin.inc',
+    'type' => MENU_NORMAL_ITEM,
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function access_unpublished_permission() {
+
+  $permissions['access unpublished view unpublished node'] = array(
+    'title' => t('View unpublished contents'),
+    'description' => t('Allow users to view unpublished contents with unique key in URL path'),
+  );
+  if (module_exists('workbench_moderation')) {
+    $permissions['access unpublished view workbench moderation drafts'] = array(
+      'title' => t('View moderated drafts'),
+      'description' => t('Allow users to view workbench moderation drafts with unique key in URL path - also requires "View unpublished contents" permission above'),
+    );
+  }
+  $permissions['access unpublished view hashkey'] = array(
+    'title' => t('View hash key link to unpublished contents'),
+    'description' => t('Allow users to view link with hash key for view unpublished contents'),
+  );
+  $permissions['access unpublished configuration'] = array(
+    'title' => t('Access unpublished module configuration'),
+    'description' => t('Allow users to configure module'),
+  );
+  return $permissions;
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function access_unpublished_node_view($node) {
+  // Only unpublished nodes in full page view are affected.
+  if (user_access('access unpublished view hashkey') && node_is_page($node)) {
+    _access_unpublished_check_hashed_link($node);
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ */
+function access_unpublished_form_node_form_alter(&$form, &$form_state, $form_id) {
+  // Optionally show hashed link on node edit form.
+  if (strpos(current_path(), 'node/add') === FALSE
+  && user_access('access unpublished view hashkey')
+  && variable_get('access_unpublished_display_link_on_node_form') === 1
+  && variable_get('access_unpublished_display_link_in_drupal_message') === 1) {
+    _access_unpublished_check_hashed_link($form['#node']);
+  }
+}
+
+/**
+ * Implements hook_node_access().
+ *
+ * Return NODE_ACCESS_ALLOW if url hash matches reference hash.
+ * In other cases return NODE_ACCESS_IGNORE to allow other modules
+ * or the node_access table to control access.
+ */
+function access_unpublished_node_access($node, $op) {
+  if ($op == 'view' && isset($node->nid) && $node->status == NODE_NOT_PUBLISHED) {
+    // Check user permission.
+    if (user_access('access unpublished view unpublished node')) {
+      if (_access_unpublished_check_hash($node->nid)) {
+        return NODE_ACCESS_ALLOW;
+      }
+    }
+  }
+  return NODE_ACCESS_IGNORE;
+}
+
+/**
+ * Generate hash from node ID.
+ *
+ * @param int $nid
+ *   Node ID, nid.
+ *
+ * @return string
+ *   Base-64 encoded, URL-safe sha-256 hash based on node ID.
+ */
+function _access_unpublished_get_hash_from_nodeid($nid) {
+  return drupal_hash_base64(drupal_get_private_key() . $nid);
+}
+
+/**
+ * Implements hook_theme().
+ */
+function access_unpublished_theme() {
+  return array(
+    'access_unpublished_link' => array(
+      'variables' => array('access_unpublished_link' => NULL),
+      'template' => 'access-unpublished-link',
+    ),
+  );
+}
+
+/**
+ * Implements hook_workbench_moderation_access_alter().
+ *
+ * Return $access = TRUE if a node has an active revision and url hash matches reference hash.
+ */
+function access_unpublished_workbench_moderation_access_alter(&$access, $op, $node) {
+  // Check user permission
+  if (user_access('access unpublished view workbench moderation drafts')) {
+    // Check that we are viewing a draft
+    if ($node->workbench_moderation['current']->is_current == 1
+    && $node->workbench_moderation['current']->published == '0') {
+      if (_access_unpublished_check_hash($node->nid)) {
+        $access = TRUE;
+      }
+    }
+  }
+}
+
+/**
+ * Implements menu_local_tasks_alter().
+ */
+function access_unpublished_menu_local_tasks_alter(&$data, $router_item, $root_path) {
+  // Do we need to bother doing anything?
+  if (empty($data['tabs'][0]['output'])) {
+    return;
+  }
+
+  if(user_is_anonymous()) {
+    if (isset($data['tabs'])) {
+      //We do not want the anonymous account to see the workbench tabs when looking at a draft page.
+      unset($data['tabs'][0]['output']);
+      //To avoid core from throwing a notice when it looks for output, set it to an empty array.
+      $data['tabs'][0]['output'] = array();
+    }
+  }
+}
+
+/**
+ * Check whether a hash is present in the current URL, and if so, verify
+ * that the hash is correct.
+ *
+ * @param int
+ *   The node id to check.
+ *
+ * @return boolean
+ *   TRUE if the hash is present and correct, otherwise FALSE.
+ */
+function _access_unpublished_check_hash($nid) {
+  $au_url_key = variable_get('access_unpublished_url_key', 'hash');
+
+  // Check hash key in url.
+  $url_query = drupal_get_query_parameters();
+  if (isset($url_query[$au_url_key])) {
+    $url_hash = $url_query[$au_url_key];
+
+    // Generate reference hash.
+    $hash = _access_unpublished_get_hash_from_nodeid($nid);
+
+    // Check hash match and return access state.
+    if ($url_hash == $hash) {
+      return TRUE;
+    }
+  }
+}
+
+/**
+ * Helper function to determine whether to display a hashed link and if so,
+ * determine its format.
+ *
+ * @param object $node
+ *   The node being viewed or edited.
+ */
+function _access_unpublished_check_hashed_link($node) {
+  if (module_exists('workbench_moderation')
+  && workbench_moderation_node_type_moderated($node->type)) {
+    // Check for workbench_moderation status first, as this
+    // overrides the basic published/unpublished check.
+    $wb_unpublished = FALSE;
+    $wb_revision = FALSE;
+    $draft_path = FALSE;
+
+    if (!isset($node->workbench_moderation['published'])) {
+      $wb_unpublished = TRUE;
+    }
+    else {
+      $urlseg = explode('/', current_path());
+      if (isset($urlseg[2])) {
+        switch ($urlseg[2]) {
+          case 'draft':
+            $draft_path = true;
+          break;
+        }
+      }
+    }
+    if (isset($node->workbench_moderation)
+    && $node->workbench_moderation['current']->is_current == 1
+    && $node->workbench_moderation['current']->published == '0') {
+      $wb_revision = TRUE;
+    }
+
+    if ($wb_unpublished && $wb_revision) {
+      // We have a node that only exists as a draft, so we can't count on the
+      // node/%/draft URL pattern in this case.
+      _access_unpublished_show_hashed_link('node/' . $node->nid, $node);
+    } else if (!$wb_unpublished && $wb_revision && $draft_path) {
+      // We have a draft revision of a published node, so we use the
+      // node/%/draft URL pattern in this case.
+      _access_unpublished_show_hashed_link('node/' . $node->nid . '/draft', $node);
+    } else if ($node->status == NODE_NOT_PUBLISHED && !$wb_unpublished) {
+      _access_unpublished_show_hashed_link('node/' . $node->nid, $node);
+    }
+  } else if ($node->status == NODE_NOT_PUBLISHED) {
+    // Either workbench_moderation is not installed or we have an un-moderated
+    // content type.
+    _access_unpublished_show_hashed_link('node/' . $node->nid, $node);
+  }
+}
+
+/**
+ * Display the hashed link to the end user.
+ *
+ * @param string
+ *   The original URL
+ * @param $node
+ *   The node being displayed, passed by reference
+ */
+function _access_unpublished_show_hashed_link($url, &$node) {
+  // Add css for access_unpublished.
+  $module_path = drupal_get_path('module', 'access_unpublished');
+  drupal_add_css($module_path . '/css/access_unpublished.css');
+  // Construct URL link.
+  $au_url_key = variable_get('access_unpublished_url_key', 'hash');
+  $au_link = l(t("hashed link"), $url,
+    array(
+      'query' => array($au_url_key => _access_unpublished_get_hash_from_nodeid($node->nid), 'timestamp' => REQUEST_TIME),
+      'attributes' => array('class' => array('access_unpublished_link')),
+    )
+  );
+  $au_link_text = t("You can use !link to view this unpublished content.", array('!link' => $au_link));
+
+  if (variable_get('access_unpublished_display_link_in_drupal_message', 1)) {
+    // Show link in Drupal message. Avoid duplicates produced by an active
+    // class that might be set on an existing message which are not caught
+    // by drupal_set_message(). This edge case can be triggered if e.g.
+    // the main site theme does not display drupal messages but the admin
+    // theme does and the site is configured to show hash links on the node
+    // edit page; in this case, viewing the node and then editing its draft
+    // will produce duplicate messages on the node edit form.
+    $messages = drupal_get_messages('status');
+    if (!empty($messages['status'])) {
+      foreach ($messages['status'] as $message) {
+        if (strpos($message, 'access_unpublished_link') === FALSE) {
+          // drupal_get_messages() above clears all status messages by default,
+          // including any possible duplicates. Add back any status messages
+          // from other modules we'd like to keep here.
+          drupal_set_message($message, 'status', FALSE);
+        }
+      }
+    }
+
+    drupal_set_message($au_link_text, 'status', FALSE);
+  }
+
+  if (variable_get('access_unpublished_display_link_in_node_content', 1)) {
+    // Show link in extra renderable entry in node contents.
+    $node->content['access_unpublished_link'] = array(
+      '#access_unpublished_link' => $au_link_text,
+      '#weight' => 100,
+      '#theme' => 'access_unpublished_link',
+    );
+  }
+}

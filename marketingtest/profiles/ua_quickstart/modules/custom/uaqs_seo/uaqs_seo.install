@@ -1,0 +1,71 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the uaqs_seo module.
+ */
+
+/**
+ * Implements hook_uninstall().
+ */
+function uaqs_seo_uninstall() {
+  variable_del('uaqs_seo_exclude_external_content');
+}
+
+/**
+ * UADIGITAL-2027 schema_metatag contrib module plus some default configurations
+ * <br><br>NOTE: If your team has ever adjusted config within "Global: Front page", be aware that 
+ * this update disables that config. After running the update, you can re-enable here: admin > config > search > metatags. 
+ * But as described in metatag issue 2759421 (comment #2) on drupal.org, if your front page is a node
+ * some metatag values won't work if relying on tokens. We suggest keeping "Global: Front page" disabled,
+ * and setting metatag values within the node itself.
+ */
+function uaqs_seo_update_7001() {
+  module_enable(array('schema_metatag','schema_organization'));
+
+  $result = db_query("SELECT * FROM {metatag_config} WHERE instance = :instance", array(
+    ':instance' => 'global',
+  ));
+  foreach ($result as $record) {
+    $config_unserialized = unserialize($record->config);
+
+    $config_record = $record;
+    if (!isset($config_unserialized['schema_organization.@type'])) {
+      $config_unserialized['schema_organization.@type'] = array('value' => 'EducationalOrganization');
+    }
+    if (!isset($config_unserialized['schema_organization.additionalType'])) {
+      $config_unserialized['schema_organization.additionalType'] = array('value' => 'CollegeOrUniversity');
+    }
+    if (!isset($config_unserialized['schema_organization.@id'])) {
+      $config_unserialized['schema_organization.@id'] = array('value' => '[current-page:url:absolute]');
+    }
+    if (!isset($config_unserialized['schema_organization.name'])) {
+      $config_unserialized['schema_organization.name'] = array('value' => 'The University of Arizona');
+    }
+    if (!isset($config_unserialized['schema_organization.address'])) {
+      $config_unserialized['schema_organization.address'] = array('value' => 'a:5:{s:5:"@type";s:13:"PostalAddress";s:15:"addressLocality";s:6:"Tucson";s:13:"addressRegion";s:2:"AZ";s:10:"postalCode";s:5:"85721";s:14:"addressCountry";s:3:"USA";}');
+    }
+    if (!isset($config_unserialized['schema_organization.url'])) {
+      $config_unserialized['schema_organization.url'] = array('value' => '[site:url]');
+    }
+    if (!isset($config_unserialized['schema_organization.image'])) {
+      $config_unserialized['schema_organization.image'] = array('value' => 'a:2:{s:5:"@type";s:11:"ImageObject";s:3:"url";s:23:"[node:field_uaqs_photo]";}');
+    }
+    $config_record->config  = serialize($config_unserialized);
+  }
+
+  variable_set('default_metatag_config', array(
+    'global:frontpage' => TRUE,
+  ));
+
+  $metatags_updated = db_update('metatag_config')
+    ->fields(get_object_vars($config_record))
+    ->condition('instance', $config_record->instance, '=')
+    ->execute();
+
+  $success_message = "Updated configuration. <strong>Notice:</strong> If your team has ever adjusted config within 'Global: Front page', be aware that this update disables that config. After running the update, you can re-enable here admin > config >search >metatags. Butif your front page is a node, some metatag values won't work if relying on tokens. We suggest keeping 'Global: Front page' disabled, and setting metatag values within the node itself. More detail here: metatag issue 2759421 (comment #2) on drupal.org @link.";
+
+  return t($success_message, array(
+    '@link' => l('metatag issue comment', 'https://www.drupal.org/project/metatag/issues/2759421#comment-11362063')
+  ));
+}

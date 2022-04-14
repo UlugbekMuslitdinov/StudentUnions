@@ -1,0 +1,473 @@
+7.x-1.0-alpha74, 2022-02-16
+-----------------------------
+
+7.x-1.0-alpha73, 2022-01-26
+-----------------------------
+
+7.x-1.0-alpha72, 2022-01-20
+-----------------------------
+
+7.x-1.0-alpha71, 2022-01-19
+-----------------------------
+- UADIGITAL-2275: Better handling of failed media_oembed provider lookups (PHP 7.4+ compatibility improvement).
+- UADIGITAL-2267: Update CKEditor to 4.16.2 (backport SA-CORE-2021-005 & SA-CORE-2021-003).
+
+7.x-1.0-alpha70, 2021-07-21
+-----------------------------
+
+7.x-1.0-alpha69, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha68, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha67, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha66, 2021-04-21
+-----------------------------
+- UADIGITAL-2256 - Add "#" to alphabetical list view, and update key to "123"
+
+7.x-1.0-alpha65, 2021-01-21
+-----------------------------
+
+7.x-1.0-alpha64, 2020-11-25
+-----------------------------
+
+7.x-1.0-alpha63, 2020-11-18
+-----------------------------
+
+7.x-1.0-alpha62, 2020-11-18
+-----------------------------
+
+7.x-1.0-alpha61, 2020-09-16
+-----------------------------
+
+7.x-1.0-alpha60, 2020-09-11
+-----------------------------
+
+7.x-1.0-alpha59, 2020-08-19
+-----------------------------
+
+7.x-1.0-alpha58, 2020-06-17
+-----------------------------
+
+7.x-1.0-alpha57, 2020-06-05
+-----------------------------
+
+7.x-1.0-alpha56, 2020-05-20
+-----------------------------
+
+7.x-1.0-alpha55, 2020-04-20
+-----------------------------
+
+7.x-1.0-alpha54, 2020-03-20
+-----------------------------
+- UADIGITAL-2225 Update js for YouTube bgVideo after YouTube API change.
+
+7.x-1.0-alpha53, 2020-03-06
+-----------------------------
+
+7.x-1.0-alpha52, 2020-02-07
+-----------------------------
+
+7.x-1.0-alpha51, 2019-12-18
+-----------------------------
+- UADIGITAL-2178: Nov 2019 contrib module maintenance updates.
+
+7.x-1.0-alpha50, 2019-12-13
+-----------------------------
+- UADIGITAL-2193: Fixed embedded YouTube video issues by calling the resize function within onPlayerStateChange callback.
+
+7.x-1.0-alpha49, 2019-11-20
+-----------------------------
+
+7.x-1.0-alpha48, 2019-11-05
+-----------------------------
+
+7.x-1.0-alpha47, 2019-11-01
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha46 for uaqs_fields.
+
+7.x-1.0-alpha46, 2019-11-01
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha45 for uaqs_fields.
+- UADIGITAL-2140 Phone field is not linked in UAQS Contacts field collection.
+
+7.x-1.0-alpha45, 2019-11-01
+-----------------------------
+- UADIGITAL-2140 Phone field is not linked in UAQS Contacts field collection.
+
+7.x-1.0-alpha44, 2019-09-06
+-----------------------------
+
+7.x-1.0-alpha43, 2019-08-16
+-----------------------------
+
+7.x-1.0-alpha42, 2019-07-26
+-----------------------------
+- UADIGITAL-1902: Append cache-busting parameters to full width background images.
+
+7.x-1.0-alpha41, 2019-06-28
+-----------------------------
+- UADIGITAL-2020 Multiple Youtube bg video support and marquee view mode fix
+- UADIGITAL-2024 ckeditor autogrow maxheight
+
+7.x-1.0-alpha40, 2019-05-22
+-----------------------------
+- UADIGITAL-1997 replace ckeditor node, block, and file icons with text & layout icons consistently
+- UADIGITAL-2003 Embedded entity media editor css path issue on subpath sites.
+
+7.x-1.0-alpha39, 2019-05-08
+-----------------------------
+
+7.x-1.0-alpha38, 2019-05-07
+-----------------------------
+- UADIGITAL-1946. Added Undo and Redo buttons to the UAQS Standard text editor
+
+7.x-1.0-alpha37, 2019-04-17
+-----------------------------
+
+7.x-1.0-alpha36, 2019-03-20
+-----------------------------
+
+7.x-1.0-alpha35, 2019-03-15
+-----------------------------
+- UADIGITAL-1939 use an update hook to set the better_formats_per_field_core variable in order for
+
+7.x-1.0-alpha34, 2019-03-13
+-----------------------------
+- UADIGITAL-1886 add better formats module and relax text format settings.
+- UADIGITAL-1894 Make News Image Crops Editable
+- UADIGITAL-1910 Some coding standards cleanup for UADIGITAL-1886
+
+7.x-1.0-alpha33, 2019-02-20
+-----------------------------
+- UADIGITAL-1914: Bump the link contrib module version because of a security issue.
+
+7.x-1.0-alpha32, 2019-02-11
+-----------------------------
+
+7.x-1.0-alpha30, 2019-02-01
+-----------------------------
+
+7.x-1.0-alpha29, 2019-01-28
+-----------------------------
+
+7.x-1.0-alpha28, 2019-01-17
+-----------------------------
+
+7.x-1.0-alpha27, 2019-01-16
+-----------------------------
+
+7.x-1.0-alpha26, 2019-01-11
+-----------------------------
+- UADIGITAL-1484: Addressed remaining PHP 7.2 compatibility issues.
+- UADIGITAL-1763 UAQS Full HTML area updates
+- UADIGITAL-1810: Added/enabled media_bulk_upload module.
+- UADIGITAL-1818 UAQS Standard text format updates.
+
+7.x-1.0-alpha25, 2018-11-15
+-----------------------------
+- UADIGITAL-1590 Add warning if max_input_vars set too low for lots of embedded entities.
+- UADIGITAL-1537 added permissions for anonymous users to download files
+- UADIGITAL-1622 Added horizontal rule button to HTML area CKEditor
+- UADIGITAL-1774 Added alignment options to UAQS Content Chunks HTML Field.
+
+7.x-1.0-alpha24, 2018-11-02
+-----------------------------
+
+7.x-1.0-alpha23, 2018-10-17
+-----------------------------
+
+7.x-1.0-alpha22, 2018-10-11
+-----------------------------
+
+7.x-1.0-alpha21, 2018-10-10
+-----------------------------
+
+7.x-1.0-alpha20, 2018-09-21
+-----------------------------
+
+7.x-1.0-alpha19, 2018-08-29
+-----------------------------
+- UADIGITAL-1706 turn off lazy load aspect ratio keeper for bg images.
+- UADIGITAL-1686 update two image styles to prevent blurriness
+- UADIGITAL-1695: Added thumbnail fallback for YouTube videos without a max-res poster image.
+- UADIGITAL-1678 Check if there is already a poster image for youtube videos before uploading a new one.
+- Preparing to tag 7.x-1.0-alpha17 for uaqs_fields.
+- Preparing to tag 7.x-1.0-alpha16 for uaqs_fields.
+- UADIGITAL-1664 Backport allow upscaling of images using the uaqs_small image style from arizonaedu.
+- UADIGITAL-1504 Enable uaqs_event and uaqs_news to use the date_ap_style module.
+- Preparing to tag 7.x-1.0-alpha15 for uaqs_fields.
+- UADIGITAL-1540 Add full width media row paragraph type.
+- Preparing to tag 7.x-1.0-alpha14 for uaqs_fields.
+- Preparing to tag 7.x-1.0-alpha13 for uaqs_fields.
+- UADIGITAL-1602: Fixed PHP notices generated when embedding non-YouTube videos with Entity Embed & Media.
+- Preparing to tag 7.x-1.0-alpha12 for uaqs_fields.
+- UADIGITAL-1509 remove unnecessary meta on background image placeholders so screen readers can skip the filename and links wrap entire marquee.
+- Preparing to tag 7.x-1.0-alpha11 for uaqs_fields.
+- UADIGITAL-1347-headings-text-area allow h1-h6 in text area ckeditor
+- UADIGITAL-1458 Tokens are not converted properly when used in the Summary field: Short title
+- Preparing to tag 7.x-1.0-alpha10 for uaqs_fields.
+- UADIGITAL-1409 adding bt_table plugin to be used in editor_ckeditor.
+- UADIGITAL-1315 add additional entity embed settings and image buttons.
+- UADIGITAL-1261 full width video marquee
+- UADIGITAL-1284 Paragraph view item for alphabetical list w/ nav & local search
+- UADIGITAL-1282 Change the default Entity Embed type from Link to Small
+- UADIGITAL-1205 Full width background image view modes for marquee paragraphs item.
+- UADIGITAL-1258 ckeditor remove old colors & add new options (w/ db update)
+- Preparing to tag 7.x-1.0-alpha9 for uaqs_fields.
+- Preparing to tag 7.x-1.0-alpha8 for uaqs_fields.
+- UADIGITAL-809 autogrow expands on ckeditor startup
+- UADIGITAL-1155 adding btgrid plugin to be used in editor_ckeditor.
+- UADIGITAL-1102: Improve Media to include video, etc
+- Preparing to tag 7.x-1.0-alpha7 for uaqs_fields.
+- UADIGITAL-1097
+- UADIGITAL-988 Add media module, large, and preview view modes, move file_entity and other media related settings into uaqs_fields_media.
+- UADIGITAL-1117 remove all .gitignore files except the main one
+- UADIGITAL-758 and UADIGITAL-1099
+- UADIGITAL-1096 check if the alignment array exists before setting the variable.
+- UADIGITAL-1090 added an image style and applied to marquee & carousel to prevent downsized images
+- UADIGITAL-1062 & UADIGITAL-1063: Adding entity_embed, file entity, file entity inline, and manual_crop.
+- UADIGITAL-987: Add new image style for card decks so that they appear uniformly in height.
+- Remove the obsolete Bitbucket Piplines configurations from the subtrees.
+- UADIGITAL-1057 adding <p> style options for background wrapper... and beyond
+- UADIGITAL-1000 moving medium square image style to fields (from person)
+- UADIGITAL-1018 Added UA Bootstrap table classes: table-dark, table-striped, table-hover to UAQS unconstrained markup and UAQS Full HTML and removed it from UAQS Standard because table tag is not allowed
+- UADIGITAL-982 Created submodule containing fields dependent on link
+- UADIGITAL-1015 Move date formatters into uaqs_fields_date [skip-ci]
+- UADIGITAL-980: Removed telephone fields from uaqs_fields, made new feature with fields called uaqs_fields_telephone, and made the new feature a dependency of uaqs_fields_field_collection.
+- UADIGITAL-911 Adding autogrow library to the readme
+- UADIGITAL-986 Moved field base that depends on field collection module to submodule for field collection fields
+- UADIGITAL-978 Moved field base that depend on email module to submodule for email fields
+- UADIGITAL-977 Created a new module UAQS fields - date
+- Add an image style forcing a moderate fixed width.
+- Move the spotlight image style definition from uaqs_news.
+- Back to dev. [skip ci]
+- Preparing to tag 7.x-1.0-alpha6. [skip ci]
+- Merged in UADIGITAL-897 (pull request #27)
+- Merged in trackleft/uaqs_fields/UADIGITAL-902 (pull request #30)
+- hyphen to underscore
+- Merged in trackleft/uaqs_fields/UADIGITAL-902-add-ckeditor-autogrow-plug (pull request #28)
+- UADIGITAL-902 adding joe's yml file for pipelines
+- enable autogrow for all ckeditors.
+- UADIGITAL-897: Fixing PHP notice generated for fields not managed by uaqs_fields.
+- Update to the current version of the Dialog contrib module, an Editor depnedency.
+- Restore an image style for use with the uaqs_photo and uaqs_photos fields.
+- Correct the missing 'field_' prefix in the database update.
+- Introduce the uaqs_standard format, make it the default on uaqs_summary fields.
+- UADIGITAL-820 adding some more display modes to accomodate design.
+- UADIGITAL-803: Check if taxonomy or bean modules exist before adding view modes to their entity types.
+- Merged in awochna/uaqs_fields/UADIGITAL-737 (pull request #21)
+- Remove uaqs_core as dependency. Closes UADIGITAL-737
+- Avoid hard-coding a specific tag in the fallback CDN link for the CSS.
+- Correct a spurious ')', make the fallback CDN reference use https: and the beta1 release.
+- Default to the CDN location for CSS, avoid prefixing CSS URLs.
+- Routine non-security updates to contrib module dependencies.
+- Merged in trackleft/uaqs_fields/UADIGITAL-726-add-full-html-paragraphs-i (pull request #17)
+- adding field_uaqs_html
+- UADIGITAL-716: Fixing problems with update function.
+- UADIGITAL-716: Adding hook_update_N() to update text formats for existing content.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha5.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha4.
+- UADIGITAL-688 updated field style settings for sytle drop down in ckeditor
+- with martin's update to permissions
+- Creating permissions for text format display
+- UADIGITAL-697 making text format selection hidden instead of access denied.
+- Steal all the best changes from UADIGITAL-656 (WYSIWG editor settings), include UADIGITAL-660 suggestions.
+- Use the actual format definitions for further details.
+- Remove the theme-prefixed field formatting override functions.
+- Move the permissions on the text formats to Defaultconfig.
+- Add new text formats, plagiarize code from the better_formats module setting a default format.
+- Merged in UADIGITAL-620 (pull request #9)
+- UADIGITAL-517: Adding telephone module.
+- UADIGITAL-620: Adding bootstrap card view mode for taxonomy terms.
+- adding sidebar media list view mode
+- UADIGITAL-604: Adding fences module.
+- UADIGITAL-590: Removing field_uaqs_more_info.
+- adding links with unlimited cardinality.
+- Merged in trackleft/uaqs_fields/UADIGITAL-535 (pull request #2)
+- UADIGITAL-535
+- Change machine name for bean card overlay view mode to uaqs_card_overlay.
+- block overlay display mode
+- Add the initial README.md with a short description (without a list of field bases).
+- Remove the node title default config, add a bean label default config.
+- Add a UA Bootstrap Card (uaqs_card) view mode.
+- Add a UA Bootstrap Media List view mode.
+- Add the expiration_date field base.
+- Remove most of the previously created defaultconfig information (for field collections).
+- Allow multi-valued photo fields.
+- Hide titles for cases where it can act as a field, in beans, nodes and taxonomy terms.
+- Move in several of the field bases that Person uses.
+- Replace the subtitle and summary fields by summary and summary_short.
+- Add the link field base (for Featured Content and elsewhere).
+- Remove the dependency on Unit, add a year field base.
+- Remove the description field (for Event).
+- Add the contact and leadership_info field bases.
+- Add the contact_phone field base.
+- Add defaultconfig information (mainly for field collections).
+- Add the initial module files and field bases.
+- add gitignore
+7.x-1.0-alpha17, 2018-07-30
+-----------------------------
+
+7.x-1.0-alpha16, 2018-07-20
+-----------------------------
+- UADIGITAL-1664 Backport allow upscaling of images using the uaqs_small image style from arizonaedu.
+- UADIGITAL-1504 Enable uaqs_event and uaqs_news to use the date_ap_style module.
+
+7.x-1.0-alpha15, 2018-06-19
+-----------------------------
+- UADIGITAL-1540 Add full width media row paragraph type.
+
+7.x-1.0-alpha14, 2018-05-18
+-----------------------------
+
+7.x-1.0-alpha13, 2018-04-25
+-----------------------------
+- UADIGITAL-1602: Fixed PHP notices generated when embedding non-YouTube videos with Entity Embed & Media.
+
+7.x-1.0-alpha12, 2018-04-20
+-----------------------------
+- UADIGITAL-1509 remove unnecessary meta on background image placeholders so screen readers can skip the filename and links wrap entire marquee.
+
+7.x-1.0-alpha11, 2018-03-30
+-----------------------------
+- UADIGITAL-1347-headings-text-area allow h1-h6 in text area ckeditor
+- UADIGITAL-1458 Tokens are not converted properly when used in the Summary field: Short title
+
+7.x-1.0-alpha10, 2018-03-09
+-----------------------------
+- UADIGITAL-1409 adding bt_table plugin to be used in editor_ckeditor.
+- UADIGITAL-1315 add additional entity embed settings and image buttons.
+- UADIGITAL-1261 full width video marquee
+- UADIGITAL-1284 Paragraph view item for alphabetical list w/ nav & local search
+- UADIGITAL-1282 Change the default Entity Embed type from Link to Small
+- UADIGITAL-1205 Full width background image view modes for marquee paragraphs item.
+- UADIGITAL-1258 ckeditor remove old colors & add new options (w/ db update)
+
+7.x-1.0-alpha9, 2017-09-15
+-----------------------------
+
+7.x-1.0-alpha8, 2017-09-15
+-----------------------------
+- UADIGITAL-809 autogrow expands on ckeditor startup
+- UADIGITAL-1155 adding btgrid plugin to be used in editor_ckeditor.
+- UADIGITAL-1102: Improve Media to include video, etc
+
+7.x-1.0-alpha7, 2017-08-17
+-----------------------------
+- UADIGITAL-1097
+- UADIGITAL-988 Add media module, large, and preview view modes, move file_entity and other media related settings into uaqs_fields_media.
+- UADIGITAL-1117 remove all .gitignore files except the main one
+- UADIGITAL-758 and UADIGITAL-1099
+- UADIGITAL-1096 check if the alignment array exists before setting the variable.
+- UADIGITAL-1090 added an image style and applied to marquee & carousel to prevent downsized images
+- UADIGITAL-1062 & UADIGITAL-1063: Adding entity_embed, file entity, file entity inline, and manual_crop.
+- UADIGITAL-987: Add new image style for card decks so that they appear uniformly in height.
+- Remove the obsolete Bitbucket Piplines configurations from the subtrees.
+- UADIGITAL-1057 adding <p> style options for background wrapper... and beyond
+- UADIGITAL-1000 moving medium square image style to fields (from person)
+- UADIGITAL-1018 Added UA Bootstrap table classes: table-dark, table-striped, table-hover to UAQS unconstrained markup and UAQS Full HTML and removed it from UAQS Standard because table tag is not allowed
+- UADIGITAL-982 Created submodule containing fields dependent on link
+- UADIGITAL-1015 Move date formatters into uaqs_fields_date [skip-ci]
+- UADIGITAL-980: Removed telephone fields from uaqs_fields, made new feature with fields called uaqs_fields_telephone, and made the new feature a dependency of uaqs_fields_field_collection.
+- UADIGITAL-911 Adding autogrow library to the readme
+- UADIGITAL-986 Moved field base that depends on field collection module to submodule for field collection fields
+- UADIGITAL-978 Moved field base that depend on email module to submodule for email fields
+- UADIGITAL-977 Created a new module UAQS fields - date
+- Add an image style forcing a moderate fixed width.
+- Move the spotlight image style definition from uaqs_news.
+- Back to dev. [skip ci]
+
+7.x-1.0-alpha6, 2016-12-16
+------------------------------
+- Merged in UADIGITAL-897 (pull request #27).
+- Merged in trackleft/uaqs_fields/UADIGITAL-902 (pull request #30).
+- Hyphen to underscore.
+- Merged in trackleft/uaqs_fields/UADIGITAL-902-add-ckeditor-autogrow-plug (pull request #28).
+- Merged in trackleft/uaqs_fields/UADIGITAL-902 (pull request #29).
+- UADIGITAL-902 adding joe's yml file for pipelines.
+- Enable autogrow for all ckeditors.
+- Merged ua_drupal/uaqs_fields into 7.x-1.x.
+- UADIGITAL-897: Fixing PHP notice generated for fields not managed by uaqs_fields.
+- UADIGITAL-879: October 2016 Drupal updates.
+- Update to the current version of the Dialog contrib module, an Editor depnedency.
+- Merged in mmunro-ltrr/uaqs_fields/UADIGITAL-877 (pull request #25).
+- Restore an image style for use with the uaqs_photo and uaqs_photos fields.
+- UADIGITAL-864: Text formats should include more.
+- Correct the missing 'field_' prefix in the database update.
+- Introduce the uaqs_standard format, make it the default on uaqs_summary fields.
+- Merged in trackleft/uaqs_fields/UADIGITAL-820-improve-and-backport-top-n (pull request #23).
+- UADIGITAL-820 adding some more display modes to accomodate design.
+- Merged in UADIGITAL-803 (pull request #22).
+- UADIGITAL-803: Check if taxonomy or bean modules exist before adding view modes to their entity types.
+- Merged in awochna/uaqs_fields/UADIGITAL-737 (pull request #21).
+- Remove uaqs_core as dependency. Closes UADIGITAL-737.
+- Merged in mmunro-ltrr/uaqs_fields/UADIGITAL-750 (pull request #20).
+- Avoid hard-coding a specific tag in the fallback CDN link for the CSS.
+- Correct a spurious ')', make the fallback CDN reference use https: and the beta1 release.
+- Default to the CDN location for CSS, avoid prefixing CSS URLs.
+- Merged in mmunro-ltrr/uaqs_fields/UADIGITAL-747 (pull request #18).
+- Routine non-security updates to contrib module dependencies.
+- Merged in trackleft/uaqs_fields/UADIGITAL-726-add-full-html-paragraphs-i (pull request #17).
+- Merged in UADIGITAL-716 (pull request #16).
+- Adding field_uaqs_html.
+- UADIGITAL-716: Fixing problems with update function.
+- UADIGITAL-716: Adding hook_update_N() to update text formats for existing content.
+- Back to dev.
+
+7.x-1.0-alpha5, 2016-05-02
+------------------------------
+- Back to dev.
+
+7.x-1.0-alpha4, 2016-04-28
+------------------------------
+- Merged in barrettbaffert/uaqs_fields/UADIGITAL-688-removeedit-styles-in-wysiw (pull request #15).
+- UADIGITAL-688 updated field style settings for sytle drop down in ckeditor.
+- Merged in trackleft/uaqs_fields/UADIGITAL-697-ckeditor-only-shows-up-for (pull request #14).
+- With martin's update to permissions.
+- Creating permissions for text format display.
+- UADIGITAL-697 making text format selection hidden instead of access denied.
+- Merged ua_drupal/uaqs_fields into 7.x-1.x.
+- Merged in mmunro-ltrr/uaqs_fields/UADIGITAL-66 (pull request #13).
+- Steal all the best changes from UADIGITAL-656 (WYSIWG editor settings), include UADIGITAL-660 suggestions.
+- Merged in mmunro-ltrr/uaqs_fields/UADIGITAL-402-featureful (pull request #12).
+- Use the actual format definitions for further details.
+- Remove the theme-prefixed field formatting override functions.
+- Move the permissions on the text formats to Defaultconfig.
+- Add new text formats, plagiarize code from the better_formats module setting a default format.
+- Merged in UADIGITAL-620 (pull request #9).
+- UADIGITAL-517: Adding telephone module.
+- UADIGITAL-620: Adding bootstrap card view mode for taxonomy terms.
+- UAMS-216:  Adding sidebar media list view mode.
+- Adding sidebar media list view mode.
+- UADIGITAL-604: Adding fences module.
+- UADIGITAL-590: Removing field_uaqs_more_info.
+- Merged in trackleft/uaqs_fields/UAMS-63-quick-links-block (pull request #3).
+- Adding links with unlimited cardinality.
+- Merged in trackleft/uaqs_fields/UADIGITAL-535 (pull request #2).
+- UADIGITAL-535.
+- Merged in trackleft/uaqs_fields-tmp (pull request #1).
+- Change machine name for bean card overlay view mode to uaqs_card_overlay.
+- Block overlay display mode.
+- Add the initial README.md with a short description (without a list of field bases).
+- Remove the node title default config, add a bean label default config.
+- Add a UA Bootstrap Card (uaqs_card) view mode.
+- Add a UA Bootstrap Media List view mode.
+- Add the expiration_date field base.
+- Remove most of the previously created defaultconfig information (for field collections).
+- Allow multi-valued photo fields.
+- Hide titles for cases where it can act as a field, in beans, nodes and taxonomy terms.
+- Move in several of the field bases that Person uses.
+- Replace the subtitle and summary fields by summary and summary_short.
+- Add the link field base (for Featured Content and elsewhere).
+- Remove the dependency on Unit, add a year field base.
+- Remove the description field (for Event).
+- Add the contact and leadership_info field bases.
+- Add the contact_phone field base.
+- Add defaultconfig information (mainly for field collections).
+- Add the initial module files and field bases.

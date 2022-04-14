@@ -1,0 +1,211 @@
+<?php
+/**
+ * @file
+ * uaqs_demo.module
+ */
+
+/**
+ * Implements hook_migrate_api().
+ *
+ * @todo Investigate why setting the 'import_root' argument doesn't work at the
+ *   group level. Should work. https://www.drupal.org/node/1824884
+ */
+function uaqs_demo_migrate_api() {
+  $import_root = drupal_get_path('module', 'uaqs_demo') . '/import';
+
+  $api = array(
+    'api' => 2,
+    'groups' => array(
+      'uaqs_demo' => array(
+        'title' => t('UAQS Demo Content'),
+// This should work...
+//        'import_root' => $import_root,
+      ),
+    ),
+    'migrations' => array(
+      'UaqsDemoCarouselItem' => array(
+        'class_name' => 'UaqsDemoCarouselItemMigration',
+        'group_name' => 'uaqs_demo',
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoContactSummary' => array(
+        'class_name' => 'UaqsDemoContactSummaryMigration',
+        'group_name' => 'uaqs_demo',
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoCard' => array(
+        'class_name' => 'UaqsDemoCardMigration',
+        'group_name' => 'uaqs_demo',
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoBeanRelatedLinks' => array(
+        'class_name' => 'UaqsDemoBeanRelatedLinksMigration',
+        'group_name' => 'uaqs_demo',
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoCta' => array(
+        'class_name' => 'UaqsDemoCtaMigration',
+        'group_name' => 'uaqs_demo',
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoPersonTerm' => array(
+        'class_name' => 'UaqsDemoPersonTermMigration',
+        'group_name' => 'uaqs_demo',
+        'vocabulary' => 'uaqs_person_category',
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoPersonSecondaryTerm' => array(
+        'class_name' => 'UaqsDemoPersonTermMigration',
+        'group_name' => 'uaqs_demo',
+        'vocabulary' => 'uaqs_person_category_secondary',
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoPerson' => array(
+        'class_name' => 'UaqsDemoPersonMigration',
+        'group_name' => 'uaqs_demo',
+        'dependencies' => array('UaqsDemoPersonTerm', 'UaqsDemoPersonSecondaryTerm'),
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoEvent' => array(
+        'class_name' => 'UaqsDemoEventMigration',
+        'group_name' => 'uaqs_demo',
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoEventContact' => array(
+        'class_name' => 'UaqsDemoEventContactMigration',
+        'group_name' => 'uaqs_demo',
+        'dependencies' => array('UaqsDemoEvent'),
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoExtraInfo' => array(
+        'class_name' => 'UaqsDemoExtraInfoMigration',
+        'group_name' => 'uaqs_demo',
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoFileAttachment' => array(
+        'class_name' => 'UaqsDemoFileAttachmentMigration',
+        'group_name' => 'uaqs_demo',
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoColumnImage' => array(
+        'class_name' => 'UaqsDemoColumnImageMigration',
+        'group_name' => 'uaqs_demo',
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoHeadedText' => array(
+        'class_name' => 'UaqsDemoHeadedTextMigration',
+        'group_name' => 'uaqs_demo',
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoPlainText' => array(
+        'class_name' => 'UaqsDemoPlainTextMigration',
+        'group_name' => 'uaqs_demo',
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoMarquee' => array(
+        'class_name' => 'UaqsDemoMarqueeMigration',
+        'group_name' => 'uaqs_demo',
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoFullWidthMediaRow' => array(
+        'class_name' => 'UaqsDemoFullWidthMediaRowMigration',
+        'group_name' => 'uaqs_demo',
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoView' => array(
+        'class_name' => 'UaqsDemoViewMigration',
+        'group_name' => 'uaqs_demo',
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoParagraphCardDeck' => array(
+        'class_name' => 'UaqsDemoParagraphCardDeckMigration',
+        'group_name' => 'uaqs_demo',
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoParagraphPanelGroup' => array(
+        'class_name' => 'UaqsDemoParagraphPanelGroupMigration',
+        'group_name' => 'uaqs_demo',
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoParagraphCarousel' => array(
+        'class_name' => 'UaqsDemoParagraphCarouselMigration',
+        'group_name' => 'uaqs_demo',
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoNews' => array(
+        'class_name' => 'UaqsDemoNewsMigration',
+        'group_name' => 'uaqs_demo',
+        'dependencies' => array(
+            'UaqsDemoColumnImage',
+            'UaqsDemoExtraInfo',
+            'UaqsDemoFileAttachment',
+        ),
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoNewsContact' => array(
+        'class_name' => 'UaqsDemoNewsContactMigration',
+        'group_name' => 'uaqs_demo',
+        'dependencies' => array(
+            'UaqsDemoNews',
+        ),
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoFlexiblePage' => array(
+        'class_name' => 'UaqsDemoFlexiblePageMigration',
+        'group_name' => 'uaqs_demo',
+        'dependencies' => array(
+          'UaqsDemoColumnImage',
+          'UaqsDemoHeadedText',
+          'UaqsDemoParagraphCardDeck',
+          'UaqsDemoParagraphPanelGroup',
+          'UaqsDemoParagraphCarousel',
+          'UaqsDemoPlainText',
+          'UaqsDemoMarquee',
+          'UaqsDemoView',
+        ),
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoQuickLinks' => array(
+        'class_name' => 'UaqsDemoQuickLinksMigration',
+        'group_name' => 'uaqs_demo',
+        'dependencies' => array('UaqsDemoFlexiblePage'),
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoNavigation' => array(
+        'class_name' => 'UaqsDemoNavigationMigration',
+        'group_name' => 'uaqs_demo',
+        'dependencies' => array(
+          'UaqsDemoFlexiblePage',
+          'UaqsDemoPerson',
+          'UaqsDemoNews',
+        ),
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoCardDeck' => array(
+        'class_name' => 'UaqsDemoCardDeckMigration',
+        'group_name' => 'uaqs_demo',
+        'dependencies' => array(
+            'UaqsDemoFlexiblePage',
+        ),
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoPanelGroup' => array(
+        'class_name' => 'UaqsDemoPanelGroupMigration',
+        'group_name' => 'uaqs_demo',
+        'dependencies' => array(
+            'UaqsDemoFlexiblePage',
+        ),
+        'import_root' => $import_root,
+      ),
+      'UaqsDemoCarousel' => array(
+        'class_name' => 'UaqsDemoCarouselMigration',
+        'group_name' => 'uaqs_demo',
+        'dependencies' => array(
+            'UaqsDemoFlexiblePage',
+        ),
+        'import_root' => $import_root,
+      ),
+    ),
+  );
+  return $api;
+}

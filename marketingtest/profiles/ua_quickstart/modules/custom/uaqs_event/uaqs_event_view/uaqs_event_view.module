@@ -1,0 +1,94 @@
+<?php
+
+/**
+ * @file
+ * Code for the UAQS Event View feature.
+ */
+
+include_once 'uaqs_event_view.features.inc';
+
+/**
+ * Implements hook_views_default_views_alter().
+ *
+ * Enables content caching for the uaqs_events view when the views_content_cache
+ * module is available.
+ */
+function uaqs_event_view_views_default_views_alter(&$views) {
+  if (module_exists('views_content_cache')) {
+    if (isset($views['uaqs_events'])) {
+      $node_type_keys = array();
+      foreach (node_type_get_names() as $type => $name) {
+        if ($type == 'uaqs_event') {
+          $node_type_keys[$type] = $type;
+        }
+        else {
+          $node_type_keys[$type] = 0;
+        }
+      }
+
+      $views['uaqs_events']->display['default']->display_options['cache']['type'] = 'views_content_cache';
+      $views['uaqs_events']->display['default']->display_options['cache']['results_min_lifespan'] = '-1';
+      $views['uaqs_events']->display['default']->display_options['cache']['results_max_lifespan'] = '21600';
+      $views['uaqs_events']->display['default']->display_options['cache']['output_min_lifespan'] = '-1';
+      $views['uaqs_events']->display['default']->display_options['cache']['output_max_lifespan'] = '21600';
+      $views['uaqs_events']->display['default']->display_options['cache']['keys'] = array(
+        'node' => $node_type_keys,
+        'node_only' => array(
+          'node_changed' => 'node_changed',
+        ),
+      );
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ *
+ * Hide the event view category search if there are no options.
+ */
+function uaqs_event_view_form_views_exposed_form_alter(&$form, &$form_state, $form_id) {
+
+  $view = $form_state['view'];
+  if ($view->name == 'uaqs_events' && $view->current_display == 'page') {
+
+    // Check to see if the event category filter seems to exist in this display.
+    if (isset($form['field_uaqs_event_category_tid'])) {
+      if (isset($form['field_uaqs_event_category_tid']['#options']) &&
+        is_array($form['field_uaqs_event_category_tid']['#options'])) {
+
+        // We will only show the category filter in some cases.
+        $keep_filter = TRUE;
+
+        // Get the arguments statically, as this hook is called multiple times.
+        // At some points in the request, the arguments disappear.
+        $view_args = &drupal_static(__FUNCTION__);
+        if (!isset($view_args)) {
+          $view_args = $view->args;
+        }
+
+        // Check if our event category filter doesn't contain multiple terms.
+        // The implication is this site probably doesn't use this vocabulary.
+        if (count($form['field_uaqs_event_category_tid']['#options']) <= 1) {
+          $keep_filter = FALSE;
+        }
+
+        // Check if we seem to have contextual filter arguments.
+        if (isset($view_args) && is_array($view_args) && !empty($view_args)) {
+          $keep_filter = FALSE;
+        }
+
+        // Hide the category filter if either of the above were the case.
+        // Our goal is to hide the filter if it conflicts or has no terms.
+        if (!$keep_filter) {
+          $form['field_uaqs_event_category_tid']['#access'] = FALSE;
+
+          // Hide the category filter label if there is one.
+          // Views exposed filters don't use FAPI #title for their labels.
+          if (isset($form['#info']['filter-field_uaqs_event_category_tid']['label'])) {
+            $form['#info']['filter-field_uaqs_event_category_tid']['label'] = "";
+          }
+        }
+      }
+    }
+  }
+}

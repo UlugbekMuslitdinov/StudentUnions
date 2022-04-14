@@ -1,0 +1,12 @@
+name = UAQS News - Views - Nav Tabs
+description = Display news in bootstrap nav tabs
+core = 7.x
+package = The University of Arizona
+dependencies[] = ctools
+dependencies[] = uaqs_news
+dependencies[] = views
+dependencies[] = views_bootstrap
+dependencies[] = views_field_view
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = uaqs_news_nav_tabs

@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the uaqs_cas module.
+ */
+
+/**
+ * UADIGITAL-1348: Revert exported CAS variables to ensure the CAS SSL
+ * certificate bundle setting is updated.
+ */
+function ua_cas_update_7101() {
+  features_revert(array('ua_cas' => array('variable')));
+  return t('Reverted UA CAS feature variables.');
+}
+
+/**
+ * UADIGITAL-2242: Revert exported CAS variables to ensure the (updated) CAS
+ * SSL certificate bundle is being used.
+ */
+function ua_cas_update_7102() {
+  features_revert(array('ua_cas' => array('variable')));
+  return t('Reverted UA CAS feature variables.');
+}

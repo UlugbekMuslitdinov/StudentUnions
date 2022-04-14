@@ -1,0 +1,14 @@
+name = "Schema.org: Article"
+description = "Adds Schema.org/Article to the JSON LD array. Creates Article, BlogPosting, SocialMediaPosting, Report, ScholarlyArticle, TechArticle or APIReference."
+package = SEO
+core = 7.x
+dependencies[] = schema_metatag
+
+files[] = src/SchemaArticleType.php
+files[] = tests/SchemaMetatagArticleTest.test
+
+; Information added by Drupal.org packaging script on 2020-07-22
+version = "7.x-1.4"
+core = "7.x"
+project = "schema_metatag"
+datestamp = "1595439769"

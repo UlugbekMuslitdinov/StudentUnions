@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * Tests that each of the Metatag schema_service tags work correctly.
+ */
+class SchemaMetatagServiceTest extends SchemaMetatagTagsTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Schema Metatag: Service',
+      'description' => 'Test the schema_service meta tags.',
+      'group' => 'Schema Metatag',
+      'dependencies' => [
+        'ctools',
+        'token',
+        'metatag',
+        'schema_metatag',
+        'schema_service',
+      ],
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp(array $modules = array()) {
+    $modules[] = 'schema_service';
+    parent::setUp($modules);
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public $moduleName = 'schema_service';
+
+  /**
+   * {@inheritdoc}
+   */
+  public $schemaTags = [
+    'schema_service.@type' => 'SchemaServiceType',
+    'schema_service.name' => 'SchemaNameBase',
+    'schema_service.description' => 'SchemaNameBase',
+    'schema_service.image' => 'SchemaImageBase',
+    'schema_service.offers' => 'SchemaOfferBase',
+    'schema_service.aggregateRating' => 'SchemaRatingBase',
+    'schema_service.review' => 'SchemaReviewBase',
+  ];
+
+}

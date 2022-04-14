@@ -1,0 +1,71 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Block Types - Search feature.
+ */
+
+include_once 'uaqs_block_types_search.features.inc';
+
+/**
+ * Implements hook_bean_types_api_info().
+ */
+function uaqs_block_types_search_bean_types_api_info() {
+  return array('api' => 4);
+}
+
+/**
+  * Implements hook_preprocess_block().
+  *
+  * Override or insert variables into the block templates.
+  *
+  * @param array $variables
+  *   An array of variables to pass to the theme template.
+  */
+function uaqs_block_types_search_preprocess_block(&$variables) {
+  if ($variables['block_html_id'] == 'block-bean-search-bean-block') {
+    $variables['attributes_array']['role'] = 'search';
+  }
+}
+
+/**
+ * Implements hook_bean_types().
+ */
+function uaqs_block_types_search_bean_types() {
+  $plugins = array();
+  $plugin_path = drupal_get_path('module', 'uaqs_block_types_search') . '/plugins';
+  $plugins['uaqs_search'] = array(
+    'label' => t('Search'),
+    'description' => t('Add search block with custom wrappers and classes.'),
+    'handler' => array(
+      'class' => 'UaqsSearchBean',
+      'parent' => 'bean',
+    ),
+    'path' => $plugin_path,
+    'file' => 'UaqsSearchBean.class.php',
+  );
+  return $plugins;
+}
+
+/**
+ * Implements hook_migrate_api().
+ */
+function uaqs_block_types_search_migrate_api() {
+  $import_root = drupal_get_path('module', 'uaqs_block_types_search') . '/import';
+
+  $api = array(
+    'api' => 2,
+    'groups' => array(
+      'uaqs_block_types' => array(
+        'title' => t('UAQS Block Types'),
+      ),
+    ),
+    'migrations' => array(
+      'UaqsBlockTypesSearchBean' => array(
+        'class_name' => 'UaqsBlockTypesSearchBeanMigration',
+        'group_name' => 'uaqs_block_types',
+        'import_root' => $import_root,
+      ),
+    ),
+  );
+  return $api;
+}

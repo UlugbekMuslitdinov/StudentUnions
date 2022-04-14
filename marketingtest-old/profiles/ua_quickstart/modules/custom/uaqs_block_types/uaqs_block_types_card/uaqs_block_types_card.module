@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Card feature.
+ */
+
+include_once 'uaqs_block_types_card.features.inc';

@@ -1,0 +1,15 @@
+<?php
+/**
+ * @file
+ * uaqs_webform.install
+ */
+
+/**
+ * UADIGITAL-1752: Disable single-page progress bar option ('Include
+ * confirmation page in progress bar') for new and existing webforms.
+ */
+function uaqs_webform_update_7100() {
+  // Update now included in webform_update_7431().
+  // See https://www.drupal.org/node/2992404.
+  // See https://jira.arizona.edu/browse/UADIGITAL-1856.
+}

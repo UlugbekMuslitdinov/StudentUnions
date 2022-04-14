@@ -1,0 +1,136 @@
+#main_nav {
+  ul.sf-horizontal {
+    li {
+      a.active {
+        background-color: #eef1f1;
+      }
+      ul li a.active {
+        color: #0c234b;
+        background-color: #fff;
+      }
+    }
+    /* Hover dropdown menus */
+    li ul {
+      padding: 20px 0 5px;
+      background-color: rgba(12,35,75,.95);
+      box-shadow: 0 6px 12px rgba(0,0,0,.175);
+      background-clip: border-box;
+
+      // Links within the dropdown menu
+      li > a {
+        display: block;
+        padding: 3px 20px;
+        line-height: 1.5;
+        color: white;
+        font-weight: 700;
+        letter-spacing: .03rem;
+        &:hover, &:focus {
+          text-decoration: none;
+          color: #076873;
+          background-color: #DBE8EA;
+        }
+      }
+
+      @media (min-width: 768px) {
+        &:before {
+          position: absolute;
+          top: 0;
+          left: 8.9%;
+          width: 0;
+          height: 0;
+          border-top: 8px solid #fff;
+          border-right: 8px solid transparent;
+          border-left: 8px solid transparent;
+          content: '';
+        }
+      }
+    }
+    li:hover > ul,
+    li.sfHover > ul {
+      top: 100%;
+    }
+  }
+
+  ul.sf-menu {
+    & > li {
+      text-transform: uppercase;
+      ul li {
+        text-transform: none;
+      }
+    }
+
+    /* Simulating dropdown indicator used in UA Bootstrap navbar dropdowns */
+    li.menuparent > a.menuparent:after {
+      display: inline-block;
+      width: 0;
+      height: 0;
+      margin-left: 0.5em;
+      border-top: 4px dashed;
+      border-top: 4px solid\9;
+      border-right: 4px solid transparent;
+      border-left: 4px solid transparent;
+      vertical-align: middle;
+      content: '';
+    }
+  }
+
+  /* Mobile menu */
+  .sf-accordion-toggle a {
+    display: block;
+    padding: 13px;
+    padding: 0.8125rem;
+    color: #fff;
+    background: #0c234b;
+    text-transform: uppercase;
+    font-size: 16px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: center;
+    &:hover, &:focus {
+      text-decoration: none;
+    }
+  }
+  ul.menu.sf-accordion {
+    background: #0c234b;
+    padding: 10px 0;
+    padding: 0.625rem 0;
+    border-top: 1px solid #fff;
+    li {
+      padding: 0;
+      a {
+        text-align: center;
+        color: #fff;
+        font-size: 16px;
+        font-size: 1rem;
+        padding: 13px 0;
+        padding: 0.8125rem 0;
+        &:focus, &:hover {
+          background: #395180;
+          text-decoration: none;
+        }
+        &.active {
+          background-color: inherit;
+        }
+      }
+      ul {
+        background-image: none;
+        padding: 0;
+        background: #000136;
+        li {
+          a {
+            font-weight: 500;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 47.9em) {
+    margin-bottom: 0.625rem;
+  }
+}
+
+/* Removing mobile duplicate menu link only if it is a no-link (https://www.drupal.org/node/2032759) */
+a.nolink + ul .sf-clone-parent {
+  display: none;
+}

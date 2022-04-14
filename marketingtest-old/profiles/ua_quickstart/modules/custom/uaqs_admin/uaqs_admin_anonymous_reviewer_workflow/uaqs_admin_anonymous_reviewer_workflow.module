@@ -1,0 +1,108 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Admin anonymous reviewer workflow feature.
+ */
+include_once 'uaqs_admin_anonymous_reviewer_workflow.features.inc';
+
+/**
+ * Implements hook_module_implements_alter()
+ */
+function uaqs_admin_anonymous_reviewer_workflow_module_implements_alter(&$implementations, $hook) {
+  if ($hook == 'menu_alter') {
+
+    // Move uaqs_admin_anonymous_reviewer_workflow_menu_alter() to the end of the list. module_implements()
+    // iterates through $implementations with a foreach loop which PHP iterates
+    // in the order that the items were added, so to move an item to the end of
+    // the array, we remove it and then add it.
+    $group = $implementations['uaqs_admin_anonymous_reviewer_workflow'];
+    unset($implementations['uaqs_admin_anonymous_reviewer_workflow']);
+    $implementations['uaqs_admin_anonymous_reviewer_workflow'] = $group;
+  }
+}
+
+/**
+ * Implements hook_menu_alter()
+ */
+function uaqs_admin_anonymous_reviewer_workflow_menu_alter(&$items) {
+  // Override the node edit menu item title.
+  $items['node/%node/edit']['title callback'] = 'uaqs_admin_anonymous_reviewer_workflow_edit_tab_title';
+}
+
+/**
+ * Change the name of the node edit tab, conditionally.
+ *
+ * - Don't change the title if the content is not under moderation.
+ *
+ * - If a piece of content has a published revision and the published revision
+ *   is also the current moderation revision, the "Edit" tab should be titled
+ *   "Edit".
+ *
+ * - If a piece of content has a published revision and the current moderation
+ *   revision is a newer, or if the content has no published revision, the
+ *   "Edit" tab should be titled "Edit draft".
+ *
+ * @param $node
+ *   The node being acted upon.
+ *
+ * @return
+ *   The title for the tab.
+ */
+function uaqs_admin_anonymous_reviewer_workflow_edit_tab_title($node) {
+  if (module_exists('workbench_moderation')) {
+    // Use the normal tab title if the node is not under moderation.
+    if (!workbench_moderation_node_moderated($node)) {
+      return t('Edit');
+    }
+
+    // Is the latest draft published?
+    $state = $node->workbench_moderation;
+    if (!empty($state['published']) && $state['published']->vid == $state['current']->vid) {
+      return t('Edit');
+    }
+
+    // The latest draft is not published.
+    return t('Edit draft');
+  }
+}
+
+/**
+ * Implements hook_paragraphs_item_access()
+ */
+function uaqs_admin_anonymous_reviewer_workflow_paragraphs_item_access($entity, $op, $account) {
+  if (module_exists('access_unpublished')) {
+    return 'allow';
+  }
+}
+
+/**
+ * Check if flexible pages can use the anonymous workflow.
+ */
+function uaqs_admin_anonymous_reviewer_workflow_options_set_correctly() {
+  $installed = FALSE;
+  // Add workbench options to node options for flexible pages.
+  $node_options_uaqs_flexible_page = variable_get('node_options_uaqs_flexible_page', array());
+
+  if (in_array('status', $node_options_uaqs_flexible_page) === FALSE) {
+    if (in_array('moderation', $node_options_uaqs_flexible_page) === TRUE) {
+      $installed = TRUE;
+    }
+  }
+
+  return $installed;
+}
+
+/**
+ * Implements hook_node_view().
+ */
+function uaqs_admin_anonymous_reviewer_workflow_node_view($node, $view_mode, $langcode) {
+  if (module_exists('workbench_moderation')) {
+    if (!workbench_moderation_node_moderated($node)) {
+      return;
+    }
+    $state = $node->workbench_moderation['my_revision']->state;
+    if ($state == 'draft') {
+      drupal_add_http_header('X-Robots-Tag', 'noindex, nofollow', TRUE);
+    }
+  }
+}

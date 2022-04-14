@@ -1,0 +1,70 @@
+[
+  {
+    "id": 1,
+    "label": "Quick Links",
+    "title": "Quick Links",
+    "uaqs_links": [
+    {
+      "url": "https://www.arizona.edu/about/contact-us",
+      "title": "Contact Us",
+      "attributes":
+      {
+        "class": "list-group-item"
+      }
+    },
+    {
+      "url": "https://www.arizona.edu",
+      "title": "Arizona Home Page",
+      "attributes":
+      {
+        "class": "list-group-item btn-arrow"
+      }
+    },
+    {
+      "url": "https://uanews.arizona.edu",
+      "title": "UANews",
+      "attributes":
+      {
+        "class": "list-group-item"
+      }
+    },
+    {
+      "url": "people/flexible-page-grid-directory",
+      "title": "Leadership Team",
+      "attributes":
+      {
+        "class": "list-group-item"
+      }
+    }],
+    "region": "content_2_col_1",
+    "visibility": 1,
+    "pages": "pages/uaqs-block-types",
+    "weight": 2
+  },
+  {
+    "id": 2,
+    "label": "Related",
+    "title": "Related",
+    "uaqs_links": [
+    {
+      "url": "https://www.arizona.edu/about/contact-us",
+      "title": "Contact Us",
+      "attributes":
+      {
+        "class": "list-group-item"
+      }
+    },
+    {
+      "url": "people/flexible-page-grid-directory",
+      "title": "Leadership Team",
+      "attributes":
+      {
+        "class": "list-group-item"
+      }
+    }],
+    "region": "sidebar_second",
+    "visibility": 1,
+    "pages": "person/*",
+    "weight": 1
+  }
+]

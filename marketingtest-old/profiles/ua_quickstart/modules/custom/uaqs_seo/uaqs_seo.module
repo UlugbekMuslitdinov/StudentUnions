@@ -1,0 +1,80 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS SEO feature.
+ */
+
+/**
+ * Implements hook_node_presave().
+ *
+ * Excludes nodes that have been designated as external via field_uaqs_link
+ * from the site map.
+ */
+function uaqs_seo_node_presave($node) {
+  if (variable_get('uaqs_seo_exclude_external_content', TRUE)) {
+    // UAQS packaged content types that use field_uaqs_link.
+    $node_types = array(
+      'uaqs_event',
+      'uaqs_news',
+      'uaqs_flexible_page',
+      'uaqs_carousel_item',
+      'uaqs_person',
+      'uaqs_major',
+    );
+
+    // We are checking if the content being saved is of a specific type in the $node_types array.
+    if (in_array($node->type, $node_types)) {
+      // The root url of the site is the $base_url, removing any protocol like http/https.
+      $base_url = parse_url($GLOBALS['base_url'], PHP_URL_HOST);
+      // Counter to check if link is external.
+      $link_is_external = FALSE;
+      // Default setting in metatags to index the page. Since we do not index pages that are external, but if this changes from external to internal, we need to switch the setting back to default.
+      $node->metatags[LANGUAGE_NONE]['robots']['value']['noindex'] = 0;
+      // Checks if field_uaqs_link index appears in $node object in case it is deleted from the content type and the url index appears in the field_uaqs_link.
+      if (isset($node->field_uaqs_link) && isset($node->field_uaqs_link[LANGUAGE_NONE][0]['url'])) {
+        // Grab the value of the field_uaqs_link.
+        $field_uaqs_link = $node->field_uaqs_link[LANGUAGE_NONE][0]['url'];
+        // Check if field_uaqs_link is set and not empty.
+        if (isset($field_uaqs_link) && !empty($field_uaqs_link)) {
+          // If the field value is not the default token check the next condition.
+          if ($field_uaqs_link !== '[node:url]') {
+            // Fetches the host value from field_uaqs_link.
+            // If field = google.com              returns false.
+            // If field = www.google.com          returns false.
+            // If field = http://google.com       returns google.com.
+            // If field = https://google.com      returns google.com.
+            // If field = http://www.google.com   returns www.google.com.
+            // If field = https://www.google.com  returns www.google.com.
+            $field_host_value = parse_url($field_uaqs_link, PHP_URL_HOST);
+            // If $field_host_value is false.
+            if ($field_host_value === FALSE) {
+              // Grab the path.
+              $pathname = parse_url($field_uaqs_link, PHP_URL_PATH);
+              // Validate the path, if it is not valid, set to exclude.
+              if (drupal_valid_path($pathname) === FALSE) {
+                $link_is_external = TRUE;
+              }
+            }
+            // If the $field_host_value is not false and if the $field_host_value does not match the base url hostname exactly, exclude from sitemap.
+            elseif ($field_host_value !== $base_url) {
+              $link_is_external = TRUE;
+            }
+            // If $link_is_external is true, set variables to exclude page from sitemap and show the user a message to warn them that the page is excluded from the sitemap.
+            if ($link_is_external) {
+              // Setting for including or excluding this page in the sitemap.
+              $node->xmlsitemap['status'] = 0;
+              // Setting if the current status is the default status for this page.
+              $node->xmlsitemap['status_default'] = 1;
+              // Setting if the default status was changed to included or excluded.
+              $node->xmlsitemap['status_override'] = 1;
+              // Setting in metatags to not index the page since it is external.
+              $node->metatags[LANGUAGE_NONE]['robots']['value']['noindex'] = 'noindex';
+
+              drupal_set_message(t('This page @var has been excluded from your sitemap because it is linking to external content or an invalid path in the summary link field.', array('@var' => $node->title)), 'status');
+            }
+          }
+        }
+      }
+    }
+  }
+}

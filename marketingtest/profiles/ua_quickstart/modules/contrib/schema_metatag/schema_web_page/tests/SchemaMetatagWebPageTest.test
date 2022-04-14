@@ -1,0 +1,59 @@
+<?php
+
+/**
+ * Tests that each of the Metatag schema_web_page tags work correctly.
+ */
+class SchemaMetatagWebPageTest extends SchemaMetatagTagsTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Schema Metatag: WebPage',
+      'description' => 'Test the schema_web_page meta tags.',
+      'group' => 'Schema Metatag',
+      'dependencies' => [
+        'ctools',
+        'token',
+        'metatag',
+        'schema_metatag',
+        'schema_web_page',
+      ],
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp(array $modules = array()) {
+    $modules[] = 'schema_web_page';
+    parent::setUp($modules);
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public $moduleName = 'schema_web_page';
+
+  /**
+   * {@inheritdoc}
+   */
+  public $schemaTags = [
+    'schema_web_page.@type' => 'SchemaWebPageType',
+    'schema_web_page.@id' => 'SchemaNameBase',
+    'schema_web_page.name' => 'SchemaNameBase',
+    'schema_web_page.description' => 'SchemaNameBase',
+    'schema_web_page.author' => 'SchemaPersonOrgBase',
+    'schema_web_page.publisher' => 'SchemaPersonOrgBase',
+    'schema_web_page.url' => 'SchemaUrlBase',
+    'schema_web_page.hasPart' => 'SchemaHasPartBase',
+    'schema_web_page.isAccessibleForFree' => 'SchemaIsAccessibleForFreeBase',
+    'schema_web_page.speakable' => 'SchemaSpeakableBase',
+    'schema_web_page.inLanguage' => 'SchemaNameBase',
+    'schema_web_page.translationOfWork' => 'SchemaIdReferenceBase',
+    'schema_web_page.workTranslation' => 'SchemaIdReferenceBase',
+  ];
+
+}

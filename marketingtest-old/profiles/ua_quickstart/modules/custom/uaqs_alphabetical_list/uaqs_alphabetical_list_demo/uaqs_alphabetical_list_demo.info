@@ -1,0 +1,8 @@
+name = UAQS Alphabetical List Demo Content
+description = Provides a list of majors.
+core = 7.x
+package = The University of Arizona
+dependencies[] = migrate
+dependencies[] = uaqs_core
+dependencies[] = uaqs_alphabetical_list
+files[] = import/uaqs_alphabetical_list_demo_majors.inc

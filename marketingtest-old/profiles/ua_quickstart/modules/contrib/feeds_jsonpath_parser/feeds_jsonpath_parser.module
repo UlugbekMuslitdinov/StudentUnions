@@ -1,0 +1,87 @@
+<?php
+
+/**
+ * Defines which commit to checkout from flow/jsonpath.
+ */
+define('FEEDS_JSONPATH_PARSER_LIBRARY_VERSION', '0.5.0');
+
+/**
+ * Implements hook_feeds_plugins().
+ */
+function feeds_jsonpath_parser_feeds_plugins() {
+  $path = drupal_get_path('module', 'feeds_jsonpath_parser');
+  $info = array();
+  $info['FeedsJSONPathParser'] = array(
+    'name'        => t('JSONPath parser'),
+    'description' => t('Parse JSON using JSONPath.'),
+    'handler' => array(
+      'parent' => 'FeedsParser',
+      'class'  => 'FeedsJSONPathParser',
+      'file'   => 'FeedsJSONPathParser.inc',
+      'path'   => $path,
+    ),
+  );
+  return $info;
+}
+
+/**
+ * Implements hook_enable().
+ *
+ * Clear Feed's plugin cache so that this plugin shows up.
+ */
+function feeds_jsonpath_parser_enable() {
+  cache_clear_all('plugins:feeds:plugins', 'cache');
+}
+
+/**
+ * Implements hook_libraries_info().
+ */
+function feeds_jsonpath_parser_libraries_info() {
+  $libraries = array();
+  $libraries['jsonpath'] = array(
+    'name' => 'JSONPath',
+    'vendor url' => 'https://github.com/FlowCommunications/JSONPath',
+    'download url' => 'https://github.com/FlowCommunications/JSONPath/archive/' . FEEDS_JSONPATH_PARSER_LIBRARY_VERSION . '.tar.gz',
+    'version' => FEEDS_JSONPATH_PARSER_LIBRARY_VERSION,
+    'xautoload' => '_feeds_jsonpath_parser_xautoload_callback',
+  );
+
+  return $libraries;
+}
+
+/**
+ * Callback for xautoload.
+ *
+ * @see feeds_jsonpath_parser_libraries_info()
+ */
+function _feeds_jsonpath_parser_xautoload_callback($adapter) {
+  try {
+    $adapter->composerJson('composer.json');
+  }
+  catch (Exception $e) {
+    drupal_set_message($e->getMessage(), 'error', FALSE);
+  }
+}
+
+/**
+ * Loads the jsonpath library.
+ */
+function feeds_jsonpath_parser_load_library() {
+  // Check first to see if the class is loaded some other way like composer.
+  if (!class_exists('\Flow\JSONPath\JSONPath', TRUE)) {
+    // If not, then we should have libraries installed.
+    if (!module_exists('libraries')) {
+      return FALSE;
+    }
+    $library = libraries_load('jsonpath');
+    if ($library['loaded'] === FALSE) {
+      return FALSE;
+    }
+    // We need to make sure that what is said to be the library here is actually
+    // the one we wanted because they may have left the old one here.
+    if (!class_exists('\Flow\JSONPath\JSONPath', TRUE)) {
+      return FALSE;
+    }
+  }
+  return TRUE;
+}

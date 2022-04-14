@@ -1,0 +1,34 @@
+#!/bin/sh
+#------------------------------------------------------------------------------
+#
+# environment.probo: settings for the Probo.ci hosted tests.
+#
+#------------------------------------------------------------------------------
+
+set -e
+
+#------------------------------------------------------------------------------
+# Utility functions definitions.
+
+errorexit () {
+  echo "** $1." >&2
+  exit 1
+}
+
+#------------------------------------------------------------------------------
+# Basic sanity checking.
+[ -n "$PROBO_ENVIRONMENT" ] \
+  || errorexit "Not in a Probo.ci testing environment"
+[ -d "$UAQSTEST_SCRATCHDIR" ] \
+  || errorexit "Could not find the temporary work directory ${UAQSTEST_SCRATCHDIR}"
+
+# Use HTTP for behat base_url to prevent certificate verification errors.
+UAQSTEST_BASEURL=$(echo "$BUILD_DOMAIN" | sed -e 's/https:/http:/')
+
+export COMPOSER_BIN_DIR="${UAQSTEST_SCRATCHDIR}/bin"
+export COMPOSER_CACHE_DIR="${UAQSTEST_SCRATCHDIR}/cache"
+export COMPOSER_VENDOR_DIR="${UAQSTEST_SCRATCHDIR}/vendor"
+export UAQSTEST_BASEURL
+export UAQSTEST_DRUPALROOT='/var/www/html'
+export UAQSTEST_TESTROOT="${UAQSTEST_DRUPALROOT}/profiles/ua_quickstart/devtools/ua_drupal_test"
+export UAQSTEST_WEBGROUP='www-data'

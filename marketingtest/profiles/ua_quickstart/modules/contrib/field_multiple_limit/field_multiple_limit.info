@@ -1,0 +1,15 @@
+name = Field Multiple Limit
+description = Provides extra field formatter settings to specify the number of values to display on multi-value fields.
+core = 7.x
+package = Fields
+
+files[] = field_multiple_limit.test
+
+dependencies[] = field_formatter_settings
+
+; Information added by Drupal.org packaging script on 2016-09-26
+version = "7.x-1.0-alpha5"
+core = "7.x"
+project = "field_multiple_limit"
+datestamp = "1474931040"
+

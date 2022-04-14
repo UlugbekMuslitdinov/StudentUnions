@@ -1,0 +1,13 @@
+name = UAQS Person - Views
+description = Views for people.
+core = 7.x
+package = The University of Arizona
+dependencies[] = ctools
+dependencies[] = draggableviews
+dependencies[] = uaqs_person
+dependencies[] = views
+dependencies[] = views_bootstrap
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = uaqs_person_directory
+features[views_view][] = uaqs_reorder_people

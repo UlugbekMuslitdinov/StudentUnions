@@ -1,0 +1,51 @@
+<?php
+
+/**
+ * @file
+ * The installation file for UAQS Mail module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function uaqs_mail_install() {
+  module_enable(array('smtp'));
+  uaqs_mail_migrate_ses();
+
+  // Disable and uninstall the amazon_ses and uits_ses_mail modules.
+  module_disable(array('uits_ses_mail', 'amazon_ses'));
+  drupal_uninstall_modules(array('uits_ses_mail', 'amazon_ses'));
+}
+
+/**
+ * Implements hook_enable().
+ */
+function uaqs_mail_enable() {
+  variable_set('smtp_on', '1');
+  uaqs_mail_bootstrap();
+}
+
+/**
+ * Implements hook_disable().
+ */
+function uaqs_mail_disable() {
+  variable_set('smtp_on', 0);
+  uaqs_mail_bootstrap();
+}
+
+/**
+ * Remember the previous mail system.
+ */
+function uaqs_mail_bootstrap() {
+  $mail_modes = variable_get('mail_system', array('default-system' => 'DefaultMailSystem'));
+
+  if (variable_get('smtp_on', FALSE)) {
+    variable_set('smtp_previous_mail_system', $mail_modes['default-system']);
+    $mail_modes['default-system'] = 'SmtpMailSystem';
+  }
+  else {
+    $mail_modes['default-system'] = variable_get('smtp_previous_mail_system', 'DefaultMailSystem');
+  }
+
+  variable_set('mail_system', $mail_modes);
+}

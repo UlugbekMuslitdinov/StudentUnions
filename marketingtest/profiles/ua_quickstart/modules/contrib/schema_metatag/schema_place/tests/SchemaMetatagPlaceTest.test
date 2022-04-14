@@ -1,0 +1,54 @@
+<?php
+
+/**
+ * Tests that each of the Metatag schema_place tags work correctly.
+ */
+class SchemaMetatagPlaceTest extends SchemaMetatagTagsTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Schema Metatag: Place',
+      'description' => 'Test the schema_place meta tags.',
+      'group' => 'Schema Metatag',
+      'dependencies' => [
+        'ctools',
+        'token',
+        'metatag',
+        'schema_metatag',
+        'schema_place',
+      ],
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp(array $modules = array()) {
+    $modules[] = 'schema_place';
+    parent::setUp($modules);
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public $moduleName = 'schema_place';
+
+  /**
+   * {@inheritdoc}
+   */
+  public $schemaTags = [
+    'schema_place.@type' => 'SchemaPlaceType',
+    'schema_place.name' => 'SchemaNameBase',
+    'schema_place.description' => 'SchemaNameBase',
+    'schema_place.image' => 'SchemaImageBase',
+    'schema_place.telephone' => 'SchemaNameBase',
+    'schema_place.url' => 'SchemaNameBase',
+    'schema_place.address' => 'SchemaAddressBase',
+    'schema_place.geo' => 'SchemaGeoBase',
+  ];
+
+}

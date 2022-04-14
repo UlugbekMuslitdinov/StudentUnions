@@ -1,0 +1,8 @@
+name = UAQS Navigation - Select Menu Demo Content
+description = Provides demo content for the select list dropdown menu.
+core = 7.x
+package = The University of Arizona
+dependencies[] = migrate
+dependencies[] = uaqs_navigation_select_menu
+files[] = import/uaqs_navigation_select_menu_demo.inc
+files[] = import/uaqs_navigation_select_menu_demo_bean.inc

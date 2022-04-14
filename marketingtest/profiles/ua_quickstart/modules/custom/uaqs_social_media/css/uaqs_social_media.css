@@ -1,0 +1,31 @@
+#footer_sub ul#social-media-links li a {
+	color: hsl(0, 0%, 20%);
+	font-weight: normal;
+	display: block;
+	text-decoration: none;
+	font-size: 14px;
+	line-height: inherit;
+	vertical-align: top;
+	text-transform: none;
+	margin: 7px 0;
+}
+
+#footer_site #footer_sub ul#social-media-links li {
+  border-right: 0px solid #B6BEC1;
+  display: block;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#footer_site #footer_sub ul#social-media-links {
+	display: block;
+	margin: 0;
+	padding: 0 0 0;
+	width: 100%;
+}
+
+#footer_sub #block-uaqs-social-media-uaqs-social-media-links ul#social-media-links li a,
+#footer_sub #block-uaqs-social-media-uaqs-social-media-links ul#social-media-links li a:hover {
+  text-decoration: none;
+}

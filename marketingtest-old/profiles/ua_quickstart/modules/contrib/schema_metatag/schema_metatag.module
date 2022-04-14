@@ -1,0 +1,52 @@
+<?php
+
+/**
+ * @file
+ * Primary hook implementations for Schema.org Metatag.
+ */
+
+/**
+ * Implements hook_ctools_plugin_api().
+ */
+function schema_metatag_ctools_plugin_api($owner, $api) {
+  if ($owner == 'metatag' && $api == 'metatag') {
+    return array('version' => 1);
+  }
+}
+
+/**
+ * Implements hook_html_head_alter().
+ */
+function schema_metatag_html_head_alter(&$elements) {
+
+  // Parse tags added by Schema Metatag into a structured data array.
+  $items = SchemaMetatagManager::parseJsonld($elements);
+
+  // Turn the structured data array into JSON LD and add it to page head.
+  if (count($items) > 0) {
+    // Json_encode the results.
+    $jsonld = SchemaMetatagManager::encodeJsonld($items);
+    if (!empty($jsonld)) {
+      // Add the render array to the page head elements.
+      $elements['schema_metatag'] = SchemaMetatagManager::renderArrayJsonLd($jsonld);
+    }
+  }
+}
+
+/**
+ * Validation callback for a schema_metatag element to serialize nested arrays.
+ */
+function schema_metatag_element_validate($element, &$form_state, $form) {
+  // For values that are not string values but instead nested arrays,
+  // serialize the results into a single string value.
+  $keys = $element['#array_parents'];
+  if (count($keys) >= 4) {
+    if (isset($form_state['values'][$keys[0]][$keys[1]][$keys[3]][$keys[4]])) {
+      $value = $form_state['values'][$keys[0]][$keys[1]][$keys[3]][$keys[4]];
+      if (is_array($value)) {
+        $value = SchemaMetatagManager::serialize($value);
+        form_set_value($element, $value, $form_state);
+      }
+    }
+  }
+}

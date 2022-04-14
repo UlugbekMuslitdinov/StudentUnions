@@ -1,0 +1,56 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the uaqs_news module.
+ */
+
+/**
+ * Enable the date_ap_style module.
+ */
+function uaqs_news_update_7100() {
+  // Update removed and moved to uaqs_news_update_7101().
+  // See https://jira.arizona.edu/browse/UADIGITAL-1683.
+}
+
+/**
+ * Enable the date_ap_style module.
+ */
+function uaqs_news_update_7101() {
+  module_enable(array('date_ap_style'));
+}
+
+/**
+ * Update existing news summary link fields.
+ */
+function uaqs_news_update_7102() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'uaqs_news')
+    ->propertyOrderBy('created', 'DESC');
+  $result = $query->execute();
+
+  if (isset($result['node']))
+  {
+    // Loop through available entities
+    foreach (array_keys($result['node']) as $nid)
+    {
+      $wrapper = entity_metadata_wrapper('node', $nid);
+      $uaqs_link = $wrapper->field_uaqs_link->value();
+
+      // Set node's summary link
+      if (empty($uaqs_link)) {
+        $wrapper->field_uaqs_link->set(array(
+          'url' => '[node:url]',
+          'title' => 'Read more',
+          'attributes' => 'a:1:{s:6:"target";i:0;}'
+        ));
+
+        // Save field
+        field_attach_update('node', $wrapper->value());
+        entity_get_controller('node')
+          ->resetCache(array($wrapper->getIdentifier()));
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+@media (min-width: 768px) {
+  .card-deck.uaqs-card-deck-width-one-card {
+    width: 33.33%;
+  }
+  .card-deck.uaqs-card-deck-width-two-cards {
+    width: 66.66%;
+  }
+}

@@ -1,0 +1,382 @@
+7.x-1.0-alpha75, 2022-03-16
+-----------------------------
+
+7.x-1.0-alpha74, 2022-02-16
+-----------------------------
+
+7.x-1.0-alpha73, 2022-01-26
+-----------------------------
+
+7.x-1.0-alpha72, 2022-01-20
+-----------------------------
+
+7.x-1.0-alpha71, 2022-01-19
+-----------------------------
+
+7.x-1.0-alpha70, 2021-07-21
+-----------------------------
+
+7.x-1.0-alpha69, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha68, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha67, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha66, 2021-04-21
+-----------------------------
+
+7.x-1.0-alpha65, 2021-01-21
+-----------------------------
+
+7.x-1.0-alpha64, 2020-11-25
+-----------------------------
+
+7.x-1.0-alpha63, 2020-11-18
+-----------------------------
+
+7.x-1.0-alpha62, 2020-11-18
+-----------------------------
+
+7.x-1.0-alpha61, 2020-09-16
+-----------------------------
+
+7.x-1.0-alpha60, 2020-09-11
+-----------------------------
+
+7.x-1.0-alpha59, 2020-08-19
+-----------------------------
+
+7.x-1.0-alpha58, 2020-06-17
+-----------------------------
+
+7.x-1.0-alpha57, 2020-06-05
+-----------------------------
+
+7.x-1.0-alpha56, 2020-05-20
+-----------------------------
+
+7.x-1.0-alpha55, 2020-04-20
+-----------------------------
+
+7.x-1.0-alpha54, 2020-03-20
+-----------------------------
+
+7.x-1.0-alpha53, 2020-03-06
+-----------------------------
+
+7.x-1.0-alpha52, 2020-02-07
+-----------------------------
+
+7.x-1.0-alpha51, 2019-12-18
+-----------------------------
+- UADIGITAL-2159 Replace demo and default content http with https.
+- UADIGITAL-2178: Nov 2019 contrib module maintenance updates.
+
+7.x-1.0-alpha50, 2019-12-13
+-----------------------------
+
+7.x-1.0-alpha49, 2019-11-20
+-----------------------------
+
+7.x-1.0-alpha48, 2019-11-05
+-----------------------------
+
+7.x-1.0-alpha47, 2019-11-01
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha46 for uaqs_block_types.
+
+7.x-1.0-alpha46, 2019-11-01
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha45 for uaqs_block_types.
+
+7.x-1.0-alpha45, 2019-11-01
+-----------------------------
+
+7.x-1.0-alpha44, 2019-09-06
+-----------------------------
+
+7.x-1.0-alpha43, 2019-08-16
+-----------------------------
+
+7.x-1.0-alpha42, 2019-07-26
+-----------------------------
+
+7.x-1.0-alpha41, 2019-06-28
+-----------------------------
+
+7.x-1.0-alpha40, 2019-05-22
+-----------------------------
+
+7.x-1.0-alpha39, 2019-05-08
+-----------------------------
+
+7.x-1.0-alpha38, 2019-05-07
+-----------------------------
+
+7.x-1.0-alpha37, 2019-04-17
+-----------------------------
+
+7.x-1.0-alpha36, 2019-03-20
+-----------------------------
+
+7.x-1.0-alpha35, 2019-03-15
+-----------------------------
+
+7.x-1.0-alpha34, 2019-03-13
+-----------------------------
+- UADIGITAL-1886 add better formats module and relax text format settings.
+- UADIGITAL-1910 Some coding standards cleanup for UADIGITAL-1886
+
+7.x-1.0-alpha33, 2019-02-20
+-----------------------------
+- UADIGITAL-1914: Bump the link contrib module version because of a security issue.
+
+7.x-1.0-alpha32, 2019-02-11
+-----------------------------
+- UADIGITAL-1880 Remove dependency of uaqs_featured_content from uaqs_block_types_flexible_block.
+
+7.x-1.0-alpha30, 2019-02-01
+-----------------------------
+
+7.x-1.0-alpha29, 2019-01-28
+-----------------------------
+
+7.x-1.0-alpha28, 2019-01-17
+-----------------------------
+
+7.x-1.0-alpha27, 2019-01-16
+-----------------------------
+
+7.x-1.0-alpha26, 2019-01-11
+-----------------------------
+- UADIGITAL-1816 & UADIGITAL-1817: Fixed various PHP Notices related to Bean blocks.
+
+7.x-1.0-alpha25, 2018-11-15
+-----------------------------
+
+7.x-1.0-alpha24, 2018-11-02
+-----------------------------
+
+7.x-1.0-alpha23, 2018-10-17
+-----------------------------
+
+7.x-1.0-alpha22, 2018-10-11
+-----------------------------
+
+7.x-1.0-alpha21, 2018-10-10
+-----------------------------
+
+7.x-1.0-alpha20, 2018-09-21
+-----------------------------
+
+7.x-1.0-alpha19, 2018-08-29
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha17 for uaqs_block_types.
+- Preparing to tag 7.x-1.0-alpha16 for uaqs_block_types.
+- UADIGITAL-1503-2 Extra Info Boxes
+- Preparing to tag 7.x-1.0-alpha15 for uaqs_block_types.
+- Preparing to tag 7.x-1.0-alpha14 for uaqs_block_types.
+- UADIGITAL-1589 add form-control class to search form.
+- Preparing to tag 7.x-1.0-alpha13 for uaqs_block_types.
+- Preparing to tag 7.x-1.0-alpha12 for uaqs_block_types.
+- UADIGITAL-1492 Add ARIA Landmark names to all regions
+- UADIGITAL-1538-cta-bean-my-4 remove unneeded mb-4 and mt-4 from blocks
+- Preparing to tag 7.x-1.0-alpha11 for uaqs_block_types.
+- UADIGITAL-1463-title-alignment add margin top to account for breadcrumb-less designs
+- UADIGITAL-1463 page title vertical alignment
+- Preparing to tag 7.x-1.0-alpha10 for uaqs_block_types.
+- UADIGITAL-1462: Adding uaqs_core as a dependency of global footer, and forcing migrate registration update on disable of global footer.
+- UADIGITAL-1391 separate call to action beans from demo content
+- UADIGITAL-1190 Institutional Header Call to Action Buttons
+- UADIGITAL-1185 Adding block type uaqs_cta_card
+- UADIGITAL-1192 Add ua-bootstrap classes to forms and webforms, institutional header search and resources menu button.
+- Preparing to tag 7.x-1.0-alpha9 for uaqs_block_types.
+- Preparing to tag 7.x-1.0-alpha8 for uaqs_block_types.
+- Preparing to tag 7.x-1.0-alpha7 for uaqs_block_types.
+- UADIGITAL-1112 Added Quick Links Block Type
+- UADIGITAL-991 replace uaqs_text_area with uaqs_summary for uaqs_card beans.
+- UADIGITAL-1062 & UADIGITAL-1063: Adding entity_embed, file entity, file entity inline, and manual_crop.
+- UADIGITAL-987: Add new image style for card decks so that they appear uniformly in height.
+- Remove the obsolete Bitbucket Piplines configurations from the subtrees.
+- UADIGITAL-994 adding class to uaqs-contact-summary
+- UADIGITAL-982 Created submodule containing fields dependent on link
+- UADIGTIAL-980: Added dependency to uaqs_fields_telephone feature.
+- Back to dev. [skip ci]
+- Preparing to tag 7.x-1.0-alpha6. [skip ci]
+- Revert "Preparing to tag 7.x-1.0-alpha4."
+- Revert "Preparing to tag 7.x-1.0-alpha4."
+- Preparing to tag 7.x-1.0-alpha4.
+- UADIGITAL-884 add bitbucket pipelines config file.
+- Preparing to tag 7.x-1.0-alpha4.
+- UADIGITAL-880 matching permissions with uaqs_card block
+- Update the Bean module to the current version.
+- Separate blocks out into their own submodules
+- UADIGITAL-712: Make flexible block easier to enable.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha5.
+- UADIGITAL-712
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha4.
+- removing dependency on uaqs_featured_content
+- Steal the work of @trackleft on uams_block_types UAMS-217.
+- Introduce Fences and Field Group, remove ua_zen_ prefixed field functions, use the uaqs_contact_phone field from UAQS Fields.
+- Switch to the new common text area field, rename the format.
+- this works.
+- Theme registry alter adds uaqs_block_types functions into registry
+- last rename i hope
+- more renaming
+- rename display mode uaqs_card to uaqs_card_overlay
+- Complete support for the Card Bean.
+- README.md edited online with Bitbucket
+- update readme
+- explanation about uaqs_fields
+- update markdown formatting
+- adding bean as a dependency
+- updated readme
+- Add a draft template for the mission statement block.
+- Rename UA to UAQS in the file contents.
+- README.md edited online with Bitbucket
+- Adding in annonymous permissions for ua_card
+- ua_card
+- ua_card
+- ua_block_types.strongarm.inc edited online with Bitbucket - reverted display settings - didn't mean to include those in the pull request.
+- UADigital-413: Added option for users to open links in new windows and added a little help text to the email field on the contact block (just to use 'mailto:')
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha3.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha2.
+- UADIGITAL-322: Changes from features module updates.
+- Document where the hook_theme_registry_alter() implemention originated.
+- Don't ignore any dependencies.
+- Include the missing makefile, let it set the project path correctly.
+- Initial commits.
+7.x-1.0-alpha17, 2018-07-30
+-----------------------------
+
+7.x-1.0-alpha16, 2018-07-20
+-----------------------------
+- UADIGITAL-1503-2 Extra Info Boxes
+
+7.x-1.0-alpha15, 2018-06-19
+-----------------------------
+
+7.x-1.0-alpha14, 2018-05-18
+-----------------------------
+- UADIGITAL-1589 add form-control class to search form.
+
+7.x-1.0-alpha13, 2018-04-25
+-----------------------------
+
+7.x-1.0-alpha12, 2018-04-20
+-----------------------------
+- UADIGITAL-1492 Add ARIA Landmark names to all regions
+- UADIGITAL-1538-cta-bean-my-4 remove unneeded mb-4 and mt-4 from blocks
+
+7.x-1.0-alpha11, 2018-03-30
+-----------------------------
+- UADIGITAL-1463-title-alignment add margin top to account for breadcrumb-less designs
+- UADIGITAL-1463 page title vertical alignment
+
+7.x-1.0-alpha10, 2018-03-09
+-----------------------------
+- UADIGITAL-1462: Adding uaqs_core as a dependency of global footer, and forcing migrate registration update on disable of global footer.
+- UADIGITAL-1391 separate call to action beans from demo content
+- UADIGITAL-1190 Institutional Header Call to Action Buttons
+- UADIGITAL-1185 Adding block type uaqs_cta_card
+- UADIGITAL-1192 Add ua-bootstrap classes to forms and webforms, institutional header search and resources menu button.
+
+7.x-1.0-alpha9, 2017-09-15
+-----------------------------
+
+7.x-1.0-alpha8, 2017-09-15
+-----------------------------
+
+7.x-1.0-alpha7, 2017-08-17
+-----------------------------
+- UADIGITAL-1112 Added Quick Links Block Type
+- UADIGITAL-991 replace uaqs_text_area with uaqs_summary for uaqs_card beans.
+- UADIGITAL-1062 & UADIGITAL-1063: Adding entity_embed, file entity, file entity inline, and manual_crop.
+- UADIGITAL-987: Add new image style for card decks so that they appear uniformly in height.
+- Remove the obsolete Bitbucket Piplines configurations from the subtrees.
+- UADIGITAL-994 adding class to uaqs-contact-summary
+- UADIGITAL-982 Created submodule containing fields dependent on link
+- UADIGTIAL-980: Added dependency to uaqs_fields_telephone feature.
+- Back to dev. [skip ci]
+
+7.x-1.0-alpha6, 2017-01-20
+------------------------------
+- Revert "Preparing to tag 7.x-1.0-alpha4.".
+- Preparing to tag 7.x-1.0-alpha4.
+- Merged in trackleft/uaqs_block_types/UADIGITAL-884-automate-uaqs-component-re (pull request #15).
+- UADIGITAL-884 add bitbucket pipelines config file.
+- Merged ua_drupal/uaqs_block_types into 7.x-1.x.
+- UADIGITAL-880: Matching permissions with uaqs_card block.
+- UADIGITAL-880 matching permissions with uaqs_card block.
+- UADIGITAL-879: October 2016 Drupal updates.
+- Update the Bean module to the current version.
+- UAMS-354: clean up bean blocks.
+- Separate blocks out into their own submodules.
+- UADIGITAL-712: Make flexible block easier to enable.
+- Back to dev.
+- UADIGITAL-712.
+
+7.x-1.0-alpha5, 2016-05-02
+------------------------------
+- Back to dev.
+
+7.x-1.0-alpha4, 2016-04-15
+------------------------------
+- Merged in trackleft/uaqs_block_types/UADIGITAL-654-remove-dependency-of-featu (pull request #9).
+- Removing dependency on uaqs_featured_content.
+- UADIGITAL-650: Flexible block type as a submodule of uaqs_block_types.
+- Steal the work of @trackleft on uams_block_types UAMS-217.
+- Introduce Fences and Field Group, remove ua_zen_ prefixed field functions, use the uaqs_contact_phone field from UAQS Fields.
+- Merged in mmunro-ltrr/uaqs_block_types/UADIGITAL-402 (pull request #6).
+- Switch to the new common text area field, rename the format.
+- Merged in trackleft/uaqs_block_types-tmp/should-not-need-ua_zen-prefix (pull request #5).
+- Merge.
+- This works.
+- Merged 7.x-1.x into should-not-need-ua_zen-prefix.
+- Theme registry alter adds uaqs_block_types functions into registry.
+- Merged ua_drupal/uaqs_block_types into 7.x-1.x.
+- Last rename i hope.
+- Moving exported permissions to defaultconfig and renaming card_overlay view mode.
+- More renaming.
+- Rename display mode uaqs_card to uaqs_card_overlay.
+- Merged in mmunro-ltrr/uaqs_block_types (pull request #2).
+- Complete support for the Card Bean.
+- Update the documentation with requirements and other contextual details.
+- README.md edited online with Bitbucket.
+- Update readme.
+- Explanation about uaqs_fields.
+- Update markdown formatting.
+- Adding bean as a dependency.
+- Updated readme.
+- Add a draft template for the mission statement block.
+- Rename UA to UAQS in the file contents.
+- UADIGITAL-450: Add a UA Card block type (Bean) and patch the Bean module.
+- Adding in annonymous permissions for ua_card.
+- Ua_card.
+- UADIGITAL-413: Add option to open links in new windows.
+- Ua_block_types.strongarm.inc edited online with Bitbucket - reverted display settings - didn't mean to include those in the pull request.
+- UADigital-413: Added option for users to open links in new windows and added a little help text to the email field on the contact block (just to use 'mailto:').
+- Back to dev.
+
+7.x-1.0-alpha3, 2015-10-16
+------------------------------
+- Back to dev.
+
+7.x-1.0-alpha2, 2015-10-16
+------------------------------
+- Merged in UADIGITAL-322 (pull request #1).
+- UADIGITAL-322: Changes from features module updates.
+- Document where the hook_theme_registry_alter() implemention originated.
+- Don't ignore any dependencies.
+- Include the missing makefile, let it set the project path correctly.
+
+UA Block Types 7.x-1.0-alpha0, 2015-09-25
+-----------------------------------------
+- Initial commits.

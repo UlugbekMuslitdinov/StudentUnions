@@ -1,0 +1,28 @@
+<?php
+/**
+ * @file
+ * Install, update and uninstall functions for the uaqs_alphabetical_list module.
+ */
+/**
+ * Rename the "number" key so it appears first in alphabetic sort.
+ */
+function uaqs_alphabetical_list_update_7001() {
+  features_revert(array('uaqs_alphabetical_list' => array('field_base')));
+  $query = new EntityFieldQuery();
+  $result = $query
+    ->entityCondition("entity_type", "node")
+    ->fieldCondition("field_uaqs_index_letter", "value", "number", "=")
+    ->execute();
+  $nids = array_keys($result["node"]);
+  foreach ($nids as $key => $nid) {
+    $node = node_load($nid);
+    $values = $node->field_uaqs_index_letter["und"];
+
+    foreach ($values as $delta => $value) {
+      if ($value["value"] == "number") {
+        $node->field_uaqs_index_letter["und"][$delta]["value"] = "123";
+      }
+    }
+    field_attach_update("node", $node);
+  }
+}

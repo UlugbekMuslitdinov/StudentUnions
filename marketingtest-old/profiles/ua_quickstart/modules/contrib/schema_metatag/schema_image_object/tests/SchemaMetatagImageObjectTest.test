@@ -1,0 +1,55 @@
+<?php
+
+/**
+ * Tests that each of the Metatag schema_image_object tags work correctly.
+ */
+class SchemaMetatagImageObjectTest extends SchemaMetatagTagsTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Schema Metatag: ImageObject',
+      'description' => 'Test the schema_image_object meta tags.',
+      'group' => 'Schema Metatag',
+      'dependencies' => [
+        'ctools',
+        'token',
+        'metatag',
+        'schema_metatag',
+        'schema_image_object',
+      ],
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp(array $modules = array()) {
+    $modules[] = 'schema_image_object';
+    parent::setUp($modules);
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public $moduleName = 'schema_image_object';
+
+  /**
+   * {@inheritdoc}
+   */
+  public $schemaTags = [
+    'schema_image_object.@type' => 'SchemaImageObjectType',
+    'schema_image_object.@id' => 'SchemaNameBase',
+    'schema_image_object.name' => 'SchemaNameBase',
+    'schema_image_object.description' => 'SchemaNameBase',
+    'schema_image_object.url' => 'SchemaUrlBase',
+    'schema_image_object.width' => 'SchemaNameBase',
+    'schema_image_object.height' => 'SchemaNameBase',
+    'schema_image_object.aggregateRating' => 'SchemaRatingBase',
+    'schema_image_object.review' => 'SchemaReviewBase',
+  ];
+
+}

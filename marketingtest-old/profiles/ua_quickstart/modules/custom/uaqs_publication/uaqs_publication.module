@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Publication feature.
+ */
+
+include_once 'uaqs_publication.features.inc';

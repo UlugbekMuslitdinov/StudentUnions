@@ -1,0 +1,78 @@
+<?php
+
+/**
+ * Tests that each of the Metatag base tags work correctly.
+ */
+class SchemaMetatagTagsTest extends SchemaMetatagTagsTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Schema Metatag: Base tags',
+      'description' => 'Test the base meta tags.',
+      'group' => 'Schema Metatag',
+      'dependencies' => [
+        'ctools',
+        'token',
+        'metatag',
+        'schema_metatag',
+        'schema_article',
+      ],
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp(array $modules = array()) {
+    $modules[] = 'schema_metatag_test';
+    $modules[] = 'schema_web_site';
+    parent::setUp($modules);
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public $moduleName = 'schema_metatag_test';
+
+  /**
+   * {@inheritdoc}
+   */
+  public $schemaTags = [
+    'schema_metatag_test.@type' => 'SchemaWebSiteType',
+    'schema_metatag_test.address' => 'SchemaAddressBase',
+    'schema_metatag_test.rating' => 'SchemaRatingBase',
+    'schema_metatag_test.review' => 'SchemaReviewBase',
+    'schema_metatag_test.date' => 'SchemaDateBase',
+    'schema_metatag_test.duration' => 'SchemaDurationBase',
+    'schema_metatag_test.geo' => 'SchemaGeoBase',
+    'schema_metatag_test.hasPart' => 'SchemaHasPartBase',
+    'schema_metatag_test.image' => 'SchemaImageBase',
+    'schema_metatag_test.mainEntityOfPage' => 'SchemaMainEntityOfPageBase',
+    'schema_metatag_test.name' => 'SchemaNameBase',
+    'schema_metatag_test.offer' => 'SchemaOfferBase',
+    'schema_metatag_test.organization' => 'SchemaPersonOrgBase',
+    'schema_metatag_test.place' => 'SchemaPlaceBase',
+    'schema_metatag_test.url' => 'SchemaUrlBase',
+    'schema_metatag_test.action' => 'SchemaWebSitePotentialAction',
+    'schema_metatag_test.country' => 'SchemaCountryBase',
+    'schema_metatag_test.creativeWork' => 'SchemaCreativeWorkBase',
+    'schema_metatag_test.entryPoint' => 'SchemaEntryPointBase',
+    'schema_metatag_test.event' => 'SchemaEventBase',
+    'schema_metatag_test.nutritionInformation' => 'SchemaNutritionInformationBase',
+    'schema_metatag_test.openingHoursSpecification' => 'SchemaOpeningHoursSpecificationBase',
+    'schema_metatag_test.programMembership' => 'SchemaProgramMembershipBase',
+    'schema_metatag_test.thing' => 'SchemaThingBase',
+    'schema_metatag_test.trueFalse' => 'SchemaTrueFalseBase',
+    'schema_metatag_test.monetaryAmount' => 'SchemaMonetaryAmountBase',
+    'schema_metatag_test.contactPoint' => 'SchemaContactPointBase',
+    'schema_metatag_test.speakable' => 'SchemaSpeakableBase',
+    'schema_metatag_test.idReference' => 'SchemaIdReferenceBase',
+    'schema_metatag_test.step' => 'SchemaHowToStepBase',
+    'schema_metatag_test.question' => 'SchemaQuestionBase',
+    'schema_metatag_test.answer' => 'SchemaAnswerBase',
+  ];
+
+}

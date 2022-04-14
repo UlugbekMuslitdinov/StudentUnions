@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the  feature.
+ */
+
+include_once 'uaqs_content_chunks_well.features.inc';

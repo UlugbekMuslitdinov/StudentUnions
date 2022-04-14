@@ -1,0 +1,441 @@
+<?php
+/**
+ * @file
+ * Installation code for UA QuickStart.
+ */
+
+/**
+ * Implements hook_install().
+ *
+ * Perform actions to set up the site for this profile.
+ */
+function ua_quickstart_install() {
+  $t = get_t();
+
+  // Force Drupal to look for themes in profile path.
+  variable_set('install_profile', 'ua_quickstart');
+  list_themes(TRUE);
+
+  // Enable themes.
+  $default_theme = 'ua_zen';
+  $admin_theme = 'seven';
+  theme_enable(array($default_theme, $admin_theme));
+  variable_set('theme_default', $default_theme);
+  variable_set('admin_theme', $admin_theme);
+  variable_set('node_admin_theme', '1');
+  // We don't need a new content type when enabling webform.
+  variable_set('webform_install_create_content_type', FALSE);
+  variable_set('webform_install_add_body_field', FALSE);
+
+  // Disable bartik theme.
+  theme_disable(array('bartik'));
+
+  // Enable some standard blocks.
+  ua_quickstart_default_blocks($default_theme, $admin_theme);
+
+  // Add default text formats.
+  $filtered_html_format = array(
+    'format' => 'filtered_html',
+    'name' => 'Filtered HTML',
+    'weight' => 0,
+    'filters' => array(
+      // URL filter.
+      'filter_url' => array(
+        'weight' => 0,
+        'status' => 1,
+      ),
+      // HTML filter.
+      'filter_html' => array(
+        'weight' => 1,
+        'status' => 1,
+      ),
+      // Line break filter.
+      'filter_autop' => array(
+        'weight' => 2,
+        'status' => 1,
+      ),
+      // HTML corrector filter.
+      'filter_htmlcorrector' => array(
+        'weight' => 10,
+        'status' => 1,
+      ),
+    ),
+  );
+  $filtered_html_format = (object) $filtered_html_format;
+  filter_format_save($filtered_html_format);
+
+  $full_html_format = array(
+    'format' => 'full_html',
+    'name' => 'Full HTML',
+    'weight' => 1,
+    'filters' => array(
+      // URL filter.
+      'filter_url' => array(
+        'weight' => 0,
+        'status' => 1,
+      ),
+      // Line break filter.
+      'filter_autop' => array(
+        'weight' => 1,
+        'status' => 1,
+      ),
+      // HTML corrector filter.
+      'filter_htmlcorrector' => array(
+        'weight' => 10,
+        'status' => 1,
+      ),
+    ),
+  );
+  $full_html_format = (object) $full_html_format;
+  filter_format_save($full_html_format);
+
+  // Create a Home link in the main menu.
+  $item = array(
+    'link_title' => $t('Home'),
+    'link_path' => '<front>',
+    'menu_name' => 'main-menu',
+  );
+  menu_link_save($item);
+
+  // Update the menu router information.
+  menu_rebuild();
+
+  // Force any permissions in features to be built before assigning roles.
+  features_rebuild();
+
+  // Enable default permissions for system roles.
+  $filtered_html_permission = filter_permission_name($filtered_html_format);
+  user_role_grant_permissions(DRUPAL_ANONYMOUS_RID, array('access content', 'search content'));
+  user_role_grant_permissions(
+    DRUPAL_AUTHENTICATED_RID,
+    array('access content', 'search content', $filtered_html_permission)
+  );
+
+  // Create a default role for site administrators, with all available
+  // permissions assigned.
+  $admin_role = new stdClass();
+  $admin_role->name = 'administrator';
+  $admin_role->weight = 2;
+  user_role_save($admin_role);
+  user_role_grant_permissions($admin_role->rid, array_keys(module_invoke_all('permission')));
+
+  // Set this as the administrator role.
+  variable_set('user_admin_role', $admin_role->rid);
+
+  // Assign user 1 the "administrator" role.
+  db_insert('users_roles')
+    ->fields(array('uid' => 1, 'rid' => $admin_role->rid))
+    ->execute();
+
+  // Propagate the theme debug setting from the profile installation options:
+  // enables rebuilding the theme registry on each page load (a performance hit)
+  // and the theme debug mode described at
+  // https://www.drupal.org/docs/7/theming/overriding-themable-output/working-with-template-suggestions
+  if (variable_get('uaqs_themedebug')) {
+    variable_set('theme_debug', 1);
+    $settings_varname = 'theme_' . $default_theme . '_settings';
+    $theme_settings = variable_get($settings_varname, array());
+    $theme_settings['zen_rebuild_registry'] = 1;
+    variable_set($settings_varname, $theme_settings);
+  }
+
+  // Platform-specifc settings & modules.
+  if (defined('PANTHEON_ENVIRONMENT')) {
+    module_enable(array(
+      'environment_indicator',
+      'pantheon_advanced_page_cache',
+      'pantheon_api',
+      'pantheon_login',
+      'views_content_cache',
+      'uaqs_d8cache',
+    ));
+
+    // Force Migrate module to use drush for imports (prevents timeouts).
+    variable_set('migrate_drush_path',  $_ENV['HOME'] . '/drush');
+    variable_set('migrate_import_method', 1);
+  }
+
+  // Enable the demo content here, not via ua_quickstart.info.
+  // See https://www.drupal.org/node/1901116 for the reasons.
+  if (variable_get('uaqs_demo') && module_enable(array('uaqs_demo'))) {
+    ua_quickstart_demo_blocks($default_theme, $admin_theme);
+  }
+}
+
+/**
+ * Insert block definitions in the database.
+ *
+ * All blocks start with a common set of base block description values,
+ * overriden by the additional block-specific values.
+ *
+ * @param string $theme
+ *   Theme in which these block definitions apply.
+ * @param string $module
+ *   The module responsible for the block.
+ * @param array $block_defs
+ *   An associative array of settings for each block:
+ *   - delta: The block identifier (string).
+ *   - description: Block description (associative array).
+ * @param array $common
+ *   The settings common to all blocks.
+ */
+function ua_quickstart_block_db_insert($theme, $module, array $block_defs, array $common) {
+  $common['theme'] = $theme;
+  $common['module'] = $module;
+  foreach ($block_defs as $delta => $description) {
+    $record = array_merge($common, $description);
+    $record['delta'] = $delta;
+    db_insert('block')
+      ->fields($record)
+      ->execute();
+  }
+}
+
+/**
+ * Update a single block definition in the database.
+ *
+ * The combination of theme, module and delta should form a unique key to find
+ * a block if it exists, so this should update at most one block.
+ *
+ * @param string $theme
+ *   Theme in which the block definition applies.
+ * @param string $module
+ *   The module responsible for the block.
+ * @param string $delta
+ *   The block identifier (distinct from the numeric bid).
+ * @param array $fields
+ *   Fields to update the block definition (associative array).
+ *
+ * @return bool
+ *   TRUE on success, FALSE on failure.
+ */
+function ua_quickstart_block_db_update($theme, $module, $delta, array $fields) {
+  $n_updated = db_update('block')
+    ->fields($fields)
+    ->condition('module', $module)
+    ->condition('delta', $delta)
+    ->condition('theme', $theme)
+    ->execute();
+  return ($n_updated == 1);
+}
+
+/**
+ * Enable some default blocks.
+ *
+ * @param string $default_theme
+ *   Default theme in which the block definitions apply.
+ * @param string $admin_theme
+ *   Administrative theme to use for relevant block definitions.
+ */
+function ua_quickstart_default_blocks($default_theme, $admin_theme) {
+  $base_common = array(
+    'status' => 1,
+    'weight' => 0,
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'pages' => '',
+    'title' => '',
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  $front_views = $base_common;
+  $front_views['visibility'] = BLOCK_VISIBILITY_LISTED;
+  $front_views['pages'] = 'pages/primus';
+
+  $news_teasers_views = $base_common;
+  $news_teasers_views['visibility'] = BLOCK_VISIBILITY_LISTED;
+  $news_teasers_views['pages'] = 'news-teasers';
+
+  $news_views = $base_common;
+  $news_views['visibility'] = BLOCK_VISIBILITY_LISTED;
+  $news_views['pages'] = 'news/*';
+
+  $event_views = $base_common;
+  $event_views['visibility'] = BLOCK_VISIBILITY_LISTED;
+  $event_views['pages'] = 'events/*';
+
+  // Basic core system blocks.
+  $system_blocks = array(
+    'main' => array(
+        'region' => 'content',
+    ),
+    'help' => array (
+        'region' => 'help',
+    ),
+  );
+  ua_quickstart_block_db_insert($default_theme, 'system', $system_blocks, $base_common);
+  ua_quickstart_block_db_insert($admin_theme, 'system', $system_blocks, $base_common);
+
+  // Basic search.
+  $search_blocks = array(
+    'form' => array(
+      'region' => 'header'
+    ),
+  );
+  ua_quickstart_block_db_insert($default_theme, 'search', $search_blocks, $base_common);
+
+  // UAQS Navigation Feature Module.
+  if (module_exists('uaqs_navigation')) {
+    $menu_blocks = array(
+      'uaqs-second-level' => array(
+        'region' => 'sidebar_first',
+        'pages' => "pages/uaqs-flexible-page-2",
+      ),
+    );
+    ua_quickstart_block_db_insert($default_theme, 'menu_block', $menu_blocks, $base_common);
+  }
+
+  // UAQS Featured Content.
+  if (module_exists('uaqs_featured_content')) {
+    $carousel_blocks = array(
+      'uaqs_hero_carousel-hero_block' => array(
+        'region' => 'content_featured',
+        'title' => '<none>',
+      )
+    );
+    ua_quickstart_block_db_insert($default_theme, 'views', $carousel_blocks, $front_views);
+  }
+
+  // UAQS news.
+  if (module_exists('uaqs_news')) {
+    $news_blocks_front = array(
+      'uaqs_news-three_col_news_block' => array(
+        'region' => 'content',
+        'weight' => 10
+      )
+    );
+
+    $news_blocks_teasers = array(
+      'uaqs_news-recent_news_marquee' => array(
+        'region' => 'content',
+        'weight' => -1
+      )
+    );
+
+    $news_blocks_news = array(
+      'uaqs_news-sidebar_promoted_news' => array(
+        'region' => 'sidebar_second',
+        'weight' => 10
+      )
+    );
+
+    ua_quickstart_block_db_insert($default_theme, 'views', $news_blocks_front, $front_views);
+    ua_quickstart_block_db_insert($default_theme, 'views', $news_blocks_teasers, $news_teasers_views);
+    ua_quickstart_block_db_insert($default_theme, 'views', $news_blocks_news, $news_views);
+  }
+
+  // UAQS Event.
+  if (module_exists('uaqs_event')) {
+    $event_blocks = array(
+      'uaqs_events-card_group_block' => array(
+        'region' => 'content',
+        'title' => 'Events',
+        'weight' => 20,
+      ),
+    );
+    ua_quickstart_block_db_insert($default_theme, 'views', $event_blocks, $front_views);
+  }
+
+  // UAQS Event Sidebar
+  if (module_exists('uaqs_event')) {
+    $event_blocks = array(
+      'uaqs_events-block_1' => array(
+        'region' => 'sidebar_second',
+        'title' => '',
+        'weight' => 1,
+      ),
+    );
+    ua_quickstart_block_db_insert($default_theme, 'views', $event_blocks, $event_views);
+  }
+
+  // UAQS Event Calendar Sidebar settings are inserted here.
+  if (module_exists('uaqs_event_view')) {
+    $calendar_views = $base_common;
+    $calendar_views['visibility'] = BLOCK_VISIBILITY_LISTED;
+    $calendar_views['pages'] = "calendar\ncalendar/*";
+
+    $calendar_view_blocks = array(
+      '-exp-uaqs_events-page' => array(
+        'region' => 'sidebar_second',
+        'title' => '',
+        'weight' => 1,
+      ),
+    );
+    ua_quickstart_block_db_insert($default_theme, 'views', $calendar_view_blocks, $calendar_views);
+  }
+}
+
+/**
+ * Enable additional demo blocks.
+ *
+ * @param string $default_theme
+ *   Default theme in which the block definitions apply.
+ * @param string $admin_theme
+ *   Administrative theme to use for relevant block definitions.
+ */
+function ua_quickstart_demo_blocks($default_theme, $admin_theme) {
+  $base_common = array(
+    'status' => 1,
+    'weight' => 0,
+    'visibility' => BLOCK_VISIBILITY_NOTLISTED,
+    'pages' => '',
+    'title' => '<none>',
+    'cache' => DRUPAL_NO_CACHE,
+  );
+
+  // Enable the contact summary block in the footer_sub region.
+  if (module_exists('uaqs_block_types_contact_summary')) {
+    $contact_delta = 'main-unit-or-department-contact-';
+    $contact_summary_blocks = array(
+      $contact_delta => array(
+        'region' => 'footer',
+      ),
+    );
+    $record = array_merge($base_common, $contact_summary_blocks[$contact_delta]);
+    $updated = ua_quickstart_block_db_update($default_theme, 'bean', $contact_delta, $record);
+    if (!$updated) {
+      // Updating failed: try inserting the block in the database directly.
+      ua_quickstart_block_db_insert($default_theme, 'bean', $contact_summary_blocks, $base_common);
+    }
+  }
+}
+
+/**
+ * UADIGITAL-1115 ensure that if enabling uaqs_webform, a new content type is
+ * not created.
+ */
+function ua_quickstart_update_7100() {
+  // We don't need a new content type when enabling webform.
+  variable_set('webform_install_create_content_type', FALSE);
+  variable_set('webform_install_add_body_field', FALSE);
+}
+
+/**
+ * UADIGITAL-1175 enabling uaqs_admin for new and existing sites.
+ */
+function ua_quickstart_update_7101() {
+  module_enable(array('uaqs_admin'));
+}
+
+/**
+ * UADIGITAL-1465 enabling various performance enhancing modules on
+ * Panthoen-hosted sites (does not affect non-Pantheon sites).
+ */
+function ua_quickstart_update_7102() {
+  if (defined('PANTHEON_ENVIRONMENT')) {
+    module_enable(array(
+      'pantheon_advanced_page_cache',
+      'views_content_cache',
+      'uaqs_d8cache',
+    ));
+  }
+}
+
+/**
+ * UADIGITAL-1884 enabling Environment Indicator module on Pantheon-hosted sites
+ * (does not affect non-Pantheon sites).
+ */
+function ua_quickstart_update_7103() {
+  if (defined('PANTHEON_ENVIRONMENT')) {
+    module_enable(array('environment_indicator'));
+  }
+}

@@ -1,0 +1,373 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Fields - Media feature.
+ */
+
+include_once 'uaqs_fields_media.features.inc';
+
+/**
+ * Implements hook_menu_alter().
+ */
+function uaqs_fields_media_menu_alter(&$items) {
+  // Alter 'Add file' local action provided by File Entity module.
+  $items['file/add']['title'] = 'Add file(s)';
+
+  // Alter 'Import files' local action provided by Media Bulk Upload module.
+  $items['admin/content/file/import']['title'] = 'Import existing files';
+  $items['admin/content/file/import']['description'] = 'Import existing files on the web server into your media library.';
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function uaqs_fields_media_entity_info_alter(&$entity_info) {
+  if (module_exists('file_entity')) {
+    $entity_info['file']['view modes']['uaqs_inline_link'] = array(
+      'label' => t('Link'),
+      'custom settings' => TRUE,
+    );
+    $entity_info['file']['view modes']['uaqs_small'] = array(
+      'label' => t('Small'),
+      'custom settings' => TRUE,
+    );
+    $entity_info['file']['view modes']['uaqs_medium'] = array(
+      'label' => t('Medium'),
+      'custom settings' => TRUE,
+    );
+    $entity_info['file']['view modes']['uaqs_large'] = array(
+      'label' => t('Large'),
+      'custom settings' => TRUE,
+    );
+    $entity_info['file']['view modes']['uaqs_square'] = array(
+      'label' => t('Square'),
+      'custom settings' => TRUE,
+    );
+    $entity_info['file']['view modes']['uaqs_media_list'] = array(
+      'label' => t('UA Bootstrap Media List'),
+      'custom settings' => TRUE,
+    );
+    $entity_info['file']['view modes']['uaqs_bg'] = array(
+      'label' => t('Background'),
+      'custom settings' => TRUE,
+    );
+  }
+}
+
+/**
+ * Implements hook_preprocess_file_entity().
+ */
+function uaqs_fields_media_preprocess_file_entity(&$variables) {
+  if (module_exists('file_entity')) {
+    // Wrap file in view mode class so we can set width with css.
+    if (!empty($variables['view_mode'])) {
+      $variables['classes_array'][] = 'view-mode-' . $variables['view_mode'];
+    }
+    // Add sr-only class to title attributes which does the same thing as element-invisible in ua-bootstrap.
+    if (!empty($variables['title_attributes_array'])) {
+      $variables['title_attributes_array']['class'][] = 'sr-only';
+    }
+    // Add alignment classes
+    if (isset($variables['elements']['#attributes'])) {
+      $alignment = $variables['elements']['#attributes']['data-align'];
+      switch ($alignment) {
+        case 'left':
+          $variables['classes_array'][] = 'pull-left';
+          break;
+        case 'right':
+          $variables['classes_array'][] = 'pull-right';
+          break;
+        case 'center':
+          $variables['classes_array'][] = 'center-block';
+          break;
+        default:
+          $variables['classes_array'][] = 'no-alignment-set';
+      }
+    }
+
+    if (module_exists('media_oembed')) {
+      $url = drupal_realpath($variables['uri']);
+      $provider = media_oembed_get_provider($url, $matches, $role = 'consumer');
+
+      if ($provider !== FALSE && $provider['admin_title'] == 'YouTube') {
+        $video_oembed_id = uaqs_fields_get_youtube_id($url);
+        $variables['video_oembed_id'] =  $video_oembed_id;
+
+        $js['#attached']['js'][] = array(
+          'type' => 'setting',
+          'data' => array(
+            'uaqsFieldsMedia' => array(
+              'bgVideos' => array(
+                $video_oembed_id => array(
+                 'videoId' => $video_oembed_id,
+                 'start' => 0,
+              ),
+              ),
+            ),
+          ),
+        );
+
+        $js['#attached']['js'][] = array(
+          'type' => 'file',
+          'data' => drupal_get_path('module', 'uaqs_fields_media') . '/js/uaqs_fields_media.js',
+          'scope' => 'footer',
+        );
+
+        drupal_render($js);
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function uaqs_fields_media_form_alter(&$form, $form_state, $form_id) {
+  switch ($form_id)  {
+    case 'entity_embed_dialog_form':
+      $options = array(
+        'uaqs_small' => 'Small',
+        'uaqs_medium' => 'Medium',
+        'uaqs_large' => 'Large',
+        'uaqs_square' => 'Square',
+        'uaqs_media_list' => 'UA Bootstrap Media List',
+        'uaqs_inline_link' => 'Link'
+      );
+      $form['attributes']['data-entity-embed-settings']['file_view_mode']['#options'] = $options;
+      break;
+    case 'media_bulk_upload_import':
+      if (!isset($form_state['storage']['files'])) {
+        $form['notice']= array(
+          '#prefix' => '<p>',
+          '#markup' => t('Import existing files on the web server into your media library.  It is also possible to <a href="@add-files">bulk upload new files</a> into your media library.', array(
+            '@add-files' => url('file/add'),
+          )),
+          '#suffix' => '</p>',
+          '#weight' => -50,
+        );
+      }
+   }
+}
+
+/**
+ * Implements hook_filter_js_settings_alter().
+ */
+function uaqs_fields_media_filter_js_settings_alter(&$settings) {
+  $uaqs_fields_media_editor_css = base_path() . drupal_get_path('module', 'uaqs_fields_media') . '/css/uaqs_fields_media_editor.css';
+  foreach ($settings as $key => $value) {
+    $settings[$key]['editorSettings']['contentsCss'][] = $uaqs_fields_media_editor_css;
+  }
+}
+
+/**
+ * Implements hook_field_extra_fields().
+ *
+ * Adds two extra link text fields to view modes of file types.
+ */
+function uaqs_fields_media_field_extra_fields() {
+  $data['file']['document']['display']['uaqs_file_view_text'] = array(
+    'label' => t('View (This is set in the uaqs_fields_media.module) '),
+    'weight' => 50, // default weight, can be changed on display form by site-builder.
+  );
+  $data['file']['document']['display']['uaqs_file_separator'] = array(
+    'label' => t('Pipe separator (This is set in the uaqs_fields_media.module) '),
+    'weight' => 50, // default weight, can be changed on display form by site-builder.
+
+  );
+  $data['file']['document']['display']['uaqs_file_download_text'] = array(
+    'label' => t('Download (This is set in the uaqs_fields_media.module) '),
+    'weight' => 50, // default weight, can be changed on display form by site-builder.
+
+  );
+  $data['file']['document']['display']['uaqs_file_size'] = array(
+    'label' => t('Size (This is set in the uaqs_fields_media.module) '),
+    'weight' => 50, // default weight, can be changed on display form by site-builder.
+
+  );
+  $data['file']['video']['display']['uaqs_play_button'] = array(
+    'label' => t('Play button (This is set in the uaqs_fields_media.module) '),
+    'weight' => 50, // default weight, can be changed on display form by site-builder.
+
+  );
+  $data['file']['video']['display']['uaqs_pause_button'] = array(
+    'label' => t('Play button (This is set in the uaqs_fields_media.module) '),
+    'weight' => 50, // default weight, can be changed on display form by site-builder.
+
+  );
+  return $data;
+}
+
+/**
+ * Implements hook_entity_presave().
+ */
+function uaqs_fields_media_entity_presave($entity, $type = 'file') {
+  if (!isset($entity->field_uaqs_photo)) {
+    if (array_key_exists('type', get_object_vars($entity)) && $entity->type == 'video') {
+      $url = drupal_realpath($entity->uri);
+      $provider = media_oembed_get_provider($url, $matches, $role = 'consumer');
+      if ($provider['admin_title'] == 'YouTube') {
+        $video_id = uaqs_fields_get_youtube_id($url);
+        $oembed_data = media_oembed_get_data($url);
+        $poster_url = 'https://img.youtube.com/vi/' . $video_id . '/maxresdefault.jpg';
+
+        // Try downloading max-res thumbnail.
+        $result = drupal_http_request($poster_url);
+
+        // Fallback to default oEmbed thumbnail_url if max-res version doesn't exist.
+        if ($result->code == 404) {
+          $poster_url = $oembed_data['thumbnail_url'];
+          $result = drupal_http_request($poster_url);
+        }
+
+        if (!isset($result->error)) {
+          // Using the redirect URL's basename might guarantee a path with an
+          // appropriate file extension.
+          if (isset($result->redirect_url)) {
+            // If the redirect and original basenames are identical, do nothing.
+            if (drupal_basename($result->redirect_url) != drupal_basename($poster_url)) {
+              $url .= '/' . drupal_basename($result->redirect_url);
+            }
+          }
+
+          $parsed_url = parse_url($poster_url);
+
+          // Store local copies of images using hostname, path and filename of
+          // source.
+          $path = $parsed_url['host'];
+          $path .= drupal_dirname($parsed_url['path']);
+
+          if (substr($path, -1) != '/') {
+            $path .= '/';
+          }
+
+          $filename = drupal_basename($parsed_url['path']);
+
+          if (strpos($filename, '.') !== FALSE) {
+            $filename = $video_id . '-' . file_munge_filename($filename, 'jpg jpeg gif png', FALSE);
+          }
+
+          $path .= $filename;
+          $local_uri = file_stream_wrapper_uri_normalize('public://media-oembed/' . $path);
+
+          if (!file_exists($local_uri)) {
+            /// Ensure filesystem has directories for new file.
+            $dirname = drupal_dirname($local_uri);
+            file_prepare_directory($dirname, FILE_CREATE_DIRECTORY | FILE_MODIFY_PERMISSIONS);
+
+            // Save the file data to the local directory.
+            $file_temp = file_save_data($result->data, $local_uri);
+            $entity->field_uaqs_photo[LANGUAGE_NONE][0]['fid'] = $file_temp->fid;
+            $entity->field_uaqs_photo[LANGUAGE_NONE][0]['filename'] = $file_temp->filename;
+            $entity->field_uaqs_photo[LANGUAGE_NONE][0]['uid'] = 1;
+            $entity->field_uaqs_photo[LANGUAGE_NONE][0]['uri'] = $file_temp->uri;
+            $entity->field_uaqs_photo[LANGUAGE_NONE][0]['status'] = 1;
+          }
+        }
+        else {
+          watchdog(
+            'uaqs_fields_media',
+            'HTTP error @errorcode occurred when trying to fetch @remote. Error: @error',
+            array(
+              '@errorcode' => $result->code,
+              '@remote' => $poster_url,
+              '@error' => $result->error,
+            ),
+            WATCHDOG_ERROR
+          );
+        }
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_view().
+ *
+ * Provides content for pseudo/extra fields for files.
+ */
+function uaqs_fields_media_entity_view($entity, $type, $view_mode, $langcode) {
+  if ($type == 'file') {
+    $bundle = $entity->type;
+    if ($bundle == 'document') {
+      $raw_file_size = $entity->filesize;
+      $formatted_file_size = format_size($raw_file_size, $langcode = NULL);
+
+      $entity->content['uaqs_file_view_text'] = array(
+        '#pseudo_field' => TRUE,
+        '#title' => '',
+        '#markup' => 'view',
+      );
+      $entity->content['uaqs_file_separator'] = array(
+        '#pseudo_field' => TRUE,
+        '#title' => '',
+        '#markup' => ' | ',
+      );
+      $entity->content['uaqs_file_download_text'] = array(
+        '#pseudo_field' => TRUE,
+        '#title' => '',
+        '#markup' => 'download',
+      );
+      $entity->content['uaqs_file_size'] = array(
+        '#pseudo_field' => TRUE,
+        '#title' => '',
+        '#markup' => ' ' . $formatted_file_size . ' ',
+      );
+    }
+    if ($bundle == 'video') {
+      $url = drupal_realpath($entity->uri);
+      $provider = media_oembed_get_provider($url, $matches, $role = 'consumer');
+      if ($provider['admin_title'] == 'YouTube') {
+        $video_id = uaqs_fields_get_youtube_id($url);
+        $entity->content['uaqs_play_button'] = array(
+          '#pseudo_field' => TRUE,
+          '#title' => '',
+          '#markup' => '<div id="video-play-' . $video_id . '" title="Play the video" class="bg-video-player-control bg-trans-white uaqs-video-play" aria-hidden="true">Play Video</div>',
+        );
+        $entity->content['uaqs_pause_button'] = array(
+          '#pseudo_field' => TRUE,
+          '#title' => '',
+          '#markup' => '<div id="video-pause-' . $video_id . '" title="Pause the video" class="bg-video-player-control bg-trans-white uaqs-video-pause" aria-hidden="true">Pause Video</div>',
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function uaqs_fields_theme_registry_alter(&$theme_registry) {
+  // Find all .tpl.php files in this module's folder recursively.
+  $module_path = drupal_get_path('module', 'uaqs_fields');
+  $template_file_objects = drupal_find_theme_templates($theme_registry, '.tpl.php', $module_path);
+
+  // Iterate through all found template file objects.
+  foreach ($template_file_objects as $key => $template_file_object) {
+    // If the template has not already been overridden by a theme.
+    if (!isset($theme_registry[$key]['theme path']) || !preg_match('#/themes/#', $theme_registry[$key]['theme path'])) {
+      // Alter the theme path and template elements.
+      $theme_registry[$key]['theme path'] = $module_path;
+      $theme_registry[$key] = array_merge($theme_registry[$key], $template_file_object);
+      $theme_registry[$key]['type'] = 'module';
+    }
+  }
+}
+
+/**
+ * Implements hook_field_group_background_image_generate_alter().
+ *
+ * Adds manualcrop cache-busting parameters to image URLs used by
+ * field_group_background_image module.
+ *
+ * @todo Remove this in favor of patch for manualcrop module (?)
+ * @see https://jira.arizona.edu/browse/UADIGITAL-1902
+ */
+function uaqs_fields_media_field_group_background_image_generate_alter(&$url, $info) {
+  if (!empty($info['image_style']) && module_exists('manualcrop')) {
+    $cache_busted_url = _manualcrop_add_cache_control($info['image_style'], $url);
+
+    if (!empty($cache_busted_url)) {
+      $url = $cache_busted_url;
+    }
+  }
+}

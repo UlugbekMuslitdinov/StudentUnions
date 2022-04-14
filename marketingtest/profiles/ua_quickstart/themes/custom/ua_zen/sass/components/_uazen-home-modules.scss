@@ -1,0 +1,35 @@
+// MISSION STATEMENT
+.block.mission-statement {
+    background: #ecf4f3 url('../images/mission-bg.jpg') repeat-x 0 0;
+    text-align: center;
+    padding: 64px 0;
+    padding: 4rem 0;
+    margin: 0;
+    h3 {
+        color: #0c234b;
+        font-size: 28px;
+        font-size: 1.8rem;
+        font-family: MiloSerifWeb, TimesNewRoman, "Times New Roman", Times, Baskerville, Georgia, serif;
+        text-transform: none;
+      line-height: 1.4;
+    }
+    a:not(.contextual-links-trigger) {
+        display: block;
+        padding: 16px;
+        padding: 1rem;
+        font-size: 18px;
+        font-size: 1.125rem;
+        color: #ab0520;
+        border-bottom: 2px solid #076873;
+        text-transform: uppercase;
+        width: 220px;
+        margin: 16px auto 0;
+        margin: 1rem auto 0;
+    }
+}
+@media (min-width: 48em) {
+    .block.mission-statement h3 {
+        font-size: 36px;
+        font-size: 2.25rem;
+    }
+}

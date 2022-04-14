@@ -1,0 +1,80 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Person feature.
+ */
+
+include_once 'uaqs_person.features.inc';
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function uaqs_person_theme_registry_alter(&$theme_registry) {
+  // Find all .tpl.php files in this module's folder recursively.
+  $module_path = drupal_get_path('module', 'uaqs_person');
+  $template_file_objects = drupal_find_theme_templates($theme_registry, '.tpl.php', $module_path);
+
+  // Iterate through all found template file objects.
+  foreach ($template_file_objects as $key => $template_file_object) {
+    // If the template has not already been overridden by a theme.
+    if (!isset($theme_registry[$key]['theme path']) || !preg_match('#/themes/#', $theme_registry[$key]['theme path'])) {
+      // Alter the theme path and template elements.
+      $theme_registry[$key]['theme path'] = $module_path;
+      $theme_registry[$key] = array_merge($theme_registry[$key], $template_file_object);
+      $theme_registry[$key]['type'] = 'module';
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function uaqs_person_preprocess_node(&$vars) {
+  if ($vars['node']->type == 'uaqs_person' && $vars['view_mode'] == 'uaqs_card') {
+    $vars['theme_hook_suggestions'][] = 'node__uaqs_person__uaqs_card';
+  }
+}
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function uaqs_person_preprocess_field(&$vars) {
+  if ($vars['element']['#field_name'] == 'field_uaqs_person_category') {
+    array_walk($vars['items'], function(&$el) { $el['#options']['attributes']['class'][] = 'label label-muted'; } );
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function uaqs_person_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'uaqs_person_node_form') {
+    $form['#validate'][] = 'uaqs_person_summary_link_form_validate';
+  }
+}
+
+function uaqs_person_summary_link_form_validate($form, &$form_state) {
+  // Check that link URL is filled if required
+  if ($form['field_uaqs_link'][LANGUAGE_NONE][0]['url']['#required'] && empty($form_state['values']['field_uaqs_link'][LANGUAGE_NONE][0]['url'])) {
+    // Reset errors, excluding custom field error
+    // Reference: https://api.drupal.org/comment/28464#comment-28464
+    $errors = form_get_errors();
+    if ($errors) {
+      form_clear_error();
+
+      $error_messages = drupal_get_messages('error');
+      foreach (array_diff($error_messages['error'], $errors) as $message) {
+        drupal_set_message($message, 'error');
+      }
+
+      foreach (array_reverse($errors) as $name => $error) {
+        if ($name != 'field_uaqs_link][' . LANGUAGE_NONE . '][0][url') {
+          form_set_error($name, $error);
+        }
+      }
+    }
+
+    // Set custom field error
+    form_set_error('field_uaqs_link][' . LANGUAGE_NONE . '][0][url', $form['field_uaqs_link'][LANGUAGE_NONE][0]['#title'] . ' URL field is required for content to be displayed correctly in lists. Use the token [node:url] to automatically link to this content.');
+  }
+}

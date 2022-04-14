@@ -1,0 +1,55 @@
+.btn-hollow-reverse-bloom {
+  border-color: #ef4056 !important;
+}
+
+.btn-resource {
+  padding-top: 0.5em !important;
+  letter-spacing: normal;
+}
+
+.resource-menu {
+ height: 38px;
+ position: relative;
+ margin: 0.6em 0;
+}
+
+.resource-menu .dropdown-menu {
+  font-size: 0.8125em;
+}
+
+.resource-menu .dropdown-menu.dropdown-menu-right li {
+  line-height: 1.25em;
+}
+
+.resource-menu:hover .dropdown-menu,
+.resource-menu .dropdown-toggle:focus ~ .dropdown-menu {
+  display: block;
+}
+
+.open > .btn-hollow-no-hover-effect.dropdown-toggle:focus,
+.open > .btn-hollow-no-hover-effect.dropdown-toggle:hover,
+.open > .btn-hollow-no-hover-effect.dropdown-toggle,
+.open > .btn-hollow-no-hover-effect,
+.btn-hollow-no-hover-effect.dropdown-toggle:focus,
+.btn-hollow-no-hover-effect.dropdown-toggle:hover,
+.btn-hollow-no-hover-effect:focus,
+.btn-hollow-no-hover-effect:hover {
+  background-color: transparent !important;
+  color: white !important;
+}
+
+.open > .btn-hollow-reverse-bloom.btn-hollow-no-hover-effect.dropdown-toggle:focus,
+.open > .btn-hollow-reverse-bloom.btn-hollow-no-hover-effect.dropdown-toggle:hover,
+.open > .btn-hollow-reverse-bloom.btn-hollow-no-hover-effect.dropdown-toggle,
+.open > .btn-hollow-reverse-bloom.btn-hollow-no-hover-effect,
+.btn-hollow-reverse-bloom.btn-hollow-no-hover-effect.dropdown-toggle:focus,
+.btn-hollow-reverse-bloom.btn-hollow-no-hover-effect.dropdown-toggle:hover,
+.btn-hollow-reverse-bloom.btn-hollow-no-hover-effect:focus,
+.btn-hollow-reverse-bloom.btn-hollow-no-hover-effect:hover {
+  background-color: #8B0015 !important;
+  border-color: #8B0015 !important;
+}
+
+.region-header-ua-utilities i {
+  display: none;
+}

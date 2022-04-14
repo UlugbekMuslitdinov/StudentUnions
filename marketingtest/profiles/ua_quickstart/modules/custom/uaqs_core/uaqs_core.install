@@ -1,0 +1,165 @@
+<?php
+
+/**
+ * @file
+ * uaqs_core.install
+ */
+
+use Symfony\Component\Yaml\Yaml;
+
+/**
+ * Implements hook_install().
+ */
+function uaqs_core_install() {
+  // Set Adminimal jQuery version.
+  if (!theme_get_setting('jquery_update_jquery_version', 'adminimal')) {
+    _jquery_update_set_theme_version('adminimal', '1.7');
+  }
+}
+
+/**
+ * Update jQuery versions: set default to 3.1 if currently 1.10, set Adminimal to 1.7, set Seven to 1.4, and enable jQuery Migrate.
+ */
+function uaqs_core_update_7100() {
+  // Set core jQuery version and enable jQuery Migrate.
+  if (variable_get('jquery_update_jquery_version', FALSE) == '1.10') {
+    variable_set('jquery_update_jquery_version', '3.1');
+    variable_set('jquery_update_jquery_migrate_enable', '1');
+    variable_set('jquery_update_jquery_migrate_cdn', 'jquery');
+  }
+
+  // Set Adminimal jQuery version.
+  if (!theme_get_setting('jquery_update_jquery_version', 'adminimal')) {
+    _jquery_update_set_theme_version('adminimal', '1.7');
+  }
+
+  // Set Seven jQuery version.
+  if (!theme_get_setting('jquery_update_jquery_version', 'seven')) {
+    _jquery_update_set_theme_version('seven', 'default');
+  }
+}
+
+/**
+ * UADIGITAL-1878 Enable the libraries and xautoload modules if needed.
+ */
+function uaqs_core_update_7101() {
+  // Libraries and xautoload became dependencies due to library loading.
+  $module_list = array('libraries', 'xautoload');
+  module_enable($module_list);
+}
+
+/**
+ * UADIGITAL-2159 Update footer link to arizona.edu to use https
+ */
+function uaqs_core_update_7102() {
+  // Make sure ua_zen is the default theme
+  if (variable_get('theme_default') == 'ua_zen') {
+    $copyright = theme_get_setting('ua_copyright_notice', 'ua_zen');
+    // Search for http://www.arizona.edu or http://arizona.edu
+    if (preg_match('#http://(www\.)?arizona\.edu#i', $copyright)) {
+      $find = array('http://www.arizona.edu', 'http://arizona.edu');
+      $copyright = str_ireplace($find, 'https://www.arizona.edu', $copyright);
+      $theme_settings = variable_get('theme_ua_zen_settings', array());
+      $theme_settings['ua_copyright_notice'] = $copyright;
+      variable_set('theme_ua_zen_settings', $theme_settings);
+    }
+  }
+}
+
+/**
+ * UADIGITAL-2213 Add administer UAQS configuration permission to admin
+ */
+function uaqs_core_update_7103() {
+  $role = user_role_load_by_name('administrator');
+  user_role_grant_permissions($role->rid, array('administer uaqs configuration'));
+}
+
+/**
+ * Implements hook_requirements().
+ *
+ * UADIGITAL-1878: Add Module Override Detection.
+ * Provide a status message if modules do not seem to be UAQS versions.
+ */
+function uaqs_core_requirements($phase) {
+  $requirements = array();
+
+  if ($phase == 'runtime') {
+    $projects = array();
+
+    // Xautoload seems to not set $library['loaded'], check if class exists.
+    if ($library = libraries_load('Yaml') && class_exists("Symfony\Component\Yaml\Yaml")) {
+
+      // Load the installation profile YAML to find the project information.
+      $config_path = drupal_get_path('profile', drupal_get_profile()) . '/drupal-org.make.yml';
+      $yaml = array();
+      try {
+        if (method_exists("Symfony\Component\Yaml\Yaml", "parseFile")) {
+          $yaml = @Yaml::parseFile($config_path);
+        }
+      }
+      catch (Exception $e) {
+        // The makefile was not found or failed parsing.
+        $yaml = array();
+      }
+
+      // Abort if we are unable to find project information within the makefile.
+      if (empty($yaml['projects']) || empty($yaml['core']) || !is_array($yaml['projects'])) {
+        return $requirements;
+      }
+
+      // Build a list of known versions listed within the makefile.
+      $core = $yaml['core'];
+      foreach ($yaml['projects'] as $key => $project) {
+        // The check is only run for versioned projects within Drupal.org.
+        if (isset($project['version']) && empty($project['download'])) {
+          $projects[$key] = $core . '-' . $project['version'];
+        }
+      }
+    }
+
+    // Only check the database for modules if we have data from the makefile.
+    if (!empty($projects)) {
+      // Fetch enabled module data from the system records.
+      system_rebuild_module_data();
+      $records = system_get_info('module');
+
+      // Process module data one record at a time.
+      foreach ($records as $key => $record) {
+        if (empty($record['version'])) {
+          continue;
+        }
+
+        // Version comparison is skipped if the makefile had no information.
+        if (empty($projects[$key])) {
+          continue;
+        }
+
+        // Get version, name and path of the current module.
+        $version = $record['version'];
+        $name = (!empty($record['name'])) ? $record['name'] : $key;
+        $path = drupal_get_path('module', $key);
+
+        // Get the installation makefile's module version number.
+        $profile_version = $projects[$key];
+
+        // Create status message if the two versions are different.
+        if ($version != $profile_version) {
+          $requirements[] = array(
+            'title' => t('Module Override'),
+            'value' => t('@name (@path)', array('@name' => $name, '@path' => $path)),
+            'description' => t('The site uses a different version of @name (@version) than the one bundled with UA Quickstart (@profileversion)',
+              array(
+                '@name' => $name,
+                '@version' => $version,
+                '@profileversion' => $profile_version,
+                '@path' => $path,
+              )),
+            'severity' => REQUIREMENT_INFO,
+          );
+        }
+      }
+    }
+  }
+
+  return $requirements;
+}

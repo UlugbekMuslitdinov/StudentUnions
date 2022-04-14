@@ -1,0 +1,25 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Content Chunks - Carousel feature.
+ */
+
+include_once 'uaqs_content_chunks_carousel.features.inc';
+
+/**
+ * Implements hook_preprocess_entity().
+ */
+function uaqs_content_chunks_carousel_preprocess_entity(&$variables) {
+  if ($variables['entity_type'] == 'paragraphs_item' && $variables['elements']['#bundle'] == 'uaqs_carousel') {
+    $sidebar_first = block_list('sidebar_first');
+    $sidebar_second = block_list('sidebar_second');
+    // Add information about the number of sidebars.
+    if (!empty($sidebar_first) || !empty($sidebar_second)) {
+      $variables['classes_array'][] = 'col-xs-12';
+    }
+    else {
+      $variables['classes_array'][] = 'col-lg-10 col-lg-push-1';
+    }
+  }
+}
+

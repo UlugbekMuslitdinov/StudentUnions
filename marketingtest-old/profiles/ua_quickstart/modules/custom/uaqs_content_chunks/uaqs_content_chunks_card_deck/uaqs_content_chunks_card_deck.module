@@ -1,0 +1,79 @@
+<?php
+/**
+ * @file
+ * Code for the uaqs_content_chunks_card_deck feature.
+ */
+
+include_once 'uaqs_content_chunks_card_deck.features.inc';
+
+/**
+ * Implements hook_preprocess_entity().
+ */
+function uaqs_content_chunks_card_deck_preprocess_entity(&$variables) {
+  // Add classes for card deck width depending on how a content editor wants
+  // cards to display and how many cards are present in the deck.
+  if ($variables['entity_type'] == 'paragraphs_item' && $variables['elements']['#bundle'] == 'uaqs_card_deck') {
+    if (!empty($variables['elements']['#entity']->field_uaqs_setting_deck_width)) {
+      if (isset($variables['elements']['#groups']['group_card_deck'])) {
+        $paragraphs_item = $variables['paragraphs_item'];
+        if ($card_ids = field_get_items('paragraphs_item', $paragraphs_item, 'field_uaqs_cards')) {
+          foreach ($card_ids as $key => $value) {
+            $card = field_collection_field_get_entity($card_ids[$key]);
+            if (field_collection_item_is_empty($card)) {
+             unset($card_ids[$key]);
+            }
+          }
+        }
+        else {
+          $card_ids = array();
+        }
+        $card_deck_classes_array = explode(' ', $variables['elements']['#groups']['group_card_deck']->format_settings['instance_settings']['classes']);
+        $card_deck_width_setting = drupal_html_class($variables['elements']['#entity']->field_uaqs_setting_deck_width['und'][0]['value']);
+        $card_deck_classes_array[] = $card_deck_width_setting;
+        $card_count = count($card_ids);
+        $classes_to_remove = array(
+          'single-card-width','uaqs-card-deck-width-one-card','uaqs-card-deck-width-two-cards'
+        );
+        $card_deck_classes_array = array_diff($card_deck_classes_array, $classes_to_remove);
+        $card_deck_width_class = '';
+        if ($card_deck_width_setting == 'single-card-width') {
+          switch ($card_count) {
+            case 1:
+              $card_deck_width_class = 'uaqs-card-deck-width-one-card';
+              break;
+            case 2:
+              $card_deck_width_class = 'uaqs-card-deck-width-two-cards';
+              break;
+          }
+        }
+        $card_deck_classes_array[] = $card_deck_width_class;
+        $card_deck_classes = implode(' ', $card_deck_classes_array);
+        $variables['elements']['#groups']['group_card_deck']->format_settings['instance_settings']['classes'] = $card_deck_classes;
+      }
+    }
+    $variables['elements']['#attached']['css'] = array(
+      drupal_get_path('module', 'uaqs_content_chunks_card_deck') . '/css/uaqs_content_chunks_card_deck.css',
+    );
+  }
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function uaqs_content_chunks_card_deck_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
+  // Change the "Default" view_mode to "Bordered card", and some help text for
+  // link usage.
+  if ($entity_type === 'paragraphs_item' && $form['#bundle'] === 'uaqs_card_deck') {
+    array_shift($form['uaqs_group_display_settings']['view_mode']['#options']);
+    $form['uaqs_group_display_settings']['view_mode']['#options']['default'] = 'Bordered card';
+    $form['uaqs_group_display_settings']['view_mode']['#options'] = array_reverse($form['uaqs_group_display_settings']['view_mode']['#options']);
+    // Help text for card decks.
+    $help_text = 'Note: Each card can have links in the summary or links in the links field.  If there are links in both fields the card will not display or function correctly.';
+    $help_text .= 'For more information about link accessibility, visit the ';
+    $help_text .= l('Disibility Resource Center\'s documentation for accessible links.' , 'https://itaccessibility.arizona.edu/content/ua-sites');
+    $form['help'] = array(
+      '#type' => 'item',
+      '#markup' => $help_text,
+    );
+  }
+}

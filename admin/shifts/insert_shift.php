@@ -4,44 +4,8 @@
 require_once ($_SERVER['DOCUMENT_ROOT'] . '/commontools/includes/mysqli.inc');
 
 if($_SERVER["REQUEST_METHOD"]=="POST"){
-$supervisor = $_POST['supervisor'];
-
-// Find supervisor's First and Last Name.
-//switch ($supervisor) {
-//		case "emily":
-//			$supervisor_first_name = "Emily";
-//			$supervisor_last_name = "Romero";
-//			break;
-//		case "lupita":
-//			$supervisor_first_name = "Lupita";
-//			$supervisor_last_name = "Hollis";
-//			break;
-//		case "angelica":
-//			$supervisor_first_name = "Angelica";
-//			$supervisor_last_name = "Osuna";
-//			break;
-//		case "michelle":
-//			$supervisor_first_name = "Michelle";
-//			$supervisor_last_name = "Ward";
-//			break;
-//		case "judy":
-//			$supervisor_first_name = "Judy";
-//			$supervisor_last_name = "Stout";
-//			break;
-//		case "beaney":
-//			$supervisor_first_name = "Beaney";
-//			$supervisor_last_name = "Cota";
-//			break;
-//		case "stepahie":
-//			$supervisor_first_name = "Stephanie";
-//			$supervisor_last_name = "Bixby";
-//			break;
-//		default:
-//			$supervisor_first_name = "No";
-//			$supervisor_last_name = "Body";
-//}
-
-	$netid = "";
+	$supervisor = $_POST['supervisor'];
+	// $netid = "";
 	$event = $_POST['event'];
 	$location = $_POST['location'];
 	$shift_date = $_POST['shift_date'];

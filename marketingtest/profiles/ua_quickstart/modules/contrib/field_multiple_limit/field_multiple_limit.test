@@ -1,0 +1,143 @@
+<?php
+
+/**
+ * @file
+ * Tests for Field Multiple Limit, based on examples from field.test
+ */
+
+/**
+ * Test the field formatter settings work.
+ */
+class FieldMultipleLimitTestCase extends DrupalWebTestCase {
+
+  var $default_storage = 'field_sql_storage';
+
+  public static function getInfo() {
+    return array(
+      'name' => 'Field Multiple Limit tests',
+      'description' => 'Adds multiple data to an entity, changes the formatter display settings and verifies the changes take effect.',
+      'group' => 'Field Formatter Settings',
+    );
+  }
+
+  function setUp() {
+    variable_set('field_storage_default', $this->default_storage);
+    $modules = array('field_multiple_limit', 'text', 'field_ui');
+    parent::setUp($modules);
+    $this->addTestFieldToPage();
+
+    $this->web_user = $this->drupalCreateUser(array('edit own page content', 'create page content'));
+    $this->drupalLogin($this->web_user);
+  }
+
+  /**
+   * Set up a text field on the page content type so we can configure it.
+   * @see FieldInstanceCrudTestCase
+   */
+  function addTestFieldToPage() {
+    $this->entity_type = 'node';
+    $this->field_name = 'field_2';
+    $this->bundle = 'page';
+    $this->field = array(
+      'field_name' => $this->field_name,
+      'type' => 'text',
+      'cardinality' => 5,
+    );
+    $this->field_definition = field_create_field($this->field);
+    $this->instance_definition = array(
+      'field_name' => $this->field_name,
+      'entity_type' => $this->entity_type,
+      'bundle' => $this->bundle,
+    );
+    field_create_instance($this->instance_definition);
+  }
+
+  /**
+   * Set up a text field on the page content type so we can configure it.
+   * @see FieldInstanceCrudTestCase
+   */
+  function addTestDataToPage() {
+    $this->drupalGet('node/add/page');
+    $langcode = LANGUAGE_NONE;
+    $this->assertFieldByName("{$this->field_name}[$langcode][0][value]", '', 'Widget is displayed');
+    $edit = array(
+      'title' => 'Test multiple fields',
+      "{$this->field_name}[$langcode][0][value]" => 'Field data #0',
+      "{$this->field_name}[$langcode][1][value]" => 'Field data #1',
+      "{$this->field_name}[$langcode][2][value]" => 'Field data #2',
+      "{$this->field_name}[$langcode][3][value]" => 'Field data #3',
+      "{$this->field_name}[$langcode][4][value]" => 'Field data #4',
+    );
+    $this->drupalPost(NULL, $edit, t('Save'));
+    // According to a core example, this is how I should find the ID of the
+    // thing I just made.
+    if (preg_match('|node/(\d+)|', $this->url, $match)) {
+      $this->entity_id = $match[1];
+    }
+  }
+
+  /**
+   * Test that custom info settings are set and retained.
+   */
+  function testFieldInfo() {
+    // Load the field instance, set it multiple, original order and save.
+    $instance = field_read_instance($this->entity_type, $this->instance_definition['field_name'], $this->instance_definition['bundle']);
+    $instance['display']['default']['settings']['field_multiple_limit'] = 3;
+    $instance['display']['default']['settings']['field_multiple_limit_order'] = 0;
+    field_update_instance($instance);
+    // Reload it, and check that the value was remembered.
+    $instance = field_read_instance($this->entity_type, $this->field_name, $this->bundle);
+    $field_multiple_limit = $instance['display']['default']['settings']['field_multiple_limit'];
+    $field_multiple_limit_order = $instance['display']['default']['settings']['field_multiple_limit_order'];
+    $this->assertEqual($field_multiple_limit, 3, 'Saving the field_multiple_limit value on a field instance widget was remembered.');
+    $this->assertEqual($field_multiple_limit_order, 0, 'Saving the field_multiple_limit_order value on a field instance widget was remembered.');
+  }
+
+  /**
+   * Test that data added to the page shows up as expected.
+   */
+  function testFieldDisplay() {
+    $this->addTestDataToPage();
+    // We now see a page containing the added fields.
+    // Check that the fields are displayed in the normal order
+    $pattern = '|Field data #0[\s\S]*Field data #1[\s\S]*Field data #2[\s\S]*Field data #3[\s\S]*Field data #4|';
+    $this->assertPattern($pattern, 'All fields are displayed in delta order on the page.');
+
+    // Change the formatter setting to random order.
+    $instance = field_read_instance($this->entity_type, $this->field_name, $this->bundle);
+    $instance['display']['default']['settings']['field_multiple_limit_order'] = 2;
+    field_update_instance($instance);
+
+    // Reloading the page should show items in random order. In the extremely
+    // unlikely case that the same random order comes up 10 times consecutively
+    // this will be a false positive.
+    $match = 0;
+    for ($i = 1; $i <= 10; $i++) {
+      $this->drupalGet($this->url);
+      if (preg_match($pattern, $this->drupalGetContent())) {
+        $match++;
+      }
+    }
+    $this->assertFalse($match == 10, 'All fields are displayed in random order on the page.');
+
+    // Change the formatter setting to limit to just three items in original order.
+    $instance = field_read_instance($this->entity_type, $this->field_name, $this->bundle);
+    $instance['display']['default']['settings']['field_multiple_limit'] = 3;
+    $instance['display']['default']['settings']['field_multiple_limit_order'] = 0;
+    field_update_instance($instance);
+
+    // Reloading the page should now NOT display #4
+    $this->drupalGet($this->url);
+    $this->assertNoPattern('|Field data #4|', 'When limiting fileds, some are now hidden.');
+
+    // Now reverse the order
+    $instance['display']['default']['settings']['field_multiple_limit_order'] = 1;
+    field_update_instance($instance);
+
+    // Reloading the page should now display #4, #3 #2 only
+    $this->drupalGet($this->url);
+    $this->assertPattern('|Field data #4[\s\S]*Field data #3[\s\S]*Field data #2|', 'Reversing fields worked');
+    $this->assertNoPattern('|Field data #1|', 'Reversing fields and limiting works');
+  }
+
+}

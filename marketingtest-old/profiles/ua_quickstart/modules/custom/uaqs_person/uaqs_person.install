@@ -1,0 +1,48 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the uaqs_person module.
+ */
+
+/**
+ * Enable the uaqs_person_view module, and its dependencies.
+ */
+function uaqs_person_update_7100() {
+  module_enable(array('uaqs_person_view'));
+}
+
+/**
+ * Update existing people summary link fields.
+ */
+function uaqs_person_update_7101() {
+  $query = new EntityFieldQuery();
+  $query->entityCondition('entity_type', 'node')
+    ->entityCondition('bundle', 'uaqs_person')
+    ->propertyOrderBy('created', 'DESC');
+  $result = $query->execute();
+
+  if (isset($result['node']))
+  {
+    // Loop through available entities
+    foreach (array_keys($result['node']) as $nid)
+    {
+      $wrapper = entity_metadata_wrapper('node', $nid);
+      $uaqs_link = $wrapper->field_uaqs_link->value();
+
+      // Set node's summary link
+      if (empty($uaqs_link)) {
+        $wrapper->field_uaqs_link->set(array(
+          'url' => '[node:url]',
+          'title' => '[node:title]',
+          'attributes' => 'a:1:{s:6:"target";i:0;}'
+        ));
+
+        // Save field
+        field_attach_update('node', $wrapper->value());
+        entity_get_controller('node')
+          ->resetCache(array($wrapper->getIdentifier()));
+      }
+    }
+  }
+}

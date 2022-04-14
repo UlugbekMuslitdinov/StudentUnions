@@ -1,0 +1,9 @@
+name = UAQS Content Chunks - Views Flexible Page by Category
+description = Ability to list flexible page nodes in a list or card view
+core = 7.x
+package = The University of Arizona
+dependencies[] = views
+dependencies[] = views_bootstrap
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = uaqs_content_chunks_views_page_by_category

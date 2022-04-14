@@ -1,0 +1,8 @@
+name = UAQS Block Types - Call To Action Demo Content
+description = Demo content for call to action button block type.
+core = 7.x
+package = The University of Arizona
+dependencies[] = migrate
+dependencies[] = uaqs_block_types_call_to_action
+dependencies[] = uaqs_core
+files[] = import/uaqs_block_types_call_to_action_bean.inc

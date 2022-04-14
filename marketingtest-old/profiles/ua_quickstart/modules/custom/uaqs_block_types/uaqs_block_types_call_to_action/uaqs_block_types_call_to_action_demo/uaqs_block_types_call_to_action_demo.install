@@ -1,0 +1,52 @@
+<?php
+/**
+ * @file
+ * uaqs_block_types_call_to_action_demo.install
+ */
+
+/**
+ * Null stub to disable message logging.
+ *
+ * @param string $message
+ *   the message to display
+ * @param string $level
+ *   message type
+ */
+function _uaqs_block_types_call_to_action_demo_null_message($message, $level) {
+  return;
+}
+
+/**
+ * Implements hook_enable().
+ */
+function uaqs_block_types_call_to_action_demo_enable() {
+  migrate_static_registration();
+  $info = uaqs_block_types_call_to_action_demo_migrate_api();
+  if (!variable_get('uaqs_verbose')) {
+    Migration::setDisplayFunction('_uaqs_block_types_call_to_action_demo_null_message');
+  }
+  foreach ($info['migrations'] as $machine_name => $arguments) {
+    $migration = Migration::getInstance($machine_name);
+    $migration->processImport();
+  }
+}
+
+/**
+ * Implements hook_disable().
+ */
+function uaqs_block_types_call_to_action_demo_disable() {
+  // Prevent missing migration errors by forcing migrate module to re-register
+  // statically defined migrations.
+  migrate_static_registration();
+
+  $info = uaqs_block_types_call_to_action_demo_migrate_api();
+  if (!variable_get('uaqs_verbose')) {
+    Migration::setDisplayFunction('_uaqs_block_types_call_to_action_demo_null_message');
+  }
+  $hitlist = array_reverse($info['migrations']);
+  foreach ($hitlist as $machine_name => $arguments) {
+    $migration = Migration::getInstance($machine_name);
+    $migration->processRollback();
+  }
+  MigrateGroup::deregister('uaqs_block_types_call_to_action');
+}

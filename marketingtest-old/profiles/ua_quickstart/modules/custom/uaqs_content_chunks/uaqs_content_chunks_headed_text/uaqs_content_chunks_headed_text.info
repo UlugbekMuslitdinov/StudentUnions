@@ -1,0 +1,17 @@
+name = UAQS Content Chunks - Headed Text
+description = Text Area
+core = 7.x
+package = The University of Arizona
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = field_group
+dependencies[] = paragraphs
+dependencies[] = text
+dependencies[] = title
+dependencies[] = uaqs_content_chunks
+dependencies[] = uaqs_fields
+features[ctools][] = field_group:field_group:1
+features[ctools][] = strongarm:strongarm:1
+features[features_api][] = api:2
+features[field_instance][] = paragraphs_item-uaqs_headed_text-field_uaqs_summary
+features[paragraphs][] = uaqs_headed_text

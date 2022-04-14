@@ -33,8 +33,7 @@ if (strlen($note) > 0) {
 	$location_message .= $note;
 }
 
-// $email = $employee['email'];
-$email = "yontaek@hotmail.com";
+$email = $employee['email'];
 $subject = "Shift Sign Already Filled";
 $headers = 'From: Arizona Student Unions <no-reply@email.arizona.edu>' . "\r\n";
 $headers .= 'Reply-To: DO-NOT-REPLY <no-reply@email.arizona.edu>' . "\r\n";

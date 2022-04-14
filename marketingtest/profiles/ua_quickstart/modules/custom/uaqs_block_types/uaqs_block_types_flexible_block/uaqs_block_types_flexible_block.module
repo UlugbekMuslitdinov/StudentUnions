@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Flexible Block feature.
+ */
+
+include_once 'uaqs_block_types_flexible_block.features.inc';

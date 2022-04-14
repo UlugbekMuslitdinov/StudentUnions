@@ -1,0 +1,57 @@
+<?php
+
+/**
+ * Tests that each of the Metatag schema_book tags work correctly.
+ */
+class SchemaMetatagBookTest extends SchemaMetatagTagsTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Schema Metatag: Book',
+      'description' => 'Test the schema_book meta tags.',
+      'group' => 'Schema Metatag',
+      'dependencies' => [
+        'ctools',
+        'token',
+        'metatag',
+        'schema_metatag',
+        'schema_book',
+      ],
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp(array $modules = array()) {
+    $modules[] = 'schema_book';
+    parent::setUp($modules);
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public $moduleName = 'schema_book';
+
+  /**
+   * {@inheritdoc}
+   */
+  public $schemaTags = [
+    'schema_book.@type' => 'SchemaBookType',
+    'schema_book.author' => 'SchemaPersonOrgBase',
+    'schema_book.name' => 'SchemaNameBase',
+    'schema_book.@id' => 'SchemaNameBase',
+    'schema_book.description' => 'SchemaNameBase',
+    'schema_book.image' => 'SchemaImageBase',
+    'schema_book.url' => 'SchemaUrlBase',
+    'schema_book.sameAs' => 'SchemaUrlBase',
+    'schema_book.aggregateRating' => 'SchemaRatingBase',
+    'schema_book.review' => 'SchemaReviewBase',
+    'schema_book.workExample' => 'SchemaCreativeWorkBase',
+  ];
+
+}

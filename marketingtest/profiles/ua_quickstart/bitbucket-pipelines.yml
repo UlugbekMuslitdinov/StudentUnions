@@ -1,0 +1,148 @@
+# bitbucket-pipelines.yml
+#
+# Bitbucket Pipelines operations for the monolithic UA Quickstart repository.
+
+image: uadrupal/schismatic:2.0.2
+clone:
+  depth: full
+
+definitions:
+  steps:
+    - step: &build
+        name: Build UAZQS
+        image: uadrupal/autohelper:1.1.1
+        script:
+          - drush make --contrib-destination='profiles/ua_quickstart' build-ua_quickstart.make.yml uaqsbuildroot
+          - cd uaqsbuildroot && find . -type d -name "uaqsbuildroot*" -exec rm -rf {} +
+        artifacts:
+          - uaqsbuildroot/**
+    - step: &build-pantheon
+        name: Build UAZQS Pantheon
+        image: uadrupal/autohelper:1.1.1
+        script:
+          - drush make --contrib-destination='profiles/ua_quickstart' build-ua_quickstart-pantheon.make.yml uaqsbuildroot-pantheon
+          - cd uaqsbuildroot-pantheon && find . -type d -name "uaqsbuildroot*" -exec rm -rf {} +
+        artifacts:
+          - uaqsbuildroot-pantheon/**
+    - step: &git-config
+        name: Configure git
+        script:
+          - git config user.name "$BITBUCKET_REPO_OWNER"
+          - git config user.email "noreply@bitbucket.org"
+          - git remote set-url origin ${BITBUCKET_GIT_SSH_ORIGIN}
+        artifacts:
+          - .git/config
+    - step: &security-scan-composer
+        name: Scan composer dependencies
+        image: composer:1.8
+        script:
+          - ${BITBUCKET_CLONE_DIR}/devtools/ua_drupal_test/uaqstest_security.sh
+
+pipelines:
+  default:
+    - step: *security-scan-composer
+  custom:
+    security-check:
+      - step: *build
+      - step: *build-pantheon
+      - step: *security-scan-composer
+    test-in-pantheon-multidev:
+      - variables:
+        - name: PANTHEON_SITE_NAME
+        - name: PANTHEON_SOURCE_ENV
+      - step:
+         name: Test in Pantheon multidev
+         image: uadrupal/terminus-docker-image:2.0.0
+         script:
+           - ssh-keygen -f ${HOME}/.ssh/id_rsa -t rsa -N '' -C "noreply@bitbucket.org"
+           - terminus auth:login --machine-token $TERMINUS_MACHINE_TOKEN
+           - terminus ssh-key:add ~/.ssh/id_rsa.pub -vvv 2>&1 | grep 'Data:\ ' | awk -F \" '{ print $2}' > ~/SSH_ID.txt
+           - IFS='-' read -ra arr <<< $BITBUCKET_BRANCH ; PR_NUMBER=${arr[1]}
+           - terminus multidev:create $PANTHEON_SITE_NAME.$PANTHEON_SOURCE_ENV az-$PR_NUMBER
+           - UUID="$(terminus site:lookup $PANTHEON_SITE_NAME)"
+           - git clone ssh://codeserver.dev.$UUID@codeserver.dev.$UUID.drush.in:2222/~/repository.git ~/pantheon/$PANTHEON_SITE_NAME --branch az-$PR_NUMBER
+           - git clone $BITBUCKET_GIT_HTTP_ORIGIN ~/quickstart/ua_quickstart && cd ~/quickstart/ua_quickstart || exit
+           - git checkout $BITBUCKET_BRANCH
+           - drush make --contrib-destination='profiles/ua_quickstart' build-ua_quickstart-pantheon.make.yml ~/quickstart/$BITBUCKET_BRANCH
+           - rsync -r --delete --exclude='.htaccess' --exclude='.git' --exclude='.gitignore' --exclude='robots.txt' --exclude='/sites' ~/quickstart/$BITBUCKET_BRANCH/* ~/pantheon/$PANTHEON_SITE_NAME/web
+           - cd ~/pantheon/$PANTHEON_SITE_NAME
+           - git config user.name "$BITBUCKET_REPO_OWNER"
+           - git config user.email "noreply@bitbucket.org"
+           - git add -A
+           - git commit -m "$BITBUCKET_BRANCH"
+           - git push origin az-$PR_NUMBER
+           - echo "Your site can be found here az-$PR_NUMBER-$PANTHEON_SITE_NAME.pantheonsite.io"
+         artifacts:
+           - SSH_ID.txt
+         after-script:
+           - PANTHEON_SSH_KEYID=$(cat ~/SSH_ID.txt)
+           - terminus ssh-key:remove "$PANTHEON_SSH_KEYID"
+    update-pantheon-upstream:
+      - step:
+          name: Update Pantheon upstream
+          image: uadrupal/autohelper:1.1.1
+          script:
+            - git config --global user.name "$BITBUCKET_REPO_OWNER"
+            - git config --global user.email "noreply@bitbucket.org"
+            - git remote set-url origin ${BITBUCKET_GIT_SSH_ORIGIN}
+            - export UAQSRTOOLS_ARTIFACT_PATH="/tmp/ua_quickstart-build"
+            - export UAQSRTOOLS_COMMIT_MSG="Latest UA QuickStart updates ($(date +%F) ${BITBUCKET_COMMIT:0:7})."
+            - export UAQSRTOOLS_TARGET_REPO_URL="git@bitbucket.org:ua_drupal/ua_quickstart-pantheon.git"
+            - export UAQSRTOOLS_TARGET_SUBDIR=web
+            - drush make --contrib-destination='profiles/ua_quickstart' build-ua_quickstart-pantheon.make.yml $UAQSRTOOLS_ARTIFACT_PATH
+            - for d in $UAQSRTOOLS_ARTIFACT_PATH/profiles/ua_quickstart/modules/contrib/*; do echo "Part of UA QuickStart.  Do not update via Drush." >$d/.drush-lock-update; done
+            - reposync
+  tags:
+    '*':
+      - step: *git-config
+      - step:
+          name: Tag splits
+          script:
+            - export UAQSRTOOLS_NEXTTAG="$BITBUCKET_TAG"
+            - tagsplits
+      - step:
+          name: Upload release assets
+          image: uadrupal/autohelper:1.1.1
+          script:
+            - export GIT_BRANCH="$BITBUCKET_TAG"
+            - ./package-release.sh
+  branches:
+    7.x-1.x:
+      - step: *security-scan-composer
+      - step: *git-config
+      - step:
+          name: Split mono
+          script:
+            - splitmono
+      - step:
+          name: Update kitten
+          image: uadrupal/terminus-docker-image:2.0.0
+          max-time: 15
+          script:
+            - git config --global user.name "$BITBUCKET_REPO_OWNER"
+            - git config --global user.email "noreply@bitbucket.org"
+            - terminus auth:login --machine-token ${TERMINUS_MACHINE_TOKEN}
+            - export UAQSRTOOLS_ARTIFACT_PATH="/tmp/ua_quickstart-build"
+            - export UAQSRTOOLS_COMMIT_MSG="$(git --no-pager log --format=%B -n 1 ${BITBUCKET_COMMIT})"
+            - export UAQSRTOOLS_TARGET_REPO_URL=$(terminus connection:info --field "Git Command" ${DEMO_SITE_NAME}.dev | grep -Eo 'ssh.*\.git')
+            - drush make --contrib-destination='profiles/ua_quickstart' build-ua_quickstart-pantheon.make.yml $UAQSRTOOLS_ARTIFACT_PATH
+            - for d in $UAQSRTOOLS_ARTIFACT_PATH/profiles/ua_quickstart/modules/contrib/*; do echo "Part of UA QuickStart.  Do not update via Drush." >$d/.drush-lock-update; done
+            - reposync && sleep 10
+            - terminus -y env:wake ${DEMO_SITE_NAME}.dev && sleep 5
+            - terminus -y env:wipe ${DEMO_SITE_NAME}.dev && sleep 5
+            - terminus -y drush ${DEMO_SITE_NAME}.dev -- -y site-install ua_quickstart ua_quickstart_install_options_form.uaqs_verbosity=1 install_configure_form.update_status_module='array(FALSE,FALSE)' --account-name="uaqs_admin" --account-mail="noreply@email.arizona.edu" --site-mail="noreply@email.arizona.edu" --site-name="Kitten" --yes --verbose
+            - terminus -y drush ${DEMO_SITE_NAME}.dev -- -y user-password uaqs_admin --password="${UAQSTEST_USER1PASS}"
+      - step:
+          name: Upload assets
+          image: uadrupal/autohelper:1.1.1
+          script:
+            - export GIT_BRANCH="$BITBUCKET_BRANCH"
+            - ./package.sh
+            - ./devtools/ua_drupal_test/uaqstest_bb_upload.sh ua_quickstart-${BITBUCKET_BRANCH}-dev.tar.gz ua_quickstart-${BITBUCKET_BRANCH}-dev.zip
+    'ADDTOMONO*':
+      - step: *git-config
+      - step:
+          name: Add to mono
+          script:
+            - export UAQSRTOOLS_WORKINGBRANCH="$BITBUCKET_BRANCH"
+            - addtomono

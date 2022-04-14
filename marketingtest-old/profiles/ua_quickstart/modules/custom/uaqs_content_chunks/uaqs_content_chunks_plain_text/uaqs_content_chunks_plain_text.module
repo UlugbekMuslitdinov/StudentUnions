@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Plain Text Paragraphs Item feature.
+ */
+
+include_once 'uaqs_content_chunks_plain_text.features.inc';

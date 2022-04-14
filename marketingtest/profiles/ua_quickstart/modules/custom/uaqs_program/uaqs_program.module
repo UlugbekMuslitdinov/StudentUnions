@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Program feature.
+ */
+
+include_once 'uaqs_program.features.inc';

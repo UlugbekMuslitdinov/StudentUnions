@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * Tests that each of the Metatag schema_recipe tags work correctly.
+ */
+class SchemaMetatagRecipeTest extends SchemaMetatagTagsTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Schema Metatag: Recipe',
+      'description' => 'Test the schema_recipe meta tags.',
+      'group' => 'Schema Metatag',
+      'dependencies' => [
+        'ctools',
+        'token',
+        'metatag',
+        'schema_metatag',
+        'schema_recipe',
+      ],
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp(array $modules = array()) {
+    $modules[] = 'schema_recipe';
+    parent::setUp($modules);
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public $moduleName = 'schema_recipe';
+
+  /**
+   * {@inheritdoc}
+   */
+  public $schemaTags = [
+    'schema_recipe.@type' => 'SchemaRecipeType',
+    'schema_recipe.name' => 'SchemaNameBase',
+    'schema_recipe.description' => 'SchemaNameBase',
+    'schema_recipe.image' => 'SchemaImageBase',
+    'schema_recipe.author' => 'SchemaPersonOrgBase',
+    'schema_recipe.cookTime' => 'SchemaDurationBase',
+    'schema_recipe.prepTime' => 'SchemaDurationBase',
+    'schema_recipe.totalTime' => 'SchemaDurationBase',
+    'schema_recipe.datePublished' => 'SchemaDateBase',
+    'schema_recipe.recipeCategory' => 'SchemaNameBase',
+    'schema_recipe.recipeIngredient' => 'SchemaNameBase',
+    'schema_recipe.recipeInstructions' => 'SchemaNameBase',
+    'schema_recipe.recipeCuisine' => 'SchemaNameBase',
+    'schema_recipe.recipeYield' => 'SchemaNameBase',
+    'schema_recipe.nutrition' => 'SchemaNutritionInformationBase',
+    'schema_recipe.aggregateRating' => 'SchemaRatingBase',
+    'schema_recipe.review' => 'SchemaReviewBase',
+  ];
+
+}

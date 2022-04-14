@@ -1,0 +1,58 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the uaqs_admin_anonymous_reviewer_workflow module.
+ */
+
+/**
+ * Implementation of hook_install().
+ */
+function uaqs_admin_anonymous_reviewer_workflow_install() {
+
+  // Delete the needs_review state.
+  $needs_review = new stdClass();
+  $needs_review->name = 'needs_review';
+  workbench_moderation_state_delete($needs_review);
+  // Create the from draft to published transition.
+  $transition = new stdClass();
+  $transition->name = 'Publish';
+  $transition->from_name = 'draft';
+  $transition->to_name = 'published';
+  workbench_moderation_transition_save($transition);
+  // Revert this feature to make sure everything is configured correctly.
+  features_revert_module('uaqs_admin_anonymous_reviewer_workflow');
+}
+
+/**
+ * Implements hook_requirements().
+ */
+function uaqs_admin_anonymous_reviewer_workflow_requirements($phase) {
+  $requirements = array();
+  // Ensure translations don't break at install time
+  $t = get_t();
+
+  // Check to see if the flexible page node is configured correctly for
+  // anonymous review workflow.
+  if ($phase == 'runtime') {
+    $installed = uaqs_admin_anonymous_reviewer_workflow_options_set_correctly();
+    $requirements['node_options_uaqs_flexible_page'] = array(
+      'title' => $t('Anonymous reviewer workflow.'),
+    );
+    if (!$installed) {
+      $requirements['node_options_uaqs_flexible_page']['description'] = $t('Flexible page publishing options are not configured correctly for anonymous review workflow. This should be configured immediately. Either disable anonymous review workflow or select "Enable moderation of revisions" under the "Publishing Options" tab of the <a href="/admin/structure/types/manage/uaqs-flexible-page">@link_text</a>.',
+        array(
+          '@link_text' => 'Flexible Page content type configuration',
+        )
+      );
+      $requirements['node_options_uaqs_flexible_page']['severity'] = REQUIREMENT_ERROR;
+      $requirements['node_options_uaqs_flexible_page']['value'] = $t('Not configured.');
+    }
+    else {
+      $requirements['node_options_uaqs_flexible_page']['description'] = $t('Anonymous reviewer workflow node options set correctly for flexible pages.');
+      $requirements['node_options_uaqs_flexible_page']['severity'] = REQUIREMENT_OK;
+      $requirements['node_options_uaqs_flexible_page']['value'] = $t('Configured.');
+    }
+  }
+  return $requirements;
+}

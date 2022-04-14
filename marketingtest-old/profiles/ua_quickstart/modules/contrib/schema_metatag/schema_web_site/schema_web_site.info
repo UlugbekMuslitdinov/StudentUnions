@@ -1,0 +1,15 @@
+name = "Schema.org: WebSite"
+description = "Adds Schema.org/WebSite to the JSON LD array."
+package = SEO
+core = 7.x
+dependencies[] = schema_metatag
+
+files[] = src/SchemaWebSiteType.php
+files[] = src/SchemaWebSitePotentialAction.php
+files[] = tests/SchemaMetatagWebSiteTest.test
+
+; Information added by Drupal.org packaging script on 2020-07-22
+version = "7.x-1.4"
+core = "7.x"
+project = "schema_metatag"
+datestamp = "1595439769"

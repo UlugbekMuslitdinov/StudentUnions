@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the uaqs_content_chunks_headed_text module.
+ */
+
+/**
+ * WARNING: This update will not execute unless you revert the field instance component of uaqs_content_chunks_headed_text feature.
+ * UADIGITAL-1080 Combines and moves field values for uaqs_text_area and uaqs_text_heading fields for uaqs_headed_text paragraphs items to uaqs_summary fields which uses uaqs_standard text format.
+ */
+function uaqs_content_chunks_headed_text_update_7101() {
+  module_load_include('inc', 'features', 'features.export');
+  $module = features_get_modules($name = 'uaqs_content_chunks_headed_text', $reset = FALSE);
+  $overrides = features_detect_overrides($module);
+  if(!$overrides['field_instance']){
+
+    $query = new EntityFieldQuery();
+
+    $query
+      ->entityCondition('entity_type', 'paragraphs_item', '=')
+      ->propertyCondition('bundle', 'uaqs_headed_text', '=');
+
+    $result = $query->execute();
+
+    $ids = array();
+    foreach($result['paragraphs_item'] as $record) {
+      $ids[] = $record->item_id;
+    }
+
+    $selected_paragraph_items = entity_load('paragraphs_item', $ids);
+
+    foreach ($selected_paragraph_items as $paragraph_item) {
+      $text_area_content = $paragraph_item->field_uaqs_text_area['und'][0]['value'];
+      $text_heading_content = $paragraph_item->field_uaqs_text_heading['und'][0]['value'];
+      if ($text_heading_content) {
+        $text_heading_content = '<p class="h3">' . $text_heading_content . '</p>';
+      }
+      $combined_content = $text_heading_content . $text_area_content;
+      $paragraph_item->field_uaqs_summary['und'][0]['value'] = $combined_content;
+      $paragraph_item->field_uaqs_summary['und'][0]['format'] = 'uaqs_standard';
+
+     unset($paragraph_item->field_uaqs_text_area);
+     unset($paragraph_item->field_uaqs_text_heading);
+     field_attach_update('paragraphs_item', $paragraph_item);
+    }
+    if ($instance = field_info_instance('paragraphs_item', 'field_uaqs_text_area', 'uaqs_headed_text'))  {
+      field_delete_instance($instance, TRUE);
+      field_purge_batch(1);
+    }
+     if ($instance = field_info_instance('paragraphs_item', 'field_uaqs_text_heading', 'uaqs_headed_text'))  {
+      field_delete_instance($instance, TRUE);
+      field_purge_batch(1);
+     }
+  }
+  else {
+    $message = 'You must revert the uaqs_content_chunks_headed_text feature in order to run this update.';
+    throw new DrupalUpdateException($message);
+  }
+}

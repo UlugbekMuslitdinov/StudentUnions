@@ -1,0 +1,35 @@
+image: proboci/ubuntu:18.04-php7.3
+steps:
+  - name: Run security tests
+    plugin: Script
+    script:
+      - ${SRC_DIR}/devtools/ua_drupal_test/uaqstest_security.sh
+  - name: Build & Install UA QuickStart
+    plugin: Drupal
+    drupalVersion: 7
+    makeFile: build-ua_quickstart.make.yml
+    makeForceComplete: false
+    makeArgs: "--no-cache"
+    installArgs: "ua_quickstart_install_options_form.uaqs_verbosity=1 install_configure_form.update_status_module='array(TRUE,FALSE)' --site-name='UAQS Review' --account-name=uaqs_admin --account-pass=probo"
+    clearCaches: true
+    profileName: ua_quickstart
+    runInstall: true
+    revertFeatures: true
+    settingsAppend: |
+      $conf['date_default_timezone'] = 'America/Phoenix';
+      // Supress false-positve warning in system status report.
+      $conf['drupal_http_request_fails'] = FALSE;
+      // Allow access to user/login rather than redirecting to CAS
+      $conf['cas_login_form'] = 1;
+    phpIniOptions:
+      max_input_vars: 10000
+  - name: Run Behat tests
+    plugin: Script
+    script:
+      - apt-get update && apt-get install ca-certificates --only-upgrade
+      - UAQSTEST_SCRATCHDIR=$(mktemp -d -t 'uaqstest_scratch_XXXXXX') && export UAQSTEST_SCRATCHDIR && trap 'rm -Rf "${UAQSTEST_SCRATCHDIR}"' EXIT TERM INT QUIT
+      - . ${SRC_DIR}/devtools/ua_drupal_test/environment.probo
+      - cd "$UAQSTEST_TESTROOT"
+      - ./uaqstest_fileperms.sh
+      - ./uaqstest_drupal_save.sh
+      - ./uaqstest_behat_mink.sh && ./uaqstest_drupal_cleanup.sh

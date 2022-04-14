@@ -27,7 +27,7 @@ $redirect = '';
 $return_link = '';
 $debug = 0;
 
-require_once('C:/xampp/htdocs/project/template/global.inc');
+require_once($_SERVER['DOCUMENT_ROOT'].'/template/'.'global.inc');
 
 /***************************************
 ** This is the html code called when a

@@ -1,0 +1,142 @@
+<?php
+
+/**
+ * @file
+ * Code for the UAQS Core feature.
+ */
+
+include_once 'uaqs_core.features.inc';
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function uaqs_core_form_css_injector_admin_form_alter(&$form, &$form_state, $form_id) {
+  if (defined('PANTHEON_ENVIRONMENT')) {
+    drupal_set_message(t("There is a known issue affecting the CSS Injector module for sites hosted on Pantheon. Due to the nature of Pantheon's backup process, CSS Injector rules are not copied during file import and sync operations between Pantheon environments and are not included in site backups. CSS Injector rules will have to be manually re-created after importing, syncing, or restoring a site's database and files from one environment to another or from a backup."), 'warning');
+  }
+}
+
+/**
+ * Implements hook_migrate_api().
+ */
+function uaqs_core_migrate_api() {
+  $api = array(
+    'api' => 2,
+    'destination handlers' => array('UaqsContentChunksHandler'),
+  );
+  return $api;
+}
+
+/**
+ * Implements hook_permission().
+ */
+function uaqs_core_permission() {
+  return array(
+    'administer uaqs configuration' => array(
+      'title' => t('Administer UA Quickstart settings for UAQS modules'),
+    )
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function uaqs_core_menu() {
+  $items = array();
+
+  $items['admin/config/uaqs'] = array(
+    'title' => 'UA Quickstart',
+    'description' => 'Settings provided by UA Quickstart modules',
+    'page callback' => 'system_admin_menu_block_page',
+    'file' => 'system.admin.inc',
+    'file path' => drupal_get_path('module', 'system'),
+    'access callback' => 'user_access',
+    'access arguments' => array('access administration pages'),
+  );
+
+  $items['admin/config/uaqs/settings'] = array(
+    'title' => 'UA Quickstart Settings',
+    'description' => 'Settings provided by UAQS Core and various other UA Quickstart modules',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('uaqs_core_settings_form'),
+    'file' => 'uaqs_core.admin.inc',
+    'access callback' => 'user_access',
+    'access arguments' => array('administer uaqs configuration'),
+  );
+
+  $items['admin/config/uaqs/settings/uaqs-core'] = array(
+    'title' => 'UAQS Core',
+    'description' => 'UAQS Core settings',
+    'type' => MENU_DEFAULT_LOCAL_TASK,
+    'weight' => -10,
+  );
+
+  if (variable_get('uaqs_monitoring_page_enabled', FALSE)) {
+    $path = variable_get('uaqs_monitoring_page_path', 'uaqs_monitoring_page');
+    $items[$path] = array(
+      'title' => "Monitoring Page",
+      'file' => 'uaqs_core.monitoring_page.inc',
+      'page callback' => 'uaqs_monitoring_page',
+      'access callback' => TRUE,
+      'type' => MENU_CALLBACK,
+    );
+  }
+  return $items;
+}
+
+/**
+ * Implements hook_pathauto_pattern_alter().
+ *
+ * UADIGITAL-1864 Define and configure default url path patterns.
+ * Provide a fallback if the current node pattern generated nothing.
+ */
+function uaqs_core_pathauto_pattern_alter(&$pattern, array $context) {
+  // Only create fallback if we're using the predefined UAQS pattern.
+  $uaqs_pattern = '[node:menu-link:parents:join-path]/[node:menu-link]';
+
+  // Run a test of token replacement for the pattern to see if it is empty.
+  if (isset($context['module']) && $context['module'] == 'node' && $pattern == $uaqs_pattern) {
+    $lang = (isset($context['language'])) ? $context['language'] : LANGUAGE_NONE;
+    $alias = token_replace($pattern, $context['data'], array(
+      'sanitize' => FALSE,
+      'clear' => TRUE,
+      'callback' => 'pathauto_clean_token_values',
+      'language' => (object) array('language' => $lang),
+      'pathauto' => TRUE,
+    ));
+    // Trim leading or trailing separators.
+    $alias = pathauto_clean_alias($alias);
+    // If the pattern generated nothing, fallback on the node title pattern.
+    if (empty($alias)) {
+      $pattern = '[node:title]';
+    }
+  }
+}
+
+/**
+ * Implements hook_libraries_info().
+ *
+ * UADIGITAL-1878: Add Module Override Detection.
+ * Use xautoload to load the Symfony YAML library.
+ */
+function uaqs_core_libraries_info() {
+  $libraries = array();
+
+  // Only attempt to autoload library on compatible versions.
+  $valid_old_php = ((version_compare(PHP_VERSION, '5.5.9') >= 0) && (version_compare(PHP_VERSION, '7.0.0') < 0));
+  $valid_new_php = (version_compare(PHP_VERSION, '7.0.8') >= 0);
+
+  if ($valid_old_php || $valid_new_php) {
+    $libraries['Yaml'] = array(
+      'name' => 'Symfony YAML',
+      'vendor url' => 'https://symfony.com/components/Yaml',
+      'download url' => 'https://github.com/symfony/yaml/archive/v3.4.29.zip',
+      'version' => '3.4.29',
+      'xautoload' => function ($adapter) {
+        $adapter->composerJson('composer.json');
+      },
+    );
+  }
+
+  return $libraries;
+}

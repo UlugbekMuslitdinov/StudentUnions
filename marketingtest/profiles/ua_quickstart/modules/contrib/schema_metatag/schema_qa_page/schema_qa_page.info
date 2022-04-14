@@ -1,0 +1,14 @@
+name = "Schema.org QAPage"
+description = "Adds Schema.org/QAPage and Schema.org/FAQPage to the JSON LD array. Creates QAPage and FAQPage."
+package = SEO
+core = 7.x
+dependencies[] = schema_metatag
+
+files[] = src/SchemaQAPageType.php
+files[] = tests/SchemaMetatagQAPageTest.test
+
+; Information added by Drupal.org packaging script on 2020-07-22
+version = "7.x-1.4"
+core = "7.x"
+project = "schema_metatag"
+datestamp = "1595439769"

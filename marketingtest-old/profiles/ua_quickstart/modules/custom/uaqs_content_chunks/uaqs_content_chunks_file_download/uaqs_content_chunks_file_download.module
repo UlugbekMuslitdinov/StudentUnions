@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS File Download Paragraphs Item feature.
+ */
+
+include_once 'uaqs_content_chunks_file_download.features.inc';

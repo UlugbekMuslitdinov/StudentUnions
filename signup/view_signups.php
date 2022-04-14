@@ -77,7 +77,6 @@ $tasks = $db->query($query);
 				}
 			?>	
 			</div>
-		
 </body>
-<?php } ?>
+<?php } ?>	<br /><br /><br /><br /><br /><br />
 <?php page_finish(); ?>

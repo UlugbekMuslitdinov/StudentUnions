@@ -1,0 +1,45 @@
+7.x-1.0-alpha6, 2017-01-20
+------------------------------
+- Revert "Preparing to tag 7.x-1.0-alpha4.".
+- Preparing to tag 7.x-1.0-alpha4.
+- Merged in trackleft/ua_cas/UADIGITAL-884-automate-uaqs-component-re (pull request #5).
+- UADIGITAL-884 add bitbucket pipelines config file.
+- Merged ua_drupal/ua_cas into 7.x-1.x.
+- Merged in UADIGITAL-792 (pull request #4).
+- UADIGITAL-792: Adding fix for cas_login_data issue.
+- Back to dev.
+
+7.x-1.0-alpha5, 2016-05-02
+------------------------------
+- Back to dev.
+
+7.x-1.0-alpha4, 2016-02-12
+------------------------------
+- Merged in UADIGITAL-537 (pull request #3).
+- UADIGITAL-537: phpCAS library update.
+- Merged in UADIGITAL-536 (pull request #2).
+- UADIGITAL-536: Update cas to 7.x-1.5 for DRUPAL-SA-CONTRIB-2016-005.
+- Back to dev.
+
+7.x-1.0-alpha3, 2015-10-16
+------------------------------
+- Back to dev.
+
+7.x-1.0-alpha2, 2015-07-23
+------------------------------
+- Merged in mmunro-ltrr/ua_cas/UADIGITAL-139 (pull request #1).
+- Remove explicit version information.
+- Add a changelog so there is always something to modify for a release.
+- Back to dev.
+
+7.x-1.0-alpha1, 2015-07-10
+--------------------------
+- Preparing to tag 7.x-1.0-alpha1.
+- Github phpCAS download works better.
+- Making phpCAS library dir a customizable setting.
+- Typo in README.
+- Saving some features for later (moving to branches).
+- Using current PHP CAS version.
+- Updating README.
+- README updates.
+

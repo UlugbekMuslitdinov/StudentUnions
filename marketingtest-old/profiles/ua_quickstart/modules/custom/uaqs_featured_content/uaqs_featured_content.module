@@ -1,0 +1,145 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Featured Content feature.
+ */
+
+include_once 'uaqs_featured_content.features.inc';
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function uaqs_featured_content_entity_info_alter(&$entity_info) {
+  $entity_info['node']['view modes']['uaqs_featured_content'] = array(
+    'label' => t('UAQS Featured Content'),
+    'custom settings' => FALSE,
+  );
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function uaqs_featured_content_preprocess_node(&$vars) {
+  $wrapper = entity_metadata_wrapper('node', $vars['node']);
+   if ($wrapper->getBundle() == 'uaqs_carousel_item') {
+    $nid = $wrapper->getIdentifier();
+    $path_to_node = url("node/$nid");
+    $has_cta = FALSE;
+    $vars['uaqs_featured_content']['image_path'] = '';
+    if (field_info_instance('node', 'field_uaqs_photo', $wrapper->getBundle()) && isset($wrapper->field_uaqs_photo)) {
+      $photos = $wrapper->field_uaqs_photo;
+      if (isset($photos->file) && $photos->file->value()) {
+        $photo = $photos->file->value();
+        $slide_image_uri = $photo->uri;
+        $slide_styled_path = image_style_url('uaqs_marquee', $slide_image_uri);
+        $vars['uaqs_featured_content']['image_path'] = $slide_styled_path;
+      }
+    }
+
+    if (field_info_instance('node', 'field_uaqs_link', $wrapper->getBundle())) {
+      $has_cta = $wrapper->field_uaqs_link->value();
+      if (isset($has_cta)) {
+        $vars['uaqs_featured_content']['path'] = $wrapper->field_uaqs_link->url->value();
+      }
+      else {
+        $vars['uaqs_featured_content']['path'] = $path_to_node;
+      }
+    }
+    else {
+      $vars['uaqs_featured_content']['path'] = $path_to_node;
+    }
+
+    if ($vars['view_mode'] == 'uaqs_featured_content') {
+      $vars['theme_hook_suggestions'][] = 'node__uaqs_featured_content';
+      $vars['content']['#attached']['js'][] = array(
+        'data' => drupal_get_path('module', 'uaqs_featured_content') . '/js/modernizr.custom.7860.js',
+        'type' => 'file',
+        'scope' => 'footer',
+        'group' => JS_DEFAULT,
+        'weight' => 5,
+       );
+      $vars['content']['#attached']['js'][] = array(
+        'data' => drupal_get_path('module', 'uaqs_featured_content') . '/js/uaqs_featured_content.js',
+        'type' => 'file',
+        'scope' => 'footer',
+        'group' => JS_DEFAULT,
+        'weight' => 6,
+      );
+    }
+
+    $vars['content']['#attached']['css'][] = array(
+      'data' => drupal_get_path('module', 'uaqs_featured_content') . '/css/uaqs_featured_content.css',
+    );
+
+    if ($vars['view_mode'] == 'uaqs_card') {
+      $vars['theme_hook_suggestions'][] = 'node__uaqs_carousel_item__uaqs_card';
+    }
+   }
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function uaqs_featured_content_theme_registry_alter(&$theme_registry) {
+  // Find all .tpl.php files in this module's folder recursively.
+  $module_path = drupal_get_path('module', 'uaqs_featured_content');
+  $template_file_objects = drupal_find_theme_templates($theme_registry, '.tpl.php', $module_path);
+
+  // Iterate through all found template file objects.
+  foreach ($template_file_objects as $key => $template_file_object) {
+    // If the template has not already been overridden by a theme.
+    if (!isset($theme_registry[$key]['theme path']) || !preg_match('#/themes/#', $theme_registry[$key]['theme path'])) {
+      // Alter the theme path and template elements.
+      $theme_registry[$key]['theme path'] = $module_path;
+      $theme_registry[$key] = array_merge($theme_registry[$key], $template_file_object);
+      $theme_registry[$key]['type'] = 'module';
+    }
+  }
+}
+
+/**
+ * Implements hook_views_default_views_alter().
+ *
+ * Enables content caching for the uaqs_hero_carousel view when the
+ * views_content_cache module is available.
+ */
+function uaqs_featured_content_views_default_views_alter(&$views) {
+  if (module_exists('views_content_cache')) {
+    if (isset($views['uaqs_hero_carousel'])) {
+      $node_type_keys = array();
+      foreach (node_type_get_names() as $type => $name) {
+        if ($type == 'uaqs_carousel_item') {
+          $node_type_keys[$type] = $type;
+        }
+        else {
+          $node_type_keys[$type] = 0;
+        }
+      }
+
+      $views['uaqs_hero_carousel']->display['default']->display_options['cache']['type'] = 'views_content_cache';
+      $views['uaqs_hero_carousel']->display['default']->display_options['cache']['results_min_lifespan'] = '-1';
+      $views['uaqs_hero_carousel']->display['default']->display_options['cache']['results_max_lifespan'] = '21600';
+      $views['uaqs_hero_carousel']->display['default']->display_options['cache']['output_min_lifespan'] = '-1';
+      $views['uaqs_hero_carousel']->display['default']->display_options['cache']['output_max_lifespan'] = '21600';
+      $views['uaqs_hero_carousel']->display['default']->display_options['cache']['keys'] = array(
+        'node' => $node_type_keys,
+        'node_only' => array(
+          'node_changed' => 'node_changed',
+        ),
+      );
+
+      if (module_exists('draggableviews')) {
+        $draggableviews_keys = array();
+        foreach (_draggableviews_get_views_options() as $view_id => $view_title) {
+          if ($view_id == 'uaqs_reorder_carousel:page') {
+            $draggableviews_keys[$view_id] = $view_id;
+          }
+          else {
+            $draggableviews_keys[$view_id] = 0;
+          }
+        }
+        $views['uaqs_hero_carousel']->display['default']->display_options['cache']['keys']['draggableviews'] = $draggableviews_keys;
+      }
+    }
+  }
+}

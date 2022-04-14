@@ -1,0 +1,77 @@
+<?php
+/**
+ * @file
+ * uaqs_content_chunks_full_width_bg_wrapper.install
+ */
+
+/**
+ * UADIGITAL-1057 removes the summary_short field from the full width background wrapper and replaces with the rich text summary field. Any styles associated with the summary_short field should be implemented on the updated summary field before or after this database migration script runs. 
+ * This function prepends content from the summary_short field to the summary field and deletes the summary_short field instance. 
+ */
+function uaqs_content_chunks_full_width_bg_wrapper_update_7100() {
+ $query = new EntityFieldQuery();
+
+  $query
+    ->entityCondition('entity_type', 'paragraphs_item', '=')
+    ->propertyCondition('bundle', 'uaqs_full_width_bg_wrapper', '=');
+
+  $result = $query->execute();
+
+  $ids = array();
+  foreach($result['paragraphs_item'] as $record) {
+    $ids[] = $record->item_id;
+  }
+
+  $bg_wrappers = entity_load('paragraphs_item', $ids);
+
+  foreach ($bg_wrappers as $bg_wrapper) {
+   $combined_field_values = $bg_wrapper->field_uaqs_summary_short['und'][0]['value'] . $bg_wrapper->field_uaqs_summary['und'][0]['value'];
+   $bg_wrapper->field_uaqs_summary['und'][0]['value'] =  $combined_field_values;
+   $bg_wrapper->field_uaqs_summary['und'][0]['format'] = 'uaqs_standard';
+
+   unset( $bg_wrapper->field_uaqs_summary_short);
+   field_attach_update('paragraphs_item', $bg_wrapper);
+  }
+  if ($instance = field_info_instance('paragraphs_item', 'field_uaqs_summary_short', 'uaqs_full_width_bg_wrapper'))  {
+    field_delete_instance($instance, TRUE);
+    field_purge_batch(1);
+  }
+
+}
+
+/**
+ * WARNING: This update will not execute unless you revert the
+ * uaqs_full_width_bg_wrapper feature.
+ * UADIGITAL-1361: add color and pattern options to full width background wrapper
+ * requires a default background color and pattern values for existing usage of uaqs_full_width_bg_wrapper
+ */
+function uaqs_content_chunks_full_width_bg_wrapper_update_7101() {
+  module_load_include('inc', 'features', 'features.export');
+  $module = features_get_modules($name = 'uaqs_content_chunks_full_width_bg_wrapper', $reset = FALSE);
+  $overrides = features_detect_overrides($module);
+  if (!$overrides['field_instance']) {
+    drupal_flush_all_caches();
+
+    $bg_wrapper_query = new EntityFieldQuery();
+    $bg_wrapper_query->entityCondition('entity_type', 'paragraphs_item')
+      ->entityCondition('bundle', array('uaqs_full_width_bg_wrapper'));
+    $bg_wrapper_result = $bg_wrapper_query->execute();
+
+    if (isset($bg_wrapper_result['paragraphs_item'])) {
+      foreach (array_filter($bg_wrapper_result['paragraphs_item']) as $bg_wrapper) {
+        $bg_wrapper_entity = entity_load_single('paragraphs_item', $bg_wrapper->item_id);
+        $bg_wrapper_wrapper = entity_metadata_wrapper('paragraphs_item', $bg_wrapper_entity);
+        $bg_wrapper_wrapper->field_uaqs_background_color = 'bg-sky';
+        $bg_wrapper_wrapper->field_uaqs_background_pattern = 'bg-triangles-mosaic';
+        $bg_wrapper_wrapper->save();
+      }
+    }
+
+    // To display a message to the user when the update is completed.
+    return t('Updated the default background color for all background wrapper paragraphs item types');
+  }
+  else {
+    $message = 'You must revert the uaqs_full_width_bg_wrapper feature in order to run this update.';
+    throw new DrupalUpdateException($message);
+  }
+}

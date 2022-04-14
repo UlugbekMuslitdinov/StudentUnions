@@ -1,0 +1,48 @@
+<?php
+/**
+ * @file
+ * uaqs_navigation_select_menu_demo.install
+ */
+
+/**
+ * Implements hook_install().
+ */
+function uaqs_navigation_select_menu_demo_install() {
+  $t = get_t();
+
+  // Create 'Header -- Select Menu' menu if it doesn't already exist.
+  $menu_name = 'uaqs-select-menu';
+  if (!menu_load($menu_name)) {
+    $menu = array(
+      'menu_name' => $menu_name,
+      'title' => $t('Header -- Select Menu'),
+      'description' => 'A dropdown select list menu',
+    );
+    menu_save($menu);
+  }
+}
+
+/**
+ * Implements hook_enable().
+ */
+function uaqs_navigation_select_menu_demo_enable() {
+  migrate_static_registration();
+  $info = uaqs_navigation_select_menu_demo_migrate_api();
+  foreach ($info['migrations'] as $machine_name => $arguments) {
+    $migration = Migration::getInstance($machine_name);
+    $migration->processImport();
+  }
+}
+
+/**
+ * Implements hook_disable().
+ */
+function uaqs_navigation_select_menu_demo_disable() {
+  $info = uaqs_navigation_select_menu_demo_migrate_api();
+  $hitlist = array_reverse($info['migrations']);
+  foreach ($hitlist as $machine_name => $arguments) {
+    $migration = Migration::getInstance($machine_name);
+    $migration->processRollback();
+  }
+  MigrateGroup::deregister('uaqs_navigation_select_menu_demo');
+}

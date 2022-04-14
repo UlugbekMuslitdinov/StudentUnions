@@ -1,0 +1,16 @@
+name = UAQS Content Chunks - Well
+description = Adds a gray background to a section of your content
+core = 7.x
+package = The University of Arizona
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = field_group
+dependencies[] = paragraphs
+dependencies[] = text
+dependencies[] = uaqs_content_chunks
+dependencies[] = uaqs_fields
+features[ctools][] = field_group:field_group:1
+features[features_api][] = api:2
+features[field_group][] = group_well|paragraphs_item|uaqs_well|default
+features[field_instance][] = paragraphs_item-uaqs_well-field_uaqs_summary
+features[paragraphs][] = uaqs_well

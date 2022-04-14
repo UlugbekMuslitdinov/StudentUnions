@@ -1,0 +1,41 @@
+# Platform-specific UA QuickStart build configuration for Pantheon.
+#
+# Usage Notes:
+# - When using this file, the `drush make` command must be run from within the
+#   directory containing this file or else the `includes` won't work.
+# - The `--contrib-destination='profiles/ua_quickstart'` option should be
+#   specified when running `drush make` with this file.
+api: "2"
+core: "7.x"
+
+includes:
+  - "build-ua_quickstart.make.yml"
+
+projects:
+  # Override Drupal core download settings to use Pantheon Drops 7 repo.
+  # --------------------------------------------------------------------
+  drupal:
+    download:
+      type: "git"
+      url: "https://github.com/pantheon-systems/drops-7.git"
+      tag: "7.88"
+
+  # Add platform-specific modules.
+  #-------------------------------
+  pantheon_advanced_page_cache:
+    subdir: "contrib"
+    version: "1.0"
+    patch:
+      # Use dependencies that don't have known security vulnerabilities.
+      # @see https://github.com/pantheon-systems/pantheon_advanced_page_cache/pull/22
+      22: https://github.com/pantheon-systems/pantheon_advanced_page_cache/commit/15a9d7256839ca98b872da98c4d55105f331cc72.diff
+  redis:
+    subdir: "contrib"
+    version: "3.18"
+  uits_ses_mail:
+    type: "module"
+    subdir: "custom"
+    download:
+      type: "git"
+      url: "https://bitbucket.org/uitsweb/uits_ses_mail.git"
+      tag: "7.x-1.2"

@@ -1,0 +1,27 @@
+<?php
+
+/**
+ * @file
+ * Code for the UAQS News - Feeds feature.
+ */
+
+include_once 'uaqs_news_feeds.features.inc';
+/**
+ * @file
+ * Drupal needs this blank file.
+ */
+
+/**
+ * Implements hook_form_alter().
+ * @see https://jira.arizona.edu/browse/UADIGITAL-1963
+ *
+ * Adding help text to guide site builders when importing UArizona News feeds by tag(s)
+ */
+function uaqs_news_feeds_form_alter(&$form, &$form_state, $form_id) {
+  if ($form_id == 'feeds_import_form' && $form['#importer_id'] == 'uaqs_news_tag' ) {
+    $form['feeds']['FeedsHTTPFetcher']['source']['#description'] = '<label>Tips</label><ul><li>Find taxonomy term IDs from this list of <a href="https://news.arizona.edu/feed/tags-reference" target="_blank">UArizona News tag IDs</a> and seperate multiple tags with +</li><li>Example: <a href="https://news.arizona.edu/feed/json/stories/id/186+79" target="_blank">https://news.arizona.edu/feed/json/stories/id/186+79</a></li><li>If you would like imported content to be tagged, be sure to add desired <a href="/admin/structure/taxonomy/uaqs_news_tags" target="_blank">UAQS News Tags</a> to this site before importing</li><li>For more detail, see UA Quickstart Documentation on <a href="https://quickstart.arizona.edu/adding-news-feeds" target="_blank">how to import news feeds</a></li></ul>';
+  }
+  if ($form_id == 'feeds_import_form' && $form['#importer_id'] == 'uaqs_news_external_tag' ) {
+    $form['feeds']['FeedsHTTPFetcher']['source']['#description'] = '<label>Tips</label><ul><li>Find taxonomy term IDs from this list of <a href="https://news.arizona.edu/feed/tags-reference" target="_blank">UArizona News tag IDs</a> and seperate multiple tags with +</li><li>Example: <a href="https://news.arizona.edu/feed/json/stories-external/id/292+186" target="_blank">https://news.arizona.edu/feed/json/stories-external/id/292+186</a></li><li>If you would like imported content to be tagged, be sure to add desired <a href="/admin/structure/taxonomy/uaqs_news_tags" target="_blank">UAQS News Tags</a> to this site before importing</li><li>For more detail, see UA Quickstart Documentation on <a href="https://quickstart.arizona.edu/adding-news-feeds" target="_blank">how to import news feeds</a></li></ul>';
+  }
+}

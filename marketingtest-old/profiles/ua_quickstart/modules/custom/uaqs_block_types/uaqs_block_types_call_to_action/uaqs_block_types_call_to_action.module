@@ -1,0 +1,51 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Block Types - Call To Action feature.
+ */
+
+include_once 'uaqs_block_types_call_to_action.features.inc';
+
+/**
+ * Implements hook_bean_types_api_info().
+ */
+function uaqs_block_types_call_to_action_bean_types_api_info() {
+  return array('api' => 4);
+}
+
+/**
+ * Implements hook_bean_types().
+ */
+function uaqs_block_types_call_to_action_bean_types() {
+  $plugins = array();
+  $plugin_path = drupal_get_path('module', 'uaqs_block_types_call_to_action') . '/plugins';
+  $plugins['uaqs_call_to_action'] = array(
+    'label' => t('Call To Action'),
+    'description' => t('Add call to action block with custom wrappers and classes.'),
+    'abstract' => FALSE,
+    'handler' => array(
+      'class' => 'UaqsCallToActionBean',
+      'parent' => 'bean',
+      'path' => $plugin_path,
+      'file' => 'UaqsCallToActionBean.class.php',
+    ),
+  );
+  return $plugins;
+}
+
+/**
+  * Implements hook_preprocess_block().
+  *
+  * Override or insert variables into the block templates.
+  *
+  * @param array $variables
+  *   An array of variables to pass to the theme template.
+  */
+function uaqs_block_types_call_to_action_preprocess_block(&$variables) {
+  $delta = $variables['block']->delta;
+  if (isset($variables['elements']['bean'][$delta])) {
+    if ($variables['elements']['bean'][$delta]['#bundle'] == 'uaqs_call_to_action') {
+      $variables['attributes_array']['aria-label'] = 'call to action link';
+    }
+  }
+}

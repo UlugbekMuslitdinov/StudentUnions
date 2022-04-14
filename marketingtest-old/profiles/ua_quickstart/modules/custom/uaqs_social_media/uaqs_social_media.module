@@ -1,0 +1,278 @@
+<?php
+// $Id: uaqs_social_media.module
+
+/**
+ * Implements hook_theme_registry_alter().
+ */
+function uaqs_social_media_theme_registry_alter(&$theme_registry) {
+  // Find all .tpl.php files in this module's folder recursively.
+  $module_path = drupal_get_path('module', 'uaqs_social_media');
+  $template_file_objects = drupal_find_theme_templates($theme_registry, '.tpl.php', $module_path);
+  // Iterate through all found template file objects.
+  foreach ($template_file_objects as $key => $template_file_object) {
+    // If the template has not already been overridden by a theme.
+    if (!isset($theme_registry[$key]['theme path']) || !preg_match('#/themes/#', $theme_registry[$key]['theme path'])) {
+      // Alter the theme path and template elements.
+      $theme_registry[$key]['theme path'] = $module_path;
+      $theme_registry[$key] = array_merge($theme_registry[$key], $template_file_object);
+      $theme_registry[$key]['type'] = 'module';
+    }
+  }
+}
+
+function uaqs_social_media_admin() {
+  $form = array();
+  $form['uaqs_social_media_admin'] = array(
+    '#type' => 'vertical_tabs',
+    '#title' => t('UAQS Social Media Settings'),
+    '#collapsible' => FALSE,
+  );
+  $form['uaqs_social_media_admin']['fb'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Facebook Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['uaqs_social_media_admin']['fb']['uaqs_social_media_fb_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Facebook Link'),
+    '#default_value' => variable_get('uaqs_social_media_fb_url', ''),
+    '#description' =>  'enter Facebook link <b>without</b> http://',
+  );
+  $form['uaqs_social_media_admin']['fb']['uaqs_social_media_fb_title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Facebook Link Description'),
+    '#default_value' => variable_get('uaqs_social_media_fb_title', 'Click here to visit our Facebook page'),
+    '#description' =>  'enter Title tag description',
+  );
+  $form['uaqs_social_media_admin']['twit'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Twitter Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['uaqs_social_media_admin']['twit']['uaqs_social_media_twit_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Twitter Link'),
+    '#default_value' => variable_get('uaqs_social_media_twit_url', ''),
+    '#description' =>  'enter Twitter link <b>without</b> http://',
+  );
+  $form['uaqs_social_media_admin']['twit']['uaqs_social_media_twit_title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Twitter Link Description'),
+    '#default_value' => variable_get('uaqs_social_media_twit_title', 'Click here to visit our Twitter page'),
+    '#description' =>  'enter Title tag description',
+  );
+  $form['uaqs_social_media_admin']['inst'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Instagram Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['uaqs_social_media_admin']['inst']['uaqs_social_media_inst_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Instagram Link'),
+    '#default_value' => variable_get('uaqs_social_media_inst_url', ''),
+    '#description' =>  'enter Instagram link <b>without</b> http://',
+  );
+  $form['uaqs_social_media_admin']['inst']['uaqs_social_media_inst_title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Instagram Link Description'),
+    '#default_value' => variable_get('uaqs_social_media_inst_title', 'Click here to visit our Instagram page'),
+    '#description' =>  'enter Title tag description',
+  );
+  $form['uaqs_social_media_admin']['li'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('LinkedIn Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['uaqs_social_media_admin']['li']['uaqs_social_media_li_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('LinkedIn Link'),
+    '#default_value' => variable_get('uaqs_social_media_li_url', ''),
+    '#description' =>  'enter LinkedIn link <b>without</b> http://',
+  );
+  $form['uaqs_social_media_admin']['li']['uaqs_social_media_li_title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('LinkedIn Link Description'),
+    '#default_value' => variable_get('uaqs_social_media_li_title', 'Click here to visit our LinkedIn page'),
+    '#description' =>  'enter Title tag description',
+  );
+  $form['uaqs_social_media_admin']['yt'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('YouTube Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['uaqs_social_media_admin']['yt']['uaqs_social_media_yt_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('YouTube Link'),
+    '#default_value' => variable_get('uaqs_social_media_yt_url', ''),
+    '#description' =>  'enter YouTube link <b>without</b> http://',
+  );
+  $form['uaqs_social_media_admin']['yt']['uaqs_social_media_yt_title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('YouTube Link Description'),
+    '#default_value' => variable_get('uaqs_social_media_yt_title', 'Click here to visit our YouTube page'),
+    '#description' =>  'enter Title tag description',
+  );
+    $form['uaqs_social_media_admin']['mobi'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Mobile App Settings'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+  );
+  $form['uaqs_social_media_admin']['mobi']['uaqs_social_media_mobi_url'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Mobile App Link'),
+    '#default_value' => variable_get('uaqs_social_media_mobi_url', ''),
+    '#description' =>  'enter Mobile App link <b>without</b> http://',
+  );
+  $form['uaqs_social_media_admin']['mobi']['uaqs_social_media_mobi_link_text'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Block link text'),
+    '#default_value' => variable_get('uaqs_social_media_mobi_link_text', 'UA Mobile'),
+    '#description' =>  'Block link text',
+  );
+  $form['uaqs_social_media_admin']['mobi']['uaqs_social_media_mobi_title'] = array(
+    '#type' => 'textfield',
+    '#title' => t('Mobile App Link Description'),
+    '#default_value' => variable_get('uaqs_social_media_mobi_title', 'Click here to visit our Mobile App page'),
+    '#description' =>  'enter Title tag description',
+  );
+  return system_settings_form($form);
+}
+
+function uaqs_social_media_menu() {
+  $items = array();
+  $items['admin/config/search/uaqs_social_media'] = array(
+    'title' => 'UAQS Social Media module settings',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('uaqs_social_media_admin'),
+    'type' => MENU_NORMAL_ITEM,
+    'access arguments' => array('administer site configuration'),
+  );
+  return $items;
+}
+
+/**
+ * Implements hook_contextual_links_view_alter().
+ */
+function uaqs_social_media_contextual_links_view_alter(&$element, $items) {
+  if(isset($element['#element']['#block']->module) && $element['#element']['#block']->module == 'uaqs_social_media' && $element['#element']['#block']->delta == 'uaqs_social_media_links') {
+    $links = &$element['#links'];
+    $links['admin/config/search/uaqs_social_media'] = array(
+      'title' => t('Social Media Settings'),
+      'href' => 'admin/config/search/uaqs_social_media',
+    );
+  }
+}
+
+function uaqs_social_media_block_info(){
+  $blocks['uaqs_social_media_links'] = array(
+    'info' => t('UAQS Social Media'),
+    'status' => TRUE,
+    'region' => 'footer_sub',
+    'cache' => DRUPAL_NO_CACHE,
+    'weight' => '10',
+    'title' => 'Connect',
+    'properties' => array(
+        'administrative' => FALSE,
+    )
+  );
+  return($blocks);
+}
+
+function uaqs_social_media_block_view($delta = '') {
+  $block['subject'] = NULL;
+  $output = "";
+
+  $fb = variable_get('uaqs_social_media_fb_url', '');
+  $fbt = variable_get('uaqs_social_media_fb_title', '');
+  $tw = variable_get('uaqs_social_media_twit_url', '');
+  $twt = variable_get('uaqs_social_media_twit_title', '');
+  $inst = variable_get('uaqs_social_media_inst_url', '');
+  $instt = variable_get('uaqs_social_media_inst_title', '');
+  $li = variable_get('uaqs_social_media_li_url', '');
+  $lit = variable_get('uaqs_social_media_li_title', '');
+  $yt = variable_get('uaqs_social_media_yt_url', '');
+  $ytt = variable_get('uaqs_social_media_yt_title', '');
+  $mobi = variable_get('uaqs_social_media_mobi_url', '');
+  $mobit = variable_get('uaqs_social_media_mobi_title', '');
+  $mobilt = variable_get('uaqs_social_media_mobi_link_text', '');
+
+
+  if ($fb || $tw || $inst || $li || $yt || $mobi) {
+    $output .= '<ul id="social-media-links">';
+    if ($fb) {
+        $output .= '<li class="uaqs-social-media">';
+        $output .= l('<i class="ua-brand-facebook"></i>Facebook', 'https://' . $fb, array(
+            'attributes' => array(
+                'target'=>'_blank',
+                'title' => "$fbt"),
+            'html' => TRUE
+            )
+        );
+        $output .= '</li>';
+    }
+    if ($tw) {
+      $output .= '<li class="uaqs-social-media">';
+      $output .= l('<i class="ua-brand-twitter"></i>Twitter', 'https://' . $tw, array(
+          'attributes' => array(
+              'target'=>'_blank',
+              'title' => "$twt"),
+          'html' => TRUE
+          )
+      );
+     $output .= '</li>';
+    }
+    if ($inst) {
+      $output .= '<li class="uaqs-social-media">';
+      $output .= l('<i class="ua-brand-instagram"></i>Instagram', 'https://' . $inst, array(
+          'attributes' => array(
+              'target'=>'_blank',
+              'title' => "$instt"),
+          'html' => TRUE
+          )
+      );
+     $output .= '</li>';
+    }
+    if ($li) {
+        $output .= '<li class="uaqs-social-media">';
+        $output .= l('<i class="ua-brand-linkedin"></i>LinkedIn', 'https://' . $li, array(
+            'attributes' => array(
+                'target'=>'_blank',
+                'title' => "$lit"),
+            'html' => TRUE
+            )
+        );
+        $output .= '</li>';
+    }
+    if ($yt) {
+      $output .= '<li class="uaqs-social-media">';
+      $output .= l('<i class="ua-brand-youtube"></i>YouTube', 'https://' . $yt, array(
+          'attributes' => array(
+              'target'=>'_blank',
+              'title' => "$ytt"),
+          'html' => TRUE
+          )
+      );
+     $output .= '</li>';
+    }
+    if ($mobi) {
+      $output .= '<li class="uaqs-social-media">';
+      $output .= l('<i class="ua-brand-ua-mobile"></i>' . $mobilt, 'https://' . $mobi, array(
+          'attributes' => array(
+              'target'=>'_blank',
+              'title' => "$mobilt"),
+          'html' => TRUE
+          )
+      );
+     $output .= '</li>';
+    }
+    $output .= '</ul>';
+  }
+  $block['content'] = $output;
+  return $block;
+}

@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * Tests that each of the Metatag schema_video_object tags work correctly.
+ */
+class SchemaMetatagVideoObjectTest extends SchemaMetatagTagsTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Schema Metatag: VideoObject',
+      'description' => 'Test the schema_video_object meta tags.',
+      'group' => 'Schema Metatag',
+      'dependencies' => [
+        'ctools',
+        'token',
+        'metatag',
+        'schema_metatag',
+        'schema_video_object',
+      ],
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp(array $modules = array()) {
+    $modules[] = 'schema_video_object';
+    parent::setUp($modules);
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public $moduleName = 'schema_video_object';
+
+  /**
+   * {@inheritdoc}
+   */
+  public $schemaTags = [
+    'schema_video_object.@type' => 'SchemaVideoObjectType',
+    'schema_video_object.@id' => 'SchemaNameBase',
+    'schema_video_object.name' => 'SchemaNameBase',
+    'schema_video_object.description' => 'SchemaNameBase',
+    'schema_video_object.uploadDate' => 'SchemaDateBase',
+    'schema_video_object.expires' => 'SchemaDateBase',
+    'schema_video_object.thumbnailUrl' => 'SchemaImageBase',
+    'schema_video_object.contentUrl' => 'SchemaUrlBase',
+    'schema_video_object.embedUrl' => 'SchemaUrlBase',
+    'schema_video_object.duration' => 'SchemaDurationBase',
+    'schema_video_object.interactionCount' => 'SchemaNameBase',
+    'schema_video_object.transcript' => 'SchemaNameBase',
+    'schema_video_object.aggregateRating' => 'SchemaRatingBase',
+    'schema_video_object.review' => 'SchemaReviewBase',
+  ];
+
+}

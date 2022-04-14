@@ -1,0 +1,13 @@
+{
+    "name": "drupal/feeds_jsonpath_parser",
+    "require": {
+        "drupal/drupal": "~7.0",
+        "drupal/feeds": "*",
+        "flow/jsonpath": "^0.5.0"
+    },
+    "description": "Parse a JSON document using JSONPath.",
+    "homepage": "https://www.drupal.org/project/feeds_jsonpath_parser",
+    "support": {
+        "source": "https://git.drupalcode.org/project/feeds_jsonpath_parser"
+    }
+}

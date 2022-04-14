@@ -1,0 +1,64 @@
+<?php
+
+/**
+ * @file
+ * Primary hook implementations for Schema.org Metatag.
+ */
+
+/**
+ * Rename AggregateRating tags to Rating.
+ */
+function schema_metatag_update_7000(&$sandbox) {
+  cache_clear_all('*', 'cache_metatag', TRUE);
+  drupal_set_message(t('AggregateRating tags have been replaced with Rating tags. Please update any configuration of AggregateRating.'));
+}
+
+/**
+ * Rename the 'rating' meta tags to 'aggregateRating'.
+ */
+function schema_metatag_update_7001(&$sandbox) {
+  module_load_include('install', 'metatag');
+  $tags = [
+    'schema_article.rating' => 'schema_article.aggregateRating',
+    'schema_image_object.rating' => 'schema_image_object.aggregateRating',
+    'schema_organization.rating' => 'schema_organization.aggregateRating',
+    'schema_product.rating' => 'schema_product.aggregateRating',
+    'schema_recipe.rating' => 'schema_recipe.aggregateRating',
+    'schema_service.rating' => 'schema_service.aggregateRating',
+    'schema_video_object.rating' => 'schema_video_object.aggregateRating',
+  ];
+  foreach ($tags as $old_tag => $new_tag) {
+    metatag_update_replace_entity_tag($sandbox, $old_tag, $new_tag);
+    metatag_update_replace_config_tag($old_tag, $new_tag);
+  }
+}
+
+/**
+ * Delete unneeded tags or tags that need to be re-configured.
+ */
+function schema_metatag_update_7002(&$sandbox) {
+  module_load_include('install', 'metatag');
+  $tags = [
+    'schema_event.mainEntityOfPage',
+    'schema_event.actor',
+    'schema_event.isAccessibleForFree',
+    'schema_organization.mainEntityOfPage',
+    'schema_person.rating',
+    'schema_person.review',
+    'schema_person.memberOf',
+    'schema_video_object.mainEntityOfPage',
+  ];
+  foreach ($tags as $tag_name) {
+    metatag_update_delete_config($tag_name);
+  }
+}
+
+/**
+ * Update the schema_product_brand tag.
+ */
+function schema_metatag_update_7003(&$sandbox) {
+  module_load_include('install', 'metatag');
+  metatag_update_delete_config('schema_product.brand');
+  drupal_set_message(t('Product brand tag options have been changed and expanded, and brand options have been added to Organization and Person. Please reconfigure any Product brand tags.'));
+}
+

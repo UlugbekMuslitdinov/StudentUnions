@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the  UAQS Block Types - Quick Links feature.
+ */
+
+include_once 'uaqs_block_types_quick_links.features.inc';

@@ -1,0 +1,14 @@
+name = UAQS Content Chunks - HTML Field
+core = 7.x
+package = The University of Arizona
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = field_group
+dependencies[] = paragraphs
+dependencies[] = text
+dependencies[] = uaqs_content_chunks
+dependencies[] = uaqs_fields
+features[ctools][] = field_group:field_group:1
+features[features_api][] = api:2
+features[field_instance][] = paragraphs_item-uaqs_content_chunks_html-field_uaqs_html
+features[paragraphs][] = uaqs_content_chunks_html

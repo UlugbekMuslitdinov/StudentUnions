@@ -1,0 +1,18 @@
+fieldset.collapsed {
+  margin-bottom: 30px;
+}
+#content .form-item .webform-container-inline .form-control {
+  display: initial;
+  width: initial;
+  max-width: 100%;
+}
+@media (min-width: 768px) {
+  #content .form-item .form-select,
+  #content .form-item .form-email,
+  #content .form-item .form-file,
+  #content .form-item .form-number,
+  #content .form-item .form-text {
+    width: initial;
+    max-width: 100%;
+  }
+}

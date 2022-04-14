@@ -1,0 +1,55 @@
+<?php
+
+/**
+ * Tests that each of the Metatag schema_web_site tags work correctly.
+ */
+class SchemaMetatagWebSiteTest extends SchemaMetatagTagsTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Schema Metatag: WebSite',
+      'description' => 'Test the schema_web_site meta tags.',
+      'group' => 'Schema Metatag',
+      'dependencies' => [
+        'ctools',
+        'token',
+        'metatag',
+        'schema_metatag',
+        'schema_web_site',
+      ],
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp(array $modules = array()) {
+    $modules[] = 'schema_web_site';
+    parent::setUp($modules);
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public $moduleName = 'schema_web_site';
+
+  /**
+   * {@inheritdoc}
+   */
+  public $schemaTags = [
+    'schema_web_site.@type' => 'SchemaWebSiteType',
+    'schema_web_site.@id' => 'SchemaNameBase',
+    'schema_web_site.name' => 'SchemaNameBase',
+    'schema_web_site.url' => 'SchemaUrlBase',
+    'schema_web_site.sameAs' => 'SchemaUrlBase',
+    'schema_web_site.publisher' => 'SchemaPersonOrgBase',
+    'schema_web_site.inLanguage' => 'SchemaNameBase',
+    'schema_web_site.translationOfWork' => 'SchemaIdReferenceBase',
+    'schema_web_site.workTranslation' => 'SchemaIdReferenceBase',
+  ];
+
+}

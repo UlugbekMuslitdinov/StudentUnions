@@ -1,0 +1,22 @@
+[
+  {"id":13,
+    "uaqs_carousel_id" : 250,
+    "uaqs_photo" : "uaqs_content_chunks_carousel_biosphere_greenhouse.jpg",
+    "uaqs_short_title" : "Lorem ipsum dolor sit amet, nibh nulla in, erat libero in turpis."
+  },
+  {"id":14,
+    "uaqs_carousel_id" : 250,
+    "uaqs_photo" : "uaqs_content_chunks_carousel_biosphere_outside.jpg",
+    "uaqs_short_title" : "Magnis accumsan viverra. Vel adipiscing consequat ut ultricies sem ut, justo mauris sollicitudin tellus arcu a reprehenderit, ut integer laoreet posuere commodo varius felis."
+  },
+  {"id":15,
+    "uaqs_carousel_id" : 250,
+    "uaqs_photo" : "uaqs_content_chunks_carousel_solar.jpg",
+    "uaqs_short_title" : "Vitae ultricies adipisci, id vel malesuada donec orci posuere magna, in dui quam phasellus magna, est eget in nam minima, gravida vivamus tempor nunc."
+  },
+  {"id":16,
+    "uaqs_carousel_id" : 250,
+    "uaqs_photo" : "uaqs_content_chunks_carousel_wilma-wilbur.jpg",
+    "uaqs_short_title" : "Nulla rutrum morbi adipiscing nulla ultrices, venenatis pellentesque id vitae arcu maecenas in, dolor tempor turpis sit fermentum nullam."
+  }
+]

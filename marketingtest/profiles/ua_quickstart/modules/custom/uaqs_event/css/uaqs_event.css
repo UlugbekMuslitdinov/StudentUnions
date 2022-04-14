@@ -1,0 +1,124 @@
+/* Waiting for backport in ua-bootstrap */
+.card-block + .card-block {
+padding-top:0;
+}
+a.height-100 {
+    height: 100%;
+}
+a.link-container:hover, a.link-container:focus {
+    background-color: hsla(180,10%,94%,1);
+    outline: none;
+    text-decoration: none;
+    color: inherit;
+}
+a.link-container {
+    color: inherit;
+    display: block;
+    font-weight: inherit;
+}
+/* Event Block */
+.uaqs-event-block-list .view-content {
+    padding: 2rem 0.5rem 1.5rem;
+    margin: 0 0 2rem;
+    border-top: 1px solid #b6bec1;
+    border-bottom: 1px solid #b6bec1;
+}
+.uaqs-event-date {
+    text-transform: uppercase;
+    width: 100%;
+    height: 7.5em;
+    text-align: center;
+}
+.uaqs-event-row {
+    margin-bottom: 0.5em;
+    color: #49595e;
+    display: block;
+    font-weight: normal;
+}
+
+a:focus .bg-ash-tint,
+a:hover .bg-ash-tint{
+background:#C8D9D8;
+}
+
+
+.uaqs-event-block-list .uaqs-event-date {
+    font-family: MiloSerifWeb,TimesNewRoman,"Times New Roman",Times,Baskerville,Georgia,serif;
+    color: #555;
+}
+
+.uaqs-event-block-list .uaqs-event-title { font-weight: bold; }
+
+.uaqs-event-block-list .uaqs-event-title a,
+.uaqs-event-block-list .uaqs-event-title a:link,
+.uaqs-event-block-list .uaqs-event-title a:visited {
+    font-weight: bold;
+    color: #ab0520;
+}
+
+.uaqs-event-block-list .more-link { text-align: center; }
+
+.uaqs-event-block-list .more-link a,
+.uaqs-event-block-list .more-link a:link,
+.uaqs-event-block-list .more-link a:visited {
+    background-color: #ab0520;
+    color: #fff;
+    -moz-user-select: none;
+    background-image: none;
+    border: 0 none;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 0.05em;
+    line-height: 1.42857;
+    margin-bottom: 0;
+    padding: 0.5rem 1rem;
+    text-align: center;
+    text-transform: uppercase;
+    vertical-align: middle;
+    white-space: nowrap;
+    transition: all 0.1s ease-in-out 0s;
+}
+
+.uaqs-event-block-list .more-link a:focus,
+.uaqs-event-block-list .more-link a:hover,
+.uaqs-event-block-list .more-link a:active {
+    color: #fff;
+    text-decoration: none;
+    background-color: #CC665E;
+}
+
+
+/*no-margin and no-padding should be added to ua-bootstrap they are extremely helpful little classes*/
+.no-margin {
+margin:0 !important;
+}
+
+.no-padding {
+padding:0 !important;
+}
+
+.text-ash {
+    color: #333333;
+}
+.text-red30b {
+    color: #8F1124;
+}
+
+.node-uaqs-event.view-mode-full .field-uaqs-date .field-item {
+    margin-bottom: .75rem;
+}
+
+.node-uaqs-event.view-mode-full .date-repeat-rule {
+    margin-bottom: .5rem;
+    font-style: italic;
+}
+
+.node-uaqs-event.view-mode-full .field-uaqs-contacts {
+    margin-bottom: .5rem;
+}
+
+.node-uaqs-event.view-mode-full .field-uaqs-attachments {
+    margin-bottom: .5rem;
+}

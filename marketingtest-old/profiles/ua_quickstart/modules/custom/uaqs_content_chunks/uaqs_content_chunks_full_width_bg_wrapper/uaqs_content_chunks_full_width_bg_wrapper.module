@@ -1,0 +1,47 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Full Width Background Wrapper Paragraphs Item feature.
+ */
+
+include_once 'uaqs_content_chunks_full_width_bg_wrapper.features.inc';
+
+/**
+ * Implements hook_preprocess_entity().
+ * Injects background color and pattern class into the theme variable.
+ */
+function uaqs_content_chunks_full_width_bg_wrapper_preprocess_entity(&$variables) {
+  if ($variables['entity_type'] == 'paragraphs_item' && $variables['elements']['#bundle'] == 'uaqs_full_width_bg_wrapper') {
+    // add default ua bootstrap background wrapper class
+    $variables['classes_array'][] = 'background-wrapper';
+    // add classes for background color and background pattern
+    if(!empty($variables['elements']['field_uaqs_summary']['#object']->field_uaqs_background_color['und'][0]['value'])) {
+      $variables['classes_array'][] = $variables['elements']['field_uaqs_summary']['#object']->field_uaqs_background_color['und'][0]['value'];
+    }
+    if(!empty($variables['elements']['field_uaqs_summary']['#object']->field_uaqs_background_pattern['und'][0]['value'])) {
+      $variables['classes_array'][] = $variables['elements']['field_uaqs_summary']['#object']->field_uaqs_background_pattern['und'][0]['value'];
+    }
+    //Reset columns
+    $sidebar_first = block_list('sidebar_first');
+    $sidebar_second = block_list('sidebar_second');
+    // Add information about the number of sidebars.
+    if (!empty($sidebar_first) && !empty($sidebar_second)) {
+      $variables['content_column_class'] = ' class="column col-sm-6 col-sm-push-3"';
+    }
+    elseif (!empty($sidebar_first) && empty($sidebar_second)) {
+      $variables['second_sidebar_column_class'] = ' class="col-sm-3"';
+      $variables['content_column_class'] = ' class="column col-sm-9 col-sm-push-3"';
+    }
+    elseif (empty($sidebar_first) && !empty($sidebar_second)) {
+      $variables['content_column_class'] = ' class="col-sm-7 col-md-8 col-lg-8 col-8 column"';
+      $variables['second_sidebar_column_class'] = ' class="col-sm-5 col-md-4 col-lg-4 column"';
+    }
+    else {
+      $variables['second_sidebar_column_class'] = ' class="col-sm-3"';
+      $variables['content_column_class'] = ' class="column col-sm-12"';
+    }
+    $variables['elements']['#attached']['css'] = array(
+      drupal_get_path('module', 'uaqs_content_chunks_full_width_bg_wrapper') . '/css/uaqs_content_chunks_full_width_bg_wrapper.css',
+    );
+  }
+}

@@ -1,0 +1,337 @@
+<?php
+
+/**
+ * @file
+ * Formats dates and times to use "AP" Style.
+ */
+
+/**
+ * Implements hook_help().
+ */
+function date_ap_style_help($path, $arg) {
+  switch ($path) {
+    case 'admin/help#date_ap_style':
+
+      $filepath = dirname(__FILE__) . '/README.md';
+      if (file_exists($filepath)) {
+        $readme = file_get_contents($filepath);
+      }
+      if (!isset($readme)) {
+        return NULL;
+      }
+      if (module_exists('markdown')) {
+        $filters = module_invoke('markdown', 'filter_info');
+        $info = $filters['filter_markdown'];
+
+        if (function_exists($info['process callback'])) {
+          $output = $info['process callback']($readme, NULL);
+        }
+        else {
+          $output = '<pre>' . $readme . '</pre>';
+        }
+      }
+      else {
+        $output = '<pre>' . $readme . '</pre>';
+      }
+
+      return $output;
+  }
+}
+
+/**
+ * Implements hook_permission().
+ */
+function date_ap_style_permission() {
+  return array(
+    'administer ap style settings' => array(
+      'title' => t('Configure default AP style settings'),
+      'description' => t('Allows users to configure default AP style settings.'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function date_ap_style_menu() {
+  $items['admin/config/content/date-ap-style'] = array(
+    'title' => 'AP Style Date Display Settings',
+    'description' => 'Configure AP date style default settings when using the AP date style format.',
+    'page callback' => 'drupal_get_form',
+    'page arguments' => array('date_ap_style_admin_form'),
+    'access arguments' => array('administer ap style settings'),
+    'file' => 'includes/ap_date.admin.inc',
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_views_api().
+ */
+function date_ap_style_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'date_ap_style'),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function date_ap_style_field_formatter_info() {
+  return array(
+    'date_ap_style' => array(
+      'label' => t('AP Style Date'),
+      'description' => t('Displays a date as AP Style.'),
+      'field types' => array('date', 'datestamp', 'datetime'),
+      'settings' => array(
+        'date_ap_style_output' => variable_get('date_ap_style_defaults', array(
+          'use_today' => 0,
+          'cap_today' => 0,
+          'use_dow' => 0,
+          'use_year' => 0,
+          'show_time' => 0,
+          'cap_noon' => 0,
+          'use_all_day' => 0,
+          'date_time' => 0,
+        )),
+      ),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function date_ap_style_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  $settings = $display['settings']['date_ap_style_output'];
+  switch ($display['type']) {
+    case 'date_ap_style':
+      foreach ($items as $delta => $item) {
+        $timezone = date_get_timezone($field['settings']['tz_handling'], isset($item['timezone']) ? $item['timezone'] : date_default_timezone());
+        $value = date_local_date($item, $timezone, $field, $instance, $part = 'value');
+        $value_local = date_format_date($value, $type = 'custom', $format = 'Y-m-d H:i:s');
+        $value_all_day = $value;
+        $value_all_day_end = $value;
+        $value = date_ap_style_ap_date_string($value_local, $settings);
+        $element[$delta] = array('#markup' => $value);
+        if ($settings['show_time']) {
+          $value_time = date_ap_style_time_string($value_local, $settings);
+          if ($settings['date_time']) {
+            $element[$delta] = array('#markup' => $value . ' ' . $value_time);
+          }
+          else {
+            $element[$delta] = array('#markup' => $value_time . ' ' . $value);
+          }
+        }
+        if (isset($item['value2'])) {
+          $value2 = date_local_date($item, $timezone, $field, $instance, $part = 'value2');
+          $value_all_day_end = $value2;
+          $value2_local = date_format_date($value2, $type = 'custom', $format = 'Y-m-d H:i:s');
+          $value2 = date_ap_style_ap_date_string($value2_local, $settings);
+          $value2_time = date_ap_style_time_string($value2_local, $settings);
+          if ($settings['show_time']) {
+            if ($value == $value2) {
+              if ($settings['date_time']) {
+                // If the start and end time are the same time when the date is
+                // the same, no need to show the same time twice. This
+                // condition shows the time AFTER the date.
+                if ($value_time == $value2_time) {
+                  $element[$delta] = array('#markup' => $value . ' ' . $value_time);
+                }
+                else {
+                  $element[$delta] = array('#markup' => $value . ' ' . $value_time . ' to ' . $value2_time);
+                }
+              }
+              // If the start and end time are the same time when the date is
+              // the same, no need to show the same time twice. This condition
+              // shows the time BEFORE the date.
+              elseif ($value_time == $value2_time) {
+                $element[$delta] = array('#markup' => $value_time . ' ' . $value);
+              }
+              else {
+                $element[$delta] = array('#markup' => $value_time . ' to ' . $value2_time . ' ' . $value);
+              }
+            }
+            elseif ($settings['date_time']) {
+              $element[$delta] = array('#markup' => $value . ' ' . $value_time . ' to ' . $value2 . ' ' . $value2_time);
+            }
+            else {
+              $element[$delta] = array('#markup' => $value_time . ' ' . $value . ' to ' . $value2_time . ' ' . $value2);
+            }
+          }
+        }
+        if ($settings['use_all_day']) {
+          // Use Date API to recognize All Day items.
+          $all_day = date_field_all_day($field, $instance, $value_all_day, $value_all_day_end);
+          if ($all_day) {
+            if ($settings['date_time']) {
+              $element[$delta] = array('#markup' => t('@value All Day', array('@value' => $value)));
+            }
+            else {
+              $element[$delta] = array('#markup' => t('All Day @value', array('@value' => $value)));
+            }
+          }
+        }
+      }
+      break;
+  }
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_settings_form().
+ */
+function date_ap_style_field_formatter_settings_form($field, $instance, $view_mode, $form, &$form_state) {
+
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings'];
+  $element = array();
+
+  $element['date_ap_style_output'] = array(
+    '#type' => 'checkboxes',
+    '#title' => t('Display Options'),
+    '#options' => array(
+      'use_today' => t('Use today'),
+      'cap_today' => t('Capitalize today'),
+      'use_dow' => t('Use day of week for current week'),
+      'use_year' => t('Use year'),
+      'show_time' => t('Show time'),
+      'cap_noon' => t('Capitalize noon and midnight'),
+      'use_all_day' => t('Show "All Day" instead of midnight'),
+      'date_time' => t('Use date before time'),
+    ),
+    '#default_value' => isset($settings['date_ap_style_output']) ? $settings['date_ap_style_output'] : variable_get('date_ap_style_defaults', array()),
+  );
+
+  return $element;
+}
+
+/**
+ * Implements hook_field_formatter_settings_summary().
+ */
+function date_ap_style_field_formatter_settings_summary($field, $instance, $view_mode) {
+
+  $display = $instance['display'][$view_mode];
+  $settings = $display['settings']['date_ap_style_output'];
+  $summary = t(
+        'Date AP Style settings @use_today, @cap_today, @use_year, @cap_noon, @show_time', array(
+        // We use t() for translation and placeholders to guard against attacks.
+          '@use_today' => ($settings['use_today'] ? t('Use Today') : t('Do not use today')),
+          '@cap_today' => ($settings['cap_today'] ? t('Capitalize Today') : t('Do not capitalize today')),
+          '@use_year' => ($settings['use_year'] ? t('Use year') : t('Do not use year')),
+          '@cap_noon' => ($settings['cap_noon'] ? t('Capitalize noon and midnight') : t('Do not capitalize noon and midnight')),
+          '@show_time' => ($settings['show_time'] ? ($settings['date_time'] ? t('Show date before time') : t('Show time before date')) : 'Do not show time'),
+        )
+    );
+  return $summary;
+}
+
+/**
+ * Creates an AP Style formatted date string from a date string.
+ *
+ * @param string $date_string
+ *   A string that can be interpreted by strtotime().
+ * @param array $settings
+ *   An array containing settings set in field display configuration.
+ *
+ * @return string
+ *   An AP Style formatted date string.
+ */
+function date_ap_style_ap_date_string($date_string, $settings) {
+
+  $input_datetime = strtotime($date_string);
+  $ap_string = '';
+  $ap_format = '';
+  // Determine whether the date is the current date and set the final output.
+  if ($settings['use_today'] && $input_datetime == strtotime('today')) {
+    $ap_string = $settings['cap_today'] ? t('Today') : t('today');
+  }
+  // Determine if the date is within the current week and set final output.
+  elseif ($settings['use_dow'] && date('W o') == date('W o', $input_datetime)) {
+    $ap_format = 'l';
+  }
+  else {
+    // Determine the month and set the AP Style abbreviation.
+    $input_month = date('m', $input_datetime);
+    switch ($input_month) {
+      case '03':
+      case '04':
+      case '05':
+      case '06':
+      case '07':
+        $ap_month = 'F';
+        break;
+
+      case '09':
+        $ap_month = 'M\t.';
+        break;
+
+      default:
+        $ap_month = 'M.';
+    }
+    // Determine whether the date is within the current year.
+    $ap_year = '';
+    if ($settings['use_year'] || date('Y', $input_datetime) != date('Y')) {
+      $ap_year = ', Y';
+    }
+
+    $ap_format = $ap_month . ' j' . $ap_year;
+  }
+
+  return ($ap_string ? $ap_string : format_date($input_datetime, 'custom', $ap_format));
+}
+
+/**
+ * Creates formatted time string.
+ *
+ * @param string $date_string
+ *   A string that can be interpreted by strtotime().
+ * @param array $settings
+ *   Array containing settings set in field display configuration.
+ *
+ * @return string
+ *   An AP Style formatted time string.
+ */
+function date_ap_style_time_string($date_string, $settings) {
+
+  $input_datetime = strtotime($date_string);
+  $cap_noon = $settings['cap_noon'];
+
+  // Format am and pm to AP Style abbreviations.
+  if (date('a', $input_datetime) == 'am') {
+    $modmeridian = 'a.m.';
+  }
+  else {
+    $modmeridian = 'p.m.';
+  }
+  // Reformat 12:00 and 00:00 to noon and midnight.
+  if (date('H:i', $input_datetime) == '00:00') {
+    if ($cap_noon == TRUE) {
+      $ap_time_string = t('Midnight');
+    }
+    else {
+      $ap_time_string = t('midnight');
+    }
+  }
+  elseif (date('H:i', $input_datetime) == '12:00') {
+    if ($cap_noon == TRUE) {
+      $ap_time_string = t('Noon');
+    }
+    else {
+      $ap_time_string = t('noon');
+    }
+  }
+  // Eliminate trailing zeroes from times at the top of the hour and set final
+  // output.
+  elseif (date('i', $input_datetime) == '00') {
+    $ap_time_string = date('g', $input_datetime) . ' ' . $modmeridian;
+  }
+  else {
+    $ap_time_string = date('g:i', $input_datetime) . ' ' . $modmeridian;
+  }
+  return ($ap_time_string);
+}

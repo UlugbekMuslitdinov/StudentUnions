@@ -1,0 +1,114 @@
+<?php
+/**
+ * @file
+ * uaqs_navigation_resources.install
+ */
+
+/**
+ * Implements hook_install().
+ */
+function uaqs_navigation_resources_install() {
+  $t = get_t();
+
+  // Create 'Header -- Resources' menu if it doesn't already exist.
+  $menu_name = 'uaqs-header-resources';
+  if (!menu_load($menu_name)) {
+    $menu = array(
+      'menu_name' => $menu_name,
+      'title' => $t('Header -- Resources'),
+      'description' => 'Contains header resource links.',
+    );
+    menu_save($menu);
+  }
+}
+
+/**
+ * Implements hook_enable().
+ */
+function uaqs_navigation_resources_enable() {
+  migrate_static_registration();
+  $info = uaqs_navigation_resources_migrate_api();
+  foreach ($info['migrations'] as $machine_name => $arguments) {
+    $migration = Migration::getInstance($machine_name);
+    $migration->processImport();
+  }
+}
+
+/**
+ * Implements hook_disable().
+ */
+function uaqs_navigation_resources_disable() {
+  // Prevent missing migration errors by forcing migrate module to re-register
++ // statically defined migrations.
++ migrate_static_registration();
+  $info = uaqs_navigation_resources_migrate_api();
+  $hitlist = array_reverse($info['migrations']);
+  foreach ($hitlist as $machine_name => $arguments) {
+    $migration = Migration::getInstance($machine_name);
+    $migration->processRollback();
+  }
+  MigrateGroup::deregister('uaqs_navigation');
+}
+
+/**
+ * UADIGITAL-2239: Update footer & resources links with new news & youtube links
+ */
+function uaqs_navigation_resources_update_7100() {
+  $newsLinks = db_select('menu_links', 'ml', array(
+    'fetch' => PDO::FETCH_ASSOC,
+  ))
+    ->fields('ml')
+    ->condition('ml.menu_name', 'uaqs-header-resources')
+    ->condition('ml.link_title', 'UANews')
+    ->execute()
+    ->fetchAll();
+
+  if (!empty($newsLinks)) {
+    foreach ($newsLinks as $newsLink) {
+      $newsWeight = $newsLink['weight'];
+
+      $newNews = array(
+        'link_title' => 'News',
+        'menu_name' => 'uaqs-header-resources',
+        'weight' => $newsWeight,
+        'link_path' => 'https://news.arizona.edu',
+      );
+
+      menu_link_save($newNews);
+    }
+
+    db_delete('menu_links')
+      ->condition('menu_name', 'uaqs-header-resources')
+      ->condition('link_title', 'UANews')
+      ->execute();
+  }
+
+  $calendarLinks = db_select('menu_links', 'ml', array(
+    'fetch' => PDO::FETCH_ASSOC,
+  ))
+    ->fields('ml')
+    ->condition('ml.menu_name', 'uaqs-header-resources')
+    ->condition('ml.link_path', 'https://uanews.arizona.edu/calendar')
+    ->execute()
+    ->fetchAll();
+
+  if (!empty($calendarLinks)) {
+    foreach ($calendarLinks as $calendarLink) {
+      $calendarWeight = $calendarLink['weight'];
+
+      $newCalendar = array(
+        'link_title' => 'Calendars',
+        'menu_name' => 'uaqs-header-resources',
+        'weight' => $calendarWeight,
+        'link_path' => 'http://www.arizona.edu/calendars-events',
+      );
+
+      menu_link_save($newCalendar);
+    }
+
+    db_delete('menu_links')
+      ->condition('menu_name', 'uaqs-header-resources')
+      ->condition('link_path', array('https://uanews.arizona.edu/calendar','http://uanews.arizona.edu/calendar'))
+      ->execute();
+  }
+}

@@ -1,0 +1,9 @@
+[
+  {"id":1,
+    "label" : "Main Unit or Department Contact Information",
+    "uaqs_contact_address" : "The University of Arizona|Tucson|AZ 85721",
+    "uaqs_contact_phone" : "520-621-2211",
+    "uaqs_contact_mail_link" : "mailto:department.name@email.arizona.edu",
+    "uaqs_program_mail_link_title" : "department.name@email.arizona.edu"
+  }
+]

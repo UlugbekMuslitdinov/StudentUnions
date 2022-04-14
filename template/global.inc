@@ -63,7 +63,6 @@ function page_start($page_options=NULL){
 		<!-- Vue -->
 		<script type="text/javascript" src="/node_modules/vue/dist/vue.min.js"></script>
 		<?php include_once $_SERVER['DOCUMENT_ROOT'].'/template/layout/header/header.php'; ?>
-
 		<div class="container su-main-content">
 			<div class="row">
 <?php } ?>
@@ -182,7 +181,7 @@ function page_finish(){
         <section id="su_footer" style="display: unset">
             <su-footer></su-footer>
         </section>
-        <script type="text/javascript" src="/template/layout/footer/index_2.js"></script>
+        <script type="text/javascript" src="/template/layout/footer/index.js"></script>
         <link rel="stylesheet" type="text/css" href="/template/layout/footer/style.css">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
 

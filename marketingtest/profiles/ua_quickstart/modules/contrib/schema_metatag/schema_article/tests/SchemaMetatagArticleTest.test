@@ -1,0 +1,62 @@
+<?php
+
+/**
+ * Tests that each of the Metatag schema_article tags work correctly.
+ */
+class SchemaMetatagArticleTest extends SchemaMetatagTagsTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Schema Metatag: Article',
+      'description' => 'Test the schema_article meta tags.',
+      'group' => 'Schema Metatag',
+      'dependencies' => [
+        'ctools',
+        'token',
+        'metatag',
+        'schema_metatag',
+        'schema_article',
+      ],
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp(array $modules = array()) {
+    $modules[] = 'schema_article';
+    parent::setUp($modules);
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public $moduleName = 'schema_article';
+
+  /**
+   * {@inheritdoc}
+   */
+  public $schemaTags = [
+    'schema_article.@type' => 'SchemaArticleType',
+    'schema_article.headline' => 'SchemaNameBase',
+    'schema_article.name' => 'SchemaNameBase',
+    'schema_article.description' => 'SchemaNameBase',
+    'schema_article.author' => 'SchemaPersonOrgBase',
+    'schema_article.publisher' => 'SchemaPersonOrgBase',
+    'schema_article.datePublished' => 'SchemaDateBase',
+    'schema_article.dateModified' => 'SchemaDateBase',
+    'schema_article.about' => 'SchemaNameBase',
+    'schema_article.image' => 'SchemaImageBase',
+    'schema_article.mainEntityOfPage' => 'SchemaMainEntityOfPageBase',
+    'schema_article.hasPart' => 'SchemaHasPartBase',
+    'schema_article.isAccessibleForFree' => 'SchemaIsAccessibleForFreeBase',
+    'schema_article.speakable' => 'SchemaSpeakableBase',
+    'schema_article.aggregateRating' => 'SchemaRatingBase',
+    'schema_article.review' => 'SchemaReviewBase',
+  ];
+
+}

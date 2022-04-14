@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * Tests that each of the Metatag schema_review tags work correctly.
+ */
+class SchemaMetatagReviewTest extends SchemaMetatagTagsTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Schema Metatag: Review',
+      'description' => 'Test the schema_review meta tags.',
+      'group' => 'Schema Metatag',
+      'dependencies' => [
+        'ctools',
+        'token',
+        'metatag',
+        'schema_metatag',
+        'schema_review',
+      ],
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp(array $modules = array()) {
+    $modules[] = 'schema_review';
+    parent::setUp($modules);
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public $moduleName = 'schema_review';
+
+  /**
+   * {@inheritdoc}
+   */
+  public $schemaTags = [
+    'schema_review.@type' => 'SchemaReviewType',
+    'schema_review.name' => 'SchemaNameBase',
+    'schema_review.itemReviewed' => 'SchemaThingBase',
+    'schema_review.reviewBody' => 'SchemaNameBase',
+    'schema_review.author' => 'SchemaPersonOrgBase',
+    'schema_review.datePublished' => 'SchemaDateBase',
+    'schema_review.reviewRating' => 'SchemaRatingBase',
+  ];
+
+}

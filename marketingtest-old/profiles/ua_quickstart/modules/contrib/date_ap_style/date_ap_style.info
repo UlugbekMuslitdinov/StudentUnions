@@ -1,0 +1,16 @@
+name = AP Style Date
+dependencies[] = date
+package = Date/Time
+core = 7.x
+description = "Formats dates and times to use \"AP\" Style"
+
+configure = admin/config/content/date-ap-style
+
+; Views handlers
+files[] = includes/views/handlers/date_ap_style_handler_field_date.inc
+
+; Information added by Drupal.org packaging script on 2019-03-28
+version = "7.x-1.4"
+core = "7.x"
+project = "date_ap_style"
+datestamp = "1553794394"

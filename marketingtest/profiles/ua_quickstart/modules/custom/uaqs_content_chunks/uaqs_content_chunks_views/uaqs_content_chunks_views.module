@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Content Chunks - Views feature.
+ */
+
+include_once 'uaqs_content_chunks_views.features.inc';

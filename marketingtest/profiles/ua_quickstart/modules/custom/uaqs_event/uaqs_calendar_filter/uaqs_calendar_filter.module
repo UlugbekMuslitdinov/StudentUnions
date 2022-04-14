@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Boilerplate to expose the calendar filter to the views API.
+ */
+
+/**
+ * Implements hook_views_api().
+ */
+function uaqs_calendar_filter_views_api() {
+  return array(
+    'api' => 3,
+    'path' => drupal_get_path('module', 'uaqs_calendar_filter') . '/includes',
+  );
+}
+
+/**
+ * Implements hook_menu().
+ */
+function uaqs_calendar_filter_menu() {
+  $items = array();
+
+  if (module_exists('uaqs_core')) {
+    $items['admin/config/uaqs/settings/uaqs-calendar-filter'] = array(
+      'title' => 'UAQS Calendar Filter',
+      'description' => 'UAQS Calendar Filter settings',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('uaqs_calendar_filter_settings_form'),
+      'file' => 'uaqs_calendar_filter.admin.inc',
+      'access arguments' => array('administer uaqs configuration'),
+      'type' => MENU_LOCAL_TASK,
+    );
+  }
+
+  return $items;
+}
+
+/**
+ * Implements hook_system_info_alter().
+ */
+function uaqs_calendar_filter_system_info_alter(&$info, $file, $type) {
+  if ($file->name == 'uaqs_calendar_filter' && module_exists('uaqs_core')) {
+    $info['configure'] = 'admin/config/uaqs/settings/uaqs-calendar-filter';
+  }
+}

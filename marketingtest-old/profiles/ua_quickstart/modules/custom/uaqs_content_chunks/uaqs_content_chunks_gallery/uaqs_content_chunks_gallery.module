@@ -1,0 +1,115 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Content Chunks - Gallery feature.
+ */
+
+include_once 'uaqs_content_chunks_gallery.features.inc';
+
+/**
+ * Implements hook_theme();
+ */
+function uaqs_content_chunks_gallery_theme() {
+  $items = array();
+
+  $items['uaqs_gallery_thumbnail_item'] = array(
+    'template' => 'templates/uaqs_gallery_thumbnail_item',
+    'variables' => array(
+      'gallery_name' => NULL,
+      'data_index' => NULL,
+      'thumbnail_image' => array(),
+    ),
+  );
+
+  $items['uaqs_gallery_thumbnail_list'] = array(
+    'template' => 'templates/uaqs_gallery_thumbnail_list',
+    'variables' => array(
+      'thumbnail_items' => array(),
+    ),
+  );
+
+  $items['uaqs_gallery_fullsize_item'] = array(
+    'template' => 'templates/uaqs_gallery_fullsize_item',
+    'variables' => array(
+      'caption' => NULL,
+      'is_active' => NULL,
+      'gallery_index' => NULL,
+      'gallery_count' => NULL,
+      'fullsize_image' => array(),
+    ),
+  );
+
+  $items['uaqs_gallery_fullsize_list'] = array(
+    'template' => 'templates/uaqs_gallery_fullsize_list',
+    'variables' => array(
+      'gallery_name' => NULL,
+      'fullsize_items' => array(),
+    ),
+  );
+
+  return $items;
+}
+
+/**
+ * Implements hook_preprocess_field().
+ */
+function uaqs_content_chunks_gallery_preprocess_field(&$variables) {
+  if ($variables['element']['#bundle'] == 'uaqs_gallery' && $variables['element']['#field_name'] == 'field_uaqs_photos') {
+    $gallery_id = 'gallery-' . $variables['element']['#object']->item_id;
+    $thumbnail_items = array();
+    $fullsize_items = array();
+    $gallery_count = count($variables['element']['#items']);
+    foreach ($variables['element']['#items'] as $i => $file) {
+      if (isset($file) && $file['type'] == 'image') {
+        $caption = NULL;
+        if (isset($file['field_uaqs_caption_text'][LANGUAGE_NONE][0]['safe_value'])) {
+          $caption = $file['field_uaqs_caption_text'][LANGUAGE_NONE][0]['safe_value'] . "<br>";
+        }
+        $alt = NULL;
+        if (isset($file['field_file_image_alt_text'][LANGUAGE_NONE][0]['safe_value'])) {
+          $alt = $file['field_file_image_alt_text'][LANGUAGE_NONE][0]['safe_value'];
+        }
+        $title = NULL;
+        if (isset($file['field_file_image_title_text'][LANGUAGE_NONE][0]['safe_value'])) {
+          $title = $file['field_file_image_title_text'][LANGUAGE_NONE][0]['safe_value'];
+        }
+        $thumbnail_items[] = array(
+          '#theme' => 'uaqs_gallery_thumbnail_item',
+          '#gallery_name' => $gallery_id,
+          '#data_index' => $i,
+          '#thumbnail_image' => array(
+            '#theme' => 'image_style',
+            '#path' => $file['uri'],
+            '#style_name' => 'uaqs_gallery_thumbnail',
+            '#alt' => $alt,
+            '#title' => $title,
+          ),
+        );
+        $fullsize_items[] = array(
+          '#theme' => 'uaqs_gallery_fullsize_item',
+          '#caption' => $caption,
+          '#is_active' => ($i == 0) ? "active" : "",
+          '#gallery_index' => ($i+1),
+          '#gallery_count' => $gallery_count,
+          '#fullsize_image' => array(
+            '#theme' => 'image_style',
+            '#path' => $file['uri'],
+            '#style_name' => 'uaqs_full_width_lg',
+            '#alt' => $alt,
+            '#title' => $title,
+            '#attributes' => array('class' => 'ua-gallery-carousel-image'),
+          ),
+        );
+      }
+    }
+    $variables['thumbnail_list'] = array(
+      '#theme' => 'uaqs_gallery_thumbnail_list',
+      '#thumbnail_items' => $thumbnail_items,
+    );
+    $variables['fullsize_list'] = array(
+      '#theme' => 'uaqs_gallery_fullsize_list',
+      '#gallery_name' => $gallery_id,
+      '#fullsize_items' => $fullsize_items,
+    );
+  }
+}

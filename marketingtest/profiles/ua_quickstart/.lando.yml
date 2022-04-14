@@ -1,0 +1,16 @@
+name: ua-quickstart
+recipe: drupal7
+config:
+  webroot: uaqsbuildroot
+services:
+  appserver:
+    # Runs drush make within the lando docker container, thereby bypassing the file system issues encountered on windows
+    build:
+      - /bin/sh -c "drush make build-ua_quickstart.make.yml $LANDO_WEBROOT"
+    run:
+      # This command installs drupal with the ua_quickstart install profile.
+      - /bin/sh -c "cd $LANDO_WEBROOT && drush si ua_quickstart --root=$LANDO_WEBROOT --account-mail=noreply@email.arizona.edu --account-name=uaqs_admin --account-pass=lando --db-url=mysql://drupal7:drupal7@database:3306/drupal7 --site-name='UA Quickstart' ua_quickstart_install_options_form.uaqs_verbosity=1 install_configure_form.update_status_module='array(TRUE,FALSE)' -y --verbose"
+      # Disable ua_cas
+      - /bin/sh -c "cd $LANDO_WEBROOT && drush vset cas_login_form 1"
+      # Fix filesystem permissions and ownerships.
+      - /bin/sh -c "./devtools/ua_drupal_test/uaqstest_fileperms.sh $LANDO_WEBROOT $LANDO_WEBROOT_GROUP"

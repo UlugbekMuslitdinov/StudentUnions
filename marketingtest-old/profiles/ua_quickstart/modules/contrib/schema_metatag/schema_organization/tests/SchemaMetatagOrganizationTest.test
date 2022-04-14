@@ -1,0 +1,69 @@
+<?php
+
+/**
+ * Tests that each of the Metatag schema_organization tags work correctly.
+ */
+class SchemaMetatagOrganizationTest extends SchemaMetatagTagsTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Schema Metatag: Organization',
+      'description' => 'Test the schema_organization meta tags.',
+      'group' => 'Schema Metatag',
+      'dependencies' => [
+        'ctools',
+        'token',
+        'metatag',
+        'schema_metatag',
+        'schema_organization',
+      ],
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp(array $modules = array()) {
+    $modules[] = 'schema_organization';
+    parent::setUp($modules);
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public $moduleName = 'schema_organization';
+
+  /**
+   * {@inheritdoc}
+   */
+  public $schemaTags = [
+    'schema_organization.@type' => 'SchemaOrganizationType',
+    'schema_organization.additionalType' => 'SchemaOrganizationType',
+    'schema_organization.@id' => 'SchemaNameBase',
+    'schema_organization.name' => 'SchemaNameBase',
+    'schema_organization.acceptsReservations' => 'SchemaTrueFalseBase',
+    'schema_organization.menu' => 'SchemaUrlBase',
+    'schema_organization.url' => 'SchemaUrlBase',
+    'schema_organization.sameAs' => 'SchemaUrlBase',
+    'schema_organization.address' => 'SchemaAddressBase',
+    'schema_organization.geo' => 'SchemaGeoBase',
+    'schema_organization.image' => 'SchemaImageBase',
+    'schema_organization.logo' => 'SchemaImageBase',
+    'schema_organization.telephone' => 'SchemaNameBase',
+    'schema_organization.description' => 'SchemaNameBase',
+    'schema_organization.openingHoursSpecification' => 'SchemaOpeningHoursSpecificationBase',
+    'schema_organization.priceRange' => 'SchemaNameBase',
+    'schema_organization.memberOf' => 'SchemaProgramMembershipBase',
+    'schema_organization.potentialAction' => 'SchemaOrganizationPotentialAction',
+    'schema_organization.aggregateRating' => 'SchemaRatingBase',
+    'schema_organization.starRating' => 'SchemaRatingBase',
+    'schema_organization.review' => 'SchemaReviewBase',
+    'schema_organization.contactPoint' => 'SchemaContactPointBase',
+    'schema_organization.brand' => 'SchemaBrandBase',
+  ];
+
+}

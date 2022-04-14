@@ -1,0 +1,52 @@
+/*Need to override css in editor because entities are wraped in <drupal-entity>*/
+drupal-entity {
+  display: inline-block;
+  width: 100%;
+}
+drupal-entity .file-image {
+  width: 100%;
+}
+.file-image img {
+  width: 100%;
+}
+img.file-icon,
+img.media-object {
+  width: auto;
+}
+drupal-entity[data-entity-embed-settings*=inline_link] div,
+drupal-entity[data-entity-embed-settings*=inline_link] {
+  display: inline;
+  width: auto;
+}
+drupal-entity[data-align*=left] .pull-left,
+drupal-entity[data-align*=right] .pull-right {
+  float:none!important;
+}
+
+@media only screen and (min-width : 768px) {
+  drupal-entity[data-entity-embed-settings*=small] {
+    width: 33.3333%;
+  }
+  drupal-entity[data-entity-embed-settings*=medium] {
+    width: 66.666%;
+  }
+  drupal-entity[data-entity-embed-settings*=square] {
+    width: 220px;
+  }
+  drupal-entity[data-entity-embed-settings*=large] {
+    width: 100%;
+  }
+  drupal-entity[data-align*=right] {
+    float:right;
+    margin: 0.5em 0em 0.5em 1em;
+  }
+  drupal-entity[data-align*=left] {
+    float:left;
+    margin: 0.5em 1em 0.5em 0em;
+  }
+  drupal-entity[data-align*=center] {
+    float: none;
+    display: block;
+    margin: 0em auto 1em auto;
+  }
+}

@@ -1,0 +1,42 @@
+.item-list {
+	ul.pager {
+		border-top: 2px solid #eef1f1;
+		background: none 0 0 scroll no-repeat transparent;
+		text-transform: uppercase;
+		border: 0 none;
+		-webkit-border-radius: 0px;
+		-moz-border-radius: 0px;
+		border-radius: 0px;
+		list-style: none;
+		text-align: inherit;
+		&:after {
+			display: block;
+			content: "\0020";
+			clear: both;
+		}
+		li {
+			background: none 0 0 scroll no-repeat transparent;
+			text-transform: uppercase;
+			border: 0 none;
+			-webkit-border-radius: 0px;
+			-moz-border-radius: 0px;
+			border-radius: 0px;
+			color: #555;
+			white-space: nowrap;
+			margin: 0 0.8em;
+			list-style: none;
+			a,
+			a:link,
+			a:visited {
+				font-size: 14px;
+				font-size: 0.9rem;
+				font-weight: bold;
+				background: none 0 0 scroll no-repeat transparent;
+				color: #ab0520;
+			}
+			a:focus,
+			a:hover,
+			a:active { background: none 0 0 scroll no-repeat transparent; }
+		}
+	}
+}

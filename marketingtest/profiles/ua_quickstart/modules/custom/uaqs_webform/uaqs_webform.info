@@ -1,0 +1,15 @@
+name = UAQS Webform
+description = Use uaqs_flexible_page as a webform.
+core = 7.x
+package = The University of Arizona
+dependencies[] = ctools
+dependencies[] = defaultconfig
+dependencies[] = features
+dependencies[] = strongarm
+dependencies[] = webform
+features[ctools][] = strongarm:strongarm:1
+features[defaultconfig][] = strongarm:webform_node_types_primary
+features[defaultconfig][] = strongarm:webform_node_uaqs_flexible_page
+features[defaultconfig][] = strongarm:webform_node_uaqs_event
+features[defaultconfig][] = strongarm:webform_progressbar_style
+features[features_api][] = api:2

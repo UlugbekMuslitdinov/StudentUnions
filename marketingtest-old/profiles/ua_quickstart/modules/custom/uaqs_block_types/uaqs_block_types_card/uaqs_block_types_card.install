@@ -1,0 +1,38 @@
+<?php
+
+/**
+ * @file
+ * uaqs_block_types_card.install
+ */
+
+/**
+ * UADIGITAL-991 removes the uaqs_text_area field from the uaqs_card block type
+ * and replaces with a more feature rich uaqs_summary field. Any styles
+ * associated with the uaqs_text_area field should be implemented on the updated
+ * uaqs_summary field before or after this database migration script runs.
+ */
+function uaqs_block_types_card_update_7100() {
+  $query = new EntityFieldQuery();
+  $query
+    ->entityCondition('entity_type', 'bean', '=')
+    ->propertyCondition('type', 'uaqs_card', '=');
+
+  $result = $query->execute();
+  $ids = array();
+  foreach($result['bean'] as $record) {
+    $ids[] = $record->bid;
+  }
+  $beans = entity_load('bean', $ids);
+  foreach ($beans as $bean) {
+    $old_field_value = $bean->field_uaqs_text_area['und'][0]['value'];
+    $bean->field_uaqs_summary['und'][0]['value'] = $old_field_value;
+    $bean->field_uaqs_summary['und'][0]['format'] = 'uaqs_standard';
+    unset( $bean->field_uaqs_text_area);
+    field_attach_update('bean', $bean);
+  }
+  if ($instance = field_info_instance('bean', 'field_uaqs_text_area', 'uaqs_card'))  {
+    field_delete_instance($instance, TRUE);
+    field_purge_batch(1);
+  }
+}
+

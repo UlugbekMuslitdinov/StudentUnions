@@ -1,0 +1,231 @@
+<?php
+/**
+ * @file
+ * uaqs_fields.install
+ */
+
+/**
+ * Implements hook_install().
+ */
+function uaqs_fields_install() {
+  _uaqs_fields_save_entity_embed_icons();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function uaqs_fields_uninstall() {
+  $icon_files = array('uaqs_files','uaqs_content','uaqs_bean');
+  foreach ($icon_files as $icon_file) {
+    // Delete the Entity Embed file icon.
+    $fid = variable_get('uaqs_fields_entity_embed_' . $icon_file . '_fid', FALSE);
+    if ($fid) {
+      $file = file_load($fid);
+
+      if ($file) {
+        file_delete($file);
+      }
+    }
+
+    // Remove the storage variable.
+    variable_del('uaqs_fields_entity_embed_' . $icon_file . '_fid');
+  }
+  // Delete the folder the icon was stored in.
+  $icon_folder = 'public://uaqs_fields_entity_embed_icons';
+  file_unmanaged_delete_recursive($icon_folder);
+}
+
+/**
+ * Implements hook_requirements().
+ */
+function uaqs_fields_requirements($phase) {
+  $requirements = array();
+  // Ensure translations don't break at install time
+  $t = get_t();
+
+  // Check to see if the ckeditor libraries are available
+  if ($phase == 'runtime') {
+    $requirements['btgrid'] = array(
+      'title' => $t('CKEditor Bootstrap Grid plugin'),
+    );
+    $requirements['bt_table'] = array(
+      'title' => $t('CKEditor Bootstrap Table plugin'),
+    );
+    $requirements['entity_embed'] = array(
+      'title' => $t('Appropriate PHP settings'),
+    );
+
+    $installed = uaqs_fields_btgrid_installed();
+    if (!$installed) {
+      $requirements['btgrid']['description'] = $t('The CKEditor Bootstrap Grid plugin could not be found.  Please download the plugin from @url and install it into the site libraries directory.', array('@url' => UAQS_FIELDS_BTGRID_DL_URL));
+      $requirements['btgrid']['severity'] = REQUIREMENT_ERROR;
+      $requirements['btgrid']['value'] = $t('Missing.');
+    }
+    else {
+      // @todo Display the installed version.
+      $requirements['btgrid']['description'] = $t('CKEditor Bootstrap Grid plugin is installed.');
+      $requirements['btgrid']['severity'] = REQUIREMENT_OK;
+      $requirements['btgrid']['value'] = $t('Installed.');
+    }
+
+    $installed = uaqs_fields_bt_table_installed();
+    if (!$installed) {
+      $requirements['bt_table']['description'] = $t('The CKEditor Bootstrap Table plugin could not be found.  Please download the plugin from @url and install it into the site libraries directory.', array('@url' => UAQS_FIELDS_BT_TABLE_DL_URL));
+      $requirements['bt_table']['severity'] = REQUIREMENT_ERROR;
+      $requirements['bt_table']['value'] = $t('Missing.');
+    }
+    else {
+      // @todo Display the installed version.
+      $requirements['bt_table']['description'] = $t('CKEditor Bootstrap Table plugin is installed.');
+      $requirements['bt_table']['severity'] = REQUIREMENT_OK;
+      $requirements['bt_table']['value'] = $t('Installed.');
+    }
+
+   /**
+    * Check if the PHP max_input_vars is set appropriately.
+    */
+    $max_input_vars = ini_get('max_input_vars');
+    $requirements['entity_embed']['description'] = $t('A <code>max_input_vars</code> value between 5000 and 10000 is recommended in the site\'s php.ini configuration to prevent PHP errors from occurring while editing pages with embedded entities.');
+    $requirements['entity_embed']['value'] = $t($max_input_vars);
+    if ($max_input_vars && $max_input_vars >= 5000) {
+      $requirements['entity_embed']['severity'] = REQUIREMENT_OK;
+    }
+    else {
+      $requirements['entity_embed']['severity'] = REQUIREMENT_WARNING;
+    }
+  }
+  return $requirements;
+}
+
+/**
+ * Update existing content to use text formats added in UADIGITAL-402.
+ */
+function uaqs_fields_update_7100() {
+  $updated_formats = array(
+    'field_uaqs_text_area' => 'uaqs_textual_content',
+    'field_uaqs_body' => 'uaqs_unconstrained',
+    'field_uaqs_bio' => 'uaqs_unconstrained',
+  );
+
+  foreach ($updated_formats as $field => $format) {
+    $data_table = 'field_data_' . $field;
+    $revision_table = 'field_revision_' . $field;
+    $format_column = $field .'_format';
+
+    if (db_table_exists($data_table)) {
+      $field_data_update = db_update($data_table)
+        ->fields(array($format_column => $format))
+        ->execute();
+    }
+
+    if (db_table_exists($revision_table)) {
+      $field_revision_update = db_update($revision_table)
+        ->fields(array($format_column => $format))
+        ->execute();
+    }
+  }
+}
+
+/**
+ * UADIGITAL-864 introduces the uaqs_standard format for uaqs_summary fields.
+ */
+function uaqs_fields_update_7101() {
+  $field = 'field_uaqs_summary';
+  $format = 'uaqs_standard';
+  $data_table = 'field_data_' . $field;
+  $revision_table = 'field_revision_' . $field;
+  $format_column = $field .'_format';
+
+  if (db_table_exists($data_table)) {
+    $field_data_update = db_update($data_table)
+      ->fields(array($format_column => $format))
+      ->execute();
+  }
+
+  if (db_table_exists($revision_table)) {
+    $field_revision_update = db_update($revision_table)
+      ->fields(array($format_column => $format))
+      ->execute();
+  }
+}
+
+/**
+ * UADIGITAL-1258 update color classes in long text fields.
+ */
+function uaqs_fields_update_7102(&$sandbox) {
+  $old_class_names = array('blue60b', 'blue30w', 'text-cactus');
+  $new_class_names = array('text-midnight', 'text-azurite', 'text-leaf');
+  if (!isset($sandbox['progress'])) {
+    $long_text_fields = field_read_fields(array('type' => 'text_long'));
+    $text_with_summary_fields = field_read_fields(array('type' => 'text_with_summary'));
+    $text_area_fields = array_merge($long_text_fields, $text_with_summary_fields);
+    $sandbox['progress'] = 0;
+    $sandbox['fields'] = $text_area_fields;
+    $sandbox['current'] = current($sandbox['fields']);
+    $sandbox['max'] = count($text_area_fields);
+  }
+  $data_table = 'field_data_' . $sandbox['current']['field_name'];
+  $revision_table = 'field_revision_' . $sandbox['current']['field_name'];
+  $value_column = $sandbox['current']['field_name'] .'_value';
+  $field_tables = array($data_table, $revision_table);
+  foreach ($field_tables as $field_table) {
+    foreach ($old_class_names as $delta => $string) {
+      if (db_table_exists($field_table)) {
+        $field_data_update = db_update($field_table)
+          ->expression($value_column, 'REPLACE(' . $value_column .', :old_class, :new_class)', array(
+            ':old_class' => $old_class_names[$delta],
+            ':new_class' => $new_class_names[$delta]
+          )
+        )->execute();
+      }
+    }
+  }
+  $message = 'Updated %field_name with new color classes. These three deprecated text strings "blue60b, blue30w, text-cactus" were replaced with these three text strings "text-midnight, text-azurite, text-leaf"';
+  watchdog('UAQS_Fields', $message, array('%field_name'=> $sandbox['current']['field_name']));
+
+  $sandbox['progress']++;
+
+  array_shift($sandbox['fields']);
+  $sandbox['current'] = current($sandbox['fields']);
+  $sandbox['#finished'] = ($sandbox['progress'] >= $sandbox['max']) ? TRUE : ($sandbox['progress'] / $sandbox['max']);
+
+  if ($sandbox['#finished'] === TRUE) {
+    // To display a message to the user when the update is completed.
+    return t('Updated @count text area fields with new color classes. These three deprecated text strings "blue60b, blue30w, text-cactus" were replaced with these three text strings "text-midnight, text-azurite, text-leaf"', array('@count'=> $sandbox['max']));
+  }
+  else {
+    $percent_done = round( (float) $sandbox['#finished'] * 100 ) . '%';
+    return t('Update is @percent_done done.', array('@percent_done'=> $percent_done));
+  }
+  // In case of an error, tell site owner what to do.
+  throw new DrupalUpdateException('Something went wrong, you should search your site for these three deprecated text strings "blue60b, blue30w, text-cactus", and replace them with these three text strings "text-midnight, text-azurite, text-leaf".');
+}
+
+/**
+ * UADIGITAL-1315 Add custom entity embed icons for file, BEAN, and Node content.
+ */
+function uaqs_fields_update_7103() {
+  _uaqs_fields_save_entity_embed_icons();
+}
+
+/**
+ * UADIGITAL-1886 Enable and Use better formats module instead of hard-coded
+ * text format to field mapping. If you already have better_formats installed,
+ * please remove it in favor of the version included in UA Quickstart.
+ */
+function uaqs_fields_update_7104() {
+  // Enable better_formats module.
+  $modules = array('better_formats');
+  $enable_dependencies = TRUE; // Whether or not to enable dependant modules
+
+  module_enable($modules, $enable_dependencies);
+
+}
+
+/**
+ * UADIGITAL-1939 set the better_formats_per_field_core variable in order for
+ * better formats to enable using text area formatter defaults.
+ */
+function uaqs_fields_update_7105() {
+  variable_set('better_formats_per_field_core', 1);
+}

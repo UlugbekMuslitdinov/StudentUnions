@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS_Webform feature.
+ */
+
+include_once 'uaqs_webform.features.inc';

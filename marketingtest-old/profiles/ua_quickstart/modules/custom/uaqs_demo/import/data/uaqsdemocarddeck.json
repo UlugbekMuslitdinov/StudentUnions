@@ -1,0 +1,116 @@
+[
+  {"id":7,
+    "uaqs_card_deck_id" : 170,
+    "uaqs_short_title" : "Official site",
+    "uaqs_summary" : "Learn more about the mission",
+    "uaqs_links": [
+      {
+      "url" : "https://www.asteroidmission.org",
+      "title": "asteroidmission.org",
+      "attributes": {
+          "class": ""
+          }
+      }
+    ],
+    "uaqs_photo" : "uaqs_card_deck_spacecraft-assembly.png"
+  },
+  {"id":8,
+    "uaqs_card_deck_id" : 170,
+    "uaqs_short_title" : "#SpaceIsWildcatCountry",
+    "uaqs_summary" : "<p>Follow the conversation on <a href='https://twitter.com/search?f=tweets&amp;vertical=default&amp;q=%23ToBennuAndBack%20OR%20%23SpaceIsWildcatCountry&amp;src=typd&amp;lang=en'>Twitter</a>.</p>",
+    "uaqs_photo" : "uaqs_card_deck_launch.png"
+  },
+  {"id":9,
+    "uaqs_card_deck_id" : 170,
+    "uaqs_short_title" : "Our team",
+    "uaqs_summary" : "Want bio information, contacts, and more?",
+    "uaqs_links": [
+      {
+      "url" : "people/flexible-page-grid-directory",
+      "title": "Meet the UA Team",
+      "attributes": {
+          "class": "btn btn-default btn-block"
+          }
+      }
+    ],
+    "uaqs_photo" : "uaqs_card_deck_spacecraft-assembled.png"
+  },
+  {"id":10,
+    "uaqs_card_deck_id" : 180,
+    "uaqs_short_title" : "Freshmen International",
+    "uaqs_summary" : "<p>International applicants who have not earned 24 or more transferable credits of post-secondary education at time of application.<br /><br /><a class='card-link' href='https://admissions.arizona.edu/deadlines/international/freshmen'>Deadlines</a></p>"
+  },
+  {"id":11,
+    "uaqs_card_deck_id" : 180,
+    "uaqs_short_title" : "Transfer International",
+    "uaqs_summary" : "International applicants who have earned 24 or more transferable credits of post-secondary education at time of application.",
+    "uaqs_links": [
+      {
+      "url" : "https://admissions.arizona.edu/deadlines/international/transfer",
+      "title": "Deadlines",
+      "attributes": {
+          "class": "card-link"
+          }
+      }
+    ]
+  },
+  {"id":12,
+    "uaqs_card_deck_id" : 180,
+    "uaqs_short_title" : "Conditional Admissions",
+    "uaqs_summary" : "Applicants who do not meet the UA English proficiency can still be admitted after they gain proficiency through the nationally accredited Center for English as a Second Language (CESL).",
+    "uaqs_links": [
+      {
+      "url" : "https://admissions.arizona.edu/deadlines/international/conditional-admissions",
+      "title": "Deadlines",
+      "attributes": {
+          "class": "card-link"
+          }
+      }
+    ]
+  },
+  {"id":13,
+    "uaqs_card_deck_id" : 181,
+    "uaqs_short_title" : "Flagship Website",
+    "uaqs_summary" : "",
+    "uaqs_links": [
+      {
+      "url" : "https://www.arizona.edu",
+      "title": "arizona.edu",
+      "attributes": {
+          "class": "card-link"
+          }
+      }
+    ],
+    "uaqs_photo" : "University_Arizona_Screenshot.png"
+  },
+  {"id":14,
+    "uaqs_card_deck_id" : 181,
+    "uaqs_short_title" : "Arizona Brand",
+    "uaqs_summary" : "",
+    "uaqs_links": [
+      {
+      "url" : "https://brand.arizona.edu",
+      "title": "brand.arizona.edu",
+      "attributes": {
+          "class": "card-link"
+          }
+      }
+    ],
+    "uaqs_photo" : "Brand_Screenshot.png"
+  },
+  {"id":15,
+    "uaqs_card_deck_id" : 181,
+    "uaqs_short_title" : "College of Law",
+    "uaqs_summary" : "",
+    "uaqs_links": [
+      {
+      "url" : "https://law.arizona.edu",
+      "title": "law.arizona.edu",
+      "attributes": {
+          "class": "card-link"
+          }
+      }
+    ],
+    "uaqs_photo" : "College_of_Law_Website.png"
+  }
+]

@@ -1,0 +1,142 @@
+<?php
+
+/**
+ * @file
+ * Code for the UAQS D8 Cache module.
+ */
+
+/**
+ * Implements hook_menu().
+ */
+function uaqs_d8cache_menu() {
+  $items = array();
+
+  if (module_exists('uaqs_core')) {
+    $items['admin/config/uaqs/settings/uaqs-d8cache'] = array(
+      'title' => 'UAQS D8cache',
+      'description' => 'UAQS D8cache settings',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('uaqs_d8cache_settings_form'),
+      'file' => 'uaqs_d8cache.admin.inc',
+      'access arguments' => array('administer site configuration'),
+      'type' => MENU_LOCAL_TASK,
+    );
+  }
+
+  return $items;
+}
+
+/**
+ * Implements hook_system_info_alter().
+ */
+function uaqs_d8cache_system_info_alter(&$info, $file, $type) {
+  if ($file->name == 'uaqs_d8cache' && module_exists('uaqs_core')) {
+    $info['configure'] = 'admin/config/uaqs/settings/uaqs-d8cache';
+  }
+}
+
+/**
+ * Implements hook_views_pre_render().
+ */
+function uaqs_d8cache_views_pre_render(&$view) {
+  $tags = _uaqs_d8cache_views_get_cache_tags($view);
+  drupal_add_cache_tags($tags);
+}
+
+/**
+ * Builds tags array from allowed content types in view. This only includes
+ * those that are checked in the filter. It will miss all if none are checked or
+ * if the operator is 'out'.
+ *
+ * @param $view
+ * @return array
+ */
+function _uaqs_d8cache_views_get_cache_tags($view) {
+  $tags = array();
+  if (isset($view->filter['type']->value) && $view->filter['type']->operator == 'in') {
+    foreach ($view->filter['type']->value as $type) {
+      $tags[] = 'views:node_type.' . $type;
+    }
+  }
+  if (isset($view->sort)) {
+    foreach ($view->sort as $id => $sort) {
+      if ($sort->table_alias == 'draggableviews_structure') {
+        $view_id = explode(':', $sort->options['draggableviews_setting_view']);
+        $tags[] = 'views:' . $view_id[0] . '.' . $view_id[1];
+      }
+    }
+  }
+  return $tags;
+}
+
+/**
+ * Implements hook_entity_delete().
+ */
+function uaqs_d8cache_entity_delete($entity, $entity_type) {
+  uaqs_d8cache_invalidate_entity_cache_tags($entity, $entity_type);
+}
+
+/**
+ * Implements hook_entity_insert().
+ */
+function uaqs_d8cache_entity_insert($entity, $entity_type) {
+  uaqs_d8cache_invalidate_entity_cache_tags($entity, $entity_type);
+}
+
+/**
+ * Implements hook_entity_update().
+ */
+function uaqs_d8cache_entity_update($entity, $entity_type) {
+  uaqs_d8cache_invalidate_entity_cache_tags($entity, $entity_type);
+}
+
+/**
+ * Implements hook_draggableviews_sorted().
+ */
+function uaqs_d8cache_draggableviews_sorted($view) {
+  $tags = array('views:' . $view->name . '.' . $view->current_display);
+  drupal_invalidate_cache_tags($tags);
+}
+
+/**
+ * Invalidates custom views cache tags by entity type.
+ *
+ * @param $entity object
+ * @param $entity_type string
+ */
+function uaqs_d8cache_invalidate_entity_cache_tags($entity, $entity_type) {
+  if ($entity_type === 'node') {
+    $tags = array('views:node_type.' . $entity->type);
+    drupal_invalidate_cache_tags($tags);
+  }
+}
+
+/**
+ * Implements hook_pre_emit_cache_tags_alter().
+ *
+ * Excludes 'field_collection_item' and 'paragraph_item' entity-specific tags
+ * from emited cache tags (unless disabled).
+ */
+function uaqs_d8cache_pre_emit_cache_tags_alter(&$tags) {
+  if (variable_get('uaqs_d8cache_exclude_field_collection_tags', TRUE)) {
+    $tags = array_filter($tags, '_uaqs_d8cache_filter_field_collection_tags');
+  }
+
+  if (variable_get('uaqs_d8cache_exclude_paragraph_tags', TRUE)) {
+    $tags = array_filter($tags, '_uaqs_d8cache_filter_paragraph_tags');
+  }
+}
+
+/**
+ * Field collection item array_filter() callback for cache tags.
+ */
+function _uaqs_d8cache_filter_field_collection_tags($tag) {
+  return (strpos($tag, 'field_collection_item') === FALSE) ? TRUE : FALSE;
+}
+
+/**
+ * Paragraph item array_filter() callback for cache tags.
+ */
+function _uaqs_d8cache_filter_paragraph_tags($tag) {
+  return (strpos($tag, 'paragraphs_item') === FALSE) ? TRUE : FALSE;
+}

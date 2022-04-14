@@ -1,0 +1,352 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Fields feature.
+ */
+
+// Image style definitions.
+include_once 'uaqs_fields.features.inc';
+
+const UAQS_FIELDS_BTGRID_DL_URL = 'http://download.ckeditor.com/btgrid/releases/btgrid_1.0b1.zip';
+const UAQS_FIELDS_BT_TABLE_DL_URL = 'https://download.ckeditor.com/bt_table/releases/bt_table_1.0b2.zip';
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function uaqs_fields_entity_info_alter(&$entity_info) {
+  if (module_exists('node')) {
+    $entity_info['node']['view modes']['uaqs_teaser_list'] = array(
+      'label' => t('UA Bootstrap Media List'),
+      'custom settings' => FALSE,
+    );
+    $entity_info['node']['view modes']['uaqs_sidebar_teaser_list'] = array(
+      'label' => t('UA Bootstrap Minimal Media List'),
+      'custom settings' => FALSE,
+    );
+    $entity_info['node']['view modes']['uaqs_med_media_list'] = array(
+      'label' => t('UA Bootstrap Medium Media List'),
+      'custom settings' => FALSE,
+    );
+    $entity_info['node']['view modes']['uaqs_card'] = array(
+      'label' => t('UA Bootstrap Card'),
+      'custom settings' => FALSE,
+    );
+    $entity_info['node']['view modes']['uaqs_marquee'] = array(
+      'label' => t('Marquee'),
+      'custom settings' => FALSE,
+    );
+  }
+  if (module_exists('taxonomy')) {
+    $entity_info['taxonomy_term']['view modes']['uaqs_card'] = array(
+      'label' => t('UA Bootstrap Card'),
+      'custom settings' => FALSE,
+    );
+  }
+  if (module_exists('bean')) {
+    $entity_info['bean']['view modes']['uaqs_card_overlay'] = array(
+      'label' => t('UA Bootstrap Card Overlay'),
+      'custom settings' => FALSE,
+    );
+  }
+}
+
+/**
+ * Implements hook_libraries_info().
+ */
+function uaqs_fields_libraries_info() {
+  $libraries = array();
+  $libraries['btgrid'] = array(
+    'name' => 'CKEditor btgrid plugin',
+    'vendor url' => 'http://ckeditor.com/addon/btgrid',
+    'download url' => UAQS_FIELDS_BTGRID_DL_URL,
+    'version' => '1.0b1',
+    'files' => array(
+      'js' => array(
+        'plugin.js'
+      ),
+    ),
+  );
+  $libraries['bt_table'] = array(
+    'name' => 'CKEditor bt_table plugin',
+    'vendor url' => 'https://ckeditor.com/cke4/addon/bttable',
+    'download url' => UAQS_FIELDS_BT_TABLE_DL_URL,
+    'version' => '1.0b2',
+    'files' => array(
+      'js' => array(
+        'plugin.js'
+      ),
+    ),
+  );
+
+  return $libraries;
+}
+
+/**
+ * Implements hook_editor_ckeditor_plugins().
+ */
+function uaqs_fields_editor_ckeditor_plugins(){
+  $plugins = array();
+  if (($library = libraries_detect('btgrid')) && !empty($library['installed'])) {
+    $plugins['btgrid'] = array(
+      'internal' => FALSE,
+      'location' => $library['library path'],
+      'path' => $library['library path'],
+      'file' => 'plugin.js',
+      'enabled callback' => 'uaqs_fields_btgrid_plugin_check',
+      'buttons' => array(
+        'btgrid' => array(
+           'label' => 'Bootstrap Grid',
+           'image'  => $library['library path'] . '/icons/btgrid.png',
+        ),
+      ),
+    );
+  }
+  if (($library = libraries_detect('bt_table')) && !empty($library['installed'])) {
+    $plugins['bt_table'] = array(
+      'internal' => FALSE,
+      'location' => $library['library path'],
+      'path' => $library['library path'],
+      'file' => 'plugin.js',
+      'enabled callback' => 'uaqs_fields_bt_table_plugin_check',
+      'buttons' => array(
+        'Table' => array(
+          'label' => 'Bootstrap Table',
+          'image'  => $library['library path'] . '/icons/table.png',
+        ),
+      ),
+    );
+  }
+
+  return $plugins;
+}
+
+
+/**
+ * Implements hook_filter_js_settings_alter().
+ */
+function uaqs_fields_filter_js_settings_alter(&$settings) {
+  $ua_bootstrap_css_token = '?=' . variable_get('css_js_query_string', '0');
+  $theme_bootstrap = variable_get('ua_bootstrap_location', 'https://cdn.uadigital.arizona.edu/lib/ua-bootstrap/latest/ua-bootstrap.min.css' . $ua_bootstrap_css_token);
+  if ((strpos($theme_bootstrap, '//') === 0) || (strpos($theme_bootstrap, 'http') === 0)) {
+    $ua_bootstrap_css = $theme_bootstrap;
+  }
+  else {
+    $ua_bootstrap_css = (base_path() . $theme_bootstrap);
+  }
+  foreach ($settings as $key => $value) {
+    $settings[$key]['editorSettings']['contentsCss'][] = $ua_bootstrap_css;
+  }
+}
+
+/**
+ * Check if the CKeditor BT Grid library is installed.
+ */
+function uaqs_fields_btgrid_installed() {
+  $installed = FALSE;
+  $library = libraries_detect('btgrid');
+  if (isset($library['installed'])) {
+    $installed = $library['installed'];
+  }
+
+  return $installed;
+}
+
+/**
+ * Check if the CKeditor BT Table library is installed.
+ */
+function uaqs_fields_bt_table_installed() {
+  $installed = FALSE;
+  $library = libraries_detect('bt_table');
+  if (isset($library['installed'])) {
+    $installed = $library['installed'];
+  }
+
+  return $installed;
+}
+
+/**
+ * Modify the CKEditor configuration settings.
+ *
+ * This hook may be used to modify the default CKEditor configuration options
+ * set in the CKEDITOR.config object.
+ *
+ * @param array $settings
+ *   An array of configuration settings, passed by reference. Each array key is
+ *   an CKEditor configuration option name, while each array value is the
+ *   configuration value to be set.
+ * @param object $format
+ *   The corresponding text format object as returned by filter_format_load()
+ *   for which the current text editor is being displayed.
+ *
+ * @see editor_ckeditor_get_settings()
+ */
+function uaqs_fields_editor_ckeditor_settings_alter(&$settings, $format) {
+  $settings['autoGrow_onStartup'] = 'true';
+  $settings['autoGrow_maxHeight'] = 400;
+}
+
+/**
+ * Enabled callback for hook_editor_ckeditor_plugins().
+ *
+ * Enables the CKEditor Bootstrap Grid plugin when available.
+ *
+ * @param object $format
+ *   The filter format object for which to check the settings of.
+ *
+ * @return bool
+ *   Returns TRUE if the CKEditor Bootstrap Grid plugin is available.
+ */
+function uaqs_fields_btgrid_plugin_check($format) {
+  // Automatically enable Bootstrap Grid if it is installed.
+  return uaqs_fields_btgrid_installed();
+}
+
+/**
+ * Enabled callback for hook_editor_ckeditor_plugins().
+ *
+ * Enables the CKEditor Bootstrap Table plugin when available.
+ *
+ * @param object $format
+ *   The filter format object for which to check the settings of.
+ *
+ * @return bool
+ *   Returns TRUE if the CKEditor Bootstrap Table plugin is available.
+ */
+function uaqs_fields_bt_table_plugin_check($format) {
+  // Automatically enable Bootstrap Table if it is installed.
+  return uaqs_fields_bt_table_installed();
+}
+
+/**
+ * Implements hook_preprocess_image_style().
+ */
+function uaqs_fields_preprocess_image_style(&$variables) {
+
+  switch($variables['style_name']) {
+    case 'uaqs_media_object':
+      // http://uadigital.arizona.edu/ua-bootstrap/components.html#media
+      $variables['attributes'] = array(
+        'class' => 'media-object'
+      );
+      break;
+  }
+}
+
+/**
+ * This function returns a video id from a url
+ */
+function uaqs_fields_get_youtube_id($url) {
+  $shortUrlRegex = '/youtu.be\/([a-zA-Z0-9_-]+)\??/i';
+  $longUrlRegex = '/youtube.com\/((?:embed)|(?:watch))((?:\?v\=)|(?:\/))([a-zA-Z0-9_-]+)/i';
+
+  if (preg_match($longUrlRegex, $url, $matches)) {
+      $youtube_id = $matches[count($matches) - 1];
+  }
+
+  if (preg_match($shortUrlRegex, $url, $matches)) {
+      $youtube_id = $matches[count($matches) - 1];
+  }
+  return $youtube_id ;
+}
+
+/**
+ * This function should only be called once and will install the entity_embed
+ * button images as files.
+ */
+function _uaqs_fields_save_entity_embed_icons() {
+  $icon_files = array('uaqs_files','uaqs_content','uaqs_bean');
+  foreach ($icon_files as $icon_file) {
+    $filename = $icon_file . '.png';
+    $destination = 'public://uaqs_fields_entity_embed_icons';
+
+    // Load the file's contents.
+    $path = drupal_get_path('module', 'uaqs_fields') . '/icons/' . $filename;
+    $data = file_get_contents($path);
+
+    // Create a managed file.
+    file_prepare_directory($destination, FILE_CREATE_DIRECTORY);
+    $file = file_save_data($data, $destination . '/' . $filename, FILE_EXISTS_REPLACE);
+
+    // Store the file's ID.
+    variable_set('uaqs_fields_entity_embed_' . $icon_file . '_fid', $file->fid);
+  }
+}
+
+/**
+ * Implements hook_default_entity_embed_configuration_alter().
+ *
+ * This function sets the button icon for entity_embed.
+ * @see https://www.drupal.org/node/2771149
+ */
+function uaqs_fields_default_entity_embed_configuration_alter(&$configurations) {
+  $icon_files = array('uaqs_files','uaqs_content','uaqs_bean');
+  foreach ($icon_files as $icon_file) {
+    if (!empty($configurations[$icon_file])) {
+      $configurations[$icon_file]->button_icon_fid = variable_get('uaqs_fields_entity_embed_' . $icon_file . '_fid', 0);
+    }
+  }
+}
+
+/**
+ * Implements hook_node_view().
+ *
+ * If there is a token in the short title field replace it..
+ */
+function uaqs_fields_node_view($node, $view_mode, $langcode) {
+  if (field_info_instance('node', 'field_uaqs_short_title', $node->type)) {
+    if (isset($node->content['field_uaqs_short_title'])) {
+      $short_title =  $node->content['field_uaqs_short_title'][0]['#markup'];
+      if (token_scan($short_title)) {
+        $short_title_replaced = token_replace($short_title, array('node' => $node));
+        $node->content['field_uaqs_short_title'][0]['#markup'] = $short_title_replaced;
+      }
+    }
+  }
+}
+
+/**
+ * Implements hook_form_BASE_FORM_ID_alter().
+ *
+ * Add token validation to the field field_uaqs_short_title.
+ */
+function uaqs_fields_form_node_form_alter(&$form, &$form_state, $form_id) {
+
+  if (field_info_instance('node', 'field_uaqs_short_title', $form['#node']->type)) {
+    $form['field_uaqs_short_title']['#element_validate'] = array('token_element_validate');
+    $form['field_uaqs_short_title']['#default_value'] = $form['field_uaqs_short_title']['und'][0]['value']['#default_value'];
+    $form['field_uaqs_short_title']['#token_types'] = array('node');
+
+    $form['field_uaqs_short_title']['tokens'] = array(
+      '#theme' => 'token_tree_link',
+      '#token_types' => array('node'),
+      '#global_types' => FALSE,
+      '#click_insert' => TRUE,
+    );
+  }
+}
+
+/**
+ ** Implements hook_library_alter().
+ *
+ * @see https://jira.arizona.edu/browse/UADIGITAL-1997
+ * Adding additional JS & CSS files to show labels inline and alter label text of btgrid
+ *
+ */
+function uaqs_fields_library_alter(&$libraries, $module) {
+  if ($module == 'editor_ckeditor' && isset($libraries['ckeditor'])) {
+    $js = drupal_get_path('module', 'uaqs_fields') . '/js/uaqs_fields.js';
+    $css = drupal_get_path('module', 'uaqs_fields') . '/css/uaqs_fields.css';
+
+    if (isset($libraries['ckeditor']['js'])) {
+      $libraries['ckeditor']['js'][$js] = array();
+    }
+
+    if (isset($libraries['ckeditor']['css'])) {
+      $libraries['ckeditor']['css'][] = $css;
+    }
+    else {
+      $libraries['ckeditor']['css'] = array($css);
+    }
+  }
+}
+

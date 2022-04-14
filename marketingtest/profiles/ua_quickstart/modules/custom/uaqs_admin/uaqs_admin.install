@@ -1,0 +1,72 @@
+<?php
+/**
+ * @file
+ * uaqs_admin.install
+ */
+
+/**
+ * Implements hook_enable().
+ */
+function uaqs_admin_enable() {
+  uaqs_admin_enable_masquerade_block();
+}
+
+/**
+ * Helper function for enabling masquerade module block.
+ */
+function uaqs_admin_enable_masquerade_block() {
+  db_merge('block')
+    ->key(array(
+      'module'=> 'masquerade',
+      'delta'=> 'masquerade',
+      'theme'=> 'adminimal',
+    ))
+    ->fields(array(
+      'status' => 1,
+      'weight' => 0,
+      'region' => 'content_after',
+      'visibility' => 1,
+      'pages' => 'admin/people',
+    ))
+    ->execute();
+}
+
+/**
+ * Set admin theme to adminimal.
+ */
+function uaqs_admin_update_7001() {
+  theme_enable('adminimal');
+  variable_set('admin_theme','adminimal');
+}
+
+/**
+ * UADIGITAL-1758: Enable masquerade module & block.
+ */
+function uaqs_admin_update_7002() {
+  module_enable(array('masquerade'));
+  uaqs_admin_enable_masquerade_block();
+}
+
+/**
+ * UADIGITAL-1767 enable chosen module.
+ */
+function uaqs_admin_update_7003() {
+  if (!module_exists('chosen')) {
+    module_enable(array('chosen'));
+
+    variable_set('chosen_allow_single_deselect', 0);
+    variable_set('chosen_disabled_themes', array(
+      'adminimal' => 0,
+      'seven' => 0,
+      'ua_zen' => 0,
+    ));
+    variable_set('chosen_disable_search', 0);
+    variable_set('chosen_disable_search_threshold', '0');
+    variable_set('chosen_include', '0');
+    variable_set('chosen_jquery_selector', 'select');
+    variable_set('chosen_minimum_multiple', '0');
+    variable_set('chosen_minimum_single', '0');
+    variable_set('chosen_minimum_width', '150');
+    variable_set('chosen_search_contains', 1);
+  }
+}

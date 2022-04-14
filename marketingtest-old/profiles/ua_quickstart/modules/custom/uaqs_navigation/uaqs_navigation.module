@@ -1,0 +1,158 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Navigation feature.
+ */
+
+include_once 'uaqs_navigation.features.inc';
+
+/**
+ * Implements hook_menu_block_blocks().
+ */
+function uaqs_navigation_menu_block_blocks() {
+  return array(
+    // Provides a second-level navigation menu block.
+    'uaqs-second-level' => array(
+      'menu_name' => MENU_TREE__CURRENT_PAGE_MENU,
+      'parent_mlid' => 0,
+      'title_link' => FALSE,
+      'admin_title' => 'UAQS Second-level Navigation',
+      'level' => 2,
+    ),
+  );
+}
+
+/**
+ * Returns a renderable array for a UA Bootstrap Navbar style Superfish menu.
+ */
+function uaqs_navigation_sf_nav($menu_name) {
+  if (!$menu = menu_load($menu_name)) {
+    return FALSE;
+  }
+
+  $sf_settings = uaqs_navigation_sf_default_settings();
+  $sf_settings['ulclass'] = 'nav navbar-nav';
+  $delta = $menu_name . '-sf-nav';
+  $sf_block_vars = array(
+    'id' => $delta,
+    'menu_name' => $menu_name,
+    'mlid' => 0,
+    'sfsettings' => $sf_settings,
+  );
+  $sf_block = theme('superfish', $sf_block_vars);
+
+  $sf_options = array(
+    'autoArrows' => FALSE,
+    'dropShadows' => FALSE,
+    'speed' => 'fast',
+    'delay' => 800,
+  );
+  $sf_css = $sf_js = $sf_plugins = array();
+
+//  if (superfish_library('javascript', 'jquery.easing.js', 'check')) {
+//    $sf_js = array_merge($sf_js, superfish_library('javascript', 'easing', 'add'));
+//  }
+  if (superfish_library('javascript', 'jquery.hoverIntent.minified.js', 'check')) {
+    $sf_js = array_merge($sf_js, superfish_library('javascript', 'hoverIntent', 'add'));
+  }
+  if (superfish_library('javascript', 'sfsmallscreen.js', 'check')) {
+    $sf_js = array_merge($sf_js, superfish_library('javascript', 'sfsmallscreen', 'add'));
+    $sf_plugins['smallscreen']['mode'] = 'window_width';
+    // $sf_plugins['smallscreen']['breakpoint'] = '';
+    $sf_plugins['smallscreen']['breakpointUnit'] = 'px';
+    // $sf_plugins['smallscreen']['accordionButton'] = '';
+    // $sf_plugins['smallscreen']['expandText'] = '';
+    // $sf_plugins['smallscreen']['collapseText'] = '';
+    $sf_plugins['smallscreen']['title'] = $menu['title'];
+
+    if (superfish_library('CSS', 'smallscreen', 'check')) {
+      $sf_css = array_merge($sf_css, superfish_library('CSS', 'smallscreen', 'add'));
+    }
+  }
+  $sf_plugins['supposition'] = FALSE;
+  // if (superfish_library('javascript', 'supposition.js', 'check')) {
+  //   $sf_plugins['supposition'] = TRUE;
+  //   $sf_js = array_merge($sf_js, superfish_library('javascript', 'supposition', 'add'));
+  // }
+
+  if (superfish_library('javascript', 'supersubs.js', 'check')) {
+    $sf_js = array_merge($sf_js, superfish_library('javascript', 'supersubs', 'add'));
+    $sf_plugins['supersubs']['megamenu'] = FALSE;
+    $sf_plugins['supersubs']['minWidth'] = '12';
+    $sf_plugins['supersubs']['maxWidth'] = '27';
+    if (empty($sf_plugins['supersubs']['minWidth']) && empty($sf_plugins['supersubs']['maxWidth']) && $sf_plugins['supersubs']['megamenu'] !== FALSE) {
+      $sf_plugins['supersubs'] = TRUE;
+    }
+  }
+
+  // Prepare the JavaScript settings.
+  $javascript['superfish'][$delta]['id'] = $delta;
+  $javascript['superfish'][$delta]['sf'] = isset($sf_options) ? $sf_options : array();
+  if (!empty($sf_plugins)) {
+    $javascript['superfish'][$delta]['plugins'] = $sf_plugins;
+  }
+  // Adding required Javascript.
+  if (superfish_library('javascript', 'superfish.js', 'check')) {
+    $sf_js = array_merge($sf_js, superfish_library('javascript', 'superfish.js', 'add'));
+    if (superfish_library('javascript', 'drupal_behavior', 'check')) {
+      $sf_js = array_merge($sf_js, array(array('data' => $javascript, 'type' => 'setting')));
+      $sf_js = array_merge($sf_js, superfish_library('javascript', 'drupal_behavior', 'add'));
+    }
+  }
+  // Adding required CSS files.
+  if (superfish_library('CSS', 'superfish', 'check')) {
+    $sf_css = array_merge($sf_css, superfish_library('CSS', 'superfish', 'add'));
+  }
+  if (superfish_library('CSS', $sf_settings['type'], 'check')) {
+    $sf_css = array_merge($sf_css, superfish_library('CSS', $sf_settings['type'], 'add'));
+  }
+  if ($sf_settings['style'] != 'none' && superfish_styles('path', $sf_settings['style']) != '') {
+    $sf_css = array_merge($sf_css, superfish_styles('path', $sf_settings['style']));
+  }
+
+  return array(
+    '#type' => 'markup',
+    '#markup' => $sf_block['content'],
+    '#attached' => array(
+      'css' => $sf_css,
+      'js' => $sf_js,
+    ),
+  );
+}
+
+/**
+ * Returns an array of default Superfish block settings.
+ */
+function uaqs_navigation_sf_default_settings() {
+  return array(
+    'depth' => '1',
+    'type' => 'horizontal',
+    'style' => 'none',
+    'expanded' => 0,
+    'firstlast' => 1,
+    'zebra' => 1,
+    'dfirstlast' => 0,
+    'dzebra' => 0,
+    'itemcount' => 1,
+    'itemcounter' => 1,
+    'itemdepth' => 1,
+    'ulclass' => '',
+    'liclass' => '',
+    'hlclass' => '',
+    'wrapmul' => '',
+    'wrapul' => '',
+    'wraphl' => '',
+    'wraphlt' => '',
+    'use_link_theme' => 1,
+    'use_item_theme' => 1,
+    'clone_parent' => 0,
+    'hidelinkdescription' => 0,
+    'linkdescription' => 0,
+    'hldmenus' => '',
+    'hldexclude' => '',
+    'megamenu' => 0,
+    'megamenu_depth' => 1,
+    'megamenu_levels' => 2,
+    'megamenu_exclude' => '',
+  );
+}

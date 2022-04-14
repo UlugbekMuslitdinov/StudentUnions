@@ -1,0 +1,75 @@
+[
+  {"id":1,
+    "title" : "Primus",
+    "uaqs_flexible_page_subtitle" : "Tacitus, Agricola XXX",
+    "path" : "primus",
+    "uaqs_main_content" : "121"
+  },
+  {"id":2,
+    "title" : "Secundus",
+    "uaqs_flexible_page_subtitle" : "Tacitus, Agricola XXXI",
+    "path" : "secundus",
+    "uaqs_main_content" : "122"
+  },
+  {"id":3,
+    "title" : "Tertius",
+    "uaqs_flexible_page_subtitle" : "Tacitus, Agricola XXXII",
+    "path" : "tertius",
+    "uaqs_main_content" : "123"
+  },
+  {"id":4,
+    "title" : "UA QuickStart",
+    "uaqs_flexible_page_subtitle" : "",
+    "path" : "ua-quickstart",
+    "uaqs_main_content" : "594|141|181",
+    "exclude_node_title" : 1
+  },
+  {"id":5,
+    "title" : "Page",
+    "uaqs_flexible_page_subtitle" : "",
+    "path" : "uaqs_flexible_page_overview",
+    "uaqs_main_content" : "124"
+  },
+  {"id":9,
+    "title" : "Person",
+    "uaqs_flexible_page_subtitle" : "",
+    "path" : "uaqs_person",
+    "uaqs_main_content" : "128"
+  },
+  {"id":10,
+    "title" : "Block Types",
+    "uaqs_flexible_page_subtitle" : "",
+    "path" : "uaqs_block_types",
+    "uaqs_main_content" : "129"
+  },
+  {"id":11,
+    "title" : "Renaming the Pride of Arizona marching band",
+    "uaqs_flexible_page_subtitle" : "Name to rotate through seven possible titles",
+    "path" : "uaqs_flexible_page",
+    "uaqs_main_content" : "90|100|110|120|130|140",
+    "uaqs_photo" : "hieronymus_bosch_the_seven_deadly_sins_and_four_last_things.jpg",
+    "uaqs_summary" : "Little is known of Bosch's life, though there are some records. He spent most of it in the town of 's-Hertogenbosch, where he was born in his grandfather's house.",
+    "exclude_node_title" : 0
+  },
+  {"id":12,
+    "title" : "Flexible page people grid",
+    "uaqs_flexible_page_subtitle" : "",
+    "path" : "people/uaqs_flexible_page",
+    "uaqs_main_content" : "150",
+    "exclude_node_title" : 0
+  },
+  {"id":13,
+    "title" : "Flexible page 2",
+    "uaqs_flexible_page_subtitle" : "",
+    "path" : "uaqs_flexible_page/no-side-bar-menu-block",
+    "uaqs_main_content" : "190|250|180|192|170|191|160|193",
+    "exclude_node_title" : 1
+  },
+  {"id":14,
+    "title" : "Full width media rows",
+    "uaqs_flexible_page_subtitle" : "",
+    "path" : "uaqs-flexible-page/full-width-media-rows",
+    "uaqs_main_content" : "590|591|592|593",
+    "exclude_node_title" : 1
+  }
+]

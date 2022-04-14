@@ -1,0 +1,22 @@
+[
+  {
+    "id": 1,
+    "label": "Search Bean Block",
+    "title": "",
+    "data" : {
+      "view_mode":"default",
+      "uaqs_search":{
+        "search_block_wrapper_class":"col-sm-7 col-md-5 col-lg-5 col-lg-offset-4 no-gutter col-md-offset-3",
+        "search_block_form":{
+          "search_block_form_wrapper_class":"search-form text-size-h6 visible-sm visible-md visible-lg",
+          "search_block_form_placeholder":"Search Site...",
+          "search_block_tiny_on_mobile":1
+        }
+      }
+    },
+    "region": "header_ua_utilities",
+    "visibility": "1",
+    "pages": "*",
+    "weight": "1"
+  }
+]

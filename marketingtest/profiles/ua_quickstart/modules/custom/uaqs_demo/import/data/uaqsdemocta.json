@@ -1,0 +1,41 @@
+[
+  {
+    "id":1,
+    "uaqs_related_links_id" : 370,
+    "uaqs_short_title": "Graduate Programs",
+    "uaqs_summary": "Already completed an undergraduate degree? Check out our graduate program description guide.",
+    "uaqs_links": [{
+      "url" : "https://grad.arizona.edu/catalog",
+      "title": "Learn More",
+      "attributes": {
+        "class": "btn btn-hollow btn-block"
+      }
+    }]
+  },
+  {
+    "id":2,
+    "uaqs_related_links_id" : 370,
+    "uaqs_short_title": "100% Engagement",
+    "uaqs_summary": "At the University of Arizona, every experience in and out of the classroom takes on new meaning and shapes your future.",
+    "uaqs_links": [{
+      "url" : "http://engagement.arizona.edu",
+      "title": "Learn More",
+      "attributes": {
+        "class": "btn btn-hollow"
+      }
+    }]
+  },
+  {
+    "id":3,
+    "uaqs_related_links_id" : 370,
+    "uaqs_short_title": "Advanced Degree Search",
+    "uaqs_summary": "Need help deciding what major is right for you? Sort by college, personal characteristics, interests, and more with Degree Search.",
+    "uaqs_links": [{
+      "url" : "http://degreesearch.arizona.edu",
+      "title": "Majors by Interest",
+      "attributes": {
+        "class": "btn btn-hollow"
+      }
+    }]
+  }
+]

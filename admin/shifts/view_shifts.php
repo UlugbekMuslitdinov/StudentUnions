@@ -70,16 +70,16 @@ $tasks = $db->query($query);
 		  <td width="100px">
 			  <?php if ($row3['status'] == "Pending") { ?> <button class="approve"><a href="approve_signup.php?shift_id=<?=$row2['shift_id']?>&employee_id=<?=$row2['employee_id']?>&task_id=<?=$row3['task_id']?>">APPROVE</a></button> <?php } ?>
 			  
-			  <?php if (($row3['attendance'] == "Attended") || ($row3['attendance'] == "No Show")) { ?> <span class="text_bold_blue"><?=$row3['attendance']?></span> <?php } 
+			  <?php if (($row3['attendance'] == "Excused") || ($row3['attendance'] == "No Show")) { ?> <span class="text_bold_blue"><?=$row3['attendance']?></span> <?php } 
 			  
-		  	  elseif ($row3['status'] == "Approved") { ?> <button class="approve"><a href="mark_attend.php?shift_id=<?=$row2['shift_id']?>&employee_id=<?=$row2['employee_id']?>&task_id=<?=$row3['task_id']?>">ATTENDED</a></button> <?php } ?>	
+		  	  elseif ($row3['status'] == "Approved") { ?> <button class="approve"><a href="mark_excused.php?shift_id=<?=$row2['shift_id']?>&employee_id=<?=$row2['employee_id']?>&task_id=<?=$row3['task_id']?>">EXCUSED</a></button> <?php } ?>	
 			  
 			  
 		  </td>
 		  <td width="100px">
 			  <?php if ($row3['status'] == "Pending") { ?> <button class="approve"><a href="deny_signup.php?shift_id=<?=$row2['shift_id']?>&employee_id=<?=$row2['employee_id']?>&task_id=<?=$row3['task_id']?>">FILLED</a></button> <?php } ?>
 			 
-			  <?php if (($row3['attendance'] == "Attended") || ($row3['attendance'] == "No Show")) {  } 
+			  <?php if (($row3['attendance'] == "Excused") || ($row3['attendance'] == "No Show")) {  } 
 		
 			  elseif ($row3['status'] == "Approved") { ?> <button class="approve"><a href="mark_noshow.php?shift_id=<?=$row2['shift_id']?>&employee_id=<?=$row2['employee_id']?>&task_id=<?=$row3['task_id']?>">NO SHOW</a></button> <?php } ?>
 		  </td>

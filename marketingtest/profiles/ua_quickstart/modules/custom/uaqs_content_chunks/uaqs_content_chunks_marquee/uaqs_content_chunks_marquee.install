@@ -1,0 +1,75 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the uaqs_content_chunks_marquee module.
+ */
+
+/**
+ * WARNING: This update will not execute unless you revert the
+ * uaqs_content_chunks_marquee feature.
+ * UADIGITAL-1205: Set a default value for field_uaqs_setting_bg_color on all
+ * uaqs_content_chunks_marquee paragraphs_item types.
+ */
+function uaqs_content_chunks_marquee_update_7100() {
+  module_load_include('inc', 'features', 'features.export');
+  $module = features_get_modules($name = 'uaqs_content_chunks_marquee', $reset = FALSE);
+  $overrides = features_detect_overrides($module);
+  if (!$overrides['field_instance']) {
+    drupal_flush_all_caches();
+
+    $marquee_query = new EntityFieldQuery();
+    $marquee_query->entityCondition('entity_type', 'paragraphs_item')
+      ->entityCondition('bundle', array('uaqs_content_chunks_marquee'));
+    $marquee_result = $marquee_query->execute();
+
+    if (isset($marquee_result['paragraphs_item'])) {
+      foreach (array_filter($marquee_result['paragraphs_item']) as $marquee) {
+        $marquee_entity = entity_load_single('paragraphs_item', $marquee->item_id);
+        $marquee_wrapper = entity_metadata_wrapper('paragraphs_item', $marquee_entity);
+        $marquee_wrapper->field_uaqs_setting_text_bg_color = 'bg-trans-white';
+        $marquee_wrapper->save();
+      }
+    }
+
+    // To display a message to the user when the update is completed.
+    return t('Updated the default text box background color for all marquee paragraphs item types');
+  }
+  else {
+    $message = 'You must revert the uaqs_content_chunks_marquee feature in order to run this update.';
+    throw new DrupalUpdateException($message);
+  }
+}
+/**
+ * UADIGITAL-1951: Adds default link title values to existing
+ * uaqs_content_chunks_marquee paragraphs items with field_uaqs_link values that
+ * don't currently include a title.
+ */
+function uaqs_content_chunks_marquee_update_7101() {
+  // Identify any marquee paragraph items containing field_uaqs_link data.
+  $query = new EntityFieldQuery();
+  $query
+    ->entityCondition('entity_type', 'paragraphs_item', '=')
+    ->propertyCondition('bundle', 'uaqs_content_chunks_marquee', '=')
+    ->fieldCondition('field_uaqs_link', 'url', NULL, 'IS NOT NULL')
+    ->fieldCondition('field_uaqs_link', 'title', "", '=');
+  $result = $query->execute();
+
+  if (!empty($result['paragraphs_item'])) {
+    $ids = array_keys($result['paragraphs_item']);
+    $selected_paragraphs_items = entity_load('paragraphs_item', $ids);
+    foreach ($selected_paragraphs_items as $paragraphs_item) {
+
+      // Check if marquee title is empty
+      if (!empty($paragraphs_item->field_uaqs_summary_short['und'][0]['value'])) {
+        $url_title = 'Read more about ' . $paragraphs_item->field_uaqs_summary_short['und'][0]['value'];
+      }
+      else {
+        $url_title = 'Read more';
+      }
+
+      $paragraphs_item->field_uaqs_link['und'][0]['title'] = $url_title;
+      field_attach_update('paragraphs_item', $paragraphs_item);
+    }
+  }
+}

@@ -1,0 +1,85 @@
+name = UA QuickStart
+distribution_name = UA QuickStart
+description = Install Drupal with the UA QuickStart install profile.
+core = 7.x
+exclusive = TRUE
+
+; =====================================
+; Module dependencies
+; =====================================
+
+; Drupal core (enabled)
+; ---------------------
+dependencies[] = block
+dependencies[] = contextual
+dependencies[] = dblog
+dependencies[] = field
+dependencies[] = field_ui
+dependencies[] = file
+dependencies[] = image
+dependencies[] = list
+dependencies[] = menu
+dependencies[] = number
+dependencies[] = options
+dependencies[] = path
+dependencies[] = rdf
+dependencies[] = search
+dependencies[] = shortcut
+dependencies[] = taxonomy
+dependencies[] = toolbar
+dependencies[] = update
+
+; Drupal core (disabled)
+; ----------------------
+;dependencies[] = color
+;dependencies[] = comment
+;dependencies[] = dashboard
+;dependencies[] = help
+;dependencies[] = locale
+;dependencies[] = overlay
+;dependencies[] = simpletest
+;dependencies[] = statistics
+;dependencies[] = syslog
+
+; UAQS Modules
+; ----------------
+dependencies[] = ua_cas
+dependencies[] = ua_google_tag
+dependencies[] = uaqs_admin
+dependencies[] = uaqs_block_types
+dependencies[] = uaqs_block_types_card
+dependencies[] = uaqs_block_types_contact_summary
+dependencies[] = uaqs_block_types_flexible_block
+dependencies[] = uaqs_block_types_quick_links
+dependencies[] = uaqs_block_types_related_links
+dependencies[] = uaqs_content_chunks
+dependencies[] = uaqs_content_chunks_card_deck
+dependencies[] = uaqs_content_chunks_carousel
+dependencies[] = uaqs_content_chunks_column_image
+dependencies[] = uaqs_content_chunks_extra_info
+dependencies[] = uaqs_content_chunks_file_download
+dependencies[] = uaqs_content_chunks_full_width_bg_wrapper
+dependencies[] = uaqs_content_chunks_full_width_media_row
+dependencies[] = uaqs_content_chunks_headed_text
+dependencies[] = uaqs_content_chunks_marquee
+dependencies[] = uaqs_content_chunks_panel_group
+dependencies[] = uaqs_content_chunks_plain_text
+dependencies[] = uaqs_content_chunks_single_card
+dependencies[] = uaqs_content_chunks_views
+dependencies[] = uaqs_content_chunks_well
+dependencies[] = uaqs_core
+dependencies[] = uaqs_event
+dependencies[] = uaqs_event_view
+dependencies[] = uaqs_featured_content
+dependencies[] = uaqs_fields_media
+dependencies[] = uaqs_navigation
+dependencies[] = uaqs_news
+dependencies[] = uaqs_person
+dependencies[] = uaqs_person_view
+dependencies[] = uaqs_seo
+dependencies[] = uaqs_webform
+
+; 'Soft' contrib module dependencies
+; These will be enabled by the install profile but can still be disabled.
+; -----------------------------------------------------------------------
+dependencies[] = views_ui

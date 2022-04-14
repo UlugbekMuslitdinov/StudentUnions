@@ -1,0 +1,288 @@
+7.x-1.0-alpha74, 2022-02-16
+-----------------------------
+
+7.x-1.0-alpha73, 2022-01-26
+-----------------------------
+
+7.x-1.0-alpha72, 2022-01-20
+-----------------------------
+
+7.x-1.0-alpha71, 2022-01-19
+-----------------------------
+
+7.x-1.0-alpha70, 2021-07-21
+-----------------------------
+
+7.x-1.0-alpha69, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha68, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha67, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha66, 2021-04-21
+-----------------------------
+
+7.x-1.0-alpha65, 2021-01-21
+-----------------------------
+
+7.x-1.0-alpha64, 2020-11-25
+-----------------------------
+
+7.x-1.0-alpha63, 2020-11-18
+-----------------------------
+
+7.x-1.0-alpha62, 2020-11-18
+-----------------------------
+
+7.x-1.0-alpha61, 2020-09-16
+-----------------------------
+
+7.x-1.0-alpha60, 2020-09-11
+-----------------------------
+
+7.x-1.0-alpha59, 2020-08-19
+-----------------------------
+
+7.x-1.0-alpha58, 2020-06-17
+-----------------------------
+
+7.x-1.0-alpha57, 2020-06-05
+-----------------------------
+
+7.x-1.0-alpha56, 2020-05-20
+-----------------------------
+
+7.x-1.0-alpha55, 2020-04-20
+-----------------------------
+
+7.x-1.0-alpha54, 2020-03-20
+-----------------------------
+
+7.x-1.0-alpha53, 2020-03-06
+-----------------------------
+
+7.x-1.0-alpha52, 2020-02-07
+-----------------------------
+
+7.x-1.0-alpha51, 2019-12-18
+-----------------------------
+
+7.x-1.0-alpha50, 2019-12-13
+-----------------------------
+
+7.x-1.0-alpha49, 2019-11-20
+-----------------------------
+
+7.x-1.0-alpha48, 2019-11-05
+-----------------------------
+
+7.x-1.0-alpha47, 2019-11-01
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha46 for uaqs_unit.
+
+7.x-1.0-alpha46, 2019-11-01
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha45 for uaqs_unit.
+
+7.x-1.0-alpha45, 2019-11-01
+-----------------------------
+
+7.x-1.0-alpha44, 2019-09-06
+-----------------------------
+
+7.x-1.0-alpha43, 2019-08-16
+-----------------------------
+
+7.x-1.0-alpha42, 2019-07-26
+-----------------------------
+
+7.x-1.0-alpha41, 2019-06-28
+-----------------------------
+
+7.x-1.0-alpha40, 2019-05-22
+-----------------------------
+
+7.x-1.0-alpha39, 2019-05-08
+-----------------------------
+
+7.x-1.0-alpha38, 2019-05-07
+-----------------------------
+
+7.x-1.0-alpha37, 2019-04-17
+-----------------------------
+
+7.x-1.0-alpha36, 2019-03-20
+-----------------------------
+
+7.x-1.0-alpha35, 2019-03-15
+-----------------------------
+
+7.x-1.0-alpha34, 2019-03-13
+-----------------------------
+- UADIGITAL-1886 add better formats module and relax text format settings.
+- UADIGITAL-1910 Some coding standards cleanup for UADIGITAL-1886
+
+7.x-1.0-alpha33, 2019-02-20
+-----------------------------
+- UADIGITAL-1914: Bump the link contrib module version because of a security issue.
+
+7.x-1.0-alpha32, 2019-02-11
+-----------------------------
+
+7.x-1.0-alpha30, 2019-02-01
+-----------------------------
+
+7.x-1.0-alpha29, 2019-01-28
+-----------------------------
+
+7.x-1.0-alpha28, 2019-01-17
+-----------------------------
+
+7.x-1.0-alpha27, 2019-01-16
+-----------------------------
+
+7.x-1.0-alpha26, 2019-01-11
+-----------------------------
+
+7.x-1.0-alpha25, 2018-11-15
+-----------------------------
+
+7.x-1.0-alpha24, 2018-11-02
+-----------------------------
+
+7.x-1.0-alpha23, 2018-10-17
+-----------------------------
+
+7.x-1.0-alpha22, 2018-10-11
+-----------------------------
+
+7.x-1.0-alpha21, 2018-10-10
+-----------------------------
+
+7.x-1.0-alpha20, 2018-09-21
+-----------------------------
+
+7.x-1.0-alpha19, 2018-08-29
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha17 for uaqs_unit.
+- Preparing to tag 7.x-1.0-alpha16 for uaqs_unit.
+- Preparing to tag 7.x-1.0-alpha15 for uaqs_unit.
+- Preparing to tag 7.x-1.0-alpha14 for uaqs_unit.
+- Preparing to tag 7.x-1.0-alpha13 for uaqs_unit.
+- Preparing to tag 7.x-1.0-alpha12 for uaqs_unit.
+- Preparing to tag 7.x-1.0-alpha11 for uaqs_unit.
+- Preparing to tag 7.x-1.0-alpha10 for uaqs_unit.
+- Preparing to tag 7.x-1.0-alpha9 for uaqs_unit.
+- Preparing to tag 7.x-1.0-alpha8 for uaqs_unit.
+- Preparing to tag 7.x-1.0-alpha7 for uaqs_unit.
+- Remove the obsolete Bitbucket Piplines configurations from the subtrees.
+- UADIGITAL-972 Due to Backporting, added default pathauto_taxonomy_term_tags_pattern: [term:vocabulary]/[term:name] to feature Unit, Person, and Publication
+- UADIGITAL-936 Move unit node settings to default config so site builders can override and still be eligible for updates to this module
+- UADIGITAL-982 Adding dependency of uaqs_fields_link
+- Back to dev. [skip ci]
+- Preparing to tag 7.x-1.0-alpha6. [skip ci]
+- UADIGITAL-884 add bitbucket pipelines config file.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha5.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha4.
+- UADIGITAL-580 add default path auto settings for unit content type
+- Hide the UAQS label in content type names and revise the descriptions.
+- Change more occurances of the text UA to UAQS.
+- Rename UA to UAQS in the file contents.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha3.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha2.
+- UADIGITAL-322: Changes from features module updates.
+- Remove explicit version information.
+- Add a changelog so there is always something to modify for a release.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha1.
+- Renaming README for consistency's sake.
+- Cleaning up UA Unit .info file in anticpation of release.
+- Removed project line to prevent complications.
+- Keeping w/ conventions: changed version from 7.x-1.0-dev to 7.x-1.x-dev
+- Initial commit of base content type
+7.x-1.0-alpha17, 2018-07-30
+-----------------------------
+
+7.x-1.0-alpha16, 2018-07-20
+-----------------------------
+
+7.x-1.0-alpha15, 2018-06-19
+-----------------------------
+
+7.x-1.0-alpha14, 2018-05-18
+-----------------------------
+
+7.x-1.0-alpha13, 2018-04-25
+-----------------------------
+
+7.x-1.0-alpha12, 2018-04-20
+-----------------------------
+
+7.x-1.0-alpha11, 2018-03-30
+-----------------------------
+
+7.x-1.0-alpha10, 2018-03-09
+-----------------------------
+
+7.x-1.0-alpha9, 2017-09-15
+-----------------------------
+
+7.x-1.0-alpha8, 2017-09-15
+-----------------------------
+
+7.x-1.0-alpha7, 2017-08-17
+-----------------------------
+- Remove the obsolete Bitbucket Piplines configurations from the subtrees.
+- UADIGITAL-972 Due to Backporting, added default pathauto_taxonomy_term_tags_pattern: [term:vocabulary]/[term:name] to feature Unit, Person, and Publication
+- UADIGITAL-936 Move unit node settings to default config so site builders can override and still be eligible for updates to this module
+- UADIGITAL-982 Adding dependency of uaqs_fields_link
+- Back to dev. [skip ci]
+
+7.x-1.0-alpha6, 2017-01-13
+------------------------------
+- Merged in trackleft/uaqs_unit/UADIGITAL-884-automate-uaqs-component-re (pull request #3).
+- UADIGITAL-884 add bitbucket pipelines config file.
+- Merged ua_drupal/uaqs_unit into 7.x-1.x.
+- Back to dev.
+
+7.x-1.0-alpha5, 2016-05-02
+------------------------------
+- Back to dev.
+
+7.x-1.0-alpha4, 2016-04-11
+------------------------------
+- Merged in trackleft/uaqs_unit/UADIGITAL-580-add-pathauto-module-defaul (pull request #2).
+- UADIGITAL-580 add default path auto settings for unit content type.
+- Merged in mmunro-ltrr/uaqs_unit/UADIGITAL-523 (pull request #1).
+- Hide the UAQS label in content type names and revise the descriptions.
+- Change more occurances of the text UA to UAQS.
+- Rename UA to UAQS in the file contents.
+- Back to dev.
+
+7.x-1.0-alpha3, 2015-10-16
+------------------------------
+- Back to dev.
+
+7.x-1.0-alpha2, 2015-10-16
+------------------------------
+- Merged in UADIGITAL-322 (pull request #2).
+- UADIGITAL-322: Changes from features module updates.
+- Merged in mmunro-ltrr/ua_unit/UADIGITAL-139 (pull request #1).
+- Remove explicit version information.
+- Add a changelog so there is always something to modify for a release.
+- Back to dev.
+
+7.x-1.0-alpha1, 2015-07-10
+--------------------------
+- Preparing to tag 7.x-1.0-alpha1.
+- Renaming README for consistency's sake.
+- Cleaning up UA Unit .info file in anticpation of release.
+- Removed project line to prevent complications.
+- Keeping w/ conventions: changed version from 7.x-1.0-dev to 7.x-1.x-dev.

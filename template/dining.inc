@@ -1,5 +1,5 @@
 <?php
-require_once('C:/xampp/htdocs/project/template/global.inc');
+require_once($_SERVER['DOCUMENT_ROOT'].'/template/global.inc');
 
 function dining_start($page_options){ global $page_options;
 

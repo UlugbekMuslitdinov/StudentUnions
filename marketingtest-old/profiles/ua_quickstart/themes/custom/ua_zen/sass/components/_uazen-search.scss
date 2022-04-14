@@ -1,0 +1,85 @@
+/* start search */
+a.search-input-link {
+  display: none;
+  width: 2.2em;
+  height: 2.2em;
+  background-size: 1.1em;
+  background-image: url("../images/search-white-web.svg");
+  background-position-x: 0.5em;
+  background-position-y: 0.5em;
+  background-color: transparent;
+  background-repeat: no-repeat;
+  margin: 0.65em 0;
+  border: 2px solid #cbd1e0;
+}
+
+a.search-input-link:hover {
+  opacity: .7;
+}
+
+/* Prevents search bar and search btn from floating around. */
+.region-header-2 .block-search,
+.region-header .block-search {
+  clear: both;
+  position: relative;
+}
+
+/* ua-bootstrap overrides for search form */
+.btn-search {
+  width: 2.3em;
+  height: 2.3em;
+  background-size: 1em 1em;
+  background-position: right 0.6em top 0.6em;
+}
+
+.region-header-ua-utilities .search-form {
+  position: relative;
+  height: 38px;
+  margin: 0.72em 0;
+}
+
+.search-form {
+ height: initial;
+}
+
+.bg-cochineal-red .form-control,
+.bg-red .form-control,
+.bg-red a.search-input-link {
+    border-color: #ef4056;
+}
+.bg-cochineal-red a.search-input-link,
+.bg-red a.search-input-link {
+  background-image: url("../images/search-white-web.svg");
+}
+
+#block-search-form {
+  width: 272px;
+  width: 17rem;
+  float: none;
+  position: relative;
+  margin: auto auto 1.5em auto;
+}
+
+@media (min-width: 768px) {
+  #block-search-form {
+    float: right;
+    margin-top: 16px;
+    margin-top: 1rem;
+  }
+}
+
+.region-sidebar-first .block,
+.region-sidebar-second .block {
+  margin-bottom: 24px!important;
+  margin-bottom: 1.5rem!important;
+}
+
+.container-collapsed .column {
+  min-height: initial;
+}
+
+/* override for above if sidebars are present */
+.one-sidebar .container-collapsed .column,
+.two-sidebars .container-collapsed .column {
+  min-height: 1px;
+}

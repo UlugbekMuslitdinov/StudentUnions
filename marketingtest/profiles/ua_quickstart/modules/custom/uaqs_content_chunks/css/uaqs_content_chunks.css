@@ -1,0 +1,29 @@
+figure, figure img {
+  width:100%;
+  height:auto;
+}
+
+.node-uaqs-flexible-page.view-mode-full div:nth-of-type(1) {
+  margin-top: 0;
+}
+
+.field-type-paragraphs tr.odd .form-item,
+.field-type-paragraphs tr.even .form-item {
+  white-space: normal;
+}
+
+@media(min-width:768px) {
+  figure.pull-left,
+  div.uaqs_align_left {
+    margin: 0.5em 1em 0.5em 0;
+    max-width: 33%;
+    float: left;
+  }
+
+  figure.pull-right,
+  div.uaqs_align_right {
+    margin: 0.5em 0 0.5em 1em;
+    max-width: 33%;
+    float: right;
+  }
+}

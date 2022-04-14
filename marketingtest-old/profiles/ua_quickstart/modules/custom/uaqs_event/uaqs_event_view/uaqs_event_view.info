@@ -1,0 +1,12 @@
+name = UAQS Event View
+description = Views for events
+core = 7.x
+package = The University of Arizona
+dependencies[] = ctools
+dependencies[] = date_views
+dependencies[] = uaqs_calendar_filter
+dependencies[] = uaqs_event
+dependencies[] = views
+features[ctools][] = views:views_default:3.0
+features[features_api][] = api:2
+features[views_view][] = uaqs_events

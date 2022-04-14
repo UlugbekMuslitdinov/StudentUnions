@@ -1,0 +1,12 @@
+/* Breadcrumb Nolink Styles */
+.breadcrumb>li a.nolink,
+.breadcrumb>li a.nolink:hover,
+.breadcrumb>li a.nolink:focus,
+.breadcrumb>li:before,
+.breadcrumb>li+li:before,
+.breadcrumb>li:last-child:after {
+    color: #49595e;
+    border: none;
+    text-decoration: none;
+    outline: none;
+}

@@ -7,9 +7,7 @@ require_once ($_SERVER['DOCUMENT_ROOT'] . '/commontools/includes/mysqli.inc');
 $db = new db_mysqli('signup');	
 
 // Display the list of available shifts.
-$query = "SELECT * FROM Locations WHERE id NOT IN (998, 999) ORDER BY location ASC";
-// 998 - Catering Dock
-// 999 - Other
+$query = "SELECT * FROM Locations WHERE category = " . $num . " ORDER BY location ASC";	// category 1 = Dining
 $locations = $db->query($query);
 
 if ($num == 1) { 	// For Dining
@@ -24,15 +22,14 @@ if ($num == 1) { 	// For Dining
 	  <?php } ?>
   </select> 
 <?php
-} elseif ($num == 2) {		// For Catering
+} else {		// Just one location for the others.
 	?><div class="text">
-			  Catering Dock
-			  <input type="hidden" name="location" value="998">
-	  </div> <?php
-} else {		// For Other
-	?><div class="text">
-			  Other
-			  <input type="hidden" name="location" value="999">
+	  <?php
+		while($row = mysqli_fetch_array($locations, MYSQLI_ASSOC)) { 
+	  ?>
+	  <?=$row['location']?>
+	  <input type="hidden" name="location" value="<?=$row['id']?>">
+	  <?php } ?>
 	  </div> <?php
 }
 ?>

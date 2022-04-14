@@ -1,0 +1,172 @@
+<?php
+
+/**
+ * Tests the Google Tag Manager.
+ *
+ * @todo
+ * Use the settings form to save configuration and create snippet files.
+ * Confirm snippet file and page response contents.
+ *
+ * Test further the snippet insertion conditions.
+ */
+class GTMBaseTestCase extends DrupalWebTestCase {
+
+  /**
+   * The message group, base path to snippet files, and snippet file types.
+   *
+   * @var string|array
+   */
+  protected $group = 'Google Tag module';
+  protected $basePath = 'public:/';
+  protected $types = array('script', 'noscript');
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Google Tag Manager :: Base',
+      'description' => 'Tests the Google Tag Manager [do NOT select this: no tests]',
+      'group' => 'Google tag',
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  protected function setUp() {
+    $modules = func_get_args();
+    parent::setUp($modules ? $modules[0] : array());
+  }
+
+  /**
+   * Test the module.
+   */
+  public function testModule() {
+    variable_set('google_tag_debug_output', '1');
+    // This does not carry through to the gtm_test realm. Why?
+//     variable_set('google_tag_include_environment', '1');
+
+    try {
+      $this->createData();
+      $this->checkSnippetFiles();
+      $this->checkPageResponse();
+    }
+    catch (Exception $e) {
+      $this->assertTrue(TRUE, t('Inside CATCH block'));
+      watchdog_exception('gtm_test', $e);
+    }
+    finally {
+      $this->assertTrue(TRUE, t('Inside FINALLY block'));
+    }
+  }
+
+  /**
+   * Create test data: configuration variables and snippet files.
+   */
+  protected function createData() {
+  }
+
+  /**
+   * Inspect the snippet files.
+   */
+  protected function checkSnippetFiles() {
+  }
+
+  /**
+   * Verify the snippet file contents.
+   */
+  protected function verifyScriptSnippet($contents, $variables) {
+    $status = strpos($contents, "'$variables->google_tag_container_id'") !== FALSE;
+    $message = 'Found in script snippet file: container_id';
+    $this->assert($status, $message, $this->group);
+
+    $status = strpos($contents, "gtm_preview=$variables->google_tag_environment_id") !== FALSE;
+    $message = 'Found in script snippet file: environment_id';
+    $this->assert($status, $message, $this->group);
+
+    $status = strpos($contents, "gtm_auth=$variables->google_tag_environment_token") !== FALSE;
+    $message = 'Found in script snippet file: environment_token';
+    $this->assert($status, $message, $this->group);
+  }
+
+  /**
+   * Verify the snippet file contents.
+   */
+  protected function verifyNoScriptSnippet($contents, $variables) {
+    $status = strpos($contents, "id=$variables->google_tag_container_id") !== FALSE;
+    $message = 'Found in noscript snippet file: container_id';
+    $this->assert($status, $message, $this->group);
+
+    $status = strpos($contents, "gtm_preview=$variables->google_tag_environment_id") !== FALSE;
+    $message = 'Found in noscript snippet file: environment_id';
+    $this->assert($status, $message, $this->group);
+
+    $status = strpos($contents, "gtm_auth=$variables->google_tag_environment_token") !== FALSE;
+    $message = 'Found in noscript snippet file: environment_token';
+    $this->assert($status, $message, $this->group);
+  }
+
+  /**
+   * Verify the snippet file contents.
+   */
+  protected function verifyDataLayerSnippet($contents, $variables) {
+  }
+
+  /**
+   * Inspect the page response.
+   */
+  protected function checkPageResponse() {
+    variable_set('google_tag_role_toggle', 'include listed');
+    variable_set('google_tag_role_list', array(
+      'content viewer' => 'content viewer',
+    ));
+
+    // Create and login a test user.
+    $role_id = $this->drupalCreateRole(array('access content'), 'content viewer');
+    $non_admin_user = $this->drupalCreateUser();
+    $non_admin_user->roles[$role_id] = 'content viewer';
+    user_save($non_admin_user);
+    $this->drupalLogin($non_admin_user);
+  }
+
+  /**
+   * Verify the tag in page response.
+   */
+  protected function verifyScriptTag($realpath) {
+    $string = variable_get('css_js_query_string', '');
+    $text = "src=\"$realpath?$string\"";
+    $message = 'Found script source string in page response';
+    $this->assertRaw($text, $message, $this->group);
+
+    $xpath = "//script[@src=\"$realpath?$string\"]";
+    $elements = $this->xpath($xpath);
+    $status = !empty($elements);
+    $message = 'Found script tag in page response';
+    $this->assert($status, $message, $this->group);
+  }
+
+  /**
+   * Verify the tag in page response.
+   */
+  protected function verifyNoScriptTag($realpath, $variables) {
+    $xpath = '//div//noscript//iframe';
+    $elements = $this->xpath($xpath);
+
+    $contents = (array) $elements[0]['src'];
+    $contents = $contents[0];
+
+    $status = strpos($contents, "id=$variables->google_tag_container_id") !== FALSE;
+    $message = 'Found in noscript tag: container_id';
+    $this->assert($status, $message, $this->group);
+
+    $status = strpos($contents, "gtm_preview=$variables->google_tag_environment_id") !== FALSE;
+    $message = 'Found in noscript tag: environment_id';
+    $this->assert($status, $message, $this->group);
+
+    $status = strpos($contents, "gtm_auth=$variables->google_tag_environment_token") !== FALSE;
+    $message = 'Found in noscript tag: environment_token';
+    $this->assert($status, $message, $this->group);
+  }
+
+}

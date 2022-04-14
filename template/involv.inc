@@ -1,5 +1,5 @@
 <?php
-require_once('C:/xampp/htdocs/project/template/global.inc');
+require_once($_SERVER['DOCUMENT_ROOT'].'/template/global.inc');
 session_start();
 function involv_start($page_options){ global $page_options;
 	if(isset($_SESSION['mobile_browser']) && $_SESSION['mobile_browser']){

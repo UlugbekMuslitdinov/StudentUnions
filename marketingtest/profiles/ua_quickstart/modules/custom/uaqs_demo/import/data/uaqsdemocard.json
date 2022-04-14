@@ -1,0 +1,19 @@
+[
+  {
+    "id": 1,
+    "label": "Anti-social media app",
+    "title": "Myxine",
+    "uaqs_summary": "Do social media leave you cold? Do you dislike Facebook friend requests and offers to connect to Linkedin networks? Several UADigital developers share your feelings, and will soon release <strong>Myxine</strong>, the World's first anti-social media application. Following the trend seen in an events app for University of Arizona students, which used a <a href=\"https://uanews.arizona.edu/story/student-events-mobile-app-to-launch\">narwhal</a> as its logo, it is named after a sea creature. In Myxine the only available responses to a request for contact are <em>Disregard</em>, <em>Ignore</em>, <em>Shun</em> and <em>Slime</em>. If you're an isolated introvert, this app's for you!",
+    "uaqs_photo": "myxine.jpg",
+    "uaqs_link": "https://archive.org/details/lespoissonssynon03gerv",
+    "uaqs_link_title": "Read More",
+    "uaqs_link_attributes": {
+        "class": "btn btn-default btn-arrow btn-block",
+        "target": "_blank"
+    },
+    "region": "content_2_col_2",
+    "visibility": 1,
+    "pages": "pages/uaqs-block-types",
+    "weight": 1
+  }
+]

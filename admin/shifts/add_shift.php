@@ -52,7 +52,8 @@ function selectTasks(id) {
       <td><div class="text">
 		  <input type="radio" name="event" value="Dining" onClick="checkShift(1)" checked required>&nbsp;Dining&nbsp;&nbsp;&nbsp;
 		  <input type="radio" name="event" value="Catering" onClick="checkShift(2)" >&nbsp;Catering&nbsp;&nbsp;&nbsp;
-		  <input type="radio" name="event" value="Other" onClick="checkShift(3)" >&nbsp;Other&nbsp;&nbsp;&nbsp;</div>
+		   <input type="radio" name="event" value="Kitchen" onClick="checkShift(3)" >&nbsp;Kitchen&nbsp;&nbsp;&nbsp;
+		  <input type="radio" name="event" value="Other" onClick="checkShift(9)" >&nbsp;Other&nbsp;&nbsp;&nbsp;</div>
 	  </td>
     </tr>
 <?php

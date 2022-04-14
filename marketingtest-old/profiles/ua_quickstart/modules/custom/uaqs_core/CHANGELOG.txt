@@ -1,0 +1,489 @@
+7.x-1.0-alpha74, 2022-02-16
+-----------------------------
+
+7.x-1.0-alpha73, 2022-01-26
+-----------------------------
+
+7.x-1.0-alpha72, 2022-01-20
+-----------------------------
+
+7.x-1.0-alpha71, 2022-01-19
+-----------------------------
+
+7.x-1.0-alpha70, 2021-07-21
+-----------------------------
+
+7.x-1.0-alpha69, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha68, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha67, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha66, 2021-04-21
+-----------------------------
+
+7.x-1.0-alpha65, 2021-01-21
+-----------------------------
+
+7.x-1.0-alpha64, 2020-11-25
+-----------------------------
+
+7.x-1.0-alpha63, 2020-11-18
+-----------------------------
+
+7.x-1.0-alpha62, 2020-11-18
+-----------------------------
+
+7.x-1.0-alpha61, 2020-09-16
+-----------------------------
+
+7.x-1.0-alpha60, 2020-09-11
+-----------------------------
+
+7.x-1.0-alpha59, 2020-08-19
+-----------------------------
+
+7.x-1.0-alpha58, 2020-06-17
+-----------------------------
+
+7.x-1.0-alpha57, 2020-06-05
+-----------------------------
+
+7.x-1.0-alpha56, 2020-05-20
+-----------------------------
+
+7.x-1.0-alpha55, 2020-04-20
+-----------------------------
+
+7.x-1.0-alpha54, 2020-03-20
+-----------------------------
+
+7.x-1.0-alpha53, 2020-03-06
+-----------------------------
+
+7.x-1.0-alpha52, 2020-02-07
+-----------------------------
+- UADIGITAL-2213 Add UAQS Core settings permission
+
+7.x-1.0-alpha51, 2019-12-18
+-----------------------------
+- UADIGITAL-2159 Replace demo and default content http with https.
+
+7.x-1.0-alpha50, 2019-12-13
+-----------------------------
+- UADIGITAL-2184 Moved uaqs_core admin menu_item check.
+
+7.x-1.0-alpha49, 2019-11-20
+-----------------------------
+
+7.x-1.0-alpha48, 2019-11-05
+-----------------------------
+
+7.x-1.0-alpha47, 2019-11-01
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha46 for uaqs_core.
+
+7.x-1.0-alpha46, 2019-11-01
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha45 for uaqs_core.
+- UADIGITAL-2112: Adding Drush command to audit Quickstart asset use.
+
+7.x-1.0-alpha45, 2019-11-01
+-----------------------------
+- UADIGITAL-2112: Adding Drush command to audit Quickstart asset use.
+
+7.x-1.0-alpha44, 2019-09-06
+-----------------------------
+- UADIGITAL-2097 Symfony PHP error under some circumstances in Pantheon
+
+7.x-1.0-alpha43, 2019-08-16
+-----------------------------
+- UADIGITAL-1954: UAQS Settings UI.
+
+7.x-1.0-alpha42, 2019-07-26
+-----------------------------
+- UADIGITAL-1878 Add Module Override Detection.
+
+7.x-1.0-alpha41, 2019-06-28
+-----------------------------
+
+7.x-1.0-alpha40, 2019-05-22
+-----------------------------
+
+7.x-1.0-alpha39, 2019-05-08
+-----------------------------
+
+7.x-1.0-alpha38, 2019-05-07
+-----------------------------
+- UADIGITAL-1864 Set updated url patterns for flexible page and default.
+
+7.x-1.0-alpha37, 2019-04-17
+-----------------------------
+
+7.x-1.0-alpha36, 2019-03-20
+-----------------------------
+- UADIGITAL-1833 Update to jQuery 3.1 and set Adminimal to jQuery 1.7
+- UADIGITAL-1915- Adding CSS Injector module
+
+7.x-1.0-alpha35, 2019-03-15
+-----------------------------
+
+7.x-1.0-alpha34, 2019-03-13
+-----------------------------
+
+7.x-1.0-alpha33, 2019-02-20
+-----------------------------
+- UADIGITAL-1914: Bump the link contrib module version because of a security issue.
+
+7.x-1.0-alpha32, 2019-02-11
+-----------------------------
+
+7.x-1.0-alpha30, 2019-02-01
+-----------------------------
+
+7.x-1.0-alpha29, 2019-01-28
+-----------------------------
+
+7.x-1.0-alpha28, 2019-01-17
+-----------------------------
+
+7.x-1.0-alpha27, 2019-01-16
+-----------------------------
+
+7.x-1.0-alpha26, 2019-01-11
+-----------------------------
+
+7.x-1.0-alpha25, 2018-11-15
+-----------------------------
+
+7.x-1.0-alpha24, 2018-11-02
+-----------------------------
+- UADIGITAL-1781 Update README for uaqs_core explaining uptime monitoring tool uncached page setting
+- UADIGITAL-1780 Added uncached page to be used for monitoring.
+
+7.x-1.0-alpha23, 2018-10-17
+-----------------------------
+
+7.x-1.0-alpha22, 2018-10-11
+-----------------------------
+
+7.x-1.0-alpha21, 2018-10-10
+-----------------------------
+
+7.x-1.0-alpha20, 2018-09-21
+-----------------------------
+
+7.x-1.0-alpha19, 2018-08-29
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha17 for uaqs_core.
+- Preparing to tag 7.x-1.0-alpha16 for uaqs_core.
+- Preparing to tag 7.x-1.0-alpha15 for uaqs_core.
+- UADIGITAL-1540 Add full width media row paragraph type.
+- Preparing to tag 7.x-1.0-alpha14 for uaqs_core.
+- Preparing to tag 7.x-1.0-alpha13 for uaqs_core.
+- Preparing to tag 7.x-1.0-alpha12 for uaqs_core.
+- Preparing to tag 7.x-1.0-alpha11 for uaqs_core.
+- Preparing to tag 7.x-1.0-alpha10 for uaqs_core.
+- UADIGITAL-1382: Addressed various Migrate UI notices, warnings, and messages.
+- UADIGITAL-1185 Adding block type uaqs_cta_card
+- UADIGITAL-1205 Full width background image view modes for marquee paragraphs item.
+- Preparing to tag 7.x-1.0-alpha9 for uaqs_core.
+- Preparing to tag 7.x-1.0-alpha8 for uaqs_core.
+- Preparing to tag 7.x-1.0-alpha7 for uaqs_core.
+- UADIGITAL-962 adding collapsible panel groups as paragraphs item.
+- UADIGITAL-1174: Fix warnings/messages generated by UAQS Demo migrations.
+- UADIGITAL-1126 added external links default settings.
+- UADIGITAL-1126 prepare ua_quickstart for external links module.
+- Remove the obsolete Bitbucket Piplines configurations from the subtrees.
+- UADIGITAL-1039: Fix a known bug in the Field Group module.
+- UADIGITAL-1033: Updating Views to 7.x-3.15 (security update).
+- Back to dev. [skip ci]
+- Preparing to tag 7.x-1.0-alpha6. [skip ci]
+- UADIGITAL-934: Title module security update.
+- Revert "Preparing to tag 7.x-1.0-alpha4."
+- UADIGITAL-924: Fixing PHP notice for multi-valued fields hidden in Field UI.
+- Preparing to tag 7.x-1.0-alpha4.
+- Merged in trackleft/uaqs_core/UADIGITAL-878-calendar-pager-skips-month (pull request #27)
+- UADIGITAL-898 add pipelines config
+- UADIGITAL-878 update date module to 7.x-2.10-rc1
+- Update various contrib module versions, remove the views_bootstrap patch.
+- UAMS-299 Patching features module so we can export shortcut sets.
+- Bump Libraries version.
+- UADIGITAL-746: Updating Views for SA-CONTRIB-2016-036.
+- Consolidate the Bean block placement code into UAQS Core.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha5.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha4.
+- UADIGITAL-707: Fixing title module version reference.
+- UADIGITAL-707: Update title module to 7.x-1.0-beta8.
+- UADIGITAL-703: Update features to 7.x-2.10.
+- Updating Pathauto to latest version.
+- UADIGITAL-669: Features module security update.
+- Merged in trackleft/uaqs_core/UADIGITAL-580-add-pathauto-module-defaul (pull request #12)
+- removing jquery_update version because that is handled by uaqs_core.install
+- removing jquery_update version because that is handled by uaqs_core.install
+- removing these settings as they are no different to defaults set by pathauto
+- merging upstream changes
+- UADIGITAL-656: increase the minimum jQuery version to satisfy the Dialog module required for WYSIWYG editing.
+- Bump the version numbers of Features and the Entity API.
+- Merged in mmunro-ltrr/uaqs_core/UADIGITAL-402 (pull request #11)
+- UADIGITAL-540: Moving jquery_update version settings to hook_install().
+- UADIGITAL-621: Fixing broken patch reference.
+- path for users set at users/[user:name]
+- UADIGITAL-580 add pathauto module defaults
+- Rename the text format.
+- UADIGITAL-621: Adding patch to fix PHP notices caused by title module.
+- Reverting unintentional change to title module version.
+- UAMS-216: Adding field_group_link module and pinning image_class to specific revision.
+- UADIGITAL-538: Adding draggableviews module.
+- UADIGTIAL-537: Various contrib updates.
+- update title
+- UADIGITAL-525: Making importRoot variable protected.
+- UADIGITAL-525: Renaming base migration classes and making import base path setting injectable.
+- UADIGITAL-525: Moving base migration classes into uaqs_core.
+- UADIGITAL-522: Adding views_bootstrap module.
+- UADIGITAL-476: Updating README & makefile.
+- Change more occurances of the text UA to UAQS.
+- Rename UA to UAQS in the file contents.
+- UADIGITAL-466: field_group security update.
+- UADIGITAL-346: Update field_collection module.
+- Removing duplicate entry in makefile.
+- UADIGITAL-405: Adding newly packaged contrib modules to README.
+- UADIGITAL-405: Adding HTML5 Tools & Elements modules to UA Core.
+- UADIGITAL-404: Enabling jquery_update by default.
+- UADIGITAL-404: Removing extraneous features stuff.
+- Merged in trackleft/ua_core/UADIGITAL-404-add-jquery-update-to-ua-co (pull request #10)
+- ua_core.make edited online with Bitbucket
+- ua_core.make edited online with Bitbucket
+- ua_core.make edited online with Bitbucket
+- ua_core.make edited online with Bitbucket
+- ua_core.make edited online with Bitbucket
+- more stuff
+- default config for jquery_update
+- adding to readme
+- adding jQuery Update to ua_core
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha3.
+- Bump the version number on Views.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha2.
+- UADIGITAL-315: Updating features to version 7.x-2.7.
+- UADIGITAL-283: Updating defaultconfig to 1.0-alpha11.
+- Update the Date module version from 2.8 to 2.9, removing the patch to 2.8.
+- Add patch for Date module to use proper date-based titles for views, like in ua_event module. Should fix UADIGITAL-135, but independent testing by other developers should commence.
+- UADIGITAL-188: Ctools security update.
+- Remove explicit version information.
+- Add a changelog so there is always something to modify for a release.
+- Back to dev.
+- UADIGITAL-98: Preparing to tag 7.x-1.0-alpha1.
+- Update Features to the current drupal.org version.
+- UADIGITAL-131: Update to Migrate 2.8 for SA-CONTRIB-2015-0130.
+- View security update.
+- Updating README.
+- Updating README.
+- Updating README.
+- Renaming module, Part II.
+- Renaming module, Part I.
+- Moving Zen theme up one directory level.
+- Features module update.
+- Adding Default config module.
+- Documentation updates.
+- Documentation updates.
+- Documentation updates.
+- Documentation updates.
+- Documentation updates.
+- Documentation updates.
+- Documentation updates.
+- Contrib module updates.
+- Adding remaining UA Content Types dependencies to makefile.
+- Makefile update.
+- Changing project name (part 2).
+- Changing project name (part 1).
+- Updating README.
+- Adding initial makefile and basic module files.
+- Adding README.
+7.x-1.0-alpha17, 2018-07-30
+-----------------------------
+
+7.x-1.0-alpha16, 2018-07-20
+-----------------------------
+
+7.x-1.0-alpha15, 2018-06-19
+-----------------------------
+- UADIGITAL-1540 Add full width media row paragraph type.
+
+7.x-1.0-alpha14, 2018-05-18
+-----------------------------
+
+7.x-1.0-alpha13, 2018-04-25
+-----------------------------
+
+7.x-1.0-alpha12, 2018-04-20
+-----------------------------
+
+7.x-1.0-alpha11, 2018-03-30
+-----------------------------
+
+7.x-1.0-alpha10, 2018-03-09
+-----------------------------
+- UADIGITAL-1382: Addressed various Migrate UI notices, warnings, and messages.
+- UADIGITAL-1185 Adding block type uaqs_cta_card
+- UADIGITAL-1205 Full width background image view modes for marquee paragraphs item.
+
+7.x-1.0-alpha9, 2017-09-15
+-----------------------------
+
+7.x-1.0-alpha8, 2017-09-15
+-----------------------------
+
+7.x-1.0-alpha7, 2017-08-17
+-----------------------------
+- UADIGITAL-962 adding collapsible panel groups as paragraphs item.
+- UADIGITAL-1174: Fix warnings/messages generated by UAQS Demo migrations.
+- UADIGITAL-1126 added external links default settings.
+- UADIGITAL-1126 prepare ua_quickstart for external links module.
+- Remove the obsolete Bitbucket Piplines configurations from the subtrees.
+- UADIGITAL-1039: Fix a known bug in the Field Group module.
+- UADIGITAL-1033: Updating Views to 7.x-3.15 (security update).
+- Back to dev. [skip ci]
+
+7.x-1.0-alpha6, 2017-01-23
+------------------------------
+- UADIGITAL-934: Title module security update.
+- Revert "Preparing to tag 7.x-1.0-alpha4.".
+- Merged in joegraduate/uaqs_core/UADIGITAL-924 (pull request #29).
+- UADIGITAL-924: Fixing PHP notice for multi-valued fields hidden in Field UI.
+- Preparing to tag 7.x-1.0-alpha4.
+- Merged in trackleft/uaqs_core/UADIGITAL-878-calendar-pager-skips-month (pull request #27).
+- Merged in trackleft/uaqs_core/UADIGITAL-898-add-private-key-to-team-ac (pull request #28).
+- UADIGITAL-898 add pipelines config.
+- UADIGITAL-878 update date module to 7.x-2.10-rc1.
+- Merged ua_drupal/uaqs_core into 7.x-1.x.
+- UADIGITAL-879: October 2016 Drupal updates.
+- Update various contrib module versions, remove the views_bootstrap patch.
+- Merged in trackleft/uaqs_core/UAMS-299-set-up-shortcut-menu-by-role-fo (pull request #23).
+- UAMS-299 Patching features module so we can export shortcut sets.
+- Merged in mmunro-ltrr/uaqs_core/UADIGITAL-747 (pull request #22).
+- Bump Libraries version.
+- Merged in UADIGITAL-746 (pull request #21).
+- UADIGITAL-746: Updating Views for SA-CONTRIB-2016-036.
+- UADIGITAL-713: Move block placement code to UaqsBeanMigration class in uaqs_core.
+- Consolidate the Bean block placement code into UAQS Core.
+- Back to dev.
+
+7.x-1.0-alpha5, 2016-05-02
+------------------------------
+- Back to dev.
+
+7.x-1.0-alpha4, 2016-04-29
+------------------------------
+- Merged in UADIGITAL-707 (pull request #19).
+- UADIGITAL-707: Fixing title module version reference.
+- Merged in UADIGITAL-707 (pull request #18).
+- UADIGITAL-707: Update title module to 7.x-1.0-beta8.
+- Merged in UADIGITAL-703 (pull request #17).
+- UADIGITAL-703: Update features to 7.x-2.10.
+- Merged in UADIGITAL-669 (pull request #16).
+- Updating Pathauto to latest version.
+- UADIGITAL-669: Features module security update.
+- Merged in trackleft/uaqs_core/UADIGITAL-580-add-pathauto-module-defaul (pull request #12).
+- Merged in mmunro-ltrr/uaqs_core/UADIGITAL-66 (pull request #15).
+- Removing jquery_update version because that is handled by uaqs_core.install.
+- Removing these settings as they are no different to defaults set by pathauto.
+- Merging upstream changes.
+- UADIGITAL-656: increase the minimum jQuery version to satisfy the Dialog module required for WYSIWYG editing.
+- UADIGITAL-659: Apply the routine updates to the Features and Entity API modules from drupal.org.
+- Merged ua_drupal/uaqs_core into 7.x-1.x.
+- Bump the version numbers of Features and the Entity API.
+- Merged in mmunro-ltrr/uaqs_core/UADIGITAL-402 (pull request #11).
+- Merged in UADIGITAL-540 (pull request #13).
+- UADIGITAL-540: Moving jquery_update version settings to hook_install().
+- UADIGITAL-621: Fixing broken patch reference.
+- Merged in UADIGITAL-621 (pull request #10).
+- Path for users set at users/[user:name].
+- UADIGITAL-580 add pathauto module defaults.
+- Rename the text format.
+- UADIGITAL-621: Adding patch to fix PHP notices caused by title module.
+- Reverting unintentional change to title module version.
+- UAMS-216: Adding field_group_link module and pinning image_class to specific revision.
+- Merged in UADIGITAL-537 (pull request #8).
+- UADIGITAL-538: Adding draggableviews module.
+- UADIGTIAL-537: Various contrib updates.
+- Merged in trackleft/uaqs_core/title-update (pull request #7).
+- Update title.
+- Merged in UADIGITAL-525 (pull request #4).
+- UADIGITAL-525: Making importRoot variable protected.
+- UADIGITAL-525: Renaming base migration classes and making import base path setting injectable.
+- UADIGITAL-525: Moving base migration classes into uaqs_core.
+- Merged in UADIGITAL-522 (pull request #3).
+- UADIGITAL-522: Adding views_bootstrap module.
+- UADIGITAL-476: Updating README & makefile.
+- Change more occurances of the text UA to UAQS.
+- Rename UA to UAQS in the file contents.
+- Merged in UADIGITAL-466 (pull request #15).
+- UADIGITAL-466: field_group security update.
+- Merged in UADIGITAL-346 (pull request #14).
+- UADIGITAL-346: Update field_collection module.
+- Merged in UADIGITAL-405 (pull request #12).
+- Removing duplicate entry in makefile.
+- UADIGITAL-405: Adding newly packaged contrib modules to README.
+- UADIGITAL-405: Adding HTML5 Tools & Elements modules to UA Core.
+- UADIGITAL-404: Enabling jquery_update by default.
+- UADIGITAL-404: Removing extraneous features stuff.
+- Merged in trackleft/ua_core/UADIGITAL-404-add-jquery-update-to-ua-co (pull request #10).
+- UADIGITAL-414: Merged in trackleft/ua_core (pull request #11).
+- Ua_core.make edited online with Bitbucket.
+- More stuff.
+- Default config for jquery_update.
+- Adding to readme.
+- Adding jQuery Update to ua_core.
+- Back to dev.
+
+UA Core 7.x-1.0-alpha3, 2015-11-13
+--------------------------------------
+- Merged in mmunro-ltrr/ua_core/UADIGITAL-377 (pull request #9).
+- Bump the version number on Views.
+- Back to dev.
+
+UA Core 7.x-1.0-alpha2, 2015-10-16
+--------------------------------------
+- Merged in UADIGITAL-315 (pull request #8).
+- UADIGITAL-315: Updating features to version 7.x-2.7.
+- Merged in UADIGITAL-283 (pull request #7).
+- UADIGITAL-283: Updating defaultconfig to 1.0-alpha11.
+- Merged in mmunro-ltrr/ua_core/UADIGITAL-208 (pull request #6).
+- Update the Date module version from 2.8 to 2.9, removing the patch to 2.8.
+- Merged ua_drupal/ua_core into 7.x-1.x.
+- Merged in awochna/ua_core (pull request #5).
+- Add patch for Date module to use proper date-based titles for views, like in ua_event module. Should fix UADIGITAL-135, but independent testing by other developers should commence.
+- UADIGITAL-188: Ctools security update.
+- Merged in mmunro-ltrr/ua_core/UADIGITAL-139 (pull request #3).
+- Remove explicit version information.
+- Add a changelog so there is always something to modify for a release.
+- Back to dev.
+
+UA Core 7.x-1.0-alpha1, 2015-07-10
+----------------------------------
+- UADIGITAL-98: Preparing to tag 7.x-1.0-alpha1.
+- Merged in mmunro-ltrr/ua_core/UADIGITAL-132 (pull request #2).
+- Update Features to the current drupal.org version.
+- UADIGITAL-131: Update to Migrate 2.8 for SA-CONTRIB-2015-0130.
+- View security update.
+- Merged in rename (pull request #1).
+- Updating README.
+- Renaming module, Part II.
+- Renaming module, Part I.
+- Moving Zen theme up one directory level.
+- Features module update.
+- Adding Default config module.
+- Documentation updates.
+- Contrib module updates.
+- Adding remaining UA Content Types dependencies to makefile.
+- Makefile update.
+- Changing project name (part 2).
+- Changing project name (part 1).
+- Adding initial makefile and basic module files.

@@ -6,13 +6,28 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/commontools/webauth/include.php');
 $netid = $_SESSION['webauth']['netID'];
 // $netid = "yontaek";
 $_SESSION["netid"] = $netid;
+// Restrict page access.
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/commontools/includes/mysqli.inc');
+$db = new db_mysqli('su');
+$query = "SELECT access_level FROM admin_users AU LEFT JOIN admin_access AA ON AA.admin_user_id = AU.id LEFT JOIN admin_screens AR ON AA.admin_screen_id = AR.id WHERE active = 1 AND admin_screen_id = 13 AND netid='" . $netid . "'";		//admin_screen_id: 13 => shifts
+$result = $db->query($query);
+$result = mysqli_fetch_assoc($result);
+
+// Allow access for only Level 2.
+if($result['access_level'] == 2){
+	// Allowed to open the page.
+}
+else{
+	print 'Permission denied.';
+    header("Location: /");
+    die('Permission denied.');
+}
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/template/'.'global.inc');
 $page_options['title'] = 'Shift Admin';
 page_start($page_options);	
 
 // Database connection
-require_once ($_SERVER['DOCUMENT_ROOT'] . '/commontools/includes/mysqli.inc');
 $db = new db_mysqli('signup');	
 ?>
 <link rel="stylesheet" href="shifts.css">
@@ -23,6 +38,13 @@ $db = new db_mysqli('signup');
 // Display the list of available shifts.
 $query = "SELECT S.*, location FROM Shifts S LEFT JOIN Locations L ON S.location_id = L.id ORDER BY shift_date DESC";
 $shifts = $db->query($query);
+// Check if records exist.	
+if (mysqli_num_rows($shifts)==0) { 
+?>
+<div class="isnull">No record. </div>
+<br /><br /><br />
+<?php
+} else {
 ?>
 <div class="choose_shift">
 <?php
@@ -34,7 +56,7 @@ $record = $db->query($query2);
 $num_signup = mysqli_fetch_assoc($record);
 $num_signup = $num_signup['shift_count']
 ?>
-<div class="text">
+<div class="text" style="margin-bottom:0px;">
 <table width="100%" border="0" cellspacing="0" cellpadding="3" class="employees">
   <tbody>
     <tr>
@@ -49,9 +71,8 @@ $num_signup = $num_signup['shift_count']
 </table>
 </div>
 <?php }
-//}
+}
 ?>
-<br />
-
+<br /><br /><br /><br /><br />
 </body>
 <?php page_finish(); ?>

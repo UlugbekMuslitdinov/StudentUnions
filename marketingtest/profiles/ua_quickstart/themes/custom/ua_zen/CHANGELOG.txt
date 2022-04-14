@@ -1,0 +1,1218 @@
+7.x-1.0-alpha75, 2022-03-16
+-----------------------------
+
+7.x-1.0-alpha74, 2022-02-16
+-----------------------------
+
+7.x-1.0-alpha73, 2022-01-26
+-----------------------------
+
+7.x-1.0-alpha72, 2022-01-20
+-----------------------------
+
+7.x-1.0-alpha71, 2022-01-19
+-----------------------------
+
+7.x-1.0-alpha70, 2021-07-21
+-----------------------------
+
+7.x-1.0-alpha69, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha68, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha67, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha66, 2021-04-21
+-----------------------------
+- Updated UA Zen with UA Bootstrap v1.0.0-beta.30.
+
+7.x-1.0-alpha65, 2021-01-21
+-----------------------------
+
+7.x-1.0-alpha64, 2020-11-25
+-----------------------------
+
+7.x-1.0-alpha63, 2020-11-18
+-----------------------------
+
+7.x-1.0-alpha62, 2020-11-18
+-----------------------------
+- Merged in UADIGITAL-2247 (pull request #643)
+- UADIGITAL-2221 change role="menu" to role="navigation" per DRC and WCAG 2.0 Level A: 1.3.1 Info and Relationships
+
+7.x-1.0-alpha61, 2020-09-16
+-----------------------------
+
+7.x-1.0-alpha60, 2020-09-11
+-----------------------------
+- Merged in UADIGITAL-2236-update-brand-icon-version-2.0.0
+
+7.x-1.0-alpha59, 2020-08-19
+-----------------------------
+- UADIGITAL-2239 update links in footer and header resources
+- UADIGITAL-2237 update accordion markup to fix JAWS issues
+
+7.x-1.0-alpha58, 2020-06-17
+-----------------------------
+
+7.x-1.0-alpha57, 2020-06-05
+-----------------------------
+
+7.x-1.0-alpha56, 2020-05-20
+-----------------------------
+
+7.x-1.0-alpha55, 2020-04-20
+-----------------------------
+
+7.x-1.0-alpha54, 2020-03-20
+-----------------------------
+
+7.x-1.0-alpha53, 2020-03-06
+-----------------------------
+
+7.x-1.0-alpha52, 2020-02-07
+-----------------------------
+- UADIGITAL-2212 Fixed nav menu resize issue.
+- UADIGITAL-2204 Add ability to use text instead of logo.
+
+7.x-1.0-alpha51, 2019-12-18
+-----------------------------
+- UADIGITAL-2159 Replace demo and default content http with https.
+
+7.x-1.0-alpha50, 2019-12-13
+-----------------------------
+
+7.x-1.0-alpha49, 2019-11-20
+-----------------------------
+
+7.x-1.0-alpha48, 2019-11-05
+-----------------------------
+- Updated UA Zen with UA Bootstrap v1.0.0-beta.26.
+
+7.x-1.0-alpha47, 2019-11-01
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha46 for ua_zen.
+
+7.x-1.0-alpha46, 2019-11-01
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha45 for ua_zen.
+- UADIGITAL-2136 Update Copyright Notice Length Limitation
+
+7.x-1.0-alpha45, 2019-11-01
+-----------------------------
+- UADIGITAL-2136 Update Copyright Notice Length Limitation
+
+7.x-1.0-alpha44, 2019-09-06
+-----------------------------
+- UADIGITAL-1900 Prevent dropdown menu overflow
+- UADIGITAL-2027 schema_metatag contrib module plus some default configurations
+
+7.x-1.0-alpha43, 2019-08-16
+-----------------------------
+- UADIGITAL-2094: Updated UA Zen with UA Bootstrap v1.0.0-beta.25.
+- UADIGITAL-1875 Change styles for nolink breadcrumbs.
+
+7.x-1.0-alpha42, 2019-07-26
+-----------------------------
+- Updated UA Zen with UA Bootstrap v1.0.0-beta.24
+- Merged in UADIGITAL-1971 (pull request #561)
+
+7.x-1.0-alpha41, 2019-06-28
+-----------------------------
+- UADIGITAL-2015 Add University Information Security and Privacy link to sub-footer
+- Updated UA Zen with UA Bootstrap v1.0.0-beta.23.
+
+7.x-1.0-alpha40, 2019-05-22
+-----------------------------
+- UADIGITAL-1895 ua zen remove inlined svg
+
+7.x-1.0-alpha39, 2019-05-08
+-----------------------------
+
+7.x-1.0-alpha38, 2019-05-07
+-----------------------------
+- UADIGITAL-1834 Add Better Exposed Filters as an optional module
+
+7.x-1.0-alpha37, 2019-04-17
+-----------------------------
+- UADIGITAL-1990: Addressed various W3C HTML validation problems.
+
+7.x-1.0-alpha36, 2019-03-20
+-----------------------------
+- UADIGITAL-1833 Update to jQuery 3.1 and set Adminimal to jQuery 1.7
+- Updated UA Zen with UA Bootstrap v1.0.0-beta.22.
+- UADIGITAL-1896: Prepared ua_zen for addition of ua-bootstrap image files.
+
+7.x-1.0-alpha35, 2019-03-15
+-----------------------------
+
+7.x-1.0-alpha34, 2019-03-13
+-----------------------------
+- UADIGITAL-1919: Fixing the display of multi-page webforms on Firefox and IE.
+
+7.x-1.0-alpha33, 2019-02-20
+-----------------------------
+- UADIGITAL-1914: Bump the link contrib module version because of a security issue.
+
+7.x-1.0-alpha32, 2019-02-11
+-----------------------------
+- UADIGITAL-1892 Replace inline mobile search icon for search bean with image file.
+
+7.x-1.0-alpha30, 2019-02-01
+-----------------------------
+- UADIGITAL-1806 Specified initial width for select, email, file, number, and text form controls in content region.
+
+7.x-1.0-alpha29, 2019-01-28
+-----------------------------
+- UADIGITAL-1854: Made ua_zen_table() PHP 7 compatible.
+
+7.x-1.0-alpha28, 2019-01-17
+-----------------------------
+
+7.x-1.0-alpha27, 2019-01-16
+-----------------------------
+
+7.x-1.0-alpha26, 2019-01-11
+-----------------------------
+- UADIGITAL-1845: Updated UA Bootstrap to v1.0.0-beta.19.
+- Adding ua-bootstrap release v1.0.0-beta.18 in preparation for upgrade the Node.js version to 10
+- UADIGITAL-1819: Refactor UA Zen as a base theme, not a Zen subtheme.
+- UADIGITAL-1820 Remove calls to url() in header and footer logo code to allow l() to handle urls.
+
+7.x-1.0-alpha25, 2018-11-15
+-----------------------------
+- UADIGITAL-1808 Change width of second sidebar to match first sidebar.
+- UADIGITAL-1281: Clean up UA Zen documentation and "dead code".
+- UADIGITAL-1793 apply ua-bootstrap progress bar styles to webform progress bars and UADIGITAL-1798 Undefined index: submit in ua_zen_form_alter() notice on forms that have alternate submit functions
+- UADIGITAL-1747 maximum scale of zoom set to 5 to comply with accessibility best practices.
+- UADIGITAL-227 Added button styles to other form actions, basic and advanced search page, and webform add.
+- UADIGITAL-1456 Removed author line from search results
+
+7.x-1.0-alpha24, 2018-11-02
+-----------------------------
+- UADIGITAL-1784 changed "container" class to "container-fluid" inside region--full_width_content_bottom.tpl.php
+- UADIGITAL-1778: Fixed PHP 5.4 regression introduced in UADIGITAL-1752.
+
+7.x-1.0-alpha23, 2018-10-17
+-----------------------------
+
+7.x-1.0-alpha22, 2018-10-11
+-----------------------------
+
+7.x-1.0-alpha21, 2018-10-10
+-----------------------------
+- UADIGITAL-1761 ua bootstrap v1.0.0-beta.17
+- UADIGITAL-1752: Applied consistent markup & styling to all sidebar & embedded menu blocks.
+- UADIGITAL-1726 Override views bootstrap accordion, added aria-expanded false
+- UADIGITAL-1739 add schema.org html markup for Google+ metatag usage.
+
+7.x-1.0-alpha20, 2018-09-21
+-----------------------------
+- UADIGITAL-1731: Improved integration of UA Bootstrap JS in UA Zen & fixed UA Zen code breaking Menu Block UI.
+- UADIGITAL-1721: Added uaqs_second_level theme wrapper function to all sidebar menu blocks.
+- UADIGITAL-1720 UA Bootstrap 1.0.0-beta.16
+
+7.x-1.0-alpha19, 2018-08-29
+-----------------------------
+- UADIGITAL-1713 pass through scope arguments.
+- UADIGITAL-1712 bugfix: minor syntax fixes, hopefully fixes crazyegg.
+- Preparing to tag 7.x-1.0-alpha17 for ua_zen.
+- UADIGITAL-1681: Fix margin on footer.
+- UADIGITAL-1676 Margin bug with webforms
+- Preparing to tag 7.x-1.0-alpha16 for ua_zen.
+- UADIGITAL-1675: UA Bootstrap v1.0.0-beta.15
+- UADIGITAL-1577-2 Whitespace Above Footer.
+- UADIGITAL-1672 Remove Overview Link on Resources in Overlay Menu
+- UADIGITAL-1671 Resources Menu Links Not Opening Bug.
+- UADIGITAL-1655-change-all-exported-menu-links-pointing at www.arizona.edu
+- UADIGITAL-1610 hide back to top button until user has scrolled down page a little bit
+- UADIGITAL-1660 Dropdown Button Bug
+- Preparing to tag 7.x-1.0-alpha15 for ua_zen.
+- UADIGITAL-1656 ua zen theme v1.0.0-beta.14
+- UADIGITAL-1540 Add full width media row paragraph type.
+- UADIGITAL-1636 Fix space bar opening mobile menu issue
+- Preparing to tag 7.x-1.0-alpha14 for ua_zen.
+- UADIGITAL-1619: Updated UA Zen with UA Bootstrap 1.0.0-beta.13.
+- UADIGITAL-1552 - <no link> navigation can result in two dropdowns at once
+- UADIGITAL-1535: Adding current stickyfooter code to legacy IE specific stylesheets.
+- UADIGITAL-1593 - Screen reader announces multiple article tags on pages
+- Preparing to tag 7.x-1.0-alpha13 for ua_zen.
+- Preparing to tag 7.x-1.0-alpha12 for ua_zen.
+- UADIGITAL-1586 hopefully fixes the form-control class not being added to search forms by updating ua_zen_pre_render with latest bootstrap contrib code.
+- UADIGITAL-1585 reduce horizontal padding between primary nav items between 992 px and 1199px
+- UADIGITAL-1492 Add ARIA Landmark names to all regions
+- UADIGITAL-1538-cta-bean-my-4 remove unneeded mb-4 and mt-4 from blocks
+- Preparing to tag 7.x-1.0-alpha11 for ua_zen.
+- UADIGITAL-1463-title-alignment add margin top to account for breadcrumb-less designs
+- UADIGITAL-1512: Remove sidebar nav depth restriction
+- Updated UA Zen with ua-bootstrap-v1.0.0-beta.12.
+- UADIGITAL-1473: Fixed UA Zen primary logo fallback for footer logo.
+- UADIGITAL-1463 page title vertical alignment
+- Preparing to tag 7.x-1.0-alpha10 for ua_zen.
+- ua-bootstrap-v1.0.0-beta.11
+- UADIGITAL-1475 Added a bottom margin to second level navigation
+- UADIGITAL-1186 Back to top link for long flexible pages.
+- UADIGITAL-1432 make title and alt text for the main logo customizable and clean up some minor settings that don't work anyway.
+- Updating UA Bootstrap to v1.0.0-beta.10.
+- UADIGITAL-1191 Select menu bean block and demo content.
+- UADIGITAL-1413 add overflow-hidden class as soon as the menu is expanded and remove it as soon as it is collapsed.
+- UADIGITAL-1370 Rebuild theme registry disabled by default
+- UADIGITAL-1360 Row buffer for footer logo
+- UADIGITAL-1341 remove external link icon from footer logo
+- UADIGITAL-1311 Allow option to disable wordmark logo
+- UADIGITAL-1192 Add ua-bootstrap classes to forms and webforms, institutional header search and resources menu button.
+- Adding ua-bootstrap v1.0.0-beta.9 to UA Zen
+- UADIGITAL-1308 a non-designer's attempt to improve person pages
+- UADIGITAL-1284 Paragraph view item for alphabetical list w/ nav & local search
+- UA Bootstrap v1.0.0 beta.8 -> UA Zen
+- UADIGITAL-1286 replace placeholder logo with correct example logos for header & footer respectively
+- UADIGITAL-1283 Update UA Zen with latest tagged version of ua bootstrap v1.0.0-beta.7
+- UADIGITAL-1270 Removed mouseenter in script which was causing bugs when hovering over menu items
+- UADIGITAL-1188 Improve uaquickstart menu to match new www.arizona.edu
+- Preparing to tag 7.x-1.0-alpha9 for ua_zen.
+- UADIGITAL-1216 Tag a new release of bootstrap for colors.
+- UADIGITAL-1193 Adding additional regions for future navigation
+- Preparing to tag 7.x-1.0-alpha8 for ua_zen.
+- UADIGITAL-1226 Changed the CDN image link to the correct one.
+- UADIGITAL-1227 Remove External link triangle on UA Wordmark logo
+- UADIGITAL-1226 Added CDN UA Wordmark image to UA Zen
+- UADIGITAL-1221 Update ua_zen with ua-bootstrap v1.0.0-beta.5
+- Preparing to tag 7.x-1.0-alpha7 for ua_zen.
+- UADIGITAL-1137 Added UA Zen css for removing duplicate menu link when it is a no-link in mobile view
+- UADIGITAL-1147: Added theme settings for footer logo alt and title text.
+- UADIGITAL-1126 move minified setting out of style settings fieldset.
+- UADIGITAL-1126 Merging in ravi's changes
+- Merge branch 'UADIGITAL-1052' of bitbucket.org:ua_drupal/ua_quickstart into UADIGITAL-1052
+- UADIGITAL-1052 Rearranging theme settings form and separating the brand icons selection from brand-icon-class selection
+- UADIGITAL-1126 prepare ua_quickstart for external links module.
+- Merge branch '7.x-1.x' into UADIGITAL-1052
+- UADIGITAL-1117 remove all .gitignore files except the main one
+- UADIGITAL-758 and UADIGITAL-1099
+- UADIGITAL-1052 Added external-links class to html element
+- UADIGITAL-1052 Added external-links class to html element
+- UADIGITAL-1052 Add theme settings to ua_zen for sticky footer, ua-brand-icons class, and external-links class
+- UADIGITAL-1064: Improve block heading styling by adding text-size-h3 class and strong tags.
+- UADIGITAL-1052 Added external-links class to html element
+- UADIGITAL-1094 Update ua_zen with ua-bootstrap v1.0.0-beta.3 css files
+- UADIGITAL-1094 Update ua_zen with ua-bootstrap v1.0.0-beta.3
+- Remove the obsolete Bitbucket Piplines configurations from the subtrees.
+- UADIGITAL-1066: Ensuring Drupal classes are injected into footer region.
+- Merged in UADIGITAL-1013 (pull request #127)
+- Back to dev. [skip ci]
+- Preparing to tag 7.x-1.0-alpha6. [skip ci]
+- Merged in trackleft/ua_zen/UADIGITAL-785-ensure-ua-zen-references-t (pull request #126)
+- UADIGITAL-785 Removing protocol agnostic urls in favor of https
+- UADIGITAL-898 add pipelines config
+- Made the sentence bold.
+- Updated text to be more direct and less of a 'recommendation'
+- UADIGITAL-832: Updated README.md to reflect recommendation of using Zen 5.x.
+- UADIGITAL-572 removing exclamation point glyphicon from alerts in order to fix errors in console
+- UADIGITAL-780 tag ua-bootstrap-1.0.0beta1
+- UADIGITAL-690
+- UADIGITAL-690 update cdn link to use http://cdn.uadigital.arizona.edu/lib/ua-bootstrap/css/
+- make the footer logo a configurable link
+- Added reference to icons css using drupal_add_css() in the preprocess_html function, but the icons themselves are not showing yet...
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha5.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha4.
+- UADIGITAL-682-update-uabootstrap-referen
+- UADIGITAL-682-update-uabootstrap-referen alpha7
+- UADIGITAL-485: Adding style tweaks suggested by Frankie to mobile menu.
+- UADIGITAL-485: Adding note about module dependencies for Superfish main menu style option.
+- UADIGITAL-485: Fixing style of 'active' dropdown links.
+- UADIGITAL-485: Adding theme setting for main menu style.
+- UADIGITAL-485: Adding (back) Superfish version of primary nav along with updated superfish styles.
+- Merged 7.x-1.x into UAMS-217-never-settle-site-demo-content
+- Merged in mmunro-ltrr/ua_zen/UADIGITAL-66 (pull request #111)
+- removing uaqs_navigation_global_footer specific settings
+- adding defaults for breakpoints module
+- Adding conditions for displaying icons and cleaning up footer region grid.
+- Make the UA Bootstrap CSS location visible to other modules.
+- removing footer styles
+- UAMS-170: Adding bootstrap classes to webform components.
+- adding upstream changes
+- changed variable name and added defaults to info file.
+- Merged 7.x-1.x into UADIGITAL-591-pagination-from-bootstrap-
+- Merged 7.x-1.x into UADIGITAL-528-investigate-contrib-bootst
+- changing variable name and adding default settings to info file
+- Merged 7.x-1.x into UADIGITAL-591-pagination-from-bootstrap-
+- Merged 7.x-1.x into UADIGITAL-528-investigate-contrib-bootst
+- UADIGITAL-603: Updating UA Bootstrap to version 1.0.0-alpha6.
+- replaced the copy of the CSS and  minified CSS
+- UADIGITAL-603: Reverting incomplete UA Bootstrap alpha6 update (for now).
+- UADIGITAL-592: Adding theme setting to supress page title on front page.
+- alpha 6
+- alpha6
+- UADIGITAL-127: Documenting preferred CSS compilation procedure, recompiling styles.css, updating Gemfile.lock.
+- adding pagers from http://uadigital.arizona.edu/ua-bootstrap/components.html#pagination
+- Merged 7.x-1.x into UADIGITAL-528-investigate-contrib-bootst
+- adding ua_bootstrap table settings
+- UADIGITAL-561: Better sidebar classes when only second sidebar used
+- adding more logic to suppress errors
+- adding classes
+- UADIGITAL-547: Restoring default theme function for menu_block links.
+- Merged in trackleft/ua_zen-alert/alerts-should-match-ua-bootstrap (pull request #94)
+- left off an s
+- removed labels
+- making it more clear what the messages colors mean
+- removing glyphicon for now.
+- perfecting alert for screen reader
+- removing drupal_set_message tests
+- adding some aria info
+- resolve merge conflict
+- resolving merge conflict
+- resolving merge conflict
+- moving ua_zen_get_theme_info into common.inc
+- adding ability to exclude core css
+- removing page-row-padding-top
+- Merged in trackleft/ua_zen-release/UADIGITAL-423-update-regions-to-allow-mo (pull request #96)
+- Merged 7.x-1.x into UADIGITAL-497
+- Adding the local copy of alpha4
+- Update ua-bootstrap
+- remove full width content top
+- ls
+- content top is in it's own row
+- UADIGITAL-423
+- move all lines left
+- Remove uams prefix
+- removing styles
+- Matching ua-bootstrap markup for alerts
+- UADIGITAL-526
+- Merged in trackleft/ua_zen-uaqs/UADIGITAL-521-menu-references-ua_-not-ua (pull request #91)
+- UADIGITAL-521 secondary menu theme sync
+- UADIGITAL-520-conflicts-with-image-class wrap function in module exists
+- UADIGITAL-359: Allow primary navigation to be rendered without Menu Block module.
+- UADIGITAL-474: Reverting containter-fluid class for navbar.
+- Merged in UADIGITAL-360 (pull request #86)
+- UADIGITAL-360: Adding toggle/ARIA classes to navbar menu links.  Should also fix UADIGITAL-468.
+- removed .collapse that was causing to break
+- changed mobile nav to resemble bootstrap mobile nav
+- fixed conditionals.
+- Merged in trackleft/ua_zen/UADIGITAL-423-update-regions-to-allow-mo (pull request #82)
+- fixing code comments
+- renamed sidebars to comply with ua quickstart
+- Merged in trackleft/ua_zen-1/trackleft/commoninc-edited-online-with-bitbucket-1450907495882 (pull request #80)
+- Merged in trackleft/ua_zen/UADIGITAL-423-update-regions-to-allow-mo (pull request #79)
+- tagging ua-bootstrap alpha2 release
+- common.inc edited online with Bitbucket
+- undoing unintended consequences to quickstart ua_zen
+- moved stray row div
+- fixed page too big
+- Still some outstanding page width issues in the footer cause scrollbar to appear on the bottom
+- fixed regions
+- adding full width region templates
+- adding regionclass default settings
+- adding regions to info file
+- uams regions to ua_zen
+- derp
+- adding mhume's suggestion of logic
+- moving help region above featured content.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha3.
+- UADIGITAL-358: Tweaking jQuery warning message.
+- UADIGITAL-358: Fleshing out README notes about jQuery dependency further.
+- UADIGITAL-358: Moving jQuery warning to theme settings page.
+- README.md edited online with Bitbucket
+- README.md edited online with Bitbucket
+- template.php edited online with Bitbucket
+- UADIGITAL-358
+- UADIGITAL-358
+- UADIGITAL-125: Changing theme UA Bootstrap CDN version setting storage to be non version-specifc.
+- UADIGITAL-125: Replacing all individual hard-coded version references with one constant.
+- UADIGITAL-125: Adding additional theme variable to simplify config interface for UA Bootstrap settings.
+- removed unused if statement
+- removed isset
+- https://bitbucket.org/ua_drupal/ua_zen/pull-requests/72/remove-theme_get_info-function/diff#comment-11035298
+- https://bitbucket.org/ua_drupal/ua_zen/pull-requests/72/adding-features-per-parsonsj/diff#comment-11035280
+- remove excludes
+- add defaults
+- added comments and changed variable names.
+- added back styles.css and removed override component from cdn section
+- removed extra line
+- initial commit adding bitbucket CDN as theme setting
+- initial commit of theme settings.
+- UADIGITAL-320: Using hosted ua-bootstrap-latest.min.css by default again.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha2.
+- fixed file path typo
+- adding local ua-bootstrap css until more advanced version is available with the new CDN
+- UADIGITAL-258: Merge branch 'UADIGITAL-203-test-ua-bootstrap-v2' into UADIGITAL-258.
+- restoring header_ua
+- merged UADIGITAL-211-ua-banner-should-match-new
+- merge UADIGITAL-212-main-navigation-should-use
+- merged UADIGITAL-229-update-copyright-statement
+- realigned comment asterisks
+- changed file
+- Removed problematic jquery reference in html.tpl.php - related to https://jira.arizona.edu/browse/UADIGITAL-285
+- UADIGITAL-229: Updating copyright statement (again).
+- Merged in trackleft/ua_zen/UADIGITAL-229-update-copyright-statement (pull request #65)
+- adding closing paragraph tag
+- updated in template.php
+- Update without copyright notice
+- UADIGITAL-229
+- fix dropdown toggle issue?
+- add uppercase class to link
+- padding in sub footer
+- removed row from navbar
+- text uppercase on navbar
+- sticky footer
+- merge
+- sticky footer
+- sticky footer
+- removed row class
+- merge
+- merge
+- merge
+- merge
+- merge
+- merge
+- prep for QA
+- adding bootstrap js
+- put nav in container
+- removed superflous styles
+- wrapped in nav classes
+- removed conflicting style
+- this targets the second level menu in the menu block
+- replaced font variable
+- UADIGITAL-214
+- removed remote add css
+- removed remote add css
+- reverted to old stylesheet
+- fix contextual link issue
+- final nav classes to ul element
+- formatting
+- removed all styles as bootstrap handles it.
+- matches both new and old ua-bootstrap
+- this all works
+- removed element-invisible class and replaced with sr-only
+- add bootstrap classes to menu blocks
+- UADIGITAL-209 add bootstrap classes to menu local task
+- Add the one liner to help people not get confused about subtheming and logos in the README.
+- Move the example code blocks out of the ordered list so that we give Bitbucket's Markdown parser absolutely no excuse to parse the code as a series of paragraphs in a list item.
+- Add extra line spacing so maybe Bitbucket's Markdown parser won't thing that the code to add to the .info file is part of a list item.
+- Remove existing README file and add a new one with instructions on subtheming ua_zen
+- UADIGITAL-180: Disabling home breadcrumb by default and restroing header_ua ID.
+- add img-responsive class to images
+- updated sass
+- fix accessibility link
+- protocol neutral
+- changing tagged version of ua-bootstrap
+- changing tagged version of ua-bootstrap
+- removed locally hosted bootstrap
+- added bitbucket hosted css file back
+- Adding sr-only, remove remote redbar banner
+- cleanup
+- fixed
+- bootstrap breadcrumbs
+- UADIGITAL-153: Disabling content title in breadcrumbs by default.
+- Remove explicit version information.
+- Add a changelog so there is always something to modify for a release.
+- Back to dev.
+- UADIGITAL-98: Preparing to tag 7.x-1.0-alpha1.
+- Fixed the text alignment in the footer menus.
+- compiled output to be compressed css (compass compile -e production --force --output-style=compressed)
+- Added in missing overrides from zen-catstrap for the contextual links.
+- Found some stray footer sass and added to footer file
+- Added in missing footer and sidebar menu styles
+- fix merge conflict
+- renaming took time
+- compiled
+- Rename ua-digital to uadigital
+- merged
+- merged
+- search sass
+- catstrap-zen to ua-bootstrap
+- Last scss file in theme to have px fallbacks to rems put in place.
+- Adding in old compiled css file to bypass merge conflict. Will pull back down and recompile then re-commit.
+- Converted measurements in _uazen-superfish.scss file to rems with pixel fallbacks.
+- Converted measurements in _uazen-main-nav.scss file to rems with pixel fallbacks.
+- Converted measurements in _misc-rtl.scss file to rems with pixel fallbacks.
+- Converted measurements in _misc.scss file to rems with pixel fallbacks.
+- Converted measurements in Catstrap-zen scss file to rems with pixel fallbacks.
+- Attempting to resolve merge conflict with styles.css with process from rtcamp.com/tutorials/git/git-resolve-merge-conflicts
+- UADIGITAL-118: Initial Drupal coding standards fixes identified by Coder module and misc typo and other small fixes.
+- merge
+- removed bootstrap grid from ua_zen moved to ua-bootstrap UADIGITAL-116
+- removing unneeded import refs
+- first pass
+- clearfix
+- Styled to accommodate four column menus and made menus stack from the right on desktop.
+- Added px fallbacks to my rem measurements in _misc.scss
+- Added px fallbacks to all rem measurements in catstrap-zen.scss
+- Fixed the container width in the 12 column bootstrap scss - site was only getting as wide as 960px
+- Added an option to have column menus in the footer by placing the class 'column-menu' on the block. Equal border height is being controlled by a min-height of 16em - couldn't find an elegant solution that didn't touch the sub-footer border. Also centered the logo and copyright on smaller screens.
+- Can't get the equal height borders to display without hitting the footer's bottom border and looking weird - will try again next week.
+- pulled in up-to-date css file, merged changes from main, then recompiled to avoid merge conflicts.
+- Added previous styles.css to resolve merge conflict within own repo.
+- Merge with main branch
+- consitent classes
+- pull classes
+- desktop block styles for menus underway
+- merge
+- Fixed contextual links not only for footer but also mission statement area.
+- Fixed the contextual links persistent display issue by setting the initial value to display:none.
+- removed front page template since it doesn't work anyway.
+- fixed clearfix
+- with grid
+- without grid
+- UADIGITAL-97
+- Adding compiled css with Compass version specified in GEMFILE UADIGITAL-89
+- UADIGITAL-89 fix layout to use any version of compass
+- removed template as discussed in UADIGITAL-58
+- added helper classes
+- font-smoothing
+- removed flexslider.scss
+- forgot to add in the catstrap changes for the nav styles
+- Attempt to resolve previous merge conflicts from part 1
+- Merged in macaulay/ua-zen/default-nav (pull request #32)
+- Added previously compiled css to avoid the merge conflicts - will be resoved with superfish styles in second pull request
+- put old superfish menu styles back to avoid merge conflict - hope it works
+- Reincorporated styles for default nav
+- Enable Breadcrumb Title to be appended by default
+- Remove even more excess padding from sub-menu links
+- Removed padding from sub-menu links in superfish
+- Merged in macaulay/ua-zen/news-cleanup (pull request #27)
+- Merged in mjharmon-ua/ua_zen (pull request #19)
+- Removed homepage news styles from UA Zen main styles
+- Center search in responsive view
+- Center logo on responsive view
+- Knock down font-size for sub-links
+- Add styling for superfish responsive menu
+- Merged in macaulay/ua-zen/side-menus-new (pull request #18)
+- Adjust menu link sizes at different breakpoints
+- Remove the padding from last list element in superfish main menu
+- Ran compass watch and something compiled...
+- Merged ua_drupal/ua_zen into 7.x-1.x
+- Made the copyright notice a theme variable. Cleaned up the handling of the variable at the template level.
+- Updated theme variable handling to bring it in line with Drupal coding, validation and theming doctrine. Pushed footer logo selection logic back to template.php. Simplified region--footer.tpl.php so that it only need display and check one variable instead of two.
+- New side menu styles - other branch was having inexplicable merge conflicts.
+- Merge branch '7.x-1.x' of https://bitbucket.org/macaulay/ua-zen into views-sass
+- Better styling for default view pagers - added new sass file for views-specific component styling
+- Altered styles in footer to target only ul.menu instead of all ul elements--still needs to be changed in catstrap
+- Made date piece in sub footer output via php (forgot to implement earlier)
+- Re-structured logic in footer template to only include one container element if either the logo or content are active.
+- Added logic to have main footer area print only if the logo turned on in the theme settings or there is content to display
+- Forced footer to render with template function theme_preprocess_page. Added styling to footer logo to not exceed 100px in height or 400px in width. Also removed old ua_footer regions from template.php.
+- Seeing if removing 'render' from template forces region to print
+- Added background color to the HTML element so that the footer doesn't look cut off on shorter pages on large screens
+- Added border to bottom of footer instead of top of sub footer
+- Added top border and padding to visally set sub footer apart and changed the font size to be slightly smaller.
+- Forced sub footer to be rendered in page template and added a copyright paragraph with an automatically updating year.
+- Added sub footer region template file and added region to page templates. Had to break the #footer_site div out into the main page template in order to nest the sub footer into the main footer area. Still need to force the sub footer region to render even if no blocks are specified (for global footer copyright)
+- Added sub footer region to info file... but should page bottom be removed and the UA Main Footer and UA Hidden Footer?
+- Added margin to logo for smaller screens
+- Added simple styling to make the footer logo float to the left of the content when on large screen
+- Added footer logo styling to make the logo float to the right of the content - sass isn't compiling in my local environment though... but changes have been made in the sass file.
+- Merge branch '7.x-1.x' into footer-logo to get site name and slogan display changes
+- page--front.tpl.php edited - removed site name and slogan
+- page.tpl.php edited - removed site name and slogan.
+- Committed @mmunro-ltrr patch to fix the non object property problem. It works!
+- Attempted to get rid of error message - no dice. Not sure what logic I have to wrap the variable definitions in to supress the warning... don't know enough php.
+- Made the footer logo path into an alias instead of an absolute path (more elegant way to do this?). Added logic in footer template  to display the site's main logo in case a secondary logo isn't uploaded. Unfortunately still experiencing a 'non-object' error when there's no footer image specified.
+-  not able to be referenced for logo alt text - not really needed anyway, empty alt attribute will allow screen readers to skip without incident
+- Made path into an image element in the tpl.php. Styling for positioning still needed
+- Removed debugging output with file_create_url to get the file's correct path.
+- Apparently, cron will delete any files uploaded in theme settings unless their status is set to permanent (by default the status is temporary) - not a minor task in themes to get a file to persist: http://ghosty.co.uk/2014/03/managed-file-upload-in-drupal-theme-settings - getting there... going to see if the file sticks.
+- Footer region template can see the file ID of the uploaded image, but the file path isn't getting through... only showing root URL of website.
+- Clarified source of code for footer logo variable in template.php.
+- Attempt to make the footer logo's file available to tpl.php - so far only getting undefined error.
+- Merge branch '7.x-1.x' of https://bitbucket.org/uabrandingdigitalassets/ua-zen into footer-logo
+- Added footer image upload field in the Theme Settings area - file not being called/placed by the template yet.
+- Force an update of the derived CSS files after merging the home_modules imprivements.
+- Merge the latest improvements from @jgthuerb with the Compass version fix.
+- Regenerate the CSS files affected by the change in Compass version.
+- Replace the Gemfile with the canonical one from the Zen 7.x-5.x-dev STARTERKIT.
+- Add front page template, remove database snapshot which is unneeded because it didn't work anyway
+- Home news styles
+- Flexslider margin fixes
+- Initial Mission Statement styles
+- Additional commenting and fixes
+- News Page image and responsive styles
+- Initial News Page styles
+- Add responsive breakpoints at 75em, 60em, and 48em
+- Add responsive styles for flexslider
+- Add flex slider next/prev images
+- Remove font icons, font folder, and remove fonts from CSS (Mistake)
+- Create fonts folder inside root subtheme folder and add flexslider font icons inside
+- Merged in gemfile (pull request #3)
+- Move Gemfile to the right location and update sass to 3.4.13
+- Fix drupal styling for the search
+- Styling for flexslider, superfish, and responsive menus.  Templates for flexslider and page
+- Add gemfile to standardize versions of compass and sass
+- Added color to utility links and positioned header elements
+- Made Search icon into an svg file instead of png for better rendering
+- Made the secondary menu into the utility links, unwrapped utility links in nav element and gave to main nav, and removed empty main nav div
+- Removed text since it now uses JS again
+- Made onBlur text translatable
+- Added onfocus and onblur effect to HTML5 placeholder text
+- Changed the search placeholder text back to HTML5 attribute
+- Accidentally cloned in wrong directory...
+- Trying to establish connection with new server
+- Altered the search function to be specifically for search form with theme_form_search_block_form_alter and changed to javascript because the HTML5 version doesn't get rid of the placeholder text until the user starts typing
+- Added placeholder text for idle search box field
+- Made UA Header into it's own region template file to keep the page.tpl tidy and be able to also put the UA footers (a lot of code) into their own templates eventually - idea/code from Chris Green
+- Accidentally left 'ua_omega' in the html preprocess function from previous commit
+- Added default logo as UA Department Name placeholder logo. Also added logic to the page template to not show the site name and slogan if the logo is checked in theme settings.
+- Merged templatefunctions into master
+- Remove sass-cache files
+- Add .gitignore with copy/paste from catstrap gitignore
+- Additional styles for superfish including responsive behavior
+- Add superfish styling
+- Added drupal_add_css function to call external catstrap css. Commented out for now - use when catstrap file is public.
+- Merge branch 'master' of bitbucket.org:uabrandingdigitalassets/ua-zen
+- Move menu above content area and add #main_nav id
+- Simple non-destructive commit to test connection with repo
+- Added database snapshot with content for development inside /database_snapshot/uazen.sql.zip
+- Initial commit for UA Zen theme.
+7.x-1.0-alpha17, 2018-07-30
+-----------------------------
+- UADIGITAL-1681: Fix margin on footer.
+- UADIGITAL-1676 Margin bug with webforms
+
+7.x-1.0-alpha16, 2018-07-20
+-----------------------------
+- UADIGITAL-1675: UA Bootstrap v1.0.0-beta.15
+- UADIGITAL-1577-2 Whitespace Above Footer.
+- UADIGITAL-1672 Remove Overview Link on Resources in Overlay Menu
+- UADIGITAL-1671 Resources Menu Links Not Opening Bug.
+- UADIGITAL-1655-change-all-exported-menu-links-pointing at www.arizona.edu
+- UADIGITAL-1610 hide back to top button until user has scrolled down page a little bit
+- UADIGITAL-1660 Dropdown Button Bug
+
+7.x-1.0-alpha15, 2018-06-19
+-----------------------------
+- UADIGITAL-1656 ua zen theme v1.0.0-beta.14
+- UADIGITAL-1540 Add full width media row paragraph type.
+- UADIGITAL-1636 Fix space bar opening mobile menu issue
+
+7.x-1.0-alpha14, 2018-05-18
+-----------------------------
+- UADIGITAL-1619: Updated UA Zen with UA Bootstrap 1.0.0-beta.13.
+- UADIGITAL-1552 - <no link> navigation can result in two dropdowns at once
+- UADIGITAL-1535: Adding current stickyfooter code to legacy IE specific stylesheets.
+- UADIGITAL-1593 - Screen reader announces multiple article tags on pages
+
+7.x-1.0-alpha13, 2018-04-25
+-----------------------------
+
+7.x-1.0-alpha12, 2018-04-20
+-----------------------------
+- UADIGITAL-1586 hopefully fixes the form-control class not being added to search forms by updating ua_zen_pre_render with latest bootstrap contrib code.
+- UADIGITAL-1585 reduce horizontal padding between primary nav items between 992 px and 1199px
+- UADIGITAL-1492 Add ARIA Landmark names to all regions
+- UADIGITAL-1538-cta-bean-my-4 remove unneeded mb-4 and mt-4 from blocks
+
+7.x-1.0-alpha11, 2018-03-30
+-----------------------------
+- UADIGITAL-1463-title-alignment add margin top to account for breadcrumb-less designs
+- UADIGITAL-1512: Remove sidebar nav depth restriction
+- Updated UA Zen with ua-bootstrap-v1.0.0-beta.12.
+- UADIGITAL-1473: Fixed UA Zen primary logo fallback for footer logo.
+- UADIGITAL-1463 page title vertical alignment
+
+7.x-1.0-alpha10, 2018-03-09
+-----------------------------
+- ua-bootstrap-v1.0.0-beta.11
+- UADIGITAL-1475 Added a bottom margin to second level navigation
+- UADIGITAL-1186 Back to top link for long flexible pages.
+- UADIGITAL-1432 make title and alt text for the main logo customizable and clean up some minor settings that don't work anyway.
+- Updating UA Bootstrap to v1.0.0-beta.10.
+- UADIGITAL-1191 Select menu bean block and demo content.
+- UADIGITAL-1413 add overflow-hidden class as soon as the menu is expanded and remove it as soon as it is collapsed.
+- UADIGITAL-1370 Rebuild theme registry disabled by default
+- UADIGITAL-1360 Row buffer for footer logo
+- UADIGITAL-1341 remove external link icon from footer logo
+- UADIGITAL-1311 Allow option to disable wordmark logo
+- UADIGITAL-1192 Add ua-bootstrap classes to forms and webforms, institutional header search and resources menu button.
+- Adding ua-bootstrap v1.0.0-beta.9 to UA Zen
+- UADIGITAL-1308 a non-designer's attempt to improve person pages
+- UADIGITAL-1284 Paragraph view item for alphabetical list w/ nav & local search
+- UA Bootstrap v1.0.0 beta.8 -> UA Zen
+- UADIGITAL-1286 replace placeholder logo with correct example logos for header & footer respectively
+- UADIGITAL-1283 Update UA Zen with latest tagged version of ua bootstrap v1.0.0-beta.7
+- UADIGITAL-1270 Removed mouseenter in script which was causing bugs when hovering over menu items
+- UADIGITAL-1188 Improve uaquickstart menu to match new www.arizona.edu
+
+7.x-1.0-alpha9, 2017-09-15
+-----------------------------
+- UADIGITAL-1216 Tag a new release of bootstrap for colors.
+- UADIGITAL-1193 Adding additional regions for future navigation
+
+7.x-1.0-alpha8, 2017-09-15
+-----------------------------
+- UADIGITAL-1226 Changed the CDN image link to the correct one.
+- UADIGITAL-1227 Remove External link triangle on UA Wordmark logo
+- UADIGITAL-1226 Added CDN UA Wordmark image to UA Zen
+- UADIGITAL-1221 Update ua_zen with ua-bootstrap v1.0.0-beta.5
+
+7.x-1.0-alpha7, 2017-08-17
+-----------------------------
+- UADIGITAL-1137 Added UA Zen css for removing duplicate menu link when it is a no-link in mobile view
+- UADIGITAL-1147: Added theme settings for footer logo alt and title text.
+- UADIGITAL-1126 move minified setting out of style settings fieldset.
+- UADIGITAL-1126 Merging in ravi's changes
+- Merge branch 'UADIGITAL-1052' of bitbucket.org:ua_drupal/ua_quickstart into UADIGITAL-1052
+- UADIGITAL-1052 Rearranging theme settings form and separating the brand icons selection from brand-icon-class selection
+- UADIGITAL-1126 prepare ua_quickstart for external links module.
+- Merge branch '7.x-1.x' into UADIGITAL-1052
+- UADIGITAL-1117 remove all .gitignore files except the main one
+- UADIGITAL-758 and UADIGITAL-1099
+- UADIGITAL-1052 Added external-links class to html element
+- UADIGITAL-1052 Added external-links class to html element
+- UADIGITAL-1052 Add theme settings to ua_zen for sticky footer, ua-brand-icons class, and external-links class
+- UADIGITAL-1064: Improve block heading styling by adding text-size-h3 class and strong tags.
+- UADIGITAL-1052 Added external-links class to html element
+- UADIGITAL-1094 Update ua_zen with ua-bootstrap v1.0.0-beta.3 css files
+- UADIGITAL-1094 Update ua_zen with ua-bootstrap v1.0.0-beta.3
+- Remove the obsolete Bitbucket Piplines configurations from the subtrees.
+- UADIGITAL-1066: Ensuring Drupal classes are injected into footer region.
+- Merged in UADIGITAL-1013 (pull request #127)
+- Back to dev. [skip ci]
+
+7.x-1.0-alpha6, 2017-01-06
+------------------------------
+- Merged in trackleft/ua_zen/UADIGITAL-785-ensure-ua-zen-references-t (pull request #126).
+- UADIGITAL-785 Removing protocol agnostic urls in favor of https.
+- Merged in trackleft/ua_zen/UADIGITAL-898-add-pipelines-config (pull request #125).
+- UADIGITAL-898 add pipelines config.
+- Merged ua_drupal/ua_zen into 7.x-1.x.
+- Merged in UADIGITAL-832 (pull request #124).
+- Made the sentence bold.
+- Updated text to be more direct and less of a 'recommendation'.
+- UADIGITAL-832: Updated README.md to reflect recommendation of using Zen 5.x.
+- Merged in trackleft/ua_zen/UADIGITAL-572-remove-glyphicons-from-ua- (pull request #123).
+- UADIGITAL-572 removing exclamation point glyphicon from alerts in order to fix errors in console.
+- Merged in trackleft/ua_zen/UADIGITAL-780-tag-ua-bootstrap100-beta1 (pull request #121).
+- UADIGITAL-780 tag ua-bootstrap-1.0.0beta1.
+- Merged in trackleft/ua_zen/UADIGITAL-690 (pull request #119).
+- UADIGITAL-690.
+- UADIGITAL-690 update cdn link to use http://cdn.uadigital.arizona.edu/lib/ua-bootstrap/css/.
+- UAMS-318: Make the footer logo a configurable link.
+- Make the footer logo a configurable link.
+- Merged in sasg/ua_zen/uadigital-698 (pull request #116).
+- Added reference to icons css using drupal_add_css() in the preprocess_html function, but the icons themselves are not showing yet...
+- Back to dev.
+
+7.x-1.0-alpha5, 2016-05-02
+------------------------------
+- Back to dev.
+
+7.x-1.0-alpha4, 2016-04-29
+------------------------------
+- Merged in barrettbaffert/ua_zen/UADIGITAL-682-update-uabootstrap-referen (pull request #115).
+- UADIGITAL-682-update-uabootstrap-referen.
+- UADIGITAL-682-update-uabootstrap-referen alpha7.
+- Merged ua_drupal/ua_zen into 7.x-1.x.
+- Merged in UADIGITAL-485 (pull request #114).
+- UADIGITAL-485: Adding style tweaks suggested by Frankie to mobile menu.
+- UADIGITAL-485: Adding note about module dependencies for Superfish main menu style option.
+- UADIGITAL-485: Fixing style of 'active' dropdown links.
+- UADIGITAL-485: Adding theme setting for main menu style.
+- UADIGITAL-485: Adding (back) Superfish version of primary nav along with updated superfish styles.
+- UAMS-217: Cleaning up footer styles and markup.
+- Merged 7.x-1.x into UAMS-217-never-settle-site-demo-content.
+- Merged in mmunro-ltrr/ua_zen/UADIGITAL-66 (pull request #111).
+- UADIGITAL-667: Adding defaults for breakpoints module.
+- Removing uaqs_navigation_global_footer specific settings.
+- Adding defaults for breakpoints module.
+- Adding conditions for displaying icons and cleaning up footer region grid.
+- Make the UA Bootstrap CSS location visible to other modules.
+- Removing footer styles.
+- Merged in UADIGITAL-651 (pull request #109).
+- UAMS-170: Adding bootstrap classes to webform components.
+- UADIGITAL-591: Adding bootstrap pager styling and settings.
+- Adding upstream changes.
+- UADIGITAL-528: Adding bootstrap table styling and settings.
+- Changed variable name and added defaults to info file.
+- Merged 7.x-1.x into UADIGITAL-591-pagination-from-bootstrap-.
+- Merged 7.x-1.x into UADIGITAL-528-investigate-contrib-bootst.
+- Changing variable name and adding default settings to info file.
+- UADIGITAL-603: Updating UA Bootstrap to version 1.0.0-alpha6.
+- Replaced the copy of the CSS and  minified CSS.
+- UADIGITAL-603: Reverting incomplete UA Bootstrap alpha6 update (for now).
+- UADIGITAL-592: Adding theme setting to supress page title on front page.
+- Alpha 6.
+- Alpha6.
+- Merged in UADIGITAL-127 (pull request #104).
+- UADIGITAL-127: Documenting preferred CSS compilation procedure, recompiling styles.css, updating Gemfile.lock.
+- Adding pagers from http://uadigital.arizona.edu/ua-bootstrap/components.html#pagination.
+- Adding ua_bootstrap table settings.
+- UADIGITAL-561: Better sidebar classes when only second sidebar used.
+- Adding more logic to suppress errors.
+- Adding classes.
+- Merged in UADIGITAL-547 (pull request #100).
+- UADIGITAL-547: Restoring default theme function for menu_block links.
+- Merged in trackleft/ua_zen-alert/alerts-should-match-ua-bootstrap (pull request #94).
+- Left off an s.
+- Removed labels.
+- Making it more clear what the messages colors mean.
+- Removing glyphicon for now.
+- Perfecting alert for screen reader.
+- Removing drupal_set_message tests.
+- Adding some aria info.
+- Resolve merge conflict.
+- Resolving merge conflict.
+- Merged in trackleft/ua_zen-release/remove-page-row-padding-top (pull request #98).
+- Moving ua_zen_get_theme_info into common.inc.
+- Adding ability to exclude core css.
+- Removing page-row-padding-top.
+- Merged in trackleft/ua_zen-release/UADIGITAL-423-update-regions-to-allow-mo (pull request #96).
+- UADIGITAL-497: Merged in trackleft/ua_zen-release/UADIGITAL-497 (pull request #97) Update ua-bootstrap.
+- Merged 7.x-1.x into UADIGITAL-497.
+- Adding the local copy of alpha4.
+- Update ua-bootstrap.
+- Remove full width content top.
+- Ls.
+- Content top is in it's own row.
+- UADIGITAL-423.
+- Move all lines left.
+- Remove uams prefix.
+- Removing styles.
+- Matching ua-bootstrap markup for alerts.
+- Merged in trackleft/ua_zen-compression/UADIGITAL-526-aggregate-and-compress-css (pull request #93).
+- UADIGITAL-526.
+- Merged in trackleft/ua_zen-uaqs/UADIGITAL-521-menu-references-ua_-not-ua (pull request #91).
+- UADIGITAL-521 secondary menu theme sync.
+- Merged in trackleft/ua_zen-uaqs/UADIGITAL-520-conflicts-with-image-class (pull request #90).
+- UADIGITAL-520-conflicts-with-image-class wrap function in module exists.
+- Merged in UADIGITAL-359 (pull request #88).
+- UADIGITAL-359: Allow primary navigation to be rendered without Menu Block module.
+- Merged in UADIGITAL-474 (pull request #87).
+- UADIGITAL-474: Reverting containter-fluid class for navbar.
+- Merged in UADIGITAL-360 (pull request #86).
+- UADIGITAL-474: Merged in fjreynoso/ua_zen (pull request #85).
+- Merged macaulay/ua-zen into 7.x-1.x.
+- UADIGITAL-360: Adding toggle/ARIA classes to navbar menu links.  Should also fix UADIGITAL-468.
+- Removed .collapse that was causing to break.
+- Changed mobile nav to resemble bootstrap mobile nav.
+- UADIGITAL-423: Merged in trackleft/ua_zen-2/trackleft/fixed-conditionals-1451952236675 (pull request #83).
+- Fixed conditionals.
+- Merged in trackleft/ua_zen/UADIGITAL-423-update-regions-to-allow-mo (pull request #82).
+- Fixing code comments.
+- Renamed sidebars to comply with ua quickstart.
+- Merged in trackleft/ua_zen-1/trackleft/commoninc-edited-online-with-bitbucket-1450907495882 (pull request #80).
+- Merged in trackleft/ua_zen/UADIGITAL-423-update-regions-to-allow-mo (pull request #79).
+- Merged in trackleft/ua_zen (pull request #81).
+- Tagging ua-bootstrap alpha2 release.
+- Common.inc edited online with Bitbucket.
+- Undoing unintended consequences to quickstart ua_zen.
+- Merged 7.x-1.x into UADIGITAL-423-update-regions-to-allow-mo.
+- Moved stray row div.
+- Merged in trackleft/ua_zen/UADIGITAL-423-update-regions-to-allow-mo (pull request #78).
+- Fixed page too big.
+- Still some outstanding page width issues in the footer cause scrollbar to appear on the bottom.
+- UADIGITAL-423: Merged in trackleft/ua_zen/UADIGITAL-423-update-regions-to-allow-mo (pull request #77).
+- Fixed regions.
+- Adding full width region templates.
+- Adding regionclass default settings.
+- Adding regions to info file.
+- Uams regions to ua_zen.
+- Merged in trackleft/ua_zen/UADIGITAL-403-ua-managed-sites-move-help (pull request #76).
+- Derp.
+- Adding mhume's suggestion of logic.
+- Moving help region above featured content.
+- Back to dev.
+
+7.x-1.0-alpha3, 2015-11-13
+------------------------------
+- Merged in UADIGITAL-358 (pull request #75).
+- UADIGITAL-358: Tweaking jQuery warning message.
+- UADIGITAL-358: Fleshing out README notes about jQuery dependency further.
+- UADIGITAL-358: Moving jQuery warning to theme settings page.
+- README.md edited online with Bitbucket.
+- Template.php edited online with Bitbucket.
+- UADIGITAL-358.
+- Merged in UADIGITAL-125 (pull request #73).
+- UADIGITAL-125: Changing theme UA Bootstrap CDN version setting storage to be non version-specifc.
+- UADIGITAL-125: Replacing all individual hard-coded version references with one constant.
+- UADIGITAL-125: Adding additional theme variable to simplify config interface for UA Bootstrap settings.
+- Removed unused if statement.
+- Removed isset.
+- Https://bitbucket.org/ua_drupal/ua_zen/pull-requests/72/remove-theme_get_info-function/diff#comment-11035298.
+- Https://bitbucket.org/ua_drupal/ua_zen/pull-requests/72/adding-features-per-parsonsj/diff#comment-11035280.
+- Remove excludes.
+- Add defaults.
+- Added comments and changed variable names.
+- Added back styles.css and removed override component from cdn section.
+- Removed extra line.
+- Initial commit adding bitbucket CDN as theme setting.
+- Initial commit of theme settings.
+- Merged ua_drupal/ua_zen into 7.x-1.x.
+- Merged in UADIGITAL-320 (pull request #71).
+- UADIGITAL-320: Using hosted ua-bootstrap-latest.min.css by default again.
+- Back to dev.
+
+7.x-1.0-alpha2, 2015-10-15
+------------------------------
+- Merged in trackleft/ua_zen/UADIGITAL-305-add-bootstrap-alpha2-to-ua (pull request #70).
+- Fixed file path typo.
+- Adding local ua-bootstrap css until more advanced version is available with the new CDN.
+- Merged ua_drupal/ua_zen into 7.x-1.x.
+- Merged in UADIGITAL-258 (pull request #69).
+- UADIGITAL-258: Merge branch 'UADIGITAL-203-test-ua-bootstrap-v2' into UADIGITAL-258.
+- Restoring header_ua.
+- Merged UADIGITAL-211-ua-banner-should-match-new.
+- Merge UADIGITAL-212-main-navigation-should-use.
+- Merged UADIGITAL-229-update-copyright-statement.
+- Realigned comment asterisks.
+- Changed file.
+- Merged in macaulay/ua-zen/jquery-refremove (pull request #67).
+- Removed problematic jquery reference in html.tpl.php - related to https://jira.arizona.edu/browse/UADIGITAL-285.
+- Merged in UADIGITAL-229 (pull request #66).
+- UADIGITAL-229: Updating copyright statement (again).
+- Merged in trackleft/ua_zen/UADIGITAL-229-update-copyright-statement (pull request #65).
+- Adding closing paragraph tag.
+- Updated in template.php.
+- Update without copyright notice.
+- UADIGITAL-229.
+- UADIGITAL-165: Merged in awochna/ua_zen (pull request #57).
+- Fix dropdown toggle issue?.
+- Add uppercase class to link.
+- Padding in sub footer.
+- Removed row from navbar.
+- Text uppercase on navbar.
+- Sticky footer.
+- Merge.
+- Removed row class.
+- Prep for QA.
+- Adding bootstrap js.
+- Put nav in container.
+- Removed superflous styles.
+- Wrapped in nav classes.
+- Removed conflicting style.
+- This targets the second level menu in the menu block.
+- Replaced font variable.
+- UADIGITAL-214.
+- Removed remote add css.
+- Reverted to old stylesheet.
+- Fix contextual link issue.
+- Final nav classes to ul element.
+- Formatting.
+- Removed all styles as bootstrap handles it.
+- Matches both new and old ua-bootstrap.
+- This all works.
+- Removed element-invisible class and replaced with sr-only.
+- Add bootstrap classes to menu blocks.
+- UADIGITAL-209 add bootstrap classes to menu local task.
+- Merged macaulay/ua-zen into 7.x-1.x.
+- Add the one liner to help people not get confused about subtheming and logos in the README.
+- UADIGITAL-165: Merged in awochna/ua_zen (pull request #56).
+- Merged readme into 7.x-1.x.
+- Move the example code blocks out of the ordered list so that we give Bitbucket's Markdown parser absolutely no excuse to parse the code as a series of paragraphs in a list item.
+- Add extra line spacing so maybe Bitbucket's Markdown parser won't thing that the code to add to the .info file is part of a list item.
+- Remove existing README file and add a new one with instructions on subtheming ua_zen.
+- Merged in UADIGITAL-180 (pull request #55).
+- UADIGITAL-180: Disabling home breadcrumb by default and restroing header_ua ID.
+- Merged in trackleft/ua_zen/UADIGITAL-153-qa-breadcrumbs-configured- (pull request #52).
+- Add img-responsive class to images.
+- Updated sass.
+- Fix accessibility link.
+- Protocol neutral.
+- Changing tagged version of ua-bootstrap.
+- Removed locally hosted bootstrap.
+- Added bitbucket hosted css file back.
+- Adding sr-only, remove remote redbar banner.
+- Cleanup.
+- Fixed.
+- Bootstrap breadcrumbs.
+- Merged in UADIGITAL-153 (pull request #51).
+- UADIGITAL-153: Disabling content title in breadcrumbs by default.
+- Merged in mmunro-ltrr/ua_zen/UADIGITAL-139 (pull request #50).
+- Remove explicit version information.
+- Add a changelog so there is always something to modify for a release.
+- Back to dev.
+
+7.x-1.0-alpha1, 2015-07-10
+--------------------------
+- UADIGITAL-98: Preparing to tag 7.x-1.0-alpha1.
+- Merged in macaulay/ua-zen/sidebar-footer-styles (pull request #49).
+- Fixed the text alignment in the footer menus.
+- Compiled output to be compressed css (compass compile -e production --force --output-style=compressed).
+- Added in missing overrides from zen-catstrap for the contextual links.
+- Found some stray footer sass and added to footer file.
+- Added in missing footer and sidebar menu styles.
+- Merged ua_drupal/ua_zen into 7.x-1.x.
+- Merged in trackleft/ua_zen-clearfix (pull request #48).
+- Fix merge conflict.
+- Renaming took time.
+- Compiled.
+- Merged in mhume/ua_zen (pull request #47).
+- Rename ua-digital to uadigital.
+- Merged in trackleft/ua_zen-clearfix (pull request #46).
+- Merged in macaulay/ua-zen/measurement-audit (pull request #45).
+- Merged.
+- Search sass.
+- Catstrap-zen to ua-bootstrap.
+- Last scss file in theme to have px fallbacks to rems put in place.
+- Adding in old compiled css file to bypass merge conflict. Will pull back down and recompile then re-commit.
+- Converted measurements in _uazen-superfish.scss file to rems with pixel fallbacks.
+- Converted measurements in _uazen-main-nav.scss file to rems with pixel fallbacks.
+- Converted measurements in _misc-rtl.scss file to rems with pixel fallbacks.
+- Converted measurements in _misc.scss file to rems with pixel fallbacks.
+- Converted measurements in Catstrap-zen scss file to rems with pixel fallbacks.
+- Attempting to resolve merge conflict with styles.css with process from rtcamp.com/tutorials/git/git-resolve-merge-conflicts.
+- Merged in UADIGITAL-118 (pull request #44).
+- UADIGITAL-118: Initial Drupal coding standards fixes identified by Coder module and misc typo and other small fixes.
+- Merge.
+- Removed bootstrap grid from ua_zen moved to ua-bootstrap UADIGITAL-116.
+- Removing unneeded import refs.
+- First pass.
+- Merged in trackleft/ua_zen-clearfix/UADIGITAL-102 (pull request #43).
+- Clearfix.
+- Merged in macaulay/ua-zen/footer-menus (pull request #42).
+- Styled to accommodate four column menus and made menus stack from the right on desktop.
+- Added px fallbacks to my rem measurements in _misc.scss.
+- Added px fallbacks to all rem measurements in catstrap-zen.scss.
+- Fixed the container width in the 12 column bootstrap scss - site was only getting as wide as 960px.
+- Added an option to have column menus in the footer by placing the class 'column-menu' on the block. Equal border height is being controlled by a min-height of 16em - couldn't find an elegant solution that didn't touch the sub-footer border. Also centered the logo and copyright on smaller screens.
+- Can't get the equal height borders to display without hitting the footer's bottom border and looking weird - will try again next week.
+- Pulled in up-to-date css file, merged changes from main, then recompiled to avoid merge conflicts.
+- Added previous styles.css to resolve merge conflict within own repo.
+- Merge with main branch.
+- Merged in trackleft/ua_zen/UADIGITAL-97-refactor-grid-system-bootst (pull request #40).
+- Consitent classes.
+- Pull classes.
+- Desktop block styles for menus underway.
+- Merged in macaulay/ua-zen/contextual-links (pull request #41).
+- Fixed contextual links not only for footer but also mission statement area.
+- Fixed the contextual links persistent display issue by setting the initial value to display:none.
+- Removed front page template since it doesn't work anyway.
+- Fixed clearfix.
+- With grid.
+- Without grid.
+- UADIGITAL-97.
+- Merged in trackleft/ua_zen (pull request #39).
+- Adding compiled css with Compass version specified in GEMFILE UADIGITAL-89.
+- UADIGITAL-89 fix layout to use any version of compass.
+- Merged in trackleft/ua_zen/UADIGITAL-58-remove-flexslider-styles-te (pull request #38).
+- Removed template as discussed in UADIGITAL-58.
+- Merged in trackleft/ua_zen (pull request #37).
+- Added helper classes.
+- Font-smoothing.
+- Merged macaulay/ua-zen into 7.x-1.x.
+- Merged in trackleft/ua_zen (pull request #36).
+- Removed flexslider.scss.
+- Merged in macaulay/ua-zen/default-nav (pull request #35) Default nav - forgot files... (quick change, doesn't conflict, merging pull request).
+- Forgot to add in the catstrap changes for the nav styles.
+- Merged in macaulay/ua-zen/default-nav (pull request #34).
+- Attempt to resolve previous merge conflicts from part 1.
+- Merged in macaulay/ua-zen/default-nav (pull request #32).
+- Added previously compiled css to avoid the merge conflicts - will be resoved with superfish styles in second pull request.
+- Put old superfish menu styles back to avoid merge conflict - hope it works.
+- Reincorporated styles for default nav.
+- Merged in breadcrumb-fix (pull request #29).
+- Enable Breadcrumb Title to be appended by default.
+- Merged submenu-fix into 7.x-1.x.
+- Remove even more excess padding from sub-menu links.
+- Merged in submenu-fix (pull request #28).
+- Removed padding from sub-menu links in superfish.
+- Merged in macaulay/ua-zen/news-cleanup (pull request #27).
+- Merged in mjharmon-ua/ua_zen (pull request #19).
+- Removed homepage news styles from UA Zen main styles.
+- Merged in mhume/ua_zen (pull request #25).
+- UADIGITAL-18 UADIGITAL-25 #close Merged in header-resp-fixes.
+- Merged in header-resp-fixes (pull request #24).
+- Center search in responsive view.
+- Center logo on responsive view.
+- Merged in responsive-superfish-fixes (pull request #23).
+- Knock down font-size for sub-links.
+- Add styling for superfish responsive menu.
+- Merged in macaulay/ua-zen/side-menus-new (pull request #18).
+- Merged in menu-fixes (pull request #20).
+- Adjust menu link sizes at different breakpoints.
+- Remove the padding from last list element in superfish main menu.
+- Ran compass watch and something compiled...
+- Made the copyright notice a theme variable. Cleaned up the handling of the variable at the template level.
+- Merged in macaulay/ua-zen/views-sass (pull request #16).
+- Updated theme variable handling to bring it in line with Drupal coding, validation and theming doctrine. Pushed footer logo selection logic back to template.php. Simplified region--footer.tpl.php so that it only need display and check one variable instead of two.
+- New side menu styles - other branch was having inexplicable merge conflicts.
+- Merge branch '7.x-1.x' of https://bitbucket.org/macaulay/ua-zen into views-sass.
+- Merged sub-footer into 7.x-1.x after approval in ua_drupal team repo.
+- Merged in macaulay/ua-zen/sub-footer (pull request #14).
+- Better styling for default view pagers - added new sass file for views-specific component styling.
+- Altered styles in footer to target only ul.menu instead of all ul elements--still needs to be changed in catstrap.
+- Made date piece in sub footer output via php (forgot to implement earlier).
+- Re-structured logic in footer template to only include one container element if either the logo or content are active.
+- Added logic to have main footer area print only if the logo turned on in the theme settings or there is content to display.
+- Forced footer to render with template function theme_preprocess_page. Added styling to footer logo to not exceed 100px in height or 400px in width. Also removed old ua_footer regions from template.php.
+- Seeing if removing 'render' from template forces region to print.
+- Added background color to the HTML element so that the footer doesn't look cut off on shorter pages on large screens.
+- Added border to bottom of footer instead of top of sub footer.
+- Added top border and padding to visally set sub footer apart and changed the font size to be slightly smaller.
+- Forced sub footer to be rendered in page template and added a copyright paragraph with an automatically updating year.
+- Added sub footer region template file and added region to page templates. Had to break the #footer_site div out into the main page template in order to nest the sub footer into the main footer area. Still need to force the sub footer region to render even if no blocks are specified (for global footer copyright).
+- Added sub footer region to info file... but should page bottom be removed and the UA Main Footer and UA Hidden Footer?.
+- Added margin to logo for smaller screens.
+- Added simple styling to make the footer logo float to the left of the content when on large screen.
+- Added footer logo styling to make the logo float to the right of the content - sass isn't compiling in my local environment though... but changes have been made in the sass file.
+- Merge branch '7.x-1.x' into footer-logo to get site name and slogan display changes.
+- Merged in macaulay/ua-zen (pull request #12).
+- Page--front.tpl.php edited - removed site name and slogan.
+- Page.tpl.php edited - removed site name and slogan.
+- Committed @mmunro-ltrr patch to fix the non object property problem. It works!.
+- Attempted to get rid of error message - no dice. Not sure what logic I have to wrap the variable definitions in to supress the warning... don't know enough php.
+- Made the footer logo path into an alias instead of an absolute path (more elegant way to do this?). Added logic in footer template  to display the site's main logo in case a secondary logo isn't uploaded. Unfortunately still experiencing a 'non-object' error when there's no footer image specified.
+- Not able to be referenced for logo alt text - not really needed anyway, empty alt attribute will allow screen readers to skip without incident.
+- Made path into an image element in the tpl.php. Styling for positioning still needed.
+- Removed debugging output with file_create_url to get the file's correct path.
+- Apparently, cron will delete any files uploaded in theme settings unless their status is set to permanent (by default the status is temporary) - not a minor task in themes to get a file to persist: http://ghosty.co.uk/2014/03/managed-file-upload-in-drupal-theme-settings - getting there... going to see if the file sticks.
+- Footer region template can see the file ID of the uploaded image, but the file path isn't getting through... only showing root URL of website.
+- Clarified source of code for footer logo variable in template.php.
+- Attempt to make the footer logo's file available to tpl.php - so far only getting undefined error.
+- Merge branch '7.x-1.x' of https://bitbucket.org/uabrandingdigitalassets/ua-zen into footer-logo.
+- Added footer image upload field in the Theme Settings area - file not being called/placed by the template yet.
+- Merged in mmunro-ltrr/ua-zen/fixGemfile (pull request #7).
+- Merged in home_modules (pull request #8).
+- Force an update of the derived CSS files after merging the home_modules imprivements.
+- Merge the latest improvements from @jgthuerb with the Compass version fix.
+- Regenerate the CSS files affected by the change in Compass version.
+- Replace the Gemfile with the canonical one from the Zen 7.x-5.x-dev STARTERKIT.
+- Add front page template, remove database snapshot which is unneeded because it didn't work anyway.
+- Merged in responsive_breakpoints (pull request #6).
+- Home news styles.
+- Flexslider margin fixes.
+- Initial Mission Statement styles.
+- Additional commenting and fixes.
+- News Page image and responsive styles.
+- Initial News Page styles.
+- Add responsive breakpoints at 75em, 60em, and 48em.
+- Add responsive styles for flexslider.
+- Add flex slider next/prev images.
+- Remove font icons, font folder, and remove fonts from CSS (Mistake).
+- Create fonts folder inside root subtheme folder and add flexslider font icons inside.
+- Merged in gemfile (pull request #3).
+- Merged in bootstrapSearch (pull request #5).
+- Move Gemfile to the right location and update sass to 3.4.13.
+- Fix drupal styling for the search.
+- Styling for flexslider, superfish, and responsive menus.  Templates for flexslider and page.
+- Add gemfile to standardize versions of compass and sass.
+- Added color to utility links and positioned header elements.
+- Made Search icon into an svg file instead of png for better rendering.
+- Made the secondary menu into the utility links, unwrapped utility links in nav element and gave to main nav, and removed empty main nav div.
+- Removed text since it now uses JS again.
+- Made onBlur text translatable.
+- Added onfocus and onblur effect to HTML5 placeholder text.
+- Changed the search placeholder text back to HTML5 attribute.
+- Accidentally cloned in wrong directory...
+- Trying to establish connection with new server.
+- Altered the search function to be specifically for search form with theme_form_search_block_form_alter and changed to javascript because the HTML5 version doesn't get rid of the placeholder text until the user starts typing.
+- Added placeholder text for idle search box field.
+- Made UA Header into it's own region template file to keep the page.tpl tidy and be able to also put the UA footers (a lot of code) into their own templates eventually - idea/code from Chris Green.
+- Accidentally left 'ua_omega' in the html preprocess function from previous commit.
+- Added default logo as UA Department Name placeholder logo. Also added logic to the page template to not show the site name and slogan if the logo is checked in theme settings.
+- Merged templatefunctions into master.
+- Merged in gitignore (pull request #2).
+- Remove sass-cache files.
+- Add .gitignore with copy/paste from catstrap gitignore.
+- Merged in superfish_menu (pull request #1).
+- Additional styles for superfish including responsive behavior.
+- Add superfish styling.
+- Added drupal_add_css function to call external catstrap css. Commented out for now - use when catstrap file is public.
+- Merge branch 'master' of bitbucket.org:uabrandingdigitalassets/ua-zen.
+- Move menu above content area and add #main_nav id.
+- Simple non-destructive commit to test connection with repo.
+- Added database snapshot with content for development inside /database_snapshot/uazen.sql.zip.

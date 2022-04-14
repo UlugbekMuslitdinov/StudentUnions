@@ -1,0 +1,41 @@
+[
+  {
+    "id": 5,
+    "label": "UAQS Audience Select",
+    "title": "Audience Select Menu",
+    "data" : {
+      "layout_options":{
+        "column_xs" : 12,
+        "column_offset_xs" : 0,
+        "column_buffer_top_xs" : 20,
+        "column_buffer_bottom_xs" : 20,
+        "column_sm" : 11,
+        "column_offset_sm" : 0,
+        "column_buffer_top_sm" : 50,
+        "column_buffer_bottom_sm" : 5,
+        "column_md" : 9,
+        "column_offset_md" : 0,
+        "column_buffer_top_md" : 50,
+        "column_buffer_bottom_md" : 5,
+        "column_lg" : 6,
+        "column_offset_lg" : 0,
+        "column_buffer_top_lg" : 50,
+        "column_buffer_bottom_lg" : 5,
+        "column_class" : ""
+      },
+      "select_menu_options": {
+         "menu_name": "uaqs-select-menu",
+         "empty_option": true,
+         "empty_option_label": "choose an option",
+         "preform_text" : "I am",
+         "preform_text_sr_only" : "Select your audience",
+         "button_text" : "Go",
+         "button_text_sr_only" : "to the page for that group"
+      }
+    },
+    "region": "header_2",
+    "visibility": 1,
+    "pages": "*",
+    "weight": 2
+  }
+]

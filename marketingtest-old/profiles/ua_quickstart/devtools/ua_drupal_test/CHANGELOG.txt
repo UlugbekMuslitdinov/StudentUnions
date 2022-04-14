@@ -1,0 +1,435 @@
+7.x-1.0-alpha74, 2022-02-16
+-----------------------------
+
+7.x-1.0-alpha73, 2022-01-26
+-----------------------------
+
+7.x-1.0-alpha72, 2022-01-20
+-----------------------------
+
+7.x-1.0-alpha71, 2022-01-19
+-----------------------------
+
+7.x-1.0-alpha70, 2021-07-21
+-----------------------------
+
+7.x-1.0-alpha69, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha68, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha67, 2021-05-12
+-----------------------------
+- UADIGITAL-2263: Update expected text in failing featured content admin test.
+
+7.x-1.0-alpha66, 2021-04-21
+-----------------------------
+
+7.x-1.0-alpha65, 2021-01-21
+-----------------------------
+
+7.x-1.0-alpha64, 2020-11-25
+-----------------------------
+
+7.x-1.0-alpha63, 2020-11-18
+-----------------------------
+
+7.x-1.0-alpha62, 2020-11-18
+-----------------------------
+
+7.x-1.0-alpha61, 2020-09-16
+-----------------------------
+
+7.x-1.0-alpha60, 2020-09-11
+-----------------------------
+
+7.x-1.0-alpha59, 2020-08-19
+-----------------------------
+
+7.x-1.0-alpha58, 2020-06-17
+-----------------------------
+
+7.x-1.0-alpha57, 2020-06-05
+-----------------------------
+
+7.x-1.0-alpha56, 2020-05-20
+-----------------------------
+
+7.x-1.0-alpha55, 2020-04-20
+-----------------------------
+
+7.x-1.0-alpha54, 2020-03-20
+-----------------------------
+
+7.x-1.0-alpha53, 2020-03-06
+-----------------------------
+
+7.x-1.0-alpha52, 2020-02-07
+-----------------------------
+
+7.x-1.0-alpha51, 2019-12-18
+-----------------------------
+
+7.x-1.0-alpha50, 2019-12-13
+-----------------------------
+
+7.x-1.0-alpha49, 2019-11-20
+-----------------------------
+
+7.x-1.0-alpha48, 2019-11-05
+-----------------------------
+
+7.x-1.0-alpha47, 2019-11-01
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha46 for ua_drupal_test.
+
+7.x-1.0-alpha46, 2019-11-01
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha45 for ua_drupal_test.
+
+7.x-1.0-alpha45, 2019-11-01
+-----------------------------
+
+7.x-1.0-alpha44, 2019-09-06
+-----------------------------
+- UADIGITAL-1299: refactor how the Behat tests are run.
+- UADIGITAL-2023 add pipeline and script to check for vulnerabilities
+
+7.x-1.0-alpha43, 2019-08-16
+-----------------------------
+
+7.x-1.0-alpha42, 2019-07-26
+-----------------------------
+- UADIGITAL-1228, UADIGITAL-1745, UADIGITAL-1885, UADIGITAL-1196 remove basic page, publications, units & programs from demo content; cleaned up demo content; fixed broken behat tests, add <nolink> to demo navigation
+
+7.x-1.0-alpha41, 2019-06-28
+-----------------------------
+
+7.x-1.0-alpha40, 2019-05-22
+-----------------------------
+- UADIGITAL-1996: modify the Lando configuration to follow the v3.0.0-rc.2 changes.
+
+7.x-1.0-alpha39, 2019-05-08
+-----------------------------
+
+7.x-1.0-alpha38, 2019-05-07
+-----------------------------
+- UADIGITAL-1864 Set updated url patterns for flexible page and default.
+- UADIGITAL-1994 fix mysql typo in lando.yml
+
+7.x-1.0-alpha37, 2019-04-17
+-----------------------------
+
+7.x-1.0-alpha36, 2019-03-20
+-----------------------------
+
+7.x-1.0-alpha35, 2019-03-15
+-----------------------------
+
+7.x-1.0-alpha34, 2019-03-13
+-----------------------------
+
+7.x-1.0-alpha33, 2019-02-20
+-----------------------------
+- UADIGITAL-1914: Bump the link contrib module version because of a security issue.
+
+7.x-1.0-alpha32, 2019-02-11
+-----------------------------
+
+7.x-1.0-alpha30, 2019-02-01
+-----------------------------
+
+7.x-1.0-alpha29, 2019-01-28
+-----------------------------
+
+7.x-1.0-alpha28, 2019-01-17
+-----------------------------
+
+7.x-1.0-alpha27, 2019-01-16
+-----------------------------
+
+7.x-1.0-alpha26, 2019-01-11
+-----------------------------
+- UADIGITAL-1484: Addressed remaining PHP 7.2 compatibility issues.
+
+7.x-1.0-alpha25, 2018-11-15
+-----------------------------
+
+7.x-1.0-alpha24, 2018-11-02
+-----------------------------
+
+7.x-1.0-alpha23, 2018-10-17
+-----------------------------
+
+7.x-1.0-alpha22, 2018-10-11
+-----------------------------
+
+7.x-1.0-alpha21, 2018-10-10
+-----------------------------
+
+7.x-1.0-alpha20, 2018-09-21
+-----------------------------
+
+7.x-1.0-alpha19, 2018-08-29
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha17 for ua_drupal_test.
+- Preparing to tag 7.x-1.0-alpha16 for ua_drupal_test.
+- Preparing to tag 7.x-1.0-alpha15 for ua_drupal_test.
+- Preparing to tag 7.x-1.0-alpha14 for ua_drupal_test.
+- Preparing to tag 7.x-1.0-alpha13 for ua_drupal_test.
+- Preparing to tag 7.x-1.0-alpha12 for ua_drupal_test.
+- Preparing to tag 7.x-1.0-alpha11 for ua_drupal_test.
+- Preparing to tag 7.x-1.0-alpha10 for ua_drupal_test.
+- Preparing to tag 7.x-1.0-alpha9 for ua_drupal_test.
+- Preparing to tag 7.x-1.0-alpha8 for ua_drupal_test.
+- Preparing to tag 7.x-1.0-alpha7 for ua_drupal_test.
+- UADIGITAL-991 replace uaqs_text_area with uaqs_summary for uaqs_card beans (fixing broken Behat test).
+- UADIGITAL-1117 remove all .gitignore files except the main one
+- updated behat test for new demo content
+- Switch to OAuth2 authentication and fix bugs.
+- Remove the credentials from the URL because of potential quoting issues.
+- UADIGITAL-1076: Tarball archive not being added to downloads section of bitbucket for uaqs repo.
+- UADIGITAL-1080 update behat feature to use the new name of text with heading 'Text Area'
+- UADIGITAL-1086
+- Update the Pipelines configuration to handle pushed tags.
+- UADIGITAL-1066: Updating contact summary test to look in the updated region.
+- UAMS-547: Adding regression test for duplicate icons issue in global footer.
+- UADIGITAL-936 Adding test to check if unchecking published overrides the feature for all content types
+- UADIGITAL-977 regression tests for uaqs_fields_date
+- Update the element within which to find a month header.
+- Add support for relative dates in tests, and use them for News.
+- Start a simple test for UAQS Person fields (including the taxonomy term).
+- moved cas disable command to appropriate file.
+- following @awochna suggestions for a more organized test suite.
+- adding more tests for paragraphs and diversity backports
+- Remove the test for enabling the file download submodule.
+- Follow enabling the uaqs_content_chunks_file_download submodule.
+- reworded some of the tests per @awochna 's instructions
+- reworded some of the tests per @awochna 's instructions
+- style/formatting
+- adding HTML Field to disabled paragraphs items
+- adding additional tests and renaming modules, while cleaning up some of the messy formatting
+- Automated beehat tests for content chunks UAMS-340
+- tests for content chunks
+- regression
+- some of this I couldn't figure out what to do
+- Test works
+- paragraphs items test
+- adding test for content-chunks
+- Remove an option that recent versions of Drush do not recognize.
+- two new regression tests to ensure that blocks are still being placed and are using the correct classes
+- Correct a broken comparison, use -z for empty string detection, send all progress messages to STDERR.
+- Tweak the syntax of the drush command.
+- Hide another directory from Git (added to store the PhantomJS pid file).
+- Record the PhantomJS pid if we have to start it, and kill it once we're done.
+- Add phantomjs and start it before behat tests.
+- Add an `environment` file for setting necessary environment variables.
+- Reword instructions for repeating tests.
+- Work around Bitbucket's bugs with code blocks within lists.
+- Add an environment variable for drush site-install flags, set the profile-specific verbose flag.
+- Add DBNAME and DBUSER as environment variables to quick start section.
+- Add a Quick Start (haha) section to the top of the README.
+- Move Background section to top of README.
+- Line break after every sentence for easier reading and git diffs.
+- Add a section at the top of the README for general inforamtion.
+- UADIGITAL-557: Fixing inline documentation.
+- UADIGITAL-557: Making bitbucket upload script executable.
+- UADIGTIAL-557: Adding bitbucket package upload script.
+- Delete the files that CasperJS required, but Behat does not use.
+- Make sure a fresh database dump gets copied to the demonstration site.
+- Update the behat test shell script to include drush driver information.
+- Add a test that proves UADIGITAL-412 includes the correct text.
+- Merge branch 'UADIGITAL-265' of bitbucket.org:mmunro-ltrr/ua_drupal_test into behat
+- Refactor the shell script and use environment variables for Behat configuration.
+- Add developer information to README.
+- Add a news feature reflecting the casperjs news test.
+- Move behat.yml file to config directory.
+- Add first feature file for the calendar.
+- Switch from CasperJS to Behat for testing.
+- Merge branch '7.x-1.x' of bitbucket.org:ua_drupal/ua_drupal_test into behat
+- Add developer information to README.
+- Add a news feature reflecting the casperjs news test.
+- Move behat.yml file to config directory.
+- Add first feature file for the calendar.
+- Switch from CasperJS to Behat for testing.
+- Add a file detailing the process for adding a new test and explaining why they should be added.
+- UADIGITAL-317: Adding remote drush image-flush command and re-ordering arguments for cache-clear command.
+- UADIGITAL-317: Putting rsync option in right place.
+- UADIGITAL-317: Adding rsync --delete option to code deployment process and forcing a cache-clear.
+- UADIGITAL-309: Temporarily disabling broken test.
+- UADIGITAL-309: Removving #1_page selector from all ua_quickstart_home tests.
+- UADIGITAL-309: Temporarily disabling broken test.
+- UADIGITAL-261: Fixing automated test broken by UADIGITAL-232.
+- Correct relative path to the files directory subtree.
+- Correct typo in variable name.
+- Force group permissions and ownership on the files directory subtree.
+- UADIGITAL-265 & UADIGITAL-266: Merged in awochna/ua_drupal_test/process (pull request #4)
+- UADIGITAL-317: Adding remote drush image-flush command and re-ordering arguments for cache-clear command.
+- UADIGITAL-317: Putting rsync option in right place.
+- UADIGITAL-317: Adding rsync --delete option to code deployment process and forcing a cache-clear.
+- UADIGITAL-309: Temporarily disabling broken test.
+- UADIGITAL-309: Removving #1_page selector from all ua_quickstart_home tests.
+- UADIGITAL-309: Temporarily disabling broken test.
+- Add a file detailing the process for adding a new test and explaining why they should be added.
+- UADIGITAL-261: Fixing automated test broken by UADIGITAL-232.
+- Add some new tests for the final date item to the news test. Yes, I know they are technically redundant, but they could be programatically not.
+- Add in the new 4th news item to the test. Everything should pass now.
+- Order dates properly.
+- Add a test suite for ua_news that makes sure news items are appearing in the correct order in the view.
+- Add tests for calendar date headers.
+- Revert to making the files directory, also make files/styles, but don't copy settings.php.
+- Leave settings file copying and ditectory permissions to drush si.
+- Need to override the interactive prompts for drush.
+- A first attempt at pushing changes to a public demo site.
+- Add the CAS-aware login form override to the explicitly included files.
+- Click on the correct link to bring up the non-CAS login form, fix missing parenthesis.
+- Allow for modifications to the login form to support UA CAS.
+- Create a database dump temporary staging directory.
+- Add a warning to use the dev version of the casperjs drush extension.
+- Add Drupal account configuration, to be created on the fly from a template.
+- Set a pre-defined password for the Drupal User1 administrator.
+- Fix trivial typo.
+- Get the actual exit code from tar, quote more variables.
+- Add the full initialization script, with the initial minimal tests.
+7.x-1.0-alpha17, 2018-07-30
+-----------------------------
+
+7.x-1.0-alpha16, 2018-07-20
+-----------------------------
+
+7.x-1.0-alpha15, 2018-06-19
+-----------------------------
+
+7.x-1.0-alpha14, 2018-05-18
+-----------------------------
+
+7.x-1.0-alpha13, 2018-04-25
+-----------------------------
+
+7.x-1.0-alpha12, 2018-04-20
+-----------------------------
+
+7.x-1.0-alpha11, 2018-03-30
+-----------------------------
+
+7.x-1.0-alpha10, 2018-03-09
+-----------------------------
+
+7.x-1.0-alpha9, 2017-09-15
+-----------------------------
+
+7.x-1.0-alpha8, 2017-09-15
+-----------------------------
+
+7.x-1.0-alpha7, 2017-08-17
+-----------------------------
+- UADIGITAL-991 replace uaqs_text_area with uaqs_summary for uaqs_card beans (fixing broken Behat test).
+- UADIGITAL-1117 remove all .gitignore files except the main one
+- updated behat test for new demo content
+- Switch to OAuth2 authentication and fix bugs.
+- Remove the credentials from the URL because of potential quoting issues.
+- UADIGITAL-1076: Tarball archive not being added to downloads section of bitbucket for uaqs repo.
+- UADIGITAL-1080 update behat feature to use the new name of text with heading 'Text Area'
+- UADIGITAL-1086
+- Update the Pipelines configuration to handle pushed tags.
+- UADIGITAL-1066: Updating contact summary test to look in the updated region.
+- UAMS-547: Adding regression test for duplicate icons issue in global footer.
+- UADIGITAL-936 Adding test to check if unchecking published overrides the feature for all content types
+- UADIGITAL-977 regression tests for uaqs_fields_date
+- Update the element within which to find a month header.
+- Add support for relative dates in tests, and use them for News.
+- Start a simple test for UAQS Person fields (including the taxonomy term).
+- moved cas disable command to appropriate file.
+- following @awochna suggestions for a more organized test suite.
+- adding more tests for paragraphs and diversity backports
+- Remove the test for enabling the file download submodule.
+- Follow enabling the uaqs_content_chunks_file_download submodule.
+- reworded some of the tests per @awochna 's instructions
+- reworded some of the tests per @awochna 's instructions
+- style/formatting
+- adding HTML Field to disabled paragraphs items
+- adding additional tests and renaming modules, while cleaning up some of the messy formatting
+- Automated beehat tests for content chunks UAMS-340
+- tests for content chunks
+- regression
+- some of this I couldn't figure out what to do
+- Test works
+- paragraphs items test
+- adding test for content-chunks
+- Remove an option that recent versions of Drush do not recognize.
+- two new regression tests to ensure that blocks are still being placed and are using the correct classes
+- Correct a broken comparison, use -z for empty string detection, send all progress messages to STDERR.
+- Tweak the syntax of the drush command.
+- Hide another directory from Git (added to store the PhantomJS pid file).
+- Record the PhantomJS pid if we have to start it, and kill it once we're done.
+- Add phantomjs and start it before behat tests.
+- Add an `environment` file for setting necessary environment variables.
+- Reword instructions for repeating tests.
+- Work around Bitbucket's bugs with code blocks within lists.
+- Add an environment variable for drush site-install flags, set the profile-specific verbose flag.
+- Add DBNAME and DBUSER as environment variables to quick start section.
+- Add a Quick Start (haha) section to the top of the README.
+- Move Background section to top of README.
+- Line break after every sentence for easier reading and git diffs.
+- Add a section at the top of the README for general inforamtion.
+- UADIGITAL-557: Fixing inline documentation.
+- UADIGITAL-557: Making bitbucket upload script executable.
+- UADIGTIAL-557: Adding bitbucket package upload script.
+- Delete the files that CasperJS required, but Behat does not use.
+- Make sure a fresh database dump gets copied to the demonstration site.
+- Update the behat test shell script to include drush driver information.
+- Add a test that proves UADIGITAL-412 includes the correct text.
+- Merge branch 'UADIGITAL-265' of bitbucket.org:mmunro-ltrr/ua_drupal_test into behat
+- Refactor the shell script and use environment variables for Behat configuration.
+- Add developer information to README.
+- Add a news feature reflecting the casperjs news test.
+- Move behat.yml file to config directory.
+- Add first feature file for the calendar.
+- Switch from CasperJS to Behat for testing.
+- Merge branch '7.x-1.x' of bitbucket.org:ua_drupal/ua_drupal_test into behat
+- Add developer information to README.
+- Add a news feature reflecting the casperjs news test.
+- Move behat.yml file to config directory.
+- Add first feature file for the calendar.
+- Switch from CasperJS to Behat for testing.
+- Add a file detailing the process for adding a new test and explaining why they should be added.
+- UADIGITAL-317: Adding remote drush image-flush command and re-ordering arguments for cache-clear command.
+- UADIGITAL-317: Putting rsync option in right place.
+- UADIGITAL-317: Adding rsync --delete option to code deployment process and forcing a cache-clear.
+- UADIGITAL-309: Temporarily disabling broken test.
+- UADIGITAL-309: Removving #1_page selector from all ua_quickstart_home tests.
+- UADIGITAL-309: Temporarily disabling broken test.
+- UADIGITAL-261: Fixing automated test broken by UADIGITAL-232.
+- Correct relative path to the files directory subtree.
+- Correct typo in variable name.
+- Force group permissions and ownership on the files directory subtree.
+- UADIGITAL-265 & UADIGITAL-266: Merged in awochna/ua_drupal_test/process (pull request #4)
+- UADIGITAL-317: Adding remote drush image-flush command and re-ordering arguments for cache-clear command.
+- UADIGITAL-317: Putting rsync option in right place.
+- UADIGITAL-317: Adding rsync --delete option to code deployment process and forcing a cache-clear.
+- UADIGITAL-309: Temporarily disabling broken test.
+- UADIGITAL-309: Removving #1_page selector from all ua_quickstart_home tests.
+- UADIGITAL-309: Temporarily disabling broken test.
+- Add a file detailing the process for adding a new test and explaining why they should be added.
+- UADIGITAL-261: Fixing automated test broken by UADIGITAL-232.
+- Add some new tests for the final date item to the news test. Yes, I know they are technically redundant, but they could be programatically not.
+- Add in the new 4th news item to the test. Everything should pass now.
+- Order dates properly.
+- Add a test suite for ua_news that makes sure news items are appearing in the correct order in the view.
+- Add tests for calendar date headers.
+- Revert to making the files directory, also make files/styles, but don't copy settings.php.
+- Leave settings file copying and ditectory permissions to drush si.
+- Need to override the interactive prompts for drush.
+- A first attempt at pushing changes to a public demo site.
+- Add the CAS-aware login form override to the explicitly included files.
+- Click on the correct link to bring up the non-CAS login form, fix missing parenthesis.
+- Allow for modifications to the login form to support UA CAS.
+- Create a database dump temporary staging directory.
+- Add a warning to use the dev version of the casperjs drush extension.
+- Add Drupal account configuration, to be created on the fly from a template.
+- Set a pre-defined password for the Drupal User1 administrator.
+- Fix trivial typo.
+- Get the actual exit code from tar, quote more variables.
+- Add the full initialization script, with the initial minimal tests.
+- Create initially as a non-UAQS repository.

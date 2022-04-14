@@ -1,0 +1,21 @@
+name = JSONPath Parser
+description = Parse a JSON document using JSONPath.
+core = 7.x
+php = 5.4
+package = Feeds
+dependencies[] = feeds:feeds
+dependencies[] = xautoload:xautoload
+
+; Provides a Feeds parser which uses the JSONPath library.
+files[] = FeedsJSONPathParser.inc
+
+; Test coverage requires the Libraries API module, to make loading JSONPath
+; easier to handle.
+test_dependencies[] = libraries
+files[] = tests/feeds_jsonpath_parser.test
+
+; Information added by Drupal.org packaging script on 2020-04-07
+version = "7.x-1.2"
+core = "7.x"
+project = "feeds_jsonpath_parser"
+datestamp = "1586300069"

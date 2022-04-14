@@ -1,0 +1,32 @@
+7.x-1.0-alpha6, 2017-01-13
+------------------------------
+- Merged in trackleft/ua_google_tag/UADIGITAL-884-automate-uaqs-component-re (pull request #5).
+- UADIGITAL-884 add bitbucket pipelines config file.
+- Merged ua_drupal/ua_google_tag into 7.x-1.x.
+- Back to dev.
+
+7.x-1.0-alpha5, 2016-05-02
+------------------------------
+- Back to dev.
+
+7.x-1.0-alpha4, 2016-03-14
+------------------------------
+- Merged in trackleft/ua_google_tag/UAMS-225-strange-double-upload-issue-whe (pull request #4).
+- Adding default do not track pages.
+- Excluding block creation form from being tracked by GTM.
+- Back to dev.
+
+7.x-1.0-alpha3, 2015-10-16
+------------------------------
+- Back to dev.
+
+7.x-1.0-alpha2, 2015-10-16
+------------------------------
+- Merged in UADIGITAL-322 (pull request #3).
+- UADIGITAL-322: Changes from features module updates.
+- Merged in UADIGITAL-144 (pull request #2).
+- UADIGITAL-144: Removing defaultconfig & user permissions.
+- Merged in mmunro-ltrr/ua_google_tag/UADIGITAL-144 (pull request #1).
+- Add excluded dependencies, delete menu handling, add a sub-makefile.
+- Remove the explicit version number, to match the other repositories.
+

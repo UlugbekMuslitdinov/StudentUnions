@@ -11,15 +11,15 @@ $catering_route = [
             [ "title"=> "Order Celebration Cookies", "url"=> "/cookies/order.php"]
         ]
     ],
-    "thanksgiving_form" => [
-        "title"=> "Thanksgiving Order Forms",
-        "url"=> "/thanksgiving/",
-        "target"=> "",
-        "list"=>[
-			[ "title"=> "Thanksgiving Feast To-Go", "url"=> "/dining/sumc/thanksgiving.php", "target"=> "_blank" ],
-			[ "title"=> "Thanksgiving Bake Sale", "url"=> "/dining/forms/bakesale.php", "target"=> "_blank" ]
-        ]
-    ],
+    //"thanksgiving_form" => [
+//        "title"=> "Thanksgiving Order Forms",
+//        "url"=> "/thanksgiving/",
+//        "target"=> "",
+//        "list"=>[
+//			[ "title"=> "Thanksgiving Feast To-Go", "url"=> "/dining/sumc/thanksgiving.php", "target"=> "_blank" ],
+//			[ "title"=> "Thanksgiving Bake Sale", "url"=> "/dining/forms/bakesale.php", "target"=> "_blank" ]
+//        ]
+//    ],
     "arizona_catering" => [
         "title"=> "Arizona Catering Co. Menus",
         "url"=> "/catering/",
@@ -44,7 +44,7 @@ $catering_route = [
         "list"=>[
             [ "title"=> "Chick-Fil-A", "url"=> "/dining/template/resources/Chick-Fil-A_Catering.pdf", "target"=> "_blank" ],
             [ "title"=> "Einstein Bros. Bagels", "url"=> "/catering/online_order/agreement.php?r=einsteins", "target"=> "_blank" ],
-			// [ "title"=> "Einstein Bros. Bagels", "url"=> "/dining/template/resources/EBB_Catering_2.pdf", "target"=> "_blank" ],
+			[ "title"=> "IQ Fresh", "url"=> "/catering/online_order/agreement.php?r=iq_fresh", "target"=> "_blank" ],
             [ "title"=> "Highland Market", "url"=> "/catering/online_order/agreement.php", "target"=> "_blank" ],
             [ "title"=> "On Deck Deli", "url"=> "/catering/online_order/agreement.php?r=ondeck", "target"=> "_blank" ],
            // [ "title"=> "On Deck Deli", "url"=> "/catering/online_order/agreement.php?r=ondeck", "target"=> "_blank" ],

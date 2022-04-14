@@ -1,0 +1,69 @@
+<?php
+
+/**
+ * @file
+ * Code for the UA CAS Feature module.
+ */
+
+include_once 'ua_cas.features.inc';
+
+/**
+ * Implements hook_strongarm_alter().
+ *
+ * Use environment-specific CA bundle path for Pantheon environments to prevent
+ * phpCAS errors after cloning a site database from one environment to another
+ * (e.g. from live to dev).
+ */
+function ua_cas_strongarm_alter(&$export) {
+  if (isset($_ENV['PANTHEON_ENVIRONMENT']) && isset($export['cas_cert'])) {
+    $export['cas_cert']->value = '/etc/pki/tls/certs/ca-bundle.crt';
+  }
+}
+
+/**
+ * Implements hook_menu().
+ */
+function ua_cas_menu() {
+  $items = array();
+  if (module_exists('uaqs_core')) {
+    $items['admin/config/uaqs/settings/ua-cas'] = array(
+      'title' => 'UA CAS',
+      'description' => 'UA CAS settings',
+      'page callback' => 'drupal_get_form',
+      'page arguments' => array('ua_cas_settings_form'),
+      'file' => 'ua_cas.admin.inc',
+      'access arguments' => array('access administration pages'),
+      'type' => MENU_LOCAL_TASK,
+    );
+  }
+  return $items;
+}
+
+/**
+ * Implements hook_menu_alter().
+ */
+function ua_cas_menu_alter(&$items) {
+  // Check if password recovery form is disabled in UAQS admin settings.
+  if (variable_get('ua_cas_disable_password_recovery_link', TRUE)) {
+    $items['user/password']['page callback'] = '_ua_cas_menu_not_found';
+    $items['user/password']['access callback'] = TRUE;
+    $items['user/password']['type'] = MENU_CALLBACK;
+  }
+  return $items;
+}
+
+/**
+ * Implements hook_system_info_alter().
+ */
+function ua_cas_system_info_alter(&$info, $file, $type) {
+  if ($file->name == 'ua_cas' && module_exists('uaqs_core')) {
+    $info['configure'] = 'admin/config/uaqs/settings/ua-cas';
+  }
+}
+
+/**
+ * Menu callback function for not found.
+ */
+function _ua_cas_menu_not_found() {
+  return MENU_NOT_FOUND;
+}

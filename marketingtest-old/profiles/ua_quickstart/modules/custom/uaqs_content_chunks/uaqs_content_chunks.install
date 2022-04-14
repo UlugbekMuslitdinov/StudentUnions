@@ -1,0 +1,194 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the uaqs_content_chunks module.
+ */
+
+/**
+ * Implements hook_schema_alter().
+ */
+
+function uaqs_content_chunks_schema_alter(&$schema){
+  if (isset($schema['paragraphs_item'])) {
+    $schema['paragraphs_item']['fields']['view_mode'] = array(
+      'description' => 'View mode of paragraph item.',
+      'type' => 'varchar',
+      'length' => 32,
+      'default' => 'default',
+    );
+    $schema['paragraphs_item']['fields']['bottom_spacing'] = array(
+      'description' => 'Bottom Spacing',
+      'type' => 'varchar',
+      'length' => 32,
+      'default' => 'mb-4',
+    );
+  }
+}
+
+/**
+ * Implementation of hook_install().
+ */
+function uaqs_content_chunks_install() {
+  $schema['paragraphs_item'] = array();
+  uaqs_content_chunks_schema_alter($schema);
+  foreach ($schema['paragraphs_item']['fields'] as $name => $spec) {
+    db_add_field('paragraphs_item', $name, $spec);
+  }
+  // Add node options for flexible pages.
+  $node_options_uaqs_flexible_page = variable_get('node_options_uaqs_flexible_page', array());
+  $node_options_uaqs_flexible_page[] = 'status';
+  $node_options_uaqs_flexible_page[] = 'revision';
+  variable_set('node_options_uaqs_flexible_page', $node_options_uaqs_flexible_page);
+}
+
+/**
+ * Implementation of hook_uninstall().
+ */
+function uaqs_content_chunks_uninstall() {
+  $schema['paragraphs_item'] = array();
+  uaqs_content_chunks_schema_alter($schema);
+  foreach ($schema['paragraphs_item']['fields'] as $name => $spec) {
+    db_drop_field('paragraphs_item', $name);
+  }
+}
+
+/**
+ * Rename the Well paragraph type to uaqs_well.
+ */
+function uaqs_content_chunks_update_7100() {
+  $modulename = 'uaqs_content_chunks_well';
+  $oldbundle = 'well';
+  $newbundle = 'uaqs_well';
+  $oldinfo = db_query("SELECT info FROM {system} WHERE name = :modulename",
+    array(':modulename' => $modulename))
+    ->fetchField();
+  if ($oldinfo === FALSE) {
+    return t('Cannot find a @module module to update.',
+      array('@module' => $modulename));
+  }
+  $matchold = '/(\W)' . $oldbundle . '(\W)/';
+  $replacenew = '\1' . $newbundle . '\2';
+  $newinfo = preg_replace($matchold, $replacenew, $info);
+  $nmod = db_update('system')
+    ->fields(array('info' => $newinfo))
+    ->condition('name', $modulename)
+    ->execute();
+  if ($nmod < 1) {
+    return t('Cannot update the @module module info.',
+      array('@module' => $modulename));
+  }
+  $nup = db_update('paragraphs_bundle')
+    ->fields(array('bundle' => $newbundle))
+    ->condition('bundle', $oldbundle)
+    ->execute();
+  if ($nup < 1) {
+    return t('Cannot rename the old @oldtype paragraph type.',
+      array('@oldtype' => $oldbundle));
+  }
+  $nit = db_update('paragraphs_item')
+    ->fields(array('bundle' => $newbundle))
+    ->condition('bundle', $oldbundle)
+    ->execute();
+  // There might really have been no paragraph items to update.
+  $nfi = db_update('field_config_instance')
+    ->fields(array('bundle' => $newbundle))
+    ->condition('bundle', $oldbundle)
+    ->execute();
+  if ($nfi < 1) {
+    return t('Cannot rename @oldtype to @newtype in field instances.',
+      array('@oldtype' => $oldbundle, '@newtype' => $newbundle));
+  }
+  else {
+    return t('Renamed the @oldtype paragraph type to @newtype.',
+      array('@oldtype' => $oldbundle, '@newtype' => $newbundle));
+  }
+}
+
+/**
+ * Move uaqs_html field to uaqs_summary in the marquee and well.
+ */
+function uaqs_content_chunks_update_7101() {
+  $changedbundles = array('uaqs_content_chunks_marquee', 'uaqs_well');
+  $oldfield = 'field_uaqs_html';
+  $newfield = 'field_uaqs_summary';
+  $affected = array($oldfield, $newfield);
+  $idmap = db_query("SELECT id, field_name FROM {field_config} WHERE field_name IN (:affected) AND deleted = 0",
+    array(':affected' => $affected))
+    ->fetchAllKeyed(1,0);
+  if ($idmap === FALSE or count($idmap) != count($affected)) {
+    return t('Cannot find the fields affected by the update.',
+      array('@module' => $modulename));
+  }
+  $newformat = 'uaqs_standard';
+  $nmod = db_update('field_config_instance')
+    ->fields(array('field_id' => $idmap[$newfield], 'field_name' => $newfield))
+    ->condition('entity_type', 'paragraphs_item')
+    ->condition('bundle', $changedbundles, 'IN')
+    ->condition('field_name', $oldfield)
+    ->execute();
+  if ($nmod < 1) {
+    return t('Cannot find any @oldfield fields needing updated to @newfield.',
+      array('@oldfield' => $oldfield, '@newfield' => $newfield));
+  }
+  $oldvaluecol = $oldfield . '_value';
+  $newvaluecol = $newfield . '_value';
+  $oldfmtcol = $oldfield . '_format';
+  $newfmtcol = $newfield . '_format';
+  $prefixlist = array('field_data', 'field_revision');
+  $basecollist = array('entity_type', 'bundle', 'deleted', 'entity_id', 'revision_id', 'language', 'delta');
+  $oldcollist = $basecollist;
+  $oldcollist[] = $oldvaluecol;
+
+  foreach ($prefixlist as $prefix) {
+    $xold = $prefix . '_' . $oldfield;
+    $ynew = $prefix . '_' . $newfield;
+    $oldrows = db_select($xold, 'x')
+      ->fields('x', $oldcollist)
+      ->condition('x.entity_type', 'paragraphs_item')
+      ->condition('x.bundle', $changedbundles, 'IN')
+      ->execute();
+    if ($oldrows->rowCount() < 1) {
+      return t('Cannot find any @table table entries to update.',
+        array('@table' => $xold));
+    }
+    foreach ($oldrows as $oldrow) {
+      $newrow = array();
+      foreach ($basecollist as $col) {
+        $newrow[$col] = $oldrow->{$col};
+      }
+      $newrow[$newvaluecol] = $oldrow->{$oldvaluecol};
+      $newrow[$newfmtcol] = $newformat;
+      db_insert($ynew)
+        ->fields($newrow)
+        ->execute();
+    }
+    $ndel = db_delete($xold)
+      ->condition('entity_type', 'paragraphs_item')
+      ->condition('bundle', $changedbundles, 'IN')
+      ->execute();
+    if ($ndel < 1) {
+      return t('Cannot delete the old @table table entries.',
+        array('@table' => $xold));
+    }
+  }
+  return t('Updated @oldfield fields to @newfield.',
+    array('@oldfield' => $oldfield, '@newfield' => $newfield));
+}
+
+/**
+ * Add the new database field for bottom spacing
+ */
+function uaqs_content_chunks_update_7102() {
+  $table = 'paragraphs_item';
+  $field = 'bottom_spacing';
+  $def = array(
+    'description' => 'Bottom Spacing',
+    'type' => 'varchar',
+    'length' => 32,
+    'default' => 'mb-4'
+  );
+
+  db_add_field($table, $field, $def);
+}
+

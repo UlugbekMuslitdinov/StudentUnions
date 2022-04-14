@@ -1,0 +1,90 @@
+name = Schema.org Metatag
+description = "Provides support for Schema.org JSON LD."
+package = SEO
+core = 7.x
+
+; PHP 5.5 is required in order to simplify maintenance as it allows us to copy
+; some of the D8 module's code as-is.
+php = 5.5
+
+dependencies[] = metatag:metatag
+
+files[] = src/SchemaMetatagManager.php
+files[] = src/SchemaMetatagManagerInterface.php
+files[] = src/SchemaNameBase.php
+files[] = src/SchemaAddressBase.php
+files[] = src/SchemaAddressTrait.php
+files[] = src/SchemaDateBase.php
+files[] = src/SchemaDurationBase.php
+files[] = src/SchemaIsAccessibleForFreeBase.php
+files[] = src/SchemaItemListElementBase.php
+files[] = src/SchemaItemListElementBreadcrumbBase.php
+files[] = src/SchemaItemListElementViewsBase.php
+files[] = src/SchemaPersonOrgBase.php
+files[] = src/SchemaPersonOrgTrait.php
+files[] = src/SchemaGeoBase.php
+files[] = src/SchemaGeoTrait.php
+files[] = src/SchemaIdReferenceBase.php
+files[] = src/SchemaIdReferenceTrait.php
+files[] = src/SchemaImageBase.php
+files[] = src/SchemaImageTrait.php
+files[] = src/SchemaOfferBase.php
+files[] = src/SchemaOfferTrait.php
+files[] = src/SchemaRatingBase.php
+files[] = src/SchemaRatingTrait.php
+files[] = src/SchemaReviewBase.php
+files[] = src/SchemaReviewTrait.php
+files[] = src/SchemaPivotTrait.php
+files[] = src/SchemaUrlBase.php
+files[] = src/SchemaMainEntityOfPageBase.php
+files[] = src/SchemaTypeBase.php
+files[] = src/SchemaItemListBase.php
+files[] = src/SchemaActionBase.php
+files[] = src/SchemaActionTrait.php
+files[] = src/SchemaCountryBase.php
+files[] = src/SchemaCountryTrait.php
+files[] = src/SchemaCreativeWorkBase.php
+files[] = src/SchemaCreativeWorkTrait.php
+files[] = src/SchemaEntryPointBase.php
+files[] = src/SchemaEntryPointTrait.php
+files[] = src/SchemaEventBase.php
+files[] = src/SchemaEventTrait.php
+files[] = src/SchemaGovernmentServiceBase.php
+files[] = src/SchemaGovernmentServiceTrait.php
+files[] = src/SchemaHasPartBase.php
+files[] = src/SchemaHasPartTrait.php
+files[] = src/SchemaNutritionInformationBase.php
+files[] = src/SchemaNutritionInformationTrait.php
+files[] = src/SchemaOpeningHoursSpecificationBase.php
+files[] = src/SchemaOpeningHoursSpecificationTrait.php
+files[] = src/SchemaPlaceBase.php
+files[] = src/SchemaPlaceTrait.php
+files[] = src/SchemaProgramMembershipBase.php
+files[] = src/SchemaProgramMembershipTrait.php
+files[] = src/SchemaSpeakableBase.php
+files[] = src/SchemaSpeakableTrait.php
+files[] = src/SchemaThingBase.php
+files[] = src/SchemaThingTrait.php
+files[] = src/SchemaTrueFalseBase.php
+files[] = src/SchemaMonetaryAmountBase.php
+files[] = src/SchemaMonetaryAmountTrait.php
+files[] = src/SchemaContactPointBase.php
+files[] = src/SchemaContactPointTrait.php
+files[] = src/SchemaBrandBase.php
+files[] = src/SchemaBrandTrait.php
+files[] = src/SchemaHowToStepBase.php
+files[] = src/SchemaHowToStepTrait.php
+files[] = src/SchemaQuestionBase.php
+files[] = src/SchemaQuestionTrait.php
+files[] = src/SchemaAnswerBase.php
+files[] = src/SchemaAnswerTrait.php
+
+files[] = tests/schema_metatag.base.test
+files[] = tests/schema_metatag.helper.test
+files[] = tests/schema_metatag.tags.test
+
+; Information added by Drupal.org packaging script on 2020-07-22
+version = "7.x-1.4"
+core = "7.x"
+project = "schema_metatag"
+datestamp = "1595439769"

@@ -1,0 +1,56 @@
+# Use this file to build a full distribution including Drupal core and the
+# UA QuickStart dependencies using the following command:
+#
+# drush make build-ua_quickstart.make.yml <target directory>
+#
+# (note that the current directory must be the one holding this makefile).
+
+api: '2'
+core: 7.x
+projects:
+
+  # Drupal core + patches
+  # ---------------------
+  drupal:
+    type: core
+    version: '7.88'
+    patch:
+      # Fixes core bug preventing menu links removed from code from being removed from database.
+      # @see https://jira.arizona.edu/browse/UADIGITAL-546
+      # @see https://www.drupal.org/node/1079628
+      1079628: 'http://drupal.org/files/issues/programatically_added-1079628-24-d7.patch'
+
+      # Fixes core bug preventing shortcut sets from being importable/exportable.
+      # @see https://jira.arizona.edu/browse/UAMS-299
+      # @see https://www.drupal.org/node/1175700
+      # @see https://www.drupal.org/node/986968
+      1175700: 'http://drupal.org/files/issues/1175700-shortcut-set-save-fix-set-name-api_1.patch'
+
+      # Image captions and other data-* attributes are stored HTML-encoded. This
+      # causes them to bypass our current XSS filtering logic. When viewing content
+      # in the editor, the data-attribute's content is decoded and could be
+      # evaluated, leading to an XSS vulnerability when editing content.
+      # @see https://jira.arizona.edu/browse/UADIGITAL-1063
+      # @see https://jira.arizona.edu/browse/UADIGITAL-2243
+      # @see https://www.drupal.org/node/2105841
+      # @see https://www.drupal.org/node/2859006
+      2859006: 'https://www.drupal.org/files/issues/2021-04-21/2859006-26.patch'
+
+      # Improves mailto link detection for 'Convert URLs into links' filter.
+      # @see https://jira.arizona.edu/browse/UADIGITAL-1920
+      # @see https://www.drupal.org/project/drupal/issues/2016739
+      2016739: 'https://www.drupal.org/files/issues/drupal-require_subdomain_for_mailto_links-2016739-49.patch'
+
+      # Adds 'Administer account settings' permission (backport from D8).
+      # @see https://jira.arizona.edu/browse/UADIGITAL-1727
+      # @see https://www.drupal.org/project/drupal/issues/366950
+      366950: 'https://www.drupal.org/files/issues/2019-05-15/administer_users_-366950-206.patch'
+
+  # UA Quickstart, copied directly from the current directory
+  # ---------------------------------------------------------
+  ua_quickstart:
+    type: profile
+    subdir: ~
+    download:
+      type: copy
+      url: 'file://./'

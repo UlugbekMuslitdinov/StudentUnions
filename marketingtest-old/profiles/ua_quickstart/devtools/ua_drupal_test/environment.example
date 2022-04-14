@@ -1,0 +1,22 @@
+# `./uaqstest_drupal_download.sh` can download UA Quickstart for you and place
+# it here. This is also required for the tests to work on an existing site.
+export UAQSTEST_DRUPALROOT='/path/to/where/you/want/drupal/to/be'
+
+# `./uaqstest_drupal_install.sh` can automatically install drupal for you and
+# set the admin password. These aren't required for the tests to work on an
+# existing site.
+
+# The name of the database drupal should use.
+export UAQSTEST_DBNAME='drupal_mysql_database'
+
+# The username that drupal should use for connections.
+export UAQSTEST_DBUSER='drupal_mysql_username'
+
+# The password associated with the database user.
+export UAQSTEST_DBPASS='drupal_mysql_password'
+
+# The password you want to set for the drupal admin user (user1).
+export UAQSTEST_USER1PASS='drupal_admin_password'
+
+# To run the tests, behat needs to know where to find your site in a browser.
+export UAQSTEST_BASEURL='http://quickstart.dev'

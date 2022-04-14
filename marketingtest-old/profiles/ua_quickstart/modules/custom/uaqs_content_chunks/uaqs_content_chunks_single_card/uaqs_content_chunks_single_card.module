@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Content Chunks - Single Card feature.
+ */
+
+include_once 'uaqs_content_chunks_single_card.features.inc';

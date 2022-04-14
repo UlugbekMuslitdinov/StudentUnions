@@ -1,0 +1,14 @@
+name = "Schema.org: SpecialAnnouncement"
+description = "Adds Schema.org/SpecialAnnouncement to the JSON LD array."
+package = SEO
+core = 7.x
+dependencies[] = schema_metatag
+
+files[] = src/SchemaSpecialAnnouncementType.php
+files[] = tests/SchemaMetatagSpecialAnnouncementTest.test
+
+; Information added by Drupal.org packaging script on 2020-07-22
+version = "7.x-1.4"
+core = "7.x"
+project = "schema_metatag"
+datestamp = "1595439769"

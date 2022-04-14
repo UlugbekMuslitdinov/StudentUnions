@@ -1,0 +1,32 @@
+/**
+ * @file
+ * Styles are organized using the SMACSS technique. @see http://smacss.com/book/
+ *
+ * When you turn on CSS aggregation at admin/config/development/performance, all
+ * of these @include files will be combined into a single file.
+ */
+
+/* Import Sass mixins, variables, Compass modules, etc. */
+@import "init";
+
+/* HTML element (SMACSS base) rules */
+@import "normalize";
+
+/* Component (SMACSS module) rules */
+@import "components/misc";
+
+// Optionally, add your own components here.
+@import "print";
+
+
+/* OPTIONAL UA ZEN COMPONENTS - COMMENT OUT WHAT YOU DON'T NEED */
+
+@import "components/uazen-superfish";
+@import "components/uazen-multilevelmenu";
+@import "components/uazen-home-modules";
+@import "components/uazen-views";
+@import "components/uazen-sidemenu";
+@import "components/uazen-search";
+@import "components/uazen-webform-progressbar";
+@import "components/uazen-forms";
+@import "components/uazen-breadcrumbs";

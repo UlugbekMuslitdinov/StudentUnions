@@ -1,0 +1,14 @@
+[
+  {"id":5,
+    "uaqs_panel_group_id" : 160,
+    "uaqs_setting_collapse": 0,
+    "uaqs_short_title" : "Collapsible Group Item #1",
+    "uaqs_summary" : "Arizona's first fight song was \"Fight! Wildcats! Fight!\" written in 1929 by Dugald Stanley Holsclaw, class of '25. Holsclaw went on to serve in the State Legislature for many years. it was officially introduced by the UA band at the 1930 Homecoming game and was also performed by Rudy Vallee and his orchestra over the NBC radio network that same year."
+  },
+  {"id":6,
+    "uaqs_panel_group_id" : 160,
+    "uaqs_setting_collapse": 1,
+    "uaqs_short_title" : "Collapsible Group Item #2",
+    "uaqs_summary" : "You are a transfer student if you have attended other colleges/universities and have completed 12 or more units since graduating from high school. In this example, there is an external link class to demonstrate that option."
+  }
+]

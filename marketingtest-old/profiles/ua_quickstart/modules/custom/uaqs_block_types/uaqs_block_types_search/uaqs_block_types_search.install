@@ -1,0 +1,33 @@
+<?php
+/**
+ * @file
+ * uaqs_block_types_search.install
+ */
+
+/**
+ * Implements hook_enable().
+ */
+function uaqs_block_types_search_enable() {
+  migrate_static_registration();
+  $info = uaqs_block_types_search_migrate_api();
+  foreach ($info['migrations'] as $machine_name => $arguments) {
+    $migration = Migration::getInstance($machine_name);
+    $migration->processImport();
+  }
+}
+
+/**
+ * Implements hook_disable().
+ */
+function uaqs_block_types_search_disable() {
+  // Prevent missing migration errors by forcing migrate module to re-register
++ // statically defined migrations.
++ migrate_static_registration();
+  $info = uaqs_block_types_search_migrate_api();
+  $hitlist = array_reverse($info['migrations']);
+  foreach ($hitlist as $machine_name => $arguments) {
+    $migration = Migration::getInstance($machine_name);
+    $migration->processRollback();
+  }
+  MigrateGroup::deregister('uaqs_block_types');
+}

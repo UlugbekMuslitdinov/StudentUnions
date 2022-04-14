@@ -1,0 +1,211 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Content Chunks - Full Width Media Row feature.
+ */
+
+include_once 'uaqs_content_chunks_full_width_media_row.features.inc';
+
+/**
+ * Implements hook_preprocess_entity().
+ */
+function uaqs_content_chunks_full_width_media_row_preprocess_entity(&$variables) {
+  if ($variables['entity_type'] == 'paragraphs_item' && $variables['elements']['#bundle'] == 'uaqs_full_width_media_row') {
+    if (isset($variables['field_uaqs_photo'][0]['filemime']) && $variables['field_uaqs_photo'][0]['filemime'] === 'video/oembed') {
+      $group_bg_img = clone $variables['elements']['#groups']['group_bg_img'];
+      $group_bg_img->format_settings['instance_settings']['background_image'] = '' ;
+      $variables['elements']['#groups']['group_bg_img'] = $group_bg_img;
+      $variables['elements']['#fieldgroups']['group_bg_img'] = $group_bg_img;
+    }
+    $sidebar_first = block_list('sidebar_first');
+    $sidebar_second = block_list('sidebar_second');
+    // Add information about the number of sidebars.
+    if (!empty($sidebar_first) && !empty($sidebar_second)) {
+      $variables['content_column_class'] = ' class="column col-sm-6 col-sm-push-3"';
+    }
+    elseif (!empty($sidebar_first) && empty($sidebar_second)) {
+      $variables['second_sidebar_column_class'] = ' class="col-sm-3"';
+      $variables['content_column_class'] = ' class="column col-sm-9 col-sm-push-3"';
+    }
+    elseif (empty($sidebar_first) && !empty($sidebar_second)) {
+      $variables['content_column_class'] = ' class="col-sm-7 col-md-8 col-lg-8 col-8 column"';
+      $variables['second_sidebar_column_class'] = ' class="col-sm-5 col-md-4 col-lg-4 column"';
+    }
+    else {
+      $variables['second_sidebar_column_class'] = ' class="col-sm-3"';
+      $variables['content_column_class'] = ' class="column col-sm-12"';
+    }
+    // Fix text shadow.
+    if (isset($variables['elements']['#groups']['group_heading'])) {
+      if (isset($variables['elements']['#entity']->field_uaqs_summary_short['und'])) {
+        $heading = $variables['elements']['#groups']['group_heading'];
+        $data_content = $variables['elements']['#entity']->field_uaqs_summary_short['und'][0]['safe_value'];
+        $attribute = 'data-content="' . $data_content . '"';
+        $heading->format_settings['instance_settings']['attributes'] .= $attribute;
+      }
+    }
+    // Customizable display settings
+    // Background image display settings
+    if (isset($variables['elements']['#groups']['group_bg_img'])) {
+      $bg_classes = '';
+      $bg_classes_array = explode(' ', $variables['elements']['#groups']['group_bg_img']->format_settings['instance_settings']['classes']);
+      $bg_attach = field_info_field('field_uaqs_setting_bg_attach');
+      $bg_attach_allowed_values = array_keys(list_allowed_values($bg_attach));
+      $bg_sizes = field_info_field('field_uaqs_setting_bg_size');
+      $classes_to_remove = array_merge($bg_attach_allowed_values, array_keys(list_allowed_values($bg_sizes)));
+      $bg_classes_array = array_diff($bg_classes_array, $classes_to_remove);
+
+      $bg_size_class = '';
+      $bg_attachment_class = '';
+      if (!empty($variables['elements']['#entity']->field_uaqs_setting_bg_size)) {
+        $bg_attachment_class = drupal_html_class($variables['elements']['#entity']->field_uaqs_setting_bg_attach['und'][0]['value']);
+        $bg_classes_array[] = $bg_attachment_class;
+      }
+      if (!empty($variables['elements']['#entity']->field_uaqs_setting_bg_size)) {
+        $bg_size_class = drupal_html_class($variables['elements']['#entity']->field_uaqs_setting_bg_size['und'][0]['value']);
+        $bg_classes_array[] = $bg_size_class;
+      }
+      $bg_classes = implode(' ', $bg_classes_array);
+      $group_bg_img = clone $variables['elements']['#groups']['group_bg_img'];
+      $group_bg_img->format_settings['instance_settings']['classes'] = $bg_classes;
+      $variables['elements']['#groups']['group_bg_img'] = $group_bg_img;
+      $variables['elements']['#fieldgroups']['group_bg_img'] = $group_bg_img;
+    }
+    // Foreground text box display settings.
+    if (isset($variables['elements']['#groups']['group_text_box'])) {
+      $classes_to_remove = array(
+        'marquee-bg-trans-black','marquee-bg-trans-white'
+      );
+      $text_box_classes_array = explode(' ', $variables['elements']['#groups']['group_text_box']->format_settings['instance_settings']['classes']);
+      $text_box_classes_array = array_diff($text_box_classes_array, $classes_to_remove);
+      $bg_color = field_info_field('field_uaqs_setting_text_bg_color');
+      $allowed_values = list_allowed_values($bg_color);
+      $classes_to_remove = array_keys($allowed_values);
+      $text_box_classes_array = array_diff($text_box_classes_array, $classes_to_remove);
+      $text_box_bg_color_class = '';
+      if (!empty($variables['elements']['#entity']->field_uaqs_setting_text_bg_color)) {
+        $text_box_bg_color_class = drupal_html_class($variables['elements']['#entity']->field_uaqs_setting_text_bg_color['und'][0]['value']);
+      }
+      // set a temporary bg color to avoid flashing.
+      $text_box_classes_array[] = $text_box_bg_color_class;
+      // Inform styles within full width media row text box about the substrate color.
+      if ($text_box_bg_color_class) {
+        $text_box_classes_array[] = 'marquee-' . $text_box_bg_color_class;
+      }
+      $text_box_classes = implode(' ', $text_box_classes_array);
+      $group_text_box = clone $variables['elements']['#groups']['group_text_box'];
+      $group_text_box->format_settings['instance_settings']['classes'] = $text_box_classes;
+      $variables['elements']['#groups']['group_text_box'] = $group_text_box;
+      $variables['elements']['#fieldgroups']['group_text_box'] = $group_text_box;
+    }
+    $variables['elements']['#attached']['css'] = array(
+      drupal_get_path('module', 'uaqs_content_chunks_full_width_media_row') . '/css/uaqs_content_chunks_full_width_media_row.css',
+    );
+  }
+}
+
+
+/**
+ * Implements hook_field_extra_fields().
+ *
+ * Adds canvas as a psuedo field to be rendered as a background.
+ */
+function uaqs_content_chunks_full_width_media_row_field_extra_fields() {
+  $data['paragraphs_item']['uaqs_full_width_media_row']['display']['uaqs_full_width_media_row_text_bg'] = array(
+    'label' => t('Canvas notched backdrop'),
+    'weight' => 50, // default weight, can be changed on display form by site-builder.
+  );
+  return $data;
+}
+
+/**
+ * Implements hook_entity_view().
+ *
+ * Add in a canvas so we can render the background.
+ */
+function uaqs_content_chunks_full_width_media_row_entity_view($entity, $type, $view_mode, $langcode) {
+  if ($type == 'paragraphs_item' && $entity->bundle == 'uaqs_full_width_media_row') {
+    $marquee = entity_metadata_wrapper('paragraphs_item', $entity);
+    $bg_color = $marquee->field_uaqs_setting_text_bg_color->value();
+
+    if (!isset($bg_color)) {
+      $bg_color = 'none';
+    }
+
+    $entity->content['uaqs_full_width_media_row_text_bg'] = array(
+      '#pseudo_field' => TRUE,
+      '#type' => 'html_tag',
+      '#tag' => 'canvas',
+      '#value' => '&nbsp;',
+      '#attributes' => array(
+        'id' => 'canvas_' . $entity->item_id,
+        'class' => 'uaqs_full_width_media_row_bg',
+        'data-type' => 'full_width_media_row-bg',
+        'data-bg-color' => $bg_color,
+        'height' => 1000,
+        'width' => 1000,
+        'data-view-mode' => $view_mode,
+      ),
+    );
+    $entity->content['uaqs_full_width_media_row_text_bg']['#attached']['library'][] = array('uaqs_content_chunks', 'bg-images');
+    $entity->content['uaqs_full_width_media_row_text_bg']['#attached']['js'][] = array(
+      'type' => 'setting',
+      'data' => array(
+        'uaqsContentChunks' => array(
+          'bgImages' => array(
+            $entity->item_id => '.' . $type . '-' . $entity->item_id . '-' . $entity->field_name,
+          ),
+        ),
+      ),
+    );
+    $entity->content['uaqs_full_width_media_row_text_bg']['#attached']['js'][] = array(
+      'data' => drupal_get_path('module', 'uaqs_content_chunks_full_width_media_row') . '/js/uaqs_content_chunks_full_width_media_row.js',
+      'type' => 'file',
+      'scope' => 'footer',
+      'group' => JS_THEME,
+    );
+  }
+}
+
+/**
+ * Implements hook_entity_view_mode_alter().
+ */
+function uaqs_content_chunks_full_width_media_row_entity_view_mode_alter(&$view_mode, $context) {
+  // Set default view mode.
+  if (isset($context['entity']->item_id)) {
+    if ($context['entity_type'] == 'paragraphs_item' && $context['entity']->bundle == 'uaqs_full_width_media_row') {
+      if ($view_mode == 'default' || empty($view_mode)) {
+        $view_mode = 'uaqs_bg_img_content_center';
+      }
+    }
+  }
+}
+
+/**
+ * Options for full width media row text box background colors.
+ */
+function uaqs_content_chunks_full_width_media_row_bg_color_allowed_values_callback() {
+  $options = array(
+    'bg-transparent' => t('Transparent'),
+    'bg-trans-white' => t('(Light) Translucent white'),
+    'bg-trans-black' => t('(Dark) Translucent black'),
+  );
+
+  return $options;
+}
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function uaqs_content_chunks_full_width_media_row_form_node_form_alter(&$form, $form_state, $form_id) {
+  if (isset($form['field_uaqs_main_content']['und'])) {
+    $max_delta = $form['field_uaqs_main_content']['und']['#max_delta'];
+    foreach($form['field_uaqs_main_content']['und'] as $delta => $paragraphs_item) {
+      if (is_numeric($delta) && $max_delta >= $delta) {
+        if ($form['field_uaqs_main_content']['und'][$delta]['#bundle'] === 'uaqs_full_width_media_row') {
+          $form['field_uaqs_main_content']['und'][$delta]['field_uaqs_setting_text_bg_color']['und']['#options'] = uaqs_content_chunks_full_width_media_row_bg_color_allowed_values_callback();
+        }
+      }
+    }
+  }
+}

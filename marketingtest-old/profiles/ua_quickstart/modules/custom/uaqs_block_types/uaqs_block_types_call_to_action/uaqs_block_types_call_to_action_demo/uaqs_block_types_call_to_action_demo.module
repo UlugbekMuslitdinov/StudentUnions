@@ -1,0 +1,30 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Block Types - Call To Action Demo Content.
+ */
+
+
+/**
+ * Implements hook_migrate_api().
+ */
+function uaqs_block_types_call_to_action_demo_migrate_api() {
+  $import_root = drupal_get_path('module', 'uaqs_block_types_call_to_action_demo') . '/import';
+
+  $api = array(
+    'api' => 2,
+    'groups' => array(
+      'uaqs_block_types_call_to_action' => array(
+        'title' => t('UAQS Block Types - Call To Action'),
+      ),
+    ),
+    'migrations' => array(
+      'UaqsBlockTypesCallToActionBean' => array(
+        'class_name' => 'UaqsBlockTypesCallToActionBeanMigration',
+        'group_name' => 'uaqs_block_types_call_to_action',
+        'import_root' => $import_root,
+      ),
+    ),
+  );
+  return $api;
+}

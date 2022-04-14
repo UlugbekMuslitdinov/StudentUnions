@@ -1,0 +1,8 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Statement feature.
+ */
+
+include_once 'uaqs_block_types_statement.features.inc';
+include_once 'uaqs_block_types_statement.preprocess_entity_overrides.inc';

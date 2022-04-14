@@ -1,0 +1,511 @@
+# Makefile for the UA Quickstart Distribution
+# ===========================================
+
+core: 7.x
+api: '2'
+projects:
+
+  # UA Contrib Modules
+  # ------------------
+  ua_cas:
+    subdir: custom
+    download:
+      branch: 7.x-1.x
+      revision: 'f18ac0bafd7ebcd4a59794e778af8aeb19badd94'
+      type: git
+      url: 'https://bitbucket.org/ua_drupal/ua_cas.git'
+    type: module
+
+  ua_google_tag:
+    subdir: custom
+    download:
+      branch: 7.x-1.x
+      revision: '91fd378831d04a4c6dde3c5e9e244d9075f4e263'
+      type: git
+      url: 'https://bitbucket.org/ua_drupal/ua_google_tag.git'
+    type: module
+
+  # Contrib modules
+  # ---------------
+  access_unpublished:
+    patch:
+      # Add timestamp to hashed url to bypass edge-cache
+      # @see https://www.drupal.org/node/2957086
+      2957086: 'https://www.drupal.org/files/issues/2018-05-09/2957086-6-add-cachebusting-timestamp-to-hash-url.patch'
+      # Error when adding a file_entity within a paragraphs_item in new content/node when using workbench moderation.
+      # @see https://www.drupal.org/node/2968178
+      2968178: 'https://www.drupal.org/files/issues/2018-04-30/2968178-error-when-adding-file-entity-within-a-paragraph-item-in-new-content.patch'
+    version: '1.03'
+  admin_views:
+    version: '1.7'
+  advanced_help:
+    version: '1.6'
+  auto_entitylabel:
+    version: '1.4'
+  bean:
+    patch:
+      # Fix duplicate title/header issue.
+      # @see https://jira.arizona.edu/browse/UADIGITAL-1765
+      # @see https://www.drupal.org/node/2996282
+      2996282: 'https://www.drupal.org/files/issues/2018-09-28/bean-duplicate_headers-2996282-3.patch'
+    version: '1.13'
+  better_exposed_filters:
+    version: '3.6'
+  better_formats:
+    patch:
+      # Fix removing the format field breaks other modules
+      # @see https://www.drupal.org/project/better_formats/issues/2832330
+      2832330: 'https://www.drupal.org/files/issues/2019-02-18/2832330-22-make-using-field-formatter-defaults-useful.patch'
+      # Fix XSS issue in the codebase
+      # @see https://www.drupal.org/project/better_formats/issues/2896131
+      2896131: 'https://www.drupal.org/files/issues/better_formats-2896131-6-missing-check_plain-when-showing-filter-name.patch'
+      # Fix Change default text processing to filtered text
+      # @see https://www.drupal.org/project/better_formats/issues/1689630
+      1689630: 'https://www.drupal.org/files/better_formats-1689630-5-switch-to-change-instance-settings-from-plain-text-to-filtered-text.patch'
+      # Fix for a notice: index not found "fieldable'
+      # @see https://www.drupal.org/project/better_formats/issues/2118951
+      2118951: 'https://www.drupal.org/files/issues/2019-02-15/2118951-3-better_formats-warning.patch'
+    version: '1.0-beta2'
+  breakpoints:
+    version: '1.6'
+  chosen:
+    patch:
+      # Problem with accesibility
+      # @see https://www.drupal.org/project/chosen/issues/2834096
+      2834096: 'https://www.drupal.org/files/issues/2019-04-01/chosen-translations-accesibility-5.patch'
+    version: '2.1'
+  coffee:
+    patch:
+      # Fix coffee div blocks CKEditor buttons when maximized.
+      # @see https://jira.arizona.edu/browse/UADIGITAL-1929
+      # @see https://www.drupal.org/project/coffee/issues/3071153
+      3071153: 'https://www.drupal.org/files/issues/2019-07-29/hidden_coffee_div-3071153-2.patch'
+    version: '2.3'
+  css_injector:
+    patch:
+      # Fixes 'the directory is not writable' error when using S3FS.
+      # @see https://www.drupal.org/project/css_injector/issues/2471911
+      2471911-2: 'https://www.drupal.org/files/issues/css_injector-remove_drupal_realpath-2471911-2.patch'
+    version: '1.10'
+  ctools:
+    version: '1.19'
+  d8cache:
+    version: '1.2'
+  date:
+    version: '2.11-rc1'
+  date_ap_style:
+    version: '1.4'
+  date_ical:
+    version: '3.10'
+  defaultconfig:
+    version: '1.0-alpha11'
+  dialog:
+    version: '2.0-beta1'
+  diff:
+    version: '3.4'
+  draggableviews:
+    patch:
+      # Adds hook_draggableviews_sorted() hook.
+      # @see https://jira.arizona.edu/browse/UADIGITAL-2089
+      # @see https://www.drupal.org/project/draggableviews/issues/2989140
+      2989140: 'https://www.drupal.org/files/issues/2019-08-23/hook_after_sort_is_saved-2989140-3.patch'
+    version: '2.1'
+  drafty:
+    version: '1.0-rc1'
+  editor:
+    patch:
+      # Add hook_editor_ckeditor_settings_alter to API documentation
+      # @see https://jira.arizona.edu/browse/UADIGITAL-809
+      # @see https://www.drupal.org/node/2756601
+      2756601-3: 'https://www.drupal.org/files/issues/editor-ckeditor_settings_api_doc-2756601-3.patch'
+      # Fix issue causing Editor to be unloaded on AJAX submissions.
+      # @see https://jira.arizona.edu/browse/UADIGITAL-1259
+      # @see https://www.drupal.org/node/2691101
+      2691101: 'https://www.drupal.org/files/issues/editor-ckeditor-unloads-on-ajax-2691101-2-7.41.patch'
+      # Backport SA-CORE-2022-005
+      # @see https://jira.arizona.edu/browse/UADIGITAL-2224
+      # @see https://jira.arizona.edu/browse/UADIGITAL-2267
+      # @see https://www.drupal.org/project/editor/issues/3216152
+      3216152: 'https://www.drupal.org/files/issues/2022-03-16/3216152-7-alpha7.patch'
+    version: '1.0-alpha7'
+  elements:
+    version: '1.5'
+  email:
+    version: '1.3'
+  entity:
+    patch:
+      # Fixes W3C HTML validation issues.
+      # @see https://jira.arizona.edu/browse/UADIGITAL-1990
+      # @see https://www.drupal.org/project/entity/issues/1910596
+      1910596: 'https://www.drupal.org/files/issues/2019-01-21/1910596-markup_validation_with_rdf-6.patch'
+      # Temporarily fixes EntityMetadataWrapperException: Unable to get the data property
+      # @see https://jira.arizona.edu/browse/UADIGITAL-2130
+      # @see https://www.drupal.org/project/entity/issues/1596594
+      1596594: 'https://www.drupal.org/files/issues/entity-on-exception-return-null-1596594-49.patch'
+    version: '1.9'
+  entityreference:
+    patch:
+      # Fixes Does not work with version 7.x-3.x of entity_embed
+      # @see https://jira.arizona.edu/browse/UADIGITAL-1229
+      # @see https://www.drupal.org/node/2903245
+      2903245-8: 'https://www.drupal.org/files/issues/2020-01-08/handle-entity-embed-reroll-2903245-8.patch'
+      # Resolve "Undefined index entityreference_field_formatter_prepare_view()"
+      # @see https://jira.arizona.edu/browse/UADIGITAL-2208
+      # @see https://www.drupal.org/project/entityreference/issues/2905413
+      2905413: 'https://www.drupal.org/files/issues/2905413.patch'
+    version: '1.5'
+  entity_embed:
+    patch:
+      # Prevent Drush from applying dev version updates.
+      # This patch should be removed once a release version can be used.
+      lock: 'https://bitbucket.org/!api/2.0/snippets/ua_drupal/xjE7e5/f0d2d13/files/drush-lock-update.patch'
+      # D7 Backport for SA-CONTRIB-2021-028
+      # @see https://jira.arizona.edu/browse/UADIGITAL-2271
+      # @see https://www.drupal.org/sa-contrib-2021-028
+      SA-CONTRIB-2021-028: 'https://bitbucket.org/!api/2.0/snippets/ua_drupal/RxxLar/6160d4c126d1ab995df98b3110c5d6a488e0670e/files/entity_embed-D7-SA-CONTRIB-2021-028.patch'
+    download:
+      branch: 7.x-3.x
+      revision: bb4f5e3dfe1d4d322b5220e23e1b498545bb9765
+      type: git
+      url: 'https://git.drupal.org/project/entity_embed.git'
+    type: module
+  environment_indicator:
+    version: '2.9'
+  exclude_node_title:
+    version: '1.9'
+  extlink:
+    version: '1.21'
+  features:
+    patch:
+      986968 : 'https://www.drupal.org/files/issues/2020-12-18/986968-46.patch'
+    version: '2.13'
+  feeds:
+    version: '2.0-beta5'
+  feeds_tamper:
+    version: '1.2'
+  feeds_jsonpath_parser:
+    version: '1.2'
+  fences:
+    version: '1.2'
+  field_collection:
+    version: '1.2'
+  field_formatter_settings:
+    version: '1.1'
+  field_group:
+    version: '1.6'
+  field_group_background_image:
+    patch:
+      # Adds support for Picture and Manual Crop modules.
+      # @see https://jira.arizona.edu/browse/UADIGITAL-1205
+      # @see https://jira.arizona.edu/browse/UADIGITAL-1902
+      # @see https://www.drupal.org/project/field_group_background_image/issues/2502001
+      2502001 : 'https://www.drupal.org/files/issues/2019-07-03/field_group_background_image-convert-multiplier-to-integer-2502001-22-D7.patch'
+    version: '1.1'
+  field_group_link:
+    version: '1.5'
+  field_multiple_limit:
+    patch:
+      # Fixes PHP Notice for multi-valued fields hidden in Field UI.
+      # @see https://jira.arizona.edu/browse/UADIGITAL-924
+      # @see https://www.drupal.org/node/2807079
+      2807079: 'https://www.drupal.org/files/issues/Avoid_php_warnings-2807079-2.patch'
+    version: '1.0-alpha5'
+  file_entity:
+    patch:
+      # Fixes screen reader issue with images linking to file entity when it should not.
+      # @see https://www.drupal.org/project/file_entity/issues/1245266.
+      1245266: 'https://www.drupal.org/files/issues/2018-03-18/file_entity-rendered_file_template-1245266-17.patch'
+      # Fixes file_entity entity_embeds not working in CK Editor.
+      # This should be replaced with a Drupal.org patch for entity_embed when possible.
+      # @see https://jira.arizona.edu/browse/UADIGITAL-2206
+      2206: 'https://bitbucket.org/!api/2.0/snippets/ua_drupal/knbRgp/13ffa185b0de6e3604340e446136a6a28f95a5a9/files/UADIGITAL-2206.patch'
+    version: '2.30'
+  file_entity_inline:
+    version: '1.0-rc2'
+  flag:
+    version: '3.9'
+  flexslider:
+    version: '2.0-rc2'
+  google_analytics:
+    version: '2.6'
+  globalredirect:
+    version: '1.6'
+  honeypot:
+    version: '1.26'
+  html5_tools:
+    version: '1.3'
+  image_class:
+    patch:
+      # Prevent Drush from applying dev version updates.
+      # This patch should be removed once a release version can be used.
+      lock: 'https://bitbucket.org/!api/2.0/snippets/ua_drupal/xjE7e5/f0d2d13/files/drush-lock-update.patch'
+    download:
+      branch: 7.x-1.x
+      revision: a4baf33f3acd6b63c7cb81eb393cf61f4b7962ea
+      type: git
+    version: 1.x-dev
+  image_link_formatter:
+    version: '1.1'
+  job_scheduler:
+    version: 2.0
+  jquery_update:
+    version: '3.0-alpha5'
+  libraries:
+    version: '2.5'
+  link:
+    version: '1.7'
+  manualcrop:
+    patch:
+      # Fixes Manual Crop selection info not showing in certain themes.
+      # @see https://jira.arizona.edu/browse/UADIGITAL-2158
+      # @see https://www.drupal.org/project/manualcrop/issues/3090032
+      3090032: 'https://www.drupal.org/files/issues/2019-10-24/manualcrop-selection_info_hidden-3090032-3.patch'
+    version: '1.7'
+  masquerade:
+    version: '1.0-rc7'
+  match_redirect:
+    version: '1.0'
+  media:
+    version: '2.26'
+  media_oembed:
+    patch:
+      # Fixes Youtube video oEmbed issue where sometimes video doesn't display.
+      # @see https://jira.arizona.edu/browse/UADIGITAL-2254
+      # @see https://www.drupal.org/project/media_oembed/issues/3188526
+      3188526: 'https://www.drupal.org/files/issues/2020-12-15/3188526-update-youtube-provider-endpoint-to-use-https-02.patch'
+    version: '2.8'
+  menu_bean:
+    download:
+      # Patch fails unless applied to version of .info file without d.o. modifications.
+      tag: 7.x-1.0-beta2
+      type: git
+    patch:
+      2714007: 'https://drupal.org/files/issues/bean_plugin_class_not-2714007-2_0.patch'
+      # Fixes PHP Notice when creating new Menu Bean.
+      # @see https://jira.arizona.edu/browse/UADIGITAL-1817
+      # @see https://www.drupal.org/project/menu_bean/issues/2617368
+      2617368: 'https://www.drupal.org/files/issues/menu_bean-undefined_index_parent_mlid-2617368_0.patch'
+    version: 1.0-beta2
+  menu_block:
+    patch:
+      # Fixes issue with empty menu blocks displaying unexpectedly.
+      # @see https://jira.arizona.edu/browse/UADIGITAL-1860
+      # @see https://www.drupal.org/project/menu_block/issues/3019808
+      3019808: 'https://www.drupal.org/files/issues/2019-02-27/undefined-index-fix-3019808-4.patch'
+    version: '2.8'
+  menu_position:
+    version: '1.2'
+  metatag:
+    version: '1.27'
+  migrate:
+    patch:
+      # PHP 7.0 compatibility.
+      # @see https://jira.arizona.edu/browse/UADIGITAL-1484
+      # @see https://www.drupal.org/node/2928784
+      # @see https://www.drupal.org/node/2996693
+      2928784: 'https://www.drupal.org/files/issues/2018-03-12/mssql-functions-2928784-11.patch'
+      2996693: 'https://www.drupal.org/files/issues/2018-09-01/fix_warnings_sqlsrv.inc-2996693-2.patch'
+    version: '2.11'
+  module_filter:
+    version: '2.2'
+  multiform:
+    version: '1.6'
+  navbar:
+    version: '1.8'
+  paragraphs:
+    patch:
+      # PHP 7.2 compatibility.
+      # @see https://jira.arizona.edu/browse/UADIGITAL-1484
+      # @see https://www.drupal.org/node/2951390
+      # @see https://jira.arizona.edu/browse/UADIGITAL-1873
+      # @see https://www.drupal.org/project/paragraphs/issues/3010938
+      2951390: 'https://www.drupal.org/files/issues/2018-03-08/deprecated_each-2951390-2.patch'
+      3010938: 'https://www.drupal.org/files/issues/2018-11-26/paragraphs-count-php71-3010938-3.patch'
+      # Fixes access control on paragraphs revisions.
+      # @see https://www.drupal.org/project/paragraphs/issues/2562875
+      2562875: 'https://www.drupal.org/files/issues/paragraphs-fix-access-host-entity-properties-not-populated-PT-149611197-custom.patch'
+      # Fixes access control on paragraphs revisions.
+      # @see https://www.drupal.org/project/paragraphs/issues/2594593
+      2594593: 'https://www.drupal.org/files/issues/paragraphs_revision_access-2594593-21.patch'
+    version: '1.0-rc5'
+  pathauto:
+    version: '1.3'
+  picture:
+    patch:
+      # Fixes 'Notice: Uninitialized string offset'
+      # @see https://www.drupal.org/project/picture/issues/2331023
+      # @see https://jira.arizona.edu/browse/UADIGITAL-2057
+      2331023: 'https://www.drupal.org/files/issues/an_error_in-2331023-11.patch'
+    version: '2.13'
+  plupload:
+    patch:
+      # Fixes plupload patch does not apply drush make error
+      # @see https://www.drupal.org/project/plupload/issues/1903850
+      1903850: 'https://www.drupal.org/files/issues/plupload-1_5_8-rm_examples-1903850-33.patch'
+    version: '1.7'
+  redirect:
+    version: '1.0-rc4'
+  regionclass:
+    version: '1.0-rc2'
+  role_delegation:
+    patch:
+      # Fixes issue with VBO showing roles admin cannot assign.
+      # @see https://jira.arizona.edu/browse/UADIGITAL-1727
+      # @see https://www.drupal.org/project/role_delegation/issues/2051669
+      2051669: 'https://www.drupal.org/files/2051669-1-role_delegation-views-bulk-operations_0.patch'
+    version: '1.2'
+  schema_metatag:
+    version: '1.4'
+  simplified_menu_admin:
+    version: '1.0'
+  smtp:
+    version: '1.7'
+  special_menu_items:
+    version: '2.1'
+  strongarm:
+    version: '2.0'
+  superfish:
+    version: '2.0'
+  taxonomy_menu:
+    version: '1.6'
+  telephone:
+    version: '1.0-alpha1'
+  title:
+    version: '1.0-beta4'
+  token:
+    version: '1.8'
+  transliteration:
+    version: '3.2'
+  viewfield:
+    version: '2.2'
+  views:
+    version: '3.24'
+  views_bootstrap:
+    version: '3.5'
+  views_bulk_operations:
+    patch:
+      # Integrates 'change user roles' action with Role Delegation module.
+      # @see https://jira.arizona.edu/browse/UADIGITAL-1727
+      # @see https://www.drupal.org/project/views_bulk_operations/issues/777836
+      777836: 'https://www.drupal.org/files/issues/views_bulk_operations-integration_with_role_delegation-777836-2.patch'
+    version: '3.6'
+  views_content_cache:
+    patch:
+      # Fixes PDOException errors when using custom views content cache plugins.
+      # @see https://jira.arizona.edu/browse/UADIGITAL-2089
+      # @see https://www.drupal.org/project/views_content_cache/issues/2407467
+      2407467: 'https://www.drupal.org/files/issues/_patch-views_content_cache-views_content_cache_update_get_function_builds_incorrect_query-2407467-1.patch'
+      # Adds integration with Draggable Views module.
+      # @see https://jira.arizona.edu/browse/UADIGITAL-2089
+      # @see https://www.drupal.org/project/views_content_cache/issues/952948
+      1282056: 'https://www.drupal.org/files/issues/2019-08-26/views_content_cache-952948-13.patch'
+    version: '3.0-alpha3'
+  views_field_view:
+    version: '1.2'
+  webform:
+    version: '4.23'
+  workbench_moderation:
+    patch:
+      # Fixes PHP 7.1 warnings/errors generated by workbench_moderation_form_node_form_alter().
+      # @see https://jira.arizona.edu/browse/UADIGITAL-1947
+      # @see https://www.drupal.org/project/workbench_moderation/issues/2871962
+      12293074: 'https://www.drupal.org/files/issues/php7_support-12293074-6.patch'
+    version: '3.0'
+  xautoload:
+    version: '5.8'
+  xmlsitemap:
+    version: '2.6'
+
+  # UA Contrib Themes
+  # -----------------
+  adminimal_theme:
+    patch:
+      # Fixes broken handles and cut off dropdowns in admin UI.
+      # @see https://jira.arizona.edu/browse/UADIGITAL-2157
+      # @see https://jira.arizona.edu/browse/UADIGITAL-2160
+      # @see https://www.drupal.org/project/adminimal_theme/issues/3061105
+      # @see https://bitbucket.org/ua_drupal/ua_quickstart/pull-requests/597/uadigital-2157-add-adminimal-patch-to-fix/diff
+      # @see https://bitbucket.org/ua_drupal/ua_quickstart/pull-requests/606/uadigital-2160-added-css-fix-for-cut-off/diff
+      3058836: 'https://www.drupal.org/files/issues/2019-11-04/adminimal-remove_box_sizing-3058836-6.patch'
+    subdir: ''
+    type: theme
+    version: '1.26'
+
+# Set the default subdirectory to hold contrib modules
+# ----------------------------------------------------
+defaults:
+  projects:
+    subdir: contrib
+
+# Libraries
+# ---------
+libraries:
+  backbone:
+    download:
+      tag: 1.0.0
+      type: git
+      url: https://github.com/jashkenas/backbone.git
+
+  btgrid:
+    download:
+      type: get
+      url: 'https://download.ckeditor.com/btgrid/releases/btgrid_1.0b1.zip'
+
+  bt_table:
+    download:
+      type: get
+      url: 'https://download.ckeditor.com/bt_table/releases/bt_table_1.0b2.zip'
+
+  chosen:
+    download:
+      type: get
+      url: 'https://github.com/harvesthq/chosen/releases/download/v1.8.7/chosen_v1.8.7.zip'
+
+  flexslider:
+    directory_name: flexslider
+    download:
+      type: get
+      url: 'https://github.com/woothemes/FlexSlider/archive/version/2.4.0.tar.gz'
+
+  iCalcreator:
+    download:
+      type: get
+      url: 'https://github.com/iCalcreator/iCalcreator/archive/e3dbec2cb3bb91a8bde989e467567ae8831a4026.zip'
+    patch:
+      # PHP7 Compatibility patch
+      # @see https://jira.arizona.edu/browse/UADIGITAL-1437
+      # @see https://www.drupal.org/node/2707373
+      2707373: 'https://www.drupal.org/files/issues/iCalcreator-php-7-2707373-6.patch'
+
+  jsonpath:
+    download:
+      type: get
+      url: 'https://github.com/FlowCommunications/JSONPath/archive/0.5.0.tar.gz'
+
+  jquery.imagesloaded:
+    download:
+      type: get
+      url: 'https://github.com/desandro/imagesloaded/archive/v2.1.2.tar.gz'
+
+  jquery.imgareaselect:
+    download:
+      type: get
+      url: 'https://github.com/odyniec/imgareaselect/archive/v0.9.11-rc.1.tar.gz'
+
+  modernizr:
+    download:
+      revision: 5b89d9225320e88588f1cdc43b8b1e373fa4c60f
+      type: git
+      url: https://github.com/BrianGilbert/modernizer-navbar.git
+
+  underscore:
+    download:
+      tag: 1.5.0
+      type: git
+      url: https://github.com/jashkenas/underscore.git
+
+  Yaml:
+    download:
+      tag: v3.4.29
+      type: git
+      url: https://github.com/symfony/yaml.git

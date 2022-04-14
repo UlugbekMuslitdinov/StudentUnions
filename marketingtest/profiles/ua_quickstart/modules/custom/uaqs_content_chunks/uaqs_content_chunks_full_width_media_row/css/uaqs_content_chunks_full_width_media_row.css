@@ -1,0 +1,252 @@
+/*Temporary styles until we can figure out how to add text shadow to a class
+ * that is white on white and black on black. Most text over images needs a text
+ * shadow, so this can probably be a part of a card that has an overlay over an image
+ * and text.*/
+.media-row-heading {
+   color:transparent;
+}
+.marquee-bg-trans-white .media-row-text {
+  text-shadow: 0 0.1em 3em #FFF, 0 0 3em #FFF;
+  font-size:18px;
+  color:#0b244b;
+  letter-spacing:-0.19px;
+  font-family: MiloWeb, Verdana, Geneva, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+}
+.marquee-bg-trans-white .media-row-heading {
+   text-shadow: 0 0.1em 3em #FFF, 0 0 3em #FFF;
+}
+.paragraphs-item-uaqs-full-width-media-row .container.container-absolute {
+  top: -1px;
+  bottom: -1px;
+}
+.media-row-heading:after {
+ width: 100%;
+}
+
+.marquee-bg-trans-white .media-row-heading:after {
+  color:#0b244b;
+  content: attr(data-content);
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-shadow: none;
+  margin-top: 1.5rem;
+  margin-bottom: .5em;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+.marquee-bg-trans-black .media-row-text {
+  text-shadow: 0 .2em 3em #000;
+  font-size:18px;
+  color:#ffffff;
+  letter-spacing:-0.19px;
+  font-family: MiloWeb, Verdana, Geneva, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+
+}
+.marquee-bg-trans-black .media-row-heading {
+   text-shadow: 0 .2em 3em #000;
+}
+.marquee-bg-trans-black .media-row-heading:after {
+  content: attr(data-content);
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #fff;
+  text-shadow: none;
+  margin-bottom: .5em;
+  margin-top: 1.5rem;
+  margin-bottom: .5em;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+.paragraphs-item-uaqs-full-width-media-row .btn {
+  text-shadow: none;
+}
+.paragraphs-item-uaqs-full-width-media-row .marquee-bg-trans-black .btn,
+.paragraphs-item-uaqs-full-width-media-row .marquee-bg-trans-white .btn {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+/* End temporary styles. .*/
+.shield-cover {
+  z-index: 1;
+  height: 100%;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.paragraphs-item-uaqs-full-width-media-row canvas {
+  position:absolute;
+  top:0;
+  z-index: -1;
+}
+.paragraphs-item-uaqs-full-width-media-row picture *{
+  visibility:hidden;
+  width: 100%;
+  height: auto !important;
+}
+
+.uaqs-video-background .bg-video-player-control {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 0.9em;
+  color: #0c234b;
+  z-index: -1;
+  cursor: pointer;
+  padding: 0.3em 0.6em;
+  border: none;
+  margin: 10px;
+}
+
+.uaqs-video-background .bg-video-player-control:focus,
+.uaqs-video-background .bg-video-player-control:hover {
+  color: #ab0520;
+  border-color: #ab0520;
+}
+
+.uaqs-video-background.uaqs-video-playing .bg-video-player-control.uaqs-video-pause {
+  z-index: 1;
+}
+
+.uaqs-video-background.uaqs-video-paused .bg-video-player-control.uaqs-video-play {
+  z-index: 1;
+}
+
+.uaqs-video-loading .uaqs-video-container {
+  opacity: 0;
+}
+.uaqs-video-playing .uaqs-video-container {
+  opacity: 1;
+}
+.paragraphs-item-uaqs-full-width-media-row .file-video-oembed.view-mode-uaqs_bg picture * {
+  visibility: visible;
+}
+
+.height-100 {
+  height: 100%;
+}
+
+.bottom-line {
+  padding: 20px 0;
+  border-bottom: 2px solid #f3f3f3;
+  border-top: 2px solid #f3f3f3;
+}
+
+.paragraphs-item-uaqs-full-width-media-row.mb-0 {
+  margin-bottom: -1px !important;
+}
+.paragraphs-item-uaqs-full-width-media-row {
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.paragraphs-item-uaqs-full-width-media-row.uaqs-bg-image {
+  overflow: initial;
+  width: initial;
+  margin: initial;
+  position: relative;
+}
+
+.paragraphs-item-uaqs-full-width-media-row .bg-trans-white {
+  background-color: white;
+  background-color: rgba(255,255,255,0.63);
+}
+.paragraphs-item-uaqs-full-width-media-row .bg-trans-black {
+  background-color: #403635;
+  background-color: rgba(0,0,0,0.73);
+}
+
+/*Background repeat*/
+.bg-no-repeat {
+  background-repeat: no-repeat;
+}
+/*Background size*/
+.bg-size-cover {
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.bg-size-100-w {
+  -webkit-background-size: 101% auto;
+  -moz-background-size: 101% auto;
+  -o-background-size: 101% auto;
+  background-size: 101% auto;
+}
+
+/*Background attachment */
+.bg-attachment-fixed {
+  background-attachment: fixed;
+}
+.bg-attachment-scroll {
+  background-attachment: scroll;
+}
+
+/*Background position */
+.bg-center-vert {
+  background-position-y: center;
+}
+
+.bg-center-horiz {
+  background-position-x: center;
+}
+
+img.bg-image-aspect-ratio {
+  width: 100% !important;
+  opacity: 0;
+}
+.vertical-align-center {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+/*  Must be inside an element that is positioned relatively, like  */
+/*  `.paragraphs-item-uaqs-full-width-media-row`                   */
+
+.container.container-absolute {
+  bottom: 0;
+  top: 0;
+  float: none;
+  position: absolute;
+  width: 100%;
+  z-index: 1;
+}
+
+@media (min-width: 768px) {
+  .container.container-absolute {
+    margin-left: -376px;
+    left:50%;
+    width: 752px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container.container-absolute {
+    margin-left: -486px;
+    width: 972px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container.container-absolute {
+    margin-left: -586px;
+    width: 1172px;
+  }
+}

@@ -1,0 +1,332 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Content Chunks feature.
+ */
+
+include_once 'uaqs_content_chunks.features.inc';
+
+/**
+ * Implements hook_theme_registry_alter().
+ *
+ * Taken directly from https://www.drupal.org/node/715160
+ * (Using template (.tpl.php) files in your own module).
+ */
+function uaqs_content_chunks_theme_registry_alter(&$theme_registry) {
+  // Defined path to the current module.
+  $module_path = drupal_get_path('module', 'uaqs_content_chunks');
+  // Find all .tpl.php files in this module's folder recursively.
+  $template_file_objects = drupal_find_theme_templates($theme_registry, '.tpl.php', $module_path);
+  // Iterate through all found template file objects.
+  foreach ($template_file_objects as $key => $template_file_object) {
+    // If the template has not already been overridden by a theme.
+    if (!isset($theme_registry[$key]['theme path']) || !preg_match('#/themes/#', $theme_registry[$key]['theme path'])) {
+      // Alter the theme path and template elements.
+      $theme_registry[$key]['theme path'] = $module_path;
+      $theme_registry[$key] = array_merge($theme_registry[$key], $template_file_object);
+      $theme_registry[$key]['type'] = 'module';
+    }
+  }
+}
+
+/**
+ * Implements hook_preprocess_entity().
+ *
+ * Injects spacing class into the  theme variable classes_array.
+ */
+function uaqs_content_chunks_preprocess_entity(&$variables) {
+  if ($variables['entity_type'] == 'paragraphs_item') {
+    // add classes for bottom spacing
+    if(!empty($variables['elements']['#entity']->bottom_spacing)) {
+      $variables['classes_array'][] = $variables['elements']['#entity']->bottom_spacing;
+      $variables['classes_array'][] = $variables['elements']['#view_mode'];
+    }
+
+    $variables['elements']['#attached']['css'] = array(
+      drupal_get_path('module', 'uaqs_content_chunks') . '/css/uaqs_content_chunks.css',
+    );
+  }
+}
+
+/**
+ * Implements hook_preprocess_node().
+ */
+function uaqs_content_chunks_preprocess_node(&$vars) {
+  if ($vars['node']->type == 'uaqs_flexible_page' && $vars['view_mode'] == 'uaqs_card') {
+    $vars['theme_hook_suggestions'][] = 'node__uaqs_flexible_page__uaqs_card';
+  }
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function uaqs_content_chunks_entity_info_alter(&$entity_info) {
+  $entity_info['paragraphs_item']['view modes']['uaqs_bg_img_content_bottom'] = array(
+    'label' => t('Full-width background (content bottom)'),
+    'custom settings' => FALSE,
+  );
+  $entity_info['paragraphs_item']['view modes']['uaqs_bg_img_content_center'] = array(
+    'label' => t('Full-width background (content centered)'),
+    'custom settings' => FALSE,
+  );
+  $entity_info['paragraphs_item']['view modes']['uaqs_bg_img_content_left'] = array(
+    'label' => t('Full-width background (content aligned left)'),
+    'custom settings' => FALSE,
+  );
+  $entity_info['paragraphs_item']['view modes']['uaqs_bg_img_content_right'] = array(
+    'label' => t('Full-width background (content aligned right)'),
+    'custom settings' => FALSE,
+  );
+  $entity_info['paragraphs_item']['view modes']['uaqs_align_left'] = array(
+    'label' => t('Align left'),
+    'custom settings' => FALSE,
+  );
+  $entity_info['paragraphs_item']['view modes']['uaqs_align_right'] = array(
+    'label' => t('Align right'),
+    'custom settings' => FALSE,
+  );
+  $entity_info['paragraphs_item']['view modes']['uaqs_landing_grid'] = array(
+    'label' => t('Landing Grid'),
+    'custom settings' => FALSE,
+  );
+  $entity_info['paragraphs_item']['view modes']['uaqs_borderless_card'] = array(
+    'label' => t('Borderless Card'),
+    'custom settings' => FALSE,
+  );
+  $entity_info['field_collection_item']['view modes']['uaqs_landing_grid'] = array(
+    'label' => t('Landing Grid'),
+    'custom settings' => FALSE,
+  );
+  $entity_info['field_collection_item']['view modes']['uaqs_borderless_card'] = array(
+    'label' => t('Borderless Card'),
+    'custom settings' => FALSE,
+  );
+}
+
+/**
+ * Implements hook_field_attach_form().
+ *
+ * Add view mode field to paragraphs item submit form.
+ */
+function uaqs_content_chunks_field_attach_form($entity_type, $entity, &$form, &$form_state, $langcode) {
+
+  if($entity_type != 'paragraphs_item') return;
+
+  // Add display settings.
+  $form['uaqs_group_display_settings'] = array(
+    '#type' => 'fieldset',
+    '#title' => t('Additional options'),
+    '#collapsible' => TRUE,
+    '#collapsed' => TRUE,
+    '#weight' => 99,
+  );
+
+  $bundle = $entity->bundle;
+  $entity_info = $entity->entityInfo();
+
+  //Add view mode selection to paragraphs items.
+  $paragraphs_view_modes = $entity_info['view modes'];
+
+  $bundle_view_mode_settings = field_view_mode_settings($entity_type, $bundle);
+
+  $available_view_modes = array('' => 'Default');
+  //Prepare view mode list
+  foreach ($bundle_view_mode_settings as $key => $view_mode){
+    if($view_mode['custom_settings']){
+      $available_view_modes[$key] = $paragraphs_view_modes[$key]['label'];
+    }
+  }
+
+$form['uaqs_group_display_settings']['view_mode'] = array(
+    '#type' => 'select',
+    '#title' => t('View mode'),
+    '#options' => $available_view_modes,
+    '#default_value' => isset($entity->view_mode) ? $entity->view_mode : 'default',
+    '#group' => 'uaqs_group_display_settings',
+  );
+
+  //Add bottom spacing selection to paragraphs items.
+  $bottom_spacing_options  = array(
+    'mb-0' => 'Zero',
+    'mb-min' => 'Minimum 1 px',
+    'mb-1' => '1 (0.25rem | ~4px)',
+    'mb-2' => '2 (0.5rem | ~8px)',
+    'mb-3' => '3 (1.0rem | ~16px)',
+    'mb-4' => '4 (1.5rem | ~24px)',
+    'mb-5' => '5 (3.0rem | ~48px)',
+    'mb-6' => '6 (4.0rem | ~64px)',
+    'mb-7' => '7 (5.0rem | ~80px)',
+    'mb-8' => '8 (6.0rem | ~96px)',
+    'mb-9' => '9 (7.0rem | ~112px)',
+    'mb-10' => '10 (8.0rem | ~128px)',
+  );
+
+  $form['uaqs_group_display_settings']['bottom_spacing'] = array(
+    '#type' => 'select',
+    '#title' => t('Bottom Spacing'),
+    '#description' => t('More detail on <a href="http://uadigital.arizona.edu/ua-bootstrap/css.html#spacing">spacing</a> can be found in the <em>UA Bootstrap</em> documentation.'),
+    '#options' => $bottom_spacing_options,
+    '#default_value' => !isset($entity->bottom_spacing) || is_null($entity->bottom_spacing) ? 'mb-4' : $entity->bottom_spacing,
+    '#group' => 'uaqs_group_display_settings',
+  );
+}
+
+/**
+ * Implements hook_field_attach_submit().
+ *
+ * Save view mode value.
+ */
+
+function uaqs_content_chunks_field_attach_submit($entity_type, $entity, $form, &$form_state) {
+  if($entity_type == 'paragraphs_item') {
+   if (isset($form['uaqs_group_display_settings']['view_mode'])){
+     $entity->view_mode = $form['uaqs_group_display_settings']['view_mode']['#value'];
+   }
+   if (isset($form['uaqs_group_display_settings']['bottom_spacing'])){
+     $entity->bottom_spacing = $form['uaqs_group_display_settings']['bottom_spacing']['#value'];
+   }
+  }
+}
+
+/**
+ * Implements hook_field_formatter_info().
+ */
+function uaqs_content_chunks_field_formatter_info() {
+  return array(
+    'paragraphs_view_mode' => array(
+      'label' => t('Paragraphs view mode'),
+      'field types' => array('paragraphs'),
+    ),
+  );
+}
+
+/**
+ * Implements hook_field_formatter_view().
+ */
+function uaqs_content_chunks_field_formatter_view($entity_type, $entity, $field, $instance, $langcode, $items, $display) {
+  $element = array();
+  switch ($display['type']) {
+    case 'paragraphs_view_mode':
+      // Prevent displaying useless markup if we don't have any values.
+      if (empty($items)) {
+        return $element;
+      }
+      $element['#theme_wrappers'] = array('paragraphs_items');
+      $element['#view_mode'] = 'uaqs_content_chunks_formatter';
+
+      foreach ($items as $delta => $item) {
+        if ($paragraph = paragraphs_field_get_entity($item)) {
+          if (entity_access('view', 'paragraphs_item', $paragraph)) {
+            $view_mode = $paragraph->view_mode;
+            $element[$delta]['entity'] = $paragraph->view($view_mode);
+          }
+        }
+      }
+    break;
+  }
+  return $element;
+}
+
+/**
+ * Implements hook_field_widget_form_alter().
+ *
+ * Apply various fixes to paragraphs field widgets.
+ */
+function uaqs_content_chunks_field_widget_form_alter(&$element, &$form_state, $context) {
+  if ($context['field']['type'] == 'paragraphs') {
+    // Force Editor module JS libraries to be loaded for all Paragraphs fields.
+    //
+    // @see https://www.drupal.org/node/2669490
+    // @see https://www.drupal.org/node/2480575
+    // @see https://jira.arizona.edu/browse/UADIGITAL-730
+    if (module_exists('editor')) {
+      // Get a list of formats to which the current user has access.
+      global $user;
+      $formats = filter_formats($user);
+
+      // Attach Editor module libraries.
+      $editor_attached = editor_get_attached($formats);
+      if (!empty($element['#attached']['library'])) {
+        $element['#attached']['library'] = array_merge($element['#attached']['library'], $editor_attached['library']);
+      }
+      else {
+        $element['#attached']['library'] = $editor_attached['library'];
+      }
+      $element['#attached']['library'][] = array('filter', 'filter');
+      $element['#attached']['library'][] = array('editor', 'drupal.editor');
+      $element['#attached']['library'][] = array('editor', 'drupal.editor.dialog');
+    }
+
+    // Attach custom stylesheet to all paragraphs fields.
+    //
+    // @see https://jira.arizona.edu/browse/UADIGITAL-1195
+    // @see https://jira.arizona.edu/browse/UADIGITAL-1703
+    $element['#attached']['css'] = array(
+      drupal_get_path('module', 'uaqs_content_chunks') . '/css/uaqs_content_chunks.css',
+    );
+  }
+}
+
+/**
+ * Implements hook_library_alter().
+ *
+ * UADIGITAL-1999: Editor Module CKEditor AJAX Issue.
+ * Include a CKEditor dependency to fix missing information on AJAX calls.
+ */
+function uaqs_content_chunks_library_alter(&$libraries, $module) {
+
+  // Add UAQS compatibility fixes to CKEditor's array of dependencies.
+  if ($module == 'editor_ckeditor' && isset($libraries['ckeditor'])) {
+    $libraries['ckeditor']['dependencies'][] = array('uaqs_content_chunks', 'uaqs-ckeditor');
+  }
+}
+
+/**
+ * Implements hook_library().
+ */
+function uaqs_content_chunks_library() {
+  $module_path = drupal_get_path('module', 'uaqs_content_chunks');
+
+  $libraries['bg-images'] = array(
+    'title' => 'UAQS Content Chunks: Background Images',
+    'website' => 'https://bitbucket.org/ua_drupal/uaqs_content_chunks',
+    'version' => '1.0',
+    'js' => array(
+      $module_path . '/js/uaqs_content_chunks-bg_images.js' => array(
+        'group' => JS_THEME,
+        'scope' => 'footer'
+      ),
+    ),
+  );
+
+  // UADIGITAL-1999: Editor Module CKEditor AJAX Issue.
+  // Drupal's jquery version can't give all CKEditor configuration via AJAX.
+  // @see https://bugs.jquery.com/ticket/11795#comment:20
+  // @see https://www.drupal.org/project/editor/issues/2813293
+  if (module_exists('editor_ckeditor')) {
+    global $base_url;
+
+    // Compute path to the main CKEditor library, to set CKEDITOR_BASEPATH.
+    $ckeditor_path = $base_url . '/' . drupal_get_path('module', 'editor_ckeditor') . '/lib/ckeditor/';
+
+    // Library for UAQS CKEditor needs. Added before CKEditor via dependency.
+    $libraries['uaqs-ckeditor'] = array(
+      'title' => 'UAQS CKEditor Compatibility Additions',
+      'website' => 'https://bitbucket.org/ua_drupal/uaqs_content_chunks',
+      'version' => '1.0',
+      'css' => array(
+        $module_path . '/css/uaqs_content_chunks.css' => array(),
+      ),
+      'js' => array(
+        $module_path . '/js/uaqs_ckeditor_fix.js' => array('group' => JS_LIBRARY),
+        // Export CKEditor path as JS setting.
+        array(
+          'data' => array('uaqsCkeditorFixPath' => $ckeditor_path),
+          'type' => 'setting',
+        ),
+      ),
+    );
+  }
+
+  return $libraries;
+}

@@ -1,0 +1,39 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Content Chunks - Panel_group feature.
+ */
+
+include_once 'uaqs_content_chunks_panel_group.features.inc';
+
+/**
+ * Implements hook_preprocess_field().
+ *
+ * Used to set variables that can be used in both the field_uaqs_short_title and
+ * field_uaqs_summary in the field_uaqs_panel field collection.
+ *
+ * This exposes the same variables for all fields in the field_uaqs_panel field
+ * collection.
+ *
+ * $collapseid
+ * $body_expanded_class
+ * $aria_expanded
+ *
+ */
+function uaqs_content_chunks_panel_group_preprocess_field(&$variables) {
+  $variables['collapseid'] = '';
+  $variables['body_collapsed_class'] = '';
+  $variables['aria_expanded'] = 'false';
+  if ($variables['element']['#bundle'] == 'field_uaqs_panel') {
+    if (field_info_instance('field_collection_item', 'field_uaqs_setting_collapse', 'field_uaqs_panel')) {
+      // The uaqs_setting_collapse field exists on the field collection object
+      $is_collapsed = $variables['element']['#object']->field_uaqs_setting_collapse['und'][0]['value'];
+      if ($is_collapsed == FALSE) {
+        $variables['aria_expanded'] = 'true';
+        $variables['body_collapsed_class'] = ' in';
+      }
+    }
+    $item_id = $variables['element']['#object']->item_id;
+    $variables['collapseid'] = 'collapse-' . $item_id;
+  }
+}

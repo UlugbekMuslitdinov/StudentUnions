@@ -1,0 +1,529 @@
+7.x-1.0-alpha74, 2022-02-16
+-----------------------------
+
+7.x-1.0-alpha73, 2022-01-26
+-----------------------------
+
+7.x-1.0-alpha72, 2022-01-20
+-----------------------------
+
+7.x-1.0-alpha71, 2022-01-19
+-----------------------------
+
+7.x-1.0-alpha70, 2021-07-21
+-----------------------------
+
+7.x-1.0-alpha69, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha68, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha67, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha66, 2021-04-21
+-----------------------------
+
+7.x-1.0-alpha65, 2021-01-21
+-----------------------------
+
+7.x-1.0-alpha64, 2020-11-25
+-----------------------------
+
+7.x-1.0-alpha63, 2020-11-18
+-----------------------------
+
+7.x-1.0-alpha62, 2020-11-18
+-----------------------------
+
+7.x-1.0-alpha61, 2020-09-16
+-----------------------------
+
+7.x-1.0-alpha60, 2020-09-11
+-----------------------------
+
+7.x-1.0-alpha59, 2020-08-19
+-----------------------------
+- UADIGITAL-2237 update accordion markup to fix JAWS issues
+
+7.x-1.0-alpha58, 2020-06-17
+-----------------------------
+
+7.x-1.0-alpha57, 2020-06-05
+-----------------------------
+
+7.x-1.0-alpha56, 2020-05-20
+-----------------------------
+
+7.x-1.0-alpha55, 2020-04-20
+-----------------------------
+
+7.x-1.0-alpha54, 2020-03-20
+-----------------------------
+
+7.x-1.0-alpha53, 2020-03-06
+-----------------------------
+
+7.x-1.0-alpha52, 2020-02-07
+-----------------------------
+
+7.x-1.0-alpha51, 2019-12-18
+-----------------------------
+- UADIGITAL-2178: Nov 2019 contrib module maintenance updates.
+
+7.x-1.0-alpha50, 2019-12-13
+-----------------------------
+
+7.x-1.0-alpha49, 2019-11-20
+-----------------------------
+
+7.x-1.0-alpha48, 2019-11-05
+-----------------------------
+
+7.x-1.0-alpha47, 2019-11-01
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha46 for uaqs_content_chunks.
+
+7.x-1.0-alpha46, 2019-11-01
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha45 for uaqs_content_chunks.
+- UADIGITAL-2162 Removed carriage-return character from line endings
+- UADIGITAL-1999 Editor Module CKEditor AJAX Issue
+
+7.x-1.0-alpha45, 2019-11-01
+-----------------------------
+- UADIGITAL-2162 Removed carriage-return character from line endings
+- UADIGITAL-1999 Editor Module CKEditor AJAX Issue
+
+7.x-1.0-alpha44, 2019-09-06
+-----------------------------
+- UADIGITAL-1767 Added chosen module.
+
+7.x-1.0-alpha43, 2019-08-16
+-----------------------------
+
+7.x-1.0-alpha42, 2019-07-26
+-----------------------------
+
+7.x-1.0-alpha41, 2019-06-28
+-----------------------------
+- UADIGITAL-2028 Added ability to limit flexible page views by term ID.
+- UADIGITAL-2020 Multiple Youtube bg video support and marquee view mode fix
+- UADIGITAL-2018 Ability to add classes to marquee's link field
+
+7.x-1.0-alpha40, 2019-05-22
+-----------------------------
+- UADIGITAL-1951 Fixed Marquee bug that would cause a strange hover effect when a link was placed in the body and read more sections.
+
+7.x-1.0-alpha39, 2019-05-08
+-----------------------------
+
+7.x-1.0-alpha38, 2019-05-07
+-----------------------------
+- UADIGITAL-1998: Don't load bgImages JS library for default Marquee view mode.
+- UADIGITAL-1864 Set updated url patterns for flexible page and default.
+
+7.x-1.0-alpha37, 2019-04-17
+-----------------------------
+
+7.x-1.0-alpha36, 2019-03-20
+-----------------------------
+
+7.x-1.0-alpha35, 2019-03-15
+-----------------------------
+
+7.x-1.0-alpha34, 2019-03-13
+-----------------------------
+- UADIGITAL-1886 add better formats module and relax text format settings.
+- UADIGITAL-1910 Some coding standards cleanup for UADIGITAL-1886
+
+7.x-1.0-alpha33, 2019-02-20
+-----------------------------
+- UADIGITAL-1914: Bump the link contrib module version because of a security issue.
+
+7.x-1.0-alpha32, 2019-02-11
+-----------------------------
+- UADIGITAL-1830 Removed self-referenced dependency.
+
+7.x-1.0-alpha30, 2019-02-01
+-----------------------------
+
+7.x-1.0-alpha29, 2019-01-28
+-----------------------------
+
+7.x-1.0-alpha28, 2019-01-17
+-----------------------------
+
+7.x-1.0-alpha27, 2019-01-16
+-----------------------------
+
+7.x-1.0-alpha26, 2019-01-11
+-----------------------------
+- UADIGITAL-1836 Make $spacer options 5-10 available in Quickstart's additional options bottom spacing.
+- UADIGITAL-1840 Update marquee to define bg-trans-black class and center the heading full-width centered display.
+
+7.x-1.0-alpha25, 2018-11-15
+-----------------------------
+- UADIGITAL-1791 Backport full-width media row image loading settings to marquee.
+- UADIGITAL-1749 removing visibility setting replacing with opacity, moving setting to div.
+
+7.x-1.0-alpha24, 2018-11-02
+-----------------------------
+- UADIGITAL-1787: Updated uaqs_content_chunks_extra_info_update_7100() to prevent revision issues.
+
+7.x-1.0-alpha23, 2018-10-17
+-----------------------------
+- UADIGITAL-1507 Added new borderless card.
+- UADIGITAL-1766 full width media headings
+
+7.x-1.0-alpha22, 2018-10-11
+-----------------------------
+
+7.x-1.0-alpha21, 2018-10-10
+-----------------------------
+- UADIGITAL-1738 Better vertical alignment for full-width media row content.
+- UADIGITAL-1736 Add full width marquee view
+
+7.x-1.0-alpha20, 2018-09-21
+-----------------------------
+- UADIGITAL-1730: Update flexible page teaser display
+
+7.x-1.0-alpha19, 2018-08-29
+-----------------------------
+- UADIGITAL-1714 update IIFE scope arguments
+- UADIGITAL-1703: Fixed regression causing paragraphs edit UI to be too wide again.
+- Preparing to tag 7.x-1.0-alpha17 for uaqs_content_chunks.
+- Preparing to tag 7.x-1.0-alpha16 for uaqs_content_chunks.
+- UADIGITAL-1577-2 Whitespace Above Footer.
+- UADIGITAL-1544-bg-wrapper-uaqs added three new patterns via bootstrap
+- UADIGITAL-1654 viewmodes and views to display flexible content pages
+- UADIGITAL-1503-2 Extra Info Boxes
+- UADIGITAL-1659 Scope background colors to paragraphs-item-uaqs-full-width-media-row
+- Preparing to tag 7.x-1.0-alpha15 for uaqs_content_chunks.
+- UADIGITAL-1540 Add full width media row paragraph type.
+- UADIGITAL-1506 anonymous review staged content workflow
+- Preparing to tag 7.x-1.0-alpha14 for uaqs_content_chunks.
+- UADIGITAL-1534 UAQS Callout Paragraph Bundle
+- UADIGITAL-1599 multiple marquees on same page are inheriting each other's classes nullifying editor selection.
+- UADIGITAL-1593 - Screen reader announces multiple article tags on pages
+- UADIGITAL-1598: Removed inappropriate role="listbox" from carousels.
+- Preparing to tag 7.x-1.0-alpha13 for uaqs_content_chunks.
+- UADIGITAL-1603 if marquee has no media, don't show error.
+- Preparing to tag 7.x-1.0-alpha12 for uaqs_content_chunks.
+- Preparing to tag 7.x-1.0-alpha11 for uaqs_content_chunks.
+- UADIGITAL-1393 adding configurable margin to paragraphs
+- UADIGITAL-1458 Tokens are not converted properly when used in the Summary field: Short title
+- UADIGITAL-1491-carousel-media use media instead of photo field
+- UADIGITAL-1485: Adding X of Y to Photo Galleries per Tias suggestion
+- Preparing to tag 7.x-1.0-alpha10 for uaqs_content_chunks.
+- UADIGITAL-1198 Reset columns for bg wrapper like we do for marquee.
+- UADIGITAL-1398 Adding UAQS Photo Gallery Paragraph Item.
+- UADIGITAL-1479-remove-panel-arrows removed css file because uabootstrap takes care of that now
+- UADIGITAL-1186 Back to top link for long flexible pages.
+- UADIGITAL-1439 Changing flexible page summary photo field from image widget to media widget
+- UADIGITAL-1423 remove uaqs_content_chunks as dependency from uaqs_content_chunks
+- UADIGITAL-1386: Move bg-wrapper logic out of the template file and into a preprocess function.
+- UADIGITAL-1365 flexible page taxonomy
+- UADIGITAL-1361 add color and pattern options to full width background wrapper
+- UADIGITAL-1330 Added an array_diff to reset the array between card decks.
+- UADIGITAL-1261 full width video marquee
+- UADIGITAL-1303: Fixing uaqs_content_chunks_card_deck.module PHP warning.
+- UADIGITAL-1273 carousel content chunk
+- UADIGITAL-1205 Full width background image view modes for marquee paragraphs item.
+- https://bitbucket.org/ua_drupal/ua_quickstart/pull-requests/197/uadigital-1218-card-deck-with-one-or-two/diff
+- Preparing to tag 7.x-1.0-alpha9 for uaqs_content_chunks.
+- Preparing to tag 7.x-1.0-alpha8 for uaqs_content_chunks.
+- UADIGITAL-1206 card landing grid view mode
+- UADIGITAL-1195: Fixing excessively wide muti-valued fields inside paragraphs fields.
+- Preparing to tag 7.x-1.0-alpha7 for uaqs_content_chunks.
+- UADIGITAL-962 adding collapsible panel groups as paragraphs item.
+- UADIGITAL-1126 prepare ua_quickstart for external links module.
+- UADIGITAL-1126 prepare ua_quickstart for external links module.
+- UADIGITAL-1117 remove all .gitignore files except the main one
+- UADIGITAL-1090 added an image style and applied to marquee & carousel to prevent downsized images
+- UADIGITAL-1062 & UADIGITAL-1063: Adding entity_embed, file entity, file entity inline, and manual_crop.
+- UADIGITAL-987: Add new image style for card decks so that they appear uniformly in height.
+- UADIGITAL-1080 removes both fields from uaqs_headed_text. Replacing with uaqs_summary field. Database update script to move field values in uaqs_text_area field for uaqs_headed_text paragraphs items to uaqs_summary fields which uses uaqs_standard text format.
+- UADIGITAL-1084 add classlead to flexible
+- UADIGITAL-1079 Added exclude_node_title module to allow the ability to exclude title of a flexible page only
+- Remove the obsolete Bitbucket Piplines configurations from the subtrees.
+- UADIGITAL-1065 add row buffer bottom to all content chunks
+- UADIGITAL-1001 Adding ability to attach views in flexible pages.
+- UADIGITAL-1001 Adding ability to attach views in flexible pages.
+- UADIGITAL-1057 updating background wrapper text field
+- UADIGITAL-1057 updating background wrapper text field
+- UADIGITAL-1028 Add card view mode for flexible page, and title into a moveable field for all view modes.
+- UADIGITAL-936 Move flexible page node settings to default config so site builders can override and still be eligible for updates to this module
+- UADIGITAL-1037 adjusted marquee banner text styling depending on breakpoint
+- UADIGITAL-1019 added bottom-buffer-20 to card-deck-wrapper at /admin/structure/paragraphs/uaqs-card-deck/display
+- UADIGITAL-982 Created submodule containing fields dependent on link
+- UADIGITAL-1033: Updating Paragraphs to 7.x-1.0-rc5 (security update).
+- UADIGITAL-810 flexible pages should create new revisions by default.
+- Merged in aslay/uaqs_content_chunks/UADIGITAL-838-jumbotron (pull request #18)
+- Merged in mmunro-ltrr/uaqs_content_chunks/UADIGITAL-960 (pull request #33)
+- Back to dev. [skip ci]
+- Preparing to tag 7.x-1.0-alpha6. [skip ci]
+- Revert "Preparing to tag 7.x-1.0-alpha4."
+- Preparing to tag 7.x-1.0-alpha4.
+- Replace uaqs_html with uaqs_summary fields in uaqs_content_chunks_marquee and uaqs_content_chunks_well.
+- UADIGITAL-884 adding bitbucket pipeline yml file
+- Remove the irrelevant allowed Paragraphs types specifications.
+- Prevent the submodule Features appearing to be overridden when enabled.
+- Merged in aslay/uaqs_content_chunks/UADIGITAL-843-well (pull request #23)
+- UADIGITAL-872 Change all summary fields to use processed text
+- updating
+- remove excludes
+- updated
+- Merged 7.x-1.x into UADIGITAL-839-single-card
+- added missing change
+- adding changes not previously tracked
+- made field instance changes
+- UADIGITAL-730: Forcing Editor module JS libraries to be loaded for all Paragraphs fields.
+- UADIGITAL-843 added well feature folder
+- UADIGITAL-839 added single card feature folder
+- Merged in scadmedia/uaqs_content_chunks/UAMS-351 (pull request #15)
+- Adding padding around links fieeld group
+- aligning more with ua-bootstrap
+- removing margin if marquee is first, else add margin the same as a paragraph element would have for good vertical rhythm
+- adding width 100% in case there are other less wide things floating around.
+- adding css so floating content doesn't wrap
+- adding html
+- renamed to marquee
+- Changed strings and media dependency. q
+- UADIGITAL-801: Making card deck markup more closely resemble UA Bootstrap card examples.
+- UAMS-352 minor labeling changes
+- UAMS-351 new teaser image style
+- UAMS-342 Hide label for HTML field in default view mode.
+- UAMS-340 Break up paragraphs items into separate modules
+- Merged 7.x-1.x into UADIGITAL-726-add-full-html-paragraphs-i
+- adding field_uaqs_html
+- changing name to uaqs_html
+- changing name to uaqs_html
+- UAMS-312 fix error message.
+- Adding ability to use a full html text field to paragraphs as a submodule of content chunks
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha5.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha4.
+- UADIGITAL-674 making adding paragraphs as submodules more user friendly.
+- Delete the theme-specific field formatting functions.
+- Switch to the new common text area field, rename the format.
+- Merged in trackleft/uaqs_content_chunks/UADIGITAL-610-touch-up-paragraphs (pull request #5)
+- UADIGITAL-598 adding link (Extra Info) paragraphs_item
+- Card blocks
+- completed card deck styles
+- UADIGITAL-192: Adding default value for paragraphs view mode.
+- UAMS-192: Added paragraphs view modes and theming.
+- Hide the UAQS label in content type names and revise the descriptions.
+- Rename UA to UAQS in the file contents.
+- Update the change log semi-manually.
+- Fix the placement of the sub-title field.
+- Correct the sub-title field label.
+- Add a sub-title field, like to one added to UA Basic Page.
+- Add a text format for HTML5 phrasing content, clean up the recreated feature.
+- Restore missing UA namespacing for the ua_main_content field.
+- Rename the node type hosting Paragraphs-based content to UA Flexible Page.
+- Update for a new version of the Paragraphs module.
+- Enable markup in some text fields.
+- Match the array key template_preprocess_paragraphs_items() expects.
+- Put this with the other UofA features in the modules list.
+- Initial commit.
+7.x-1.0-alpha17, 2018-07-30
+-----------------------------
+
+7.x-1.0-alpha16, 2018-07-20
+-----------------------------
+- UADIGITAL-1577-2 Whitespace Above Footer.
+- UADIGITAL-1544-bg-wrapper-uaqs added three new patterns via bootstrap
+- UADIGITAL-1654 viewmodes and views to display flexible content pages
+- UADIGITAL-1503-2 Extra Info Boxes
+- UADIGITAL-1659 Scope background colors to paragraphs-item-uaqs-full-width-media-row
+
+7.x-1.0-alpha15, 2018-06-19
+-----------------------------
+- UADIGITAL-1540 Add full width media row paragraph type.
+- UADIGITAL-1506 anonymous review staged content workflow
+
+7.x-1.0-alpha14, 2018-05-18
+-----------------------------
+- UADIGITAL-1534 UAQS Callout Paragraph Bundle
+- UADIGITAL-1599 multiple marquees on same page are inheriting each other's classes nullifying editor selection.
+- UADIGITAL-1593 - Screen reader announces multiple article tags on pages
+- UADIGITAL-1598: Removed inappropriate role="listbox" from carousels.
+
+7.x-1.0-alpha13, 2018-04-25
+-----------------------------
+- UADIGITAL-1603 if marquee has no media, don't show error.
+
+7.x-1.0-alpha12, 2018-04-20
+-----------------------------
+
+7.x-1.0-alpha11, 2018-03-30
+-----------------------------
+- UADIGITAL-1393 adding configurable margin to paragraphs
+- UADIGITAL-1458 Tokens are not converted properly when used in the Summary field: Short title
+- UADIGITAL-1491-carousel-media use media instead of photo field
+- UADIGITAL-1485: Adding X of Y to Photo Galleries per Tias suggestion
+
+7.x-1.0-alpha10, 2018-03-09
+-----------------------------
+- UADIGITAL-1198 Reset columns for bg wrapper like we do for marquee.
+- UADIGITAL-1398 Adding UAQS Photo Gallery Paragraph Item.
+- UADIGITAL-1479-remove-panel-arrows removed css file because uabootstrap takes care of that now
+- UADIGITAL-1186 Back to top link for long flexible pages.
+- UADIGITAL-1439 Changing flexible page summary photo field from image widget to media widget
+- UADIGITAL-1423 remove uaqs_content_chunks as dependency from uaqs_content_chunks
+- UADIGITAL-1386: Move bg-wrapper logic out of the template file and into a preprocess function.
+- UADIGITAL-1365 flexible page taxonomy
+- UADIGITAL-1361 add color and pattern options to full width background wrapper
+- UADIGITAL-1330 Added an array_diff to reset the array between card decks.
+- UADIGITAL-1261 full width video marquee
+- UADIGITAL-1303: Fixing uaqs_content_chunks_card_deck.module PHP warning.
+- UADIGITAL-1273 carousel content chunk
+- UADIGITAL-1205 Full width background image view modes for marquee paragraphs item.
+- https://bitbucket.org/ua_drupal/ua_quickstart/pull-requests/197/uadigital-1218-card-deck-with-one-or-two/diff
+
+7.x-1.0-alpha9, 2017-09-15
+-----------------------------
+
+7.x-1.0-alpha8, 2017-09-15
+-----------------------------
+- UADIGITAL-1206 card landing grid view mode
+- UADIGITAL-1195: Fixing excessively wide muti-valued fields inside paragraphs fields.
+
+7.x-1.0-alpha7, 2017-08-17
+-----------------------------
+- UADIGITAL-962 adding collapsible panel groups as paragraphs item.
+- UADIGITAL-1126 prepare ua_quickstart for external links module.
+- UADIGITAL-1126 prepare ua_quickstart for external links module.
+- UADIGITAL-1117 remove all .gitignore files except the main one
+- UADIGITAL-1090 added an image style and applied to marquee & carousel to prevent downsized images
+- UADIGITAL-1062 & UADIGITAL-1063: Adding entity_embed, file entity, file entity inline, and manual_crop.
+- UADIGITAL-987: Add new image style for card decks so that they appear uniformly in height.
+- UADIGITAL-1080 removes both fields from uaqs_headed_text. Replacing with uaqs_summary field. Database update script to move field values in uaqs_text_area field for uaqs_headed_text paragraphs items to uaqs_summary fields which uses uaqs_standard text format.
+- UADIGITAL-1084 add classlead to flexible
+- UADIGITAL-1079 Added exclude_node_title module to allow the ability to exclude title of a flexible page only
+- Remove the obsolete Bitbucket Piplines configurations from the subtrees.
+- UADIGITAL-1065 add row buffer bottom to all content chunks
+- UADIGITAL-1001 Adding ability to attach views in flexible pages.
+- UADIGITAL-1001 Adding ability to attach views in flexible pages.
+- UADIGITAL-1057 updating background wrapper text field
+- UADIGITAL-1057 updating background wrapper text field
+- UADIGITAL-1028 Add card view mode for flexible page, and title into a moveable field for all view modes.
+- UADIGITAL-936 Move flexible page node settings to default config so site builders can override and still be eligible for updates to this module
+- UADIGITAL-1037 adjusted marquee banner text styling depending on breakpoint
+- UADIGITAL-1019 added bottom-buffer-20 to card-deck-wrapper at /admin/structure/paragraphs/uaqs-card-deck/display
+- UADIGITAL-982 Created submodule containing fields dependent on link
+- UADIGITAL-1033: Updating Paragraphs to 7.x-1.0-rc5 (security update).
+- UADIGITAL-810 flexible pages should create new revisions by default.
+- Merged in aslay/uaqs_content_chunks/UADIGITAL-838-jumbotron (pull request #18)
+- Merged in mmunro-ltrr/uaqs_content_chunks/UADIGITAL-960 (pull request #33)
+- Back to dev. [skip ci]
+
+7.x-1.0-alpha6, 2017-01-20
+------------------------------
+- Revert "Preparing to tag 7.x-1.0-alpha4.".
+- Preparing to tag 7.x-1.0-alpha4.
+- Merged in mmunro-ltrr/uaqs_content_chunks/UADIGITAL-883 (pull request #31).
+- Replace uaqs_html with uaqs_summary fields in uaqs_content_chunks_marquee and uaqs_content_chunks_well.
+- Merged in trackleft/uaqs_content_chunks/UADIGITAL-884-automate-uaqs-component-re (pull request #32).
+- UADIGITAL-884 adding bitbucket pipeline yml file.
+- Merged ua_drupal/uaqs_content_chunks into 7.x-1.x.
+- Merged in mmunro-ltrr/uaqs_content_chunks/UADIGITAL-881 (pull request #30).
+- Remove the irrelevant allowed Paragraphs types specifications.
+- Prevent the submodule Features appearing to be overridden when enabled.
+- Merged in aslay/uaqs_content_chunks/UADIGITAL-843-well (pull request #23).
+- UADIGITAL-872: Change all summary fields to use processed text.
+- UADIGITAL-872 Change all summary fields to use processed text.
+- Merged in aslay/uaqs_content_chunks/UADIGITAL-839-single-card (pull request #19).
+- Merged in trackleft/uaqs_content_chunks-aslay/UADIGITAL-839-single-card (pull request #2).
+- Updating.
+- Remove excludes.
+- Updated.
+- Merged 7.x-1.x into UADIGITAL-839-single-card.
+- Merged in UADIGITAL-850-field-instances (pull request #1).
+- Added missing change.
+- Adding changes not previously tracked.
+- Made field instance changes.
+- Merged in UADIGITAL-730 (pull request #26).
+- UADIGITAL-730: Forcing Editor module JS libraries to be loaded for all Paragraphs fields.
+- UADIGITAL-843 added well feature folder.
+- UADIGITAL-839 added single card feature folder.
+- Merged in scadmedia/uaqs_content_chunks/UAMS-351 (pull request #15).
+- Merged in trackleft/uaqs_content_chunks_scad/UAMS-351 (pull request #3).
+- Adding padding around links fieeld group.
+- Aligning more with ua-bootstrap.
+- Merged in trackleft/uaqs_content_chunks_scad/UAMS-351 (pull request #2).
+- Removing margin if marquee is first, else add margin the same as a paragraph element would have for good vertical rhythm.
+- Adding width 100% in case there are other less wide things floating around.
+- Adding css so floating content doesn't wrap.
+- Adding html.
+- Renamed to marquee.
+- Merged in trackleft/uaqs_content_chunks_scad/UAMS-351 (pull request #1).
+- Changed strings and media dependency. q.
+- Merged in UADIGITAL-801 (pull request #16).
+- UADIGITAL-801: Making card deck markup more closely resemble UA Bootstrap card examples.
+- UAMS-352 minor labeling changes.
+- UAMS-351 new teaser image style.
+- Merged in trackleft/uaqs_content_chunks/UAMS-342-change-field-display-settings-t (pull request #14).
+- UAMS-342 Hide label for HTML field in default view mode.
+- UAMS-340: clean up content chunks.
+- UAMS-340 Break up paragraphs items into separate modules.
+- Merged in trackleft/uaqs_content_chunks/UADIGITAL-726-add-full-html-paragraphs-i (pull request #11).
+- Merged 7.x-1.x into UADIGITAL-726-add-full-html-paragraphs-i.
+- Adding field_uaqs_html.
+- Changing name to uaqs_html.
+- Merged in trackleft/uaqs_content_chunks/UAMS-312 (pull request #12).
+- UAMS-312 fix error message.
+- Adding ability to use a full html text field to paragraphs as a submodule of content chunks.
+- Back to dev.
+
+7.x-1.0-alpha5, 2016-05-02
+------------------------------
+- Back to dev.
+
+7.x-1.0-alpha4, 2016-04-15
+------------------------------
+- Merged in trackleft/uaqs_content_chunks/UADIGITAL-674-make-adding-new-paragraphs (pull request #10).
+- UADIGITAL-674 making adding paragraphs as submodules more user friendly.
+- Merged ua_drupal/uaqs_content_chunks into 7.x-1.x.
+- UADIGITAL-625: Clean out obsolete field formatting code for Paragraphs and Beans.
+- Delete the theme-specific field formatting functions.
+- Merged in mmunro-ltrr/uaqs_content_chunks/UADIGITAL-402 (pull request #7).
+- Switch to the new common text area field, rename the format.
+- Merged in trackleft/uaqs_content_chunks/UADIGITAL-610-touch-up-paragraphs (pull request #5).
+- Merged in trackleft/uaqs_content_chunks/UADIGITAL-598-add-paragraphs-to-news-to- (pull request #6).
+- UADIGITAL-598 adding link (Extra Info) paragraphs_item.
+- Card blocks.
+- Completed card deck styles.
+- UADIGITAL-192: Adding default value for paragraphs view mode.
+- UAMS-192: Added paragraphs view modes and theming.
+- Merged in mmunro-ltrr/uaqs_content_chunks/UADIGITAL-523 (pull request #1).
+- Hide the UAQS label in content type names and revise the descriptions.
+- Rename UA to UAQS in the file contents.
+- Merged in mmunro-ltrr/ua_content_chunks/UADIGITAL-281 (pull request #1).
+- Update the change log semi-manually.
+- Fix the placement of the sub-title field.
+- Correct the sub-title field label.
+- Add a sub-title field, like to one added to UA Basic Page.
+- Add a text format for HTML5 phrasing content, clean up the recreated feature.
+- Restore missing UA namespacing for the ua_main_content field.
+- Rename the node type hosting Paragraphs-based content to UA Flexible Page.
+- Update for a new version of the Paragraphs module.
+- Enable markup in some text fields.
+- Match the array key template_preprocess_paragraphs_items() expects.
+- Put this with the other UofA features in the modules list.
+
+UA Content Chunks 7.x-1.0-alpha0, 2015-11-18
+--------------------------------------------
+- Fix the placement of the sub-title field.
+- Correct the sub-title field label.
+- Add a sub-title field, like to one added to UA Basic Page.
+- Add a text format for HTML5 phrasing content, clean up the recreated feature.
+- Restore missing UA namespacing for the ua_main_content field.
+- Rename the node type hosting Paragraphs-based content to UA Flexible Page.
+- Update for a new version of the Paragraphs module.
+- Enable markup in some text fields.
+- Match the array key template_preprocess_paragraphs_items() expects.
+- Put this with the other UofA features in the modules list.

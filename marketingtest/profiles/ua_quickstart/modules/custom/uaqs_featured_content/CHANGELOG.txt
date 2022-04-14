@@ -1,0 +1,542 @@
+7.x-1.0-alpha75, 2022-03-16
+-----------------------------
+
+7.x-1.0-alpha74, 2022-02-16
+-----------------------------
+
+7.x-1.0-alpha73, 2022-01-26
+-----------------------------
+
+7.x-1.0-alpha72, 2022-01-20
+-----------------------------
+
+7.x-1.0-alpha71, 2022-01-19
+-----------------------------
+
+7.x-1.0-alpha70, 2021-07-21
+-----------------------------
+
+7.x-1.0-alpha69, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha68, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha67, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha66, 2021-04-21
+-----------------------------
+
+7.x-1.0-alpha65, 2021-01-21
+-----------------------------
+
+7.x-1.0-alpha64, 2020-11-25
+-----------------------------
+
+7.x-1.0-alpha63, 2020-11-18
+-----------------------------
+
+7.x-1.0-alpha62, 2020-11-18
+-----------------------------
+
+7.x-1.0-alpha61, 2020-09-16
+-----------------------------
+
+7.x-1.0-alpha60, 2020-09-11
+-----------------------------
+
+7.x-1.0-alpha59, 2020-08-19
+-----------------------------
+
+7.x-1.0-alpha58, 2020-06-17
+-----------------------------
+
+7.x-1.0-alpha57, 2020-06-05
+-----------------------------
+
+7.x-1.0-alpha56, 2020-05-20
+-----------------------------
+
+7.x-1.0-alpha55, 2020-04-20
+-----------------------------
+
+7.x-1.0-alpha54, 2020-03-20
+-----------------------------
+
+7.x-1.0-alpha53, 2020-03-06
+-----------------------------
+
+7.x-1.0-alpha52, 2020-02-07
+-----------------------------
+
+7.x-1.0-alpha51, 2019-12-18
+-----------------------------
+- UADIGITAL-2178: Nov 2019 contrib module maintenance updates.
+
+7.x-1.0-alpha50, 2019-12-13
+-----------------------------
+
+7.x-1.0-alpha49, 2019-11-20
+-----------------------------
+- UADIGITAL-2181 Featured Content PHP Compatibility
+
+7.x-1.0-alpha48, 2019-11-05
+-----------------------------
+
+7.x-1.0-alpha47, 2019-11-01
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha46 for uaqs_featured_content.
+
+7.x-1.0-alpha46, 2019-11-01
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha45 for uaqs_featured_content.
+- UADIGITAL-2130 Carousel file issues.
+
+7.x-1.0-alpha45, 2019-11-01
+-----------------------------
+- UADIGITAL-2130 Carousel file issues.
+
+7.x-1.0-alpha44, 2019-09-06
+-----------------------------
+- UADIGITAL-2089: Clear cache(s) for views when Draggable Views are sorted/saved.
+
+7.x-1.0-alpha43, 2019-08-16
+-----------------------------
+
+7.x-1.0-alpha42, 2019-07-26
+-----------------------------
+
+7.x-1.0-alpha41, 2019-06-28
+-----------------------------
+
+7.x-1.0-alpha40, 2019-05-22
+-----------------------------
+
+7.x-1.0-alpha39, 2019-05-08
+-----------------------------
+
+7.x-1.0-alpha38, 2019-05-07
+-----------------------------
+
+7.x-1.0-alpha37, 2019-04-17
+-----------------------------
+
+7.x-1.0-alpha36, 2019-03-20
+-----------------------------
+
+7.x-1.0-alpha35, 2019-03-15
+-----------------------------
+
+7.x-1.0-alpha34, 2019-03-13
+-----------------------------
+- UADIGITAL-1886 add better formats module and relax text format settings.
+- UADIGITAL-1909 Apply screenreader classes to carousel navigation.
+- UADIGITAL-1910 Some coding standards cleanup for UADIGITAL-1886
+
+7.x-1.0-alpha33, 2019-02-20
+-----------------------------
+- UADIGITAL-1914: Bump the link contrib module version because of a security issue.
+
+7.x-1.0-alpha32, 2019-02-11
+-----------------------------
+
+7.x-1.0-alpha30, 2019-02-01
+-----------------------------
+
+7.x-1.0-alpha29, 2019-01-28
+-----------------------------
+
+7.x-1.0-alpha28, 2019-01-17
+-----------------------------
+
+7.x-1.0-alpha27, 2019-01-16
+-----------------------------
+
+7.x-1.0-alpha26, 2019-01-11
+-----------------------------
+
+7.x-1.0-alpha25, 2018-11-15
+-----------------------------
+- UADIGITAL-1743 Added previous and next text to featured content slideshow to resolve lighthouse accessibility issue.
+
+7.x-1.0-alpha24, 2018-11-02
+-----------------------------
+
+7.x-1.0-alpha23, 2018-10-17
+-----------------------------
+
+7.x-1.0-alpha22, 2018-10-11
+-----------------------------
+
+7.x-1.0-alpha21, 2018-10-10
+-----------------------------
+- UADIGITAL-1740 update featured content javascript
+
+7.x-1.0-alpha20, 2018-09-21
+-----------------------------
+
+7.x-1.0-alpha19, 2018-08-29
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha17 for uaqs_featured_content.
+- Preparing to tag 7.x-1.0-alpha16 for uaqs_featured_content.
+- UADIGITAL-1665 Backport remove add to spotlight links from nodes, and only add to spotlight via contextual links or node edit form.
+- Preparing to tag 7.x-1.0-alpha15 for uaqs_featured_content.
+- Preparing to tag 7.x-1.0-alpha14 for uaqs_featured_content.
+- UADIGITAL-1611: Moved custom hook_views_default_views() implementations into .module files.
+- Preparing to tag 7.x-1.0-alpha13 for uaqs_featured_content.
+- Preparing to tag 7.x-1.0-alpha12 for uaqs_featured_content.
+- UADIGITAL-1465: Implemented various Pantheon-specific performance optimizations.
+- Preparing to tag 7.x-1.0-alpha11 for uaqs_featured_content.
+- Preparing to tag 7.x-1.0-alpha10 for uaqs_featured_content.
+- Preparing to tag 7.x-1.0-alpha9 for uaqs_featured_content.
+- Preparing to tag 7.x-1.0-alpha8 for uaqs_featured_content.
+- Preparing to tag 7.x-1.0-alpha7 for uaqs_featured_content.
+- UADIGITAL-1167 Added php class to the template for contextual link
+- UADIGITAL-1126 prepare ua_quickstart for external links module.
+- UADIGITAL-1090 added an image style and applied to marquee & carousel to prevent downsized images
+- UADIGITAL-1062 & UADIGITAL-1063: Adding entity_embed, file entity, file entity inline, and manual_crop.
+- UADIGITAL-987: Add new image style for card decks so that they appear uniformly in height.
+- Remove the obsolete Bitbucket Piplines configurations from the subtrees.
+- UADIGITAL-1028 Create spotlight views for 4 content types (news is handled in another PR)
+- UADIGITAL-1043: Repair the broken Jenkins builds following changes to uaqs_featured_content.
+- UADIGITAL-993 Added carousel default path auto as carousel/[node:title] and making it a default config and not as a strongarm
+- UADIGITAL-936 Move carousel node settings to default config so site builders can override and still be eligible for updates to this module
+- UADIGITAL-982 Created submodule containing fields dependent on link
+- Back to dev. [skip ci]
+- Preparing to tag 7.x-1.0-alpha6. [skip ci]
+- UADIGITAL-907: Changed the color and opacity behind the slideshow text to be more accessible. Also increased the padding so that the text doesn't look so 'choked'.
+- UADIGITAL-884 adding bitbucket pipeline yml file
+- Updated README instructions about dependencies.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha5.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha4.
+- Merged in awochna/uaqs_featured_content/UADIGITAL-416 (pull request #6)
+- Add photo and call to action to draggable view.
+- Add draggableviews as a dependency.
+- UADIGITAL-554: Carousel JS shouldn't be loaded on every node page.
+- UADIGITAL-416: Enabling draggableviews by default and updating README.
+- UADIGITAL-416: Merged in awochna/uaqs_featured_content/UADIGITAL-416 (pull request #2) Create an easy ordering view for content managers.
+- Found more instances of 'slide' and changed them.
+- Ensure that carousel sorting references the correct view name.
+- Incorporate feedback into reordering carousel feature.
+- UADIGITAL-535
+- UADIGITAL-535
+- Create an easy ordering view for content managers.
+- Hide the UAQS label in content type names and revise the descriptions.
+- Change more occurances of the text UA to UAQS.
+- Fixing with classes Luckily this is backwards compatible.
+- Rename UA to UAQS in the file contents.
+- Add a minimum size to carousel images of 800 x 500.
+- UADIGITAL-380: Removing Image URL Formatter from .make file.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha3.
+- UADIGITAL-347: Ensure jQuery module is enabled.
+- UADIGITAL-348: Disabling unused Image URL Formatter module.
+- UADIGITAL-347: Declaring jQuery Update as formal dependency.
+- Add ID back to Hero carousel.
+- Merge branch '7.x-1.x' of https://bitbucket.org/ua_drupal/ua_featured_content into 7.x-1.x
+- Change some minor flexslider and views options to use better CSS id's and maintain functionality.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha2.
+- Change ua_zen specific region id for a class provided by the module, change the max-widths for sliders to use rems.
+- UADIGITAL-322: Changes from Features module & flexslider module updates.
+- UADIGITAL-313: Removing cruft from UA Featured Content carousel view export.
+- UADIGITAL-323: Disabling custom settings for ua_featured_content view mode by default.
+- merging bonjeans change
+- UADIGITAL-86 allow 4 items in slideshow
+- merged
+- UADIGITAL-86 decrease slide captions (list items) to 25% of container
+- UADIGTIAL-312: Fixing mismatched sort order for slideshow and pager.
+- UADIGITAL-86: change view to allow 4 items
+- UADIGITAL-14: Referencing tar.gz instead of zip for library dependencies.
+- changed flexslider background to white.
+- Merged in UADIGITAL-147 (pull request #16)
+- added 60em rule
+- fixed flexslider widths
+- UADIGITAL-147: Updating flexslider module to 2.0-rc1.
+- Remove explicit version information.
+- Add a changelog so there is always something to modify for a release.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha1.
+- minor structural changes
+- UADIGITAL-119: Misc Drupal Coding Standards cleanup.
+- UADIGITAL-115: Fleshing out 1200px breakpoint a bit more and removing some duplicate CSS.
+- adding 1200px breakpoint
+- fixed on safari
+- changed blend mode
+- Merging prior to pull request
+- fixed ipad issue in webkit and mozilla and ie UADIGITAL-101
+- changed entity wrapper syntax UADIGITAL-88
+- Fixes for slides not triggering nav items
+- merged
+- removed flag again
+- added touch control to feature
+- removed contextual links
+- added contexual links styles
+- push
+- more styles and contextual linksOC
+- more style adjustments in 48em breakpoint
+- hide attachment at mobile
+- nav viewport background color
+- more styles
+- adding styles to new field
+- removed flag
+- removed flag
+- added field_short_summary
+- removed body and ua_page dependency
+- adding css back
+- removed flag
+- adding entity as dependency
+- don't know what changed
+- removed views distinct
+- added description
+- no orphans
+- dependencies and widowfix
+- ua_featured_content.js edited online with Bitbucket
+- more joe edits
+- more joe fixes
+- with joe's edits
+- remove widowfix
+- flexible features
+- Enabling link module dependency.
+- Replacing legacy UA Content Types dependency with UA Page.  Related to UADIGITAL-47 and UADIGITAL-32.
+- IADIGITAL-43: Using 2.4.0 version of flexslider. #close
+- Renaming view displays (for real this time).
+- Reorganizing template/css stuff a bit and adding flexslider prev/next images.
+- Fixing views_api_alter() implementation.
+- Adding CSS.
+- Merge branch '7.x-1.x' into issue/1-rename-content-type
+- Reverting views block display name change (for now) and tweaking a couple other views settings.  Related to UADIGITAL-42.
+- removed version and project
+- durrrr
+- ua_featured_content.info edited online with Bitbucket Removed project
+- ua_featured_content.info edited online with Bitbucket removed version
+- removing link dependency
+- adding navigation slider
+- Updating UA Quickstart reference and project package setting.
+- Adding custom views template (needs to be removed from UA Zen).
+- Merge branch '7.x-1.x' into issue/1-rename-content-type
+- Updating README.
+- Adding (and using) custom flexslider preset.
+- Renaming content type and fields.  Refs #1.
+- Reverting "Renaming content type and fields.  Refs #1."  Not ready for this yet.
+- Renaming content type and fields.  Refs #1.
+- Merged in makefile (pull request #1)
+- Adding README.
+- Adding some additional comments.
+- Adding makefile.
+- Initial (re)export.
+7.x-1.0-alpha17, 2018-07-30
+-----------------------------
+
+7.x-1.0-alpha16, 2018-07-20
+-----------------------------
+- UADIGITAL-1665 Backport remove add to spotlight links from nodes, and only add to spotlight via contextual links or node edit form.
+
+7.x-1.0-alpha15, 2018-06-19
+-----------------------------
+
+7.x-1.0-alpha14, 2018-05-18
+-----------------------------
+- UADIGITAL-1611: Moved custom hook_views_default_views() implementations into .module files.
+
+7.x-1.0-alpha13, 2018-04-25
+-----------------------------
+
+7.x-1.0-alpha12, 2018-04-20
+-----------------------------
+- UADIGITAL-1465: Implemented various Pantheon-specific performance optimizations.
+
+7.x-1.0-alpha11, 2018-03-30
+-----------------------------
+
+7.x-1.0-alpha10, 2018-03-09
+-----------------------------
+
+7.x-1.0-alpha9, 2017-09-15
+-----------------------------
+
+7.x-1.0-alpha8, 2017-09-15
+-----------------------------
+
+7.x-1.0-alpha7, 2017-08-17
+-----------------------------
+- UADIGITAL-1167 Added php class to the template for contextual link
+- UADIGITAL-1126 prepare ua_quickstart for external links module.
+- UADIGITAL-1090 added an image style and applied to marquee & carousel to prevent downsized images
+- UADIGITAL-1062 & UADIGITAL-1063: Adding entity_embed, file entity, file entity inline, and manual_crop.
+- UADIGITAL-987: Add new image style for card decks so that they appear uniformly in height.
+- Remove the obsolete Bitbucket Piplines configurations from the subtrees.
+- UADIGITAL-1028 Create spotlight views for 4 content types (news is handled in another PR)
+- UADIGITAL-1043: Repair the broken Jenkins builds following changes to uaqs_featured_content.
+- UADIGITAL-993 Added carousel default path auto as carousel/[node:title] and making it a default config and not as a strongarm
+- UADIGITAL-936 Move carousel node settings to default config so site builders can override and still be eligible for updates to this module
+- UADIGITAL-982 Created submodule containing fields dependent on link
+- Back to dev. [skip ci]
+
+7.x-1.0-alpha6, 2016-12-19
+------------------------------
+- Merged in macaulay/uaqs_featured_content/UADIGITAL-907-improve-hero-overlay (pull request #8).
+- UADIGITAL-907: Changed the color and opacity behind the slideshow text to be more accessible. Also increased the padding so that the text doesn't look so 'choked'.
+- Merged ua_drupal/uaqs_featured_content into 7.x-1.x.
+- Merged in trackleft/uaqs_featured_content/UADIGITAL-884-automate-uaqs-component-re (pull request #9).
+- UADIGITAL-884 adding bitbucket pipeline yml file.
+- Merged in pbarabe/uaqs_featured_content/UADIGITAL-735 (pull request #7).
+- Updated README instructions about dependencies.
+- Back to dev.
+
+7.x-1.0-alpha5, 2016-05-02
+------------------------------
+- Back to dev.
+
+7.x-1.0-alpha4, 2016-03-01
+------------------------------
+- Merged in awochna/uaqs_featured_content/UADIGITAL-416 (pull request #6).
+- Add photo and call to action to draggable view.
+- Add draggableviews as a dependency.
+- UADIGITAL-554: Carousel JS shouldn't be loaded on every node page.
+- Merged in UADIGITAL-416 (pull request #4).
+- UADIGITAL-416: Enabling draggableviews by default and updating README.
+- UADIGITAL-416: Merged in awochna/uaqs_featured_content/UADIGITAL-416 (pull request #2) Create an easy ordering view for content managers.
+- Found more instances of 'slide' and changed them.
+- Ensure that carousel sorting references the correct view name.
+- Incorporate feedback into reordering carousel feature.
+- UADIGITAL-535.
+- Merged in trackleft/uaqs_featured_content/UADIGITAL-535 (pull request #3).
+- Create an easy ordering view for content managers.
+- Merged in mmunro-ltrr/uaqs_featured_content/UADIGITAL-523 (pull request #1).
+- Hide the UAQS label in content type names and revise the descriptions.
+- Change more occurances of the text UA to UAQS.
+- Fixing with classes Luckily this is backwards compatible.
+- Rename UA to UAQS in the file contents.
+- Merged in awochna/ua_featured_content/UADIGITAL-412 (pull request #27).
+- Add a minimum size to carousel images of 800 x 500.
+- Merged ua_drupal/ua_featured_content into 7.x-1.x.
+- Merged in UADIGITAL-380 (pull request #26).
+- UADIGITAL-380: Removing Image URL Formatter from .make file.
+- Back to dev.
+
+7.x-1.0-alpha3, 2015-11-13
+------------------------------
+- Merged in UADIGITAL-347 (pull request #25).
+- UADIGITAL-347: Ensure jQuery module is enabled.
+- UADIGITAL-348: Disabling unused Image URL Formatter module.
+- UADIGITAL-347: Declaring jQuery Update as formal dependency.
+- UADIGITAL-349: Merged in awochna/ua_featured_content (pull request #24).
+- Add ID back to Hero carousel.
+- Merge branch '7.x-1.x' of https://bitbucket.org/ua_drupal/ua_featured_content into 7.x-1.x.
+- Change some minor flexslider and views options to use better CSS id's and maintain functionality.
+- Back to dev.
+- Change ua_zen specific region id for a class provided by the module, change the max-widths for sliders to use rems.
+
+7.x-1.0-alpha2, 2015-10-16
+------------------------------
+- Merged in UADIGITAL-322 (pull request #23).
+- UADIGITAL-322: Changes from Features module & flexslider module updates.
+- UADIGITAL-313: Removing cruft from UA Featured Content carousel view export.
+- UADIGITAL-323: Disabling custom settings for ua_featured_content view mode by default.
+- Merged in UADIGITAL-86 (pull request #21).
+- Merging bonjeans change.
+- UADIGITAL-86 allow 4 items in slideshow.
+- Merged.
+- UADIGITAL-86 decrease slide captions (list items) to 25% of container.
+- Merged in joegraduate/ua_featured_content/UADIGITAL-312 (pull request #20).
+- UADIGTIAL-312: Fixing mismatched sort order for slideshow and pager.
+- UADIGITAL-86: change view to allow 4 items.
+- Merged in UADIGITAL-14 (pull request #18).
+- UADIGITAL-14: Referencing tar.gz instead of zip for library dependencies.
+- Changed flexslider background to white.
+- Merged in UADIGITAL-147 (pull request #16).
+- Merged in trackleft/ua_featured_content/UADIGITAL-148-qa-fix-featured-content-he (pull request #17).
+- Added 60em rule.
+- Fixed flexslider widths.
+- Merged ua_drupal/ua_featured_content into 7.x-1.x.
+- UADIGITAL-147: Updating flexslider module to 2.0-rc1.
+- Merged in mmunro-ltrr/ua_featured_content/UADIGITAL-139 (pull request #15).
+- Remove explicit version information.
+- Add a changelog so there is always something to modify for a release.
+- Back to dev.
+
+7.x-1.0-alpha1, 2015-07-10
+--------------------------
+- Preparing to tag 7.x-1.0-alpha1.
+- Minor structural changes.
+- Merged in UADIGITAL-119 (pull request #14).
+- UADIGITAL-119: Misc Drupal Coding Standards cleanup.
+- Merged in UADIGITAL-115 (pull request #13).
+- UADIGITAL-115: Fleshing out 1200px breakpoint a bit more and removing some duplicate CSS.
+- Adding 1200px breakpoint.
+- Merged ua_drupal/ua_featured_content into 7.x-1.x.
+- Merged in trackleft/ua_featured_content/UADIGITAL-103-background-blend-mode-not- (pull request #11).
+- Fixed on safari.
+- Changed blend mode.
+- Merged in trackleft/ua_featured_content (pull request #10).
+- Merging prior to pull request.
+- Fixed ipad issue in webkit and mozilla and ie UADIGITAL-101.
+- Merged in trackleft/ua_featured_content/UADIGITAL-88-entity-object-wrapper-error (pull request #9).
+- Changed entity wrapper syntax UADIGITAL-88.
+- Merged in trackleft/ua_featured_content (pull request #8).
+- Merged in trackleft/ua_featured_contentflexslider_default_pr-1433175250825 (pull request #4).
+- Fixes for slides not triggering nav items.
+- Merged in trackleft/ua_featured_content (pull request #7).
+- Merged.
+- Removed flag again.
+- Added touch control to feature.
+- Removed contextual links.
+- Added contexual links styles.
+- Push.
+- More styles and contextual linksOC.
+- More style adjustments in 48em breakpoint.
+- Hide attachment at mobile.
+- Nav viewport background color.
+- More styles.
+- Adding styles to new field.
+- Removed flag.
+- Added field_short_summary.
+- Removed body and ua_page dependency.
+- Adding css back.
+- Adding entity as dependency.
+- Don't know what changed.
+- Removed views distinct.
+- Added description.
+- No orphans.
+- Dependencies and widowfix.
+- Ua_featured_content.js edited online with Bitbucket.
+- Merged in flexible-feature (pull request #3).
+- More joe edits.
+- More joe fixes.
+- With joe's edits.
+- Merged in flexible-feature (pull request #2).
+- Remove widowfix.
+- Merged in flexible-feature (pull request #1).
+- Flexible features.
+- Enabling link module dependency.
+- Replacing legacy UA Content Types dependency with UA Page.  Related to UADIGITAL-47 and UADIGITAL-32.
+- IADIGITAL-43: Using 2.4.0 version of flexslider. #close.
+- Merged in issue/1-rename-content-type (pull request #4).
+- Renaming view displays (for real this time).
+- Reorganizing template/css stuff a bit and adding flexslider prev/next images.
+- Fixing views_api_alter() implementation.
+- Adding CSS.
+- Merge branch '7.x-1.x' into issue/1-rename-content-type.
+- Reverting views block display name change (for now) and tweaking a couple other views settings.  Related to UADIGITAL-42.
+- Merged in trackleft/ua_featured_content (pull request #3).
+- Removed version and project.
+- Durrrr.
+- Ua_featured_content.info edited online with Bitbucket Removed project.
+- Ua_featured_content.info edited online with Bitbucket removed version.
+- Removing link dependency.
+- Adding navigation slider.
+- Updating UA Quickstart reference and project package setting.
+- Adding custom views template (needs to be removed from UA Zen).
+- Updating README.
+- Adding (and using) custom flexslider preset.
+- Renaming content type and fields.  Refs #1.
+- Reverting "Renaming content type and fields.  Refs #1."  Not ready for this yet.
+- Merged in makefile (pull request #1).
+- Merged in joegraduate/ua_featured_content/README (pull request #2).
+- Adding README.
+- Adding some additional comments.
+- Adding makefile.

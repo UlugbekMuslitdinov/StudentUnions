@@ -1,0 +1,53 @@
+<?php
+
+/**
+ * Tests that each of the Metatag schema_course tags work correctly.
+ */
+class SchemaMetatagCourseTest extends SchemaMetatagTagsTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Schema Metatag: Course',
+      'description' => 'Test the schema_course meta tags.',
+      'group' => 'Schema Metatag',
+      'dependencies' => [
+        'ctools',
+        'token',
+        'metatag',
+        'schema_metatag',
+        'schema_course',
+      ],
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp(array $modules = array()) {
+    $modules[] = 'schema_course';
+    parent::setUp($modules);
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public $moduleName = 'schema_course';
+
+  /**
+   * {@inheritdoc}
+   */
+  public $schemaTags = [
+    'schema_course.@type' => 'SchemaCourseType',
+    'schema_course.name' => 'SchemaNameBase',
+    'schema_course.courseCode' => 'SchemaNameBase',
+    'schema_course.description' => 'SchemaNameBase',
+    'schema_course.coursePrerequisites' => 'SchemaNameBase',
+    'schema_course.educationalCredentialAwarded' => 'SchemaNameBase',
+    'schema_course.provider' => 'SchemaPersonOrgBase',
+  ];
+
+}

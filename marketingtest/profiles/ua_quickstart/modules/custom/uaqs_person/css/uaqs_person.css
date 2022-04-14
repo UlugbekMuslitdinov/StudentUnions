@@ -1,0 +1,25 @@
+/** View Display **/
+.uaqs-person-row {
+  margin: 0 0 1rem;
+  padding-bottom: 16px;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid hsl(180, 10%, 94%);
+}
+
+.uaqs-person-row:last-child {
+  margin: 0 0 2rem;
+  padding-bottom: 16px;
+  padding-bottom: 1rem;
+  border-bottom: 0px solid #EEF1F1;
+}
+
+.node-uaqs-person a[href^="mailto"] {
+  word-break:break-all;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  line-height: 1.07;
+}
+
+.node-uaqs-person.view-mode-full img.full-width {width:100%;}
+.node-uaqs-person.view-mode-full img.full-width {max-width:40em;}

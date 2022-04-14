@@ -1,0 +1,10 @@
+name = Image Class
+description = Extends the Image formatter by adding an option to add an element class.
+core = 7.x
+dependencies[] = image
+dependencies[] = field_formatter_settings
+
+; Information added by drush on 2014-08-13
+version = "7.x-1.0+4-dev"
+project = "image_class"
+datestamp = "1407960613"

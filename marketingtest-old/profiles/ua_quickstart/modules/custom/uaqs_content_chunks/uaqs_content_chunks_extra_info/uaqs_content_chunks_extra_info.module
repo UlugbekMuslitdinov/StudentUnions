@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Extra Info Paragraphs Item feature.
+ */
+
+include_once 'uaqs_content_chunks_extra_info.features.inc';

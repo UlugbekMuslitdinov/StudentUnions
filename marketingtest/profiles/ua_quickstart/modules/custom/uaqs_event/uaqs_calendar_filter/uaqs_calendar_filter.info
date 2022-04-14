@@ -1,0 +1,8 @@
+name = UAQS Calendar Filter
+description = Calendar filter handler for Views
+core = 7.x
+package = The University of Arizona
+dependencies[] = date_views
+dependencies[] = views
+files[] = includes/uaqs_calendar_filter.views.inc
+files[] = includes/uaqs_calendar_filter_filter_handler.inc

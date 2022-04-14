@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Contact Summary feature.
+ */
+
+include_once 'uaqs_block_types_contact_summary.features.inc';

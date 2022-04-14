@@ -1,0 +1,32 @@
+[
+  {"id":120,
+    "uaqs_text_area" : "The starting point for the name change was the observation that the quality the current name referenced, Pride, was just one of seven possibilities arranged in a circular pattern at the center of a well-known painting. Each segment of the circle bears a label in Latin, so Pride appears as <em>Superbia</em>, with the other labels being <em>Ira</em>, <em>Luxuria</em>, <em>Accidia</em>, <em>Gula</em>, <em>Avaricia</em> and <em>Invidia</em>. The Latin names sound more distinguished than their English translations (particularly in the case of <em>Luxuria</em>), so the initial name change will be to <em>Superbia Arizonensis</em> (still referring to Pride), and the name will cycle through the other six labels, changing at the start of a new semester. The alternation reflects the band's new commitment to explore different musical possibilities, and the use of Latin reflects the depth of tradition which will lie behind it."
+  }
+  {"id":121,
+    "uaqs_text_area" : "Quotiens causas belli et necessitatem nostram intueor, magnus mihi animus est hodiernum diem consensumque vestrum initium libertatis toti Britanniae fore: nam et universi coistis et servitutis expertes, et nullae ultra terrae ac ne mare quidem securum inminente nobis classe Romana. Ita proelium atque arma, quae fortibus honesta, eadem etiam ignavis tutissima sunt. Priores pugnae, quibus adversus Romanos varia fortuna certatum est, spem ac subsidium in nostris manibus habebant, quia nobilissimi totius Britanniae eoque in ipsis penetralibus siti nec ulla servientium litora aspicientes, oculos quoque a contactu dominationis inviolatos habebamus. Nos terrarum ac libertatis extremos recessus ipse ac sinus famae in hunc diem defendit: nunc terminus Britanniae patet, atque omne ignotum pro magnifico est; sed nulla iam ultra gens, nihil nisi fluctus ac saxa, et infestiores Romani, quorum superbiam frustra per obsequium ac modestiam effugias. Raptores orbis, postquam cuncta vastantibus defuere terrae, mare scrutantur: si locuples hostis est, avari, si pauper, ambitiosi, quos non Oriens, non Occidens satiaverit: soli omnium opes atque inopiam pari adfectu concupiscunt. Auferre trucidare rapere falsis nominibus imperium, atque ubi solitudinem faciunt, pacem appellant."
+  }
+  {"id":122,
+    "uaqs_text_area" : "Liberos cuique ac propinquos suos natura carissimos esse voluit: hi per dilectus alibi servituri auferuntur; coniuges sororesque etiam si hostilem libidinem effugerunt, nomine amicorum atque hospitum polluuntur. Bona fortunaeque in tributum, ager atque annus in frumentum, corpora ipsa ac manus silvis ac paludibus emuniendis inter verbera et contumelias conteruntur. Nata servituti mancipia semel veneunt, atque ultro a dominis aluntur: Britannia servitutem suam cotidie emit, cotidie pascit. Ac sicut in familia recentissimus quisque servorum etiam conservis ludibrio est, sic in hoc orbis terrarum vetere famulatu novi nos et viles in excidium petimur; neque enim arva nobis aut metalla aut portus sunt, quibus exercendis reservemur. Virtus porro ac ferocia subiectorum ingrata imperantibus; et longinquitas ac secretum ipsum quo tutius, eo suspectius. Ita sublata spe veniae tandem sumite animum, tam quibus salus quam quibus gloria carissima est. Brigantes femina duce exurere coloniam, expugnare castra, ac nisi felicitas in socordiam vertisset, exuere iugum potuere: nos integri et indomiti et in libertatem, non in paenitentiam bellaturi; primo statim congressu ostendamus, quos sibi Caledonia viros seposuerit."
+  }
+  {"id":123,
+    "uaqs_text_area" : "An eandem Romanis in bello virtutem quam in pace lasciviam adesse creditis? Nostris illi dissensionibus ac discordiis clari vitia hostium in gloriam exercitus sui vertunt; quem contractum ex diversissimis gentibus ut secundae res tenent, ita adversae dissolvent: nisi si Gallos et Germanos et (pudet dictu) Britannorum plerosque, licet dominationi alienae sanguinem commodent, diutius tamen hostis quam servos, fide et adfectu teneri putatis. Metus ac terror sunt infirma vincla caritatis; quae ubi removeris, qui timere desierint, odisse incipient. Omnia victoriae incitamenta pro nobis sunt: nullae Romanos coniuges accendunt, nulli parentes fugam exprobraturi sunt; aut nulla plerisque patria aut alia est. Paucos numero, trepidos ignorantia, caelum ipsum ac mare et silvas, ignota omnia circumspectantis, clausos quodam modo ac vinctos di nobis tradiderunt. Ne terreat vanus aspectus et auri fulgor atque argenti, quod neque tegit neque vulnerat. In ipsa hostium acie inveniemus nostras manus: adgnoscent Britanni suam causam, recordabuntur Galli priorem libertatem, tam deserent illos ceteri Germani quam nuper Usipi reliquerunt. Nec quicquam ultra formidinis: vacua castella, senum coloniae, inter male parentis et iniuste imperantis aegra municipia et discordantia. Hic dux, hic exercitus: ibi tributa et metalla et ceterae servientium poenae, quas in aeternum perferre aut statim ulcisci in hoc campo est. Proinde ituri in aciem et maiores vestros et posteros cogitate."
+  }
+  {"id":124,
+    "uaqs_text_area" : "Use a <em>Flexible Page</em> in the same way you would the generic Drupal Basic Page."
+  }
+  {"id":125,
+    "uaqs_text_area" : "Use a <em>Publication</em> to add published works to the website."
+  }
+  {"id":126,
+    "uaqs_text_area" : "Use a <em>Unit</em> to create information about an academic unit."
+  }
+  {"id":127,
+    "uaqs_text_area" : "Use a <em>Program</em> to add academic UA programs to the website."
+  }
+  {"id":128,
+    "uaqs_text_area" : "Use a <em>Person</em> to add the contact information and brief biography of a person. There are multiple options for displaying directories of Person entries: a grid layout, which is visually appealing, and a list layout, which suits more traditional formal personnel directories."
+  }
+  {"id":129,
+    "uaqs_text_area" : "Use <em>Block Types</em> to define small independent blocks of content that conform to one of a few pre-defined layouts and can be positioned within various different regions on the page."
+  }
+]

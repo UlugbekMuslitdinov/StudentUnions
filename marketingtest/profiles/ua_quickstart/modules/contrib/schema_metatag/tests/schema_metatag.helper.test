@@ -1,0 +1,167 @@
+<?php
+
+/**
+ * A base class for the Metatag tests, provides shared methods.
+ */
+abstract class SchemaMetatagTestHelper extends DrupalWebTestCase {
+
+  /**
+   * Admin user.
+   *
+   * @var \StdClass
+   */
+  protected $adminUser;
+
+  /**
+   * {@inheritdoc}
+   */
+  function setUp(array $modules = array()) {
+
+    // Requirements.
+    $modules[] = 'ctools';
+    $modules[] = 'token';
+
+    // Metatag modules. Only enable the main module, submodules will be tested
+    // separately.
+    $modules[] = 'metatag';
+    $modules[] = 'schema_metatag';
+
+    // Adds some functionality for testing the entity handling.
+    $modules[] = 'schema_metatag_test';
+
+    parent::setUp($modules);
+  }
+
+  /**
+   * Create a content type for the tests.
+   */
+  function createContentType($machine_name, $label) {
+    // Create a content type.
+    $content_type = $this->drupalCreateContentType(array(
+      'type' => $machine_name,
+      'name' => $label,
+    ));
+
+    // Enable meta tags for this new content type.
+    metatag_entity_type_enable('node', $machine_name, TRUE);
+
+    return $content_type;
+  }
+
+  /**
+   * Create an admin user for the tests.
+   *
+   * @param array $extra_permissions
+   *   An array of permission strings to be added to the user.
+   *
+   * @return object
+   *   A user object.
+   */
+  function createAdminUser($extra_permissions = array()) {
+    $permissions = array(
+      // Basic permissions for the module.
+      'administer meta tags',
+      'edit meta tags',
+
+      // General admin access.
+      'access administration pages',
+    );
+
+    // Reset the static variable used to identify permissions, otherwise it's
+    // possible the permissions check in drupalCreateUser will fail.
+    $this->checkPermissions(array(), TRUE);
+    cache_clear_all();
+
+    return $this->drupalCreateUser(array_merge($permissions, $extra_permissions));
+  }
+
+  /**
+   * Create a normal user for the tests.
+   *
+   * @param array $extra_permissions
+   *   An array of permission strings to be added to the user.
+   *
+   * @return object
+   *   A user object.
+   */
+  function createUser($extra_permissions) {
+    // Basic permissions for the module.
+    $permissions = array(
+      'edit meta tags',
+    );
+
+    // Reset the static variable used to identify permissions, otherwise it's
+    // possible the permissions check in drupalCreateUser will fail.
+    $this->checkPermissions(array(), TRUE);
+    cache_clear_all();
+
+    return $this->drupalCreateUser(array_merge($permissions, $extra_permissions));
+  }
+
+  /**
+   * Returns a new vocabulary with random properties.
+   *
+   * @param $vocab_name
+   *   If empty a random string will be used.
+   * @param $content_type
+   *   Any content types listed will have a Taxonomy Term reference field added
+   *   that points to the new vocabulary.
+   *
+   * @return object
+   *   A vocabulary object.
+   */
+  function createVocabulary($vocab_name = NULL, $content_type = NULL) {
+    if (empty($vocab_name)) {
+      $vocab_name = $this->randomName();
+    }
+
+    // Create a vocabulary.
+    $vocabulary = new stdClass();
+    $vocabulary->name = $vocab_name;
+    $vocabulary->description = $vocab_name;
+    $vocabulary->machine_name = drupal_strtolower($vocab_name);
+    $vocabulary->help = '';
+    $vocabulary->weight = mt_rand(0, 10);
+    if (!empty($content_type)) {
+      $vocabulary->nodes = array($content_type => $content_type);
+    }
+    taxonomy_vocabulary_save($vocabulary);
+
+    // Enable meta tags for this new vocabulary.
+    metatag_entity_type_enable('taxonomy_term', $vocab_name, TRUE);
+
+    return $vocabulary;
+  }
+
+  /**
+   * Returns a new taxonomy term in a specific vocabulary.
+   *
+   * @param object $vocabulary
+   *   The vocabulary to add the term to.
+   * @param string $term_name
+   *   The name to use for the new vocabulary. If none is provided one will be
+   *   generated randomly.
+   *
+   * @return object
+   *   A taxonomy term object.
+   */
+  function createTerm($vocabulary, $term_name = NULL) {
+    if (empty($term_name)) {
+      $term_name = $this->randomName();
+    }
+
+    // Create an object to save.
+    $term = new stdClass();
+    $term->name = $term_name;
+    $term->description = $term_name;
+    // Use the first available text format.
+    $term->format = db_query_range('SELECT format FROM {filter_format}', 0, 1)->fetchField();
+    $term->vid = $vocabulary->vid;
+
+    // Save the term.
+    taxonomy_term_save($term);
+
+    return $term;
+  }
+
+}

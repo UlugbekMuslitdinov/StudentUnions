@@ -24,7 +24,7 @@ if ($checked == 1) {
 	<!--Display requirement list if any.-->
 	
 	<div style="margin-left:10px;">
-	  <input type="hidden" name="requirement[]" id="requirement_<?=$row['id']?>" value="<?=$shift_id?>Shiftx<?=$row['id']?>yTask_<?=$task_id?>" >&nbsp;REQUIREMENT: <span class="text_bold"><?=$row['requirement']?></span>
+	  <input type="hidden" name="requirement[]" id="requirement_<?=$row['id']?>" value="<?=$shift_id?>Shiftx<?=$row['id']?>yTask_<?=$task_id?>" >&nbsp;REQUIREMENT: <span class="text_bold"><?=$row['requirement']?> </span> (Requirements are not mandatory.)
 	</div>
 	<div style="margin-left:50px;">Do you fulfill the requirement?&nbsp;&nbsp;&nbsp;  
 	<input type="radio" name="filled_<?=$row['id']?>" id="filled1_<?=$row['id']?>" value="Yes" onClick="selectFulfill(<?=$row['id']?>);">&nbsp;YES&nbsp;&nbsp;&nbsp;

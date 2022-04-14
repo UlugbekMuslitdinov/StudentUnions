@@ -1,0 +1,101 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Content Chunks - Marquee feature.
+ */
+
+include_once 'uaqs_content_chunks_marquee.features.inc';
+
+/**
+ * Implements hook_preprocess_entity().
+ */
+function uaqs_content_chunks_marquee_preprocess_entity(&$variables) {
+  if ($variables['entity_type'] == 'paragraphs_item' && $variables['elements']['#bundle'] == 'uaqs_content_chunks_marquee') {
+
+    if (isset($variables['elements']['#groups']['group_bg_img']) && isset($variables['field_uaqs_photo'][0]['filemime']) && $variables['field_uaqs_photo'][0]['filemime'] == 'video/oembed') {
+      $group_bg_img = clone $variables['elements']['#groups']['group_bg_img'];
+      $group_bg_img->format_settings['instance_settings']['background_image'] = '' ;
+      $variables['elements']['#groups']['group_bg_img'] = $group_bg_img;
+      $variables['elements']['#fieldgroups']['group_bg_img'] = $group_bg_img;
+    }
+    $sidebar_first = block_list('sidebar_first');
+    $sidebar_second = block_list('sidebar_second');
+    // Add information about the number of sidebars.
+    if (!empty($sidebar_first) && !empty($sidebar_second)) {
+      $variables['content_column_class'] = ' class="column col-sm-6 col-sm-push-3"';
+    }
+    elseif (!empty($sidebar_first) && empty($sidebar_second)) {
+      $variables['second_sidebar_column_class'] = ' class="col-sm-3"';
+      $variables['content_column_class'] = ' class="column col-sm-9 col-sm-push-3"';
+    }
+    elseif (empty($sidebar_first) && !empty($sidebar_second)) {
+      $variables['content_column_class'] = ' class="col-sm-7 col-md-8 col-lg-8 col-8 column"';
+      $variables['second_sidebar_column_class'] = ' class="col-sm-5 col-md-4 col-lg-4 column"';
+    }
+    else {
+      $variables['second_sidebar_column_class'] = ' class="col-sm-3"';
+      $variables['content_column_class'] = ' class="column col-sm-12"';
+    }
+    // Customizable display settings
+    // Background image display settings
+    if (isset($variables['elements']['#groups']['group_bg_img'])) {
+      $bg_classes = '';
+      $bg_classes_array = explode(' ', $variables['elements']['#groups']['group_bg_img']->format_settings['instance_settings']['classes']);
+      $bg_attach = field_info_field('field_uaqs_setting_bg_attach');
+      $bg_attach_allowed_values = array_keys(list_allowed_values($bg_attach));
+      $bg_sizes = field_info_field('field_uaqs_setting_bg_size');
+      $classes_to_remove = array_merge($bg_attach_allowed_values, array_keys(list_allowed_values($bg_sizes)));
+      $bg_classes_array = array_diff($bg_classes_array, $classes_to_remove);
+
+      $bg_size_class = '';
+      $bg_attachment_class = '';
+      if (!empty($variables['elements']['#entity']->field_uaqs_setting_bg_size)) {
+        $bg_attachment_class = drupal_html_class($variables['elements']['#entity']->field_uaqs_setting_bg_attach['und'][0]['value']);
+        $bg_classes_array[] = $bg_attachment_class;
+      }
+      if (!empty($variables['elements']['#entity']->field_uaqs_setting_bg_size)) {
+        $bg_size_class = drupal_html_class($variables['elements']['#entity']->field_uaqs_setting_bg_size['und'][0]['value']);
+        $bg_classes_array[] = $bg_size_class;
+      }
+      $bg_classes = implode(' ', $bg_classes_array);
+      $variables['elements']['#groups']['group_bg_img']->format_settings['instance_settings']['classes'] = $bg_classes;
+    }
+    // Foreground text box display settings.
+    if (isset($variables['elements']['#groups']['group_text_box'])) {
+      $text_box_classes_array = explode(' ', $variables['elements']['#groups']['group_text_box']->format_settings['instance_settings']['classes']);
+      $bg_color = field_info_field('field_uaqs_setting_text_bg_color');
+      $allowed_values = list_allowed_values($bg_color);
+      $classes_to_remove = array_keys($allowed_values);
+      $text_box_classes_array = array_diff($text_box_classes_array, $classes_to_remove);
+      $text_box_bg_color_class = '';
+      if (!empty($variables['elements']['#entity']->field_uaqs_setting_text_bg_color)) {
+        $text_box_bg_color_class = drupal_html_class($variables['elements']['#entity']->field_uaqs_setting_text_bg_color['und'][0]['value']);
+      }
+      $text_box_classes_array[] = $text_box_bg_color_class;
+      $text_box_classes = implode(' ', $text_box_classes_array);
+      $variables['elements']['#groups']['group_text_box']->format_settings['instance_settings']['classes'] = $text_box_classes;
+    }
+    $variables['elements']['#attached']['css'] = array(
+      drupal_get_path('module', 'uaqs_content_chunks_marquee') . '/css/uaqs_content_chunks_marquee.css',
+    );
+    $full_width_view_modes = array(
+      'uaqs_bg_img_content_bottom',
+      'uaqs_bg_img_content_center',
+      'uaqs_bg_img_content_left',
+      'uaqs_bg_img_content_right',
+    );
+    if (in_array($variables['view_mode'], $full_width_view_modes)) {
+      $variables['elements']['#attached']['js'][] = array(
+        'type' => 'setting',
+        'data' => array(
+          'uaqsContentChunks' => array(
+            'bgImages' => array(
+              $variables['elements']['#entity']->item_id => '.' . $variables['entity_type'] . '-' . $variables['elements']['#entity']->item_id . '-' . $variables['elements']['#entity']->field_name,
+            ),
+          ),
+        ),
+      );
+      $variables['elements']['#attached']['library'][] = array('uaqs_content_chunks', 'bg-images');
+    }
+  }
+}

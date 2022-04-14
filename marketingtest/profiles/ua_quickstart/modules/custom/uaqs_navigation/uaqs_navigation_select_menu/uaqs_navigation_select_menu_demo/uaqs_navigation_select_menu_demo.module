@@ -1,0 +1,37 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Navigation -- Select Menu Demo Content module.
+ */
+
+/**
+ * Implements hook_migrate_api().
+ */
+function uaqs_navigation_select_menu_demo_migrate_api() {
+  $import_root = drupal_get_path('module', 'uaqs_navigation_select_menu_demo') . '/import';
+
+  $api = array(
+    'api' => 2,
+    'groups' => array(
+      'uaqs_navigation_select_menu_demo' => array(
+        'title' => t('UAQS Navigation Selct Menu'),
+      )
+    ),
+    'migrations' => array(
+      'UaqsNavigationSelectMenu' => array(
+        'class_name' => 'UaqsNavigationSelectMenuMigration',
+        'group_name' => 'uaqs_navigation_select_menu_demo',
+        'import_root' => $import_root,
+      ),
+      'UaqsNavigationSelectMenuBean' => array(
+        'class_name' => 'UaqsNavigationSelectMenuBeanMigration',
+        'group_name' => 'uaqs_navigation_select_menu_demo',
+        'dependencies' => array(
+            'UaqsNavigationSelectMenu',
+        ),
+        'import_root' => $import_root,
+      ),
+    ),
+  );
+  return $api;
+}

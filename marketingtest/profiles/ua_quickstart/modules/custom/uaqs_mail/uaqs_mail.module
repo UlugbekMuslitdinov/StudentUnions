@@ -1,0 +1,118 @@
+<?php
+
+/**
+ * @file
+ * Code for the UAQS Mail module.
+ */
+
+/**
+ * Implements hook_mail_alter().
+ */
+function uaqs_mail_mail_alter(&$message) {
+  $ses_message_tags = array();
+  if (isset($_ENV['PANTHEON_SITE_NAME'])) {
+    $message['headers']['X-Pantheon-Site-Name'] = $_ENV['PANTHEON_SITE_NAME'];
+    $tag = array('key' => 'pantheon-site-name', 'value' => $_ENV['PANTHEON_SITE_NAME']);
+    array_push($ses_message_tags, $tag);
+  }
+  if (isset($_ENV['PANTHEON_SITE'])) {
+    $message['headers']['X-Pantheon-Site-Id'] = $_ENV['PANTHEON_SITE'];
+    $tag = array('key' => 'pantheon-site-id', 'value' => $_ENV['PANTHEON_SITE']);
+    array_push($ses_message_tags, $tag);
+  }
+  if (isset($_ENV['PANTHEON_ENVIRONMENT'])) {
+    $message['headers']['X-Pantheon-Environment'] = $_ENV['PANTHEON_ENVIRONMENT'];
+    $tag = array('key' => 'pantheon-environment', 'value' => $_ENV['PANTHEON_ENVIRONMENT']);
+    array_push($ses_message_tags, $tag);
+  }
+  if ($smtp_host = variable_get('smtp_host', FALSE)) {
+    if (preg_match('/email-smtp\..*\.amazonaws.com/', $smtp_host)) {
+      if ($configuration_set = variable_get('uaqs_mail_ses_configuration_set', FALSE)) {
+        $message['headers']['X-SES-CONFIGURATION-SET'] = $configuration_set;
+      }
+      if (count($ses_message_tags) > 0) {
+        $message['headers']['X-SES-MESSAGE-TAGS'] = implode(
+          ',',
+          array_map(
+            function ($tag) {
+              return $tag['key'] . '=' . $tag['value'];
+            },
+            $ses_message_tags
+          )
+        );
+      }
+    }
+  }
+}
+
+/**
+ * Helper function for uaqs_mail_ses_hash.
+ */
+function uaqs_mail_ses_sign($key, $msg) {
+  return hash_hmac('sha256', utf8_encode($msg), $key, TRUE);
+}
+
+/**
+ * Derive the SMTP password from the AWS IAM secret key.
+ */
+function uaqs_mail_ses_hash($secret, $region) {
+  // Values that are required to calculate the signature. These values should
+  // never change.
+  $DATE = "11111111";
+  $SERVICE = "ses";
+  $MESSAGE = "SendRawEmail";
+  $TERMINAL = "aws4_request";
+  $VERSION = 0x04;
+
+  $signature = uaqs_mail_ses_sign(utf8_encode("AWS4" . $secret), $DATE);
+  $signature = uaqs_mail_ses_sign($signature, $region);
+  $signature = uaqs_mail_ses_sign($signature, $SERVICE);
+  $signature = uaqs_mail_ses_sign($signature, $TERMINAL);
+  $signature = uaqs_mail_ses_sign($signature, $MESSAGE);
+  $signature_and_version = pack("C*", $VERSION) . $signature;
+  $smtp_password = base64_encode($signature_and_version);
+  return utf8_decode($smtp_password);
+}
+
+/**
+ * Attempt to migrate config from SES to the SMTP module.
+ */
+function uaqs_mail_migrate_ses() {
+  watchdog('uaqs_mail', "Attempting to migrate config from SES", array());
+
+  $smtp_enabled = module_exists('smtp');
+  $smtp_on = variable_get('smtp_on', FALSE);
+  $smtp_deliver = variable_get('smtp_deliver', FALSE);
+
+  // Bail if smtp appears to be in use.
+  if ($smtp_enabled && $smtp_on && $smtp_deliver) {
+    watchdog('uaqs_mail', "Cannot migrate SES config: existing SMTP config is present", array(), WATCHDOG_ERROR);
+    return FALSE;
+  }
+
+  if ($amazon_ses_region = variable_get('amazon_ses_region', FALSE)) {
+    variable_set('smtp_host', preg_replace('/email/', 'email-smtp', $amazon_ses_region));
+    watchdog('uaqs_mail', "smtp_host migrated", array());
+  }
+
+  if ($aws_key = variable_get('aws_key', FALSE)) {
+    variable_set('smtp_username', $aws_key);
+    watchdog('uaqs_mail', "smtp_username migrated", array());
+  }
+
+  // Convert and configure secret if it exists.
+  if ($aws_secret = variable_get('aws_secret', FALSE)) {
+    if ($amazon_ses_region = variable_get('amazon_ses_region', 'email.us-west-2.amazonaws.com')) {
+      $region_url = preg_replace('#^https?://#', '', rtrim($amazon_ses_region, '/'));
+      $region_arr = explode('.', $region_url);
+      if (count($region_arr) > 1) {
+        $region_name = $region_arr[1];
+        $ses_hashed_secret = uaqs_mail_ses_hash($aws_secret, $region_name);
+        variable_set('smtp_password', $ses_hashed_secret);
+        watchdog('uaqs_mail', "smtp_password migrated", array());
+      }
+    }
+  }
+
+  return TRUE;
+}

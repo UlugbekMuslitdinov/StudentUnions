@@ -1,0 +1,30 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Alphabetical list demo module.
+ */
+
+/**
+ * Implements hook_migrate_api().
+ *
+ */
+function uaqs_alphabetical_list_demo_migrate_api() {
+  $import_root = drupal_get_path('module', 'uaqs_alphabetical_list_demo') . '/import';
+
+  $api = array(
+    'api' => 2,
+    'groups' => array(
+      'uaqs_alphabetical_list' => array(
+        'title' => t('UAQS alphabetical list content'),
+      ),
+    ),
+    'migrations' => array(
+      'UaqsAlphabeticalListMajors' => array(
+        'class_name' => 'UaqsAlphabeticalListMajorsMigration',
+        'group_name' => 'uaqs_alphabetical_list',
+        'import_root' => $import_root,
+      ),
+    ),
+  );
+  return $api;
+}

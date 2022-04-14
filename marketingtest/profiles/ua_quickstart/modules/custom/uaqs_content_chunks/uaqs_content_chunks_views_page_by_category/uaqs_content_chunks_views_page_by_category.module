@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the Flexible Page by Category feature.
+ */
+
+include_once 'uaqs_content_chunks_views_page_by_category.features.inc';

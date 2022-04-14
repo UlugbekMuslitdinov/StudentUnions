@@ -1,0 +1,63 @@
+<?php
+
+/**
+ * Tests that each of the Metatag schema_service tags work correctly.
+ */
+class SchemaMetatagSpecialAnnouncementTest extends SchemaMetatagTagsTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Schema Metatag: Special Announcement',
+      'description' => 'Test the schema_special_announcement meta tags.',
+      'group' => 'Schema Metatag',
+      'dependencies' => [
+        'ctools',
+        'token',
+        'metatag',
+        'schema_metatag',
+        'schema_special_announcement',
+      ],
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp(array $modules = array()) {
+    $modules[] = 'schema_special_announcement';
+    parent::setUp($modules);
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public $moduleName = 'schema_special_announcement';
+
+  /**
+   * {@inheritdoc}
+   */
+  public $schemaTags = [
+    'schema_special_announcement.@type' => 'SchemaSpecialAnnouncementType',
+    'schema_special_announcement.name' => 'SchemaNameBase',
+    'schema_special_announcement.category' => 'SchemaNameBase',
+    'schema_special_announcement.datePosted' => 'SchemaDateBase',
+    'schema_special_announcement.expires' => 'SchemaDateBase',
+    'schema_special_announcement.text' => 'SchemaNameBase',
+    'schema_special_announcement.diseasePreventionInfo' => 'SchemaNameBase',
+    'schema_special_announcement.diseaseSpreadStatistics' => 'SchemaNameBase',
+    'schema_special_announcement.gettingTestedInfo' => 'SchemaNameBase',
+    'schema_special_announcement.governmentBenefitsInfo' => 'SchemaGovernmentServiceBase',
+    'schema_special_announcement.newsUpdatesAndGuidelines' => 'SchemaNameBase',
+    'schema_special_announcement.publicTransportClosuresInfo' => 'SchemaNameBase',
+    'schema_special_announcement.quarantineGuidelines' => 'SchemaNameBase',
+    'schema_special_announcement.travelBans' => 'SchemaNameBase',
+    'schema_special_announcement.schoolClosuresInfo' => 'SchemaNameBase',
+    'schema_special_announcement.announcementLocation' => 'SchemaPlaceBase',
+    'schema_special_announcement.spatialCoverage' => 'SchemaPlaceBase',
+  ];
+
+}

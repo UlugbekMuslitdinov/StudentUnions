@@ -1,0 +1,15 @@
+<?php
+
+/**
+ * @file
+ * uaqs_event_view.install
+ */
+
+/**
+ * UADIGITAL-1859 Enable the uaqs_calendar_filter module if necessary.
+ */
+function uaqs_event_view_update_7100() {
+  // Uaqs_calendar_filter became a dependency due to updates to the view.
+  $module_list = array('uaqs_calendar_filter');
+  module_enable($module_list);
+}

@@ -1,0 +1,65 @@
+<?php
+
+/**
+ * Tests that each of the Metatag schema_event tags work correctly.
+ */
+class SchemaMetatagEventTest extends SchemaMetatagTagsTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Schema Metatag: Event',
+      'description' => 'Test the schema_event meta tags.',
+      'group' => 'Schema Metatag',
+      'dependencies' => [
+        'ctools',
+        'token',
+        'metatag',
+        'schema_metatag',
+        'schema_event',
+      ],
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp(array $modules = array()) {
+    $modules[] = 'schema_event';
+    parent::setUp($modules);
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public $moduleName = 'schema_event';
+
+  /**
+   * {@inheritdoc}
+   */
+  public $schemaTags = [
+    'schema_event.@type' => 'SchemaEventType',
+    'schema_event.@id' => 'SchemaNameBase',
+    'schema_event.name' => 'SchemaNameBase',
+    'schema_event.image' => 'SchemaImageBase',
+    'schema_event.description' => 'SchemaNameBase',
+    'schema_event.url' => 'SchemaUrlBase',
+    'schema_event.doorTime' => 'SchemaNameBase',
+    'schema_event.isAccessibleForFree' => 'SchemaIsAccessibleForFreeBase',
+    'schema_event.startDate' => 'SchemaDateBase',
+    'schema_event.endDate' => 'SchemaDateBase',
+    'schema_event.location' => 'SchemaPlaceBase',
+    'schema_event.performer' => 'SchemaPersonOrgBase',
+    'schema_event.offers' => 'SchemaOfferBase',
+    'schema_event.aggregateRating' => 'SchemaRatingBase',
+    'schema_event.review' => 'SchemaReviewBase',
+    'schema_event.previousStartDate' => 'SchemaDateBase',
+    'schema_event.eventAttendanceMode' => 'SchemaNameBase',
+    'schema_event.eventStatus' => 'SchemaNameBase',
+    'schema_event.organizer' => 'SchemaPersonOrgBase',
+  ];
+
+}

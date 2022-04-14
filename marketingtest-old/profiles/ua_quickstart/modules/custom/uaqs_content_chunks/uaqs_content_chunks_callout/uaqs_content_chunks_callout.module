@@ -1,0 +1,26 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Callout Paragraphs Item feature.
+ */
+
+include_once 'uaqs_content_chunks_callout.features.inc';
+
+/**
+ * Implements hook_preprocess_entity().
+ * 
+ * Injects alignment and color classes into the theme variable.
+ */
+function uaqs_content_chunks_callout_preprocess_entity(&$variables) {
+  if ($variables['entity_type'] == 'paragraphs_item' && $variables['elements']['#bundle'] == 'uaqs_callout') {
+    // Adding the default ua bootstrap callout class.
+    $variables['classes_array'][] = 'callout';
+    // Adding classes for the border color and the dark background.
+    if (!empty($variables['elements']['field_uaqs_summary']['#object']->field_uaqs_callout_border_color['und'][0]['value'])) {
+      $variables['classes_array'][] = $variables['elements']['field_uaqs_summary']['#object']->field_uaqs_callout_border_color['und'][0]['value'];
+    }
+    if ($variables['elements']['#entity']->field_uaqs_callout_background['und'][0]['value'] == '1') {
+      $variables['classes_array'][] = 'callout-dark';
+    }
+  }
+}

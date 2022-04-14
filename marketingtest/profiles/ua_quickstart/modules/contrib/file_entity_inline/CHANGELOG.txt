@@ -1,0 +1,21 @@
+File_Entity_Inline 7.x-1.0-rc2, 2020-06-29
+------------------------------------------
+#3155549 by DamienMcKenna: Missing file attributes when using Plupload module.
+
+
+File_Entity_Inline 7.x-1.0-rc1, 2020-06-25
+------------------------------------------
+#3153998 by DamienMcKenna: Add a CHANGELOG.txt file.
+#3153996 by DamienMcKenna: Add a README.txt file.
+#1798658 by DamienMcKenna, Taran2L, quicksketch, idflood: Inline File field
+  causes warnings/notices.
+#1999336 by arithmetric, Елин Й., juampynr, scottrigby, DamienMcKenna, delzhand:
+  Use non-strict comparison for field widget settings.
+
+
+File_Entity_Inline 7.x-1.0-beta1, 2012-09-29
+--------------------------------------------
+By quicksketch: Initial commit.
+By quicksketch: Rewriting to use submit handler instead of validate. Extensible
+  widget hook.
+By quicksketch: Adding options for configuring on a per-field basis.

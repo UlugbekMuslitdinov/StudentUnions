@@ -1,0 +1,16 @@
+name = UAQS Content Chunks - File attachment
+description = Attach files for downloading.
+core = 7.x
+package = The University of Arizona
+dependencies[] = features
+dependencies[] = file
+dependencies[] = image
+dependencies[] = paragraphs
+dependencies[] = text
+dependencies[] = uaqs_content_chunks
+features[features_api][] = api:2
+features[field_instance][] = paragraphs_item-uaqs_file_download-field_uaqs_download_description
+features[field_instance][] = paragraphs_item-uaqs_file_download-field_uaqs_download_file
+features[field_instance][] = paragraphs_item-uaqs_file_download-field_uaqs_download_name
+features[field_instance][] = paragraphs_item-uaqs_file_download-field_uaqs_download_preview
+features[paragraphs][] = uaqs_file_download

@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the uaqs_page feature.
+ */
+
+include_once 'uaqs_page.features.inc';

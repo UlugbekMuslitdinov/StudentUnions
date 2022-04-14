@@ -1,0 +1,54 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Fields - Date feature.
+ */
+
+include_once 'uaqs_fields_date.features.inc';
+
+/**
+ * Implements hook_date_format_types().
+ */
+function uaqs_fields_date_date_format_types() {
+  // Define the uaqs event date format types.
+  return array(
+    'uaqs_event_date' => t('Event date'),
+    'uaqs_event_full_month_and_year' => t('Full month and year'),
+    'uaqs_event_abbr_month_only' => t('Month only abbreviation'),
+    'uaqs_event_day_only' => t('Day only'),
+    'uaqs_event_time_only' => t('Time only'),
+  );
+}
+
+/**
+ * Implements hook_date_formats().
+ */
+function uaqs_fields_date_date_formats() {
+  return array(
+    array(
+      'type' => 'uaqs_event_date',
+      'format' => 'F d, Y g:ia',
+      'locales' => array('en'),
+    ),
+    array(
+      'type' => 'uaqs_event_full_month_and_year',
+      'format' => 'F Y',
+      'locales' => array('en'),
+    ),
+    array(
+      'type' => 'uaqs_event_abbr_month_only',
+      'format' => 'M',
+      'locales' => array('en'),
+    ),
+    array(
+      'type' => 'uaqs_event_day_only',
+      'format' => 'd',
+      'locales' => array('en'),
+    ),
+    array(
+      'type' => 'uaqs_event_time_only',
+      'format' => 'g:ia',
+      'locales' => array('en'),
+    ),
+  );
+}

@@ -1,0 +1,87 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Block Types feature.
+ */
+
+include_once 'uaqs_block_types.features.inc';
+/**
+ * @file
+ * Code for the UAQS Block Types feature.
+ */
+
+const OUR_PREFIX = 'uaqs-block-types-';
+
+/**
+ * Override or insert variables into the Bean templates.
+ *
+ * Based on the optional extra function
+ * STARTERKIT_preprocess_node(&$variables, $hook) from template.php in the Zen
+ * theme,
+ * http://drupal.stackexchange.com/questions/11114/is-it-possible-to-define-a-hook-preprocess-function-based-on-entity-type-such-as
+ * and https://www.drupal.org/node/1873110
+ *
+ * @param array &$variables
+ *   An array of variables to pass to the theme template.
+ * @param string $hook
+ *   The hook name.
+ */
+function uaqs_block_types_preprocess_entity(&$variables) {
+  if ($variables['entity_type'] == 'bean') {
+    $function = __FUNCTION__ . '_bean_' . $variables['bean']->type;
+    if (function_exists($function)) {
+      $function($variables, $hook);
+    }
+  }
+}
+
+/**
+ * Override or insert variables into the block templates.
+ *
+ * If an ARIA role isn't assigned to the block as a whole, set a
+ * default.
+ *
+ * @param array $variables
+ *   An array of variables to pass to the theme template.
+ * @param $hook
+ *   The name of the template being rendered.
+ */
+function uaqs_block_types_preprocess_block(&$variables) {
+  if (empty($variables['attributes_array']['role'])) {
+    $variables['attributes_array']['role'] = 'complementary';
+  }
+}
+
+/**
+ * Implements hook_theme_registry_alter().
+ *
+ * Taken directly from https://www.drupal.org/node/715160
+ * (Using template (.tpl.php) files in your own module).
+ */
+function uaqs_block_types_theme_registry_alter(&$theme_registry) {
+  // Defined path to the current module.
+  $module_path = drupal_get_path('module', 'uaqs_block_types');
+  // Find all .tpl.php files in this module's folder recursively.
+  $template_file_objects = drupal_find_theme_templates($theme_registry, '.tpl.php', $module_path);
+  // Iterate through all found template file objects.
+  foreach ($template_file_objects as $key => $template_file_object) {
+    // If the template has not already been overridden by a theme.
+    if (!isset($theme_registry[$key]['theme path']) || !preg_match('#/themes/#', $theme_registry[$key]['theme path'])) {
+      // Alter the theme path and template elements.
+      $theme_registry[$key]['theme path'] = $module_path;
+      $theme_registry[$key] = array_merge($theme_registry[$key], $template_file_object);
+      $theme_registry[$key]['type'] = 'module';
+    }
+  }
+}
+
+/**
+ * Implements hook_entity_info_alter().
+ */
+function uaqs_block_types_entity_info_alter(&$entity_info) {
+  $entity_info['bean']['view modes']['uaqs_expanded'] = array(
+    'label' => t('Expanded'),
+    'custom settings' => FALSE,
+  );
+}
+

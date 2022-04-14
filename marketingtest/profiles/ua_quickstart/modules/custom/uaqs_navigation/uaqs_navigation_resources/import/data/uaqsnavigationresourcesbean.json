@@ -1,0 +1,14 @@
+[
+  {
+    "id": 5,
+    "label": "UAQS Resources Bean",
+    "title": "Resources",
+    "data" : {
+        "menu_name": "uaqs-header-resources"
+        },
+    "region": "header_ua_utilities",
+    "visibility": "1",
+    "pages": "*",
+    "weight": "2"
+  }
+]

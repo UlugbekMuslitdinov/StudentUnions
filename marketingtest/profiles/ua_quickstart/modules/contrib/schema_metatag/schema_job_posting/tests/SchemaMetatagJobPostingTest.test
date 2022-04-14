@@ -1,0 +1,60 @@
+<?php
+
+/**
+ * Tests that each of the Metatag schema_job_posting tags work correctly.
+ */
+class SchemaMetatagJobPostingTest extends SchemaMetatagTagsTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Schema Metatag: JobPosting',
+      'description' => 'Test the schema_job_posting meta tags.',
+      'group' => 'Schema Metatag',
+      'dependencies' => [
+        'ctools',
+        'token',
+        'metatag',
+        'schema_metatag',
+        'schema_job_posting',
+      ],
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp(array $modules = array()) {
+    $modules[] = 'schema_job_posting';
+    parent::setUp($modules);
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public $moduleName = 'schema_job_posting';
+
+  /**
+   * {@inheritdoc}
+   */
+  public $schemaTags = [
+    'schema_job_posting.@type' => 'SchemaJobPostingType',
+    'schema_job_posting.title' => 'SchemaNameBase',
+    'schema_job_posting.description' => 'SchemaNameBase',
+    'schema_job_posting.baseSalary' => 'SchemaMonetaryAmountBase',
+    'schema_job_posting.datePosted' => 'SchemaDateBase',
+    'schema_job_posting.validThrough' => 'SchemaDateBase',
+    'schema_job_posting.employmentType' => 'SchemaNameBase',
+    'schema_job_posting.hiringOrganization' => 'SchemaPersonOrgBase',
+    'schema_job_posting.jobLocation' => 'SchemaPlaceBase',
+    'schema_job_posting.identifier' => 'SchemaNameBase',
+    'schema_job_posting.industry' => 'SchemaNameBase',
+    'schema_job_posting.responsibilities' => 'SchemaNameBase',
+    'schema_job_posting.jobBenefits' => 'SchemaNameBase',
+    'schema_job_posting.qualifications' => 'SchemaNameBase',
+  ];
+
+}

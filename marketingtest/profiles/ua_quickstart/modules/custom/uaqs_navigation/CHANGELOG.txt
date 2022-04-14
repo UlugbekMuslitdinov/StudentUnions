@@ -1,0 +1,429 @@
+7.x-1.0-alpha75, 2022-03-16
+-----------------------------
+
+7.x-1.0-alpha74, 2022-02-16
+-----------------------------
+
+7.x-1.0-alpha73, 2022-01-26
+-----------------------------
+
+7.x-1.0-alpha72, 2022-01-20
+-----------------------------
+
+7.x-1.0-alpha71, 2022-01-19
+-----------------------------
+
+7.x-1.0-alpha70, 2021-07-21
+-----------------------------
+- UADIGITAL-2268 change footer headings from h5 to h2 with .h5 class to help with accessibility.
+
+7.x-1.0-alpha69, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha68, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha67, 2021-05-12
+-----------------------------
+- UADIGITAL-2266 add aria disabled attribute to select menu
+
+7.x-1.0-alpha66, 2021-04-21
+-----------------------------
+
+7.x-1.0-alpha65, 2021-01-21
+-----------------------------
+
+7.x-1.0-alpha64, 2020-11-25
+-----------------------------
+
+7.x-1.0-alpha63, 2020-11-18
+-----------------------------
+
+7.x-1.0-alpha62, 2020-11-18
+-----------------------------
+
+7.x-1.0-alpha61, 2020-09-16
+-----------------------------
+
+7.x-1.0-alpha60, 2020-09-11
+-----------------------------
+
+7.x-1.0-alpha59, 2020-08-19
+-----------------------------
+- UADIGITAL-2239 update links in footer and header resources
+
+7.x-1.0-alpha58, 2020-06-17
+-----------------------------
+
+7.x-1.0-alpha57, 2020-06-05
+-----------------------------
+
+7.x-1.0-alpha56, 2020-05-20
+-----------------------------
+
+7.x-1.0-alpha55, 2020-04-20
+-----------------------------
+
+7.x-1.0-alpha54, 2020-03-20
+-----------------------------
+
+7.x-1.0-alpha53, 2020-03-06
+-----------------------------
+
+7.x-1.0-alpha52, 2020-02-07
+-----------------------------
+- UADIGITAL-2215: Change Employment link in footer.
+
+7.x-1.0-alpha51, 2019-12-18
+-----------------------------
+- UADIGITAL-2159 Replace demo and default content http with https.
+
+7.x-1.0-alpha50, 2019-12-13
+-----------------------------
+
+7.x-1.0-alpha49, 2019-11-20
+-----------------------------
+
+7.x-1.0-alpha48, 2019-11-05
+-----------------------------
+
+7.x-1.0-alpha47, 2019-11-01
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha46 for uaqs_navigation.
+
+7.x-1.0-alpha46, 2019-11-01
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha45 for uaqs_navigation.
+
+7.x-1.0-alpha45, 2019-11-01
+-----------------------------
+
+7.x-1.0-alpha44, 2019-09-06
+-----------------------------
+
+7.x-1.0-alpha43, 2019-08-16
+-----------------------------
+
+7.x-1.0-alpha42, 2019-07-26
+-----------------------------
+- UADIGITAL-1228, UADIGITAL-1745, UADIGITAL-1885, UADIGITAL-1196 remove basic page, publications, units & programs from demo content; cleaned up demo content; fixed broken behat tests, add <nolink> to demo navigation
+- Merged in UADIGITAL-1971 (pull request #561)
+
+7.x-1.0-alpha41, 2019-06-28
+-----------------------------
+- UADIGITAL-2022 DB update: New Twitter handle, removing Google+ and updating employment URL.
+- UADIGITAL-2021 change default twitter address to twitter.com/uarizona
+
+7.x-1.0-alpha40, 2019-05-22
+-----------------------------
+
+7.x-1.0-alpha39, 2019-05-08
+-----------------------------
+
+7.x-1.0-alpha38, 2019-05-07
+-----------------------------
+
+7.x-1.0-alpha37, 2019-04-17
+-----------------------------
+- UADIGITAL-1935 Make resources bean menu title configurable for mobile menu.
+
+7.x-1.0-alpha36, 2019-03-20
+-----------------------------
+
+7.x-1.0-alpha35, 2019-03-15
+-----------------------------
+
+7.x-1.0-alpha34, 2019-03-13
+-----------------------------
+
+7.x-1.0-alpha33, 2019-02-20
+-----------------------------
+- UADIGITAL-1914: Bump the link contrib module version because of a security issue.
+
+7.x-1.0-alpha32, 2019-02-11
+-----------------------------
+
+7.x-1.0-alpha30, 2019-02-01
+-----------------------------
+
+7.x-1.0-alpha29, 2019-01-28
+-----------------------------
+
+7.x-1.0-alpha28, 2019-01-17
+-----------------------------
+
+7.x-1.0-alpha27, 2019-01-16
+-----------------------------
+
+7.x-1.0-alpha26, 2019-01-11
+-----------------------------
+
+7.x-1.0-alpha25, 2018-11-15
+-----------------------------
+
+7.x-1.0-alpha24, 2018-11-02
+-----------------------------
+
+7.x-1.0-alpha23, 2018-10-17
+-----------------------------
+
+7.x-1.0-alpha22, 2018-10-11
+-----------------------------
+
+7.x-1.0-alpha21, 2018-10-10
+-----------------------------
+
+7.x-1.0-alpha20, 2018-09-21
+-----------------------------
+
+7.x-1.0-alpha19, 2018-08-29
+-----------------------------
+- UADIGITAL-1715 update IIFE scope arguments and make html more readable
+- Preparing to tag 7.x-1.0-alpha17 for uaqs_navigation.
+- Preparing to tag 7.x-1.0-alpha16 for uaqs_navigation.
+- UADIGITAL-1671 Resources Menu Links Not Opening Bug.
+- UADIGITAL-1655-change-all-exported-menu-links-pointing at www.arizona.edu
+- Preparing to tag 7.x-1.0-alpha15 for uaqs_navigation.
+- UADIGITAL-1642 background and border color update for contrast
+- Preparing to tag 7.x-1.0-alpha14 for uaqs_navigation.
+- UADIGITAL-1597 Audience select menu accessibility enhancements.
+- Preparing to tag 7.x-1.0-alpha13 for uaqs_navigation.
+- Preparing to tag 7.x-1.0-alpha12 for uaqs_navigation.
+- UADIGITAL-1492 Add ARIA Landmark names to all regions
+- UADIGITAL-1538-cta-bean-my-4 remove unneeded mb-4 and mt-4 from blocks
+- Preparing to tag 7.x-1.0-alpha11 for uaqs_navigation.
+- UADIGITAL-1512: Remove sidebar nav depth restriction
+- UADIGITAL-1487 Updating Cert -> Cirt in Global footer.
+- Preparing to tag 7.x-1.0-alpha10 for uaqs_navigation.
+- UADIGITAL-1462: Adding uaqs_core as a dependency of global footer, and forcing migrate registration update on disable of global footer.
+- UADIGITAL-1461: Fixed block type export conflict between 'UAQS Navigation - Select Menu' and 'UAQS Block Types - Search' features.
+- UADIGITAL-1191 Select menu bean block and demo content.
+- UADIGITAL-1190 Institutional Header Call to Action Buttons
+- UADIGITAL-1375 hide icons in resource menu
+- UADIGITAL-1369 Update Resources menu with UAccess link
+- UADIGITAL-1357 Added missing links in global footer main and reordered them
+- UADIGITAL-1192 Add ua-bootstrap classes to forms and webforms, institutional header search and resources menu button.
+- UADIGITAL-1199: Changing the default superfish settings so that menu items do not need to be expanded to have dropdown menus on the main menu.
+- Preparing to tag 7.x-1.0-alpha9 for uaqs_navigation.
+- Preparing to tag 7.x-1.0-alpha8 for uaqs_navigation.
+- Preparing to tag 7.x-1.0-alpha7 for uaqs_navigation.
+- UADIGITAL-1165 Adding uaqs_admin as a dependency so it is turned on by default, settings are being set in uaqs_navigation
+- Remove the obsolete Bitbucket Piplines configurations from the subtrees.
+- Back to dev. [skip ci]
+- Preparing to tag 7.x-1.0-alpha6. [skip ci]
+- UADIGITAL-884 add bitbucket pipelines config file.
+- Remove the duplicate Bean module version definition, use the one from uaqs_block_types.
+- Merged in trackleft/uaqs_navigation/UADIGITAL-827-update-xautoload-to-7x-57 (pull request #13)
+- UADIGITAL-827
+- UADIGITAL-804
+- Consolidate the Bean block placement code into UAQS Core.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha5.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha4.
+- fixed spacing issue within the code
+- made footer links under on hover
+- UADIGITAL-485: Disabling missing jquery easing plugin until we decide to add it intentionally.
+- UADIGITAL-702: Adding patch to fix Menu Bean autoload problem.
+- UADIGITAL-702: Removing unnecessary permissions, removing bean title.
+- UADIGITAL-485: Respecting 'show as expanded' menu item attributes by default.
+- UADIGITAL-485: Adding pre-configured superfish block.
+- UADIGITAL-485: Re-enabling (& updating) Superfish module, adding utitility function for creating Superfish instances programatically.
+- UADIGITAL-693: Fixing permissions problem.
+- UADIGITAL-693: Add submodule for global footer menu blocks.
+- UADIGITAL-547: Increasing max depth of second-level navigation menu block.
+- Hide the UAQS label in content type names and revise the descriptions.
+- Rename UA to UAQS in the file contents.
+- UADIGTAL-404: Removing jquery_update from makefile and README.
+- removing jquery update since it is now in ua_core UADIGITAL-404
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha3.
+- UADIGITAL-344: Updating jquery_update to version 7.x-2.7.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha2.
+- UADIGITAL-307: Fixing dumb syntax error with DB update function.
+- UADIGITAL-307: Don't uninstall Superfish, just disable.
+- UADIGITAL-307: Using correct update number.
+- UADIGITAL-307: Disabling & uninstaling superfish before removing it from makefile.
+- remove superfish library
+- rebuild feature without superfish
+- UADIGITAL-156: Fixing custom secondary navigation block definition.
+- Remove explicit version information.
+- Add a changelog so there is always something to modify for a release.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha1.
+- Update Menu Block to the current drupal.org version.
+- UADIGIAL-113: Security update for jquery_update module.
+- UADIGITAL-105: Updating menu_block to 2.6.
+- UADIGITAL-17: Removing Responsive Menus module and libraries.
+- Adding jquery_admin_version variable.  Should fix UADIGITAL-40.
+- Removing 'brand' from various component names.
+- Updating README.
+- Renaming module, Part II.
+- Renaming module, Part I.
+- Adding all variables for Superfish block (gross).
+- Updating README.
+- Adding dev/master version of Superfish library (for now).
+- Adding jQuery Update version setting.
+- Documentation updates.
+- Documentation updates.
+- Documentation updates.
+- Documentation updates.
+- Adding secondary links variable.
+- Dev versions of superfish and reponsive menus...
+- Misc fixes.
+- README update.
+- Adding Utility links menu.
+- Renaming Superfish menu.
+- README update.
+- Adding README and updating .info file slightly.
+- Initial commit.
+7.x-1.0-alpha17, 2018-07-30
+-----------------------------
+
+7.x-1.0-alpha16, 2018-07-20
+-----------------------------
+- UADIGITAL-1671 Resources Menu Links Not Opening Bug.
+- UADIGITAL-1655-change-all-exported-menu-links-pointing at www.arizona.edu
+
+7.x-1.0-alpha15, 2018-06-19
+-----------------------------
+- UADIGITAL-1642 background and border color update for contrast
+
+7.x-1.0-alpha14, 2018-05-18
+-----------------------------
+- UADIGITAL-1597 Audience select menu accessibility enhancements.
+
+7.x-1.0-alpha13, 2018-04-25
+-----------------------------
+
+7.x-1.0-alpha12, 2018-04-20
+-----------------------------
+- UADIGITAL-1492 Add ARIA Landmark names to all regions
+- UADIGITAL-1538-cta-bean-my-4 remove unneeded mb-4 and mt-4 from blocks
+
+7.x-1.0-alpha11, 2018-03-30
+-----------------------------
+- UADIGITAL-1512: Remove sidebar nav depth restriction
+- UADIGITAL-1487 Updating Cert -> Cirt in Global footer.
+
+7.x-1.0-alpha10, 2018-03-09
+-----------------------------
+- UADIGITAL-1462: Adding uaqs_core as a dependency of global footer, and forcing migrate registration update on disable of global footer.
+- UADIGITAL-1461: Fixed block type export conflict between 'UAQS Navigation - Select Menu' and 'UAQS Block Types - Search' features.
+- UADIGITAL-1191 Select menu bean block and demo content.
+- UADIGITAL-1190 Institutional Header Call to Action Buttons
+- UADIGITAL-1375 hide icons in resource menu
+- UADIGITAL-1369 Update Resources menu with UAccess link
+- UADIGITAL-1357 Added missing links in global footer main and reordered them
+- UADIGITAL-1192 Add ua-bootstrap classes to forms and webforms, institutional header search and resources menu button.
+- UADIGITAL-1199: Changing the default superfish settings so that menu items do not need to be expanded to have dropdown menus on the main menu.
+
+7.x-1.0-alpha9, 2017-09-15
+-----------------------------
+
+7.x-1.0-alpha8, 2017-09-15
+-----------------------------
+
+7.x-1.0-alpha7, 2017-08-17
+-----------------------------
+- UADIGITAL-1165 Adding uaqs_admin as a dependency so it is turned on by default, settings are being set in uaqs_navigation
+- Remove the obsolete Bitbucket Piplines configurations from the subtrees.
+- Back to dev. [skip ci]
+
+7.x-1.0-alpha6, 2017-01-13
+------------------------------
+- Merged in trackleft/uaqs_navigation/UADIGITAL-884-automate-uaqs-component-re (pull request #15).
+- UADIGITAL-884 add bitbucket pipelines config file.
+- Merged ua_drupal/uaqs_navigation into 7.x-1.x.
+- UADIGITAL-879: October 2016 Drupal updates.
+- Remove the duplicate Bean module version definition, use the one from uaqs_block_types.
+- Merged in trackleft/uaqs_navigation/UADIGITAL-827-update-xautoload-to-7x-57 (pull request #13).
+- UADIGITAL-827.
+- UADIGITAL-804: Convert line height declarations to margin so external links css functions correctly.
+- UADIGITAL-804.
+- UADIGITAL-713: Move block placement code to UaqsBeanMigration class in uaqs_core.
+- Consolidate the Bean block placement code into UAQS Core.
+- Back to dev.
+
+7.x-1.0-alpha5, 2016-05-02
+------------------------------
+- Back to dev.
+
+7.x-1.0-alpha4, 2016-05-02
+------------------------------
+- UADIGITAL-692: Reduce space between footer resouces/connect icons and links.
+- Fixed spacing issue within the code.
+- Made footer links under on hover.
+- Merged in UADIGITAL-485 (pull request #8).
+- UADIGITAL-485: Disabling missing jquery easing plugin until we decide to add it intentionally.
+- Merged in UADIGITAL-702 (pull request #7).
+- UADIGITAL-702: Adding patch to fix Menu Bean autoload problem.
+- UADIGITAL-702: Removing unnecessary permissions, removing bean title.
+- Merged in UADIGITAL-485 (pull request #5).
+- UADIGITAL-485: Respecting 'show as expanded' menu item attributes by default.
+- UADIGITAL-485: Adding pre-configured superfish block.
+- UADIGITAL-485: Re-enabling (& updating) Superfish module, adding utitility function for creating Superfish instances programatically.
+- Merged in UADIGITAL-693 (pull request #4).
+- UADIGITAL-693: Fixing permissions problem.
+- UADIGITAL-693: Add submodule for global footer menu blocks.
+- Merged in UADIGITAL-547 (pull request #2).
+- UADIGITAL-547: Increasing max depth of second-level navigation menu block.
+- Merged in mmunro-ltrr/uaqs_navigation/UADIGITAL-523 (pull request #1).
+- Hide the UAQS label in content type names and revise the descriptions.
+- Rename UA to UAQS in the file contents.
+- UADIGTAL-404: Removing jquery_update from makefile and README.
+- Merged in trackleft/ua_navigation/UADIGITAL-404-add-jquery-update-to-ua-co_2 (pull request #9).
+- Removing jquery update since it is now in ua_core UADIGITAL-404.
+- Merged ua_drupal/ua_navigation into 7.x-1.x.
+- Back to dev.
+
+7.x-1.0-alpha3, 2015-10-23
+------------------------------
+- Merged in UADIGITAL-344 (pull request #8).
+- UADIGITAL-344: Updating jquery_update to version 7.x-2.7.
+- Back to dev.
+
+7.x-1.0-alpha2, 2015-10-12
+------------------------------
+- UADIGITAL-307: Fixing dumb syntax error with DB update function.
+- Merged in UADIGITAL-307 (pull request #7).
+- UADIGITAL-307: Don't uninstall Superfish, just disable.
+- UADIGITAL-307: Using correct update number.
+- UADIGITAL-307: Disabling & uninstaling superfish before removing it from makefile.
+- UADIGITAL-212: Merged in trackleft/ua_navigation/UADIGITAL-212-main-navigation-should-use (pull request #6).
+- Remove superfish library.
+- Rebuild feature without superfish.
+- UADIGITAL-156: Fixing custom secondary navigation block definition.
+- Merged in mmunro-ltrr/ua_navigation/UADIGITAL-139 (pull request #5).
+- Remove explicit version information.
+- Add a changelog so there is always something to modify for a release.
+- Back to dev.
+
+7.x-1.0-alpha1, 2015-07-10
+--------------------------
+- Preparing to tag 7.x-1.0-alpha1.
+- Merged in mmunro-ltrr/ua_navigation/UADIGITAL-132 (pull request #4).
+- Update Menu Block to the current drupal.org version.
+- Merged in UADIGITAL-113 (pull request #3).
+- UADIGIAL-113: Security update for jquery_update module.
+- Merged in UADIGITAL-105 (pull request #2).
+- UADIGITAL-105: Updating menu_block to 2.6.
+- UADIGITAL-17: Removing Responsive Menus module and libraries.
+- Adding jquery_admin_version variable.  Should fix UADIGITAL-40.
+- Removing 'brand' from various component names.
+- Merged in rename (pull request #1).
+- Updating README.
+- Renaming module, Part II.
+- Renaming module, Part I.
+- Adding all variables for Superfish block (gross).
+- Adding dev/master version of Superfish library (for now).
+- Adding jQuery Update version setting.
+- Documentation updates.
+- Adding secondary links variable.
+- Dev versions of superfish and reponsive menus...
+- Misc fixes.
+- README update.
+- Adding Utility links menu.
+- Renaming Superfish menu.
+- Adding README and updating .info file slightly.

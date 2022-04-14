@@ -1,0 +1,1738 @@
+[
+ {
+   "id": 1,
+   "title": "Accounting",
+   "uaqs_link": "http://accounting.eller.arizona.edu/",
+   "uaqs_link_title": "Accounting",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 2,
+   "title": "Aerospace Engineering",
+   "uaqs_link": "http://www.ame.arizona.edu/",
+   "uaqs_link_title": "Aerospace Engineering",
+   "uaqs_index_letter" : "a|e"
+ },
+ {
+   "id" : 3,
+   "title": "Africana Studies",
+   "uaqs_link": "http://africana.arizona.edu/",
+   "uaqs_link_title": "Africana Studies",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 4,
+   "title": "Agribusiness Economics and Management: Agricultural Economics Emphasis",
+   "uaqs_link": "https://cals.arizona.edu/content/agribusiness-economics-management-agricultural-economics-emphasis",
+   "uaqs_link_title": "Agribusiness Economics and Management: Agricultural Economics Emphasis",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 5,
+   "title": "Agricultural Economics and Management:  Agribusiness Management Emphasis",
+   "uaqs_link": "https://cals.arizona.edu/arec/undergraduate-programs",
+   "uaqs_link_title": "Agricultural Economics and Management: Agribusiness Management Emphasis",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 6,
+   "title": "Agricultural Technology Management and Education: Agricultural Systems Management Emphasis",
+   "uaqs_link": "http://ag.arizona.edu/aed/ASM.htm",
+   "uaqs_link_title": "Agricultural Technology Management and Education: Agricultural Systems Management Emphasis",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 7,
+   "title": "Agricultural Technology Management and Education: Agricultural Technology Management Emphasis: ",
+   "uaqs_link": "http://cals.arizona.edu/aed/",
+   "uaqs_link_title": "Agricultural Technology Management and Education: Agricultural Technology Management Emphasis: ",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 8,
+   "title": "Agricultural Technology Management and Education: Leadership and Communication Emphasis",
+   "uaqs_link": "http://cals.arizona.edu/aed/Ag_Commun_Lead.htm",
+   "uaqs_link_title": "Agricultural Technology Management and Education: Leadership and Communication Emphasis",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 9,
+   "title": "Agricultural Technology Management and Education: Teaching Emphasis",
+   "uaqs_link": "http://cals.arizona.edu/aed/",
+   "uaqs_link_title": "Agricultural Technology Management and Education: Teaching Emphasis",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 10,
+   "title": "American Indian Studies",
+   "uaqs_link": "https://ais.arizona.edu/",
+   "uaqs_link_title": "American Indian Studies",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 11,
+   "title": "Animal Sciences: Animal Industry Emphasis",
+   "uaqs_link": "https://acbs.cals.arizona.edu/degrees/major",
+   "uaqs_link_title": "Animal Sciences: Animal Industry Emphasis: ",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 12,
+   "title": "Animal Sciences: Equine Emphasis",
+   "uaqs_link": "https://acbs.cals.arizona.edu/degrees/major",
+   "uaqs_link_title": "Animal Sciences: Equine Emphasis",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 13,
+   "title": "Animal Sciences: Race Track Industry Emphasis",
+   "uaqs_link": "https://acbs.cals.arizona.edu/degrees/major",
+   "uaqs_link_title": "Animal Sciences: Race Track Industry Emphasis: ",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 14,
+   "title": "Animal Sciences: Science and Pre-professional Emphasis",
+   "uaqs_link": "https://acbs.cals.arizona.edu/degrees/major",
+   "uaqs_link_title": "Animal Sciences: Science and Pre-professional Emphasis: ",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 15,
+   "title": "Anthropology",
+   "uaqs_link": "http://anthropology.arizona.edu/index.php",
+   "uaqs_link_title": "Anthropology",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 16,
+   "title": "Anthropology: Archaeological Sciences Emphasis",
+   "uaqs_link": "http://anthropology.arizona.edu/index.php",
+   "uaqs_link_title": "Anthropology: Archaeological Sciences Emphasis",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 17,
+   "title": "Anthropology: Human Biology Emphasis",
+   "uaqs_link": "http://anthropology.arizona.edu/index.php",
+   "uaqs_link_title": "Anthropology: Human Biology Emphasis",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 18,
+   "title": "Applied Science: Administration of Justice Emphasis",
+   "uaqs_link": "http://uas.arizona.edu/administration-justice",
+   "uaqs_link_title": "Applied Science: Administration of Justice Emphasis",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 19,
+   "title": "Applied Science: Cyber Operations",
+   "uaqs_link": "https://uas.arizona.edu/cyber-operations",
+   "uaqs_link_title": "Applied Science: Cyber Operations",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 20,
+   "title": "Applied Science: Early Childhood Education Emphasis",
+   "uaqs_link": "https://uas.arizona.edu/early-childhood-education",
+   "uaqs_link_title": "Applied Science: Early Childhood Education Emphasis",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 21,
+   "title": "Applied Science: Human Services Emphasis",
+   "uaqs_link": "https://uas.arizona.edu/human-services",
+   "uaqs_link_title": "Applied Science: Human Services Emphasis",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 22,
+   "title": "Applied Science: Informatics Emphasis: ",
+   "uaqs_link": "https://uas.arizona.edu/informatics",
+   "uaqs_link_title": "Applied Science: Informatics Emphasis: ",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 23,
+   "title": "Applied Science: Intelligence Studies Emphasis",
+   "uaqs_link": "https://uas.arizona.edu/intelligence-studies",
+   "uaqs_link_title": "Applied Science: Intelligence Studies Emphasis",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 24,
+   "title": "Applied Science: Meteorology",
+   "uaqs_link": "https://uas.arizona.edu/meteorology",
+   "uaqs_link_title": "Applied Science: Meteorology",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 25,
+   "title": "Applied Science: Network Administration Emphasis",
+   "uaqs_link": "http://uas.arizona.edu/network-administration",
+   "uaqs_link_title": "Applied Science: Network Administration Emphasis",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 26,
+   "title": "Applied Science: Organizational Leadership Emphasis",
+   "uaqs_link": "https://uas.arizona.edu/organizational-leadership",
+   "uaqs_link_title": "Applied Science: Organizational Leadership Emphasis",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 27,
+   "title": "Arabic",
+   "uaqs_link": "https://menas.arizona.edu/arabic-0",
+   "uaqs_link_title": "Arabic",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 28,
+   "title": "Architecture",
+   "uaqs_link": "http://capla.arizona.edu/bachelor-architecture",
+   "uaqs_link_title": "Architecture",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 29,
+   "title": "Art and Visual Culture Education: Community Museums Emphasis",
+   "uaqs_link": "http://art.arizona.edu/prospective-students/degrees/b-f-a-art-visual-culture-education/",
+   "uaqs_link_title": "Art and Visual Culture Education: Community Museums Emphasis",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 30,
+   "title": "Art and Visual Culture Education: Teaching Emphasis",
+   "uaqs_link": "http://art.arizona.edu/prospective-students/degrees/b-f-a-art-visual-culture-education/",
+   "uaqs_link_title": "Art and Visual Culture Education: Teaching Emphasis",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 31,
+   "title": "Art History",
+   "uaqs_link": "http://art.arizona.edu/prospective-students/areas-of-study/art-history/",
+   "uaqs_link_title": "Art History",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 32,
+   "title": "Astronomy",
+   "uaqs_link": "http://cos.arizona.edu/content/astronomy-steward-observatory",
+   "uaqs_link_title": "Astronomy",
+   "uaqs_index_letter" : "a"
+ },
+ {
+   "id" : 33,
+   "title": "Biochemistry",
+   "uaqs_link": "http://cos.arizona.edu/content/chemistry-and-biochemistry",
+   "uaqs_link_title": "Biochemistry",
+   "uaqs_index_letter" : "b"
+ },
+ {
+   "id" : 34,
+   "title": "Bioinformatics: Computer Science Emphasis",
+   "uaqs_link": "http://eeb.arizona.edu/undergrads_overview",
+   "uaqs_link_title": "Bioinformatics: Computer Science Emphasis",
+   "uaqs_index_letter" : "b"
+ },
+ {
+   "id" : 35,
+   "title": "Bioinformatics: Ecology and Evolutionary Biology Emphasis",
+   "uaqs_link": "http://eeb.arizona.edu/undergrads_overview",
+   "uaqs_link_title": "Bioinformatics: Ecology and Evolutionary Biology Emphasis",
+   "uaqs_index_letter" : "b"
+ },
+ {
+   "id" : 36,
+   "title": "Bioinformatics: Molecular and Cellular Biology",
+   "uaqs_link": "http://eeb.arizona.edu/undergrads_overview",
+   "uaqs_link_title": "Bioinformatics: Molecular and Cellular Biology",
+   "uaqs_index_letter" : "b"
+ },
+ {
+   "id" : 37,
+   "title": "Bioinformatics: Systems Biology",
+   "uaqs_link": "http://eeb.arizona.edu/undergrads_overview",
+   "uaqs_link_title": "Bioinformatics: Systems Biology",
+   "uaqs_index_letter" : "b"
+ },
+ {
+   "id" : 38,
+   "title": "Biology: Bioinformatics Emphasis",
+   "uaqs_link": "http://cos.arizona.edu/content/ecology-and-evolutionary-biology",
+   "uaqs_link_title": "Biology: Bioinformatics Emphasis",
+   "uaqs_index_letter" : "b"
+ },
+ {
+   "id" : 39,
+   "title": "Biology: Biomedical Sciences Emphasis",
+   "uaqs_link": "http://cos.arizona.edu/content/ecology-and-evolutionary-biology",
+   "uaqs_link_title": "Biology: Biomedical Sciences Emphasis",
+   "uaqs_index_letter" : "b"
+ },
+ {
+   "id" : 40,
+   "title": "Biology: Organismal Biology Emphasis",
+   "uaqs_link": "http://cos.arizona.edu/content/ecology-and-evolutionary-biology",
+   "uaqs_link_title": "Biology: Organismal Biology Emphasis",
+   "uaqs_index_letter" : "b"
+ },
+ {
+   "id" : 41,
+   "title": "Biomedical Engineering: ",
+   "uaqs_link": "http://www.bmengr.arizona.edu/",
+   "uaqs_link_title": "Biomedical Engineering: ",
+   "uaqs_index_letter" : "b"
+ },
+ {
+   "id" : 42,
+   "title": "Biosystems Engineering",
+   "uaqs_link": "http://www.cals.arizona.edu/abe/",
+   "uaqs_link_title": "Biosystems Engineering",
+   "uaqs_index_letter" : "b"
+ },
+ {
+   "id" : 43,
+   "title": "Business Administration (Pre-Business)",
+   "uaqs_link": "http://ugrad.eller.arizona.edu/academics/majors/businessadministration/",
+   "uaqs_link_title": "Business Administration (Pre-Business)",
+   "uaqs_index_letter" : "b"
+ },
+ {
+   "id" : 44,
+   "title": "Business Economics (Pre-Business)",
+   "uaqs_link": "http://economics.eller.arizona.edu/",
+   "uaqs_link_title": "Business Economics (Pre-Business)",
+   "uaqs_index_letter" : "b"
+ },
+ {
+   "id" : 45,
+   "title": "Business Management (Pre-Business)",
+   "uaqs_link": "http://management.eller.arizona.edu/",
+   "uaqs_link_title": "Business Management (Pre-Business)",
+   "uaqs_index_letter" : "b"
+ },
+ {
+   "id" : 46,
+   "title": "Care, Health and Society",
+   "uaqs_link": "https://sociology.arizona.edu/chs",
+   "uaqs_link_title": "Care, Health and Society",
+   "uaqs_index_letter" : "c"
+ },
+ {
+   "id" : 47,
+   "title": "Chemical Engineering",
+   "uaqs_link": "http://www.che.arizona.edu/",
+   "uaqs_link_title": "Chemical Engineering",
+   "uaqs_index_letter" : "c"
+ },
+ {
+   "id" : 48,
+   "title": "Chemistry",
+   "uaqs_link": "http://cos.arizona.edu/content/chemistry-and-biochemistry",
+   "uaqs_link_title": "Chemistry",
+   "uaqs_index_letter" : "c"
+ },
+ {
+   "id" : 49,
+   "title": "Civil Engineering",
+   "uaqs_link": "http://civil.arizona.edu/",
+   "uaqs_link_title": "Civil Engineering",
+   "uaqs_index_letter" : "c"
+ },
+ {
+   "id" : 50,
+   "title": "Classics: Classical Civilization Emphasis",
+   "uaqs_link": "http://classics.arizona.edu/",
+   "uaqs_link_title": "Classics: Classical Civilization Emphasis",
+   "uaqs_index_letter" : "c"
+ },
+ {
+   "id" : 51,
+   "title": "Classics: Greek Emphasis",
+   "uaqs_link": "http://classics.arizona.edu/",
+   "uaqs_link_title": "Classics: Greek Emphasis",
+   "uaqs_index_letter" : "c"
+ },
+ {
+   "id" : 52,
+   "title": "Classics: Latin Emphasis",
+   "uaqs_link": "http://classics.arizona.edu/",
+   "uaqs_link_title": "Classics: Latin Emphasis",
+   "uaqs_index_letter" : "c"
+ },
+ {
+   "id" : 53,
+   "title": "Commerce: ",
+   "uaqs_link": "http://uas.arizona.edu/commerce",
+   "uaqs_link_title": "Commerce: ",
+   "uaqs_index_letter" : "c"
+ },
+ {
+   "id" : 54,
+   "title": "Communication",
+   "uaqs_link": "http://comm.arizona.edu/",
+   "uaqs_link_title": "Communication",
+   "uaqs_index_letter" : "c"
+ },
+ {
+   "id" : 55,
+   "title": "Computer Science",
+   "uaqs_link": "http://www.cs.arizona.edu/",
+   "uaqs_link_title": "Computer Science",
+   "uaqs_index_letter" : "c"
+ },
+ {
+   "id" : 56,
+   "title": "Creative Writing",
+   "uaqs_link": "https://english.arizona.edu/creative-writing-major",
+   "uaqs_link_title": "Creative Writing",
+   "uaqs_index_letter" : "c"
+ },
+ {
+   "id" : 57,
+   "title": "Criminal Justice Studies",
+   "uaqs_link": "http://sgpp.arizona.edu/",
+   "uaqs_link_title": "Criminal Justice Studies",
+   "uaqs_index_letter" : "c"
+ },
+ {
+   "id" : 58,
+   "title": "Dance",
+   "uaqs_link": "http://dance.arizona.edu/students/future_students/",
+   "uaqs_link_title": "Dance",
+   "uaqs_index_letter" : "d"
+ },
+ {
+   "id" : 59,
+   "title": "Early Childhood Education",
+   "uaqs_link": "http://www.coe.arizona.edu/ec_grad_program",
+   "uaqs_link_title": "Early Childhood Education",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 60,
+   "title": "East Asian Studies: Chinese Culture Intensive Emphasis",
+   "uaqs_link": "http://eas.arizona.edu/",
+   "uaqs_link_title": "East Asian Studies: Chinese Culture Intensive Emphasis",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 61,
+   "title": "East Asian Studies: Chinese Language Intensive Emphasis",
+   "uaqs_link": "http://eas.arizona.edu/",
+   "uaqs_link_title": "East Asian Studies: Chinese Language Intensive Emphasis",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 62,
+   "title": "East Asian Studies: Japanese Culture Intensive Emphasis",
+   "uaqs_link": "http://eas.arizona.edu/",
+   "uaqs_link_title": "East Asian Studies: Japanese Culture Intensive Emphasis",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 63,
+   "title": "East Asian Studies: Japanese Language Intensive Emphasis",
+   "uaqs_link": "http://eas.arizona.edu/",
+   "uaqs_link_title": "East Asian Studies: Japanese Language Intensive Emphasis",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 64,
+   "title": "Ecology and Evolutionary Biology",
+   "uaqs_link": "http://eebweb.arizona.edu/",
+   "uaqs_link_title": "Ecology and Evolutionary Biology",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 65,
+   "title": "Economics",
+   "uaqs_link": "http://econ.arizona.edu/undergraduate/majors.asp",
+   "uaqs_link_title": "Economics",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 66,
+   "title": "Electrical and Computer Engineering: ",
+   "uaqs_link": "http://www.ece.arizona.edu/",
+   "uaqs_link_title": "Electrical and Computer Engineering: ",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 67,
+   "title": "Elementary Education",
+   "uaqs_link": "http://uas.arizona.edu/elementary-education",
+   "uaqs_link_title": "Elementary Education",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 68,
+   "title": "Elementary Education: Bilingual Emphasis",
+   "uaqs_link": "https://www.coe.arizona.edu/tls/tte_ba_ee",
+   "uaqs_link_title": "Elementary Education: Bilingual Emphasis",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 69,
+   "title": "Elementary Education: English as a Second Language Emphasis",
+   "uaqs_link": "https://www.coe.arizona.edu/tls/tte_ba_ee",
+   "uaqs_link_title": "Elementary Education: English as a Second Language Emphasis",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 70,
+   "title": "Elementary Education: General",
+   "uaqs_link": "https://www.coe.arizona.edu/tls/tte_ba_ee",
+   "uaqs_link_title": "Elementary Education: General",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 71,
+   "title": "Engineering Management",
+   "uaqs_link": "http://sie.engr.arizona.edu/bachelor-science-engineering-management",
+   "uaqs_link_title": "Engineering Management",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 72,
+   "title": "English",
+   "uaqs_link": "https://english.arizona.edu/english-major",
+   "uaqs_link_title": "English",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 73,
+   "title": "Entrepreneurship ",
+   "uaqs_link": "http://ugrad.eller.arizona.edu/academics/majors/entrepreneurship/",
+   "uaqs_link_title": "Entrepreneurship ",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 74,
+   "title": "Environmental and Water Resource Economics",
+   "uaqs_link": "https://cals.arizona.edu/arec/undergraduate-programs",
+   "uaqs_link_title": "Environmental and Water Resource Economics",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 75,
+   "title": "Environmental Engineering",
+   "uaqs_link": "http://engr.arizona.edu/majors/environmental",
+   "uaqs_link_title": "Environmental Engineering",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 76,
+   "title": "Environmental Hydrology and Water Resources",
+   "uaqs_link": "http://www.hwr.arizona.edu/",
+   "uaqs_link_title": "Environmental Hydrology and Water Resources",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 77,
+   "title": "Environmental Science: Biology Emphasis",
+   "uaqs_link": "http://swes.cals.arizona.edu/undergrad-program",
+   "uaqs_link_title": "Environmental Science: Biology Emphasis",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 78,
+   "title": "Environmental Science: Land, Air, and Water Emphasis",
+   "uaqs_link": "http://swes.cals.arizona.edu/undergrad-program",
+   "uaqs_link_title": "Environmental Science: Land, Air, and Water Emphasis",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 79,
+   "title": "Environmental Science: Physics and Chemistry Emphasis",
+   "uaqs_link": "http://swes.cals.arizona.edu/undergrad-program",
+   "uaqs_link_title": "Environmental Science: Physics and Chemistry Emphasis",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 80,
+   "title": "Environmental Science: Society and Environment Emphasis",
+   "uaqs_link": "http://swes.cals.arizona.edu/undergrad-program",
+   "uaqs_link_title": "Environmental Science: Society and Environment Emphasis",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 81,
+   "title": "Environmental Studies",
+   "uaqs_link": "https://geography.arizona.edu/BAEVS",
+   "uaqs_link_title": "Environmental Studies",
+   "uaqs_index_letter" : "e"
+ },
+ {
+   "id" : 82,
+   "title": "Family Studies and Human Development",
+   "uaqs_link": "http://ag.arizona.edu/fcs/fshd/home",
+   "uaqs_link_title": "Family Studies and Human Development",
+   "uaqs_index_letter" : "f"
+ },
+ {
+   "id" : 83,
+   "title": "Film and Television",
+   "uaqs_link": "http://tftv.arizona.edu/students/areas_of_study",
+   "uaqs_link_title": "Film and Television",
+   "uaqs_index_letter" : "f"
+ },
+ {
+   "id" : 84,
+   "title": "Finance ",
+   "uaqs_link": "http://finance.eller.arizona.edu/",
+   "uaqs_link_title": "Finance ",
+   "uaqs_index_letter" : "f"
+ },
+ {
+   "id" : 85,
+   "title": "Fine Arts Studies",
+   "uaqs_link": "https://cfa.arizona.edu/students/undergraduate-degrees/",
+   "uaqs_link_title": "Fine Arts Studies",
+   "uaqs_index_letter" : "f"
+ },
+ {
+   "id" : 86,
+   "title": "French: French and Francophone Emphasis",
+   "uaqs_link": "http://french.arizona.edu/",
+   "uaqs_link_title": "French: French and Francophone Emphasis",
+   "uaqs_index_letter" : "f"
+ },
+ {
+   "id" : 87,
+   "title": "French: Language, Literature and Cultures Emphasis",
+   "uaqs_link": "http://french.arizona.edu/",
+   "uaqs_link_title": "French: Language, Literature and Cultures Emphasis",
+   "uaqs_index_letter" : "f"
+ },
+ {
+   "id" : 88,
+   "title": "Gender and Women's Studies: Chicana and Latina Studies Emphasis",
+   "uaqs_link": "http://gws.arizona.edu/",
+   "uaqs_link_title": "Gender and Women's Studies: Chicana and Latina Studies Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 89,
+   "title": "Gender and Women's Studies:  Gender and Women's Studies",
+   "uaqs_link": "http://gws.arizona.edu/",
+   "uaqs_link_title": "Gender and Women's Studies:  Gender and Women's Studies",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 90,
+   "title": "Gender and Women's Studies: Queer, Trans & Sexuality Studies Emphasis",
+   "uaqs_link": "http://gws.arizona.edu/",
+   "uaqs_link_title": "Gender and Women's Studies: Queer, Trans & Sexuality Studies Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 91,
+   "title": "General Studies: Arts, Media and Entertainment Emphasis",
+   "uaqs_link": "http://www.ces.arizona.edu/",
+   "uaqs_link_title": "General Studies: Arts, Media and Entertainment Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 92,
+   "title": "General Studies: Economy and Industry Emphasis",
+   "uaqs_link": "http://www.ces.arizona.edu/",
+   "uaqs_link_title": "General Studies: Economy and Industry Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 93,
+   "title": "General Studies: Global and Intercultural Understanding Emphasis",
+   "uaqs_link": "http://www.ces.arizona.edu/",
+   "uaqs_link_title": "General Studies: Global and Intercultural Understanding Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 94,
+   "title": "General Studies: Science, Technology, Health and Society Emphasis",
+   "uaqs_link": "http://www.ces.arizona.edu/",
+   "uaqs_link_title": "General Studies: Science, Technology, Health and Society Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 95,
+   "title": "General Studies: Social, Behavioral and Human Understanding Emphasis",
+   "uaqs_link": "http://www.ces.arizona.edu/",
+   "uaqs_link_title": "General Studies: Social, Behavioral and Human Understanding Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 96,
+   "title": "General Studies: Sports and Society Emphasis",
+   "uaqs_link": "http://www.ces.arizona.edu/",
+   "uaqs_link_title": "General Studies: Sports and Society Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 97,
+   "title": "General Studies: Study of American Experience Emphasis",
+   "uaqs_link": "http://www.ces.arizona.edu/",
+   "uaqs_link_title": "General Studies: Study of American Experience Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 98,
+   "title": "Geographic Information Systems Technology",
+   "uaqs_link": "https://gis.arizona.edu",
+   "uaqs_link_title": "Geographic Information Systems Technology",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 99,
+   "title": "Geography",
+   "uaqs_link": "http://geography.arizona.edu/",
+   "uaqs_link_title": "Geography",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 100,
+   "title": "Geography: Geographic Information Science Emphasis",
+   "uaqs_link": "http://geography.arizona.edu/",
+   "uaqs_link_title": "Geography: Geographic Information Science Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 101,
+   "title": "Geography: Physical Geography Emphasis",
+   "uaqs_link": "http://geography.arizona.edu/",
+   "uaqs_link_title": "Geography: Physical Geography Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 102,
+   "title": "Geography: Water, Environment and Society Emphasis",
+   "uaqs_link": "http://geography.arizona.edu/",
+   "uaqs_link_title": "Geography: Water, Environment and Society Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 103,
+   "title": "Geosciences: Earth Systems Science Emphasis",
+   "uaqs_link": "http://www.geo.arizona.edu/",
+   "uaqs_link_title": "Geosciences: Earth Systems Science Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 104,
+   "title": "Geosciences: Geology Emphasis",
+   "uaqs_link": "http://www.geo.arizona.edu/",
+   "uaqs_link_title": "Geosciences: Geology Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 105,
+   "title": "Geosciences: Geophysics Emphasis",
+   "uaqs_link": "http://www.geo.arizona.edu/",
+   "uaqs_link_title": "Geosciences: Geophysics Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 106,
+   "title": "German Studies",
+   "uaqs_link": "http://german.arizona.edu/",
+   "uaqs_link_title": "German Studies",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 107,
+   "title": "Global Studies: Global Cultures- Literacture, Arts and Film Emphasis",
+   "uaqs_link": "http://www.ces.arizona.edu/",
+   "uaqs_link_title": "Global Studies: Global Cultures- Literacture, Arts and Film Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 108,
+   "title": "Global Studies: Global Health and Development Emphasis",
+   "uaqs_link": "http://www.ces.arizona.edu/",
+   "uaqs_link_title": "Global Studies: Global Health and Development Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 109,
+   "title": "Global Studies: Global Political Economy and Emphasis",
+   "uaqs_link": "http://www.ces.arizona.edu/",
+   "uaqs_link_title": "Global Studies: Global Political Economy and Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 110,
+   "title": "Global Studies: Global Societies - Human Rights, Migrations, and Social Movements Emphasis",
+   "uaqs_link": "http://www.ces.arizona.edu/",
+   "uaqs_link_title": "Global Studies: Global Societies - Human Rights, Migrations, and Social Movements Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 111,
+   "title": "Government and Public Service: General Emphasis",
+   "uaqs_link": "http://uas.arizona.edu/government-and-public-service",
+   "uaqs_link_title": "Government and Public Service: General Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 112,
+   "title": "Government and Public Service: Government, Law and Justice Emphasis",
+   "uaqs_link": "http://uas.arizona.edu/government-and-public-service",
+   "uaqs_link_title": "Government and Public Service: Government, Law and Justice Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 113,
+   "title": "Government and Public Service: Intelligence and National Security Emphasis",
+   "uaqs_link": "http://uas.arizona.edu/government-and-public-service",
+   "uaqs_link_title": "Government and Public Service: Intelligence and National Security Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 114,
+   "title": "Government and Public Service: International Security Emphasis",
+   "uaqs_link": "http://uas.arizona.edu/government-and-public-service",
+   "uaqs_link_title": "Government and Public Service: International Security Emphasis",
+   "uaqs_index_letter" : "g"
+ },
+ {
+   "id" : 115,
+   "title": "History",
+   "uaqs_link": "http://history.arizona.edu/",
+   "uaqs_link_title": "History",
+   "uaqs_index_letter" : "h"
+ },
+ {
+   "id" : 116,
+   "title": "Industrial Engineering",
+   "uaqs_link": "http://sie.engr.arizona.edu/",
+   "uaqs_link_title": "Industrial Engineering",
+   "uaqs_index_letter" : "i"
+ },
+ {
+   "id" : 117,
+   "title": "Information Science and Arts",
+   "uaqs_link": "http://sista.arizona.edu/",
+   "uaqs_link_title": "Information Science and Arts",
+   "uaqs_index_letter" : "i"
+ },
+ {
+   "id" : 118,
+   "title": "Information Science and eSociety",
+   "uaqs_link": "http://si.arizona.edu/ba-information-and-esociety",
+   "uaqs_link_title": "Information Science and eSociety",
+   "uaqs_index_letter" : "i"
+ },
+ {
+   "id" : 119,
+   "title": "Information Science and Technology",
+   "uaqs_link": "https://ischool.arizona.edu/bs-information-science-and-technology",
+   "uaqs_link_title": "Information Science and Technology",
+   "uaqs_index_letter" : "i"
+ },
+ {
+   "id" : 120,
+   "title": "Italian: Italian Studies Emphasis",
+   "uaqs_link": "http://french.arizona.edu/undergraduate/italian-programs",
+   "uaqs_link_title": "Italian: Italian Studies Emphasis",
+   "uaqs_index_letter" : "i"
+ },
+ {
+   "id" : 121,
+   "title": "Italian: Language and Literature Emphasis",
+   "uaqs_link": "http://french.arizona.edu/undergraduate/italian-programs",
+   "uaqs_link_title": "Italian: Language and Literature Emphasis",
+   "uaqs_index_letter" : "i"
+ },
+ {
+   "id" : 122,
+   "title": "Journalism",
+   "uaqs_link": "http://journalism.arizona.edu/",
+   "uaqs_link_title": "Journalism",
+   "uaqs_index_letter" : "j"
+ },
+ {
+   "id" : 123,
+   "title": "Judaic Studies",
+   "uaqs_link": "http://judaic.arizona.edu/",
+   "uaqs_link_title": "Judaic Studies",
+   "uaqs_index_letter" : "j"
+ },
+ {
+   "id" : 124,
+   "title": "Latin American Studies: General",
+   "uaqs_link": "http://las.arizona.edu/",
+   "uaqs_link_title": "Latin American Studies: General",
+   "uaqs_index_letter" : "l"
+ },
+ {
+   "id" : 125,
+   "title": "Latin American Studies: Translation and Interpretation Emphasis",
+   "uaqs_link": "http://las.arizona.edu/",
+   "uaqs_link_title": "Latin American Studies: Translation and Interpretation Emphasis",
+   "uaqs_index_letter" : "l"
+ },
+ {
+   "id" : 126,
+   "title": "Law",
+   "uaqs_link": "http://sgpp.arizona.edu/bachelor-arts-law",
+   "uaqs_link_title": "Law",
+   "uaqs_index_letter" : "l"
+ },
+ {
+   "id" : 127,
+   "title": "Linguistics:  Academic/Professional Emphasis",
+   "uaqs_link": "https://linguistics.arizona.edu/",
+   "uaqs_link_title": "Linguistics:  Academic/Professional Emphasis",
+   "uaqs_index_letter" : "l"
+ },
+ {
+   "id" : 128,
+   "title": "Linguistics:  General Emphasis",
+   "uaqs_link": "https://linguistics.arizona.edu/",
+   "uaqs_link_title": "Linguistics:  General Emphasis",
+   "uaqs_index_letter" : "l"
+ },
+ {
+   "id" : 129,
+   "title": "Linguistics:  Linguistics and Languages",
+   "uaqs_link": "https://linguistics.arizona.edu/linguistics-undergraduate-major-requirements",
+   "uaqs_link_title": "Linguistics:  Linguistics and Languages",
+   "uaqs_index_letter" : "l"
+ },
+ {
+   "id" : 130,
+   "title": "Literacy, Learning and Leadership:  Community Education",
+   "uaqs_link": "http://www.coe.arizona.edu/LLL",
+   "uaqs_link_title": "Literacy, Learning and Leadership:  Community Education",
+   "uaqs_index_letter" : "l"
+ },
+ {
+   "id" : 131,
+   "title": "Literacy, Learning, and Leadership:  Leadership for Equity, Access, and Success in Education Emphasis",
+   "uaqs_link": "http://www.coe.arizona.edu/LLL",
+   "uaqs_link_title": "Literacy, Learning, and Leadership:  Leadership for Equity, Access, and Success in Education Emphasis",
+   "uaqs_index_letter" : "l"
+ },
+ {
+   "id" : 132,
+   "title": "Management Information Systems ",
+   "uaqs_link": "http://mis.eller.arizona.edu/",
+   "uaqs_link_title": "Management Information Systems ",
+   "uaqs_index_letter" : "m"
+ },
+ {
+   "id" : 133,
+   "title": "Marketing ",
+   "uaqs_link": "http://marketing.eller.arizona.edu/",
+   "uaqs_link_title": "Marketing ",
+   "uaqs_index_letter" : "m"
+ },
+ {
+   "id" : 134,
+   "title": "Materials Science and Engineering",
+   "uaqs_link": "http://www.mse.arizona.edu/index.php",
+   "uaqs_link_title": "Materials Science and Engineering",
+   "uaqs_index_letter" : "m"
+ },
+ {
+   "id" : 135,
+   "title": "Mathematics: Comprehensive Emphasis",
+   "uaqs_link": "http://math.arizona.edu/ugprogram/",
+   "uaqs_link_title": "Mathematics: Comprehensive Emphasis",
+   "uaqs_index_letter" : "m"
+ },
+ {
+   "id" : 136,
+   "title": "Mathematics: Computer Science Emphasis",
+   "uaqs_link": "http://math.arizona.edu/ugprogram/",
+   "uaqs_link_title": "Mathematics: Computer Science Emphasis",
+   "uaqs_index_letter" : "m"
+ },
+ {
+   "id" : 137,
+   "title": "Mathematics: Economics and Business Emphasis",
+   "uaqs_link": "http://math.arizona.edu/ugprogram/",
+   "uaqs_link_title": "Mathematics: Economics and Business Emphasis",
+   "uaqs_index_letter" : "m"
+ },
+ {
+   "id" : 138,
+   "title": "Mathematics: Education Emphasis",
+   "uaqs_link": "http://math.arizona.edu/ugprogram/",
+   "uaqs_link_title": "Mathematics: Education Emphasis",
+   "uaqs_index_letter" : "m"
+ },
+ {
+   "id" : 139,
+   "title": "Mathematics: General",
+   "uaqs_link": "http://math.arizona.edu/ugprogram/",
+   "uaqs_link_title": "Mathematics: General",
+   "uaqs_index_letter" : "m"
+ },
+ {
+   "id" : 140,
+   "title": "Mathematics: Life Sciences Emphasis",
+   "uaqs_link": "http://math.arizona.edu/ugprogram/",
+   "uaqs_link_title": "Mathematics: Life Sciences Emphasis",
+   "uaqs_index_letter" : "m"
+ },
+ {
+   "id" : 141,
+   "title": "Mathematics: Probability and Statistics Emphasis",
+   "uaqs_link": "http://math.arizona.edu/ugprogram/",
+   "uaqs_link_title": "Mathematics: Probability and Statistics Emphasis",
+   "uaqs_index_letter" : "m"
+ },
+ {
+   "id" : 142,
+   "title": "Mechanical Engineering",
+   "uaqs_link": "http://www.ame.arizona.edu/",
+   "uaqs_link_title": "Mechanical Engineering",
+   "uaqs_index_letter" : "m"
+ },
+ {
+   "id" : 143,
+   "title": "Mexican American Studies: Culture, Community, and Identity",
+   "uaqs_link": "http://mas.arizona.edu/",
+   "uaqs_link_title": "Mexican American Studies: Culture, Community, and Identity",
+   "uaqs_index_letter" : "m"
+ },
+ {
+   "id" : 144,
+   "title": "Mexican American Studies: Translation and Interpretation Emphasis",
+   "uaqs_link": "http://mas.arizona.edu/",
+   "uaqs_link_title": "Mexican American Studies: Translation and Interpretation Emphasis",
+   "uaqs_index_letter" : "m"
+ },
+ {
+   "id" : 145,
+   "title": "Microbiology",
+   "uaqs_link": "https://microbiology.arizona.edu/undergraduate-degree",
+   "uaqs_link_title": "Microbiology",
+   "uaqs_index_letter" : "m"
+ },
+ {
+   "id" : 146,
+   "title": "Middle Eastern and North African Studies",
+   "uaqs_link": "http://menas.arizona.edu/",
+   "uaqs_link_title": "Middle Eastern and North African Studies",
+   "uaqs_index_letter" : "m"
+ },
+ {
+   "id" : 147,
+   "title": "Middle Eastern and North African Studies",
+   "uaqs_link": "http://menas.arizona.edu/",
+   "uaqs_link_title": "Middle Eastern and North African Studies",
+   "uaqs_index_letter" : "m"
+ },
+ {
+   "id" : 148,
+   "title": "Middle Eastern and North African Studies",
+   "uaqs_link": "http://menas.arizona.edu/",
+   "uaqs_link_title": "Middle Eastern and North African Studies",
+   "uaqs_index_letter" : "m"
+ },
+ {
+   "id" : 149,
+   "title": "Mining and Geological Engineering",
+   "uaqs_link": "http://www.mge.arizona.edu/undergraduate-program",
+   "uaqs_link_title": "Mining and Geological Engineering",
+   "uaqs_index_letter" : "m"
+ },
+ {
+   "id" : 150,
+   "title": "Molecular and Cellular Biology",
+   "uaqs_link": "http://www.mcb.arizona.edu/",
+   "uaqs_link_title": "Molecular and Cellular Biology",
+   "uaqs_index_letter" : "m"
+ },
+ {
+   "id" : 151,
+   "title": "Music Education",
+   "uaqs_link": "http://music.arizona.edu/students/areas_of_study/",
+   "uaqs_link_title": "Music Education",
+   "uaqs_index_letter" : "m"
+ },
+ {
+   "id" : 152,
+   "title": "Music",
+   "uaqs_link": "http://music.arizona.edu/students/areas_of_study/",
+   "uaqs_link_title": "Music",
+   "uaqs_index_letter" : "m"
+ },
+ {
+   "id" : 153,
+   "title": "Musical Theatre",
+   "uaqs_link": "http://tftv.arizona.edu/students/areas_of_study",
+   "uaqs_link_title": "Musical Theatre",
+   "uaqs_index_letter" : "m"
+ },
+ {
+   "id" : 154,
+   "title": "Natural Resources: Conservation Biology Emphasis",
+   "uaqs_link": "http://www.snre.arizona.edu/academic/undergrad/degree",
+   "uaqs_link_title": "Natural Resources: Conservation Biology Emphasis",
+   "uaqs_index_letter" : "n"
+ },
+ {
+   "id" : 155,
+   "title": "Natural Resources: Ecology, Management and Restoration of Rangelands Emphasis",
+   "uaqs_link": "http://www.snre.arizona.edu/academic/undergrad/degree",
+   "uaqs_link_title": "Natural Resources: Ecology, Management and Restoration of Rangelands Emphasis",
+   "uaqs_index_letter" : "n"
+ },
+ {
+   "id" : 156,
+   "title": "Natural Resources: Fisheries Conservation and Management Emphasis",
+   "uaqs_link": "http://www.snre.arizona.edu/academic/undergrad/degree",
+   "uaqs_link_title": "Natural Resources: Fisheries Conservation and Management Emphasis",
+   "uaqs_index_letter" : "n"
+ },
+ {
+   "id" : 157,
+   "title": "Natural Resources: Global Change Ecology and Management Emphasis",
+   "uaqs_link": "http://www.snre.arizona.edu/academic/undergrad/degree",
+   "uaqs_link_title": "Natural Resources: Global Change Ecology and Management Emphasis",
+   "uaqs_index_letter" : "n"
+ },
+ {
+   "id" : 158,
+   "title": "Natural Resources: Watershed Hydrology and Management Emphasis",
+   "uaqs_link": "http://www.snre.arizona.edu/academic/undergrad/degree",
+   "uaqs_link_title": "Natural Resources: Watershed Hydrology and Management Emphasis",
+   "uaqs_index_letter" : "n"
+ },
+ {
+   "id" : 159,
+   "title": "Natural Resources: Wildlife Conservation and Management Emphasis",
+   "uaqs_link": "http://www.snre.arizona.edu/academic/undergrad/degree",
+   "uaqs_link_title": "Natural Resources: Wildlife Conservation and Management Emphasis",
+   "uaqs_index_letter" : "n"
+ },
+ {
+   "id" : 160,
+   "title": "Neuroscience and Cognitive Science: Cognition Emphasis",
+   "uaqs_link": "http://web.mbb.arizona.edu/NSCS",
+   "uaqs_link_title": "Neuroscience and Cognitive Science: Cognition Emphasis",
+   "uaqs_index_letter" : "n"
+ },
+ {
+   "id" : 161,
+   "title": "Neuroscience and Cognitive Science: Computation Emphasis",
+   "uaqs_link": "http://web.mbb.arizona.edu/NSCS",
+   "uaqs_link_title": "Neuroscience and Cognitive Science: Computation Emphasis",
+   "uaqs_index_letter" : "n"
+ },
+ {
+   "id" : 162,
+   "title": "Neuroscience and Cognitive Science: Development and Aging Emphasis",
+   "uaqs_link": "http://web.mbb.arizona.edu/NSCS",
+   "uaqs_link_title": "Neuroscience and Cognitive Science: Development and Aging Emphasis",
+   "uaqs_index_letter" : "n"
+ },
+ {
+   "id" : 163,
+   "title": "Neuroscience and Cognitive Science: Language and Communication Science Emphasis",
+   "uaqs_link": "http://web.mbb.arizona.edu/NSCS",
+   "uaqs_link_title": "Neuroscience and Cognitive Science: Language and Communication Science Emphasis",
+   "uaqs_index_letter" : "n"
+ },
+ {
+   "id" : 164,
+   "title": "Neuroscience and Cognitive Science: Neurobiology Emphasis",
+   "uaqs_link": "http://web.mbb.arizona.edu/NSCS",
+   "uaqs_link_title": "Neuroscience and Cognitive Science: Neurobiology Emphasis",
+   "uaqs_index_letter" : "n"
+ },
+ {
+   "id" : 165,
+   "title": "Neuroscience and Cognitive Science: Philosophy of Mind Emphasis",
+   "uaqs_link": "http://web.mbb.arizona.edu/NSCS",
+   "uaqs_link_title": "Neuroscience and Cognitive Science: Philosophy of Mind Emphasis",
+   "uaqs_index_letter" : "n"
+ },
+ {
+   "id" : 166,
+   "title": "Neuroscience and Cognitive Science: Thematic",
+   "uaqs_link": "http://web.mbb.arizona.edu/NSCS",
+   "uaqs_link_title": "Neuroscience and Cognitive Science: Thematic",
+   "uaqs_index_letter" : "n"
+ },
+ {
+   "id" : 167,
+   "title": "Nursing",
+   "uaqs_link": "http://www.nursing.arizona.edu/",
+   "uaqs_link_title": "Nursing",
+   "uaqs_index_letter" : "n"
+ },
+ {
+   "id" : 168,
+   "title": "Nutritional Sciences: Dietetics Emphasis",
+   "uaqs_link": "http://nutrition.cals.arizona.edu/",
+   "uaqs_link_title": "Nutritional Sciences: Dietetics Emphasis",
+   "uaqs_index_letter" : "n"
+ },
+ {
+   "id" : 169,
+   "title": "Nutritional Sciences: Nutrition Emphasis",
+   "uaqs_link": "http://cals.arizona.edu/nutrition/",
+   "uaqs_link_title": "Nutritional Sciences: Nutrition Emphasis",
+   "uaqs_index_letter" : "n"
+ },
+ {
+   "id" : 170,
+   "title": "Operations Management (Pre-Business)",
+   "uaqs_link": "https://ugrad.eller.arizona.edu/academics/majors/operationsmanagement",
+   "uaqs_link_title": "Operations Management (Pre-Business)",
+   "uaqs_index_letter" : "o"
+ },
+ {
+   "id" : 171,
+   "title": "Optical Sciences and Engineering",
+   "uaqs_link": "http://www.optics.arizona.edu/",
+   "uaqs_link_title": "Optical Sciences and Engineering",
+   "uaqs_index_letter" : "o"
+ },
+ {
+   "id" : 172,
+   "title": "Optical Sciences and Engineering",
+   "uaqs_link": "http://www.optics.arizona.edu/",
+   "uaqs_link_title": "Optical Sciences and Engineering",
+   "uaqs_index_letter" : "o"
+ },
+ {
+   "id" : 173,
+   "title": "Optical Sciences and Engineering",
+   "uaqs_link": "http://www.optics.arizona.edu/",
+   "uaqs_link_title": "Optical Sciences and Engineering",
+   "uaqs_index_letter" : "o"
+ },
+ {
+   "id" : 174,
+   "title": "Optical Sciences and Engineering: ",
+   "uaqs_link": "http://www.optics.arizona.edu/",
+   "uaqs_link_title": "Optical Sciences and Engineering: ",
+   "uaqs_index_letter" : "o"
+ },
+ {
+   "id" : 175,
+   "title": "Performance: Bassoon Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: Bassoon Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 176,
+   "title": "Performance: Cello Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: Cello Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 177,
+   "title": "Performance: Clarinet Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: Clarinet Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 178,
+   "title": "Performance: Composition Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: Composition Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 179,
+   "title": "Performance: Euphonium Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: Euphonium Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 180,
+   "title": "Performance: Flute Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: Flute Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 181,
+   "title": "Performance: French Horn Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: French Horn Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 182,
+   "title": "Performance: Guitar Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: Guitar Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 183,
+   "title": "Performance: Harp Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: Harp Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 184,
+   "title": "Performance: Harpsichord Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: Harpsichord Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 185,
+   "title": "Performance: Jazz Studies Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: Jazz Studies Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 186,
+   "title": "Performance: Oboe Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: Oboe Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 187,
+   "title": "Performance: Organ Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: Organ Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 188,
+   "title": "Performance: Percussion Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: Percussion Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 189,
+   "title": "Performance: Piano Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: Piano Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 190,
+   "title": "Performance: Saxophone Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: Saxophone Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 191,
+   "title": "Performance: String Bass Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: String Bass Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 192,
+   "title": "Performance: Trombone Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: Trombone Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 193,
+   "title": "Performance: Trumpet Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: Trumpet Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 194,
+   "title": "Performance: Tuba Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: Tuba Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 195,
+   "title": "Performance: Viola Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: Viola Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 196,
+   "title": "Performance: Violin Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: Violin Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 197,
+   "title": "Performance: Voice Emphasis",
+   "uaqs_link": "http://music.arizona.edu/index.php/students/degrees/undergraduate/",
+   "uaqs_link_title": "Performance: Voice Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 198,
+   "title": "Philosophy, Politics, Economics and Law",
+   "uaqs_link": "http://www.u.arizona.edu/~ggaus/index.html",
+   "uaqs_link_title": "Philosophy, Politics, Economics and Law",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 199,
+   "title": "Philosophy: Ethics Emphasis",
+   "uaqs_link": "http://philosophy.arizona.edu/",
+   "uaqs_link_title": "Philosophy: Ethics Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 200,
+   "title": "Philosophy: General",
+   "uaqs_link": "http://philosophy.arizona.edu/",
+   "uaqs_link_title": "Philosophy: General",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 201,
+   "title": "Physics",
+   "uaqs_link": "http://www.physics.arizona.edu/physics/",
+   "uaqs_link_title": "Physics",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 202,
+   "title": "Physiology",
+   "uaqs_link": "http://www.physiology.arizona.edu/undergraduate",
+   "uaqs_link_title": "Physiology",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 203,
+   "title": "Plant Sciences",
+   "uaqs_link": "http://cals.arizona.edu/spls/",
+   "uaqs_link_title": "Plant Sciences",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 204,
+   "title": "Political Science: American Politics Emphasis",
+   "uaqs_link": "http://sgpp.arizona.edu/",
+   "uaqs_link_title": "Political Science: American Politics Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 205,
+   "title": "Political Science: Comparative Politics Emphasis",
+   "uaqs_link": "http://sgpp.arizona.edu/",
+   "uaqs_link_title": "Political Science: Comparative Politics Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 206,
+   "title": "Political Science: Foreign Affairs Emphasis",
+   "uaqs_link": "http://sgpp.arizona.edu/",
+   "uaqs_link_title": "Political Science: Foreign Affairs Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 207,
+   "title": "Political Science: General",
+   "uaqs_link": "http://sgpp.arizona.edu/",
+   "uaqs_link_title": "Political Science: General",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 208,
+   "title": "Political Science: Ideas and Methods Emphasis",
+   "uaqs_link": "http://sgpp.arizona.edu/",
+   "uaqs_link_title": "Political Science: Ideas and Methods Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 209,
+   "title": "Political Science: International Relations Emphasis",
+   "uaqs_link": "http://sgpp.arizona.edu/",
+   "uaqs_link_title": "Political Science: International Relations Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 210,
+   "title": "Political Science: Law and Public Policy Emphasis",
+   "uaqs_link": "http://sgpp.arizona.edu/",
+   "uaqs_link_title": "Political Science: Law and Public Policy Emphasis",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 211,
+   "title": "Psychological Science",
+   "uaqs_link": "http://psychology.arizona.edu/psych-science-major",
+   "uaqs_link_title": "Psychological Science",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 212,
+   "title": "Psychology",
+   "uaqs_link": "http://psychology.arizona.edu/",
+   "uaqs_link_title": "Psychology",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 213,
+   "title": "Public Health",
+   "uaqs_link": "http://www.publichealth.arizona.edu/",
+   "uaqs_link_title": "Public Health",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 214,
+   "title": "Public Management and Policy",
+   "uaqs_link": "http://sgpp.arizona.edu/",
+   "uaqs_link_title": "Public Management and Policy",
+   "uaqs_index_letter" : "p"
+ },
+ {
+   "id" : 215,
+   "title": "Religious Studies",
+   "uaqs_link": "http://religion.arizona.edu/",
+   "uaqs_link_title": "Religious Studies",
+   "uaqs_index_letter" : "r"
+ },
+ {
+   "id" : 216,
+   "title": "Retailing and Consumer Science",
+   "uaqs_link": "http://ag.arizona.edu/fcs/rcsc/home",
+   "uaqs_link_title": "Retailing and Consumer Science",
+   "uaqs_index_letter" : "r"
+ },
+ {
+   "id" : 217,
+   "title": "Russian: Culture Intensive Emphasis",
+   "uaqs_link": "http://russian.arizona.edu/",
+   "uaqs_link_title": "Russian: Culture Intensive Emphasis",
+   "uaqs_index_letter" : "r"
+ },
+ {
+   "id" : 218,
+   "title": "Russian: Heritage Learner Emphasis",
+   "uaqs_link": "http://russian.arizona.edu/",
+   "uaqs_link_title": "Russian: Heritage Learner Emphasis",
+   "uaqs_index_letter" : "r"
+ },
+ {
+   "id" : 219,
+   "title": "Russian: Language Intensive Emphasis",
+   "uaqs_link": "http://russian.arizona.edu/",
+   "uaqs_link_title": "Russian: Language Intensive Emphasis",
+   "uaqs_index_letter" : "r"
+ },
+ {
+   "id" : 220,
+   "title": "Sociology",
+   "uaqs_link": "https://sociology.arizona.edu/undergraduate/b.a.",
+   "uaqs_link_title": "Sociology",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 221,
+   "title": "Spanish: Hispanic Literature Emphasis ",
+   "uaqs_link": "http://spanish.arizona.edu/",
+   "uaqs_link_title": "Spanish: Hispanic Literature Emphasis ",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 222,
+   "title": "Spanish: Literature Emphasis",
+   "uaqs_link": "http://spanish.arizona.edu/",
+   "uaqs_link_title": "Spanish: Literature Emphasis",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 223,
+   "title": "Spanish: Spanish and Portuguese Emphasis",
+   "uaqs_link": "http://spanish.arizona.edu/",
+   "uaqs_link_title": "Spanish: Spanish and Portuguese Emphasis",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 224,
+   "title": "Spanish: Translation and Interpretation",
+   "uaqs_link": "http://spanish.arizona.edu/",
+   "uaqs_link_title": "Spanish: Translation and Interpretation",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 225,
+   "title": "Special Education and Rehabilitation: Deaf Studies Emphasis",
+   "uaqs_link": "https://www.coe.arizona.edu/dps/spec_bse",
+   "uaqs_link_title": "Special Education and Rehabilitation: Deaf Studies Emphasis",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 226,
+   "title": "Special Education and Rehabilitation: Rehabilitation Emphasis",
+   "uaqs_link": "https://www.coe.arizona.edu/dps/spec_bse",
+   "uaqs_link_title": "Special Education and Rehabilitation: Rehabilitation Emphasis",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 227,
+   "title": "Special Education and Rehabilitation: Mild to Moderate Disabilities Emphasis",
+   "uaqs_link": "https://www.coe.arizona.edu/dps/spec_bse",
+   "uaqs_link_title": "Special Education and Rehabilitation: Mild to Moderate Disabilities Emphasis",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 228,
+   "title": "Speech, Language and Hearing Sciences",
+   "uaqs_link": "http://slhs.arizona.edu/",
+   "uaqs_link_title": "Speech, Language and Hearing Sciences",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 229,
+   "title": "Studio Art",
+   "uaqs_link": "http://art.arizona.edu/",
+   "uaqs_link_title": "Studio Art",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 230,
+   "title": "Studio Art: Photography Emphasis",
+   "uaqs_link": "http://art.arizona.edu/",
+   "uaqs_link_title": "Studio Art: Photography Emphasis",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 231,
+   "title": "Studio Art:  3D amd Extended Media Emphasis",
+   "uaqs_link": "http://art.arizona.edu/",
+   "uaqs_link_title": "Studio Art:  3D amd Extended Media Emphasis",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 232,
+   "title": "Studio Art: Two-dimensional Emphasis",
+   "uaqs_link": "http://art.arizona.edu/",
+   "uaqs_link_title": "Studio Art: Two-dimensional Emphasis",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 233,
+   "title": "Studio Art:  Illustration and Design Emphasis",
+   "uaqs_link": "http://art.arizona.edu/prospective-students/degrees/b-a-studio-art/",
+   "uaqs_link_title": "Studio Art:  Illustration and Design Emphasis",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 234,
+   "title": "Sustainable Built Environments: General",
+   "uaqs_link": "http://sbe.arizona.edu/",
+   "uaqs_link_title": "Sustainable Built Environments: General",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 235,
+   "title": "Sustainable Built Environments: Heritage Conservation Emphasis",
+   "uaqs_link": "http://sbe.arizona.edu/",
+   "uaqs_link_title": "Sustainable Built Environments: Heritage Conservation Emphasis",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 236,
+   "title": "Sustainable Built Environments: Sustainable Buildings Emphasis",
+   "uaqs_link": "http://sbe.arizona.edu/",
+   "uaqs_link_title": "Sustainable Built Environments: Sustainable Buildings Emphasis",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 237,
+   "title": "Sustainable Built Environments: Sustainable Communities Emphasis",
+   "uaqs_link": "http://sbe.arizona.edu/",
+   "uaqs_link_title": "Sustainable Built Environments: Sustainable Communities Emphasis",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 238,
+   "title": "Sustainable Built Environments: Sustainable Landscapes Emphasis",
+   "uaqs_link": "http://sbe.arizona.edu/",
+   "uaqs_link_title": "Sustainable Built Environments: Sustainable Landscapes Emphasis",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 239,
+   "title": "Sustainable Plant Systems: Agronomy",
+   "uaqs_link": "http://swes.cals.arizona.edu/undergrad-program/sustainable-plant-systems",
+   "uaqs_link_title": "Sustainable Plant Systems: Agronomy",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 240,
+   "title": "Sustainable Plant Systems: Controlled Environment Agriculture Emphasis",
+   "uaqs_link": "http://swes.cals.arizona.edu/undergrad-program/sustainable-plant-systems",
+   "uaqs_link_title": "Sustainable Plant Systems: Controlled Environment Agriculture Emphasis",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 241,
+   "title": "Sustainable Plant Systems: Environmental Horticulture",
+   "uaqs_link": "http://swes.cals.arizona.edu/undergrad-program/sustainable-plant-systems",
+   "uaqs_link_title": "Sustainable Plant Systems: Environmental Horticulture",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 242,
+   "title": "Systems Engineering",
+   "uaqs_link": "http://sie.engr.arizona.edu/",
+   "uaqs_link_title": "Systems Engineering",
+   "uaqs_index_letter" : "s"
+ },
+ {
+   "id" : 243,
+   "title": "Theatre Arts",
+   "uaqs_link": "http://tftv.arizona.edu/students/areas_of_study",
+   "uaqs_link_title": "Theatre Arts",
+   "uaqs_index_letter" : "t"
+ },
+ {
+   "id" : 244,
+   "title": "Theatre Production: Design and Technical Production Emphasis",
+   "uaqs_link": "http://tftv.arizona.edu/students/areas_of_study",
+   "uaqs_link_title": "Theatre Production: Design and Technical Production Emphasis",
+   "uaqs_index_letter" : "t"
+ },
+ {
+   "id" : 245,
+   "title": "Theatre Production: History and Dramaturgy Emphasis",
+   "uaqs_link": "http://tftv.arizona.edu/students/areas_of_study",
+   "uaqs_link_title": "Theatre Production: History and Dramaturgy Emphasis",
+   "uaqs_index_letter" : "t"
+ },
+ {
+   "id" : 246,
+   "title": "Theatre Production: Professional Actors Training Program Emphasis",
+   "uaqs_link": "http://tftv.arizona.edu/students/areas_of_study",
+   "uaqs_link_title": "Theatre Production: Professional Actors Training Program Emphasis",
+   "uaqs_index_letter" : "t"
+ },
+ {
+   "id" : 247,
+   "title": "Urban and Regional Development",
+   "uaqs_link": "http://geography.arizona.edu/programs",
+   "uaqs_link_title": "Urban and Regional Development",
+   "uaqs_index_letter" : "u"
+ },
+ {
+   "id" : 248,
+   "title": "Veterinary Science",
+   "uaqs_link": "https://acbs.cals.arizona.edu/degrees/major",
+   "uaqs_link_title": "Veterinary Science",
+   "uaqs_index_letter" : "v"
+ }
+]

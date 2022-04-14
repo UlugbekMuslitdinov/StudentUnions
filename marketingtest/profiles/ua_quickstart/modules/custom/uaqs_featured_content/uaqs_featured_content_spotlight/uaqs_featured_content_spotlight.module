@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Featured Content Spotlight feature.
+ */
+
+include_once 'uaqs_featured_content_spotlight.features.inc';

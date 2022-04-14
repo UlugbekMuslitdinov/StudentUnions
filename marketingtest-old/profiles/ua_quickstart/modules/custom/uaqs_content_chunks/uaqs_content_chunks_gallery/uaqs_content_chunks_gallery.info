@@ -1,0 +1,14 @@
+name = UAQS Content Chunks - Gallery
+description = A paragraph item that displays the UAQS Photo Gallery for display of photos with captions
+core = 7.x
+package = The University of Arizona
+dependencies[] = ctools
+dependencies[] = features
+dependencies[] = image
+dependencies[] = uaqs_fields_media
+dependencies[] = paragraphs
+dependencies[] = uaqs_fields
+features[features_api][] = api:2
+features[field_instance][] = paragraphs_item-uaqs_gallery-field_uaqs_photos
+features[image][] = uaqs_gallery_thumbnail
+features[paragraphs][] = uaqs_gallery

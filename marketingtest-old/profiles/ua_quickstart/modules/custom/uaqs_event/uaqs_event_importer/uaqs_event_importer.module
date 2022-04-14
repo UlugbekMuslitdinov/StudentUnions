@@ -1,0 +1,7 @@
+<?php
+/**
+ * @file
+ * Code for the UAQS Event importer feature.
+ */
+
+include_once 'uaqs_event_importer.features.inc';

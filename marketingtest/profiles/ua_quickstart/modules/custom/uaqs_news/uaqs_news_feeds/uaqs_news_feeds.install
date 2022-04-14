@@ -1,0 +1,46 @@
+<?php
+
+/**
+ * @file
+ * Install, update and uninstall functions for the uaqs_news_feeds module.
+ */
+
+/**
+ * Implements hook_install().
+ */
+function uaqs_news_feeds_install() {
+
+    $name = 'uaqs_feeds';
+    $pass = user_password();
+    $email = 'no-reply@arizona.edu';
+
+    $new_user = array(
+      'name' => $name,
+      'pass' => $pass, // note: do not md5 the password
+      'mail' => $email,
+      'status' => 1,
+      'init' => $email,
+      'roles' => array(
+        DRUPAL_AUTHENTICATED_RID => 'authenticated user',
+      ),
+    );
+    user_save('', $new_user);
+
+    //Set the feed source.
+    $source = feeds_source('uaqs_news');
+    $source->addConfig(array(
+      'FeedsHTTPFetcher' => array(
+        'source' => 'https://uanews.arizona.edu/feed/json/arizona/internal-news',
+      ),
+    ));
+    $source->save();
+}
+
+/**
+ * Implements hook_uninstall().
+ */
+function uaqs_news_feeds_uninstall() {
+
+    $feed_user = user_load_by_name('uaqs_feeds');
+    user_delete($feed_user->uid);
+}

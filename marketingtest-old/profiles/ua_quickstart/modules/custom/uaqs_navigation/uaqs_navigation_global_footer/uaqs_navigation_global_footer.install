@@ -1,0 +1,209 @@
+<?php
+/**
+ * @file
+ * uaqs_navigation_global_footer.install
+ */
+
+/**
+ * Implements hook_install().
+ */
+function uaqs_navigation_global_footer_install() {
+  $t = get_t();
+
+  // Create 'Footer links -- information for' menu if it doesn't already exist.
+  $menu_name = 'uaqs-footer-information-for';
+  if (!menu_load($menu_name)) {
+    $menu = array(
+      'menu_name' => $menu_name,
+      'title' => $t('Footer links -- Information For'),
+      'description' => 'In UA QuickStart the <em>Footer links -- Information For</em> menu generally contains enterprise level navigation links for sections of Arizona.edu.',
+    );
+    menu_save($menu);
+  }
+  // Create 'Footer links -- Topics' menu if it doesn't already exist.
+  $menu_name = 'uaqs-footer-topics';
+  if (!menu_load($menu_name)) {
+    $menu = array(
+      'menu_name' => $menu_name,
+      'title' => $t('Footer links -- Topics'),
+      'description' => 'In UA QuickStart the <em>Footer links -- Topics</em> menu generally contains enterprise level topics.',
+    );
+    menu_save($menu);
+  }
+  // Create 'Footer links -- Resources' menu if it doesn't already exist.
+  $menu_name = 'uaqs-footer-resources';
+  if (!menu_load($menu_name)) {
+    $menu = array(
+      'menu_name' => $menu_name,
+      'title' => $t('Footer links -- Resources'),
+      'description' => 'In UA QuickStart the <em>Footer links -- Resources</em> menu generally contains enterprise level resources.',
+    );
+    menu_save($menu);
+  }
+  // Create 'Footer links -- Main' menu if it doesn't already exist.
+  $menu_name = 'uaqs-footer-main';
+  if (!menu_load($menu_name)) {
+    $menu = array(
+      'menu_name' => $menu_name,
+      'title' => $t('Footer links -- Main'),
+      'description' => 'In UA QuickStart the <em>Footer links -- Main</em> menu generally contains enterprise level links.',
+    );
+    menu_save($menu);
+  }
+}
+
+/**
+ * Implements hook_enable().
+ */
+function uaqs_navigation_global_footer_enable() {
+  migrate_static_registration();
+  $info = uaqs_navigation_global_footer_migrate_api();
+  foreach ($info['migrations'] as $machine_name => $arguments) {
+    $migration = Migration::getInstance($machine_name);
+    $migration->processImport();
+  }
+}
+
+/**
+ * Implements hook_disable().
+ */
+function uaqs_navigation_global_footer_disable() {
+  // Prevent missing migration errors by forcing migrate module to re-register
+  // statically defined migrations.
+  migrate_static_registration();
+  $info = uaqs_navigation_global_footer_migrate_api();
+  $hitlist = array_reverse($info['migrations']);
+  foreach ($hitlist as $machine_name => $arguments) {
+    $migration = Migration::getInstance($machine_name);
+    $migration->processRollback();
+  }
+  MigrateGroup::deregister('uaqs_navigation');
+}
+
+/**
+ * UADIGITAL-1745: Database update changing employment link to uacareers.com
+ */
+function uaqs_navigation_global_footer_update_7100() {
+  $links = db_select('menu_links', 'ml', array(
+    'fetch' => PDO::FETCH_ASSOC,
+  ))
+    ->fields('ml')
+    ->condition('ml.menu_name', 'uaqs-footer-main')
+    ->condition('ml.link_path', 'http://www.hr.arizona.edu/jobs')
+    ->execute()
+    ->fetchAll();
+
+  if (!empty($links)) {
+    $employmentWeight = $links[0]['weight'];
+
+    $newEmployment = array(
+      'link_title' => 'Employment',
+      'menu_name' => 'uaqs-footer-main',
+      'weight' => $employmentWeight,
+    );
+
+    $newEmployment['link_path'] = 'https://uacareers.com';
+
+    menu_link_save($newEmployment);
+
+    db_delete('menu_links')
+      ->condition('menu_name', 'uaqs-footer-main')
+      ->condition('link_path', 'http://www.hr.arizona.edu/jobs')
+      ->execute();
+  }
+}
+
+/**
+ * UADIGITAL-2215: Database update changing employment link to talent.arizona.edu
+ */
+function uaqs_navigation_global_footer_update_7101() {
+  $links = db_select('menu_links', 'ml', array(
+    'fetch' => PDO::FETCH_ASSOC,
+  ))
+    ->fields('ml')
+    ->condition('ml.menu_name', 'uaqs-footer-main')
+    ->condition('ml.link_path', 'https://uacareers.com')
+    ->execute()
+    ->fetchAll();
+
+  if (!empty($links)) {
+    $employmentWeight = $links[0]['weight'];
+
+    $newEmployment = array(
+      'link_title' => 'Employment',
+      'menu_name' => 'uaqs-footer-main',
+      'weight' => $employmentWeight,
+    );
+
+    $newEmployment['link_path'] = 'https://talent.arizona.edu';
+
+    menu_link_save($newEmployment);
+
+    db_delete('menu_links')
+      ->condition('link_path', 'https://uacareers.com')
+      ->execute();
+  }
+}
+
+/**
+ * UADIGITAL-2239: Update footer & resources links with new news & youtube links
+ */
+function uaqs_navigation_global_footer_update_7102() {
+  $newsLinks = db_select('menu_links', 'ml', array(
+    'fetch' => PDO::FETCH_ASSOC,
+  ))
+    ->fields('ml')
+    ->condition('ml.menu_name', 'uaqs-footer-resources')
+    ->condition('ml.link_title', 'UANews')
+    ->execute()
+    ->fetchAll();
+
+  if (!empty($newsLinks)) {
+    foreach ($newsLinks as $newsLink) {
+      $newsWeight = $newsLink['weight'];
+
+      $newNews = array(
+        'link_title' => 'News',
+        'menu_name' => 'uaqs-footer-resources',
+        'weight' => $newsWeight,
+        'link_path' => 'https://news.arizona.edu',
+      );
+
+      menu_link_save($newNews);
+    }
+
+    db_delete('menu_links')
+      ->condition('menu_name', 'uaqs-footer-resources')
+      ->condition('link_title', 'UANews')
+      ->execute();
+  }
+
+  $cirtLinks = db_select('menu_links', 'ml', array(
+    'fetch' => PDO::FETCH_ASSOC,
+  ))
+    ->fields('ml')
+    ->condition('ml.menu_name', 'uaqs-footer-main')
+    ->condition('ml.link_title', 'UAlert')
+    ->execute()
+    ->fetchAll();
+
+  if (!empty($cirtLinks)) {
+    foreach ($cirtLinks as $cirtLink) {
+      $cirtWeight = $cirtLink['weight'];
+
+      $newCirt = array(
+        'link_title' => 'UAlert',
+        'menu_name' => 'uaqs-footer-main',
+        'weight' => $cirtWeight,
+        'link_path' => 'https://cirt.arizona.edu/ualert',
+      );
+
+      menu_link_save($newCirt);
+    }
+
+    db_delete('menu_links')
+      ->condition('menu_name', 'uaqs-footer-main')
+      ->condition('link_path', array('https://cert.arizona.edu/ualert','http://cert.arizona.edu/ualert','http://cirt.arizona.edu/ualert'))
+      ->execute();
+  }
+}

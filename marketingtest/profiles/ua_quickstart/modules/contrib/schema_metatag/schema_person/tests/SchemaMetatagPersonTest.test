@@ -1,0 +1,68 @@
+<?php
+
+/**
+ * Tests that each of the Metatag schema_person tags work correctly.
+ */
+class SchemaMetatagPersonTest extends SchemaMetatagTagsTestBase {
+
+  /**
+   * {@inheritdoc}
+   */
+  public static function getInfo() {
+    return array(
+      'name' => 'Schema Metatag: Person',
+      'description' => 'Test the schema_person meta tags.',
+      'group' => 'Schema Metatag',
+      'dependencies' => [
+        'ctools',
+        'token',
+        'metatag',
+        'schema_metatag',
+        'schema_person',
+      ],
+    );
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function setUp(array $modules = array()) {
+    $modules[] = 'schema_person';
+    parent::setUp($modules);
+
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public $moduleName = 'schema_person';
+
+  /**
+   * {@inheritdoc}
+   */
+  public $schemaTags = [
+    'schema_person.@type' => 'SchemaPersonType',
+    'schema_person.@id' => 'SchemaNameBase',
+    'schema_person.name' => 'SchemaNameBase',
+    'schema_person.givenName' => 'SchemaNameBase',
+    'schema_person.familyName' => 'SchemaNameBase',
+    'schema_person.additionalName' => 'SchemaNameBase',
+    'schema_person.alternateName' => 'SchemaNameBase',
+    'schema_person.birthDate' => 'SchemaDateBase',
+    'schema_person.gender' => 'SchemaNameBase',
+    'schema_person.jobTitle' => 'SchemaNameBase',
+    'schema_person.url' => 'SchemaUrlBase',
+    'schema_person.sameAs' => 'SchemaUrlBase',
+    'schema_person.address' => 'SchemaAddressBase',
+    'schema_person.email' => 'SchemaNameBase',
+    'schema_person.telephone' => 'SchemaNameBase',
+    'schema_person.description' => 'SchemaNameBase',
+    'schema_person.image' => 'SchemaImageBase',
+    'schema_person.affiliation' => 'SchemaPersonOrgBase',
+    'schema_person.memberOf' => 'SchemaProgramMembershipBase',
+    'schema_person.worksFor' => 'SchemaPersonOrgBase',
+    'schema_person.contactPoint' => 'SchemaContactPointBase',
+    'schema_person.brand' => 'SchemaBrandBase',
+  ];
+
+}

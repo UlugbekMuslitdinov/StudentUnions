@@ -1,0 +1,614 @@
+7.x-1.0-alpha74, 2022-02-16
+-----------------------------
+
+7.x-1.0-alpha73, 2022-01-26
+-----------------------------
+
+7.x-1.0-alpha72, 2022-01-20
+-----------------------------
+
+7.x-1.0-alpha71, 2022-01-19
+-----------------------------
+
+7.x-1.0-alpha70, 2021-07-21
+-----------------------------
+
+7.x-1.0-alpha69, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha68, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha67, 2021-05-12
+-----------------------------
+
+7.x-1.0-alpha66, 2021-04-21
+-----------------------------
+
+7.x-1.0-alpha65, 2021-01-21
+-----------------------------
+
+7.x-1.0-alpha64, 2020-11-25
+-----------------------------
+
+7.x-1.0-alpha63, 2020-11-18
+-----------------------------
+
+7.x-1.0-alpha62, 2020-11-18
+-----------------------------
+
+7.x-1.0-alpha61, 2020-09-16
+-----------------------------
+
+7.x-1.0-alpha60, 2020-09-11
+-----------------------------
+
+7.x-1.0-alpha59, 2020-08-19
+-----------------------------
+
+7.x-1.0-alpha58, 2020-06-17
+-----------------------------
+
+7.x-1.0-alpha57, 2020-06-05
+-----------------------------
+
+7.x-1.0-alpha56, 2020-05-20
+-----------------------------
+
+7.x-1.0-alpha55, 2020-04-20
+-----------------------------
+
+7.x-1.0-alpha54, 2020-03-20
+-----------------------------
+
+7.x-1.0-alpha53, 2020-03-06
+-----------------------------
+
+7.x-1.0-alpha52, 2020-02-07
+-----------------------------
+
+7.x-1.0-alpha51, 2019-12-18
+-----------------------------
+- UADIGITAL-2159 Replace demo and default content http with https.
+
+7.x-1.0-alpha50, 2019-12-13
+-----------------------------
+
+7.x-1.0-alpha49, 2019-11-20
+-----------------------------
+
+7.x-1.0-alpha48, 2019-11-05
+-----------------------------
+
+7.x-1.0-alpha47, 2019-11-01
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha46 for uaqs_demo.
+
+7.x-1.0-alpha46, 2019-11-01
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha45 for uaqs_demo.
+
+7.x-1.0-alpha45, 2019-11-01
+-----------------------------
+
+7.x-1.0-alpha44, 2019-09-06
+-----------------------------
+
+7.x-1.0-alpha43, 2019-08-16
+-----------------------------
+- UADIGITAL-2000 Update person demo content to account for new fields & taxonomy
+
+7.x-1.0-alpha42, 2019-07-26
+-----------------------------
+- UADIGITAL-1228, UADIGITAL-1745, UADIGITAL-1885, UADIGITAL-1196 remove basic page, publications, units & programs from demo content; cleaned up demo content; fixed broken behat tests, add <nolink> to demo navigation
+
+7.x-1.0-alpha41, 2019-06-28
+-----------------------------
+- UADIGITAL-2018 Ability to add classes to marquee's link field
+
+7.x-1.0-alpha40, 2019-05-22
+-----------------------------
+- UADIGITAL-2013 Update marquee demo content.
+- UADIGITAL-1846: Updates to Person Content Type.
+
+7.x-1.0-alpha39, 2019-05-08
+-----------------------------
+
+7.x-1.0-alpha38, 2019-05-07
+-----------------------------
+- UADIGITAL-1864 Set updated url patterns for flexible page and default.
+
+7.x-1.0-alpha37, 2019-04-17
+-----------------------------
+
+7.x-1.0-alpha36, 2019-03-20
+-----------------------------
+
+7.x-1.0-alpha35, 2019-03-15
+-----------------------------
+
+7.x-1.0-alpha34, 2019-03-13
+-----------------------------
+- UADIGITAL-1424 Add content/no-menu to main nav under pages.
+
+7.x-1.0-alpha33, 2019-02-20
+-----------------------------
+- UADIGITAL-1914: Bump the link contrib module version because of a security issue.
+
+7.x-1.0-alpha32, 2019-02-11
+-----------------------------
+
+7.x-1.0-alpha30, 2019-02-01
+-----------------------------
+
+7.x-1.0-alpha29, 2019-01-28
+-----------------------------
+
+7.x-1.0-alpha28, 2019-01-17
+-----------------------------
+
+7.x-1.0-alpha27, 2019-01-16
+-----------------------------
+
+7.x-1.0-alpha26, 2019-01-11
+-----------------------------
+
+7.x-1.0-alpha25, 2018-11-15
+-----------------------------
+
+7.x-1.0-alpha24, 2018-11-02
+-----------------------------
+
+7.x-1.0-alpha23, 2018-10-17
+-----------------------------
+- UADIGITAL-1507 Added new borderless card.
+
+7.x-1.0-alpha22, 2018-10-11
+-----------------------------
+
+7.x-1.0-alpha21, 2018-10-10
+-----------------------------
+- UADIGITAL-1736 Add full width marquee view
+
+7.x-1.0-alpha20, 2018-09-21
+-----------------------------
+
+7.x-1.0-alpha19, 2018-08-29
+-----------------------------
+- Preparing to tag 7.x-1.0-alpha17 for uaqs_demo.
+- Preparing to tag 7.x-1.0-alpha16 for uaqs_demo.
+- Preparing to tag 7.x-1.0-alpha15 for uaqs_demo.
+- UADIGITAL-1540 Add full width media row paragraph type.
+- Preparing to tag 7.x-1.0-alpha14 for uaqs_demo.
+- Preparing to tag 7.x-1.0-alpha13 for uaqs_demo.
+- Preparing to tag 7.x-1.0-alpha12 for uaqs_demo.
+- Preparing to tag 7.x-1.0-alpha11 for uaqs_demo.
+- Preparing to tag 7.x-1.0-alpha10 for uaqs_demo.
+- UADIGITAL-1443 clean up demo content for php7
+- UADIGITAL-1367-multiple-job-titles updated display of multiple titles (including demo content)
+- UADIGITAL-1382: Addressed various Migrate UI notices, warnings, and messages.
+- UADIGITAL-1185 Adding block type uaqs_cta_card
+- UADIGITAL-1329: Prevent new migrations from breaking uaqs_demo_disable().
+- UADIGITAL-1308 a non-designer's attempt to improve person pages
+- UADIGITAL-1292 Fixing padding on media list links and setting demo content so we can catch a regression.
+- UADIGITAL-1284 Paragraph view item for alphabetical list w/ nav & local search
+- UADIGITAL-1273 carousel content chunk
+- UADIGITAL-1205 Full width background image view modes for marquee paragraphs item.
+- Preparing to tag 7.x-1.0-alpha9 for uaqs_demo.
+- Preparing to tag 7.x-1.0-alpha8 for uaqs_demo.
+- UADIGITAL-1206 card landing grid view mode
+- Preparing to tag 7.x-1.0-alpha7 for uaqs_demo.
+- UADIGITAL-962 adding collapsible panel groups as paragraphs item.
+- UADIGITAL-1174: Fix warnings/messages generated by UAQS Demo migrations.
+- Addressed remaining markup problems identified by mmunro, adjusted names and spelling of various sites, re-ordered list, replaced newline characters with additional paragraph tag, removed non-UAQS UA Sites promotional site from list.
+- fixing the last piece of bad markup.
+- removing the closing p tag, since the closing ul tag also closes the paragraph
+- Martin's finding all my bad markup...closing an anchor tag.
+- Removed spurious a tag
+- UADIGITAL-1145 changed from UA Sites to UA QuickStart
+- UADIGITAL-1145 changed from <p> to <li> per Joes feedback
+- UADIGITAL-1145 replacing bad characters
+- UADIGITAL-1145 uaqsdemopage.json edited online with Bitbucket. I've added a list of links to some example UA Sites.
+- UADIGITAL-1112 Added Quick Links Block Type
+- UADIGITAL-991 replace uaqs_text_area with uaqs_summary for uaqs_card beans.
+- UADIGITAL-1117 remove all .gitignore files except the main one
+- UADIGITAL-1121 deleted one demo story
+- UADIGITAL-1080 removes both fields from uaqs_headed_text. Replacing with uaqs_summary field. Database update script to move field values in uaqs_text_area field for uaqs_headed_text paragraphs items to uaqs_summary fields which uses uaqs_standard text format.
+- Remove the obsolete Bitbucket Piplines configurations from the subtrees.
+- UADIGITAL-1001 Adding demo content to showcase views as paragraphs items.
+- UADIGITAL-1054 adding additional field mappings for flexible page content type, and content to go in them.
+- Rename the expiration date field to match UAQS News.
+- Back to dev. [skip ci]
+- Preparing to tag 7.x-1.0-alpha6. [skip ci]
+- Revert "Preparing to tag 7.x-1.0-alpha4."
+- Merged in mmunro-ltrr/uaqs_demo/UADIGITAL-909 (pull request #26)
+- Modify the UAQS News and UAQS Event demo content to use relative dates.
+- Preparing to tag 7.x-1.0-alpha4.
+- Update the uaqs_html to uaqs_summary fields.
+- UADIGITAL-898 add pipelines config
+- UADIGITAL-819 Adding links to accomodate view mode settings
+- Set an explicit uaqs_standard text format on the summary fields.
+- UADIGITAL-836: Some of the UAQS Demo content fails to set a view mode where this is required.
+- Add taxonomy vocabulary content and terms for UAQS Person.
+- Provide a view mode for all the UAQS Column Image demo content.
+- removed extra comma
+- UAMS-351 add demo content for the marquee content chunk
+- adding view modes and other content.
+- Consolidate the Bean block placement code into UAQS Core.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha5.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha4.
+- Add Pathauto support to the UAQS Page demo migration.
+- Catch up with the UADIGITAL-517 changes elsewhere (use the Telephone module).
+- Merged in mmunro-ltrr/uaqs_demo/UADIGITAL-402 (pull request #12)
+- Switch to the new common text area field, rename the formats.
+- Make Migrate log message suppression conditional on the verbose flag.
+- moving uaqsdemonewscontacts after paragraphs migrations
+- Changing order of listed migrations.
+- Adding file attachment class and import content
+- UADIGITAL-598 Replacing link and photos with paragraphs field
+- UADIGITAL-546: Adding News menu link to demo content.
+- changing variable name
+- changing variable name
+- adding view mode to paragraphs column image migration script
+- UAMS-192: Updating paragraphs demo content field names.
+- UADIGITAL-565: Fixing invalid JSON syntax.
+- UADIGITAL-590: Replacing field_uaqs_more_info references with field_uaqs_link.
+- UADIGITAL-535
+- Fix uaqs_zen typo back to ua_zen.
+- Fixing typo.
+- UADIGITAL-525: Renaming base migration classes and making import base path setting injectable.
+- UADIGITAL-525: Moving base migration classes into uaqs_core.
+- Fixing warning: 'uaqsdemocard.json is not a JSON file containing an array of objects'.
+- prefix research areas
+- (Chris Green) add demo content for the Card Bean block.
+- Add back the overlooked .gitignore file.
+- UADIGITAL-476: replace the text UA by UAQS in the file contents.
+- Fix code formatting and commenting cosmetics.
+- Set up the migrations to demonstrate a UA Flexible Page and its Paragraphs-based content.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha3.
+- Add demo content for the sub-title fields in the UA Event, UA News and UA Page features.
+- Add Bean Migrate support, and demo content for the UA Contact Summary block.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha2.
+- UADIGITAL-262: Update publications, programs and units in demo content.
+- Fix unrelated code and comment formatting cosmetics.
+- Add a fourth image to the UA Featured Content slidshow, split the third item filler text.
+- UADIGITAL-310: Expanding demo People menu item for dropdown nav.
+- UADIGITAL-212: Merged in trackleft/ua_demo/UADIGITAL-212-main-navigation-should-use (pull request #12)
+- UADIGITAL-228
+- UADIGITAL-228
+- UADIGITAL-228
+- UADIGITAL-228
+- Merged 7.x-1.x into UADIGITAL-212-main-navigation-should-use
+- expand menu items
+- Correct English syntax, attempt paragraph breaks.
+- Add new UA News content with ua_news_front set false.
+- Set the front flag on the existing news content (the field, not the node property).
+- Add menu links for the grid and list views, and a landing page.
+- copy changes on demo homepage
+- Remove explicit version information.
+- Add a changelog so there is always something to modify for a release.
+- Back to dev.
+- Preparing to tag 7.x-1.0-alpha1.
+- Make cosmetic changes to code and comments.
+- Add landing pages for top-level menu items.
+- Add more path aliases in the node migrations.
+- Reverse the order of migrations when rolling them back, and explicitly list dependencies.
+- Restore the type in the parameter comments for prepareRow.
+- Remove the type hints from prepareRow to silence warnings of Migration::prepareRow($row) incompatibility.
+- Clean up code and comment formatting.
+- Allow menu links with paths that don't resolve to a node to migrate.
+- Improve the system front page setting, add more menu items (broken).
+- Switch the UA Navigation (menu) migration to using JSON data.
+- Restore a link accidentally cut.
+- Switch the UA Featured Content (UA Carousel Item) migration to using JSON data.
+- Switch the UA Basic Page migration to using JSON data.
+- Add more events to pad out the calendar view.
+- Tidy the handling of field collections.
+- Tidy the migrations that have Drupal node destinations.
+- Generalize migrations using numerically keyed source records.
+- Tidy taxonomy term migrations.
+- Consolidate demo content file and directory naming code.
+- Correct the cut-and-paste JSON error that was hiding one of the UA News demo images.
+- Put back the null logging function from Panopoly.
+- Add UA Program demo content.
+- Fix partial renaming of variables for the UA Demo Event attachment fields.
+- Add UA Publication demo content.
+- Add demo content for UA Event, make minor changes to UA News (more fields documented).
+- Add description fields to UA News attachments.
+- Add alt and title fields to UA News images.
+- Add UA News demo content (still lacking some image alt text and titles).
+- Add migrations for UA Unit node demo content, and some corresponding taxonomy terms.
+- Allow limited HTML formatting in the bio field.
+- Provide alt text for the images, derived from the names.
+- Handle multi-value fields.
+- Correct trivial typos in the UA Person JSON data.
+- Prefix destination field names with "field_".
+- Fix syntax errors in the UA Person demo data JSON file.
+- Fix the .json file suffix.
+- Add back the incorrectly dropped processImport and processRollback.
+- Try the usual Migration migrate_static_registration() rather than the custom code from Panopoly.
+- Key on the machine name. not the class name.
+- Reference the newly added files for UA Person.
+- UA Person demonstration content (first untested attempt).
+- UADIGITAL-47: Renaming body field in migration mapping for sample page content.
+- UADIGITAL-85: Re-ordering carousel images and removing call-to-action from one item.
+- UADIGITAL-85: Replacing sample carousel images with lighter ones.
+- UADIGITAL-85: Adding third carousel item.
+- UADIGITAL-85: Updating carousel item sample content to use summary field instead of body.
+- Replacing legacy UA Content Types dependency with UA Page.  Related to UADIGITAL-47 and UADIGITAL-32.
+- Removing menu links pointing to previously removed sample page.  Refs UADIGITAL-48.
+- UADIGITAL-48: Fixing broken demo menu links. #resolve
+- Updating references to renamed ua_caoursel_item node type.
+- Renaming module, Part II.
+- Renaming module, Part I.
+- Merged in featured_content (pull request #1)
+- Updating README.
+- Fixing renamed migration dependency.
+- Fixing ua_featured_content reference.
+- Fleshing out migration for carousel items a bit more.
+- Removing third default page.
+- Adding WIP featured_content migration.
+- Misc cleanup.
+- Fixing menu link import data.
+- Updating README.
+- Adding README.
+- Setting front page.
+- Fixing sample utility links.
+- Adding sample utility links.
+- Initial commit.
+7.x-1.0-alpha17, 2018-07-30
+-----------------------------
+
+7.x-1.0-alpha16, 2018-07-20
+-----------------------------
+
+7.x-1.0-alpha15, 2018-06-19
+-----------------------------
+- UADIGITAL-1540 Add full width media row paragraph type.
+
+7.x-1.0-alpha14, 2018-05-18
+-----------------------------
+
+7.x-1.0-alpha13, 2018-04-25
+-----------------------------
+
+7.x-1.0-alpha12, 2018-04-20
+-----------------------------
+
+7.x-1.0-alpha11, 2018-03-30
+-----------------------------
+
+7.x-1.0-alpha10, 2018-03-09
+-----------------------------
+- UADIGITAL-1443 clean up demo content for php7
+- UADIGITAL-1367-multiple-job-titles updated display of multiple titles (including demo content)
+- UADIGITAL-1382: Addressed various Migrate UI notices, warnings, and messages.
+- UADIGITAL-1185 Adding block type uaqs_cta_card
+- UADIGITAL-1329: Prevent new migrations from breaking uaqs_demo_disable().
+- UADIGITAL-1308 a non-designer's attempt to improve person pages
+- UADIGITAL-1292 Fixing padding on media list links and setting demo content so we can catch a regression.
+- UADIGITAL-1284 Paragraph view item for alphabetical list w/ nav & local search
+- UADIGITAL-1273 carousel content chunk
+- UADIGITAL-1205 Full width background image view modes for marquee paragraphs item.
+
+7.x-1.0-alpha9, 2017-09-15
+-----------------------------
+
+7.x-1.0-alpha8, 2017-09-15
+-----------------------------
+- UADIGITAL-1206 card landing grid view mode
+
+7.x-1.0-alpha7, 2017-08-17
+-----------------------------
+- UADIGITAL-962 adding collapsible panel groups as paragraphs item.
+- UADIGITAL-1174: Fix warnings/messages generated by UAQS Demo migrations.
+- Addressed remaining markup problems identified by mmunro, adjusted names and spelling of various sites, re-ordered list, replaced newline characters with additional paragraph tag, removed non-UAQS UA Sites promotional site from list.
+- fixing the last piece of bad markup.
+- removing the closing p tag, since the closing ul tag also closes the paragraph
+- Martin's finding all my bad markup...closing an anchor tag.
+- Removed spurious a tag
+- UADIGITAL-1145 changed from UA Sites to UA QuickStart
+- UADIGITAL-1145 changed from <p> to <li> per Joes feedback
+- UADIGITAL-1145 replacing bad characters
+- UADIGITAL-1145 uaqsdemopage.json edited online with Bitbucket. I've added a list of links to some example UA Sites.
+- UADIGITAL-1112 Added Quick Links Block Type
+- UADIGITAL-991 replace uaqs_text_area with uaqs_summary for uaqs_card beans.
+- UADIGITAL-1117 remove all .gitignore files except the main one
+- UADIGITAL-1121 deleted one demo story
+- UADIGITAL-1080 removes both fields from uaqs_headed_text. Replacing with uaqs_summary field. Database update script to move field values in uaqs_text_area field for uaqs_headed_text paragraphs items to uaqs_summary fields which uses uaqs_standard text format.
+- Remove the obsolete Bitbucket Piplines configurations from the subtrees.
+- UADIGITAL-1001 Adding demo content to showcase views as paragraphs items.
+- UADIGITAL-1054 adding additional field mappings for flexible page content type, and content to go in them.
+- Rename the expiration date field to match UAQS News.
+- Back to dev. [skip ci]
+
+UAQS Demo Content 7.x-1.0-alpha6, 2017-01-20
+------------------------------------------------
+- Revert "Preparing to tag 7.x-1.0-alpha4.".
+- Merged in mmunro-ltrr/uaqs_demo/UADIGITAL-909 (pull request #26).
+- Modify the UAQS News and UAQS Event demo content to use relative dates.
+- Preparing to tag 7.x-1.0-alpha4.
+- Merged in mmunro-ltrr/uaqs_demo/UADIGITAL-883 (pull request #25).
+- Update the uaqs_html to uaqs_summary fields.
+- Merged in trackleft/uaqs_demo/UADIGITAL-898-add-pipelines-config (pull request #24).
+- UADIGITAL-898 add pipelines config.
+- Merged ua_drupal/uaqs_demo into 7.x-1.x.
+- Merged in trackleft/uaqs_demo/UADIGITAL-819-backport-diversity-events (pull request #23).
+- UADIGITAL-819 Adding links to accomodate view mode settings.
+- UADIGITAL-873: upgrade uaqs_summary field to use text processing.
+- Set an explicit uaqs_standard text format on the summary fields.
+- UADIGITAL-836: Some of the UAQS Demo content fails to set a view mode where this is required.
+- UADIGITAL-532: Add taxonomy to UAQS Person.
+- Add taxonomy vocabulary content and terms for UAQS Person.
+- Provide a view mode for all the UAQS Column Image demo content.
+- Merged in trackleft/uaqs_demo/UAMS-351 (pull request #18).
+- Removed extra comma.
+- UAMS-351 add demo content for the marquee content chunk.
+- Merged in trackleft/uaqs_demo/UADIGITAL-609-more-demo-paragraph-conten (pull request #9).
+- Adding view modes and other content.
+- UADIGITAL-713: Move block placement code to UaqsBeanMigration class in uaqs_core.
+- Consolidate the Bean block placement code into UAQS Core.
+- Back to dev.
+- Changing variable name.
+- Adding view mode to paragraphs column image migration script.
+
+UAQS Demo Content 7.x-1.0-alpha5, 2016-05-02
+------------------------------------------------
+- Back to dev.
+
+UAQS Demo Content 7.x-1.0-alpha4, 2016-04-14
+------------------------------------------------
+- Merged in mmunro-ltrr/uaqs_demo/UADIGITAL-672 (pull request #16).
+- Add Pathauto support to the UAQS Page demo migration.
+- UADIGITAL-625: Clean out obsolete field formatting code for Paragraphs and Beans.
+- Catch up with the UADIGITAL-517 changes elsewhere (use the Telephone module).
+- Merged in mmunro-ltrr/uaqs_demo/UADIGITAL-402 (pull request #12).
+- Merged in mmunro-ltrr/uaqs_demo/UADIGITAL-568 (pull request #5).
+- Switch to the new common text area field, rename the formats.
+- Make Migrate log message suppression conditional on the verbose flag.
+- Merged in trackleft/uaqs_demo/UADIGITAL-598-add-paragraphs-to-news-to- (pull request #11).
+- Moving uaqsdemonewscontacts after paragraphs migrations.
+- Changing order of listed migrations.
+- Adding file attachment class and import content.
+- UADIGITAL-598 Replacing link and photos with paragraphs field.
+- Merged ua_drupal/uaqs_demo into 7.x-1.x.
+- Merged in UADIGITAL-546 (pull request #7).
+- UADIGITAL-546: Adding News menu link to demo content.
+- UAMS-192: Updating paragraphs demo content field names.
+- UADIGITAL-565: Fixing invalid JSON syntax.
+- UADIGITAL-590: Replacing field_uaqs_more_info references with field_uaqs_link.
+- Merged in trackleft/uaqs_demo/UADIGITAL-535 (pull request #4).
+- UADIGITAL-535.
+- Merged in mmunro-ltrr/uaqs_demo/UADIGITAL-531 (pull request #3).
+- Fix uaqs_zen typo back to ua_zen.
+- Merged in UADIGITAL-525 (pull request #2).
+- Fixing typo.
+- UADIGITAL-525: Renaming base migration classes and making import base path setting injectable.
+- UADIGITAL-525: Moving base migration classes into uaqs_core.
+- Fixing warning: 'uaqsdemocard.json is not a JSON file containing an array of objects'.
+- Merged in trackleft/uaqs_demo-tmp/prefix-taxonomy-with-uaqs (pull request #1).
+- Prefix research areas.
+- (Chris Green) add demo content for the Card Bean block.
+- Add back the overlooked .gitignore file.
+- UADIGITAL-476: replace the text UA by UAQS in the file contents.
+- Merged in mmunro-ltrr/ua_demo/UADIGITAL-281 (pull request #18).
+- Fix code formatting and commenting cosmetics.
+- Set up the migrations to demonstrate a UA Flexible Page and its Paragraphs-based content.
+- Back to dev.
+
+UA Demo Content 7.x-1.0-alpha3, 2015-11-13
+----------------------------------------------
+- Merged in mmunro-ltrr/ua_demo/UADIGITAL-384 (pull request #17).
+- Add demo content for the sub-title fields in the UA Event, UA News and UA Page features.
+- Merged in mmunro-ltrr/ua_demo/UADIGITAL-337 (pull request #16).
+- Add Bean Migrate support, and demo content for the UA Contact Summary block.
+- Merged ua_drupal/ua_demo into 7.x-1.x.
+- Back to dev.
+
+UA Demo Content 7.x-1.0-alpha2, 2015-10-15
+----------------------------------------------
+- Merged in mmunro-ltrr/ua_demo/UADIGITAL-316 (pull request #15).
+- UADIGITAL-262: Update publications, programs and units in demo content.
+- Fix unrelated code and comment formatting cosmetics.
+- Add a fourth image to the UA Featured Content slidshow, split the third item filler text.
+- Merged ua_drupal/ua_demo into 7.x-1.x.
+- Merged in UADIGITAL-310 (pull request #14).
+- UADIGITAL-310: Expanding demo People menu item for dropdown nav.
+- UADIGITAL-212: Merged in trackleft/ua_demo/UADIGITAL-212-main-navigation-should-use (pull request #12).
+- UADIGITAL-228: Expand a terse expression to avoid syntax errors under the old PHP 5.3, without breaking recent PHP versions.
+- UADIGITAL-228.
+- Merged 7.x-1.x into UADIGITAL-212-main-navigation-should-use.
+- Merged in mmunro-ltrr/ua_demo/UADIGITAL-201 (pull request #11).
+- Expand menu items.
+- Correct English syntax, attempt paragraph breaks.
+- Add new UA News content with ua_news_front set false.
+- Set the front flag on the existing news content (the field, not the node property).
+- Merged in mmunro-ltrr/ua_demo/UADIGITAL-190 (pull request #10).
+- Add menu links for the grid and list views, and a landing page.
+- Merged in barrettbaffert/ua_demo/UADIGITAL-166-update-demo-copy-on-ua-qui (pull request #9).
+- Copy changes on demo homepage.
+- Merged in mmunro-ltrr/ua_demo/UADIGITAL-139 (pull request #8).
+- Remove explicit version information.
+- Add a changelog so there is always something to modify for a release.
+- Back to dev.
+
+UA Demo Content 7.x-1.0-alpha1, 2015-07-10
+------------------------------------------
+- Preparing to tag 7.x-1.0-alpha1.
+- Merged in mmunro-ltrr/ua_demo/UADIGITAL-128 (pull request #7).
+- Make cosmetic changes to code and comments.
+- Add landing pages for top-level menu items.
+- Add more path aliases in the node migrations.
+- Reverse the order of migrations when rolling them back, and explicitly list dependencies.
+- Merge branch '7.x-1.x' into UADIGITAL-128.
+- Merged ua_drupal/ua_demo into 7.x-1.x.
+- Restore the type in the parameter comments for prepareRow.
+- Remove the type hints from prepareRow to silence warnings of Migration::prepareRow($row) incompatibility.
+- Clean up code and comment formatting.
+- Allow menu links with paths that don't resolve to a node to migrate.
+- Improve the system front page setting, add more menu items (broken).
+- Switch the UA Navigation (menu) migration to using JSON data.
+- Restore a link accidentally cut.
+- Switch the UA Featured Content (UA Carousel Item) migration to using JSON data.
+- Switch the UA Basic Page migration to using JSON data.
+- Add more events to pad out the calendar view.
+- Tidy the handling of field collections.
+- Tidy the migrations that have Drupal node destinations.
+- Generalize migrations using numerically keyed source records.
+- Tidy taxonomy term migrations.
+- Consolidate demo content file and directory naming code.
+- Correct the cut-and-paste JSON error that was hiding one of the UA News demo images.
+- Merged in mmunro-ltrr/ua_demo (pull request #6).
+- Put back the null logging function from Panopoly.
+- Add UA Program demo content.
+- Fix partial renaming of variables for the UA Demo Event attachment fields.
+- Add UA Publication demo content.
+- Add demo content for UA Event, make minor changes to UA News (more fields documented).
+- Add description fields to UA News attachments.
+- Add alt and title fields to UA News images.
+- Add UA News demo content (still lacking some image alt text and titles).
+- Add migrations for UA Unit node demo content, and some corresponding taxonomy terms.
+- Allow limited HTML formatting in the bio field.
+- Provide alt text for the images, derived from the names.
+- Handle multi-value fields.
+- Correct trivial typos in the UA Person JSON data.
+- Prefix destination field names with "field_".
+- Fix syntax errors in the UA Person demo data JSON file.
+- Fix the .json file suffix.
+- Add back the incorrectly dropped processImport and processRollback.
+- Try the usual Migration migrate_static_registration() rather than the custom code from Panopoly.
+- Key on the machine name. not the class name.
+- Reference the newly added files for UA Person.
+- UA Person demonstration content (first untested attempt).
+- Merged in rename-page-body (pull request #5).
+- UADIGITAL-47: Renaming body field in migration mapping for sample page content.
+- Merged in UADIGITAL-85-add-summary-text (pull request #4).
+- UADIGITAL-85: Re-ordering carousel images and removing call-to-action from one item.
+- UADIGITAL-85: Replacing sample carousel images with lighter ones.
+- UADIGITAL-85: Adding third carousel item.
+- UADIGITAL-85: Updating carousel item sample content to use summary field instead of body.
+- Replacing legacy UA Content Types dependency with UA Page.  Related to UADIGITAL-47 and UADIGITAL-32.
+- Removing menu links pointing to previously removed sample page.  Refs UADIGITAL-48.
+- UADIGITAL-48: Fixing broken demo menu links. #resolve.
+- Merged in featured_content_rename (pull request #3).
+- Updating references to renamed ua_caoursel_item node type.
+- Merged in rename (pull request #2).
+- Renaming module, Part II.
+- Renaming module, Part I.
+- Merged in featured_content (pull request #1).
+- Updating README.
+- Fixing renamed migration dependency.
+- Fixing ua_featured_content reference.
+- Fleshing out migration for carousel items a bit more.
+- Removing third default page.
+- Adding WIP featured_content migration.
+- Misc cleanup.
+- Fixing menu link import data.
+- Adding README.
+- Setting front page.
+- Fixing sample utility links.
+- Adding sample utility links.
