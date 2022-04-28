@@ -10,7 +10,10 @@ if ($checked == 1) {
 	$db = new db_mysqli('signup');
 
 	// Display the list of Tasks.
-	$query = "SELECT *, T.id AS task_id, ST.id AS st_id, task FROM Tasks T LEFT JOIN ShiftsTasks ST ON T.id = ST.task_id WHERE shift_id = " . $shift_id . " ORDER BY task ASC";
+	$query = "SELECT *, T.id AS task_id, ST.id AS st_id, task, ST.shift_id AS shift_id 
+				FROM Tasks T 
+				LEFT JOIN ShiftsTasks ST ON T.id = ST.task_id 
+				WHERE shift_id = " . $shift_id . " ORDER BY task ASC";
 	$tasks = $db->query($query);	// For the Task list.
 ?>
 	<div style="margin-left:20px;">You can sign up for multiple positions you want. The supervisor will assign a position as needed.</div>

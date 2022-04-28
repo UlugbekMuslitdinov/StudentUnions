@@ -17,6 +17,11 @@
 	<title>Document</title>
 </head>
 <style type="text/css">
+	body{
+		padding: 30px;
+		font-family: MiloWeb, Verdana, Geneva, sans-serif;
+	}
+
 	body.togo_order {
 		background: #F4E7D7 !important;
 	}
@@ -45,6 +50,14 @@
 		background: #CC9D66;
 		overflow: hidden;
 	}
+
+	.fontgil{
+		font-family: 'Gilroy';
+    	font-style: normal;
+    	font-weight: 900;
+    	src: local('Gilroy'), url('https://fonts.cdnfonts.com/s/62856/GilroyHeavy.woff') format('woff');
+	}
+
 </style>
 <body>
 <div class="container">
@@ -58,25 +71,26 @@
 
 
 
-
+<div class="pb-3" align="center"><a href="./order.php"><img src="images/OrderHere.png" alt="Order" width="200" height=""></a></div>
 <div style="margin: 30px">
 	<a href="./order.php"><img src="images/SpringBanner.jpg" alt="Spring Cookies" width="100%" height="146" style="margin-bottom: -20px"></a>
 	<div width="100%" align="left"><p class="text_description">
 	<div class="mb-5" style="border: 5px solid #287d7d; border-radius: 0 0 30px 30px">
-	<div class="row row-cols-1 row-cols-md-2 mb-2 text-center">
+	<div class="row row-cols-1 row-cols-md-1 mb-1 text-center">
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm">
           <div class="card-body">
-		  <img src="images/SpringBox.png" width="70%" alt="Spring Box"/><br />
+		  <img src="images/SpringBox.png" width="40%" alt="Spring Box"/>
+		  <img src="images/ArizonaBox.png" width="40%" alt="Spring Box"/>
 		  <div class="mt-3 mb-4 ml-5 mr-5 border border-primary border-2 rounded-3">
-			  <h4>Spring Box</h4>
-			  5-pack: $12.99
+			  <h4>Spring Cookie</h4>
+			  5-pack: $14.99
 			</div>
           </div>
         </div>
       </div>
 
-      <div class="col">
+      <!-- <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm">
           <div class="card-body">
 		  <img src="images/ArizonaBox.png" width="70%" alt="Spring Box"/><br />
@@ -86,25 +100,36 @@
 			</div>
           </div>
         </div>
-      </div>
+      </div> -->
 </div>
 </div>
 
 
 
-<div style="margin: 30px">
 	<a href="./order.php"><img src="images/GradBanner.jpg" alt="Spring Cookies" width="100%" height="146" style="margin-bottom: -20px"></a>
 	<div width="100%" align="left"><p class="text_description">
 	<div class="mb-5" style="border: 5px solid #a1292b; border-radius: 0 0 30px 30px">
-	<div class="row row-cols-1 row-cols-md-3 mb-3 text-center">
+	<div class="row row-cols-1 row-cols-md-2 mb-2 text-center">
 
       <div class="col">
         <div class="card mb-4 rounded-3 shadow-sm">
           <div class="card-body">
 		  <img src="images/GradBox.png" width="70%" alt="Spring Box"/><br />
-		  <div class="mt-3 mb-4 ml-5 mr-5 border border-danger border-2 rounded-3">
-			  <h4>Grad Box</h4>
+		  <div class="mt-3 mb-4 ml-5 mr-5 border border-danger border-2 rounded-3" style="font-family: MiloWeb, Verdana, Geneva, sans-serif;">
+			  <h4>Graduation</h4>
 			  5-pack:$14.99
+			</div>
+          </div>
+        </div>
+      </div>
+	  
+	  <div class="col">
+        <div class="card mb-4 rounded-3 shadow-sm">
+          <div class="card-body">
+		  <img src="images/ABox.png" width="70%" alt="Spring Box"/><br />
+		  <div class="mt-3 mb-4 ml-5 mr-5 border border-danger border-2 rounded-3" style="font-family: MiloWeb, Verdana, Geneva, sans-serif;">
+			  <h4 class="fontgil">"A" Cookie</h4>
+			  5-pack: $14.99
 			</div>
           </div>
         </div>
@@ -115,7 +140,7 @@
           <div class="card-body">
 		  <img src="images/BaseballBox.png" width="70%" alt="Spring Box"/><br />
 		  <div class="mt-3 mb-4 ml-5 mr-5 border border-danger border-2 rounded-3">
-			  <h4>Easter Box</h4>
+			  <h4>Baseball/Softball</h4>
 			  5-pack: $14.99
 			</div>
           </div>
@@ -127,49 +152,22 @@
           <div class="card-body">
 		  <img src="images/BasketballBox.png" width="70%" alt="Spring Box"/><br />
 		  <div class="mt-3 mb-4 ml-5 mr-5 border border-danger border-2 rounded-3">
-			  <h4>Easter Box</h4>
+			  <h4>Football/Basketball</h4>
 			  5-pack: $14.99
 			</div>
           </div>
         </div>
       </div>
+
 
 	</div>
 
 	<div class="row row-cols-1 row-cols-md-1 mb-2 text-center">
 
-	<div class="col">
-        <div class="card mb-4 rounded-3 shadow-sm">
-          <div class="card-body d-flex justify-content-center">
-		  <img src="images/ABox.png" width="20%" alt="Spring Box" class="w-30"/>
-
-		  <div class="mt-3 mb-4 border border-danger border-2 rounded-3 flex-shrink-1 bd-highlight w-70">
-			  <h4>Easter Box</h4>
-			  5-pack: $14.99
-			</div>
-          </div>
-        </div>
-      </div>
-
-	</div>
 </div>
 
 
 
-	<a href="./order.php"><img src="images/GradBanner.jpg" alt="Graduation Cookies" width="1042" height="146"></a>
-	<div width="80%" align="left"><p class="text_description">
-	<h1>Celebrate with a delicious Cookie Bouquet or Box!</h1>
-	<div class="page_title">
-	Graduation Cookie 5-Pack - $14.99<br />
-	"A" Cookie 4-Pack - $14.99<br />
-	Sports Cookie 5-Pack - $14.99<br />
-	</div>
-	</p></div>
-	<div align="center"><a href="./order.php"><img src="images/OrderHere.png" alt="Order" width="200" height=""></a></div><br /><br /><br /><br />
-	
-</div><br /><br /><br />
-</div>
-</div>
 
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>

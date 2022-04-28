@@ -32,6 +32,7 @@ $db = new db_mysqli('signup');
 ?>
 <link rel="stylesheet" href="shifts.css">
 <body>
+
 <div style="margin-top:50px; margin-left:30px;"><a href="index.php"><button class="navigation">SHIFT LIST</button></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="add_shift.php"><button class="navigation">ADD SHIFT</button></a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="employees.php"><button class="navigation">EMPLOYEE LIST</button></a>&nbsp;&nbsp;&nbsp;&nbsp;</div>
 <div class="col-12 major_heading">Shifts</div>
 <?php

@@ -1,4 +1,12 @@
 <?php
+$tasks = $_POST['task'];
+if (!isset($tasks)) {
+	// Go back.  Task isn't selected. 
+	$message = "Please select Task for the Shif and re-Submit.";
+    echo "<script>alert('$message');</script>";
+	echo "<script>window.location.href = 'index.php?submit=goback';</script>";
+} else {
+	// insert.
 session_start();
 // Connect to the database.
 require_once ($_SERVER['DOCUMENT_ROOT'] . '/commontools/includes/mysqli.inc');
@@ -51,24 +59,38 @@ $employee_id = $employee['max_id'];
 }
 
 // Insert Records.
-if (isset($_POST['shift'])) {	
-$shifts = $_POST['shift'];
-// $count = count($shifts);
-foreach($shifts as $shift_array)  
-   {  
-    // Insert Shifts into the Signups table.
-	$query2="INSERT INTO Signups (shift_id, status, employee_id) VALUES ($shift_array, 'Applied', $employee_id)"; 
-	$db->query($query2);	
-	
-	// Get Task array.
-	$tasks = $_POST['task'];
-	foreach($tasks as $task_array) {
-		$shift_id = substr($task_array, 0, strpos($task_array, 'Shift'));	// $task_array like "5Shift-Task_2"
-		$task_id = substr($task_array, strpos($task_array, '_') + 1);
-		// Insert Task array.
-		$query3="INSERT INTO SignupTasks (shift_id, task_id, employee_id, status) VALUES ($shift_id, $task_id, $employee_id, 'Pending')"; 
-		$db->query($query3);
-	}
+if (isset($_POST['shift'])) {
+	$shifts = $_POST['shift'];
+	// $count = count($shifts);
+	$tasksArr = []; //for checking if data has been inserted yet
+	$requirementArr = []; //for checking if data has been inserted yet
+	foreach ($shifts as $shift_array) {
+		// Insert Shifts into the Signups table.
+		$query2 = "INSERT INTO Signups (shift_id, status, employee_id) VALUES ($shift_array, 'Applied', $employee_id)";
+		$db->query($query2);
+
+		// Get Task array.
+		$tasks = $_POST['task'];
+		
+		foreach ($tasks as $task_array) {
+			$shift_id = substr($task_array, 0, strpos($task_array, 'Shift'));	// $task_array like "5Shift-Task_2"
+			$task_id = substr($task_array, strpos($task_array, '_') + 1);
+			//check if data has been inserted once already
+			$arr = [$shift_id, $task_id, $employee_id];
+			$arrInserted = false;
+			foreach ($tasksArr as $i) {
+				if ($i === $arr) {
+					$arrInserted = true;
+				}
+			}
+
+			if (!$arrInserted) {
+				array_push($tasksArr, $arr); //push to temp array
+				// Insert Task array.
+				$query3 = "INSERT INTO SignupTasks (shift_id, task_id, employee_id, status) VALUES ($shift_id, $task_id, $employee_id, 'Pending')";
+				$db->query($query3);
+			}
+		}
 		// Get Requirement Array.
 		$requirements = $_POST['requirement'];
 		foreach($requirements as $requirement_array) {
@@ -81,14 +103,25 @@ foreach($shifts as $shift_array)
 			$requirement_id = substr($string_before_y, $requirement_id_position);
 			// Get Filled value.
 			$filled = $_POST['filled_' . $requirement_id];
-			// Insert Requirement array.
-			$query4="INSERT INTO SignupRequirements (shift_id, task_id, requirement_id, employee_id, filled) VALUES ($shift_id, $task_id, $requirement_id, $employee_id, '$filled')"; 
-			$db->query($query4);
+			//check if data has been inserted once already
+			$arr = [$shift_id, $task_id, $requirement_id, $employee_id, $filled];
+			$arrInserted = false;
+			foreach ($requirementArr as $i) {
+				if ($i === $arr) {
+					$arrInserted = true;
+				}
+			}
+			if (!$arrInserted) {
+				array_push($requirementArr, $arr); //push to temp array	
+				// Insert Requirement array.
+				$query4 = "INSERT INTO SignupRequirements (shift_id, task_id, requirement_id, employee_id, filled) VALUES ($shift_id, $task_id, $requirement_id, $employee_id, '$filled')";
+				$db->query($query4);
+			}
 		}
 }
 }
 
 // Redirect after data insertion.
 header("Location: http://".$_SERVER[HTTP_HOST]."/signup/index.php?confirm=yes");
-
+}
 ?>

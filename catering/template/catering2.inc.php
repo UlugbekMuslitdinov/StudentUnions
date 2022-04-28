@@ -19,7 +19,7 @@ function catering_start($page_options){
   $nav['Construction']['link'] = '/construction/index.php';
   $nav['Student Unions Advisory Council']['link'] = '/about/suac.php';
   if (!isset($page_options['header_image'])){
-    $page_options['header_image'] = '/template/images/banners/Catering_ContactUs.png';
+    $page_options['header_image'] = '/catering/images/catering_banner.jpg';
   }
   $page_options = array_merge($section_options, $page_options);
 

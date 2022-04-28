@@ -2,7 +2,23 @@
 <?xml-stylesheet type="text/xsl" href="/marketingtest/sitemap.xsl"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url><loc>https://su-wdevtest.union.arizona.edu/marketingtest/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
-<url><loc>https://su-wdevtest.union.arizona.edu/marketingtest/carousel/here-second-headline</loc><lastmod>2015-07-21T16:38Z</lastmod><changefreq>never</changefreq></url>
-<url><loc>https://su-wdevtest.union.arizona.edu/marketingtest/carousel/here-third-headline</loc><lastmod>2015-07-21T16:38Z</lastmod><changefreq>never</changefreq></url>
+<url><loc>https://su-wdevtest.union.arizona.edu/marketingtest/gallery</loc><lastmod>2022-03-30T16:53Z</lastmod><changefreq>monthly</changefreq></url>
+<url><loc>https://su-wdevtest.union.arizona.edu/marketingtest/request-proposal</loc><lastmod>2022-03-29T23:06Z</lastmod><changefreq>monthly</changefreq></url>
+<url><loc>https://su-wdevtest.union.arizona.edu/marketingtest/home</loc><lastmod>2022-04-13T22:46Z</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+<url><loc>https://su-wdevtest.union.arizona.edu/marketingtest/catering/event-menus</loc><lastmod>2022-03-29T22:35Z</lastmod><changefreq>monthly</changefreq></url>
+<url><loc>https://su-wdevtest.union.arizona.edu/marketingtest/catering/beverage-options</loc><lastmod>2022-03-29T22:39Z</lastmod><changefreq>monthly</changefreq></url>
+<url><loc>https://su-wdevtest.union.arizona.edu/marketingtest/catering/catering-policies</loc><lastmod>2022-03-29T22:31Z</lastmod><changefreq>monthly</changefreq></url>
+<url><loc>https://su-wdevtest.union.arizona.edu/marketingtest/meetings-events/campus-use-mall-scheduling</loc><lastmod>2022-03-29T22:41Z</lastmod><changefreq>monthly</changefreq></url>
+<url><loc>https://su-wdevtest.union.arizona.edu/marketingtest/meetings-events/meeting-events-spaces</loc><lastmod>2022-03-29T22:42Z</lastmod><changefreq>monthly</changefreq></url>
+<url><loc>https://su-wdevtest.union.arizona.edu/marketingtest/meet-team</loc><lastmod>2022-03-29T22:51Z</lastmod><changefreq>monthly</changefreq></url>
+<url><loc>https://su-wdevtest.union.arizona.edu/marketingtest/directions</loc><lastmod>2022-03-29T22:52Z</lastmod><changefreq>monthly</changefreq></url>
+<url><loc>https://su-wdevtest.union.arizona.edu/marketingtest/carousel/we-make-events-happen</loc><lastmod>2022-03-30T17:05Z</lastmod><changefreq>never</changefreq></url>
+<url><loc>https://su-wdevtest.union.arizona.edu/marketingtest/meetings-events/rental-policies</loc><lastmod>2022-03-30T15:08Z</lastmod><changefreq>monthly</changefreq></url>
+<url><loc>https://su-wdevtest.union.arizona.edu/marketingtest/contact-us</loc><lastmod>2022-03-31T15:25Z</lastmod><changefreq>monthly</changefreq></url>
+<url><loc>https://su-wdevtest.union.arizona.edu/marketingtest/carousel/experience-true-taste-elegance</loc><lastmod>2022-03-30T17:08Z</lastmod><changefreq>never</changefreq></url>
 <url><loc>https://su-wdevtest.union.arizona.edu/marketingtest/events/5-alternative-geodesy-class-excursion-death-valley</loc><lastmod>2015-07-21T16:38Z</lastmod><changefreq>never</changefreq></url>
+<url><loc>https://su-wdevtest.union.arizona.edu/marketingtest/catering</loc><lastmod>2022-03-30T17:40Z</lastmod><changefreq>monthly</changefreq></url>
+<url><loc>https://su-wdevtest.union.arizona.edu/marketingtest/catering/express-catering</loc><lastmod>2022-03-29T22:32Z</lastmod><changefreq>monthly</changefreq></url>
+<url><loc>https://su-wdevtest.union.arizona.edu/marketingtest/events-menu</loc><lastmod>2022-03-29T22:00Z</lastmod><changefreq>monthly</changefreq></url>
+<url><loc>https://su-wdevtest.union.arizona.edu/marketingtest/meetings-events</loc><lastmod>2022-03-29T22:22Z</lastmod><changefreq>monthly</changefreq></url>
 </urlset>

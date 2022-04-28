@@ -3,6 +3,13 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+            new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-T7QFBZH');</script>
+<!-- End Google Tag Manager -->
 <?php
 	require_once ($_SERVER['DOCUMENT_ROOT'] . '/commontools/includes/mysqli.inc');
 	// require_once($_SERVER['DOCUMENT_ROOT'].'/template/'.'global.inc');
@@ -15,6 +22,24 @@
 	employment_start($page_options);
 session_start();
 ?>
+
+
+<script>
+    function gtag_report_conversion(url) {
+        var callback = function () {
+            if (typeof(url) != 'undefined') {
+                window.location = url;
+            }
+        };
+        gtag('event', 'conversion', {
+            'send_to': 'AW-CONVERSION_ID/CONVERSION_LABEL',
+            'value': 1.0,
+            'currency': 'USD',
+            'event_callback': callback
+        });
+        return false;
+    }
+</script>
 
 <style>
 body {
@@ -120,6 +145,7 @@ input[type="radio"] {
 .employmentText {
     color: black;
     font-size: 20px;
+	margin-bottom: 20px;
     /*text-align: start; */
 }
 .fullTime, .student {
@@ -127,6 +153,10 @@ input[type="radio"] {
     margin-top: 5px;
     margin-bottom: 12px;
 }
+.fullTime>a>img, .student>a>img {
+	margin-top: 15px;
+	margin-bottom: 15px;
+} 
 .arrow {
 	border: solid #378DBD; /*oasis #378DBD*/
 	border-width: 0 3px 3px 0;
@@ -167,7 +197,11 @@ function showOtherText() {
 </script>
 <script src="jquery.js"></script>
 <html lang="en">
-<body> 
+<body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T7QFBZH"
+                  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <div class="container">
     <div class="row join">
@@ -177,14 +211,18 @@ function showOtherText() {
     </div>
     <div class="row">
         <div class="col fullTime">
-            <a href="./student.php" class="employmentHeader">STUDENT EMPLOYMENT<i class="arrow right"></i></a>
+            <a href="./student.php" class="employmentHeader">STUDENT EMPLOYMENT<i class="arrow right"></i>
+				<img class="img-fluid" src="./images/Main Page_Student Employemnt_1.jpg" width="100%" height="100%" />
+			</a>
             <div class="employmentText">
                 Be part of our diverse winning team and receive hands-on experience, while working in a fun and safe environment with a flexible schedule. We strive to coach, teach, and mentor all our students. 
             </div>
         </div>
         <div class="col student">
-            <a href="./fulltime.php" class="employmentHeader">FULL-TIME EMPLOYMENT<i class="arrow right"></i></a>
-            <div class="employmentText">
+            <a href="./fulltime.php" class="employmentHeader">FULL-TIME EMPLOYMENT<i class="arrow right"></i>
+            	<img class="img-fluid" src="./images/Main Page_Full-time Employment_2.jpg" width="100%" height="100%" />
+			</a>
+			<div class="employmentText">
                 We want to help unlock your career potential! Beyond just a job, we offer opportunities for growth with an employer that strives to get you where you want. 
             </div>
         </div>

@@ -134,3 +134,10 @@ input {
 	color: red;
 	background-color: ivory;
 }
+div.logout {
+  position: absolute;
+  right: 250px;
+  width: 400px;
+  height: 20px;
+  border: 0px;
+} 

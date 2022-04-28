@@ -10,6 +10,8 @@ require_once('includes/field_validation.inc.php');
 page_start($page_options);
 require_once('contact_us.inc.php');
 require_once('catering_slider.inc.php');
+//include $_SERVER['DOCUMENT_ROOT'] . "/template/layout/header/routes/involvement.php";
+//print_left_nav($involvement_route, $page_options['page'], ['other', 'other2']);
 
 $date = $department = $name = $address = $phone = $fax = $email = $eventDate = $location = $description = $startTime = $endTime = $numGuests = $totalEstCost = $reason = $caterer = '';
 

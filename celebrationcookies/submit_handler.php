@@ -36,7 +36,6 @@ function commaSeparate ($dataToSign) {
 $amount = $_POST["total_price_3"];
 
 $creditcard = [];
-// if (1 == 1){
 $creditcard['amount'] = $amount;
 $creditcard['merchant_defined_data1'] = $_SERVER['SERVER_NAME'];
 $creditcard['merchant_defined_data2'] = $_SERVER['PHP_SELF'];
@@ -63,14 +62,9 @@ $creditcard['merchant_defined_data18'] = $_POST["cookie_5"];
 $creditcard['merchant_defined_data19'] = $_POST["cookie_6"];
 $creditcard['merchant_defined_data20'] = $_POST["cookie_7"];
 $creditcard['merchant_defined_data21'] = $_POST["cookie_8"];
-$creditcard['merchant_defined_data22'] = $_POST["cookie_9"];
-$creditcard['merchant_defined_data23'] = $_POST["cookie_10"];
-$creditcard['merchant_defined_data24'] = $_POST["cookie_11"];
-$creditcard['merchant_defined_data25'] = $_POST["cookie_12"];
-$creditcard['merchant_defined_data26'] = $_POST["cookie_13"];
-$creditcard['merchant_defined_data27'] = $_POST["cookie_14"];
-$creditcard['merchant_defined_data28'] = $_POST["total_tax"];
-$creditcard['merchant_defined_data29'] = $_POST["total_price_3"];
+$creditcard['merchant_defined_data22'] = $_POST["total_tax"];
+$creditcard['merchant_defined_data23'] = $_POST["total_price_3"];
+$creditcard['merchant_defined_data24'] = $_POST["theme"];
 $creditcard['access_key'] = '49c7531bc20f31caa7e4174ee72e5cbc'; // Testing Site
 $creditcard['profile_id'] = '897833B6-4D9C-4634-AC80-98DBA7A45ED9'; // Testing Site
 // $creditcard['access_key'] = 'bfe7b0985b2937c6b4e1c3c7ae4806f4'; // Production Site
@@ -83,7 +77,7 @@ $creditcard['transaction_type'] = 'sale';
 $creditcard['reference_number'] = strtotime("now");
 $creditcard['currency'] = 'USD';
 
-$creditcard['signed_field_names'] = 'access_key,profile_id,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,reference_number,amount,currency,merchant_defined_data1,merchant_defined_data2,merchant_defined_data3,merchant_defined_data4,merchant_defined_data5,merchant_defined_data6,merchant_defined_data7,merchant_defined_data8,merchant_defined_data9,merchant_defined_data10,merchant_defined_data11,merchant_defined_data12,merchant_defined_data13,merchant_defined_data14,merchant_defined_data15,merchant_defined_data16,merchant_defined_data17,merchant_defined_data18,merchant_defined_data19,merchant_defined_data20,merchant_defined_data21,merchant_defined_data22,merchant_defined_data23,merchant_defined_data24,merchant_defined_data25,merchant_defined_data26,merchant_defined_data27,merchant_defined_data28,merchant_defined_data29';
+$creditcard['signed_field_names'] = 'access_key,profile_id,transaction_uuid,signed_field_names,unsigned_field_names,signed_date_time,locale,transaction_type,reference_number,amount,currency,merchant_defined_data1,merchant_defined_data2,merchant_defined_data3,merchant_defined_data4,merchant_defined_data5,merchant_defined_data6,merchant_defined_data7,merchant_defined_data8,merchant_defined_data9,merchant_defined_data10,merchant_defined_data11,merchant_defined_data12,merchant_defined_data13,merchant_defined_data14,merchant_defined_data15,merchant_defined_data16,merchant_defined_data17,merchant_defined_data18,merchant_defined_data19,merchant_defined_data20,merchant_defined_data21,merchant_defined_data22,merchant_defined_data23,merchant_defined_data24';
 
 $creditcard['signature'] = sign($creditcard);
 

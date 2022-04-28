@@ -1,4 +1,4 @@
-var currQuant = {"cookie_1": 0, "cookie_2": 0, "cookie_3": 0, "cookie_4": 0, "cookie_5": 0,  "cookie_6": 0,  "cookie_7": 0,  "cookie_8": 0,  "cookie_9": 0, "cookie_10": 0,  "cookie_11": 0,  "cookie_12": 0, "cookie_13": 0, "cookie_14": 0};
+var currQuant = {"cookie_1": 0, "cookie_2": 0, "cookie_3": 0, "cookie_4": 0, "cookie_5": 0,  "cookie_6": 0,  "cookie_7": 0,  "cookie_8": 0};
 
 $(function() {   
 	
@@ -48,19 +48,38 @@ function dateCheck(value) {
 }
 
 function dateValidation(value) {
-    var date = Date.parse(value);
-    //4/26-4/30, 5/3-5/7, 5/10-5/18.
-    if(date >= Date.parse('4 25 2021') && date <= Date.parse('4 30 2021')) {
+    var date = Date.parse(value.replace(/-/g, "/"));
+	console.log('value: ', value);
+	console.log('date: ', date);
+	// 4/18-4/22, 4/25-4/29, 5/2-5/6, 5/9-5/13
+    if(date > Date.parse('2022-4-17'.replace(/-/g, "/")) && date <= Date.parse('2022-4-22'.replace(/-/g, "/"))) {
         return true;
     }
-    else if(date >= Date.parse('5 2 2021') && date <= Date.parse('5 7 2021')) {
+	else if(date > Date.parse('2022-4-24'.replace(/-/g, "/")) && date <= Date.parse('2022-4-29'.replace(/-/g, "/"))) {
         return true;
     }
-    else if(date >= Date.parse('5 9 2021') && date <= Date.parse('5 18 2021')) {
+    else if(date > Date.parse('2022-5-1'.replace(/-/g, "/")) && date <= Date.parse('2022-5-6'.replace(/-/g, "/"))) {
         return true;
     }
-
-    return false;
+    else if(date > Date.parse('2022-5-8'.replace(/-/g, "/")) && date <= Date.parse('2022-5-13'.replace(/-/g, "/"))) {
+        return true;
+    } else {
+		return false;
+	}
+	//if(date > Date.parse('4 17 2022') && date <= Date.parse('4 22 2022')) {
+//        return true;
+//    }
+//	else if(date > Date.parse('4 24 2022') && date <= Date.parse('4 29 2022')) {
+//        return true;
+//    }
+//    else if(date > Date.parse('5 1 2022') && date <= Date.parse('5 6 2022')) {
+//        return true;
+//    }
+//    else if(date > Date.parse('5 8 2022') && date <= Date.parse('5 13 2022')) {
+//        return true;
+//    } else {
+//		return false;
+//	}
 }
 
 function changeQuant(x) {
@@ -102,20 +121,14 @@ function isNumeric(str) {
 }
 
 function calculateTotal() {
-    var ret = currQuant["cookie_1"] * 19.99 +
-        currQuant["cookie_2"] * 9.99 +
-        currQuant["cookie_3"] * 11.99 +
-        currQuant["cookie_4"] * 19.99 +
-        currQuant["cookie_5"] * 9.99 +
-        currQuant["cookie_6"] * 11.99 +
-        currQuant["cookie_7"] * 11.99 +
-        currQuant["cookie_8"] * 19.99 +
-        currQuant["cookie_9"] * 9.99 +
-        currQuant["cookie_10"] * 11.99 +
-        currQuant["cookie_11"] * 19.99 +
-        currQuant["cookie_12"] * 9.99 +
-        currQuant["cookie_13"] * 11.99 +
-        currQuant["cookie_14"] * 11.99;
+    var ret = currQuant["cookie_1"] * 14.99 +
+        currQuant["cookie_2"] * 14.99 +
+        currQuant["cookie_3"] * 14.99 +
+        currQuant["cookie_4"] * 14.99 +
+        currQuant["cookie_5"] * 14.99 +
+        currQuant["cookie_6"] * 14.99 +
+        currQuant["cookie_7"] * 14.99 +
+        currQuant["cookie_8"] * 14.99;
 
     return ret.toFixed(2);
 }

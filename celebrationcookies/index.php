@@ -1,6 +1,6 @@
 <?php
-	// header("Location: https://union.arizona.edu/celebrationcookies/index.php");
-	// die();
+	//header("Location: https://union.arizona.edu/celebrationcookies/index.php");
+//	die();
 	require_once($_SERVER['DOCUMENT_ROOT'].'/template/'.'global.inc');
 	$page_options['title'] = 'Celebration Cookies';
 	page_start($page_options);	
@@ -50,9 +50,7 @@
 	<div width="80%" align="left"><p class="text_description">
 	<h1>Celebrate with a delicious Cookie Bouquet or Box!</h1>
 	<div class="page_title">
-	Potted Cookie Bouquet - $19.99<br />
-	Spring Cookie 4-Pack - $9.99<br />
-	Spring Cookie 5-Pack - $11.99
+	Spring Cookie 5-Pack - $14.99
 	</div>
 	</p></div>
 	<div align="center"><a href="./order.php"><img src="/template/images/banners/CelebrationCookieBanner.jpg" alt="Spring Cookies" width="400" height="105"></a></div><br /><br /><br />
@@ -60,10 +58,9 @@
 	<div width="80%" align="left"><p class="text_description">
 	<h1>Celebrate with a delicious Cookie Bouquet or Box!</h1>
 	<div class="page_title">
-	Potted Cookie Bouquet - $19.99<br />
-	Graduation Cookie 4-Pack - $9.99<br />
-	Graduation Cookie 5-Pack - $11.99<br />
-	Sports Cookie 5-Pack - $11.99
+	Graduation Cookie 5-Pack - $14.99<br />
+	Sports Cookie 5-Pack - $14.99<br />
+	"A" Cookie 4-Pack - $14.99<br />
 	</div>
 	</p></div>
 	<div align="center"><a href="./order.php"><img src="images/CookiesGradOrder.png" alt="Spring Cookies" width="400" height="90"></a></div><br /><br /><br /><br />

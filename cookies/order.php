@@ -1,6 +1,6 @@
 <?php
-	// header("Location: https://union.arizona.edu/celebrationcookies/index.php");
-	// die();
+	//header("Location: https://union.arizona.edu/celebrationcookies/index.php");
+//	die();
 	require_once($_SERVER['DOCUMENT_ROOT'].'/template/'.'global.inc');
 	$page_options['title'] = "Order Celebration Cookies";
 	page_start($page_options);	
@@ -36,8 +36,6 @@
 		line-height: 20px;
 	}
 	.text_description {
-		margin-top: -10px;
-		margin-bottom: 10px;
 		font-size:22px;
 	}
 	.text_bold {
@@ -82,26 +80,41 @@
 		.food-qty{
 		width: 45px;
 	}
+	.page_title {
+		font-size: 25px;
+		font-weight: bold;
+		color: red;
+	}
+	.price {
+		font-size: 20px;
+		font-weight: bold;
+		color: green;
+	}
+	.price_red {
+		font-size: 20px;
+		font-weight: bold;
+		color: red;
+	}
 </style>
 <script>
   function setFocusToTextBox(){
     document.getElementById('first_name').focus();
   }
 </script>
-<script type="text/javascript" src="./cookie_3.js"></script>
+<script type="text/javascript" src="./cookie_7.js"></script>
 <body onload='setFocusToTextBox()'>
 <div class="container">
-<div class="row">
-	<div class="col-md-12 wrap-banner-img mb-0"><img src="/template/images/banners/CelebrationCookieBanner.jpg" class="img-fluid" alt="">
-	</div>
+	<div class="row">
+		<div class="col-md-12 wrap-banner-img mb-0"><img src="/template/images/banners/CookieBanner.jpg" class="img-fluid" alt="">
+		</div>
+	</div><br />
+	<div class="text_description">	
+		Each mouth-watering butter cookie is gently glazed with a sweetened velvet smooth icing and hand-decorated by our cookie artists.<br /><br />
+		Ordering website will launch on April 18. Cookie pick-up will begin April 20 at The Scoop located at the Student Unions Memorial Center. <br /></div>
 </div><br />
-	
-<h1>Cookie Order Form</h1>
-<div class="text_description">	
-	Welcome your Wildcat to campus with a Celebration Cookie 5-Pack from the Student Union!  Cookies will be available to order beginning Monday, August 16<sup>th</sup>, 2021 and will close Wednesday, August 25<sup>th</sup>, 2021.<br /><br />
-
-	<div align="center" class="page_title_red">EVERYONE COULD USE A COOKIE<br />
-	STUDENT UNION DELIVERING SMILES<br /></div>
+<div align="center" style="margin-top:20px;margin-bottom:30px;">
+	<span class="page_title">COOKIE ORDER FORM</span><br />
+	<span class="text_description">Everyone could use a cookie, Student Unions delivering smiles</span>
 </div><br />
 
 <?php
@@ -109,9 +122,9 @@
 if (!isset($_POST['submit'])) {
 ?>	
 <div class="col-sm-12 order-form">
-	<form name="form" id="form" class="form-inline" action="submit_handler.php" method="POST" onsubmit="return OnSubmitForm()">
+	<form name="form" id="form" class="form-inline" action="submit_handler_5.php" method="POST" onsubmit="return OnSubmitForm()">
 	<div class="row">
-		<div class="text_bold">Purchaser Information</div>
+		<div class="text_bold">PURCHASER INFORMATION</div>
 		<div class="col-sm-12 no-padding client-contact-info">
 			<div class="form-group col-sm-8">
 			<div class="form-group col-sm-8">
@@ -137,7 +150,7 @@ if (!isset($_POST['submit'])) {
 			</div>
 		</div>
 		
-		<div class="text_bold" style="margin-top:20px;">Student Information</div>
+		<div class="text_bold" style="margin-top:20px;">STUDENT INFORMATION</div>
 		<div class="col-sm-12 no-padding client-contact-info">
 			<div class="form-group col-sm-8">
 			<div class="form-group col-sm-8">
@@ -161,121 +174,76 @@ if (!isset($_POST['submit'])) {
 				<!--<input type="date" id="pickupdate" name="pickupdate" required /><span id="date-error" style="color: red; display: none;"> Please enter a valid pickup date.</span>-->
 				
 				<input type="date" id="pickupdate" name="pickupdate" onchange="dateCheck(this.value);"  required /><span id="date-error" style="color: red; display: none;">Please enter a valid pickup date.</span>
-				<i>* Valid pickup dates - 08/18- 08/27.</i>
+				<i>* Valid pickup dates - 4/20-4/22, 4/25-4/29, 5/2-5/6, 5/9-5/13</i>
 			</span>
 		</div>
 		
-		<div class="text_bold" style="margin-top:20px;">Order Cookies <span class="asterisk">*</span></div>
+		<div class="text_bold" style="margin-top:40px;">PACKAGE SELECTION FOR CELEBRATION<span class="asterisk">*</span></div>
 		<div class="col-sm-12 no-padding">
 		<table width="" border="0" cellspacing="0" cellpadding="3" class="cookie_options">
-		  <tbody>
-		  	<tr>
-			  <td><img src="images/standard-welcome-pack.jpg" width="150" /></td>
-			  <td class="cookie_options">Welcome Wildcat 5-pack - $11.99</td>
-			  <td class="text_bold" align="center"><input id="quant" type="number" class="food-qty" min="0" onkeyup="changeQuant(this);" onchange="changeQuant(this);" name="cookie_1" value="0"></td>
+		  
+			<tr>
+			  <td colspan="4" class="page_title_red" style="border-color:white;"><img src="./images/SpringBanner.jpg" alt="Hop Into Spring" /></td>
 			</tr>
-			<!-- <tr>
-			  <td class="page_title_red" width="200">SPRING&nbsp;</td>
-			  <td width="400">&nbsp;</td>
+			<tr>
+			  <td class="page_title_red" width="200">&nbsp;</td>
+			  <td width="250" class="text_bold" align="left">ITEM</td>
 			  <td width="80" class="text_bold" align="center">Quantity</td>
+			  <td width="80" class="text_bold" align="center">Donation</td>
 			</tr>
 			<tr>
-			  <td><img src="images/springbouquet.jpg" width="150" /></td>
-			  <td class="cookie_options">Potted Cookie Bouquet - $19.99</td>
-			  <td class="text_bold" align="center"><input id="quant" type="number" class="food-qty" min="0" onkeyup="changeQuant(this);" onchange="changeQuant(this);" name="cookie_1" value="0"></td>
-			</tr>
-			<tr>
-			  <td><img src="images/spring4-pack.jpg" width="150" /></td>
-			  <td class="cookie_options">Spring Cookie 4-Pack - $9.99</td>
-			  <td class="text_bold" align="center"><input id="quant" type="number" class="food-qty" onkeyup="changeQuant(this);" onchange="changeQuant(this);" name="cookie_2" size="1" value="0"></td>
-			</tr>
-			<tr>
-			  <td><img src="images/spring5-pack.jpg" width="150" /></td>
-			  <td class="cookie_options">Spring Cookie 5-Pack - $11.99</td>
-			  <td class="text_bold" align="center"><input id="quant" type="number" class="food-qty" onkeyup="changeQuant(this);" onchange="changeQuant(this);" name="cookie_3" size="1" value="0"></td>
-			</tr>
-			<tr>
-			  <td colspan="3">&nbsp;</td>
-			</tr> -->
-			<!-- <tr>
-			  <td class="page_title_red" width="200">GRADUATION&nbsp;</td>
-			  <td width="400">&nbsp;</td>
-			  <td width="10" class="text_bold" align="center">&nbsp;</td>
-			</tr>
-			<tr>
-			  <td><img src="images/gradboquet.jpg" width="150" /></td>
-			  <td class="cookie_options">Potted Cookie Bouquet - $19.99</td>
-			  <td class="text_bold" align="center"><input id="quant" type="number" class="food-qty" onkeyup="changeQuant(this);" onchange="changeQuant(this);" name="cookie_4" size="1" value="0"></td>
-			</tr>
-			<tr>
-			  <td><img src="images/grad4-pack.jpg" width="150" /></td>
-			  <td class="cookie_options">Graduation Cookie 4-Pack - $9.99</td>
+			  <td><img src="images/SpringBox.png" width="150" alt="Spring Box"/><br /><img src="images/ArizonaBox.png" width="150" alt="Arizona Box"/></td>
+			  <td class="cookie_options">Spring Cookie<br /> 5-Pack<br /><span class="price">PRICE: $14.99</span></td>
+			  <td class="text_bold" align="center"><input id="quant" type="number" class="food-qty" onkeyup="changeQuant(this);" onchange="changeQuant(this);" name="cookie_1" size="1" value="0"></td>
 			  <td class="text_bold" align="center"><input id="quant" type="number" class="food-qty" onkeyup="changeQuant(this);" onchange="changeQuant(this);" name="cookie_5" size="1" value="0"></td>
 			</tr>
 			<tr>
-			  <td><img src="images/grad5-pack.jpg" width="150" /></td>
-			  <td class="cookie_options">Graduation Cookie 5-Pack - $11.99</td>
+			  <td colspan="4" style="border-color:white;">&nbsp;</td>
+			</tr>
+			<tr>
+			  <td colspan="4" class="page_title_red"><img src="./images/GradBanner.jpg" alt="Congrats, Grad" /></td>
+			</tr>
+			<tr>
+			  <td class="page_title_red" width="200">&nbsp;</td>
+			  <td width="250" class="text_bold" align="left">ITEM</td>
+			  <td width="80" class="text_bold" align="center">Quantity</td>
+			  <td width="80" class="text_bold" align="center">Donation</td>
+			</tr>
+			<tr>
+			  <td><img src="images/GradBox.png" width="150" alt="Grad Box"/></td>
+			  <td class="cookie_options">Graduation<br /> 5-Pack<br /> <span class="price_red">PRICE: $14.99</span></td>
+			  <td class="text_bold" align="center"><input id="quant" type="number" class="food-qty" onkeyup="changeQuant(this);" onchange="changeQuant(this);" name="cookie_2" size="1" value="0"></td>
 			  <td class="text_bold" align="center"><input id="quant" type="number" class="food-qty" onkeyup="changeQuant(this);" onchange="changeQuant(this);" name="cookie_6" size="1" value="0"></td>
 			</tr>
 			<tr>
-			  <td><img src="images/gradsport5-pack.jpg" width="150" /></td>
-			  <td class="cookie_options">Sports Cookie 5-Pack - $11.99</td>
-			  <td class="text_bold" align="center"><input id="quant" type="number" class="food-qty" onkeyup="changeQuant(this);" onchange="changeQuant(this);" name="cookie_7" size="1" value="0"></td>
-			</tr> -->
-			<tr>
-			  <td colspan="3">&nbsp;</td>
-			</tr>
-			<tr>
-			  <td colspan="3" width="10" class="text_bold" align="center">Get your student excited to be on campus with a Welcome Wildcat Celebration Cookie 5-pack.  Made from fresh baked and hand decorated cookies, this bundle can be ordered to sweeten their first day.</td>
-			</tr>
-			<tr>
-			  <td colspan="3">&nbsp;</td>
-			</tr>
-			<tr>
-			  <td class="page_title_red" width="200">DONATE&nbsp;</td>
-			  <td width="400">&nbsp;</td>
-			  <td width="10" class="text_bold" align="center">&nbsp;</td>
-			</tr>
-			<tr>
-			  <td class="text_bold" colspan="3" width="800">The Student Union Memorial Center is providing Celebration Cookie packages to welcome students to campus!  We recognize that not every student has the opportunity to receive a cookie treat. If you are interested in donating a cookie pack to a student, please see the options below.</td>
-			</tr>
-			<tr>
-			  <td><img src="images/standard-welcome-pack.jpg" width="150" /></td>
-			  <td class="cookie_options">Welcome Wildcat 5-Pack - $11.99</td>
+			  <td><img src="images/ABox.png" width="150" alt="A Box"/></td>
+			  <td class="cookie_options">"A" Cookie<br /> 4-Pack<br /> <span class="price_red">PRICE: $14.99</span></td>
+			  <td class="text_bold" align="center"><input id="quant" type="number" class="food-qty" onkeyup="changeQuant(this);" onchange="changeQuant(this);" name="cookie_4" size="1" value="0"></td>
 			  <td class="text_bold" align="center"><input id="quant" type="number" class="food-qty" onkeyup="changeQuant(this);" onchange="changeQuant(this);" name="cookie_8" size="1" value="0"></td>
 			</tr>
-			<!-- <tr>
-			  <td><img src="images/spring4-pack.jpg" width="150" /></td>
-			  <td class="cookie_options">Spring Cookie 4-Pack - $9.99</td>
-			  <td class="text_bold" align="center"><input id="quant" type="number" class="food-qty" onkeyup="changeQuant(this);" onchange="changeQuant(this);" name="cookie_9" size="1" value="0"></td>
+			<tr>
+			  <td><img src="images/BaseballBox.png" width="150" alt="Baseball or Softball"/></td>
+			  <td class="cookie_options"><span style="float:left;">Sports<br /> 5-Pack<br /> <span class="price_red">PRICE: $14.99</span></span>
+				  <span style="float:right;">
+				  <input type="radio" name="theme_2" value="Baseball" checked> Baseball themed <br />
+				  <input type="radio" name="theme_2" value="Softball">  Softball themed</span></td>
+			  <td valign="middle" class="text_bold" align="center"><input id="quant" type="number" class="food-qty" onkeyup="changeQuant(this);" onchange="changeQuant(this);" name="cookie_9" size="1" value="0"></td>
+			  <td valign="middle" class="text_bold" align="center"><input id="quant" type="number" class="food-qty" onkeyup="changeQuant(this);" onchange="changeQuant(this);" name="cookie_10" size="1" value="0"></td>
 			</tr>
 			<tr>
-			  <td><img src="images/spring5-pack.jpg" width="150" /></td>
-			  <td class="cookie_options">Spring Cookie 5-Pack - $11.99</td>
-			  <td class="text_bold" align="center"><input id="quant" type="number" class="food-qty" onkeyup="changeQuant(this);" onchange="changeQuant(this);" name="cookie_10" size="1" value="0"></td>
+			  <td><img src="images/BasketballBox.png" width="150" alt="Football or Basketball"/></td>
+			  <td class="cookie_options"><span style="float:left;">Sports<br /> 5-Pack<br /> <span class="price_red">PRICE: $14.99</span></span>
+				  <span style="float:right;">
+				  <input type="radio" name="theme" value="Football" checked> Football themed <br />
+				  <input type="radio" name="theme" value="Basketball">  Basketball themed</span></td>
+			  <td valign="middle" class="text_bold" align="center"><input id="quant" type="number" class="food-qty" onkeyup="changeQuant(this);" onchange="changeQuant(this);" name="cookie_3" size="1" value="0"></td>
+			  <td valign="middle" class="text_bold" align="center"><input id="quant" type="number" class="food-qty" onkeyup="changeQuant(this);" onchange="changeQuant(this);" name="cookie_7" size="1" value="0"></td>
 			</tr>
 			<tr>
-			  <td><img src="images/gradboquet.jpg" width="150" /></td>
-			  <td class="cookie_options">Graduation Potted Cookie Bouquet - $19.99</td>
-			  <td class="text_bold" align="center"><input id="quant" type="number" class="food-qty" onkeyup="changeQuant(this);" onchange="changeQuant(this);" name="cookie_11" size="1" value="0"></td>
+			  <td colspan="4">&nbsp;</td>
 			</tr>
-			<tr>
-			  <td><img src="images/grad4-pack.jpg" width="150" /></td>
-			  <td class="cookie_options">Graduation Cookie 4-Pack - $9.99</td>
-			  <td class="text_bold" align="center"><input id="quant" type="number" class="food-qty" onkeyup="changeQuant(this);" onchange="changeQuant(this);" name="cookie_12" size="1" value="0"></td>
-			</tr>
-			<tr>
-			  <td><img src="images/grad5-pack.jpg" width="150" /></td>
-			  <td class="cookie_options">Graduation Cookie 5-Pack - $11.99</td>
-			  <td class="text_bold" align="center"><input id="quant" type="number" class="food-qty" onkeyup="changeQuant(this);" onchange="changeQuant(this);" name="cookie_13" size="1" value="0"></td>
-			</tr>
-			<tr>
-			  <td><img src="images/gradsport5-pack.jpg" width="150" /></td>
-			  <td class="cookie_options">Sports Cookie 5-Pack - $11.99</td>
-			  <td class="text_bold" align="center"><input id="quant" type="number" class="food-qty" onkeyup="changeQuant(this);" onchange="changeQuant(this);" name="cookie_14" size="1" value="0"></td>
-			</tr> -->
-			<tr>
-			  <td colspan="2" class="page_title_black" align="center">TOTAL: 
+			<tr style="border-color:white;">
+			  <td colspan="3" class="page_title_black" align="center">TOTAL: 
 				  <span class="text_total">$<span id="total_price">0</span></span> + 
 				  $<span id="total_tax">0</span> (tax) = 
 				  <span class="text_total">$<span id="tax_total">0</span></span>
@@ -293,14 +261,14 @@ if (!isset($_POST['submit'])) {
 			  </div>
 			  </td>
 			</tr>
-		  </tbody>
+		  
 		</table>
 		</div>	
 	</div>
 	</form>
 </div><br /><br /><br />
 <div class="text_description">
-	If you have any questions or concerns please call or email the Arizona Catering Company at <a href="mailto:su-sueventplanning@email.arizona.edu">su-sueventplanning@email.arizona.edu</a> or call 520-621-1414.
+	If you have any questions or concerns please call or email Arizona Dining at <a href="mailto:su-arizonadining@arizona.edu">su-arizonadining@arizona.edu</a> or <br />call 520-621-1945.
 </div>
 </div>
 <?php

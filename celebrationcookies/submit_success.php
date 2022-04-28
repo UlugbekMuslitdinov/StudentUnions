@@ -12,7 +12,7 @@
 <h2 style="margin-top:0px;"><br />
 <div style="color:red">The form was submitted successfully.</div><br /><br />
 Hello!<br />
-Thank you for your purchase of celebration cookies through the Student Union Memorial Center.  Please instruct your student to check their CatMail for pick up instructions.  If you have any further questions please call us at 520-621-1414 or email us at <br /><a href="mailto:su-sueventplanning@email.arizona.edu">su-sueventplanning@email.arizona.edu</a>.<br /><br />
+Thank you for your purchase of celebration cookies through the Student Union Memorial Center.  Please instruct your student to check their CatMail for pick up instructions.   If you have questions or concerns, please email Arizona Dining at <a href="mailto:su-arizonadining@arizona.edu">su-arizonadining@arizona.edu</a> or call 520-621-1945.<br /><br />
 
 Thank you!<br />
 Student Union Culinary and Events Team
