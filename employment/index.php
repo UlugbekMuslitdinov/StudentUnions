@@ -211,7 +211,7 @@ function showOtherText() {
     </div>
     <div class="row">
         <div class="col fullTime">
-            <a href="./student.php" class="employmentHeader">STUDENT EMPLOYMENT<i class="arrow right"></i>
+            <a id="student_employment" onclick="ga('send', 'event', 'button', 'click', 'se');" href="./student.php" class="employmentHeader">STUDENT EMPLOYMENT<i class="arrow right"></i>
 				<img class="img-fluid" src="./images/Main Page_Student Employemnt_1.jpg" width="100%" height="100%" />
 			</a>
             <div class="employmentText">

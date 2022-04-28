@@ -1,42 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="d1497c29-9fa3-444d-b907-efe85e75ff09" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/htdocs3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/htdocs3.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/shifts/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/shifts/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin/shifts/view_shifts.php" beforeDir="false" afterPath="$PROJECT_DIR$/admin/shifts/view_shifts.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catering/catering_waiver.php" beforeDir="false" afterPath="$PROJECT_DIR$/catering/catering_waiver.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/catering/template/catering2.inc.php" beforeDir="false" afterPath="$PROJECT_DIR$/catering/template/catering2.inc.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/celebrationcookies/cookie.js" beforeDir="false" afterPath="$PROJECT_DIR$/celebrationcookies/cookie.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/celebrationcookies/cybersource_handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/celebrationcookies/cybersource_handler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/celebrationcookies/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/celebrationcookies/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/celebrationcookies/order.php" beforeDir="false" afterPath="$PROJECT_DIR$/celebrationcookies/order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/celebrationcookies/submit_handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/celebrationcookies/submit_handler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/celebrationcookies/submit_success.php" beforeDir="false" afterPath="$PROJECT_DIR$/celebrationcookies/submit_success.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookies/cybersource_handler.php" beforeDir="false" afterPath="$PROJECT_DIR$/cookies/cybersource_handler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookies/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/cookies/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookies/order.php" beforeDir="false" afterPath="$PROJECT_DIR$/cookies/order.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cookies/submit_success.php" beforeDir="false" afterPath="$PROJECT_DIR$/cookies/submit_success.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employment/fulltime.php" beforeDir="false" afterPath="$PROJECT_DIR$/employment/fulltime.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/employment/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/employment/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employment/student.php" beforeDir="false" afterPath="$PROJECT_DIR$/employment/student.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/forms/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/forms/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/marketingtest/sites/default/files/xmlsitemap/NXhscRe0440PFpI5dSznEVgmauL25KojD7u4e9aZwOM/1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/marketingtest/sites/default/files/xmlsitemap/NXhscRe0440PFpI5dSznEVgmauL25KojD7u4e9aZwOM/1.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signup/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/signup/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signup/insert_signup.php" beforeDir="false" afterPath="$PROJECT_DIR$/signup/insert_signup.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signup/select_shift.php" beforeDir="false" afterPath="$PROJECT_DIR$/signup/select_shift.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signup/select_task.php" beforeDir="false" afterPath="$PROJECT_DIR$/signup/select_task.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signup/shifts.css" beforeDir="false" afterPath="$PROJECT_DIR$/signup/shifts.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/signup/view_signups.php" beforeDir="false" afterPath="$PROJECT_DIR$/signup/view_signups.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/fsockopen/fsockopen_1.php" beforeDir="false" afterPath="$PROJECT_DIR$/test/fsockopen/fsockopen_1.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/fsockopen/fsockopen_2.php" beforeDir="false" afterPath="$PROJECT_DIR$/test/fsockopen/fsockopen_2.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings">
+  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+    <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
   <component name="Git.Settings">
@@ -44,6 +23,37 @@
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration">
+    <include_path>
+      <path value="$PROJECT_DIR$/vendor/illuminate/container" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/events" />
+      <path value="$PROJECT_DIR$/vendor/doctrine/inflector" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/contracts" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/support" />
+      <path value="$PROJECT_DIR$/vendor/illuminate/database" />
+      <path value="$PROJECT_DIR$/vendor/nesbot/carbon" />
+      <path value="$PROJECT_DIR$/vendor/symfony/translation" />
+      <path value="$PROJECT_DIR$/vendor/symfony/contracts" />
+      <path value="$PROJECT_DIR$/vendor/composer" />
+      <path value="$PROJECT_DIR$/vendor/symfony/polyfill-mbstring" />
+      <path value="$PROJECT_DIR$/vendor/monolog/monolog" />
+      <path value="$PROJECT_DIR$/vendor/google/apiclient" />
+      <path value="$PROJECT_DIR$/vendor/google/apiclient-services" />
+      <path value="$PROJECT_DIR$/vendor/google/auth" />
+      <path value="$PROJECT_DIR$/vendor/psr/cache" />
+      <path value="$PROJECT_DIR$/vendor/phpseclib/phpseclib" />
+      <path value="$PROJECT_DIR$/vendor/psr/http-message" />
+      <path value="$PROJECT_DIR$/vendor/psr/container" />
+      <path value="$PROJECT_DIR$/vendor/psr/log" />
+      <path value="$PROJECT_DIR$/vendor/phpmailer/phpmailer" />
+      <path value="$PROJECT_DIR$/vendor/psr/simple-cache" />
+      <path value="$PROJECT_DIR$/vendor/klein/klein" />
+      <path value="$PROJECT_DIR$/vendor/firebase/php-jwt" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/guzzle" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/promises" />
+      <path value="$PROJECT_DIR$/vendor/guzzlehttp/psr7" />
+    </include_path>
   </component>
   <component name="ProjectId" id="27nSB5bFNPObcSbV7s1GBgYmzhj" />
   <component name="ProjectViewState">
@@ -54,7 +64,17 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
+      <option name="pathToComposerJson" value="$PROJECT_DIR$/composer.json" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -65,8 +85,11 @@
       <option name="presentableId" value="Default" />
       <updated>1649954227626</updated>
       <workItem from="1649954258021" duration="647000" />
-      <workItem from="1651166661589" duration="944000" />
+      <workItem from="1651166661589" duration="5959000" />
     </task>
     <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
   </component>
 </project>
