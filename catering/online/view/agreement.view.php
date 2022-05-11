@@ -73,9 +73,33 @@
 		<form action="/catering/online/post/post.php" method="POST">
 			<input type="hidden" name="status" value="Agreement">
 			<input type="hidden" name="agreeement" value="agreed">
-			<input type="hidden" id="hidden_restaurant" name="restaurant" value="<?php  if ($_SESSION['catering']['restaurant'] == ''){echo 'highland_burrito';} else{echo $_SESSION['catering']['restaurant'];} ?>">
-			<button class="btn btn-primary btn-lg">Agree</button>
-			<a href="/catering/express" class="btn btn-primary btn-lg">Disagree</a>
+<!--			<input type="hidden" id="hidden_restaurant" name="restaurant" value="--><?php // if ($_SESSION['catering']['restaurant'] == ''){echo 'highland_burrito';} else{echo $_SESSION['catering']['restaurant'];} ?><!--">-->
+<!--            --><?php // if ($_SESSION['catering']['restaurant'] != 'ondeck') {
+//                echo '<button class="btn btn-primary btn-lg">Agree</button>';
+//			    echo '<a href="/catering/express" class="btn btn-primary btn-lg">Disagree</a>';}
+//            ?>
+            <?php
+            if ($_SESSION['catering']['restaurant'] != '' && $_SESSION['catering']['restaurant'] != 'highland_burrito'){
+                if ($_SESSION['catering']['restaurant'] != 'ondeck' && $_SESSION['catering']['restaurant'] != 'highland'){
+                    echo '<button class="btn btn-primary btn-lg">Agree</button>';
+			    echo '<a href="/catering/express" class="btn btn-primary btn-lg">Disagree</a>';
+                }
+                else {
+                    require_once($_SERVER['DOCUMENT_ROOT'] . '/catering/online/policy/'.$_SESSION['catering']['restaurant'].'.php');
+                }
+            }
+            else{
+                require_once($_SERVER['DOCUMENT_ROOT'] . '/catering/online/policy/highland_burrito.php');
+            }
+            ?>
+<!--            <script>-->
+<!--                var sel = document.getElementById('select_restaurant');-->
+<!--                var value = sel.options[sel.selectedIndex].value;-->
+<!--                if (value != 'ondeck') {-->
+<!--                    document.write('<button class="btn btn-primary btn-lg">Agree</button>')-->
+<!--                    document.write('<a href="/catering/express" class="btn btn-primary btn-lg">Disagree</a>')-->
+<!--                }-->
+<!--            </script>-->
 		</form>
 	</div>
 

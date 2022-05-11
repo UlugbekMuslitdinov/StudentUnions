@@ -5,16 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d1497c29-9fa3-444d-b907-efe85e75ff09" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/htdocs3.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/htdocs3.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employment/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/employment/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catering/online/view/agreement.view.php" beforeDir="false" afterPath="$PROJECT_DIR$/catering/online/view/agreement.view.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/catering/online_order/policy/ondeck.php" beforeDir="false" afterPath="$PROJECT_DIR$/catering/online_order/policy/ondeck.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/involvement/arizonaesportsarena/index.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="ComposerSettings" synchronizationState="SYNCHRONIZE">
+  <component name="ComposerSettings" doNotAsk="true" synchronizationState="SYNCHRONIZE">
     <pharConfigPath>$PROJECT_DIR$/composer.json</pharConfigPath>
     <execution />
   </component>
@@ -70,12 +71,6 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
-  <component name="RunManager">
-    <configuration default="true" type="ComposerRunConfigurationType" factoryName="Composer Script">
-      <option name="pathToComposerJson" value="$PROJECT_DIR$/composer.json" />
-      <method v="2" />
-    </configuration>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -86,10 +81,23 @@
       <updated>1649954227626</updated>
       <workItem from="1649954258021" duration="647000" />
       <workItem from="1651166661589" duration="5959000" />
+      <workItem from="1651767565001" duration="34000" />
+      <workItem from="1652286003826" duration="7861000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="php">
+          <url>file://$PROJECT_DIR$/involvement/arizonaesportsarena/index.php</url>
+          <line>53</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

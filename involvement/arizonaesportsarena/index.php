@@ -36,6 +36,14 @@ if(isset($_GET['form_submitted'])) {
 	<h4 class="operation_hours_header">Hours Of Operation</h4>
 	<!-- <div class="todays_hours"><span><?=$todays_hours?></span></div> -->
 	<p>11am - 9pm Monday - Friday<br>1pm - 8pm Weekends<br><em>Closed on university recognized <a href="https://hr.arizona.edu/employees-affiliates/leaves/holidays" target="_blank">holidays</a></em></p>
+    <div style="border: 1px solid black; padding: 5px; margin-top: 5px; width: 80%">
+        <h5 style="font-weight: bold">Summer Hours:</h5>
+        <p>1pm-5pm from 5/14 - 5/20 <br>
+            Closed to walk-ins 5/21 - 8/7<br>
+            1pm-5pm from 8/8 - 8/19<br>
+            Resume regular hours starting 8/20<br>
+        </p>
+    </div>
 </div>
 
 <div>
@@ -204,7 +212,7 @@ if(isset($_GET['form_submitted'])) {
 	Monitor: ViewSonic XG2705 144hz<br>
 	Keyboard: Viper Gaming V770 RGB Mechanical<br>
 	Mouse: Viper Gaming V570 Blackout<br>
-	Headphones: Viper Gaming<br>
+        Headphones: <i>Currently Unavailable</i><br>
 	Running on Windows 10<br>
 	<i>*Gamers are encouraged to bring their own peripherals if they choose!</i></p><br>
 </div>
