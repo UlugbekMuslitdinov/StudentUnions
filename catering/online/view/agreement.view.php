@@ -79,17 +79,8 @@
 //			    echo '<a href="/catering/express" class="btn btn-primary btn-lg">Disagree</a>';}
 //            ?>
             <?php
-            if ($_SESSION['catering']['restaurant'] != '' && $_SESSION['catering']['restaurant'] != 'highland_burrito'){
-                if ($_SESSION['catering']['restaurant'] != 'ondeck' && $_SESSION['catering']['restaurant'] != 'highland'){
-                    echo '<button class="btn btn-primary btn-lg">Agree</button>';
-			    echo '<a href="/catering/express" class="btn btn-primary btn-lg">Disagree</a>';
-                }
-                else {
-                    require_once($_SERVER['DOCUMENT_ROOT'] . '/catering/online/policy/'.$_SESSION['catering']['restaurant'].'.php');
-                }
-            }
-            else{
-                require_once($_SERVER['DOCUMENT_ROOT'] . '/catering/online/policy/highland_burrito.php');
+            if ($_SESSION['catering']['restaurant'] != 'ondeck') {
+                require_once($_SERVER['DOCUMENT_ROOT'] . '/catering/online/view/btns.php');
             }
             ?>
 <!--            <script>-->
