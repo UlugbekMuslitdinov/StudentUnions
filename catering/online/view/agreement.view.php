@@ -70,7 +70,7 @@
 				?>
 			</ul>
 		</div>
-		<form action="/catering/online/post/post.php" method="POST">
+		<form action="/catering/online/post/post.php" method="POST" id="choice">
 			<input type="hidden" name="status" value="Agreement">
 			<input type="hidden" name="agreeement" value="agreed">
 <!--			<input type="hidden" id="hidden_restaurant" name="restaurant" value="--><?php // if ($_SESSION['catering']['restaurant'] == ''){echo 'highland_burrito';} else{echo $_SESSION['catering']['restaurant'];} ?><!--">-->
@@ -78,19 +78,23 @@
 //                echo '<button class="btn btn-primary btn-lg">Agree</button>';
 //			    echo '<a href="/catering/express" class="btn btn-primary btn-lg">Disagree</a>';}
 //            ?>
-            <?php
-            if ($_SESSION['catering']['restaurant'] != 'ondeck') {
-                require_once($_SERVER['DOCUMENT_ROOT'] . '/catering/online/view/btns.php');
-            }
-            ?>
-<!--            <script>-->
-<!--                var sel = document.getElementById('select_restaurant');-->
-<!--                var value = sel.options[sel.selectedIndex].value;-->
-<!--                if (value != 'ondeck') {-->
-<!--                    document.write('<button class="btn btn-primary btn-lg">Agree</button>')-->
-<!--                    document.write('<a href="/catering/express" class="btn btn-primary btn-lg">Disagree</a>')-->
-<!--                }-->
-<!--            </script>-->
+<!--            --><?php
+//            if ($_SESSION['catering']['restaurant'] != 'ondeck') {
+//                require_once($_SERVER['DOCUMENT_ROOT'] . '/catering/online/view/btns.php');
+//            }
+//            ?>
+            <script>
+                var select = document.getElementById("select_restaurant");
+
+                var value = select.options[sel.selectedIndex].value;
+
+                if (value == "ondeck" || value == "highland") {
+                    document.getElementById("choice").style.display = 'none';
+                }
+                else{
+                    document.getElementById("choice").style.display = 'flex';
+                }
+            </script>
 		</form>
 	</div>
 
