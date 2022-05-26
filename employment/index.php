@@ -2,6 +2,67 @@
 <head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- META TAGS Start -->
+    <meta name='keywords' content='jobs Tucson'>
+    <meta name='keywords' content='Tucson jobs'>
+    <meta name='keywords' content='jobs in Tucson'>
+    <meta name='keywords' content='full time jobs Tucson'>
+    <meta name='keywords' content='Full time work'>
+    <meta name='keywords' content='Part time work'>
+    <meta name='keywords' content='Student work'>
+    <meta name='keywords' content='part time jobs Tucson'>
+    <meta name='keywords' content='student jobs Tucson'>
+    <meta name='keywords' content='work study Tucson'>
+    <meta name='keywords' content='AZ Tucson full time'>
+    <meta name='keywords' content='Az Tucson student jobs'>
+    <meta name='keywords' content='Az Tucson employment'>
+    <meta name='keywords' content='Tucson students'>
+    <meta name='keywords' content='employment'>
+    <meta name='keywords' content='employee'>
+    <meta name='keywords' content='student employment'>
+    <meta name='keywords' content='student employee'>
+    <meta name='keywords' content='jobs near me'>
+    <meta name='keywords' content='hiring near me'>
+    <meta name='keywords' content='jobs hiring near me'>
+    <meta name='keywords' content='jobs'>
+    <meta name='keywords' content='student jobs'>
+    <meta name='keywords' content='Work study jobs'>
+    <meta name='keywords' content='what is work study'>
+    <meta name='keywords' content='Federal work study'>
+    <meta name='keywords' content='UofA jobs'>
+    <meta name='keywords' content='student worker'>
+    <meta name='keywords' content='Student jobs near me'>
+    <meta name='keywords' content='jobs needing students'>
+    <meta name='keywords' content='employment'>
+    <meta name='keywords' content='full-time employment'>
+    <meta name='keywords' content='Full Time jobs near me'>
+    <meta name='keywords' content='full-time jobs'>
+    <meta name='keywords' content='jobs hiring near me full-time'>
+    <meta name='keywords' content='full time employment'>
+    <meta name='keywords' content='University of Arizona jobs'>
+    <meta name='keywords' content='University of Arizona employment'>
+    <meta name='keywords' content='University of Arizona student jobs'>
+    <meta name='keywords' content='UofA'>
+    <meta name='keywords' content='UA Jobs'>
+    <meta name='keywords' content='Looking for jobs'>
+    <meta name='keywords' content='Job vacancies'>
+    <meta name='keywords' content='Job openings'>
+    <meta name='keywords' content='University of Arizona'>
+    <meta name='keywords' content='city of Tucson jobs'>
+    <meta name='keywords' content='Career'>
+    <meta name='keywords' content='Full time career'>
+    <meta name='keywords' content='Recruitment'>
+    <meta name='keywords' content='Hiring'>
+    <meta name='keywords' content='Hire'>
+    <meta name='keywords' content='Jobs hiring'>
+    <meta name='keywords' content='Apply for job'>
+    <meta name='keywords' content='Jobs in Arizona'>
+    <meta name='keywords' content='University jobs'>
+    <meta name='keywords' content='Hospitality jobs'>
+    <meta name='keywords' content='Back of the house jobs'>
+    <meta name='keywords' content='Cook jobs'>
+    <meta name='keywords' content='Food service jobs'>
+    <!-- META TAGS End -->
 </head>
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -186,7 +247,7 @@ function showOtherText() {
 			break;
 		}
 	}
-	if (x.style.display == "block" && selectedVal !== "Other") {
+	if (x.style.display == "inline" && selectedVal !== "Other") {
 		x.style.display = "none";
 		document.getElementById("Other_text").required = false;
 	} else if (x.style.display == "none" && selectedVal == "Other") {
@@ -211,7 +272,7 @@ function showOtherText() {
     </div>
     <div class="row">
         <div class="col fullTime">
-            <a id="student_employment" onclick="ga('send', 'event', 'button', 'click', 'se');" href="./student.php" class="employmentHeader">STUDENT EMPLOYMENT<i class="arrow right"></i>
+            <a id="student_employment" onclick="ga('send', 'event', 'button', 'click', 'se');" href="./student.php" class="employmentHeader" target="_blank">STUDENT EMPLOYMENT<i class="arrow right"></i>
 				<img class="img-fluid" src="./images/Main Page_Student Employemnt_1.jpg" width="100%" height="100%" />
 			</a>
             <div class="employmentText">
@@ -219,7 +280,7 @@ function showOtherText() {
             </div>
         </div>
         <div class="col student">
-            <a href="./fulltime.php" class="employmentHeader">FULL-TIME EMPLOYMENT<i class="arrow right"></i>
+            <a href="./fulltime.php" class="employmentHeader" target="_blank">FULL-TIME EMPLOYMENT<i class="arrow right"></i>
             	<img class="img-fluid" src="./images/Main Page_Full-time Employment_2.jpg" width="100%" height="100%" />
 			</a>
 			<div class="employmentText">

@@ -59,7 +59,7 @@ catering_start($page_options);
             <img class="card-img-top" src="../images/einsteinbros.png" alt="Card image cap">
             <div class="card-body">
                 <p class="card-text" style="margin-bottom: 21px;">Everything from bagels to sandwiches and more</p>
-                <a href="/catering/online_order/agreement.php?r=einsteins" target="blank" class="btn">Check menu</a>
+                <a href="/catering/online_order/agreement.php?r=einsteins" target="blank" class="btn">Order Now</a>
             </div>
         </div>
     </div>
@@ -81,7 +81,7 @@ catering_start($page_options);
             <img class="card-img-top" src="../images/catalyst.png" alt="Card image cap">
             <div class="card-body">
                 <p class="card-text" style="">Catalyst Cafe is a unique concept create by the Arizona Student Unions and the UA Health Sciences.</p>
-                <a href="/catering/online_order/agreement.php?r=catalyst" target="blank" class="btn">Check menu</a>
+                <a href="/catering/online_order/agreement.php?r=catalyst" target="blank" class="btn">Order now</a>
             </div>
         </div>
     </div>
@@ -92,7 +92,7 @@ catering_start($page_options);
             <img class="card-img-top" src="../images/slotcanyon.png" alt="Card image cap">
             <div class="card-body">
                 <p class="card-text">More than a creamery. It's a great place to get together with friends and just hang out</p>
-                <a href="/catering/online_order/agreement.php?r=slotcanyon" target="blank" class="btn">Check menu</a>
+                <a href="/catering/online_order/agreement.php?r=slotcanyon" target="blank" class="btn">Order now</a>
             </div>
         </div>
     </div>
@@ -103,7 +103,7 @@ catering_start($page_options);
             <img class="card-img-top" src="../images/iqfresh.jpg" alt="IQ Fresh">
             <div class="card-body">
                 <p class="card-text">Show your Mensa-level mental capacity by picking up some IQ smoothies, fresh salads, acai bowls and wraps at IQ Fresh. </p>
-                <a href="/catering/online_order/agreement.php?r=iq_fresh" target="blank" class="btn">Check menu</a>
+                <a href="/catering/online_order/agreement.php?r=iq_fresh" target="blank" class="btn">Order now</a>
             </div>
         </div>
     </div>

@@ -3,6 +3,59 @@
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!--- META TAGS Start --->
+    <meta name='keywords' content='student employee  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='employment for students  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='student employment  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='work study  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='work study for employees  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='federal work study  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='student employee  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='University of Arizona employment  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='UofA  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='UA Jobs  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='University of Arizona  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='student jobs  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='jobs for students  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='jobs for students uofa  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='jobs for students university of Arizona  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='student job Tucson  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='work study Tucson  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='student employment Tucson  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='Tucson jobs  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='jobs Tucson  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='student jobs Tucson Az  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='Az Tucson student jobs  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='student jobs near me  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='near me student work  '>
+    <meta name='keywords' content=' '>
+    <meta name='keywords' content='Student work  '>
+    <!--- META TAGS End --->
+
 </head>
 <?php
 require_once($_SERVER['DOCUMENT_ROOT'] . '/commontools/includes/mysqli.inc');
@@ -79,6 +132,7 @@ session_start();
         font-family: "Proxima Nova" !important;
         margin-bottom: 6px;
         width: 100%;
+        text-transform: capitalize;
     }
 
     .joinTeamText {
@@ -100,6 +154,7 @@ session_start();
         font-weight: bold;
         font-family: "Proxima Nova" !important;
         margin-bottom: 6px;
+        text-transform: capitalize;
     }
 
     .aalp,
@@ -111,6 +166,7 @@ session_start();
         font-weight: bold;
         font-family: "Proxima Nova" !important;
         margin-bottom: 6px;
+        text-transform: capitalize;
     }
 
     .howToApplyText,
@@ -198,6 +254,16 @@ session_start();
     .links>div {
         margin-bottom: 20px;
     }
+    .benefitsDiv {
+        white-space: nowrap;
+        margin-left: -20px;
+    }
+    .examplePositionsText>ul {
+        margin-top: -30px;
+    }
+    .examplePositionsText>ul>li {
+        line-height: 2.2;
+    }
 </style>
 <script>
 
@@ -209,17 +275,17 @@ session_start();
     <div class="container">
         <div class="row links">
             <div class="col-sm">
-                <a href="https://arizona.joinhandshake.com/login" class="imageLink">
-                    <img src="./images/Open_Positions_Button.png" alt="Open Positions" width="100%" height="100%">
+                <a href="https://arizona.joinhandshake.com/login" class="imageLink" target="_blank">
+                    <img src="./images/Student Employment Page Buttons -01.png" alt="Open Positions" width="100%" height="100%">
                 </a>
             </div>
             <div class="col-sm">
-                <a href="https://su-wdevtest.union.arizona.edu/about/aalp/" class="imageLink">
+                <a href="#aalp" class="imageLink">
                     <img src="./images/Student Employment Page Buttons -02.png" alt="Leadership Program (AALP)" width="100%" height="100%">
                 </a>
             </div>
             <div class="col-sm">
-                <a href="https://su-wdevtest.union.arizona.edu/employment/faq.php" class="imageLink">
+                <a href="#hiringFAQ" class="imageLink">
                     <img src="./images/Student Employment Page Buttons -03.png" alt="FAQ's" width="100%" height="100%">
                 </a>
             </div>
@@ -230,12 +296,12 @@ session_start();
                     JOIN THE ARIZONA STUDENT UNIONS' TEAM
                 </div>
                 <div class="joinTeamText">
-                    Over 1,000 students work for the Arizona Student Unions each semester, making us the largest student employer on campus. Be part of our diverse winning team and receive hands-on experience, while working in a fun and safe environment. We strive to coach, teach, and mentor all our students.
+                    Over 1,000 students work for the Arizona Student Unions each semester, making us the largest student employer on-campus. Be part of our diverse winning team and receive hands-on experience, while working in a fun and safe environment. We strive to coach, teach, and mentor all our students.
                     <br><br>
                     Studies prove that students with campus jobs tend to perform better in school, so get involved today! We have several different areas for students to work in, including: Culinary Services, Catering, Operations, Retail, Human Resources, Marketing, Administration, and Event Services.
                 </div>
             </div>
-        </div>
+        </div><br/>
         <div class="row">
             <div class="col">
                 <div class="howToApply">
@@ -243,59 +309,59 @@ session_start();
                 </div>
                 <div class="howToApplyText">
                     To apply, please visit
-                    <a href="https://arizona.joinhandshake.com/login">
+                    <a href="https://arizona.joinhandshake.com/login"  target="_blank">
                         Handshake
                     </a>
                     and search for 'AZ Student Unions'
                     <br><br>
                     If you have any questions, please feel free to email us at
-                    <a href="mailto: su-unionshr@email.arizona.edu">
+                    <a href="mailto: su-unionshr@email.arizona.edu" target="_blank">
                         su-unionshr@email.arizona.edu
                     </a>
                     or call us at 520-626-9205.
                     <br><br>
                     <span style="font-style:italic; font-weight:bold;">
-                        Need to know:
+                        Before you apply:
                     </span>
                     <ul>
                         <li>Bring acceptable documentation as defined
-                            <a href="https://union.arizona.edu/employment/accept-docs.pdf">
+                            <a href="https://union.arizona.edu/employment/accept-docs.pdf" target="_blank">
                                 HERE.
                             </a>
                         </li>
                         <li>
-                            Are you registered for classes? For “student employment,” you must be registered as a UA student with at least 6 units.
+                            Confirm that you are registered as a UArizona student with at least 6 units in order to qualify for Student Employment.
                         </li>
                         <li>
-                            Know your schedule. Decide when you really have time to work and stick to it.
+                            Confirm your class schedule and map out when you really have time to work so that you can fully commit to your school and work schedule.
                         </li>
                     </ul>
 
                 </div>
             </div>
-        </div>
+        </div><br/>
         <div class="row">
             <div class="col">
                 <div class="workAndSchool">
                     We Understand Juggling Work and School
                 </div>
                 <div class="workAndSchoolText">
-                    At the Arizona Student Unions, we know that a students' priority is to learn. We understand the stress of midterms and final exams. We not only teach student employees leadership and time management, we are also very flexible when it comes to working around your class and exam schedule.
+                    At the Arizona Student Unions, we know that a student's priority is to learn. We understand the stress of midterms and final exams. We not only teach student employees leadership and time management, we are also very flexible when it comes to working around your class and exam schedule.
                     <br><br>
                     If you see three papers and a test coming in a few weeks, let your supervisor know as soon as you know, so that you can arrange something in advance, instead of waiting until the last minute!
                 </div>
             </div>
-        </div>
+        </div><br/>
         <div class="row">
             <div class="col">
                 <div class="acceptWorkStudy">
                     We Accept Work Study
                 </div>
                 <div class="acceptWorkStudyText">
-                    Federal Work Study is accepted at the Arizona Student Unions. The Federal Work Study Program provides opportunity to full-time students seeking part-time positions. Students must complete the FAFSA and demonstrate financial need for the respective year to receive Federal Work Study. For more information on Federal Work study, go to The Office of Scholarships and Financial Aid.
+                    Federal Work Study is accepted at the Arizona Student Unions. The Federal Work Study Program provides opportunity to full-time students seeking part-time positions. Students must complete the FAFSA and demonstrate financial need for the respective year to receive Federal Work Study. For more information on Federal Work study, go to <a href="https://financialaid.arizona.edu/" >The Office of Scholarships and Financial Aid </a>.
                 </div>
             </div>
-        </div>
+        </div><br/>
         <div class="row">
             <div class="col">
                 <div class="ourBenefits">
@@ -303,52 +369,52 @@ session_start();
                 </div>
                 <div class="ourBenefitsText">
                     <div class="row">
-                        <div class="col-sm">
+                        <div class="col-sm benefitsDiv">
                             <img src="./images/Student Employment Page Buttons -04.png" />
                             <span>50% off meals</span>
                         </div>
-                        <div class="col-sm">
+                        <div class="col-sm benefitsDiv">
                             <img src="./images/Student Employment Page Buttons -08.png" />
                             <span>Meet new friends</span>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm">
+                        <div class="col-sm benefitsDiv">
                             <img src="./images/Student Employment Page Buttons -05.png" />
                             <span>Work Study accepted</span>
                         </div>
-                        <div class="col-sm">
+                        <div class="col-sm benefitsDiv">
                             <img src="./images/Student Employment Page Buttons -09.png" />
                             <span>Work with other students</span>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm">
+                        <div class="col-sm benefitsDiv">
                             <img src="./images/Student Employment Page Buttons -06.png" />
                             <span>Flexible hours</span>
                         </div>
-                        <div class="col-sm">
+                        <div class="col-sm benefitsDiv">
                             <img src="./images/Student Employment Page Buttons -10.png" />
                             <span>Convenience (we're on campus)</span>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-sm">
+                        <div class="col-sm benefitsDiv">
                             <img src="./images/Student Employment Page Buttons -07.png" />
                             <span>Competitive wages</span>
                         </div>
-                        <div class="col-sm">
+                        <div class="col-sm benefitsDiv">
                             <img src="./images/Student Employment Page Buttons -11.png" />
                             <span>Opportunity for advancement</span>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </div><br/>
         <div class="row">
             <div class="col">
                 <div class="examplePositions">
-                    Example Student Positions at the Unions
+                    Example Student Positions
                 </div>
                 <div class="row">
                     <div class="col-sm examplePositionsImage">
@@ -367,10 +433,10 @@ session_start();
                     </div>
                 </div>
             </div>
-        </div>
+        </div><br/>
         <div class="row">
-            <div class="col">
-                <div class="aalp">
+            <div class="col" id="aalp">
+                <div class="aalp" >
                     ARIZONA APPLIED LEADERSHIP PROGRAM (AALP)
                 </div>
                 <div class="aalpText">
@@ -380,15 +446,15 @@ session_start();
                     <span class="aalpContactText">
                         AZ Student Unions<br>
                         Human Resources<br>
-                        <a href="mailto: harrisoj@email.arizona.edu">
+                        <a href="mailto: harrisoj@email.arizona.edu" target="_blank">
                             harrisoj@email.arizona.edu
                         </a>
                     </span>
                 </div>
             </div>
-        </div>
+        </div><br/>
         <div class="row">
-            <div class="col">
+            <div class="col" id="hiringFAQ">
                 <div class="hiringFAQ">
                     APPLICATION AND HIRING FAQS
                 </div>
@@ -443,7 +509,7 @@ session_start();
                             <li>Operations: $ 7.65 - $11 per hour</li>
                         </ul> -->
                             <p>
-                                Internships- may be paid or unpaid. Please refer to the description or contact the supervisor for further questions
+                                Internships may be paid or unpaid. Please refer to the description or contact the supervisor for further questions
                             </p>
                             <p class="top">
                                 <a href="#top" style="color: #C00;">&#9650; TOP</a>
@@ -591,7 +657,7 @@ session_start();
                         <h2 class="expand">Can I apply if I don't know my schedule?<i class="arrow down"></i></h2>
                         <div class="hiddenAnswer">
                             <p>
-                                Yes you can, but it may be easier to wait until you have a general idea of your availability. You are welcome to either reach out to the contact person identified in the posting or to our Student Unions Human Resources office for assistance. They can be reached at 520-626-9205 or at <a href="mailto:su-unionshr@email.arizona.edu">su-unionshr@email.arizona.edu</a>.
+                                Yes you can, but it may be easier to wait until you have a general idea of your availability. You are welcome to either reach out to the contact person identified in the posting or to our Student Unions Human Resources office for assistance. They can be reached at 520-626-9205 or at <a href="mailto:su-unionshr@email.arizona.edu" target="_blank">su-unionshr@email.arizona.edu</a>.
                                 <!-- We recommend waiting to apply until you know the hours and times you would like to work. It is hard to fill out the scheduling tool on our application 
                         if you don't know your class schedule. The Union's application allows you to mark the hours that you want to work, so it's best to be prepared. -->
                             </p>
@@ -619,7 +685,7 @@ session_start();
                         <h2 class="expand">Once I apply, when will I be contacted?<i class="arrow down"></i></h2>
                         <div class="hiddenAnswer">
                             <p>
-                                Depending on where you applied to, the time it takes for you to be contacted may vary. Please be patient as our managers are very busy. If you are extremely interested in a certain position, feel free to contact the manager at that unit and give them your name and contact information, You are also welcome to reach out to our Student Unions Human Resources office for assistance. They can be reached at 520-626-9205 or at <a href="mailto:su-unionshr@email.arizona.edu">su-unionshr@email.arizona.edu</a>.
+                                Depending on where you applied to, the time it takes for you to be contacted may vary. Please be patient as our managers are very busy. If you are extremely interested in a certain position, feel free to contact the manager at that unit and give them your name and contact information, You are also welcome to reach out to our Student Unions Human Resources office for assistance. They can be reached at 520-626-9205 or at <a href="mailto:su-unionshr@email.arizona.edu" target="_blank">su-unionshr@email.arizona.edu</a>.
                                 <!-- The Unions have around 40 units that hire students, and even more if you include our internship sites. Depending on where you applied to, the time 
                         it takes for you to be contacted may vary. Please be patient as our managers are very busy. If you are extremely interested in a certain position, 
                         feel free to contact the manager at that unit and give them your name and contact information. This could increase your chances of gaining employment 
@@ -701,7 +767,7 @@ session_start();
                         <h2 class="expand">Who can I talk to if I have questions about the application process or Hiring?<i class="arrow down"></i></h2>
                         <div class="hiddenAnswer">
                             <p>
-                                You can reach out to our Student Human Resources at the Unions at <a href="mailto:su-unionshr@email.arizona.edu">su-unionshr@email.arizona.edu</a>. You may contact their office by email with any question you have or by phone at (520) 626-9205.
+                                You can reach out to our Student Human Resources at the Unions at <a href="mailto:su-unionshr@email.arizona.edu" target="_blank">su-unionshr@email.arizona.edu</a>. You may contact their office by email with any question you have or by phone at (520) 626-9205.
                                 <!-- Student Human Resources is a student run group that seeks to better employment for student employees at the
                         Unions at http://www.union.arizona.edu/about/student_hr/. You may contact SHR with any question you have by
                         email <a href="mailto:unionshr@email.arizona.edu">unionshr@email.arizona.edu</a> or phone (520) 626-9205 -->
