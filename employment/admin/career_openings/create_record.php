@@ -30,50 +30,18 @@ echo '<input class="form-submit" type="submit" value="Create Record">';
 echo '</form>';
 echo '</div>';
 
-// Check if the form has been submitted
-if (isset($_POST['submit'])) {
-    // Get the data from the form
+// If the form has been submitted, insert the record into the database.
+if (isset($_POST['position'])) {
     $position = $_POST['position'];
     $url = $_POST['url'];
     $image_file = $_POST['image_file'];
     $retired = $_POST['retired'];
-
-    // Check if the position is empty
-    if (empty($position)) {
-        // Set an error message
-        $error = 'Please enter the position of the applicant.';
+    $query = "INSERT INTO career_openings (position, url, image_file, retired) VALUES ('$position', '$url', '$image_file', '$retired')";
+    $result = $db->query($query);
+    if (!$result) {
+        echo '<p>Error inserting record into database!</p>';
+    } else {
+        echo '<p>Record inserted successfully!</p>';
     }
-    // Check if the url is empty
-    elseif (empty($url)) {
-        // Set an error message
-        $error = 'Please enter the url of the applicant.';
-    }
-    // Check if the image file is empty
-    elseif (empty($image_file)) {
-        // Set an error message
-        $error = 'Please enter the image file of the applicant.';
-    }
-    // Check if the retired is empty
-    elseif (empty($retired)) {
-        // Set an error message
-        $error = 'Please enter the retired of the applicant.';
-    }
-    // Check if there are no errors
-    elseif (!isset($error)) {
-        // Insert the data into the database
-        $query = "INSERT INTO 'career_openings' ('position', 'url', 'image_file', 'retired') VALUES ('$position', '$url', '$image_file', '$retired')";
-        $result = $db->query($query);
-
-        // Check if the query was successful
-        if ($result) {
-            // Set a success message
-            $success = 'The record has been added.';
-        }
-        else {
-            // Set an error message
-            $error = 'The record could not be added.';
-        }
-    }
-
 }
 
