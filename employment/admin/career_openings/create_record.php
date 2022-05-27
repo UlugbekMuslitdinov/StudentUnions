@@ -1,30 +1,35 @@
 <?php
 // This file will allow the admin to create a new career opening record.
+
+// Styles import
+echo "<link rel='stylesheet' type='text/css' href='../bootstrap/css/bootstrap.css'/>";
+echo "<link rel='stylesheet' type='text/css' href='../bootstrap/css/bootstrap-theme.css'/>";
+
+// Web Auth Login required
+$webauth_splash = '';
+require_once($_SERVER['DOCUMENT_ROOT'].'/commontools/webauth/include.php');
+$netID = $_SESSION['webauth']['netID'];
+
+require_once($_SERVER['DOCUMENT_ROOT'].'/template/global.inc');
+$page_options['title'] = 'Career Openings';
+page_start($page_options);
+
 echo '<h1>Create a New Career Opening</h1>';
-
-
-// Connect to the database
-$host="localhost";
-$port=3306;
-$socket="";
-$user="root";
-$password="Hockey25jh";
-$dbname="su";
-
-$con = new mysqli($host, $user, $password, $dbname, $port, $socket)
-or die ('Could not connect to the database server' . mysqli_connect_error());
-
-//$con->close();
 ?>
 
 <!--- Form with fields name, surname and position ---->
 <form action="create_record.php" method="post">
-<input type="text" name="name" placeholder="Name" required>
-<input type="text" name="surname" placeholder="Surname" required>
-<input type="text" name="position" placeholder="Position" required>
-<input type="submit" value="Create Record">
-
+    <input class="form-control" type="text" name="position" placeholder="Position" required>
+    <input class="form-control" type="text" name="url" placeholder="URL" required>
+    <input class="form-control" type="text" name="image_file" placeholder="ImageFile" required>
+    <input class="form-control" type="text" name="retired" placeholder="Retired" required>
+    <input class="form-control" type="submit" value="Create Record">
+</form>
 <?php
+// Database connection
+require_once ($_SERVER['DOCUMENT_ROOT'] . '/commontools/includes/mysqli.inc');
+$db = new db_mysqli('su');
+
 // Check if the form has been submitted
 if (isset($_POST['submit'])) {
     // Get the data from the form
@@ -50,10 +55,8 @@ if (isset($_POST['submit'])) {
     // Check if there are no errors
     elseif (!isset($error)) {
         // Insert the data into the database
-        $current_time_for_db = date('Y-m-d H:i:s');
-        $id = $con->insert_id;
-        $query = "INSERT INTO `career_openings` (`name`, `surname`, `position`, `date_applied`) VALUES ('$name', '$surname', '$position', '$current_time_for_db')";
-        $result = $con->query($query);
+        $query = "INSERT INTO `career_openings` (`position`, `url`, `image_file`, `retired`) VALUES ('$name', '$surname', '$position', '$current_time_for_db')";
+        $result = $db->query($query);
 
         // Check if the query was successful
         if ($result) {
