@@ -9,13 +9,17 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/commontools/webauth/include.php');
 $netID = $_SESSION['webauth']['netID'];
 
 require_once($_SERVER['DOCUMENT_ROOT'].'/template/global.inc');
-$page_options['title'] = 'Career Openings';
+$page_options['title'] = 'Manage Career Openings';
 page_start($page_options);
 ?>
+
+<div>
+<h1>Manage Career Openings</h1><br/>
 <!--Create new record in DB button-->
 <h4><a href="create_record.php"><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
   Create New Record
     </button></a></h4>
+</div>
 
 <?php
 // Database connection
@@ -30,10 +34,10 @@ $result = $db->query($sql);
 // Each row contains info about ID, name, surname, position and date_applied
 
 
-echo "<table class='table'><thead class='thead-dark'><tr><th><h4>ID</h4></th><th><h4>Position</h4></th><th><h4>URL</h4></th><th><h4>Image File</h4></th><th><h4>Retired</h4></th><th><h4>Timestamp</h4></th><th><h4>Action</h4></th></tr></thead><tbody>";
+echo "<table class='table'><thead class='thead-dark'><tr><th><h4>ID</h4></th><th><h4>Position</h4></th><th><h4>URL</h4></th><th><h4>Image File</h4></th><th><h4>Retired</h4></th><th><h4>Action</h4></th></tr></thead><tbody>";
 // output data of each row
 while($row = $result->fetch_assoc()) {
-    echo "<tr><td><h4>" . $row["id"]. "</h4></td><td><h4>" . $row["position"]. "</h4></td><td><h4>" . $row["url"]. "</h4></td><td><h4>" . $row["image_file"]. "</h4></td><td><h4>" . $row["retired"]. "</h4></td><td><h4>" . $row["timestamp"]. "</h4></td><td><h4><a href='edit.php?id=" . $row["id"] . "'>Edit</a> | <a href='delete.php?id=" . $row["id"] . "'>Delete</a></h4></td></tr>";
+    echo "<tr><td><h4>" . $row["id"]. "</h4></td><td><h4>" . $row["position"]. "</h4></td><td><h4><a href='https://" . $row["url"] . "' target='blank'>" . $row["url"]. "</a></h4></td><td><img src='" . $row["image_file"]. "'/></td><td><h4>" . $row["retired"]. "</h4></td><td><h4><a href='edit.php?id=" . $row["id"] . "'>Edit</a> | <a href='delete.php?id=" . $row["id"] . "'>Delete</a></h4></td></tr>";
 }
 echo "</tbody></table>";
 
