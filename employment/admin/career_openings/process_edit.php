@@ -23,26 +23,6 @@ $query = "SELECT * FROM career_openings WHERE id = $career_opening_id";
 $result = $db->query($query);
 $row = $result->fetch_assoc();
 
-
-//<!--- Form to edit with prepopulated fields -->
-echo '<div style="width: 100%">';
-echo '<form class="form" action="edit.php?id=' . $career_opening_id . '" method="post">';
-echo '<input class="form-control" type="text" name="position" placeholder="Position" required value="'.$row['position'].'">';
-echo '<input class="form-control" type="text" name="url" placeholder="URL" required value="'.$row['url'].'">';
-echo '<input class="form-control" id="fileToUpload" type="file" name="file" value="Upload File" required />';
-// Retired dropdown field with prepopulated value and Yes/No options
-echo '<select class="form-control" name="retired" required>';
-if ($row['retired'] == 'Yes') {
-    echo '<option value="Yes" selected>Yes</option>';
-    echo '<option value="No">No</option>';
-} else {
-    echo '<option value="Yes">Yes</option>';
-    echo '<option value="No" selected>No</option>';
-}
-echo '<input class="form-submit" type="submit" value="Create Record" name="submit">';
-echo '</form>';
-echo '</div>';
-
 // Process the form and upload image if submitted
 if (isset($_POST['submit'])) {
     // Get the values from the form
