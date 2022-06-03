@@ -26,71 +26,58 @@ $row = $result->fetch_assoc();
 
 //<!--- Form to edit with prepopulated fields -->
 echo '<div style="width: 100%">';
-echo '<form class="form" action="edit.php?id=' . $career_opening_id . '" method="post">';
-echo '<input class="form-control" type="text" name="position" placeholder="Position" required value="'.$row['position'].'">';
-echo '<input class="form-control" type="text" name="url" placeholder="URL" required value="'.$row['url'].'">';
-echo '<input class="form-control" id="fileToUpload" type="file" name="file" value="Upload File" required />';
-// Retired dropdown field with prepopulated value and Yes/No options
-echo '<select class="form-control" name="retired" required>';
+echo '<form action="edit.php?id=' . $career_opening_id . '" method="post">';
+echo '<div class="form-group">';
+echo '<label for="position">Position</label>';
+echo '<input class="form-control" id="position" type="text" name="position" placeholder="Position" required value="'.$row['position'].'">';
+echo '</div>';
+echo '<div class="form-group">';
+echo '<label for="url">URL</label>';
+echo '<input class="form-control" id="url" type="text" name="url" placeholder="URL" required value="'.$row['url'].'">';
+echo '</div>';
+echo '<div class="form-group">';
+echo '<label for="file_upload">Change Image</label> <br>';
+echo '<img src="'."/employment/images/career_openings/".$row['image_file'].'" alt="'.$row['position'].'" style="width: 100px; height: 100px;">';
+echo '<input class="form-control" id="file_upload" type="file" name="file_upload" placeholder="File Upload" required value="'.$row['file_upload'].'">';
+echo '</div>';
+echo '<div class="form-group">';
+// Retired radio buttons with pre-filled Yes/No values
+echo '<label for="retired">Retired</label>';
 if ($row['retired'] == 'Yes') {
-    echo '<option value="Yes" selected>Yes</option>';
-    echo '<option value="No">No</option>';
+    echo '<div class="form-check">';
+    echo '<label><input class="form-check-input" type="radio" name="retired" value="Yes" checked>Yes</label>';
+    echo '</div>';
+    echo '<div class="form-check">';
+    echo '<label><input class="form-check-input" type="radio" name="retired" value="No">No</label>';
+    echo '</div>';
 } else {
-    echo '<option value="Yes">Yes</option>';
-    echo '<option value="No" selected>No</option>';
+    echo '<div class="form-check">';
+    echo '<label><input class="form-check-input" type="radio" name="retired" value="Yes">Yes</label>';
+    echo '</div>';
+    echo '<div class="form-check">';
+    echo '<label><input class="form-check-input" type="radio" name="retired" value="No" checked>No</label>';
+    echo '</div>';
 }
-echo '<input class="form-submit" type="submit" value="Create Record" name="submit">';
+echo '</div>';
+// Save changes button
+echo '<button type="submit" name="submit" class="btn btn-block btn-red mb-3 gta-cta-header-buttons">Save Changes</button>';
+echo '</div>';
 echo '</form>';
 echo '</div>';
 
+
 // Process the form and upload image if submitted
 if (isset($_POST['submit'])) {
-    // Get the values from the form
+    // Get the form data
     $position = $_POST['position'];
     $url = $_POST['url'];
     $retired = $_POST['retired'];
-    $timestamp = $row['timestamp'];
+    $file_upload = $_FILES['file_upload'];
 
-    // Image upload
-    $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/employment/images/career_openings/";
-    $file_name = basename($_FILES["file"]["name"]);
-    $target_file = $target_dir . basename($_FILES["file"]["name"]);
-    $uploadOk = 1;
-    $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
-    // Check if image file is a actual image or fake image
-    if(isset($_POST["submit"])) {
-        $check = getimagesize($_FILES["file"]["tmp_name"]);
-        if($check !== false) {
-            $uploadOk = 1;
-        } else {
-            echo "File is not an image.";
-            $uploadOk = 0;
-        }
-    }
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-        echo "Sorry, your file was not uploaded.";
-        // if everything is ok, try to upload file
-    } else {
-        if (move_uploaded_file($_FILES["file"]["tmp_name"], $target_file)) {
-            echo "The file ". basename( $_FILES["file"]["name"]). " has been uploaded.";
-        } else {
-            echo "Sorry, there was an error uploading your file.";
-        }
-    }
-
-    // Update the database with the new values
-    $query = "UPDATE career_openings SET position='$position', url='$url', retired='$retired', image_file='$file_name' WHERE id=$career_opening_id";
-    $result = mysqli_query($db, $query);
-    if ($result) {
-        echo '<div class="alert alert-success">';
-        echo '<strong>Success!</strong> The record has been updated.';
-        echo '</div>';
-    } else {
-        echo '<div class="alert alert-danger">';
-        echo '<strong>Error!</strong> The record could not be updated.';
-        echo '</div>';
-    }
+    // Update the career opening information
+    $query = "UPDATE career_openings SET position = '$position', url = '$url', retired = '$retired' WHERE id = $career_opening_id";
+    $result = $db->query($query);
 }
+
 
 page_finish();
