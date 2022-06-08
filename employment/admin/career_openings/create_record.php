@@ -33,7 +33,7 @@ echo '</div>';
 if (isset($_POST['position'])) {
     $position = $_POST['position'];
     $url = $_POST['url'];
-    $retired = $_POST['retired'];
+    $retired = "No";
 
     // Image upload
     $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/employment/images/career_openings/";
@@ -67,7 +67,15 @@ if (isset($_POST['position'])) {
         echo '<p>Error inserting record into database!</p>';
     } else {
         echo '<p>Record inserted successfully!</p>';
+        header('Location: https://su-wdevtest.union.arizona.edu/employment/admin/career_openings/index.php');
+        exit();
     }
+
+    // Redirect to the main page
+    ob_start();
+    header('Location: https://su-wdevtest.union.arizona.edu/employment/admin/career_openings/index.php');
+    ob_end_flush();
+    die();
 }
 echo '<p><a href="index.php">Back to main page</a></p>';
 page_finish();

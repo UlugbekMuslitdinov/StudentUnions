@@ -26,7 +26,7 @@ $row = $result->fetch_assoc();
 
 //<!--- Form to edit with prepopulated fields -->
 echo '<div style="width: 100%">';
-echo '<form class="form" action="edit.php?id=' . $career_opening_id . '" method="post" enctype="multipart/form-data">';
+echo '<form class="form" action="edit.php?id=' . $career_opening_id . '" method="post">';
 echo '<div class="form-group">';
 echo '<label for="position" style="font-weight: bold">Position</label>';
 echo '<input class="form-control" type="text" name="position" placeholder="Position" required value="'.$row['position'].'">';
@@ -37,12 +37,11 @@ echo '<input class="form-control" type="text" name="url" placeholder="URL" requi
 echo '</div>';
 echo '<div class="form-group">';
 echo '<label for="fileToUpload" style="font-weight: bold">Change Image</label> <br>';
-echo '<img src="'."/employment/images/career_openings/".$row['image_file'].'" alt="Career Opening Image" style="width:100px;">';
+echo '<img src="'."/employment/images/career_openings/".$row['image_file'].'" alt="Career Opening Image" style="width:100px;height:100px;">';
 echo '<input class="form-control" type="file" name="ImageUpload" value="Upload File" />';
 echo '</div>';
 // Retired dropdown field with prepopulated value and Yes/No options
 //echo '<input type="radio" class="form-control" name="retired" required>';
-echo '<label for="fileToUpload" style="font-weight: bold">Retired</label>';
 echo '<div class="form-group" style="display: flex">';
 echo '<div class="form-check">';
 if ($row['retired'] == 'Yes') {
@@ -71,18 +70,16 @@ if (isset($_POST['submit'])) {
     $timestamp = $row['timestamp'];
 
     // Image upload
-	// $current_img = $row['image_file'];
+    $current_img = $row['image_file'];
     $target_dir = $_SERVER['DOCUMENT_ROOT'] . "/employment/images/career_openings/";
     if (!empty($_FILES['ImageUpload']['name'])) {
         $current_img = basename($_FILES["ImageUpload"]["name"]);
-		$target_file = $target_dir . basename($_FILES["ImageUpload"]["name"]);
+        $target_file = $target_dir . basename($_FILES["ImageUpload"]["name"]);
         $uploadOk = 1;
         $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
         // Check if image file is a actual image or fake image
         if (isset($_POST["submit"])) {
-          $check = getimagesize($_FILES["ImageUpload"]["tmp_name"]);
-			// print_r($check);
-			// exit();
+            $check = getimagesize($_FILES["ImageUpload"]["tmp_name"]);
             if ($check !== false) {
                 echo "File is an image - " . $check["mime"] . ".";
                 $uploadOk = 1;
@@ -99,20 +96,16 @@ if (isset($_POST['submit'])) {
             if (move_uploaded_file($_FILES["ImageUpload"]["tmp_name"], $target_file)) {
                 echo "The file " . basename($_FILES["ImageUpload"]["name"]) . " has been uploaded.";
                 $current_img = basename($_FILES["ImageUpload"]["name"]);
-				// Update image.
-				$query = "UPDATE career_openings SET image_file='$current_img' WHERE id=$career_opening_id";
-    			$result = mysqli_query($db, $query);
             } else {
                 echo "Sorry, there was an error uploading your file.";
             }
         }
-    } 
+    }
     echo $current_img;
     echo 'Image name should be here';
     // Update the database with the new values
-    $query = "UPDATE career_openings SET position='$position', url='$url', retired='$retired' WHERE id=$career_opening_id";
+    $query = "UPDATE career_openings SET position='$position', url='$url', retired='$retired', image_file='$current_img' WHERE id=$career_opening_id";
     $result = mysqli_query($db, $query);
-	
     if ($result) {
         echo '<div class="alert alert-success">';
         echo '<strong>Success!</strong> The record has been updated.';
@@ -123,5 +116,5 @@ if (isset($_POST['submit'])) {
         echo '</div>';
     }
 }
+
 page_finish();
-?>
