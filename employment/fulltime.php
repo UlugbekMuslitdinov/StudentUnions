@@ -469,7 +469,7 @@ if ((isset($_GET['redirect'])) && ($_GET['redirect'] = "yes")) {
                             // Database connection
                             require_once ($_SERVER['DOCUMENT_ROOT'] . '/commontools/includes/mysqli.inc');
                             $db = new db_mysqli('su');
-                            $sql = "SELECT * FROM career_openings";
+                            $sql = "SELECT * FROM career_openings ORDER BY position";
                             $result = $db->query($sql);
 
                             // Loop through the records and display them

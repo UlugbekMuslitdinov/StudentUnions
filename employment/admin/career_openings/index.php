@@ -42,10 +42,16 @@ function shorten_url($url) {
 }
 
 
-echo "<table class='table table-striped'><thead class='thead-dark'><tr><th><h4>Position</h4></th><th><h4>URL</h4></th><th><h4>Image File</h4></th><th><h4>Retired</h4></th><th><h4>Action</h4></th></tr></thead><tbody>";
+echo "<table class='table'><thead class='thead-dark'><tr><th><h4>Position</h4></th><th><h4>URL</h4></th><th><h4>Image File</h4></th><th><h4>Retired</h4></th><th><h4>Action</h4></th></tr></thead><tbody>";
 // output data of each row
 while($row = $result->fetch_assoc()) {
-    echo "<tr><td><h4>" . $row["position"]. "</h4></td><td><h4><a href='" . $row["url"] . "' target='blank'>" . shorten_url($row["url"]). "</a></h4></td><td><img src='". "/employment/images/career_openings/" . $row["image_file"]. "' style='width:100px'/><br><p>" . $row["image_file"] . "</p></td><td><h4>" . $row["retired"]. "</h4></td><td><h4><a href='edit.php?id=" . $row["id"] . "'>Edit</a> | <a href='delete.php?id=" . $row["id"] . "'>Delete</a></h4></td></tr>";
+    if ($row["retired"] == "Yes") {
+        // If record is retired, display it in lightgray color
+        $color = "lightgray";
+    } else {
+        $color = "white";
+    }
+    echo "<tr bgcolor='" . $color . "'><td><h4>" . $row["position"]. "</h4></td><td><h4><a href='" . $row["url"] . "' target='blank'>" . shorten_url($row["url"]). "</a></h4></td><td><img src='". "/employment/images/career_openings/" . $row["image_file"]. "' style='width:100px'/><br><p>" . $row["image_file"] . "</p></td><td><h4>" . $row["retired"]. "</h4></td><td><h4><a href='edit.php?id=" . $row["id"] . "'>Edit</a> | <a href='delete.php?id=" . $row["id"] . "'>Delete</a></h4></td></tr>";
 }
 echo "</tbody></table>";
 

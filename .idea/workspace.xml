@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="d1497c29-9fa3-444d-b907-efe85e75ff09" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/employment/admin/career_openings/create_record.php" beforeDir="false" afterPath="$PROJECT_DIR$/employment/admin/career_openings/create_record.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/employment/admin/career_openings/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/employment/admin/career_openings/index.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/employment/fulltime.php" beforeDir="false" afterPath="$PROJECT_DIR$/employment/fulltime.php" afterDir="false" />
     </list>
@@ -103,6 +102,7 @@
       <workItem from="1654670919272" duration="228000" />
       <workItem from="1654671186312" duration="60000" />
       <workItem from="1654671289854" duration="6063000" />
+      <workItem from="1654844989750" duration="1359000" />
     </task>
     <servers />
   </component>
