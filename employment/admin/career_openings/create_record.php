@@ -61,21 +61,20 @@ if (isset($_POST['position'])) {
             echo "Sorry, there was an error uploading your file.";
         }
     }
-    $query = "INSERT INTO career_openings (position, url, image_file, retired) VALUES ('$position', '$url', '$file_name', '$retired')";
-    $result = $db->query($query);
-    if (!$result) {
-        echo '<p>Error inserting record into database!</p>';
+
+    if ($uploadOk == 1) {
+        $query = "INSERT INTO career_openings (position, url, image_file, retired) VALUES ('$position', '$url', '$file_name', '$retired')";
+        $result = $db->query($query);
+        if ($result) {
+            echo "<p>Career opening added.</p>";
+        } else {
+            echo "<p>Career opening not added.</p>";
+        }
     } else {
-        echo '<p>Record inserted successfully!</p>';
-        header('Location: https://su-wdevtest.union.arizona.edu/employment/admin/career_openings/index.php');
-        exit();
+        echo "<p>Career opening not added.</p>";
     }
 
-    // Redirect to the main page
-    ob_start();
-    header('Location: https://su-wdevtest.union.arizona.edu/employment/admin/career_openings/index.php');
-    ob_end_flush();
-    die();
+	// Redirect to the main page.
+	echo "<script>window.location.href='/employment/admin/career_openings/';</script>";
 }
-echo '<p><a href="index.php">Back to main page</a></p>';
 page_finish();

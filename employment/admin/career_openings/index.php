@@ -26,18 +26,26 @@ page_start($page_options);
 require_once ($_SERVER['DOCUMENT_ROOT'] . '/commontools/includes/mysqli.inc');
 $db = new db_mysqli('su');
 
-// List all records from DB table
-$sql = "SELECT * FROM career_openings";
+// List all records from DB table and sort by retired and position
+$sql = "SELECT * FROM career_openings ORDER BY retired, position";
 $result = $db->query($sql);
 
 // Loop thriugh every record and display it as HTML table row
 // Each row contains info about ID, name, surname, position and date_applied
 
+// Show only first 38 symbols and then ... of url if url is longer
+function shorten_url($url) {
+    if (strlen($url) > 38) {
+        $url = substr($url, 0, 38) . "...";
+    }
+    return $url;
+}
 
-echo "<table class='table'><thead class='thead-dark'><tr><th><h4>ID</h4></th><th><h4>Position</h4></th><th><h4>URL</h4></th><th><h4>Image File</h4></th><th><h4>Retired</h4></th><th><h4>Action</h4></th></tr></thead><tbody>";
+
+echo "<table class='table table-striped'><thead class='thead-dark'><tr><th><h4>Position</h4></th><th><h4>URL</h4></th><th><h4>Image File</h4></th><th><h4>Retired</h4></th><th><h4>Action</h4></th></tr></thead><tbody>";
 // output data of each row
 while($row = $result->fetch_assoc()) {
-    echo "<tr><td><h4>" . $row["id"]. "</h4></td><td><h4>" . $row["position"]. "</h4></td><td><h4><a href='" . $row["url"] . "' target='blank'>" . $row["url"]. "</a></h4></td><td><img src='". "/employment/images/career_openings/" . $row["image_file"]. "' style='width:100px'/><br><p>" . $row["image_file"] . "</p></td><td><h4>" . $row["retired"]. "</h4></td><td><h4><a href='edit.php?id=" . $row["id"] . "'>Edit</a> | <a href='delete.php?id=" . $row["id"] . "'>Delete</a></h4></td></tr>";
+    echo "<tr><td><h4>" . $row["position"]. "</h4></td><td><h4><a href='" . $row["url"] . "' target='blank'>" . shorten_url($row["url"]). "</a></h4></td><td><img src='". "/employment/images/career_openings/" . $row["image_file"]. "' style='width:100px'/><br><p>" . $row["image_file"] . "</p></td><td><h4>" . $row["retired"]. "</h4></td><td><h4><a href='edit.php?id=" . $row["id"] . "'>Edit</a> | <a href='delete.php?id=" . $row["id"] . "'>Delete</a></h4></td></tr>";
 }
 echo "</tbody></table>";
 

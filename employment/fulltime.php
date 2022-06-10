@@ -463,78 +463,34 @@ if ((isset($_GET['redirect'])) && ($_GET['redirect'] = "yes")) {
                     </div>
                     <div class="careerOpeningsText">
                         <div class="row careerOpeningsRow">
-                            <div class="col-sm-3">
-                                <div class="card" onClick="employmentLink('Banquet Servers')">
-                                    <img class="card-img-top" src="./images/Banquete_Server.jpg" alt="Banquet Servers">
-                                    <div class="card-body">
-                                        <div class="card-body">
-                                            BANQUET <br />SERVERS
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="card" onClick="employmentLink('Banquet Captains')">
-                                    <img class="card-img-top" src="./images/Banquet_Captain.jpg" alt="Banquet Captains">
-                                    <div class="card-body">
-                                        <div class="card-body">
-                                            BANQUET <br />CAPTAINS
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="card" onClick="employmentLink('Catering Managers')">
-                                    <img class="card-img-top" src="./images/Catering_Manager.jpg" alt="Catering Managers">
-                                    <div class="card-body">
-                                        <div class="card-body">
-                                            CATERING <br />MANAGERS
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="card" onClick="employmentLink('Cooks')">
-                                    <img class="card-img-top" src="./images/Cooks.jpg" alt="Cooks">
-                                    <div class="card-body">
-                                        <div class="card-body">
-                                            COOKS
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row careerOpeningsRow">
-                            <div class="col-sm-3">
-                                <div class="card" onClick="employmentLink('Administrative Support')">
-                                    <img class="card-img-top" src="./images/Admin_Support.jpg" alt="Administrative Support">
-                                    <div class="card-body">
-                                        <div class="card-body">
-                                            ADMINISTRATIVE <br />SUPPORT
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="card" onClick="employmentLink('Events Management')">
-                                    <img class="card-img-top" src="./images/Events_Management.jpg" alt="Events Management">
-                                    <div class="card-body">
-                                        <div class="card-body">
-                                            EVENTS <br />MANAGEMENT
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-sm-3">
-                                <div class="card" onClick="employmentLink('Dining Services Attendants')">
-                                    <img class="card-img-top" src="./images/Dining_service_attendants.jpg" alt="Dining Services Attendants">
-                                    <div class="card-body">
-                                        <div class="card-body servicesAttendantsText">
-                                            DINING <br />SERVICES <br />ATTENDANTS
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+
+<!--                            // Get all records from the table career_openings-->
+                            <?php
+                            // Database connection
+                            require_once ($_SERVER['DOCUMENT_ROOT'] . '/commontools/includes/mysqli.inc');
+                            $db = new db_mysqli('su');
+                            $sql = "SELECT * FROM career_openings";
+                            $result = $db->query($sql);
+
+                            // Loop through the records and display them
+                            while ($row = $result->fetch_assoc()) {
+                                if ($row['retired'] == "No"){
+                                    echo '<div class="col-sm-3">';
+                                    $position = $row['position'];
+                                    echo '<div class="card" onClick="employmentLink('. "'" . $position . "'" .')">';
+                                        echo '<img class="card-img-top" src="'. "/employment/images/career_openings/" . $row["image_file"]. '" alt=' . $row["position"] . '>';
+                                            echo '<div class="card-body">';
+                                                echo '<div class="card-body">';
+                                                    // Uppercase position
+                                                    echo strtoupper($row["position"]);
+                                                echo '</div>';
+                                            echo '</div>';
+                                        echo '</div>';
+                                    echo '</div>';
+                                }
+                            }
+                            //
+                            ?>
                         </div>
                     </div>
                 </div>
