@@ -122,6 +122,9 @@ if (isset($_POST['submit'])) {
         echo '<strong>Error!</strong> The record could not be updated.';
         echo '</div>';
     }
+	
+	// Redirect to the main page.
+	echo "<script>window.location.href='/employment/admin/career_openings/';</script>";
 }
 page_finish();
 ?>
