@@ -22,6 +22,7 @@ function plusSlides(n) {
 
 // Thumbnail image controls
 function currentSlide(n) {
+  setTimeout(playSlideshow, 8000);
   showSlides(slideIndex = n);
 }
 

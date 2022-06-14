@@ -147,6 +147,48 @@ if(isset($_GET['form_submitted'])) {
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
+    <div class="mySlides fade1">
+        <!-- <div class="numbertext">9 / 3</div> -->
+        <img src="./images/slides/IMG_8591%20(Custom).jpg" style="width:100%">
+        <!-- <div class="text">Caption Three</div> -->
+    </div>
+
+    <div class="mySlides fade1">
+        <!-- <div class="numbertext">10 / 3</div> -->
+        <img src="./images/slides/IMG_8692%20(Custom).jpg" style="width:100%">
+        <!-- <div class="text">Caption Three</div> -->
+    </div>
+
+    <div class="mySlides fade1">
+        <!-- <div class="numbertext">11 / 3</div> -->
+        <img src="./images/slides/IMG_8726%20(Custom).jpg" style="width:100%">
+        <!-- <div class="text">Caption Three</div> -->
+    </div>
+
+    <div class="mySlides fade1">
+        <!-- <div class="numbertext">12 / 3</div> -->
+        <img src="./images/slides/IMG_8912%20(Custom).jpg" style="width:100%">
+        <!-- <div class="text">Caption Three</div> -->
+    </div>
+
+    <div class="mySlides fade1">
+        <!-- <div class="numbertext">13 / 3</div> -->
+        <img src="./images/slides/IMG_8977%20(Custom).jpg" style="width:100%">
+        <!-- <div class="text">Caption Three</div> -->
+    </div>
+
+    <div class="mySlides fade1">
+        <!-- <div class="numbertext">14 / 3</div> -->
+        <img src="./images/slides/IMG_9293%20(Custom).jpg" style="width:100%">
+        <!-- <div class="text">Caption Three</div> -->
+    </div>
+
+    <div class="mySlides fade1">
+        <!-- <div class="numbertext">15 / 3</div> -->
+        <img src="./images/slides/PXL_20220413_220706114%20(Custom).jpg" style="width:100%">
+        <!-- <div class="text">Caption Three</div> -->
+    </div>
+
   <!-- Next and previous buttons -->
   <a class="prev" style="color: white;" onclick="plusSlides(-1)">&#10094;</a>
   <a class="next" style="color: white;" onclick="plusSlides(1)">&#10095;</a>
@@ -163,6 +205,13 @@ if(isset($_GET['form_submitted'])) {
     <span class="dot" onclick="currentSlide(6)"></span>
     <span class="dot" onclick="currentSlide(7)"></span>
     <span class="dot" onclick="currentSlide(8)"></span>
+    <span class="dot" onclick="currentSlide(9)"></span>
+    <span class="dot" onclick="currentSlide(10)"></span>
+    <span class="dot" onclick="currentSlide(11)"></span>
+    <span class="dot" onclick="currentSlide(12)"></span>
+    <span class="dot" onclick="currentSlide(13)"></span>
+    <span class="dot" onclick="currentSlide(14)"></span>
+    <span class="dot" onclick="currentSlide(15)"></span>
 </div>
 
 <span class="collapsible">
