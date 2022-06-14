@@ -15,9 +15,9 @@ if(isset($_GET['form_submitted'])) {
   echo "<center><h2 style='font-weight: bold; color: red;'>The form has been submitted successfully.</h2></center>";
 }
 ?>
-<!--<img src="/template/images/banners/esports_banner_party.png" alt="esports Launch Party" style="width: 100%"/><br />-->
 <link rel="stylesheet" type="text/css" href="/involvement/arizonaesportsarena/style.css">
 <h1><span style="color: #00255a;">Welcome to the Arizona Esports Arena</span></h1>
+<!--<img src="./images/tournament.png" alt="Gaming Tournament" style="width: 100%"/><br /><br />-->
 <p>
 	<!-- <span style="font-size:18px;">The Games Room</span> -->
 	Welcome to the campus destination for anyone who loves video games. Whether you are after casual gaming, hanging out with friends, or competitive esports, the Arizona Esports Arena has it all. Play where the Arizona Esports teams practice! We offer a pay-per-hour
@@ -42,6 +42,7 @@ if(isset($_GET['form_submitted'])) {
             Closed to walk-ins 5/21 - 8/7<br>
             1pm-5pm from 8/8 - 8/19<br>
             Resume regular hours starting 8/20<br>
+			We are open to reservations ALL Summer, please email <a href="mailto:su-esportsarena@email.arizona.edu">su-esportsarena@email.arizona.edu</a> for details.
         </p>
     </div>
 </div>
@@ -116,65 +117,35 @@ if(isset($_GET['form_submitted'])) {
     <!-- <div class="text">Caption Three</div> -->
   </div>
 
-  <div class="mySlides fade1">
-    <!-- <div class="numbertext">3 / 3</div> -->
-    <img src="./images/slides/ESports_4.jpg" style="width:100%">
-    <!-- <div class="text">Caption Three</div> -->
-  </div>
+    <div class="mySlides fade1">
+        <!-- <div class="numbertext">4 / 3</div> -->
+        <img src="./images/slides/IMG_8891.jpg" style="width:100%">
+        <!-- <div class="text">Caption Three</div> -->
+    </div>
 
-  <div class="mySlides fade1">
-    <!-- <div class="numbertext">3 / 3</div> -->
-    <img src="./images/slides/ESports_5.jpg" style="width:100%">
-    <!-- <div class="text">Caption Three</div> -->
-  </div>
+    <div class="mySlides fade1">
+        <!-- <div class="numbertext">5 / 3</div> -->
+        <img src="./images/slides/IMG_8619.jpg" style="width:100%">
+        <!-- <div class="text">Caption Three</div> -->
+    </div>
 
-  <div class="mySlides fade1">
-    <!-- <div class="numbertext">3 / 3</div> -->
-    <img src="./images/slides/ESports_6.jpg" style="width:100%">
-    <!-- <div class="text">Caption Three</div> -->
-  </div>
+    <div class="mySlides fade1">
+        <!-- <div class="numbertext">6 / 3</div> -->
+        <img src="./images/slides/IMG_9010.jpg" style="width:100%">
+        <!-- <div class="text">Caption Three</div> -->
+    </div>
 
-  <div class="mySlides fade1">
-    <!-- <div class="numbertext">3 / 3</div> -->
-    <img src="./images/slides/ESports_7.jpg" style="width:100%">
-    <!-- <div class="text">Caption Three</div> -->
-  </div>
+    <div class="mySlides fade1">
+        <!-- <div class="numbertext">7 / 3</div> -->
+        <img src="./images/slides/DSC_7099.jpg" style="width:100%">
+        <!-- <div class="text">Caption Three</div> -->
+    </div>
 
-  <div class="mySlides fade1">
-    <!-- <div class="numbertext">3 / 3</div> -->
-    <img src="./images/slides/ESports_8.jpg" style="width:100%">
-    <!-- <div class="text">Caption Three</div> -->
-  </div>
-
-  <div class="mySlides fade1">
-    <!-- <div class="numbertext">3 / 3</div> -->
-    <img src="./images/slides/ESports_9.jpg" style="width:100%">
-    <!-- <div class="text">Caption Three</div> -->
-  </div>
-
-  <div class="mySlides fade1">
-    <!-- <div class="numbertext">3 / 3</div> -->
-    <img src="./images/slides/ESports_10.jpg" style="width:100%">
-    <!-- <div class="text">Caption Three</div> -->
-  </div>
-
-  <div class="mySlides fade1">
-    <!-- <div class="numbertext">3 / 3</div> -->
-    <img src="./images/slides/ESports_11.jpg" style="width:100%">
-    <!-- <div class="text">Caption Three</div> -->
-  </div>
-
-  <div class="mySlides fade1">
-    <!-- <div class="numbertext">3 / 3</div> -->
-    <img src="./images/slides/ESports_12.jpg" style="width:100%">
-    <!-- <div class="text">Caption Three</div> -->
-  </div>
-
-  <div class="mySlides fade1">
-    <!-- <div class="numbertext">3 / 3</div> -->
-    <img src="./images/slides/ESports_13.jpg" style="width:100%">
-    <!-- <div class="text">Caption Three</div> -->
-  </div>
+    <div class="mySlides fade1">
+        <!-- <div class="numbertext">8 / 3</div> -->
+        <img src="./images/slides/IMG_9031.jpg" style="width:100%">
+        <!-- <div class="text">Caption Three</div> -->
+    </div>
 
   <!-- Next and previous buttons -->
   <a class="prev" style="color: white;" onclick="plusSlides(-1)">&#10094;</a>
@@ -184,19 +155,14 @@ if(isset($_GET['form_submitted'])) {
 
 <!-- The dots/circles -->
 <div style="text-align:center">
-  <span class="dot" onclick="currentSlide(1)"></span>
-  <span class="dot" onclick="currentSlide(2)"></span>
-  <span class="dot" onclick="currentSlide(3)"></span>
-  <span class="dot" onclick="currentSlide(4)"></span>
-  <span class="dot" onclick="currentSlide(5)"></span>
-  <span class="dot" onclick="currentSlide(6)"></span>
-  <span class="dot" onclick="currentSlide(7)"></span>
-  <span class="dot" onclick="currentSlide(8)"></span>
-  <span class="dot" onclick="currentSlide(9)"></span>
-  <span class="dot" onclick="currentSlide(10)"></span>
-  <span class="dot" onclick="currentSlide(11)"></span>
-  <span class="dot" onclick="currentSlide(12)"></span>
-  <span class="dot" onclick="currentSlide(13)"></span>
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+    <span class="dot" onclick="currentSlide(5)"></span>
+    <span class="dot" onclick="currentSlide(6)"></span>
+    <span class="dot" onclick="currentSlide(7)"></span>
+    <span class="dot" onclick="currentSlide(8)"></span>
 </div>
 
 <span class="collapsible">
@@ -236,8 +202,8 @@ if(isset($_GET['form_submitted'])) {
 			["Aim Lab", "Apex Legends", "Battlefield 2042<span style='font-weight:bold; color:red;'>*</span>", "Call of Duty: Warzone"], 
 			["Call of Duty: Vanguard<span style='font-weight:bold; color:red;'>*</span>", "CS:GO", "Destiny 2", "Dota 2"],
 			["Fortnite", "Halo: Infinite", "Hearthstone", "League of Legends"], 
-			["Overwatch", "Rainbow 6: Siege<span style='font-weight:bold; color:red;'>*</span>", "Rocket League", "Splitgate"],
-			["Valorant"]
+			["Lost Ark", "Overwatch", "Rainbow 6: Siege<span style='font-weight:bold; color:red;'>*</span>", "Rocket League"],
+			["Splitgate", "Valorant"]
 		]
 	];
 	printTable($table8, 'table_su');
