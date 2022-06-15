@@ -101,91 +101,91 @@ if(isset($_GET['form_submitted'])) {
   <!-- Full-width images with number and caption text -->
     <div class="mySlides fade1">
         <!-- <div class="numbertext">1 / 3</div> -->
-        <img src="./images/slides/IMG_8891%20(Custom).jpg" style="width:100%">
+        <img src="./images/slides/ESports_16.jpg" style="width:100%">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">2 / 3</div> -->
-        <img src="./images/slides/IMG_8619%20(Custom).jpg" style="width:100%">
+        <img src="./images/slides/ESports_17.jpg" style="width:100%">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">3 / 3</div> -->
-        <img src="./images/slides/IMG_9010%20(Custom).jpg" style="width:100%">
+        <img src="./images/slides/ESports_18.jpg" style="width:100%">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">4 / 3</div> -->
-        <img src="./images/slides/DSC_7099%20(Custom).jpg" style="width:100%">
+        <img src="./images/slides/ESports_4.jpg" style="width:100%">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">5 / 3</div> -->
-        <img src="./images/slides/IMG_9031%20(Custom).jpg" style="width:100%">
+        <img src="./images/slides/ESports_5.jpg" style="width:100%">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">6 / 3</div> -->
-        <img src="./images/slides/ESports_1.jpg" style="width:100%">
+        <img src="./images/slides/ESports_6.jpg" style="width:100%">
         <!-- <div class="text">Caption Text</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">7 / 3</div> -->
-        <img src="./images/slides/ESports_2.jpg" style="width:100%">
+        <img src="./images/slides/ESports_7.jpg" style="width:100%">
         <!-- <div class="text">Caption Two</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">8 / 3</div> -->
-        <img src="./images/slides/ESports_3.jpg" style="width:100%">
+        <img src="./images/slides/ESports_8.jpg" style="width:100%">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">9 / 3</div> -->
-        <img src="./images/slides/IMG_8591%20(Custom).jpg" style="width:100%">
+        <img src="./images/slides/ESports_9.jpg" style="width:100%">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">10 / 3</div> -->
-        <img src="./images/slides/IMG_8692%20(Custom).jpg" style="width:100%">
+        <img src="./images/slides/ESports_10.jpg" style="width:100%">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">11 / 3</div> -->
-        <img src="./images/slides/IMG_8726%20(Custom).jpg" style="width:100%">
+        <img src="./images/slides/ESports_11.jpg" style="width:100%">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">12 / 3</div> -->
-        <img src="./images/slides/IMG_8912%20(Custom).jpg" style="width:100%">
+        <img src="./images/slides/ESports_12.jpg" style="width:100%">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">13 / 3</div> -->
-        <img src="./images/slides/IMG_8977%20(Custom).jpg" style="width:100%">
+        <img src="./images/slides/ESports_13.jpg" style="width:100%">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">14 / 3</div> -->
-        <img src="./images/slides/IMG_9293%20(Custom).jpg" style="width:100%">
+        <img src="./images/slides/ESports_14.jpg" style="width:100%">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">15 / 3</div> -->
-        <img src="./images/slides/PXL_20220413_220706114%20(Custom).jpg" style="width:100%">
+        <img src="./images/slides/ESports_15.jpg" style="width:100%">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
