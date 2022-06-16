@@ -101,91 +101,91 @@ if(isset($_GET['form_submitted'])) {
   <!-- Full-width images with number and caption text -->
     <div class="mySlides fade1">
         <!-- <div class="numbertext">1 / 3</div> -->
-        <img src="./images/slides/ESports_16.jpg" style="width:100%">
+        <img src="./images/slides/ESports_16.jpg" style="height: 1000px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">2 / 3</div> -->
-        <img src="./images/slides/ESports_17.jpg" style="width:100%">
+        <img src="./images/slides/ESports_17.jpg" style="height: 1000px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">3 / 3</div> -->
-        <img src="./images/slides/ESports_18.jpg" style="width:100%">
+        <img src="./images/slides/ESports_18.jpg" style="height: 1000px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">4 / 3</div> -->
-        <img src="./images/slides/ESports_4.jpg" style="width:100%">
+        <img src="./images/slides/ESports_4.jpg" style="height: 1000px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">5 / 3</div> -->
-        <img src="./images/slides/ESports_5.jpg" style="width:100%">
+        <img src="./images/slides/ESports_5.jpg" style="height: 1000px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">6 / 3</div> -->
-        <img src="./images/slides/ESports_6.jpg" style="width:100%">
+        <img src="./images/slides/ESports_6.jpg" style="height: 1000px">
         <!-- <div class="text">Caption Text</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">7 / 3</div> -->
-        <img src="./images/slides/ESports_7.jpg" style="width:100%">
+        <img src="./images/slides/ESports_7.jpg" style="height: 1000px">
         <!-- <div class="text">Caption Two</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">8 / 3</div> -->
-        <img src="./images/slides/ESports_8.jpg" style="width:100%">
+        <img src="./images/slides/ESports_8.jpg" style="height: 1000px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">9 / 3</div> -->
-        <img src="./images/slides/ESports_9.jpg" style="width:100%">
+        <img src="./images/slides/ESports_9.jpg" style="height: 1000px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">10 / 3</div> -->
-        <img src="./images/slides/ESports_10.jpg" style="width:100%">
+        <img src="./images/slides/ESports_10.jpg" style="height: 1000px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">11 / 3</div> -->
-        <img src="./images/slides/ESports_11.jpg" style="width:100%">
+        <img src="./images/slides/ESports_11.jpg" style="height: 1000px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">12 / 3</div> -->
-        <img src="./images/slides/ESports_12.jpg" style="width:100%">
+        <img src="./images/slides/ESports_12.jpg" style="height: 1000px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">13 / 3</div> -->
-        <img src="./images/slides/ESports_13.jpg" style="width:100%">
+        <img src="./images/slides/ESports_13.jpg" style="height: 1000px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">14 / 3</div> -->
-        <img src="./images/slides/ESports_14.jpg" style="width:100%">
+        <img src="./images/slides/ESports_14.jpg" style="height: 1000px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">15 / 3</div> -->
-        <img src="./images/slides/ESports_15.jpg" style="width:100%">
+        <img src="./images/slides/ESports_15.jpg" style="height: 1000px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
@@ -322,6 +322,30 @@ if(isset($_GET['form_submitted'])) {
 			click here to open this calendar in a new window
 		</a>
 	</p>
+</div>
+
+<span class="collapsible">
+	<div class="su-card">
+		<div class="su-card-text"><img src="/template/images/involvement/monitor.png" id="icon">History<i class="su-arrow"></i></div>
+	</div>
+</span>
+<div class="su-content" align="center">
+    There will be a history of the events that have occurred at the SU.
+    <table class="table table-striped table-bordered table-hover table-condensed">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Type</th>
+                <th>Name</th>
+                <th>Game</th>
+                <th>Winner</th>
+                <th>Pictures</th>
+                <th>Stream</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
 </div>
 
 <span class="collapsible">

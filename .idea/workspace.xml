@@ -6,33 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="d1497c29-9fa3-444d-b907-efe85e75ff09" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/DSC_7099 (Custom).jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_10.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_11.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_11.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_12.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_12.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_13.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_13.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_4.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_5.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_6.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_6.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_7.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_7.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_8.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_8.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_9.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_9.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/IMG_8591 (Custom).jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/IMG_8619 (Custom).jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/IMG_8692 (Custom).jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/IMG_8726 (Custom) (1).jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/IMG_8726 (Custom).jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/IMG_8891 (Custom).jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/IMG_8912 (Custom).jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/IMG_8977 (Custom).jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/IMG_9010 (Custom).jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/IMG_9031 (Custom).jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/IMG_9293 (Custom).jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/PXL_20220413_220706114 (Custom).jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/involvement/arizonaesportsarena/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/involvement/arizonaesportsarena/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -129,7 +104,7 @@
       <workItem from="1654671289854" duration="6063000" />
       <workItem from="1654844989750" duration="1975000" />
       <workItem from="1655104362074" duration="5072000" />
-      <workItem from="1655271116794" duration="1639000" />
+      <workItem from="1655271116794" duration="4258000" />
     </task>
     <servers />
   </component>
