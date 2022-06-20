@@ -5,7 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/involvement/template/involv.inc.php');
 // require_once ($_SERVER['DOCUMENT_ROOT'] . '/events/vendor/autoload.php');
 $page_options = array();
 $page_options['page'] = 'Arizona Esports Arena';
-$page_options['header_image'] = '/template/images/banners/esports_banner_2.jpg';
+$page_options['header_image'] = '/template/images/bannes/esports_banner_2.jpg';
 involv_start($page_options);
 require_once($_SERVER['DOCUMENT_ROOT'] . '/commontools/includes/mysqli.inc');
 
@@ -14,7 +14,10 @@ $calendarHTML = "https://outlook.office365.com/owa/calendar/a886f3ad22f044c0aabb
 if(isset($_GET['form_submitted'])) {
   echo "<center><h2 style='font-weight: bold; color: red;'>The form has been submitted successfully.</h2></center>";
 }
+
+echo '<link rel="stylesheet" src="' . $_SERVER["DOCUMENT_ROOT"] . "/employment/admin/bootstrap/css/bootstrap.css" . '">'
 ?>
+
 <link rel="stylesheet" type="text/css" href="/involvement/arizonaesportsarena/style.css">
 <h1><span style="color: #00255a;">Welcome to the Arizona Esports Arena</span></h1>
 <!--<img src="./images/tournament.png" alt="Gaming Tournament" style="width: 100%"/><br /><br />-->
@@ -101,91 +104,91 @@ if(isset($_GET['form_submitted'])) {
   <!-- Full-width images with number and caption text -->
     <div class="mySlides fade1">
         <!-- <div class="numbertext">1 / 3</div> -->
-        <img src="./images/slides/ESports_16.jpg" style="height: 1000px">
+        <img src="./images/slides/ESports_16.jpg" style="height: 600px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">2 / 3</div> -->
-        <img src="./images/slides/ESports_17.jpg" style="height: 1000px">
+        <img src="./images/slides/ESports_17.jpg" style="height: 600px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">3 / 3</div> -->
-        <img src="./images/slides/ESports_18.jpg" style="height: 1000px">
+        <img src="./images/slides/ESports_18.jpg" style="height: 600px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">4 / 3</div> -->
-        <img src="./images/slides/ESports_4.jpg" style="height: 1000px">
+        <img src="./images/slides/ESports_4.jpg" style="height: 600px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">5 / 3</div> -->
-        <img src="./images/slides/ESports_5.jpg" style="height: 1000px">
+        <img src="./images/slides/ESports_5.jpg" style="height: 600px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">6 / 3</div> -->
-        <img src="./images/slides/ESports_6.jpg" style="height: 1000px">
+        <img src="./images/slides/ESports_6.jpg" style="height: 600px">
         <!-- <div class="text">Caption Text</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">7 / 3</div> -->
-        <img src="./images/slides/ESports_7.jpg" style="height: 1000px">
+        <img src="./images/slides/ESports_7.jpg" style="height: 600px">
         <!-- <div class="text">Caption Two</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">8 / 3</div> -->
-        <img src="./images/slides/ESports_8.jpg" style="height: 1000px">
+        <img src="./images/slides/ESports_8.jpg" style="height: 600px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">9 / 3</div> -->
-        <img src="./images/slides/ESports_9.jpg" style="height: 1000px">
+        <img src="./images/slides/ESports_9.jpg" style="height: 600px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">10 / 3</div> -->
-        <img src="./images/slides/ESports_10.jpg" style="height: 1000px">
+        <img src="./images/slides/ESports_10.jpg" style="height: 600px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">11 / 3</div> -->
-        <img src="./images/slides/ESports_11.jpg" style="height: 1000px">
+        <img src="./images/slides/ESports_11.jpg" style="height: 600px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">12 / 3</div> -->
-        <img src="./images/slides/ESports_12.jpg" style="height: 1000px">
+        <img src="./images/slides/ESports_12.jpg" style="height: 600px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">13 / 3</div> -->
-        <img src="./images/slides/ESports_13.jpg" style="height: 1000px">
+        <img src="./images/slides/ESports_13.jpg" style="height: 600px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">14 / 3</div> -->
-        <img src="./images/slides/ESports_14.jpg" style="height: 1000px">
+        <img src="./images/slides/ESports_14.jpg" style="height: 600px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
     <div class="mySlides fade1">
         <!-- <div class="numbertext">15 / 3</div> -->
-        <img src="./images/slides/ESports_15.jpg" style="height: 1000px">
+        <img src="./images/slides/ESports_15.jpg" style="height: 600px">
         <!-- <div class="text">Caption Three</div> -->
     </div>
 
@@ -331,7 +334,7 @@ if(isset($_GET['form_submitted'])) {
 </span>
 <div class="su-content" align="center">
     There will be a history of the events that have occurred at the SU.
-    <table class="table table-striped table-bordered table-hover table-condensed">
+    <table class="table table-striped table-bordered">
         <thead>
             <tr>
                 <th>Date</th>
@@ -344,6 +347,30 @@ if(isset($_GET['form_submitted'])) {
             </tr>
         </thead>
         <tbody>
+            <tr>
+                <th>4/13/2022</th>
+                <th>Event</th>
+                <th>Microsoft DRC Open House</th>
+                <th>Open Play</th>
+                <th>N/A</th>
+                <th>LINKWILLBEHERE</th>
+            </tr>
+            <tr>
+                <th>4/9/2022</th>
+                <th>Tournament</th>
+                <th><a href="https://challonge.com/Coca_Cola_Open_S22" style="text-decoration: underline">Coca-Cola Open Spring 2022</a></th>
+                <th>League of Legends ARAM</th>
+                <th>Flash on F</th>
+                <th>LINKWILLBEHERE</th>
+            </tr>
+            <tr>
+                <th>2/6/2022</th>
+                <th>Tournament</th>
+                <th><a href="https://challonge.com/RLDormF21" style="text-decoration: underline">Dorm League Fall 2021</a></th>
+                <th>Rocket League</th>
+                <th>KBM Masters</th>
+                <th>N/A</th>
+            </tr>
         </tbody>
     </table>
 </div>
