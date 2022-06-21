@@ -5,7 +5,7 @@ require_once($_SERVER['DOCUMENT_ROOT'].'/involvement/template/involv.inc.php');
 // require_once ($_SERVER['DOCUMENT_ROOT'] . '/events/vendor/autoload.php');
 $page_options = array();
 $page_options['page'] = 'Arizona Esports Arena';
-$page_options['header_image'] = '/template/images/bannes/esports_banner_2.jpg';
+$page_options['header_image'] = '/template/images/banners/esports_banner_2.jpg';
 involv_start($page_options);
 require_once($_SERVER['DOCUMENT_ROOT'] . '/commontools/includes/mysqli.inc');
 
@@ -360,7 +360,17 @@ echo '<link rel="stylesheet" src="' . $_SERVER["DOCUMENT_ROOT"] . "/employment/a
                 <th>Tournament</th>
                 <th><a href="https://challonge.com/Coca_Cola_Open_S22" style="text-decoration: underline">Coca-Cola Open Spring 2022</a></th>
                 <th>League of Legends ARAM</th>
-                <th>Flash on F</th>
+                <th class="team" id="team2">Flash on F
+                    <div class="crew" id="crew2">
+                        <h3>akajade</h3>
+                        <h3>h2o</h3>
+                        <h3>flask</h3>
+                        <h3>huuyle</h3>
+                        <h3>Trappropaganda</h3>
+                        <h3>ChainOS</h3>
+                    </div>
+                </th>
+
                 <th>LINKWILLBEHERE</th>
             </tr>
             <tr>
@@ -368,7 +378,16 @@ echo '<link rel="stylesheet" src="' . $_SERVER["DOCUMENT_ROOT"] . "/employment/a
                 <th>Tournament</th>
                 <th><a href="https://challonge.com/RLDormF21" style="text-decoration: underline">Dorm League Fall 2021</a></th>
                 <th>Rocket League</th>
-                <th>KBM Masters</th>
+                <th class="team" id="team3">KBM Masters
+                    <div class="crew" id="crew3">
+                        <h3>akajade</h3>
+                        <h3>h2o</h3>
+                        <h3>flask</h3>
+                        <h3>huuyle</h3>
+                        <h3>Trappropaganda</h3>
+                        <h3>ChainOS</h3>
+                    </div>
+                </th>
                 <th>N/A</th>
             </tr>
         </tbody>
