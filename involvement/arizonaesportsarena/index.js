@@ -13,12 +13,13 @@ function plusSlides(n) {
   play += 1;
   showSlides(slideIndex += n);
 
+  setTimeout(playSlideshow, 8000);
+
 
   if(play == temp) {
     play = 0;
   }
 }
-
 
 
 
@@ -56,5 +57,5 @@ function showSlidesAutomatic() {
   slides[slideIndex-1].style.display = "block";
   currentSlide(slideIndex);
   }
-  setTimeout(showSlidesAutomatic, 20000); // Change image every 2 seconds
+  setTimeout(showSlidesAutomatic, 8000); // Change image every 2 seconds
 }

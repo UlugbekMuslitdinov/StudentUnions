@@ -193,8 +193,8 @@ echo '<link rel="stylesheet" src="' . $_SERVER["DOCUMENT_ROOT"] . "/employment/a
     </div>
 
   <!-- Next and previous buttons -->
-  <a class="prev" style="color: white;" onclick="plusSlides(-1)">&#10094;</a>
-  <a class="next" style="color: white;" onclick="plusSlides(1)">&#10095;</a>
+  <a class="prev" style="color: gray;" onclick="plusSlides(-1)">&#10094;</a>
+  <a class="next" style="color: gray;" onclick="plusSlides(1)">&#10095;</a>
 </div>
 <br>
 
@@ -380,12 +380,9 @@ echo '<link rel="stylesheet" src="' . $_SERVER["DOCUMENT_ROOT"] . "/employment/a
                 <th>Rocket League</th>
                 <th class="team" id="team3">KBM Masters
                     <div class="crew" id="crew3">
-                        <h3>akajade</h3>
-                        <h3>h2o</h3>
-                        <h3>flask</h3>
-                        <h3>huuyle</h3>
-                        <h3>Trappropaganda</h3>
-                        <h3>ChainOS</h3>
+                        <h3>Waocats</h3>
+                        <h3>Ki Yhun</h3>
+                        <h3>Slim Jim</h3>
                     </div>
                 </th>
                 <th>N/A</th>
