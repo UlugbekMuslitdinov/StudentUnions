@@ -3,8 +3,11 @@
 /* Slideshow container */
 .slideshow-container {
     position: relative;
-    width: 80%;
-    /*width: 100% !important;*/
+    /*width: 80%;*/
+    width: 100% !important;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 /* Hide the images by default */
@@ -25,12 +28,17 @@
   transition: 0.6s ease;
   border-radius: 0 3px 3px 0;
   user-select: none;
+    z-index: 999;
 }
 
 /* Position the "next button" to the right */
 .next {
   right: 0;
   border-radius: 3px 0 0 3px;
+}
+
+.prev {
+    left: 0;
 }
 
 /* On hover, add a black background color with a little bit see-through */
@@ -84,8 +92,9 @@
 }
 
 .mySlides.fade1 img{
-    /*width: 100% !important;*/
+    max-width: 100% !important;
     object-fit: cover !important;
+    height: 600px;
 }
 
 @-webkit-keyframes fade {
