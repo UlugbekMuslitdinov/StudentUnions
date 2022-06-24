@@ -5,13 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="d1497c29-9fa3-444d-b907-efe85e75ff09" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/involvement/arizonaesportsarena/photos/CoacColaOS2022.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/involvement/arizonaesportsarena/photos/MicrosoftDRC.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_10.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_10.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_17.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_17.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_18.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_18.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_5.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_5.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_9.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/involvement/arizonaesportsarena/images/slides/ESports_9.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/involvement/arizonaesportsarena/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/involvement/arizonaesportsarena/style.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,6 +108,7 @@
       <workItem from="1655449966413" duration="2745000" />
       <workItem from="1655482828401" duration="40000" />
       <workItem from="1655707897532" duration="16700000" />
+      <workItem from="1656058218537" duration="2708000" />
     </task>
     <servers />
   </component>
